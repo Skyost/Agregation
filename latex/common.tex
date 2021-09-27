@@ -1,0 +1,188 @@
+\documentclass[12pt, a4paper]{report}
+
+% LuaLaTeX :
+
+\RequirePackage{iftex}
+\RequireLuaTeX
+
+% Packages :
+
+\usepackage[french]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[pdfencoding=auto, pdfauthor={Hugo Delaunay}]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{fourier}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{catchfilebetweentags}
+\usepackage[french, capitalise, noabbrev]{cleveref}
+\usepackage[fit, breakall]{truncate}
+\usepackage[margin=3cm]{geometry}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{tocloft}
+\usepackage{microtype}
+\usepackage{mdframed}
+\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{aligned-overset}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{environ}
+
+% Police :
+
+\setmainfont{Erewhon}
+
+% Longueurs :
+
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{15pt}
+\setlength{\fboxsep}{0pt}
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+
+% Métadonnées :
+
+\author{agreg.skyost.eu}
+\date{\today}
+
+% Titres :
+
+\titleformat{\chapter}{\huge\bfseries}{\thechapter}{20pt}{\huge\bfseries}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+
+% En-têtes :
+
+\pagestyle{fancy}
+\fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
+\fancyfoot[C]{\scriptsize \href{https://agreg.skyost.eu}{\texttt{agreg.skyost.eu}}}
+
+% Table des matières :
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\addtolength{\cftsecnumwidth}{10pt}
+
+% Redéfinition des commandes :
+
+\renewcommand*\thesection{\arabic{section}}
+\renewcommand{\ker}[1]{\mathrm{Ker} \left( #1 \right)}
+
+% Nouvelles commandes :
+
+\newcommand{\tr}[1]{\mathstrut ^t #1}
+\newcommand{\im}[1]{\mathrm{Im} \left( #1 \right)}
+
+\newcommand{\newpar}{\\[\medskipamount]}
+
+\newcommand{\lesson}[3]{%
+  \title{#3}%
+	\hypersetup{pdftitle={#3}}%
+	\setcounter{section}{\numexpr #2 - 1}%
+	\section{#3}%
+	\fancyhead[R]{{\truncate{0.73\textwidth}{#2 : #3}}}%
+}
+
+\newcommand{\development}[3]{%
+  \title{#3}%
+	\hypersetup{pdftitle={#3}}%
+	\section*{#3}%
+	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+}
+
+\newcommand{\summary}[1]{%
+	\textit{#1}%
+	\medskip%
+}
+
+\newcommand{\reference}[2]{%
+	\marginpar{%
+		\begin{center}%
+			\textbf{[#1]}\\%
+			p. #2%
+		\end{center}%
+	}%
+}
+
+\newcommand{\imagespath}{../images/}
+
+\newcommand{\includelatexpicture}[1]{%
+	\begin{center}%
+		\input{\imagespath#1}%
+	\end{center}%
+	\medskip%
+}
+
+% Couleurs :
+
+\definecolor{property}{HTML}{fffde7}
+\definecolor{proposition}{HTML}{fff8e1}
+\definecolor{lemma}{HTML}{fff3e0}
+\definecolor{theorem}{HTML}{ffebee}
+\definecolor{corollary}{HTML}{fce4ec}
+\definecolor{definition}{HTML}{e3f2fd}
+\definecolor{notation}{HTML}{f3e5f5}
+\definecolor{example}{HTML}{e0f7fa}
+\definecolor{cexample}{HTML}{efebe9}
+\definecolor{application}{HTML}{e0f2f1}
+\definecolor{remark}{HTML}{e8f5e9}
+\definecolor{demonstration}{HTML}{e1f5fe}
+
+% Théorèmes :
+
+\declaretheoremstyle[
+bodyfont=\normalfont,
+]{theorem}
+
+\declaretheoremstyle[
+headfont=\itshape,
+]{remark}
+
+\newcounter{thm}[subsection]
+
+\newcommand{\newth}[3][style=theorem]{
+	\declaretheorem[%
+	name=#3,%
+	%within=section,
+	sibling=thm,%
+	mdframed={%
+		hidealllines=true,%
+		backgroundcolor={#2!98!white},%
+		innermargin=8pt,%
+		splittopskip=18pt,%
+		splitbottomskip=16pt,%
+	},%
+	#1%
+	]{#2}%
+}
+
+\newth{property}{Propriété}
+\newth{proposition}{Proposition}
+\newth{lemma}{Lemme}
+\newth{theorem}{Théorème}
+\newth{corollary}{Corollaire}
+\newth{definition}{Définition}
+\newth{notation}{Notation}
+\newth{example}{Exemple}
+\newth{cexample}{Contre-exemple}
+\newth{application}{Application}
+\newth[style=remark]{remark}{Remarque}
+\newth[style=remark, numbered=no, qed=\qedsymbol]{demonstration}{Démonstration}
+
+% Environnements :
+
+\NewEnviron{whitetabularx}[1]{%
+	\renewcommand{\arraystretch}{2.5}
+	\colorbox{white}{%
+		\begin{tabularx}{\textwidth}{#1}%
+			\BODY%
+		\end{tabularx}%
+	}%
+}

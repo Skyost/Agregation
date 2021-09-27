@@ -1,0 +1,49 @@
+% Redéfinition des commandes :
+
+\renewcommand{\imagespath}{images/}
+
+\renewcommand{\development}[3]{%
+	\section{#3}%
+	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+}
+
+% Nouvelles commandes :
+
+\newcommand{\gatheringtitle}{Titre}
+
+\makeatletter
+\newcommand\inputcontent{\@ifstar{\inputcontent@star}{\inputcontent@nostar}}
+\newcommand{\inputcontent@star}[1]{%
+	\ExecuteMetaData[#1]{content}%
+}
+\newcommand{\inputcontent@nostar}[1]{%
+	\newpage%
+	\inputcontent@star{#1}%
+}
+\makeatother
+
+\newcommand{\gathering}[1]{%
+  \title{#1}%
+	\chapter{#1}%
+	\thispagestyle{fancy}%
+}
+
+% Premières pages :
+
+\AtBeginDocument{
+	\hypersetup{pdftitle={\gatheringtitle}}
+	\thispagestyle{empty}%
+	\vspace*{\fill}%
+	\begin{center}%
+		{\huge\bfseries Agrégation 2022}%
+
+		\smallskip%
+		{\gatheringtitle}%
+	\end{center}%
+	\vspace*{\fill}%
+	\newpage%
+	\tableofcontents%
+	\thispagestyle{empty}%
+	\newpage%
+	\setcounter{page}{1}%
+}

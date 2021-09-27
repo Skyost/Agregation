@@ -1,0 +1,68 @@
+\input{../common}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{connexite-valeurs-adherence-suite-dans-compact}{Connexité des valeurs d'adhérence d'une suite dans un compact}
+	
+	\summary{On montre que l'ensemble des valeurs d'adhérence d'une suite d'un espace métrique compact est connexe en raisonnant par l'absurde, puis on utilise ce résultat pour démontrer le lemme des grenouilles.}
+	
+	\reference{GOU20}{46}
+	
+	Soit $(E, d)$ un espace métrique.
+	
+	\begin{theorem}
+		\label{connexite-valeurs-adherence-suite-dans-compact-1}
+		On suppose $E$ compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
+	\end{theorem}
+	
+	\begin{demonstration}
+		Pour tout $p \in \mathbb{N}$, on note $A_p = \{u_n \mid n\geq p\}$. On a $\Gamma = \bigcap_{p \in \mathbb{N}} \overline{A_p}$. $\Gamma$ est fermé (en tant qu'intersection de fermés) dans $E$ qui est compact, donc $\Gamma$ est compact.
+		Supposons que $\Gamma$ soit non connexe ; on peut alors écrire $\Gamma = A \, \sqcup \, B$, où $A$ et $B$ sont deux fermés disjoints de $\Gamma$. Comme $\Gamma$ est compact, $A$ et $B$ le sont aussi. Notons $\alpha = d(A, B) > 0$ (car $A \, \cap \, B = \emptyset$). Posons :
+		\[
+		A'= \left \{ x \in E \mid d(x, A) < \frac{\alpha}{3} \right \} \text{ et } B'= \left \{ x \in E \mid d(x, B) < \frac{\alpha}{3} \right \}
+		\]
+		$A'$ et $B'$ sont ouverts (en tant qu'images réciproques d'ouverts par des application continues), donc $K = E \setminus (A'\cup B')$ est fermé dans $E$, donc compact.
+		\newpar
+		Montrons que $(u_n)$ admet une valeur d'adhérence dans $K$, ce qui serait absurde car $\Gamma \, \cap \, K = \emptyset$. Comme $\lim_{n \rightarrow +\infty} d(u_n, u_{n-1})=0$,
+		\[ \exists N_0 \in \mathbb{N} \text{ tel que } \forall n \geq N_0, \, d(u_n, u_{n-1}) < \frac{\alpha}{3} \tag{$*$} \]
+		Soit $N \geq N_0$.
+		\begin{itemize}
+			\item Soit $x_0 \in A$. Comme $x_0$ est valeur d'adhérence de $(u_n)$, $\exists n_1 > N$ tel que $d(x_0, u_{n_1}) < \frac{\alpha}{3}$. Donc $u_{n_1} \in A'$.
+			\item Soit $y_0 \in B$. De même, $\exists n_2 > n_1$ tel que $d(y_0, u_{n_2}) < \frac{\alpha}{3}$. Donc $u_{n_2} \in B'$.
+		\end{itemize}
+		Soit maintenant $n_0$ le premier entier supérieur à $n_1$ tel que $u_{n_0} \notin A'$ (un tel entier existe car $u_{n_2} \in A'$). On a alors $u_{n_0 - 1} \in A'$.
+		\includelatexpicture{connexite-valeurs-adherence-suite-dans-compact}
+		D'après $(*)$, en appliquant l'inégalité triangulaire,
+		\begin{align*}
+			d(u_{n_0}, B) & \geq d(u_{n_0 - 1}, B) - d(u_{n_0 - 1}, u_{n_0})           \\
+			& \geq d(A, B) - d(u_{n_0 - 1}, A) - d(u_{n_0 - 1}, u_{n_0}) \\
+			& > \frac{\alpha}{3}                                         
+		\end{align*}
+		ce qui prouve que $u_{n_0} \notin B'$. Comme $u_{n_0} \notin A'$, on a $u_{n_0} \in K$. On vient de montrer que,
+		\[ \forall N \geq N_0, \, \exists n_0 \geq N \text{ tel que } u_{n_0} \in K \]
+		On peut créer comme cela une sous-suite de $(u_n)$ dans $K$. Or $K$ est compact, donc $(u_n)$ admet une valeur d'adhérence dans $K$.
+	\end{demonstration}
+	
+	\reference{QUE20}{142}
+	
+	\begin{application}[Lemme de la grenouille]
+		Soient $f : [0, 1] \rightarrow [0, 1]$ continue et $(x_n)$ une suite de $[0, 1]$ tel que
+		\[ \begin{cases} x_0 \in [0, 1] \\ x_{n+1} = f(x_n) \end{cases} \]
+		Alors $(x_n)$ converge si et seulement si $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$.
+	\end{application}
+	
+	\begin{demonstration}
+		Le sens direct est évident. Montrons la réciproque. On suppose donc que $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$ et on note $\Gamma$ l'ensemble des valeurs d'adhérence de $(x_n)$. $\Gamma$ est non vide (car $(x_n)$ est bornée, donc admet une valeur d'adhérence par le théorème de Bolzano-Weierstrass) et est un connexe de $\mathbb{R}$ (par le \cref{connexite-valeurs-adherence-suite-dans-compact-1}), donc $\Gamma$ est un intervalle non vide.
+		\newpar
+		Soit $a \in \Gamma$. Il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante (on dit que $\varphi$ est une extractrice) telle que $x_{\varphi(n)} \longrightarrow a$. Mais alors,
+		\[ x_{\varphi(n) + 1} - x_{\varphi(n)} = f(x_{\varphi(n)}) - x_{\varphi(n)} \longrightarrow f(a) - a \]
+		et par hypothèse, le membre de gauche converge vers $0$. Donc $f(a) - a = 0$ ie. $a$ est un point fixe de $f$.
+		\newpar
+		Supposons par l'absurde que $(x_n)$ diverge. Alors $\Gamma$ n'est pas un singleton, donc est un intervalle d'intérieur non vide : on peut trouver $c \in \Gamma$ et $h > 0$ tel que $[c - h, c + h] \subset \Gamma$.
+		\newpar
+		Or, $c \in \Gamma$, donc
+		\[ \exists N \geq 0 \text{ tel que } |x_N - c| \leq \frac{h}{2} \implies x_N \in \Gamma \]
+		et en particulier, $x_N$ est un point fixe de $f$. Ainsi, $x_{n+1} = f(x_n) = x_n$ pour tout $n \geq N$ : absurde.
+	\end{demonstration}
+	%</content>
+\end{document}
