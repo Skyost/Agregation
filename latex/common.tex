@@ -13,8 +13,10 @@
 \usepackage[pdfencoding=auto, pdfauthor={Hugo Delaunay}]{hyperref}
 \usepackage{amsmath}
 \usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{fourier}
+%\usepackage{amssymb}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{fourier-otf}
 \usepackage{fontspec}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -23,7 +25,6 @@
 \usepackage[fit, breakall]{truncate}
 \usepackage[margin=3cm]{geometry}
 \usepackage{enumerate}
-\usepackage{tikz}
 \usepackage{tocloft}
 \usepackage{microtype}
 \usepackage{mdframed}
@@ -36,7 +37,11 @@
 
 % Police :
 
-\setmainfont{Erewhon}
+\setmathfont{Erewhon Math}
+
+% Tikz :
+
+\usetikzlibrary{calc}
 
 % Longueurs :
 
@@ -137,13 +142,8 @@
 
 % Théorèmes :
 
-\declaretheoremstyle[
-bodyfont=\normalfont,
-]{theorem}
-
-\declaretheoremstyle[
-headfont=\itshape,
-]{remark}
+\declaretheoremstyle[bodyfont=\normalfont]{theorem}
+\declaretheoremstyle[headfont=\itshape]{remark}
 
 \newcounter{thm}[subsection]
 

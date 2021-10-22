@@ -1,5 +1,7 @@
 \documentclass[tikz]{standalone}
 \usepackage{tikz}
+\usepackage{fourier-otf}
+\usepackage{fontspec}
 
 \begin{document}
 	\tikzset{
@@ -24,18 +26,12 @@
 		\pic {a={black!20!green}{0.75}{(-0.9,0.5)}};
 		\pic {b={black!20!green!60!white}{1}{(0,0)}};
 		\pic {b={black!20!green}{0.75}{(-0.6,-0.45)}};
-		\draw(-3,1.3) node {$\bullet$};
-		\draw(-3,1.3) node[left]{$x_0$};
-		\draw(-3.1,0.82) node {$\bullet$};
-		\draw(-3.1,0.82) node[left]{$u_{n_1}$};
-		\draw(-1.2,-0.7) node {$\bullet$};
-		\draw(-1.2,-0.7) node[right]{$y_0$};
-		\draw(-1.3,-0.3) node {$\bullet$};
-		\draw(-1.3,-0.3) node[left]{$u_{n_2}$};
-		\draw(-2.5,0.75) node {$\bullet$};
-		\draw(-2.5,0.75) node[right]{$u_{n_0 - 1}$};
-		\draw(-2.3,0.4) node {$\bullet$};
-		\draw(-2.3,0.4) node[right]{$u_{n_0}$};
+		\draw(-3,1.3) node {$\bullet$} node[left]{$x_0$};
+		\draw(-3.1,0.82) node {$\bullet$} node[left]{$u_{n_1}$};
+		\draw(-1.2,-0.7) node {$\bullet$} node[right]{$y_0$};
+		\draw(-1.3,-0.3) node {$\bullet$} node[left]{$u_{n_2}$};
+		\draw(-2.5,0.75) node {$\bullet$} node[right]{$u_{n_0 - 1}$};
+		\draw(-2.3,0.4) node {$\bullet$} node[right]{$u_{n_0}$};
 		\node at (-2.5,1.5) {$A$};
 		\node at (-1.35,1.85) {$A'$};
 		\node at (-1.6,-1.2) {$B$};

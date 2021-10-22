@@ -8,16 +8,16 @@
 
 	\reference{GOU21}{398}
 	
-	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $K$. Soit $f \in \mathcal{L}(E)$.
+	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $\mathbb{K}$. Soit $f \in \mathcal{L}(E)$.
 	
 	\begin{notation}
-		Soit $x \in E$. On note $P_x$ le polynôme unitaire engendrant l'idéal $\{ P \in K[X] \mid P(f)(x) = 0 \}$ (un tel polynôme existe car $K[X]$ est principal et cet idéal est non réduit à $\{ 0 \}$) et $E_x = \{ P(f)(x) \mid P \in K[X] \}$.
+		Soit $x \in E$. On note $P_x$ le polynôme unitaire engendrant l'idéal $\{ P \in \mathbb{K}[X] \mid P(f)(x) = 0 \}$ (un tel polynôme existe car $\mathbb{K}[X]$ est principal et cet idéal est non réduit à $\{ 0 \}$) et $E_x = \{ P(f)(x) \mid P \in \mathbb{K}[X] \}$.
 	\end{notation}
 
 	\begin{lemma}
 		\label{invariants-similitude-1}
 		\begin{enumerate}[(i)]
-			\item Si $k = \deg(\mu_f)$, alors $K[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
+			\item Si $k = \deg(\mu_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
 			\item Soit $x \in E$. Si $l = \deg(P_x)$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
 		\end{enumerate}
 	\end{lemma}
@@ -28,7 +28,7 @@
 		\begin{enumerate}[(i)]
 			\item Montrons que la famille $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$ est à la fois libre et génératrice.
 			\begin{itemize}
-				\item Soit $P(f) \in K[f]$. On fait la division euclidienne de $P$ par $\mu_f$ dans $K[X]$ pour écrire $P = \mu_f Q + R$ avec $Q, R \in K[X]$ et $\deg(R) < k = \deg(\mu_f)$. En évaluant en $f$, cela donne $P(f) = R(f) \in \operatorname{Vect}(\operatorname{id}_E, \dots, f^{k-1})$. Donc la famille est génératrice.
+				\item Soit $P(f) \in \mathbb{K}[f]$. On fait la division euclidienne de $P$ par $\mu_f$ dans $\mathbb{K}[X]$ pour écrire $P = \mu_f Q + R$ avec $Q, R \in \mathbb{K}[X]$ et $\deg(R) < k = \deg(\mu_f)$. En évaluant en $f$, cela donne $P(f) = R(f) \in \operatorname{Vect}(\operatorname{id}_E, \dots, f^{k-1})$. Donc la famille est génératrice.
 				\item Si $\sum_{i=0}^{k-1} \lambda_i f^i = 0$, alors le polynôme $P = \sum_{i=0}^{k-1} \lambda_i X^i$ vérifie $P(f) = 0$. Donc $\mu_f \mid P$, et comme $\deg(P) < \deg(\mu_f)$, on a $P = 0$. Donc $\lambda_0 = \dots = \lambda_{k-1} = 0$. Donc la famille est libre.
 			\end{itemize}
 			\item La deuxième assertion se montre sensiblement de la même manière.
@@ -80,13 +80,13 @@
 			\[
 			\varphi :
 			\begin{array}{cl}
-				K[f] &\rightarrow \operatorname{Vect}(\Gamma) \\
+				\mathbb{K}[f] &\rightarrow \operatorname{Vect}(\Gamma) \\
 				g &\mapsto e_k^* \circ g
 			\end{array}
 			\]
-			Par définition de $\Gamma$, $\varphi$ est surjective. Soit $g \in \ker{\varphi}$. On a alors $e_k^* \circ g = 0$, et comme $g \in K[f]$,
+			Par définition de $\Gamma$, $\varphi$ est surjective. Soit $g \in \ker{\varphi}$. On a alors $e_k^* \circ g = 0$, et comme $g \in \mathbb{K}[f]$,
 			\[ g = \lambda_1 \operatorname{Id} + \dots \lambda_p f^{p-1} \text{ avec } \lambda_p \neq 0 \text{ et } p \leq k \]
-			On a donc $0 = e_k^* \circ g(f^{k-p} (x)) = \lambda_p \neq 0$. Ainsi, $g = 0$ et $\phi$ est un isomorphisme. Donc $\dim(\operatorname{Vect}(\Gamma)) = \dim(K[f]) = k$ par le \cref{invariants-similitude-1}, ce que l'on voulait.
+			On a donc $0 = e_k^* \circ g(f^{k-p} (x)) = \lambda_p \neq 0$. Ainsi, $g = 0$ et $\phi$ est un isomorphisme. Donc $\dim(\operatorname{Vect}(\Gamma)) = \dim(\mathbb{K}[f]) = k$ par le \cref{invariants-similitude-1}, ce que l'on voulait.
 			\newpar
 			Soit $P_1$ le polynôme minimal de $f_{|F}$ (qui est le polynôme minimal de $f$ car $P_1 = \mu_{f_{|F}} = \underset{\mu_f = P_x}{=} \mu_f$). Soit $P_2$ le polynôme minimal de $f_{|G}$. Comme $G$ est stable par $f$, on a $P_1(f_{|G}) = \mu_f(f_{|G}) = 0$, donc $P_2 \mid P_1$. Il suffit alors de réitérer en remplaçant $f$ par $f_{|G}$ et $E$ par $G$ pour obtenir la décomposition voulu.
 			\item \underline{Unicité :} Soient $F_1, \dots, F_r$ et $G_1, \dots G_s$ des sous-espaces vectoriels stables par $f$ qui vérifient $(i)$, $(ii)$ et $(iii)$. On note pour tout $i$, $P_i = \mu_{f_{|F_i}}$ et $Q_i = \mu_{f_{|G_i}}$. On suppose par l'absurde $(P_1, \dots, P_r) \neq (Q_1, \dots, Q_s)$. Soit $j = \min\{ i \mid P_i \neq Q_i \}$.

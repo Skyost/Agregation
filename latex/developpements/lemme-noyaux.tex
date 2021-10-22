@@ -8,18 +8,18 @@
 
 	\reference{GOU21}{185}
 	
-	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $K$.
+	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $\mathbb{K}$.
 
 	\begin{lemma}[Lemme des noyaux]
 		\label{lemme-noyaux-1}
-		Soient $f \in \mathcal{L}(E)$ et $P = P_1 \dots P_k \in K[X]$ (les $P_i$ étant supposés premiers entre-eux deux-à-deux). Alors,
+		Soient $f \in \mathcal{L}(E)$ et $P = P_1 \dots P_k \in \mathbb{K}[X]$ (les $P_i$ étant supposés premiers entre-eux deux-à-deux). Alors,
 		\[ \ker{P(f)} = \bigoplus_{i = 1}^k \ker{P_i(f)} \]
 	\end{lemma}
 
 	\begin{demonstration}
 		On procède par récurrence sur $k \geq 2$.
 		\begin{itemize}
-			\item \underline{Pour $k = 2$ :} par le théorème de Bézout, il existe $U, V \in K[X]$ tels que $UP_1 + VP_2 = 1$. Donc,
+			\item \underline{Pour $k = 2$ :} par le théorème de Bézout, il existe $U, V \in \mathbb{K}[X]$ tels que $UP_1 + VP_2 = 1$. Donc,
 			\[ \forall x \in E, \, (UP_1 + VP_2)(f)(x) = (U(f) \circ P_1(f))(x) + (V(f) \circ P_2(f))(x) = x \tag{$*$} \]
 			Soit $x \in \ker{P_1(f)} \cap \ker{P_2(f)}$. On a :
 			\[ x \overset{(*)}{=} (U(f) \circ P_1(f))(x) + (V(f) \circ P_2(f))(x) \overset{x \in \ker{P_1(f)} \cap \ker{P_2(f)}}{=} 0 \]
@@ -45,12 +45,12 @@
 	\end{demonstration}
 
 	\begin{application}
-		Soit $f \in \mathcal{L}(E)$. Alors $f$ est diagonalisable si et seulement s'il existe $P \in K[X]$ scindé sur $K$ à racines simples tel que $P(f) = 0$.
+		Soit $f \in \mathcal{L}(E)$. Alors $f$ est diagonalisable si et seulement s'il existe $P \in \mathbb{K}[X]$ scindé sur $\mathbb{K}$ à racines simples tel que $P(f) = 0$.
 	\end{application}
 
 	\begin{demonstration}
 		\underline{Sens direct :} Soient $\lambda_1, \dots, \lambda_k$ les valeurs propres distinctes de $f$ et $E_{\lambda_1}, \dots, E_{\lambda_k}$ les sous-espaces propres correspondants. On pose
-		\[ P = (X-\lambda_1) \dots (X-\lambda_k) \in K[X] \]
+		\[ P = (X-\lambda_1) \dots (X-\lambda_k) \in \mathbb{K}[X] \]
 		On peut appliquer le \cref{lemme-noyaux-1} :
 		\begin{align*}
 			\ker{P(f)} &= \bigoplus_{i = 1}^k \ker{f - \lambda_i \operatorname{id}_E} \\
@@ -61,7 +61,7 @@
 		\newpar
 		\underline{Réciproque :} On écrit
 		\[ P = \alpha (X-\lambda_1) \dots (X-\lambda_k) \]
-		avec les $\lambda_i \in K$ distincts et $\alpha \neq 0$. On peut encore appliquer \cref{lemme-noyaux-1} :
+		avec les $\lambda_i \in \mathbb{K}$ distincts et $\alpha \neq 0$. On peut encore appliquer \cref{lemme-noyaux-1} :
 		\begin{align*}
 			E &= \ker{P(f)} \\
 			&= \bigoplus_{i = 1}^k \ker{f - \lambda_i \operatorname{id}_E} \tag{*}
