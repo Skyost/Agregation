@@ -7,7 +7,7 @@
 	\summary{En utilisant les polynômes symétriques, nous montrons ici que toutes les racines d'un polynôme unitaire à coefficients entiers dont les racines sont dans $D(0, 1) \setminus \{ 0 \}$, sont en fait des racines de l'unité.}
 
 	\begin{lemma}[Relations de Viète]
-		\label{kronecker-1}
+		\label{theoreme-kronecker-1}
 		Soient $A$ un anneau commutatif unitaire intègre et $P = \sum_{i=1}^n a_iX^i \in A[X]$ que l'on suppose scindé dans $A[X]$ et tel que $a_n \in A^*$. Si on note $\Sigma_k(X_1, \dots, X_n)$ le $k$-ième polynôme symétrique élémentaire en $n$ variables et $\alpha_1$, ..., $\alpha_n$ les racines de $P$ (comptées avec multiplicité), alors $\Sigma_k(\alpha_1, \dots, \alpha_n) = (-1)^k a_{n-k} a_n^{-1}$.
 	\end{lemma}
 
@@ -26,12 +26,12 @@
 	\reference{I-P}{279}
 
 	\begin{theorem}[Kronecker]
-		\label{kronecker-2}
+		\label{theoreme-kronecker-2}
 		Soit $P \in \mathbb{Z}[X]$ unitaire tel que toutes ses racines complexes appartiennent au disque unité épointé en l'origine (que l'on note $D$). Alors toutes ses racines sont des racines de l'unité.
 	\end{theorem}
 
 	\begin{demonstration}
-		Notons par $\Omega_n$ l'ensemble des polynômes unitaires à coefficients dans $\mathbb{Z}$ tels que toutes leurs racines complexes appartiennent à $D$. Soit $P \in \Omega_n$ dont on note $a_0, \dots, a_n$ les coefficients et $z_1, \dots, z_n$ les racines complexes. On note $\forall k \in \llbracket 0, n \rrbracket$, $\sigma_k = \Sigma_k(z_1, \dots, z_n)$. D'après le \cref{kronecker-1}, on a :
+		Notons par $\Omega_n$ l'ensemble des polynômes unitaires à coefficients dans $\mathbb{Z}$ tels que toutes leurs racines complexes appartiennent à $D$. Soit $P \in \Omega_n$ dont on note $a_0, \dots, a_n$ les coefficients et $z_1, \dots, z_n$ les racines complexes. On note $\forall k \in \llbracket 0, n \rrbracket$, $\sigma_k = \Sigma_k(z_1, \dots, z_n)$. D'après le \cref{theoreme-kronecker-1}, on a :
 		\[ \forall k \in \llbracket 0, n \rrbracket, \, \sigma_k = (-1)^k a_{n-k} \tag{$*$} \]
 		D'où $\forall k \in \llbracket 0, n \rrbracket$ :
 		\begin{align*}
@@ -46,9 +46,9 @@
 		\newpar
 		On pose maintenant
 		\[ \forall k \in \mathbb{N}, \, P_k = \prod_{j=0}^n (X-z_j^k) \]
-		qui sont des polynômes unitaires de degré $n$ dont les racines $z_1^k, \dots, z_n^k$ appartiennent toutes à $D$. Soient $k \in \mathbb{N}$ et $r \in \llbracket 0, n \rrbracket$. D'après le \cref{kronecker-1}, le coefficient de $X^{n-r}$ de $P_k$ est $(-1)^r \Sigma_r(z_1^k, \dots, z_n^k)$. Mais, $\Sigma_r(X_1^k, \dots, X_n^k) \in \mathbb{Z}[X]$, donc on peut y appliquer le théorème fondamental des polynômes symétriques :
+		qui sont des polynômes unitaires de degré $n$ dont les racines $z_1^k, \dots, z_n^k$ appartiennent toutes à $D$. Soient $k \in \mathbb{N}$ et $r \in \llbracket 0, n \rrbracket$. D'après le \cref{theoreme-kronecker-1}, le coefficient de $X^{n-r}$ de $P_k$ est $(-1)^r \Sigma_r(z_1^k, \dots, z_n^k)$. Mais, $\Sigma_r(X_1^k, \dots, X_n^k) \in \mathbb{Z}[X]$, donc on peut y appliquer le théorème fondamental des polynômes symétriques :
 		\[ \exists Q_{r,k} \in \mathbb{Z}[X] \text{ tel que } \Sigma_r(X_1^k, \dots, X_n^k) = Q_{r,k}(\Sigma_1(X_1, \dots, X_n), \dots, \Sigma_n(X_1, \dots, X_n)) \]
-		Or, comme $P \in \mathbb{Z}[X]$, on a $\forall j \in \llbracket 0, n \rrbracket$, $\Sigma_j(z_1, \dots, z_n) \in \mathbb{Z}$ d'après le \cref{kronecker-1}. En particulier, on a $\Sigma_r(X_1^k, \dots, X_n^k) \in \mathbb{Z}[X]$ car $Q_{r,k} \in \mathbb{Z}[X]$. On en déduit que $\forall k \in \mathbb{N}$, $P_k \in \Omega_n$.
+		Or, comme $P \in \mathbb{Z}[X]$, on a $\forall j \in \llbracket 0, n \rrbracket$, $\Sigma_j(z_1, \dots, z_n) \in \mathbb{Z}$ d'après le \cref{theoreme-kronecker-1}. En particulier, on a $\Sigma_r(X_1^k, \dots, X_n^k) \in \mathbb{Z}[X]$ car $Q_{r,k} \in \mathbb{Z}[X]$. On en déduit que $\forall k \in \mathbb{N}$, $P_k \in \Omega_n$.
 		\newpar
 		Comme $\Omega_n$ est fini, l'ensemble des racines de tous les $P_k$ ; qui est $\{ z \in \mathbb{C} \mid \exists k \in \mathbb{N}, \, P_k(z) = 0 \}$ est fini. Soit $j \in \llbracket 1, n \rrbracket$. L'ensemble $\{ z_j^k \mid k \in \mathbb{N} \}$ est inclus dans l'ensemble de ces racines, qui est fini ; il est donc lui-même fini :
 		\[ \exists k \neq k' \text{ tel que } z_j^k = z_j^{k'} \]
@@ -60,7 +60,7 @@
 	\end{corollary}
 
 	\begin{demonstration}
-		Si $0$ est racine de $P$, alors $X \mid P$, donc $P = X$ par irréductibilité et unitarité. Sinon, $0$ n'est pas racine de $P$. On peut donc appliquer le \cref{kronecker-2} à $P$ ; et donc les racines de $P$ sont des racines de l'unité. Ainsi, en notant $N$ le maximum des ordres des racines de $P$, on a :
+		Si $0$ est racine de $P$, alors $X \mid P$, donc $P = X$ par irréductibilité et unitarité. Sinon, $0$ n'est pas racine de $P$. On peut donc appliquer le \cref{theoreme-kronecker-2} à $P$ ; et donc les racines de $P$ sont des racines de l'unité. Ainsi, en notant $N$ le maximum des ordres des racines de $P$, on a :
 		\[ P \mid (X^N - 1)^n \text{ où } n = \deg(P) \]
 		Or, la décomposition en irréductibles de $X^N - 1$ est
 		\[ X^N - 1 = \prod_{d \mid N} \Phi_d \]
