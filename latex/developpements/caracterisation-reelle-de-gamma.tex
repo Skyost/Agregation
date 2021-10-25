@@ -5,7 +5,7 @@
 	\development{analysis}{caracterisation-reelle-de-gamma}{Caractérisation réelle de la fonction \texorpdfstring{$\Gamma$}{Gamma}}
 
 	\summary{On montre que la fonction $\Gamma$ d'Euler est la seule fonction log-convexe sur $\mathbb{R}^+$ prenant la valeur $1$ en $1$ et vérifiant $\Gamma(x+1) = x\Gamma(x)$ pour tout $x > 0$.}
-	
+
 	\begin{lemma}
 		\label{caracterisation-reelle-de-gamma-1}
 		La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
@@ -15,7 +15,7 @@
 			\item $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
 		\end{enumerate}
 	\end{lemma}
-	
+
 	\begin{demonstration}
 		\begin{enumerate}[(i)]
 			\item Soit $x \in \mathbb{R}^+_*$. Alors :
@@ -36,13 +36,13 @@
 			Donc $\ln \circ \Gamma$ vérifie bien l'inégalité de convexité sur $\mathbb{R}^+_*$ et ainsi, $\Gamma$ est log-convexe.
 		\end{enumerate}
 	\end{demonstration}
-	
-	\reference{RUD}{94}
-	
+
+	\reference[RUD]{94}
+
 	\begin{theorem}[Bohr-Mollerup]
 		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		Par récurrence, on a d'après $(i)$ :
 		\[ \forall n \in \mathbb{N}^*, \forall x \in ]0, 1], \, f(x+n) = (x+n-1) \dots (x+1)xf(x) \tag{$*$} \]
@@ -73,7 +73,7 @@
 		\[ \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} = f(x)  \]
 		ie. $f$ et $\Gamma$ coïncident bien sur $]0, 1]$.
 	\end{demonstration}
-	
+
 	\begin{remark}
 		À la fin de la preuve, on obtient une formule due à Gauss :
 		\[ \forall x \in ]0, 1], \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} \]

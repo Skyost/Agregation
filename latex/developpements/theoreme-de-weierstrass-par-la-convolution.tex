@@ -5,9 +5,9 @@
 	\development{analysis}{theoreme-de-weierstrass-par-la-convolution}{Théorème de Weierstrass (par la convolution)}
 
 	\summary{On montre le théorème de Weierstrass par la convolution (sans forcément développer toute la théorie derrière, ce qui peut être utile dans certaines leçons).}
-	
-	\reference{GOU20}{304}
-	
+
+	\reference[GOU20]{304}
+
 	\begin{notation}
 		$\forall n \in \mathbb{N}$, on note :
 		\[ a_n = \int_{-1}^1 (1-t^2)^n \, \mathrm{d}t \text{ et } p_n : t \mapsto \frac{(1-t^2)^n}{a_n} \mathbb{1}_{[-1, 1]}(t) \]
@@ -32,15 +32,15 @@
 			\item $\forall n \in \mathbb{N}$, $\int_{\mathbb{R}} p_n(t) \, \mathrm{d}t = \frac{1}{a_n} \int_{-1}^1 (1-t^2)^n \, \mathrm{d}t = 1$.
 			\item Soit $\alpha > 0$.
 			\begin{itemize}
-				\item \underline{Si $\alpha < 1$ :} $\forall n \in \mathbb{N}^*$,
+				\item \underLine{Si $\alpha < 1$ :} $\forall n \in \mathbb{N}^*$,
 				\[ \int_{|t| \geq \alpha} p_n(t) \, \mathrm{d}t = \frac{2}{a_n} \int_\alpha^1 (1-t^2)^n \, \mathrm{d}t \leq \frac{2}{a_n} (1-\alpha^2)^n \leq 2(n+1)(1-\alpha^2)^n \]
 				et comme $|1-\alpha^2| < 1$, on a $\int_{|t| \geq \alpha} p_n(t) \, \mathrm{d}t \longrightarrow 0$.
-				\item \underline{Si $\alpha \geq 1$ :}
+				\item \underLine{Si $\alpha \geq 1$ :}
 				\[ \int_{|t| \geq \alpha} p_n(t) \, \mathrm{d}t = 0 \]
 			\end{itemize}
 		\end{enumerate}
 	\end{demonstration}
-	
+
 	\begin{theorem}[Weierstrass]
 		Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
 	\end{theorem}

@@ -6,8 +6,8 @@
 
 	\summary{On montre par récurrence le lemme des noyaux pour un endomorphisme d'un espace vectoriel de dimension finie, et on applique ce résultat pour obtenir un critère de diagonalisation.}
 
-	\reference{GOU21}{185}
-	
+	\reference[GOU21]{185}
+
 	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $\mathbb{K}$.
 
 	\begin{lemma}[Lemme des noyaux]
@@ -19,7 +19,7 @@
 	\begin{demonstration}
 		On procède par récurrence sur $k \geq 2$.
 		\begin{itemize}
-			\item \underline{Pour $k = 2$ :} par le théorème de Bézout, il existe $U, V \in \mathbb{K}[X]$ tels que $UP_1 + VP_2 = 1$. Donc,
+			\item \underLine{Pour $k = 2$ :} par le théorème de Bézout, il existe $U, V \in \mathbb{K}[X]$ tels que $UP_1 + VP_2 = 1$. Donc,
 			\[ \forall x \in E, \, (UP_1 + VP_2)(f)(x) = (U(f) \circ P_1(f))(x) + (V(f) \circ P_2(f))(x) = x \tag{$*$} \]
 			Soit $x \in \ker{P_1(f)} \cap \ker{P_2(f)}$. On a :
 			\[ x \overset{(*)}{=} (U(f) \circ P_1(f))(x) + (V(f) \circ P_2(f))(x) \overset{x \in \ker{P_1(f)} \cap \ker{P_2(f)}}{=} 0 \]
@@ -32,7 +32,7 @@
 			Et si $x \in \ker{P_1(f)}$,
 			\[ P(f)(x) = (P_1(f) \circ P_2(f))(x) = (P_2(f) \circ P_1(f))(x) = 0 \]
 			donc $x \in \ker{P(f)}$ et $\ker{P_1}(f) \subset \ker{P(f)}$. De même, on montre que $\ker{P_2}(f) \subset \ker{P(f)}$. Comme $\ker{P(f)}$ est un espace vectoriel, on a bien l'inclusion réciproque.
-			\item \underline{On suppose le résultat vrai à un rang $k \geq 2$.} Montrons qu'il reste vrai au rang $k+1$. Écrivons
+			\item \underLine{On suppose le résultat vrai à un rang $k \geq 2$.} Montrons qu'il reste vrai au rang $k+1$. Écrivons
 			\[ P = Q_1Q_2 \text{ avec } Q_1 = P_1 \dots P_k, Q_2 = P_{k+1} \]
 			Les polynômes $Q_1$ et $Q_2$ sont premiers entre-eux, donc le cas $k = 2$ permet d'obtenir :
 			\begin{align*}
@@ -49,7 +49,7 @@
 	\end{application}
 
 	\begin{demonstration}
-		\underline{Sens direct :} Soient $\lambda_1, \dots, \lambda_k$ les valeurs propres distinctes de $f$ et $E_{\lambda_1}, \dots, E_{\lambda_k}$ les sous-espaces propres correspondants. On pose
+		\underLine{Sens direct :} Soient $\lambda_1, \dots, \lambda_k$ les valeurs propres distinctes de $f$ et $E_{\lambda_1}, \dots, E_{\lambda_k}$ les sous-espaces propres correspondants. On pose
 		\[ P = (X-\lambda_1) \dots (X-\lambda_k) \in \mathbb{K}[X] \]
 		On peut appliquer le \cref{lemme-des-noyaux-1} :
 		\begin{align*}
@@ -59,7 +59,7 @@
 		\end{align*}
 		donc $P(f) = 0$ (et $P$ est bien scindé à racines simples).
 		\newpar
-		\underline{Réciproque :} On écrit
+		\underLine{Réciproque :} On écrit
 		\[ P = \alpha (X-\lambda_1) \dots (X-\lambda_k) \]
 		avec les $\lambda_i \in \mathbb{K}$ distincts et $\alpha \neq 0$. On peut encore appliquer \cref{lemme-des-noyaux-1} :
 		\begin{align*}

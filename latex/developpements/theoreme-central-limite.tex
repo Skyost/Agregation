@@ -3,15 +3,15 @@
 \begin{document}
 	%<*content>
 	\development{analysis}{theoreme-central-limite}{Théorème central limite}
-	
+
 	\summary{En établissant d'abord le théorème de Lévy, on démontre le théorème central limite, qui dit que si $(X_n)$ est une suite de variables aléatoires identiquement distribuées admettant un moment d'ordre $2$, alors $\frac{X_1 + \dots + X_n - n \mathbb{E}(X_1)}{\sqrt{n}}$} converge en loi vers $\mathcal{N}(0, \operatorname{Var}(X_1))$.
-	
+
 	\begin{notation}
 		Si $X$ est une variable aléatoire réelle, on note $\phi_X$ sa fonction caractéristique.
 	\end{notation}
-	
-	\reference{Z-Q}{536}
-	
+
+	\reference[Z-Q]{536}
+
 	\begin{theorem}[Lévy]
 		\label{theoreme-central-limite-1}
 		Soient $(X_n)$ une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
@@ -19,11 +19,11 @@
 	\end{theorem}
 
 	\begin{demonstration}
-		\underline{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
+		\underLine{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
 		\[ \lim_{n \rightarrow +\infty} \mathbb{E}(g_t(X_n)) = \mathbb{E}(g_t(X)) \]
 		ce que l'on voulait.
 		\newpar
-		\underline{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$, on pose $f = \widehat{\varphi}$. Alors
+		\underLine{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$, on pose $f = \widehat{\varphi}$. Alors
 		\[ \mathbb{E}(f(X_n)) = \mathbb{E} \left ( \int_{\mathbb{R}} e^{itX_n} \varphi(t) \, \mathrm{d}t \right ) \]
 		Comme la fonction $(\omega, t) \mapsto e^{itX_n(\omega)} \varphi(t)$ est intégrable pour la mesure $\mathbb{P}_{X_n} \otimes \lambda$, on peut appliquer le théorème de Fubini-Lebesgue pour intervertir espérance et intégrale :
 		\begin{align*}
@@ -46,14 +46,14 @@
 		\end{align*}
 	\end{demonstration}
 
-	\reference{G-K}{307}
-	
+	\reference[G-K]{307}
+
 	\begin{lemma}
 		\label{theoreme-central-limite-2}
 		Soient $u, v \in \mathbb{C}$ de module inférieur ou égal à $1$ et $n \in \mathbb{N}^*$. Alors
 		\[ |z^n - u^n| \leq n |z-u| \]
 	\end{lemma}
-	
+
 	\begin{demonstration}
 		$|z^n - u^n| = |(z-u) \sum_{k=0}^{n-1} z^k u^{n-1-k}| \leq n |z-u|$.
 	\end{demonstration}
@@ -62,7 +62,7 @@
 		Soit $(X_n)$ une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
 		\[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		On a $S_n = \sum_{k=1}^n (X_k - m)$. Notons $\phi$ la fonction caractéristique de $X_1 - m$. Comme les variables aléatoires $X_1 - m, \dots, X_n - m$ sont indépendantes de même loi, la fonction caractéristique de $\frac{S_n}{\sqrt{n}}$ vaut $\forall t \in \mathbb{R}$,
 		\begin{align*}

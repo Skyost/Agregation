@@ -5,9 +5,9 @@
 	\development{analysis}{projection-sur-un-convexe-ferme}{Projection sur un convexe fermé}
 
 	\summary{On montre le théorème de projection sur un convexe fermé dans un espace de Hilbert réel en utilisant les suites de Cauchy et des propriétés du produit scalaire.}
-	
+
 	Soit $H$ un espace de Hilbert réel de norme $\Vert . \Vert$ et dont on note $\langle ., . \rangle$ le produit scalaire associé.
-	
+
 	\begin{lemma}[Identité du parallélogramme]
 		\label{projection-sur-un-convexe-ferme-1}
 		Soient $x, y \in H$. Alors :
@@ -26,9 +26,9 @@
 		L'interprétation géométrique de cette égalité est que dans le parallélogramme formé par les vecteurs $x$ et $y$, la somme des carrés des diagonales est égale à la somme des carrés des côtés.
 		\includelatexpicture{projection-sur-un-convexe-ferme-1}
 	\end{remark}
-	
-	\reference{GOU20}{427}
-	
+
+	\reference[GOU20]{427}
+
 	\begin{theorem}[Projection sur un convexe fermé]
 		\label{projection-sur-un-convexe-ferme-2}
 		Soit $C \subset H$ un convexe fermé non-vide. Alors :
@@ -66,7 +66,7 @@
 			\Vert z - x \Vert^2 &= \Vert (z - y) - (x - y) \Vert^2 \\
 			&= \Vert z - y \Vert^2 + \Vert x - y \Vert^2 - 2 \langle z - y, x - y \rangle \\
 			&\geq \Vert z - y \Vert^2 + \Vert x - y \Vert^2 \\
-			&\geq \Vert x - y \Vert^2 
+			&\geq \Vert x - y \Vert^2
 		\end{align*}
 		ie. $\Vert z - x \Vert \geq \Vert x - y \Vert$. De plus, $y \in C$, donc $d(y, C) = d(x, C)$. D'où $y = P_C(x)$.
 		\newpar

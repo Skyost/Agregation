@@ -5,9 +5,9 @@
 	\development{algebra, analysis}{suite-de-polygones}{Suite de polygones}
 
 	\summary{Il s'agit ici d'étudier une suite de polygones à l'aide de déterminants classiques, et de montrer qu'elle converge vers l'isobarycentre du polygone de départ.}
-	
-	\reference{GOU21}{146}
-	
+
+	\reference[GOU21]{146}
+
 	\begin{lemma}[Déterminant circulant]
 		\label{suite-de-polygones-1}
 		Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
@@ -31,15 +31,15 @@
 		et le déterminant $\det(\Omega)$ est non nul (en tant que déterminant de Vandermonde à paramètres deux-à-deux distincts). D'où :
 		\[ \det(A) = P(1) P(\omega) \dots P(\omega^{n-1}) \]
 	\end{demonstration}
-	
-	\reference{I-P}{389}
+
+	\reference[I-P]{389}
 
 	\begin{theorem}[Suite de polygones]
 		Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
 		\includelatexpicture{suite-de-polygones}
 		Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		On identifie $P_k$ au vecteur colonne $Z_k = \begin{pmatrix} z_{k,1} \\ \vdots \\ z_{k,n} \end{pmatrix} \in \mathbb{C}^n$. Il s'agit de montrer que la suite $(Z_k)$ converge vers $\begin{pmatrix} g \\ \vdots \\ g \end{pmatrix}$ où $g$ désigne l'isobarycentre de $P_0$.
 		\newpar

@@ -6,8 +6,8 @@
 
 	\summary{En utilisant les propriétés des séries entières, nous calculons le nombre de partitions de l'ensemble $\llbracket 1, n \rrbracket$.}
 
-	\reference{GOU21}{314}
-	
+	\reference[GOU21]{314}
+
 	\begin{theorem}[Nombres de Bell]
 		Pour tout $n \in \mathbb{N}^*$, on note $B_n$ le nombre de partitions de $\llbracket 1, n \rrbracket$. Par convention on pose $B_0 = 1$. Alors,
 		\[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
@@ -15,11 +15,11 @@
 
 	\begin{demonstration}
 		Notons que clairement $B_1 = 1$. Soit $n \in \mathbb{N}^*$, exprimons $B_{n+1}$ en fonction des termes précédents. Pour tout $k \leq n$, on note $E_k$ l'ensemble des partitions $P$ de $\llbracket 1, n+1 \rrbracket$ tel que la partie de $P$ qui contient l'entier $n+1$ est de taille $k+1$. Choisir $P$ dans $E_k$, c'est choisir $k$ entiers de $\llbracket 1, n \rrbracket$ (ceux de la partition de $P$ qui contient $n+1$), puis construire une partition des $n-k$ éléments restants. Donc $|E_k| = \binom{n}{k} B_{n-k}$.
-		
+
 		\medskip
 		Comme $E_0, \dots, E_n$ forment une partition de l'ensemble des partitions de $\llbracket 1, n+1 \rrbracket$, on obtient :
 		\[ B_{n+1} = \sum_{k=0}^n \binom{n}{k} B_{n-k} = \sum_{k=0}^n \binom{n}{n-k} B_k = \sum_{k=0}^n \binom{n}{k} B_k \tag{$*$} \]
-		
+
 		À toute partition $P$ de $\llbracket 1, n \rrbracket$, on peut associer une permutation $\sigma_P \in S_n$, qui est le produit des cycles de chaque partition de $P$. On construit ainsi une application
 		\[
 		\begin{array}{cl}
@@ -48,7 +48,7 @@
 		Reste à résoudre cette équation différentielle linéaire homogène d'ordre $1$ :
 		\[ B(x) = \lambda e^{e^x} \]
 		Or, $B(0) = B_0 = 1 = \lambda e^1$. D'où $B(x) = \frac{1}{e} e^{e^x}$.
-		
+
 		\medskip
 		La série entière définissant l'exponentielle a un rayon de convergence infini. On peut donc écrire, pour tout $z \in \mathbb{C}$ :
 		\[ e^{e^z} = \sum_{n=0}^{+\infty} \frac{e^{nz}}{n!} = \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} \underbrace{\frac{(nz)^k}{n!k!}}_{u_{n,k}(z)} \]

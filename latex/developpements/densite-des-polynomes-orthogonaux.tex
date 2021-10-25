@@ -3,29 +3,29 @@
 \begin{document}
 	%<*content>
 	\development{analysis}{densite-des-polynomes-orthogonaux}{Densité des polynômes orthogonaux}
-	
+
 	\summary{On montre que la famille des polynômes orthogonaux associée à une fonction poids $\rho$ vérifiant certaines hypothèses forme une base hilbertienne de $L_2(I, \rho)$ (où $I$ est un intervalle de $\mathbb{R}$).}
-	
-	\reference{BMP}{140}
-	
+
+	\reference[BMP]{140}
+
 	Soient $I$ un intervalle de $\mathbb{R}$ et $\rho$ une fonction poids. On considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$.
-	
+
 	\begin{lemma}
 		\label{densite-des-polynomes-orthogonaux-1}
 		On suppose que $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n \in L_1(I, \rho)$. Alors $\forall n \in \mathbb{N}$, $g_n \in L_2(I, \rho)$. En particulier, l'algorithme de Gram-Schmidt a bien du sens et $(P_n)$ est bien définie.
 	\end{lemma}
-	
+
 	\begin{demonstration}
 		On a $\forall n \in \mathbb{N}$,
 		\[ \int_I \vert x^n \vert^2 \rho(x) \, \mathrm{d}x = \int_I \vert x^{2n} \vert \rho(x) \, \mathrm{d}x = \Vert g_{2n} \Vert_1 < +\infty \]
 	\end{demonstration}
-	
+
 	\begin{theorem}
 		On suppose qu'il existe $a > 0$ tel que
 		\[ \int_I e^{a \vert x \vert} \rho(x) \, \mathrm{d}x < +\infty \]
 		alors $(P_n)$ est une base hilbertienne de $L_2(I, \rho)$ pour la norme $\Vert . \Vert_2$.
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		Soit $f \in \operatorname{Vect}(g_n)^\perp = \operatorname{Vect}(P_n)^\perp$. On définit
 		\[
@@ -60,7 +60,7 @@
 		L'unicité du développement en série entière d'une fonction holomorphe montre que $F = 0$ sur un voisinage de $0$. Le théorème du prolongement analytique implique alors que $F = 0$ sur le connexe $B_a$ tout entier, et donc en particulier, sur $\mathbb{R}$. Ainsi, $\hat{\varphi} = 0$. Comme $\varphi$ est une fonction intégrable, l'injectivité de la transformée de Fourier implique que $\varphi = 0$. Comme $\rho(x) > 0$, on en déduit que $f(x) = 0$ p.p. en $x \in I$. On vient donc de montrer qu'une fonction orthogonale à tous les polynômes est nulle i.e. $\operatorname{Vect}(g_n)^\perp = \{ 0 \}$.
 		En ajoutant le \cref{densite-des-polynomes-orthogonaux-1} à ceci, on a bien que les polynômes orthogonaux forment une base hilbertienne de $L_2(I, \rho)$.
 	\end{demonstration}
-	
+
 	\begin{cexample}
 		On considère, sur $I = \mathbb{R}^+_*$, la fonction poids $\rho : x \mapsto x^{-\ln(x)}$. On pose $\forall x \in I$, $f(x) = \sin(2 \pi \ln(x))$. On calcule
 		\begin{align*}

@@ -5,9 +5,9 @@
 	\development{analysis}{theoreme-de-cauchy-lipschitz-lineaire}{Théorème de Cauchy-Lipschitz linéaire}
 
 	\summary{En construisant un raisonnement autour du théorème du point fixe de Banach, on montre le théorème de Cauchy-Lipschitz, qui garantit l'existence d'une solution répondant à une condition initiale et l'unicité d'une solution maximale.}
-	
+
 	Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$.
-	
+
 	\begin{lemma}
 		Soit $I$ un intervalle compact. L'espace $(\mathcal{C} (X, \mathbb{K}^d), \Vert . \Vert_{\infty})$ est complet.
 	\end{lemma}
@@ -29,9 +29,9 @@
 		\[ \forall x \in I, \, \forall q \geq N, |f(x) - f_q(x)| < \epsilon \]
 		Nous venons d'écrire exactement la définition de la convergence uniforme ! Ainsi, $(f_n)$ est une suite de fonctions continues qui converge uniformément vers $f$, donc $f$ est continue.
 	\end{demonstration}
-	
-	\reference{POM}{410}
-	
+
+	\reference[POM]{410}
+
 	\begin{theorem}[Cauchy-Lipschitz linéaire]
 		Soient $A : I \rightarrow \mathcal{M}_d(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^d$ deux fonctions continues. Alors $\forall t_0 \in I$, le problème de Cauchy
 		\[ \begin{cases} Y' = A(t)Y + B(t) \\ Y(t_0) = y_0 \end{cases} \tag{$C$} \]

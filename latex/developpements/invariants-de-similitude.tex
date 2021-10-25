@@ -6,10 +6,10 @@
 
 	\summary{Nous montrons l'existence et l'unicité des invariants de similitude d'un endomorphisme d'un espace de dimension finie en utilisant la dualité.}
 
-	\reference{GOU21}{398}
-	
+	\reference[GOU21]{398}
+
 	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $\mathbb{K}$. Soit $f \in \mathcal{L}(E)$.
-	
+
 	\begin{notation}
 		Soit $x \in E$. On note $P_x$ le polynôme unitaire engendrant l'idéal $\{ P \in \mathbb{K}[X] \mid P(f)(x) = 0 \}$ (un tel polynôme existe car $\mathbb{K}[X]$ est principal et cet idéal est non réduit à $\{ 0 \}$) et $E_x = \{ P(f)(x) \mid P \in \mathbb{K}[X] \}$.
 	\end{notation}
@@ -22,7 +22,7 @@
 		\end{enumerate}
 	\end{lemma}
 
-	\reference{GOU21}{61}
+	\reference{61}
 
 	\begin{demonstration}
 		\begin{enumerate}[(i)]
@@ -35,7 +35,7 @@
 		\end{enumerate}
 	\end{demonstration}
 
-	\reference{GOU21}{290}
+	\reference{290}
 
 	\begin{lemma}
 		\label{invariants-de-similitude-2}
@@ -45,7 +45,7 @@
 	\begin{remark}
 		La démonstration est un peu trop longue pour être incluse ici : c'est un résultat qui demande du temps pour le démontrer (et pourrait constituer un vrai développement à part entière). Nous vous renvoyons vers \textbf{[GOU21]} p. 178 pour la démonstration.
 	\end{remark}
-	
+
 	\begin{theorem}[Frobenius]
 		Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
 		\begin{enumerate}[(i)]
@@ -55,10 +55,10 @@
 		\end{enumerate}
 		La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que du choix de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		\begin{itemize}
-			\item \underline{Existence :} Soit $k = \deg(\mu_f)$. Par le \cref{invariants-de-similitude-2}, il existe $x \in E$ tel que $P_x = \mu_f$. Par le \cref{invariants-de-similitude-1}, le sous-espace $F = E_x$ est de dimension $k$ et est stable par $f$ et comme $\deg(P_x) = k$, la famille de vecteurs
+			\item \underLine{Existence :} Soit $k = \deg(\mu_f)$. Par le \cref{invariants-de-similitude-2}, il existe $x \in E$ tel que $P_x = \mu_f$. Par le \cref{invariants-de-similitude-1}, le sous-espace $F = E_x$ est de dimension $k$ et est stable par $f$ et comme $\deg(P_x) = k$, la famille de vecteurs
 			\[ (\underbrace{x}_{= e_1}, \dots, \underbrace{f^{k-1}(x)}_{= e_k}) \]
 			forme une base de $F$. Complétons cette base en une base $(e_1, \dots, e_n)$ de $E$. En désignant par $(e_1^*, \dots, e_n^*)$ la base duale associée et en notant $\Gamma = \{ e_k^* \circ f^i \mid i \in \mathbb{N} \}$, on pose
 			\begin{align*}
@@ -89,7 +89,7 @@
 			On a donc $0 = e_k^* \circ g(f^{k-p} (x)) = \lambda_p \neq 0$. Ainsi, $g = 0$ et $\phi$ est un isomorphisme. Donc $\dim(\operatorname{Vect}(\Gamma)) = \dim(\mathbb{K}[f]) = k$ par le \cref{invariants-de-similitude-1}, ce que l'on voulait.
 			\newpar
 			Soit $P_1$ le polynôme minimal de $f_{|F}$ (qui est le polynôme minimal de $f$ car $P_1 = \mu_{f_{|F}} = \underset{\mu_f = P_x}{=} \mu_f$). Soit $P_2$ le polynôme minimal de $f_{|G}$. Comme $G$ est stable par $f$, on a $P_1(f_{|G}) = \mu_f(f_{|G}) = 0$, donc $P_2 \mid P_1$. Il suffit alors de réitérer en remplaçant $f$ par $f_{|G}$ et $E$ par $G$ pour obtenir la décomposition voulu.
-			\item \underline{Unicité :} Soient $F_1, \dots, F_r$ et $G_1, \dots G_s$ des sous-espaces vectoriels stables par $f$ qui vérifient $(i)$, $(ii)$ et $(iii)$. On note pour tout $i$, $P_i = \mu_{f_{|F_i}}$ et $Q_i = \mu_{f_{|G_i}}$. On suppose par l'absurde $(P_1, \dots, P_r) \neq (Q_1, \dots, Q_s)$. Soit $j = \min\{ i \mid P_i \neq Q_i \}$.
+			\item \underLine{Unicité :} Soient $F_1, \dots, F_r$ et $G_1, \dots G_s$ des sous-espaces vectoriels stables par $f$ qui vérifient $(i)$, $(ii)$ et $(iii)$. On note pour tout $i$, $P_i = \mu_{f_{|F_i}}$ et $Q_i = \mu_{f_{|G_i}}$. On suppose par l'absurde $(P_1, \dots, P_r) \neq (Q_1, \dots, Q_s)$. Soit $j = \min\{ i \mid P_i \neq Q_i \}$.
 			Comme $E = \bigoplus_{i = 1}^r F_i$ (où $\forall i \in \llbracket 1, r \rrbracket$, $F_i$ est stable par $f$ et $\forall k \geq j \geq 1$, $P_j(f)(F_k) = 0$) :
 			\[ P_j(f)(F_1) \oplus \dots \oplus P_j(f)(F_{j-1}) = P_j(f)(E) \tag{$*$} \]
 			De même,

@@ -5,9 +5,9 @@
 	\development{analysis}{methode-de-newton}{Méthode de Newton}
 
 	\summary{On démontre ici la méthode de Newton qui permet de trouver numériquement une approximation précise d'un zéro d'une fonction réelle d'une variable réelle.}
-	
-	\reference{ROU}{142}
-	
+
+	\reference[ROU]{142}
+
 	\begin{theorem}
 		Soit $f : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
 		\[ \varphi :
@@ -49,7 +49,7 @@
 		D'où $c |x_n - a| \leq (C |x_0 - a|)^{2^n} \leq (C \alpha)^{2^n}$ où $C \alpha < 1$. On a donc bien convergence quadratique de la suite $(x_n)$ vers le réel $a$.
 	\end{demonstration}
 
-	\reference{DEM}{100}
+	\reference[DEM]{100}
 
 	\begin{remark}
 		On suppose que l'on connaisse une approximation grossière du point que l'on nomme $x_0$.
@@ -61,7 +61,7 @@
 		d'où le fait d'itérer la fonction $\varphi : x \mapsto x - \frac{f(x)}{f'(x)}$.
 	\end{remark}
 
-	\reference{ROU}{142}
+	\reference[ROU]{142}
 
 	\begin{corollary}
 		En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
@@ -70,7 +70,7 @@
 			\item $x_{n+1} - a \sim \frac{f''(a)}{f'(a)} (x_n - a)^2$ pour $x_0 > a$.
 		\end{enumerate}
 	\end{corollary}
-	
+
 	\begin{demonstration}
 		La dérivée $f'$ est strictement croissante (car $f$ est strictement convexe) sur $]c, d[$. Ainsi, soit $x \in [a, d]$. Si $x = a$, on a $\varphi(x) = x$, et la suite $(x_n)$ est alors constante. Supposons maintenant $x > a$. On a :
 		\[ \varphi(x) = x - \frac{\overbrace{f(x)}^{> 0}}{\underbrace{f'(x)}_{> 0}} < x \]

@@ -3,28 +3,28 @@
 \begin{document}
 	%<*content>
 	\development{algebra}{theoreme-de-frobenius-zolotarev}{Théorème de Frobenius-Zolotarev}
-	
+
 	\summary{Nous démontrons le théorème de Frobenius-Zolotarev qui permet de calculer la signature d'un endomorphisme d'un espace vectoriel sur un corps fini possédant au moins $3$ éléments.}
-	
+
 	Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
-	
-	\reference{I-P}{203}
-	
+
+	\reference[I-P]{203}
+
 	\begin{definition}
 		Soit $H$ un hyperplan de $V$ et soit $G$ une droite supplémentaire de $H$ dans $V$.
 		La dilatation $u$ de base $H$, de direction $G$, et de rapport $\lambda \in \mathbb{K}^*$ est l'unique endomorphisme de $V$ défini par
 		\[ \forall g \in G, \, \forall h \in H, \, u(g+h) = h + \lambda g \]
 	\end{definition}
 
-	\reference{PER}{99}
+	\reference[PER]{99}
 
 	\begin{remark}
 		\label{theoreme-de-frobenius-zolotarev-1}
 		On suppose connu le fait que les transvections et les dilatations engendrent $\mathrm{GL}(V)$.
 	\end{remark}
 
-	\reference{PER}{96}
-	
+	\reference{96}
+
 	\begin{lemma}
 		\label{theoreme-de-frobenius-zolotarev-2}
 		Soient $u \in \mathrm{GL}(V)$ et $H$ un hyperplan de $V$ tel que $u_{|H} = \operatorname{Id}_H$. Si $\det(u) \neq 1$, alors $u$ est une dilatation.
@@ -45,8 +45,8 @@
 		d'où le résultat.
 	\end{demonstration}
 
-	\reference{I-P}{203}
-	
+	\reference[I-P]{203}
+
 	\begin{lemma}
 		\label{theoreme-de-frobenius-zolotarev-3}
 		Les dilatations engendrent $\mathrm{GL}(V)$.
@@ -61,7 +61,7 @@
 	\begin{notation}
 		Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$.
 	\end{notation}
-	
+
 	\begin{theorem}[Frobenius-Zolotarev]
 		\[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
 		où $u$ est vu comme une permutation des éléments de $V$.

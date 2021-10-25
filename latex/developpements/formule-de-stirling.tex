@@ -27,7 +27,7 @@
 		Il ne s'agit ni plus ni moins qu'une version affaiblie du théorème de changement de variable.
 	\end{remark}
 
-	\reference{G-K}{180}
+	\reference[G-K]{180}
 
 	\begin{lemma}
 		\label{formule-de-stirling-2}
@@ -50,7 +50,7 @@
 		On obtient ainsi $f_Z = f_{a+b, \gamma}$, ce que l'on voulait.
 	\end{demonstration}
 
-	\reference{G-K}{556}
+	\reference{556}
 
 	\begin{theorem}[Formule de Stirling]
 		\[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
@@ -59,8 +59,8 @@
 	\begin{demonstration}
 		Soit $(X_n)$ une suite de variable aléatoires indépendantes de même loi $\mathcal{E}(1)$. On pose $S_n = \sum_{k=0}^n X_k$. Montrons par récurrence que $S_n \sim \Gamma(n+1, 1)$.
 		\begin{itemize}
-			\item \underline{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
-			\item \underline{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
+			\item \underLine{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
+			\item \underLine{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
 		\end{itemize}
 		Par le \cref{formule-de-stirling-1} appliqué à $S_n$, p.p. en $x \in \mathbb{R}$,
 		\begin{align*}

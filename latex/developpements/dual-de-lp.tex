@@ -7,16 +7,16 @@
 	\summary{Avec les propriétés hilbertiennes de $L_2$ couplées à certaines propriétés des espaces $L_p$, on montre que le dual d'un espace $L_p$ est $L_q$ pour $\frac{1}{p} + \frac{1}{q} = 1$, dans le cas où $p \in ]1, 2[$ et où l'espace est de mesure finie.}
 
 	Soit $(X, \mathcal{A}, \mu)$ un espace mesuré de mesure finie.
-	
+
 	\begin{notation}
 		On note $\forall p \in [1, 2]$, $L_p = L_p(X, \mathcal{A}, \mu)$.
 	\end{notation}
-	
+
 	\begin{lemma}
 		\label{dual-de-lp-1}
 		Soient $p \in ]1, 2[$ et $f \in L_2$. Alors $f \in L_p$ telle que $\Vert f \Vert_p \leq M \Vert f \Vert_2$ où $M \geq 0$.
 	\end{lemma}
-	
+
 	\begin{demonstration}
 		Comme $p \in ]1, 2[$, on a $\frac{2}{p} > 1$. Soit $r$ tel que $\frac{p}{2} + \frac{1}{r} = 1$. On applique l'inégalité de Hölder à $g = \vert f \vert^p \mathbb{1}_X$ de sorte que
 		\[ \int_X \vert f \vert^p \, \mathrm{d}\mu = \Vert \vert f \vert^p \mathbb{1}_X \Vert_1 \leq \Vert \vert f \vert^p \Vert_{\frac{2}{p}} \Vert \mathbb{1}_X \Vert_r \leq \mu(X)^{\frac{1}{r}} \Vert f \Vert_2^p \]
@@ -43,8 +43,8 @@
 		ce qu'il fallait démontrer.
 	\end{demonstration}
 
-	\reference{Z-Q}{216}
-	
+	\reference[Z-Q]{216}
+
 	\begin{theorem}
 		L'application
 		\[
@@ -57,7 +57,7 @@
 		\]
 		est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
 	\end{theorem}
-	
+
 	\begin{demonstration}
 		Soit $g \in L_q$ et $f \in L_p$. L'inégalité de Hölder donne
 		\[ \vert \varphi_g(f) \vert \leq \Vert g \Vert_q \Vert f \Vert_p \]
@@ -84,8 +84,8 @@
 		Et en particulier, $g \in L_q$. Ainsi, on a $\forall f \in L_2$, $\ell(f) = \varphi_g(f)$. Les applications $\ell$ et $\varphi_g$ sont continues sur $L_p$ et $L_2$ est dense dans $L_p$ (par le \cref{dual-de-lp-2}), donc on a bien $\ell = \varphi_g = \varphi(g)$.
 	\end{demonstration}
 
-	\reference{LI}{140}
-	
+	\reference[LI]{140}
+
 	\begin{remark}
 		Plus généralement, si l'on identifie $g$ et $\varphi_g$ :
 		\begin{itemize}

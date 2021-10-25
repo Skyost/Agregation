@@ -36,7 +36,7 @@
 		On a $\forall n \in \mathbb{N}$, $d(x_{(\varphi \circ \psi)(n)}, \ell) > \epsilon$, qui donne $d(\ell', \ell) \geq \epsilon$ après un passage à la limite. Donc $\ell \neq \ell'$.	Et $\ell'$ est clairement valeur d'adhérence de $(x_n)$ : absurde.
 	\end{demonstration}
 
-	\reference{I-P}{182}
+	\reference[I-P]{182}
 
 	\begin{lemma}
 		\label{homeomorphisme-de-l-exponentielle-3}
@@ -60,7 +60,7 @@
 	\begin{demonstration}
 		Montrer qu'une application est un homéomorphisme se fait en $4$ étapes : on montre qu'elle est continue, injective, surjective, et que la réciproque est elle aussi continue.
 		\begin{itemize}
-			\item \underline{L'application est bien définie et continue :} Soit $S \in \mathcal{S}_n(\mathbb{R})$. D'après le théorème spectral,
+			\item \underLine{L'application est bien définie et continue :} Soit $S \in \mathcal{S}_n(\mathbb{R})$. D'après le théorème spectral,
 			\[ \exists P \in \mathcal{O}_n(\mathbb{R}) \text{ telle que } S = P \underbrace{\operatorname{Diag}(\lambda_1, \dots, \lambda_n)}_{= D}P^{-1} \]
 			où $\lambda_1, \dots, \lambda_n$ désignent les valeurs propres de $S$. On a donc
 			\begin{align*}
@@ -70,10 +70,10 @@
 			Or, $P^{-1} = \tr P$, donc $\tr \exp(S) = \exp(S)$ et $\exp(S) \in \mathcal{S}_n(\mathbb{R})$. De plus, $\forall x \in \mathbb{R}^n$,
 			\[ \tr x S x = \tr (Px) D (Px) > 0 \]
 			car $D \in \mathcal{S}^{++}_n(\mathbb{R})$. Donc $S \in \mathcal{S}^{++}_n(\mathbb{R})$.
-			\item \underline{L'application est surjective :} Soit $S \in \mathcal{S}^{++}_n(\mathbb{R})$. On peut écrire
+			\item \underLine{L'application est surjective :} Soit $S \in \mathcal{S}^{++}_n(\mathbb{R})$. On peut écrire
 			\[ S = P \operatorname{Diag}(\mu_1, \dots, \mu_n) P^{-1} \]
 			Il suffit alors de poser $U = P^{-1} \operatorname{Diag}(\ln(\mu_1), \dots, \ln(\mu_n)) P \in \mathcal{S}_n(\mathbb{R})$ pour avoir $\exp(U) = S$ ; d'où la surjectivité.
-			\item \underline{L'application est injective :} Soient $S, S' \in \mathcal{S}_n(\mathbb{R})$ telles que $\exp(S) = \exp(S')$. Montrons que $S = S'$. Comme avant, $\exists P, P' \in \mathcal{O}_n(\mathbb{R})$ telles que
+			\item \underLine{L'application est injective :} Soient $S, S' \in \mathcal{S}_n(\mathbb{R})$ telles que $\exp(S) = \exp(S')$. Montrons que $S = S'$. Comme avant, $\exists P, P' \in \mathcal{O}_n(\mathbb{R})$ telles que
 			\[ S = P \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1} \text{ et } S' = P' \operatorname{Diag}(\lambda'_1, \dots, \lambda'_n) P'^{-1} \]
 			Soit $L \in \mathbb{R}[X]$ tel que $\forall i \in \llbracket 1, n \rrbracket$, $L(e^{\lambda_i}) = \lambda_i$ et $L(e^{\lambda'_i}) = \lambda'_i$ (les polynômes d'interpolation de Lagrange conviennent parfaitement et sont bien définis dans le cas présent car $e^{\lambda_i} = e^{\lambda_j} \implies \lambda_i = \lambda_j$ par injectivité de l'exponentielle). D'où
 			\begin{align*}
@@ -83,7 +83,7 @@
 				&= S
 			\end{align*}
 			et de même, $L(\exp(S')) = S'$. D'où $S = S'$.
-			\item \underline{L'application inverse est continue :} Soit $(A_k) \in (\mathcal{S}^{++}_n(\mathbb{R}))^\mathbb{N}$ qui converge vers $A \in \mathcal{S}^{++}_n(\mathbb{R})$. Il s'agit de montrer que la suite $(B_k)$ de terme général $B_k = \exp^{-1}(A_k)$ converge vers $B = \exp^{-1}(A)$. Supposons tout d'abord $(B_k)$ non bornée. Comme sur $\mathcal{S}_n(\mathbb{R})$, $\VERT . \VERT_2 = \rho(.)$ (par le \cref{homeomorphisme-de-l-exponentielle-3}), il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $\rho(B_\varphi(k)) \longrightarrow +\infty$. On peut donc extraire une suite de valeurs propres $(\lambda_k)$ telle que $|\lambda_k| \longrightarrow +\infty$. Encore une fois, quitte à extraire, on peut supposer $\lambda_k \longrightarrow +\infty$ ou $\lambda_k \longrightarrow -\infty$.
+			\item \underLine{L'application inverse est continue :} Soit $(A_k) \in (\mathcal{S}^{++}_n(\mathbb{R}))^\mathbb{N}$ qui converge vers $A \in \mathcal{S}^{++}_n(\mathbb{R})$. Il s'agit de montrer que la suite $(B_k)$ de terme général $B_k = \exp^{-1}(A_k)$ converge vers $B = \exp^{-1}(A)$. Supposons tout d'abord $(B_k)$ non bornée. Comme sur $\mathcal{S}_n(\mathbb{R})$, $\VERT . \VERT_2 = \rho(.)$ (par le \cref{homeomorphisme-de-l-exponentielle-3}), il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $\rho(B_\varphi(k)) \longrightarrow +\infty$. On peut donc extraire une suite de valeurs propres $(\lambda_k)$ telle que $|\lambda_k| \longrightarrow +\infty$. Encore une fois, quitte à extraire, on peut supposer $\lambda_k \longrightarrow +\infty$ ou $\lambda_k \longrightarrow -\infty$.
 			\begin{itemize}
 				\item Si $\lambda_k \longrightarrow +\infty$, $e^{\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{\lambda_k}$ est valeur propre de $A_k$, donc $\rho(A_k) \longrightarrow +\infty$ : absurde car $(A_k)$ converge.
 				\item Si $\lambda_k \longrightarrow -\infty$, $e^{-\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{-\lambda_k}$ est valeur propre de $A_k^{-1}$, donc $\rho(A_k^{-1}) \longrightarrow +\infty$ : absurde car $(A_k^{-1})$ converge par continuité de $M \mapsto M^{-1}$.
