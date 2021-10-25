@@ -2,12 +2,12 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{caracterisation-reelle-gamma}{Caractérisation réelle de la fonction \texorpdfstring{$\Gamma$}{Gamma}}
+	\development{analysis}{caracterisation-reelle-de-gamma}{Caractérisation réelle de la fonction \texorpdfstring{$\Gamma$}{Gamma}}
 
 	\summary{On montre que la fonction $\Gamma$ d'Euler est la seule fonction log-convexe sur $\mathbb{R}^+$ prenant la valeur $1$ en $1$ et vérifiant $\Gamma(x+1) = x\Gamma(x)$ pour tout $x > 0$.}
 	
 	\begin{lemma}
-		\label{caracterisation-reelle-gamma-1}
+		\label{caracterisation-reelle-de-gamma-1}
 		La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
 		\begin{enumerate}[(i)]
 			\item $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
@@ -40,7 +40,7 @@
 	\reference{RUD}{94}
 	
 	\begin{theorem}[Bohr-Mollerup]
-		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{caracterisation-reelle-gamma-1}. Alors $f = \Gamma$.
+		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
 	\end{theorem}
 	
 	\begin{demonstration}
@@ -49,7 +49,7 @@
 		Donc les valeurs prises par $f$ sur $\mathbb{R}^+_*$ sont entièrement déterminées par ses valeurs prises sur $]0, 1]$. Ainsi, pour démontrer le théorème, il suffit de vérifier $\forall x \in ]0, 1]$, $f(x) = \Gamma(x)$.
 		\newpar
 		Soient donc $x \in ]0, 1]$ et $n \in \mathbb{N}^*$ ; on applique le lemme des trois pentes à la fonction convexe $\ln \circ f$ (d'après $(iii)$) aux points $n-1$, $n$, $n+x$ et $n+1$ :
-		\includelatexpicture{caracterisation-reelle-gamma}
+		\includelatexpicture{caracterisation-reelle-de-gamma}
 		\[ \frac{(\ln \circ f)(n) - (\ln \circ f)(n-1)}{n - (n-1)} \leq \frac{(\ln \circ f)(n+x) - (\ln \circ f)(n)}{n+x-n} \leq \frac{(\ln \circ f)(n+1) - (\ln \circ f)(n)}{n+1-n} \]
 		Mais, d'après $(*)$ et $(ii)$, on a $f(n) = (n-1)!$. D'où :
 		\begin{align*}

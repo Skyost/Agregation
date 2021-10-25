@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{projection-convexe-ferme}{Projection sur un convexe fermé}
+	\development{analysis}{projection-sur-un-convexe-ferme}{Projection sur un convexe fermé}
 
 	\summary{On montre le théorème de projection sur un convexe fermé dans un espace de Hilbert réel en utilisant les suites de Cauchy et des propriétés du produit scalaire.}
 	
 	Soit $H$ un espace de Hilbert réel de norme $\Vert . \Vert$ et dont on note $\langle ., . \rangle$ le produit scalaire associé.
 	
 	\begin{lemma}[Identité du parallélogramme]
-		\label{projection-convexe-ferme-1}
+		\label{projection-sur-un-convexe-ferme-1}
 		Soient $x, y \in H$. Alors :
 		\[ \Vert x + y \Vert^2 + \Vert x - y \Vert^2 = 2(\Vert x \Vert^2 + \Vert y \Vert^2) \]
 	\end{lemma}
@@ -24,22 +24,22 @@
 
 	\begin{remark}
 		L'interprétation géométrique de cette égalité est que dans le parallélogramme formé par les vecteurs $x$ et $y$, la somme des carrés des diagonales est égale à la somme des carrés des côtés.
-		\includelatexpicture{projection-convexe-ferme-1}
+		\includelatexpicture{projection-sur-un-convexe-ferme-1}
 	\end{remark}
 	
 	\reference{GOU20}{427}
 	
 	\begin{theorem}[Projection sur un convexe fermé]
-		\label{projection-convexe-ferme-2}
+		\label{projection-sur-un-convexe-ferme-2}
 		Soit $C \subset H$ un convexe fermé non-vide. Alors :
 		\[ \forall x \in H, \exists! y \in C \text{ tel que } d(x, C) = \inf_{z \in C} \Vert x - z \Vert = d(x, y) \]
 		On peut donc noter $y = P_C(x)$, le \textbf{projeté orthogonal de $x$ sur $C$}. Il s'agit de l'unique point de $C$ vérifiant
 		\[ \forall z \in C, \, \langle x - P_C(x), z - P_C(x) \rangle \leq 0 \tag{$*$} \]
-		\includelatexpicture{projection-convexe-ferme-2}
+		\includelatexpicture{projection-sur-un-convexe-ferme-2}
 	\end{theorem}
 
 	\begin{demonstration}
-		Soit $x \in H$. Posons $\delta = d(x, C)$. Par la caractérisation séquentielle de la borne inférieure, il existe $(y_n)$ une suite de $C$ telle que $\Vert x - y_n \Vert \longrightarrow \delta$. Montrons que $(y_n)$ est une suite de Cauchy. On applique le \cref{projection-convexe-ferme-1} :
+		Soit $x \in H$. Posons $\delta = d(x, C)$. Par la caractérisation séquentielle de la borne inférieure, il existe $(y_n)$ une suite de $C$ telle que $\Vert x - y_n \Vert \longrightarrow \delta$. Montrons que $(y_n)$ est une suite de Cauchy. On applique le \cref{projection-sur-un-convexe-ferme-1} :
 		\[ \forall p, q \in \mathbb{N}, \, \Vert (x - y_p) + (x - y_q) \Vert^2 + \Vert y_p - y_q \Vert^2 = 2(\Vert x - y_p \Vert^2 + \Vert x - y_q \Vert^2) \tag{$**$} \]
 		Or, $C$ est convexe. Donc $\forall p, q \in \mathbb{N}$, $\frac{y_p + y_q}{2} \in C$.
 		Par définition,
@@ -100,7 +100,7 @@
 	\end{corollary}
 
 	\begin{demonstration}
-		Si $x \in F \, \cap \, F^\perp$, alors $\Vert x \Vert = \langle x, x \rangle = 0$, et donc $x = 0$. Montrons maintenant que $F + F^\perp = H$. Soit $x \in H$. Comme $F$ est un convexe fermé de $H$ (en tant que sous-espace vectoriel fermé), on peut appliquer le \cref{projection-convexe-ferme-2}. Ainsi, il existe un unique $P_F(x) \in F$ tel que $d(x, F) = d(x, P_F(x))$ et
+		Si $x \in F \, \cap \, F^\perp$, alors $\Vert x \Vert = \langle x, x \rangle = 0$, et donc $x = 0$. Montrons maintenant que $F + F^\perp = H$. Soit $x \in H$. Comme $F$ est un convexe fermé de $H$ (en tant que sous-espace vectoriel fermé), on peut appliquer le \cref{projection-sur-un-convexe-ferme-2}. Ainsi, il existe un unique $P_F(x) \in F$ tel que $d(x, F) = d(x, P_F(x))$ et
 		\[ \forall z \in F, \, \langle x - P_F(x), z - P_F(x) \rangle \leq 0 \tag{$*$} \]
 		Soit $z_0 \in F$. on peut appliquer $(*)$ à $z = z_0$ :
 		\[ \langle x - P_F(x), z_0 - P_F(x) \rangle \leq 0 \]

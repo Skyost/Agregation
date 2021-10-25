@@ -1,0 +1,79 @@
+\input{../common}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{theoreme-de-cauchy-lipschitz-lineaire}{Théorème de Cauchy-Lipschitz linéaire}
+
+	\summary{En construisant un raisonnement autour du théorème du point fixe de Banach, on montre le théorème de Cauchy-Lipschitz, qui garantit l'existence d'une solution répondant à une condition initiale et l'unicité d'une solution maximale.}
+	
+	Soit $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$.
+	
+	\begin{lemma}
+		Soit $I$ un intervalle compact. L'espace $(\mathcal{C} (X, \mathbb{K}^d), \Vert . \Vert_{\infty})$ est complet.
+	\end{lemma}
+
+	\begin{demonstration}
+		Soit $(f_n)$ une suite de Cauchy de $(\mathcal{C} (I, \mathbb{K}^d), \Vert . \Vert_{\infty})$. Soit $x \in I$, on a
+		\[ \forall p, q \in \mathbb{N}, \, |f_p(x) - f_q(x)| \leq \Vert f_p - f_q \Vert_\infty \]
+		donc $(f_n(x))$ est de Cauchy dans $\mathbb{K}$. Comme $\mathbb{K}$ est complet, la suite $(f_n(x))$ converge vers une limite notée $f(x)$. Ainsi, la suite de fonctions $(f_n)$ converge simplement vers la fonction $f : I \rightarrow \mathbb{K}$ nouvellement définie. Il reste à montrer que la fonction $f$ est continue.
+		\newpar
+		Notons déjà que $(f_n)$ est de Cauchy, et est en particulier bornée :
+		\[ \exists M \geq 0 \text{ tel que } \Vert f_n \Vert_\infty \leq M \]
+		donc en particulier, si $x \in I$, $|f_n(x)| \leq M$. Par passage à la limite, on obtient $|f(x)| \leq M$. Donc $f$ est bornée et écrire $\Vert f \Vert_{\infty}$ a bien du sens.
+		\newpar
+		Soit $\epsilon > 0$. Par définition,
+		\[ \exists N \in \mathbb{N} \text{ tel que } \forall p, q \geq N, \Vert f_p - f_q \Vert_\infty < \epsilon \]
+		Donc,
+		\[ \forall x \in I, \, \forall p, q \geq N, |f_p(x) - f_q(x)| \leq \Vert f_p - f_q \Vert_\infty < \epsilon \]
+		En faisant tendre $p$ vers l'infini, on obtient :
+		\[ \forall x \in I, \, \forall q \geq N, |f(x) - f_q(x)| < \epsilon \]
+		Nous venons d'écrire exactement la définition de la convergence uniforme ! Ainsi, $(f_n)$ est une suite de fonctions continues qui converge uniformément vers $f$, donc $f$ est continue.
+	\end{demonstration}
+	
+	\reference{POM}{410}
+	
+	\begin{theorem}[Cauchy-Lipschitz linéaire]
+		Soient $A : I \rightarrow \mathcal{M}_d(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^d$ deux fonctions continues. Alors $\forall t_0 \in I$, le problème de Cauchy
+		\[ \begin{cases} Y' = A(t)Y + B(t) \\ Y(t_0) = y_0 \end{cases} \tag{$C$} \]
+		admet une unique solution définie sur $I$ tout entier.
+	\end{theorem}
+
+	\begin{demonstration}
+		Commençons par supposer l'intervalle $I$ compact. On va montrer l'existence d'une solution globale. On écrit l'équation sous forme intégrale :
+		\[ Y \in \mathcal{C}^1 \text{ vérifie } (C) \iff Y(t) = y_0 + \int_{t_0}^t A(u) Y(u) + B(u) \, \mathrm{d}u \tag{$*$} \]
+		et on introduit la suite de fonctions $(Y_n)$ définie par récurrence sur $I$ par $Y_0 = y_0$ et :
+		\[ \forall n \in \mathbb{N}^*, \, Y_{n+1}(t) = y_0 + \int_{t_0}^t A(x) Y_n(u) + B(u) \, \mathrm{d}u \tag{$**$} \]
+		Notons $\alpha = \sup_{t \in I} \Vert A(t) \Vert$ et $\beta = \sup_{t \in I} \Vert B(t) \Vert$. Montrons par récurrence que pour tout $n \geq 1$ et tout $t \in I$ :
+		\[ \Vert Y_n(t) - Y_{n-1}(t) \Vert \leq (\alpha \Vert y_0 \Vert + \beta) \frac{\alpha^{n-1} |t-t_0|^n}{n!} \]
+		Le résultat est clairement vrai pour $n = 1$, supposons donc le vrai à rang $n \geq 1$. Pour $t \geq t_0$ :
+		\begin{align*}
+			\Vert Y_{n+1}(t) - Y_n(t) \Vert &= \left| \left| \int_{t_0}^t A(u) \times (Y_n(u) - Y_{n-1}(u)) \, \mathrm{d}u \right| \right| \\
+			&\leq \alpha \int_{t_0}^t (\alpha \Vert y_0 \Vert + \beta) \frac{\alpha^{n-1} |u-t_0|^n}{n!} \mathrm{d}u \\
+			&\leq (\alpha \Vert y_0 \Vert + \beta) \frac{\alpha^n |t-t_0|^{n+1}}{(n+1)!}
+		\end{align*}
+		et on procède de même pour $t \leq t_0$, ce qui achève la récurrence.
+		\newpar
+		Soit $L$ la longueur de $I$. On obtient donc :
+		\[ \forall n \in \mathbb{N}^*, \, \Vert Y_n - Y_{n-1} \Vert_{\infty} \leq (\alpha \Vert y_0 \Vert + \beta) \frac{\alpha^{n-1}}{n!} L^n \]
+		Il en résulte que la série de fonction $\sum (Y_n - Y_{n-1})$ est normalement convergente. Comme $(\mathcal{C} (I, \mathbb{K}^d), \Vert . \Vert_{\infty})$ est complet, la série est uniformément convergente. On a donc l'existence d'une fonction $Y \in \mathcal{C} (I, \mathbb{K}^d)$ telle que
+		\[ \left \Vert \sum_{n=1}^N (Y_n - Y_{n-1}) - Y \right \Vert_\infty = \left \Vert Y_n - (Y + Y_0) \right \Vert_\infty \longrightarrow 0 \]
+		ie. $(Y_n)$ converge vers $Y + Y_0 = Y + y_0 = Z$. Par convergence uniforme sur un intervalle compact, il est possible de passer à la limite dans $(**)$. D'où :
+		\[ \forall t \in I, \, Z(t) = y_0 + \int_{t_0}^t A(u) Z(u) + B(u) \, \mathrm{d}u \]
+		et comme $Z$ est continue, elle est $\mathcal{C}^1$ et vérifie donc bien $(*)$.
+		\newpar
+		On peut maintenant montrer l'unicité. Soient $Y$ et $Z$ deux solutions de $(C)$ sur $I$. Par récurrence sur l'entier $n$, on montre comme ci-dessus que pour tout $t \in I$ :
+		\[ \Vert Y(t) - Z(t) \Vert \leq \frac{\alpha^n |t-t_0|^n}{n!} \Vert Y-Z \Vert_{\infty} \longrightarrow 0 \]
+		donc $Y$ et $Z$ coïncident bien sur $I$.
+		\newpar
+		Supposons maintenant $I$ quelconque. Il existe donc $(K_n)$ une suite croissante d'intervalles compacts telle que $I = \bigcup_{n = 0}^{+\infty} K_n$. En particulier, on définit bien l'application
+		\[
+		\theta :
+		\begin{array}{cl}
+			I &\rightarrow \mathbb{K}^d \\
+			t &\mapsto Y_n(t)
+		\end{array}
+		\]
+		(où $Y_n$ est la solution de $(C)$ sur $K_n \ni t$). En particulier, $\theta$ est dérivable sur $I$ tout entier, vérifie $(C)$, et prolonge toute solution.
+	\end{demonstration}
+	%</content>
+\end{document}

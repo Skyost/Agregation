@@ -2,12 +2,12 @@
 
 \begin{document}
 	%<*content>
-	\development{algebra}{simplicite-groupe-alterne}{Simplicité de \texorpdfstring{$A_n$}{An} pour \texorpdfstring{$n \geq 5$}{n ≥ 5}}
+	\development{algebra}{simplicite-du-groupe-alterne}{Simplicité de \texorpdfstring{$A_n$}{An} pour \texorpdfstring{$n \geq 5$}{n ≥ 5}}
 
 	\summary{On montre que $A_n$ est simple pour $n \geq 5$ en montrant dans un premier temps le cas $n = 5$, puis en s'y ramenant.}
 
 	\begin{lemma}
-		\label{simplicite-groupe-alterne-1}
+		\label{simplicite-du-groupe-alterne-1}
 		Les $3$-cycles sont conjugués dans $A_n$ pour $n \geq 5$.
 	\end{lemma}
 
@@ -20,7 +20,7 @@
 	\end{demonstration}
 
 	\begin{lemma}
-		\label{simplicite-groupe-alterne-2}
+		\label{simplicite-du-groupe-alterne-2}
 		$A_n$ est engendré par les $3$-cycles.
 	\end{lemma}
 
@@ -36,7 +36,7 @@
 	\reference{PER}{28}
 
 	\begin{lemma}
-		\label{simplicite-groupe-alterne-3}
+		\label{simplicite-du-groupe-alterne-3}
 		$A_5$ est simple.
 	\end{lemma}
 
@@ -63,7 +63,7 @@
 		Soit $H \lhd A_5$ tel que $H \neq \{ \operatorname{Id} \}$. Montrons que $H = A_5$.
 		\begin{itemize}
 			\item Si $H$ contient une permutation de type $[2,2]$, alors par le point 1., il les contient toutes.
-			\item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-groupe-alterne-1}, il les contient toutes.
+			\item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
 			\item Si $H$ contient une permutation de type $[5]$ (qui est donc d'ordre $5$), alors $H$ contient le $5$-Sylow engendré par cet élément. Or, on sait par les théorèmes de Sylow que les sous-groupes de Sylow sont conjugués entre-eux. Donc $H$ contient tous les $5$-Sylow et donc contient tous les éléments d'ordre $5$.
 		\end{itemize}
 		Or, $H$ ne peut pas vérifier qu'un seul des points précédents en vertu du théorème de Lagrange, car ni $16 = 15 + 1$, ni $21 = 20 + 1$, ni $25 = 24 + 1$ ne divisent $|A_5| = 60$. Donc $H$ vérifie au moins deux des points précédents, et ainsi $|H| \geq 1 + 15 + 20 = 36$. Donc $|H|=60$ et $H = A_5$.
@@ -87,7 +87,7 @@
 			\mathcal{F} &\rightarrow \llbracket 1, 5 \rrbracket \\
 			a_i &\mapsto i
 		\end{align*}
-		Donc $A(\mathcal{F})$ et $A_5$ sont deux groupes isomorphes (en effet, une permutation n'agissant que sur $\mathcal{F}$ peut s'identifier à une permutation n'agissant que sur $\llbracket 1, 5 \rrbracket$). De plus, par le \cref{simplicite-groupe-alterne-3}, comme $A_5$ est simple, $A(\mathcal{F})$ l'est aussi.
+		Donc $A(\mathcal{F})$ et $A_5$ sont deux groupes isomorphes (en effet, une permutation n'agissant que sur $\mathcal{F}$ peut s'identifier à une permutation n'agissant que sur $\llbracket 1, 5 \rrbracket$). De plus, par le \cref{simplicite-du-groupe-alterne-3}, comme $A_5$ est simple, $A(\mathcal{F})$ l'est aussi.
 		\newpar
 		Soit $N_0 = N \, \cap \, A(\mathcal{F})$. $N_0 \lhd A(\mathcal{F})$, en effet, soient $\alpha \in N_0$ et $\beta \in A(\mathcal{F})$ :
 		\begin{itemize}
@@ -96,7 +96,7 @@
 		\end{itemize}
 		En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subset \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$ et par 1., $\rho \in N$). Donc $N_0 \neq \{ \operatorname{Id} \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
 		\[ A(\mathcal{F}) = N \, \cap \, A(\mathcal{F}) \tag{$*$} \]
-		Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-groupe-alterne-3}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-groupe-alterne-2}), on a $N = A_n$.
+		Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-du-groupe-alterne-3}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-du-groupe-alterne-2}), on a $N = A_n$.
 	\end{demonstration}
 	%</content>
 \end{document}

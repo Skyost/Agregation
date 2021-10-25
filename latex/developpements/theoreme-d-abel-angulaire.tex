@@ -2,16 +2,16 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{theoreme-abel-angulaire}{Théorème d'Abel angulaire}
+	\development{analysis}{theoreme-d-abel-angulaire}{Théorème d'Abel angulaire}
 
 	\summary{On montre le théorème d'Abel ``angulaire'', qui permet d'intervertir certaines sommes et limites, et on l'applique justement au calcul de deux sommes.}
 
 	\reference{GOU20}{263}
 
 	\begin{theorem}[Abel angulaire]
-		\label{theoreme-abel-angulaire-1}
+		\label{theoreme-d-abel-angulaire-1}
 		Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ tel que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
-		\includelatexpicture{theoreme-abel-angulaire}
+		\includelatexpicture{theoreme-d-abel-angulaire}
 		Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
 	\end{theorem}
 
@@ -59,7 +59,7 @@
 	\end{application}
 
 	\begin{demonstration}
-		En appliquant le \cref{theoreme-abel-angulaire-1} :
+		En appliquant le \cref{theoreme-d-abel-angulaire-1} :
 		\begin{align*}
 			\sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} x^n \\
 			&= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \arctan(x) \\
@@ -73,7 +73,7 @@
 	\end{application}
 
 	\begin{demonstration}
-		Toujours en appliquant le \cref{theoreme-abel-angulaire-1} :
+		Toujours en appliquant le \cref{theoreme-d-abel-angulaire-1} :
 		\begin{align*}
 			\sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} &= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} x^n \\
 			&= \lim_{\substack{x \rightarrow 1 \\ x < 1}} \ln(1 + x) \\

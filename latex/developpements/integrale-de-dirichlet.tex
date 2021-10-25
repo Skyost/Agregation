@@ -2,12 +2,12 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{integrale-dirichlet}{Intégrale de Dirichlet}
+	\development{analysis}{integrale-de-dirichlet}{Intégrale de Dirichlet}
 
 	\summary{Il s'agit ici de calculer l'intégrale de Dirichlet en utilisant les théorèmes classiques d'intégration.}
 	
 	\begin{lemma}
-		\label{integrale-dirichlet-1}
+		\label{integrale-de-dirichlet-1}
 		\[ \forall y, t \in \mathbb{R}^+, \, |e^{-(y-i)t}| \leq 1 \]
 	\end{lemma}
 
@@ -60,7 +60,7 @@
 			\left| \int_p^q (x-i) \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| &= \left| \left[ u(t)v(t) \right]_p^q - \int_p^q u(t) v'(t) \, \mathrm{d}t \right| \\
 			&= \left| \frac{e^{-(q-i)t}}{q} - \frac{e^{-(p-i)t}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right|
 		\end{align*}
-		On applique maintenant le \cref{integrale-dirichlet-1} :
+		On applique maintenant le \cref{integrale-de-dirichlet-1} :
 		\begin{align*}
 			\left| \frac{e^{-(q-i)t}}{q} - \frac{e^{-(p-i)t}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right| &\leq \frac{1}{p} + \frac{1}{q} + \int_p^q \frac{1}{t^2} \, \mathrm{d}t \\
 			&= \frac{1}{p} + \frac{1}{q} - \left[ \frac{1}{t} \right]^q_p \\

@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{algebra, analysis}{equation-sylvester}{Équation de Sylvester}
+	\development{algebra, analysis}{equation-de-sylvester}{Équation de Sylvester}
 	
 	\summary{On montre que l'équation $AX+XB=C$ d'inconnue $X$ admet une unique solution pour tout $C \in \mathcal{M}_n(\mathbb{C})$ et pour tout $A, B \in \mathcal{M}_n(\mathbb{C})$ dont les valeurs propres sont de partie réelle strictement négative.}
 	
 	\reference{GOU21}{200}
 	
 	\begin{lemma}
-		\label{equation-sylvester-1}
+		\label{equation-de-sylvester-1}
 		Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
 	\end{lemma}
 	
@@ -49,7 +49,7 @@
 		On va maintenant montrer que $X = - \int_{0}^{+\infty} Y(s) \, \mathrm{d}s$ est la solution de l'équation de Sylvester. Pour tout $t \geq 0$, on intègre $Y'$ entre $0$ et $t$ pour obtenir :
 		\[ Y(t) - C = \int_0^t Y'(s) \, \mathrm{d}s = A \times \int_0^t Y(s) \, \mathrm{d}s + \int_0^t Y(s) \, \mathrm{d}s \times B \]
 		\newpar
-		Il ne reste donc plus qu'à montrer que $Y(t) \longrightarrow 0$ et que $Y$ est intégrable pour conclure. Par le \cref{equation-sylvester-1}, il existe $\lambda_1, \lambda_2 > 0$ et $P_1, P_2 : \mathbb{R} \rightarrow \mathbb{R}$ polynômiales tels que $\Vert e^{tA} \Vert \leq e^{- \lambda_1 t} P_1(t)$ et $\Vert e^{tB} \Vert \leq e^{-\lambda_2 t} P_2(t)$ pour tout $t \geq 0$. Ainsi, en posant $\lambda = \max(\lambda_1, \lambda_2)$ et $P = P_1 P_2$, comme $\Vert . \Vert$ est une norme d'algèbre :
+		Il ne reste donc plus qu'à montrer que $Y(t) \longrightarrow 0$ et que $Y$ est intégrable pour conclure. Par le \cref{equation-de-sylvester-1}, il existe $\lambda_1, \lambda_2 > 0$ et $P_1, P_2 : \mathbb{R} \rightarrow \mathbb{R}$ polynômiales tels que $\Vert e^{tA} \Vert \leq e^{- \lambda_1 t} P_1(t)$ et $\Vert e^{tB} \Vert \leq e^{-\lambda_2 t} P_2(t)$ pour tout $t \geq 0$. Ainsi, en posant $\lambda = \max(\lambda_1, \lambda_2)$ et $P = P_1 P_2$, comme $\Vert . \Vert$ est une norme d'algèbre :
 		\[ \Vert Y(t) \Vert = \Vert e^{tA} C e^{tB} \Vert \leq \Vert C \Vert P(t) e^{-2 \lambda t} \]
 		En particulier, on a bien $Y(t) \longrightarrow 0$. De plus, comme $C P(t) e^{-2 \lambda t}$ est intégrable sur $[0, +\infty[$ et domine $\Vert Y(t) \Vert$, alors $Y$ est aussi intégrable $[0, +\infty[$. Finalement, en faisant $t \longrightarrow +\infty$, on obtient :
 		\[ -C = A \times \int_{0}^{+\infty} Y(s) \, \mathrm{d}s + \int_{0}^{+\infty} Y(s) \, \mathrm{d}s \times B \]

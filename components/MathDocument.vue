@@ -99,7 +99,7 @@ export default {
     }
 
     .definition {
-      @include environment(#e3f2fd);
+      @include environment(#ede7f6);
     }
 
     .notation {

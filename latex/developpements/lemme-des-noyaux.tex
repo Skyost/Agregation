@@ -2,7 +2,7 @@
 
 \begin{document}
 	%<*content>
-	\development{algebra}{lemme-noyaux}{Lemme des noyaux}
+	\development{algebra}{lemme-des-noyaux}{Lemme des noyaux}
 
 	\summary{On montre par récurrence le lemme des noyaux pour un endomorphisme d'un espace vectoriel de dimension finie, et on applique ce résultat pour obtenir un critère de diagonalisation.}
 
@@ -11,7 +11,7 @@
 	Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ sur un corps commutatif $\mathbb{K}$.
 
 	\begin{lemma}[Lemme des noyaux]
-		\label{lemme-noyaux-1}
+		\label{lemme-des-noyaux-1}
 		Soient $f \in \mathcal{L}(E)$ et $P = P_1 \dots P_k \in \mathbb{K}[X]$ (les $P_i$ étant supposés premiers entre-eux deux-à-deux). Alors,
 		\[ \ker{P(f)} = \bigoplus_{i = 1}^k \ker{P_i(f)} \]
 	\end{lemma}
@@ -51,7 +51,7 @@
 	\begin{demonstration}
 		\underline{Sens direct :} Soient $\lambda_1, \dots, \lambda_k$ les valeurs propres distinctes de $f$ et $E_{\lambda_1}, \dots, E_{\lambda_k}$ les sous-espaces propres correspondants. On pose
 		\[ P = (X-\lambda_1) \dots (X-\lambda_k) \in \mathbb{K}[X] \]
-		On peut appliquer le \cref{lemme-noyaux-1} :
+		On peut appliquer le \cref{lemme-des-noyaux-1} :
 		\begin{align*}
 			\ker{P(f)} &= \bigoplus_{i = 1}^k \ker{f - \lambda_i \operatorname{id}_E} \\
 			&= \bigoplus_{i = 1}^k E_{\lambda_i} \\
@@ -61,7 +61,7 @@
 		\newpar
 		\underline{Réciproque :} On écrit
 		\[ P = \alpha (X-\lambda_1) \dots (X-\lambda_k) \]
-		avec les $\lambda_i \in \mathbb{K}$ distincts et $\alpha \neq 0$. On peut encore appliquer \cref{lemme-noyaux-1} :
+		avec les $\lambda_i \in \mathbb{K}$ distincts et $\alpha \neq 0$. On peut encore appliquer \cref{lemme-des-noyaux-1} :
 		\begin{align*}
 			E &= \ker{P(f)} \\
 			&= \bigoplus_{i = 1}^k \ker{f - \lambda_i \operatorname{id}_E} \tag{*}

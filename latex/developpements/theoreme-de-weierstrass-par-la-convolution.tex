@@ -2,7 +2,7 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{theoreme-weierstrass-convolution}{Théorème de Weierstrass (par la convolution)}
+	\development{analysis}{theoreme-de-weierstrass-par-la-convolution}{Théorème de Weierstrass (par la convolution)}
 
 	\summary{On montre le théorème de Weierstrass par la convolution (sans forcément développer toute la théorie derrière, ce qui peut être utile dans certaines leçons).}
 	
@@ -14,7 +14,7 @@
 	\end{notation}
 
 	\begin{lemma}
-		\label{theoreme-weierstrass-convolution-1}
+		\label{theoreme-de-weierstrass-par-la-convolution-1}
 		La suite $(p_n)$ vérifie :
 		\begin{enumerate}[(i)]
 			\item $\forall n \in \mathbb{N}$, $p_n \geq 0$.
@@ -48,9 +48,9 @@
 	\begin{demonstration}
 		Soit $f \in \mathcal{C}_C(\mathbb{R})$ continue. Montrons que $(f * p_n)$ converge uniformément vers $f$. Soit $\epsilon > 0$. Par le théorème de Heine $f$ est uniformément continue sur son support, donc l'est aussi sur $\mathbb{R}$ entier :
 		\[ \exists \eta > 0 \text{ tel que } \forall x, y \in \mathbb{R}, \, |x-y| < \eta \implies |f(x) - f(y)| < \epsilon \]
-		De plus, $f$ est bornée et atteint ses bornes (donc écrire $\Vert f \Vert_\infty$ a du sens). On peut appliquer le \cref{theoreme-weierstrass-convolution-1} point $(iii)$ :
+		De plus, $f$ est bornée et atteint ses bornes (donc écrire $\Vert f \Vert_\infty$ a du sens). On peut appliquer le \cref{theoreme-de-weierstrass-par-la-convolution-1} point $(iii)$ :
 		\[ \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, \int_{|t| \geq \eta} p_n(t) \, \mathrm{d}t < \epsilon \]
-		Donc, toujours avec le \cref{theoreme-weierstrass-convolution-1}, pour tout $n \geq N$ et pour tout $x \in \mathbb{R}$,
+		Donc, toujours avec le \cref{theoreme-de-weierstrass-par-la-convolution-1}, pour tout $n \geq N$ et pour tout $x \in \mathbb{R}$,
 		\begin{align*}
 			|f*p_n(x) - f(x)| \overset{(ii)}&{=} \left| \int_\mathbb{R} f(x-t) p_n(t) \, \mathrm{d}t - f(x) \int_\mathbb{R} p_n(t) \, \mathrm{d}t \right| \\
 			&= \left| \int_\mathbb{R} (f(x-t) - f(x)) p_n(t) \, \mathrm{d}t \right| \\

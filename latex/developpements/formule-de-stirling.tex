@@ -2,12 +2,12 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{formule-stirling}{Formule de Stirling}
+	\development{analysis}{formule-de-stirling}{Formule de Stirling}
 
 	\summary{Dans ce développement un peu technique, nous démontrons la formule de Stirling $n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n$ à l'aide du théorème central limite et de la fonction $\Gamma$ d'Euler.}
 
 	\begin{lemma}
-		\label{formule-stirling-1}
+		\label{formule-de-stirling-1}
 		Soit $Y$ une variable aléatoire réelle à densité. Alors $\forall n \geq 1$, $\frac{Y - n}{\sqrt{n}}$ est à densité et,
 		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_{Y}(n + x \sqrt{n}) \text{ p.p. en } x \in \mathbb{R} \]
 	\end{lemma}
@@ -30,7 +30,7 @@
 	\reference{G-K}{180}
 
 	\begin{lemma}
-		\label{formule-stirling-2}
+		\label{formule-de-stirling-2}
 		Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
 	\end{lemma}
 
@@ -60,9 +60,9 @@
 		Soit $(X_n)$ une suite de variable aléatoires indépendantes de même loi $\mathcal{E}(1)$. On pose $S_n = \sum_{k=0}^n X_k$. Montrons par récurrence que $S_n \sim \Gamma(n+1, 1)$.
 		\begin{itemize}
 			\item \underline{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
-			\item \underline{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
+			\item \underline{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
 		\end{itemize}
-		Par le \cref{formule-stirling-1} appliqué à $S_n$, p.p. en $x \in \mathbb{R}$,
+		Par le \cref{formule-de-stirling-1} appliqué à $S_n$, p.p. en $x \in \mathbb{R}$,
 		\begin{align*}
 			\overbrace{f_{\frac{S_n - n}{\sqrt{n}}}(x)}^{= g_n(x)} & = \sqrt{n} f_{S_n} (n + x \sqrt{n}) \\
 			& = \frac{\sqrt{n}}{\Gamma(n+1)} n^n \left(1 + \frac{x}{\sqrt{n}} \right)^n e^{-(n + x\sqrt{n})} \mathbb{1}_{[-\sqrt{n}, +\infty[}(x) \\

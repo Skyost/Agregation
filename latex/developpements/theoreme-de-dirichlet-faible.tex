@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{algebra}{theoreme-dirichlet-faible}{Théorème de Dirichlet faible}
+	\development{algebra}{theoreme-de-dirichlet-faible}{Théorème de Dirichlet faible}
 	
 	\summary{En raisonnant par l'absurde et en utilisant certaines propriétés des polynômes cyclotomiques, on démontre que l'ensemble des premiers congrus à $1$ modulo un certain entier $n$ est infini.}
 	
 	\reference{GOU21}{99}
 	
 	\begin{lemma}
-		\label{theoreme-dirichlet-faible-1}
+		\label{theoreme-de-dirichlet-faible-1}
 		Soient $a \in \mathbb{N}$ et $p$ premier tels que $p \mid \Phi_n(a)$ mais $p \nmid \Phi_d(a)$ pour tout diviseur strict $d$ de $n$. Alors $p \equiv 1 \mod n$.
 	\end{lemma}
 	
@@ -38,13 +38,13 @@
 	\end{theorem}
 	
 	\begin{demonstration}
-		On suppose par l'absure qu'il n'existe qu'un nombre fini de premiers de la forme $1+kn$, que l'on note $p_1, \dots, p_m$. On considère $N = \Phi_n(\alpha)$ où $\alpha = n p_1 \dots p_m$. On remarque en particulier que $N \equiv a_0 \mod \alpha$, où $a_0$ est le coefficient constant de $\Phi_n$ (cela se voit en écrivant $\Phi_n = \sum_{k=0}^{\varphi(n)} a_k X^k$, ce qui donne $N = a_0 + \alpha \sum_{k=1}^{\varphi(n)} a_k \alpha^{k-1}$ une fois évalué en $\alpha$).
+		On suppose par l'absurde qu'il n'existe qu'un nombre fini de premiers de la forme $1+kn$, que l'on note $p_1, \dots, p_m$. On considère $N = \Phi_n(\alpha)$ où $\alpha = n p_1 \dots p_m$. On remarque en particulier que $N \equiv a_0 \mod \alpha$, où $a_0$ est le coefficient constant de $\Phi_n$ (cela se voit en écrivant $\Phi_n = \sum_{k=0}^{\varphi(n)} a_k X^k$, ce qui donne $N = a_0 + \alpha \sum_{k=1}^{\varphi(n)} a_k \alpha^{k-1}$ une fois évalué en $\alpha$).
 		\newpar
 		Or, $X^n - 1 = \prod_{d \mid n} \Phi_d$. En évaluant en $0$, on en tire :
 		\[ -1 = \prod_{d \mid n} \Phi_d(0) \implies \pm 1 = a_0 \text{, car } \forall d \mid n, \, \Phi_d \in \mathbb{Z}[X] \]
-		Ainsi, $N \equiv \pm 1 \mod \alpha$. Or $|N| = |\Phi_n(\alpha)| = \prod_{\xi \in \mu_n^*} |\alpha - \xi| \geq 2$ (on peut interpréter $|\alpha - \xi|$ comme la distance du complexe $\alpha$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité).
-		\newpar
-		En particulier, $\exists p$ premier tel que $p \mid N$. Par le \cref{theoreme-dirichlet-faible-1} :
+		Ainsi, $N \equiv \pm 1 \mod \alpha$. Or $|N| = |\Phi_n(\alpha)| = \prod_{\xi \in \mu_n^*} |\alpha - \xi| \geq 2$. On peut en effet interpréter $|\alpha - \xi|$ comme la distance du complexe $\alpha$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité :
+		\includelatexpicture{theoreme-de-dirichlet-faible}
+		En particulier, $\exists p$ premier tel que $p \mid N$. Par le \cref{theoreme-de-dirichlet-faible-1} :
 		\begin{itemize}
 			\item Ou bien $p \mid n$, dans ce cas $p \mid \alpha = n p_1 \dots p_m$.
 			\item Ou bien $p \equiv 1 \mod n$, dans ce cas $p = p_k$ pour un certain $k \in \llbracket 1, m \rrbracket$. Et on a encore $p \mid \alpha$.

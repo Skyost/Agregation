@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{algebra}{theoreme-deux-carres-fermat}{Théorème des deux carrés de Fermat}
+	\development{algebra}{theoreme-des-deux-carres-fermat}{Théorème des deux carrés de Fermat}
 
 	\summary{Nous démontrons le théorème des deux carrés de Fermat (qui donne des conditions sur la décomposition en facteurs premiers d'un entier pour que celui-ci soit somme de deux carrés) à l'aide de l'anneau des entiers de Gauss $\mathbb{Z}[i]$.}
 
 	\reference{I-P}{137}
 	
 	\begin{lemma}
-		\label{theoreme-deux-carres-fermat-1}
+		\label{theoreme-des-deux-carres-fermat-1}
 		Soit $p \geq 3$ un nombre premier. Alors $x \in \mathbb{F}^*_p$ est un carré si et seulement si $x^{\frac{p-1}{2}} = 1$.
 	\end{lemma}
 	
@@ -40,12 +40,12 @@
 	\end{notation}
 
 	\begin{remark}
-		\label{theoreme-deux-carres-fermat-2}
+		\label{theoreme-des-deux-carres-fermat-2}
 		$n \in \Sigma \iff \exists z \in \mathbb{Z}[i] \text{ tel que } N(z)=n$.
 	\end{remark}
 
 	\begin{lemma}
-		\label{theoreme-deux-carres-fermat-3}
+		\label{theoreme-des-deux-carres-fermat-3}
 		Voici quelques propriétés sur $N$ et $\mathbb{Z}[i]$ dont nous aurons besoin :
 		\begin{enumerate}[(i)]
 			\item $N$ est multiplicative.
@@ -71,14 +71,14 @@
 	\end{demonstration}
 
 	\begin{lemma}
-		\label{theoreme-deux-carres-fermat-4}
+		\label{theoreme-des-deux-carres-fermat-4}
 		Soit $p$ un nombre premier. Si $p$ n'est pas irréductible dans $\mathbb{Z}[i]$, alors $p \in \Sigma$.
 	\end{lemma}
 
 	\begin{demonstration}
 		On suppose que $p$ n'est pas irréductible dans $\mathbb{Z}[i]$. On peut donc écrire $p = uv$ avec $u, v \in \mathbb{Z}[i]$ non inversibles. Ainsi,
 		\[ p^2 = N(p) = N(uv) = \underbrace{N(u)}_{\neq 1} \underbrace{N(v)}_{\neq 1} \overset{p \text{ premier}}{\implies} N(u) = N(v) = p \]
-		Par la \cref{theoreme-deux-carres-fermat-2}, $p \in \Sigma$.
+		Par la \cref{theoreme-des-deux-carres-fermat-2}, $p \in \Sigma$.
 	\end{demonstration}
 
 	\begin{theorem}[Deux carrés de Fermat]
@@ -91,7 +91,7 @@
 			\item Si $c \equiv \pm 1 \mod 4$, alors $c^2 \equiv 1 \mod 4$ (et de même pour $d^2$).
 			\item Si $c \equiv \pm 2 \mod 4$, alors $c^2 \equiv 0 \mod 4$ (et de même pour $d^2$).
 		\end{itemize}
-		Donc $p = c^2 + d^2 \equiv 0, 1 \text{ ou } 2 \mod 4$ : absurde. En particulier, par le \cref{theoreme-deux-carres-fermat-4} (en prenant la contraposée), $p$ est irréductible dans $\mathbb{Z}[i]$. Comme $\mathbb{Z}[i]$ est euclidien (cf. \cref{theoreme-deux-carres-fermat-3}), $p$ est un élément premier de $\mathbb{Z}[i]$. Mais, $p \mid n = (a+ib)(a-ib)$. Donc $p \mid a+ib$ ou $p \mid a-ib$.
+		Donc $p = c^2 + d^2 \equiv 0, 1 \text{ ou } 2 \mod 4$ : absurde. En particulier, par le \cref{theoreme-des-deux-carres-fermat-4} (en prenant la contraposée), $p$ est irréductible dans $\mathbb{Z}[i]$. Comme $\mathbb{Z}[i]$ est euclidien (cf. \cref{theoreme-des-deux-carres-fermat-3}), $p$ est un élément premier de $\mathbb{Z}[i]$. Mais, $p \mid n = (a+ib)(a-ib)$. Donc $p \mid a+ib$ ou $p \mid a-ib$.
 		Dans les deux cas, on a $p \mid a$ et $p \mid b$. Ainsi,
 		\[ \left( \frac{a}{p} \right)^2 + \left( \frac{b}{p} \right)^2 = \frac{n}{p^2} \]
 		donc de deux choses l'une ; on a :
@@ -100,9 +100,9 @@
 		\newpar
 		\underline{Réciproque :} Soit $p$ premier tel que $p \equiv 3 \mod 4$. Alors $p^{v_p(n)} = \left( p^{\frac{v_p(n)}{2}} \right)^2$ est un carré, donc $p^{v_p(n)} \in \Sigma$.
 		\newpar
-		Soit maintenant $p$ premier tel que $p = 2$ ou $p \equiv 1  \mod 4$. Alors en conséquence du \cref{theoreme-deux-carres-fermat-1} (le cas $p = 2$ étant trivial), $-1$ est un carré de $\mathbb{F}_p$ ie. $\exists a \in \mathbb{Z}$ tel que $-1 \equiv a^2 \mod p$. Donc $p \mid a^2 + 1 = (a-i)(a+i)$. Oui mais, $p$ ne divise ni $a-i$, ni $a+i$. Donc $p$ n'est pas un élément premier de $\mathbb{Z}[i]$ et n'est donc pas irréductible dans $\mathbb{Z}[i]$ (toujours parce que $\mathbb{Z}[i]$ est euclidien, cf. \cref{theoreme-deux-carres-fermat-3}). En vertu du \cref{theoreme-deux-carres-fermat-4}, $p \in \Sigma$.
+		Soit maintenant $p$ premier tel que $p = 2$ ou $p \equiv 1  \mod 4$. Alors en conséquence du \cref{theoreme-des-deux-carres-fermat-1} (le cas $p = 2$ étant trivial), $-1$ est un carré de $\mathbb{F}_p$ ie. $\exists a \in \mathbb{Z}$ tel que $-1 \equiv a^2 \mod p$. Donc $p \mid a^2 + 1 = (a-i)(a+i)$. Oui mais, $p$ ne divise ni $a-i$, ni $a+i$. Donc $p$ n'est pas un élément premier de $\mathbb{Z}[i]$ et n'est donc pas irréductible dans $\mathbb{Z}[i]$ (toujours parce que $\mathbb{Z}[i]$ est euclidien, cf. \cref{theoreme-des-deux-carres-fermat-3}). En vertu du \cref{theoreme-des-deux-carres-fermat-4}, $p \in \Sigma$.
 		\newpar
-		Comme $N$ est multiplicative, par la \cref{theoreme-deux-carres-fermat-2}, on en déduit que $\Sigma$ est stable par multiplication. Donc $n \in \Sigma$ (en décomposant $n$ en produit de facteurs premiers).
+		Comme $N$ est multiplicative, par la \cref{theoreme-des-deux-carres-fermat-2}, on en déduit que $\Sigma$ est stable par multiplication. Donc $n \in \Sigma$ (en décomposant $n$ en produit de facteurs premiers).
 	\end{demonstration}
 
 	\reference{PER}{48}

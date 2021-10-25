@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{formule-sommatoire-poisson}{Formule sommatoire de Poisson}
+	\development{analysis}{formule-sommatoire-de-poisson}{Formule sommatoire de Poisson}
 	
 	\summary{On démontre la formule sommatoire de Poisson en utilisant principalement la théorie des séries de Fourier.}
 	
 	\reference{GOU20}{284}
 	
 	\begin{theorem}[Formule sommatoire de Poisson]
-		\label{formule-sommatoire-poisson-1}
+		\label{formule-sommatoire-de-poisson-1}
 		Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction de classe $\mathcal{C}^1$ telle que $f(x) = O \left( \frac{1}{x^2} \right)$ et $f'(x) = O \left( \frac{1}{x^2} \right)$ quand $|x| \longrightarrow +\infty$. Alors :
 		\[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{Z}} f(x+n) = \sum_{n \in \mathbb{Z}} \widehat{f}(2 \pi n) e^{2 i \pi n x} \]
 		où $\widehat{f}$ désigne la transformée de Fourier de $f$.
@@ -47,7 +47,7 @@
 	\begin{demonstration}
 		Soit $\alpha > 0$. On définit $G_\alpha : x \mapsto e^{-\alpha x^2}$ et on connaît sa transformée de Fourier :
 		\[ \forall \xi \in \mathbb{R}, \, \widehat{G_\alpha}(\xi) = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{\xi^2}{4 \alpha}} \]
-		Soit $s > 0$. Appliquons le \cref{formule-sommatoire-poisson-1} à la fonction $G_{\pi s}$ :
+		Soit $s > 0$. Appliquons le \cref{formule-sommatoire-de-poisson-1} à la fonction $G_{\pi s}$ :
 		\begin{align*}
 			& \sum_{n \in \mathbb{Z}} e^{-\pi s (x + n)^2} = \frac{1}{\sqrt{s}} \sum_{n \in \mathbb{Z}} e^{-\frac{(2 \pi n)^2}{4 \pi s}} e^{2 i \pi n x} \\
 			\overset{x = 0}{\implies} & \sum_{n \in \mathbb{Z}} e^{-\pi s n^2} = \frac{1}{\sqrt{s}} \sum_{n \in \mathbb{Z}} e^{-\frac{\pi n^2}{s}}

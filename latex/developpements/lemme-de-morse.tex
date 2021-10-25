@@ -2,9 +2,9 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{lemme-morse}{Lemme de Morse}
+	\development{analysis}{lemme-de-morse}{Lemme de Morse}
 
-	\summary{En usant (et en abusant) du théorème d'inversion locale, on montre le lemme de Morse et on l'applique à l'étude de la position d’une surface par rapport à son plan tangent.}
+	\summary{En usant (certains diront plutôt ``en abusant'') du théorème d'inversion locale, on montre le lemme de Morse et on l'applique à l'étude de la position d’une surface par rapport à son plan tangent.}
 	
 	\begin{notation}
 		Si $f : \mathbb{R}^n \rightarrow \mathbb{R}$ est une application dont toutes les dérivées secondes existent, on note $\mathrm{H}(f)_a$ la hessienne de $f$ au point $a$.
@@ -13,7 +13,7 @@
 	\reference{ROU}{201}
 
 	\begin{lemma}
-		\label{lemme-morse-1}
+		\label{lemme-de-morse-1}
 		Soit $A_0 \in \mathcal{S}_n(\mathbb{R})$ inversible. Alors il existe un voisinage $V$ de $A_0$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ telle que
 		\[ \forall A \in V, \, A = \tr \psi(A) A_0 \psi(A) \]
 	\end{lemma}
@@ -47,7 +47,7 @@
 	\reference{ROU}{344}
 	
 	\begin{lemma}[Morse]
-		\label{lemme-morse-2}
+		\label{lemme-de-morse-2}
 		Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
 		\begin{itemize}
 			\item $\mathrm{d} f_0 = 0$.
@@ -66,7 +66,7 @@
 		\end{align*}
 		où $Q(x)$ est la matrice symétrique définie par $Q(x) = \int_0^1 (1-t) \mathrm{H} f_{tx} \, \mathrm{d}t$ (qui est une application $\mathcal{C}^1$ sur $U$ car $f$ est $\mathcal{C}^3$ sur $U$).
 		\newpar
-		Par hypothèse, $Q(0) = \frac{\mathrm{H} (f)_0}{2}$ est une matrice symétrique inversible, donc en vertu du \cref{lemme-morse-1}, il existe un voisinage $V_1$ de $Q(0)$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V_1 \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ tels que :
+		Par hypothèse, $Q(0) = \frac{\mathrm{H} (f)_0}{2}$ est une matrice symétrique inversible, donc en vertu du \cref{lemme-de-morse-1}, il existe un voisinage $V_1$ de $Q(0)$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V_1 \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ tels que :
 		\[ \forall A \in V_1, \, Q(0) = \psi(A) Q(0) \psi(A) \]
 		Mais, l'application $x \mapsto Q(x)$ est continue sur $U$ (puisque $f$ est de classe $\mathcal{C}^3$ sur $U$), donc il existe $V_2$ voisinage de $0$ dans $U$ tel que $\forall x \in V_2$, $Q(x) \in V_1$. On peut donc définir l'application $M = \psi \circ Q_{|V_2}$, qui nous permet d'écrire
 		\[ \forall x \in V_2, \, Q(x) = \tr M (x) Q(0) M (x) \tag{$*$} \]
@@ -104,7 +104,7 @@
 		\[ z - 0 = f(0) + \mathrm{d} f_0(x, y) \]
 		La différence d'altitude entre la surface $S$ et le plan tangent $P$ au point $h \in \mathbb{R}^2$ est donc donnée par
 		\[ \delta(h) = f(h) - (f(0) + \mathrm{d}f_0(h)) \]
-		et le \cref{lemme-morse-2} permet d'écrire
+		et le \cref{lemme-de-morse-2} permet d'écrire
 		\[ \delta(h) = \alpha \phi_1(h)^2 + \beta \phi_2(h)^2 \]
 		où $(\alpha, \beta)$ désigne la signature de $\mathrm{d}^2 f_0$ et $\phi = (\phi_1, \phi_2)$ est un $\mathcal{C}^1$-difféomorphisme entre deux voisinages de l'origine dans $\mathbb{R}^2$. En particulier, $\phi_1$ et $\phi_2$ ne s'annulent simultanément qu'en $0$.
 		\begin{enumerate}[(i)]

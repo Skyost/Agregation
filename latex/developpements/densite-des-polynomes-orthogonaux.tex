@@ -2,7 +2,7 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{densite-polynomes-orthogonaux}{Densité des polynômes orthogonaux}
+	\development{analysis}{densite-des-polynomes-orthogonaux}{Densité des polynômes orthogonaux}
 	
 	\summary{On montre que la famille des polynômes orthogonaux associée à une fonction poids $\rho$ vérifiant certaines hypothèses forme une base hilbertienne de $L_2(I, \rho)$ (où $I$ est un intervalle de $\mathbb{R}$).}
 	
@@ -11,7 +11,7 @@
 	Soient $I$ un intervalle de $\mathbb{R}$ et $\rho$ une fonction poids. On considère $(P_n)$ la famille des polynômes orthogonaux associée à $\rho$ sur $I$.
 	
 	\begin{lemma}
-		\label{densite-polynomes-orthogonaux-1}
+		\label{densite-des-polynomes-orthogonaux-1}
 		On suppose que $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n \in L_1(I, \rho)$. Alors $\forall n \in \mathbb{N}$, $g_n \in L_2(I, \rho)$. En particulier, l'algorithme de Gram-Schmidt a bien du sens et $(P_n)$ est bien définie.
 	\end{lemma}
 	
@@ -37,7 +37,7 @@
 		\[ \hat{\varphi} : \xi \mapsto \int_I f(x) e^{-i \xi x} \rho(x) \, \mathrm{d}x \]
 		Montrons que $\hat{\varphi}$ se prolonge en une fonction $F$ holomorphe sur
 		\[ B_a = \left\{ z \in \mathbb{C} \mid \vert \operatorname{Im}(z) \vert < \frac{a}{2} \right\} \]
-		\includelatexpicture{densite-polynomes-orthogonaux}
+		\includelatexpicture{densite-des-polynomes-orthogonaux}
 		Définissons à présent $g : (z, x) \mapsto e^{-izx} f(x) \rho(x)$. Pour $z \in B_a$, on a
 		\[ \int_I \vert g(z, x) \vert \, \mathrm{d}x \leq \int_I e^{\frac{a \vert x \vert}{2}} \vert f(x) \vert \rho(x) \, \mathrm{d}x \]
 		En utilisant l'inégalité de Cauchy-Schwarz pour $\Vert . \Vert_2$, on obtient de plus
@@ -58,7 +58,7 @@
 		Ce qui donne, une fois évalué en $0$ :
 		\[ \forall n \in \mathbb{N}, F^{(n)}(0) = (-i)^n \int_I x^n f(x) \rho(x) \, \mathrm{d}x = (-i)^n \langle g_n, f \rangle = 0 \]
 		L'unicité du développement en série entière d'une fonction holomorphe montre que $F = 0$ sur un voisinage de $0$. Le théorème du prolongement analytique implique alors que $F = 0$ sur le connexe $B_a$ tout entier, et donc en particulier, sur $\mathbb{R}$. Ainsi, $\hat{\varphi} = 0$. Comme $\varphi$ est une fonction intégrable, l'injectivité de la transformée de Fourier implique que $\varphi = 0$. Comme $\rho(x) > 0$, on en déduit que $f(x) = 0$ p.p. en $x \in I$. On vient donc de montrer qu'une fonction orthogonale à tous les polynômes est nulle i.e. $\operatorname{Vect}(g_n)^\perp = \{ 0 \}$.
-		En ajoutant le \cref{densite-polynomes-orthogonaux-1} à ceci, on a bien que les polynômes orthogonaux forment une base hilbertienne de $L_2(I, \rho)$.
+		En ajoutant le \cref{densite-des-polynomes-orthogonaux-1} à ceci, on a bien que les polynômes orthogonaux forment une base hilbertienne de $L_2(I, \rho)$.
 	\end{demonstration}
 	
 	\begin{cexample}

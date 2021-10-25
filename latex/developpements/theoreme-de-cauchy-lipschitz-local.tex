@@ -1,0 +1,79 @@
+\input{../common}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{theoreme-de-cauchy-lipschitz-local}{Théorème de Cauchy-Lipschitz local}
+
+	\summary{En construisant un raisonnement autour du théorème du point fixe de Banach, on montre le théorème de Cauchy-Lipschitz, qui garantit l'existence d'une solution répondant à une condition initiale et l'unicité d'une solution maximale.}
+	
+	\reference{GOU20}{374}
+	
+	Soit $E$ un espace de Banach sur $\mathbb{R}$ ou $\mathbb{C}$.
+	
+	\begin{theorem}[Cauchy-Lipschitz local]
+		Soient $I$ un intervalle de $\mathbb{R}$ et $\Omega$ un ouvert de $E$. Soit $F : I \times \Omega \rightarrow E$ une fonction continue et localement lipschitzienne en la seconde variable. Alors, pour tout $(t_0, y_0) \in I \times \Omega$, le problème de Cauchy
+		\[ \begin{cases} y'=F(t,y) \\ y(t_0) = y_0 \end{cases} \tag{$C$} \]
+		admet une unique solution maximale.
+	\end{theorem}
+
+	\reference{POM}{394}
+
+	\begin{demonstration}
+		Nous commençons par montrer l'existence en $4$ étapes.
+		\begin{itemize}
+			\item \underline{Localisation :} Fixons un réel $r > 0$ tel que le produit $P = [t_0 - r, t_0 + r] \times \overline{B}(y_0, r)$ soit contenu dans $I \times \Omega$. $F$ est continue sur $P$ qui est compact, donc est bornée par $M$ sur $P$.
+			\item \underline{Mise sous forme intégrale :} Comme une solution de $y' = F(t, y)$ est de ce fait $\mathcal{C}^1$, on a
+			\[ y \in \mathcal{C}^1 \text{ vérifie } (C) \iff y(t) = y_0 + \int_{t_0}^t F(u, y(u)) \, \mathrm{d}u \tag{$*$} \]
+			\item \underline{Choix d'un domaine stable :} Soit $\alpha \in ]0, r[$. Introduisons l'intervalle $I_\alpha = [t_0 - \alpha, t_0 + \alpha]$, l'espace $A_\alpha = \mathcal{C}(I_\alpha, \overline{B}(y_0, r))$, puis l'application
+			\[
+			\Psi :
+			\begin{array}{ll}
+				A_\alpha &\rightarrow \mathcal{C}(I_\alpha, E)  \\
+				\varphi &\mapsto \left(t \mapsto y_0 + \int_{t_0}^t F(u, \varphi(u)) \, \mathrm{d}u \right)
+			\end{array}
+			\]
+			Le problème est ici de rendre $A_\alpha$ stable par $\Psi$. Pour tout $t \in I_\alpha$,
+			\begin{align*}
+				&\Vert F(t, \varphi(t)) \Vert \leq M \\
+				\implies& \Vert \Psi(\varphi)(t) - y_0 \Vert \leq M |t-t_0| \leq \alpha M
+			\end{align*}
+			Par suite, en choisissant $\alpha M < r$, le domaine $A_\alpha$ est stable par $\Psi$.
+			\item \underline{Détermination d'un domaine de contraction :} Ici, $A_\alpha$ est normé par la norme $\Vert . \Vert_{\infty}$, et on veut faire de $\Psi$ une contraction stricte. Soient $\varphi, \phi \in A_\alpha$, par définition, pour tout $t \in I_\alpha$,
+			\begin{align*}
+				\Vert (\Psi(\varphi) - \Psi(\phi)) (t) \Vert &= \left \Vert \int_{t_0}^t (F(u, \varphi(u)) - F(u, \phi(u))) \, \mathrm{d}u \right \Vert \\
+				&\leq k |t-t_0| \Vert \varphi - \phi \Vert_\infty \\
+				&\leq k \alpha \Vert \varphi - \phi \Vert_\infty
+			\end{align*}
+			où $k$ désigne le rapport de lipschitziannité de $F$. On choisit désormais $\alpha$ tel que $k \alpha < 1$ et $\alpha M < r$.
+			\item \underline{Conclusion :} L'application $\Psi$ est, par choix de $\alpha$, une contraction stricte de $(A_\alpha, \Vert . \Vert_{\infty})$ dans lui-même. Le fermé $\overline{B}(y_0, r)$ de l'espace de Banach de $E$ est complet, par suite $(A_\alpha, \Vert . \Vert_{\infty})$ l'est aussi.
+			\newpar
+			Par le théorème du point fixe de Banach, $\Psi$ possède donc un point fixe $\varphi$ dans $A_\alpha$. $\varphi$ est alors de classe $\mathcal{C}^1$ et vérifie $(C)$ par $(*)$.
+		\end{itemize}
+		\medskip
+		Il reste maintenant à montrer l'unicité. On note $\mathcal{S}$ l'ensemble des solutions de $(C)$. $\mathcal{S} \neq \emptyset$, donc peut définir $J$ comme la réunion des intervalles de définition des solutions de $(C)$.
+		\newpar
+		Soient $\varphi, \phi \in \mathcal{S}$ (on note $K$ et $L$ leur intervalle de définition). Une récurrence sur $n$ donne
+		\begin{align*}
+			\forall t \in K \, \cap \, L, \, \forall n \in \mathbb{N}, \, \Vert \varphi(t) - \phi(t) \Vert &\leq \left| \int_{t_0}^t \Vert F(u, \varphi(u)) - F(u, \phi(u)) \Vert \, \mathrm{d}u \right| \\
+			&\leq \frac{|t-t_0|^n}{n!} k^n \sup_{t \in K \, \cap \, L} |\varphi(t) - \phi(t)| \\
+			&\longrightarrow_{n \rightarrow +\infty} 0
+		\end{align*}
+		Donc $\varphi$ et $\phi$ coïncident sur $K \, \cap \, L$.
+		Ainsi, on définit correctement l'application
+		\[
+		\theta :
+		\begin{array}{cl}
+			J &\rightarrow E \\
+			t &\mapsto \phi(t) 
+		\end{array}
+		\]
+		(où $\phi \in S$ tel que $t$ est dans son intervalle de définition). Si $t \in J$, il existe $\phi \in \mathcal{S}$ tel que $t$ soit dans son intervalle de définition $K$. Comme $\phi$ et $\theta$ coïncident sur $K$, $\theta$ est dérivable sur $K$ et
+		\[ \forall t \in K, \, \theta'(t) = \phi'(t) = F(t, \phi(t)) = F(t, \theta(t)) \]
+		Ainsi, $\theta \in \mathcal{S}$ et $\theta$ prolonge toute solution. Donc $\theta$ est maximale et est bien unique.
+	\end{demonstration}
+
+	\begin{remark}
+		La partie sur la récurrence (dans la démonstration de l'unicité) est tirée de \textbf{[GOU20]}.
+	\end{remark}
+	%</content>
+\end{document}

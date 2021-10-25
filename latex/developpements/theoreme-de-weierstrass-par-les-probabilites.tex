@@ -2,14 +2,14 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{theoreme-weierstrass-probabilites}{Théorème de Weierstrass (par les probabilités)}
+	\development{analysis}{theoreme-de-weierstrass-par-les-probabilites}{Théorème de Weierstrass (par les probabilités)}
 
 	\summary{On montre le théorème de Weierstrass en faisant un raisonnement sur des variables aléatoires suivant une loi de Bernoulli.}
 	
 	\reference{G-K}{195}
 	
 	\begin{theorem}[Bernstein]
-		\label{theoreme-weierstrass-probabilites-1}
+		\label{theoreme-de-weierstrass-par-les-probabilites-1}
 		Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
 		\[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
 		le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
@@ -57,7 +57,7 @@
 			x &\mapsto a + (b-a) x
 		\end{array}
 		\]
-		Par le \cref{theoreme-weierstrass-probabilites-1}, la fonction $f \circ \varphi$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine.
+		Par le \cref{theoreme-de-weierstrass-par-les-probabilites-1}, la fonction $f \circ \varphi$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine.
 	\end{demonstration}
 	%</content>
 \end{document}
