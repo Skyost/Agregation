@@ -83,6 +83,7 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
           encoding: 'utf-8'
         })
         const root = parse(htmlContent)
+        handleReferences(root)
         renderMath(root)
         addVueComponents(root)
         fs.writeFileSync(path.resolve(mdDir, fileName + '.md'), toString(root))
@@ -113,6 +114,21 @@ function filterUnknownSymbols (text) {
   return text
     .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
     .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}')
+}
+
+function handleReferences (root) {
+  const references = root.querySelectorAll('.bookref')
+  let previousReference
+  for (const reference of references) {
+    const matches = reference.innerHTML.match(/\[[A-Z0-9\-']+]/)
+    if (matches) {
+      previousReference = matches[0]
+    }
+    if (previousReference) {
+      const html = reference.innerHTML.trim().replace('<strong>[]</strong><br>', '')
+      reference.innerHTML = `<a href="/bibliographie#${previousReference}">${html}</a>`
+    }
+  }
 }
 
 function addVueComponents (root) {

@@ -17,13 +17,12 @@ export default {
       let rightColumnWidth = 0
       for (const reference of references) {
         rightColumnWidth = Math.max(rightColumnWidth, reference.firstElementChild.offsetWidth)
-        const matches = reference.innerHTML.match(/\[[A-Z0-9\-']+]/)
-        if (matches) {
-          const match = matches[0]
-          reference.innerHTML = `<a href="/bibliographie#${match}">${reference.innerHTML}</a>`
-        }
       }
-      this.$el.style.paddingRight = `${rightColumnWidth + 15}px`
+      const paddingRight = `${rightColumnWidth + 15}px`
+      this.$el.style.paddingRight = paddingRight
+      for (const reference of references) {
+        reference.firstChild.style.right = paddingRight
+      }
 
       const tables = this.$el.querySelectorAll('.math-document table')
       for (const table of tables) {
@@ -68,6 +67,8 @@ export default {
 }
 
 .math-document {
+  position: relative;
+
   ::v-deep {
     .doccategories {
       display: none;
@@ -125,8 +126,6 @@ export default {
     .demonstration {
       @include environment(#e1f5fe);
 
-      position: relative;
-      overflow: auto;
       margin-bottom: 0;
 
       &::after {
@@ -140,13 +139,13 @@ export default {
     }
 
     .bookref {
-      position: relative;
+      // position: relative;
 
       > *:first-child {
         @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
 
         position: absolute;
-        right: 0;
+        // right: 0;
         text-align: center;
         padding: 7.5px;
         margin-left: 10px;

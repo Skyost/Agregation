@@ -12,12 +12,12 @@
     "lint": "npm run lint:js && npm run lint:style"
   },
   "dependencies": {
-    "@nuxt/content": "^1.14.0",
+    "@nuxt/content": "^1.15.0",
     "bootstrap-vue": "^2.21.2",
-    "core-js": "^3.18.1",
+    "core-js": "^3.19.0",
     "gray-matter": "^4.0.3",
     "katex": "^0.13.18",
-    "node-html-parser": "^4.1.5",
+    "node-html-parser": "^5.0.0",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",
     "vue-slide-up-down": "^2.0.1"
@@ -30,8 +30,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.18.0",
-    "sass": "^1.42.1",
+    "eslint-plugin-vue": "^7.20.0",
+    "micromark-extension-footnote": "^1.0.2",
+    "sass": "^1.43.3",
     "sass-loader": "^10.1.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",

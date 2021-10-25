@@ -1,5 +1,5 @@
 <template>
-  <div v-if="link" class="banner" :class="variant">
+  <div class="banner" :class="variant">
     <b-icon class="icon" :icon="icon" />
     <p class="mb-0">
       <slot />
@@ -11,13 +11,9 @@
 import { BIcon } from 'bootstrap-vue'
 
 export default {
-  name: 'PDFBanner',
+  name: 'Banner',
   components: { BIcon },
   props: {
-    link: {
-      type: String,
-      default: null
-    },
     icon: {
       type: String,
       required: true
@@ -46,13 +42,21 @@ export default {
     text-decoration: underline;
   }
 
-  &.dark {
+  &.dark,
+  &.teal {
     color: rgba(white, 0.5);
-    background-color: lighten(#343a40, 5%);
 
     a {
       color: rgba(white, 0.75);
     }
+  }
+
+  &.dark {
+    background-color: lighten(#343a40, 5%);
+  }
+
+  &.teal {
+    background-color: #00695c;
   }
 
   &.red {

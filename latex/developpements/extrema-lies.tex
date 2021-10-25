@@ -29,7 +29,6 @@
 		\end{pmatrix} \]
 		est de rang $r$. On peut donc extraire une sous-matrice de taille $r \times r$ inversible. Quitte à changer le nom des variables, on peut supposer que c'est la sous-matrice de droite, ie.
 		\[ \det \left( \left( \frac{\partial g_i}{\partial y_j}(a) \right)_{i, j \in \llbracket 1, r \rrbracket} \right) \neq 0 \tag{$*$} \]
-		\newpar
 		On va appliquer le théorème des fonctions implicites à la fonction $g = (g_1, \dots, g_r)$. Pour cela, on vérifie les hypothèses :
 		\begin{itemize}
 			\item $g$ est de classe $\mathcal{C}^1$.
@@ -53,7 +52,6 @@
 		\[ \forall i \in \llbracket 1, s \rrbracket, \, \frac{\partial f}{\partial x_i}(a) + \sum_{k=1}^r \frac{\partial f}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_i}(\alpha) = 0 \tag{$**$} \]
 		Comme $\forall j \in \llbracket 1, r \rrbracket$, $g_j(\alpha, \varphi(\alpha)) = g_j(a) = 0$, on peut aboutir de la même manière à la relation suivante :
 		\[ \forall i \in \llbracket 1, s \rrbracket, \forall j \in \llbracket 1, r \rrbracket, \, \frac{\partial g_j}{\partial x_i}(a) + \sum_{k=1}^r \frac{\partial g_j}{\partial y_k}(a) \frac{\partial \varphi_k}{\partial x_i}(\alpha) = 0 \tag{$***$} \]
-		\newpar
 		On considère maintenant la matrice $M$ suivante :
 		\[ M = \begin{pmatrix}
 			\left( \frac{\partial f}{\partial x_j}(a) \right)_{j \in \llbracket 1, s \rrbracket} & \left( \frac{\partial f}{\partial y_j}(a) \right)_{j \in \llbracket 1, r \rrbracket} \\

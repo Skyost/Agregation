@@ -18,11 +18,13 @@
 
 <script>
 import LessonCard from '~/components/Cards/LessonCard'
+import { GITHUB_PAGE } from '~/utils/site'
 
 export default {
   components: { LessonCard },
   data () {
     return {
+      githubPage: GITHUB_PAGE,
       lessons: null
     }
   },
@@ -38,6 +40,7 @@ export default {
   },
   mounted () {
     this.$parent.$emit('onpdfbanner', `/pdf${this.$route.path}.pdf`)
+    this.$parent.$emit('onwipbanner', `${this.githubPage}/tree/master/latex${this.$route.path}`)
   }
 }
 </script>

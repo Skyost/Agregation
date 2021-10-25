@@ -28,4 +28,4 @@ Je me permets de glisser quelques liens vers des sites qui m'ont grandement aid√
 ## Licence
 
 Les contenus pr√©sents sur ce site sont disponibles sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr).
-Le site est, pour sa part, totalement open-source.
+Le site est, pour sa part, totalement [open-source](https://github.com/Skyost/Agregation/blob/master/LICENSE).

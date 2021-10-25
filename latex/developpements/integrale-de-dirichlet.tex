@@ -5,7 +5,7 @@
 	\development{analysis}{integrale-de-dirichlet}{Intégrale de Dirichlet}
 
 	\summary{Il s'agit ici de calculer l'intégrale de Dirichlet en utilisant les théorèmes classiques d'intégration.}
-	
+
 	\begin{lemma}
 		\label{integrale-de-dirichlet-1}
 		\[ \forall y, t \in \mathbb{R}^+, \, |e^{-(y-i)t}| \leq 1 \]
@@ -84,7 +84,6 @@
 		\[ \operatorname{Im} \left( \lim_{A \rightarrow +\infty} \int_0^A e^{-(i+x)t} \, \mathrm{d}t \right) = \lim_{A \rightarrow +\infty} \int_0^A \operatorname{Im} \left( e^{-(i+x)t} \right) \, \mathrm{d}t = \int_0^{+\infty} -\sin(t) e^{-xt} \, \mathrm{d}t = F'(x) \]
 		En recollant les deux morceaux :
 		\[ F'(x) = -\frac{1}{1+x^2} \tag{$*$} \]
-		\newpar
 		Soient $x, y \in \mathbb{R}^+_*$. En intégrant $(*)$ entre $x$ et $y$, on obtient :
 		\[ F(x) - F(y) = \arctan(x) - \arctan(y) \]
 		Mais,

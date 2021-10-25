@@ -48,9 +48,8 @@
 }
 
 \newcommand{\reference}[2][]{%
-	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
 	\begin{bookref}%
-		\textbf{[\previousreference]} \\ p. #2%
+		\textbf{[#1]} \\ p. #2%
 	\end{bookref}%
 }
 

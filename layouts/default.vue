@@ -2,37 +2,44 @@
   <div>
     <page-header />
     <page-navbar />
-    <banner v-if="pdfBannerLink" :link="pdfBannerLink" icon="info-circle-fill">
+    <banner v-if="pdfBannerLink" icon="info-circle-fill">
       Le contenu de cette page est disponible en version PDF.
       Vous pouvez le télécharger <a :href="pdfBannerLink">ici</a>.
     </banner>
-    <banner v-if="caveatsBannerLink" :link="caveatsBannerLink" icon="exclamation-circle-fill" variant="red">
+    <banner v-if="caveatsBannerLink" icon="exclamation-circle-fill" variant="red">
       Pour signaler une erreur ou suggérer une amélioration, vous pouvez modifier
       le <a :href="caveatsBannerLink">code source</a> de la page, ou me <a href="https://skyost.eu/#contact">contacter</a>.
     </banner>
+    <banner v-if="wipBannerLink" icon="wrench" variant="teal">
+      Cette page et son contenu ne sont pas terminés :
+      il peut manquer des choses, et de nombreux changements vont encore intervenir.
+      Toute aide est <a :href="wipBannerLink">la bienvenue</a> !
+    </banner>
     <page-content>
-      <nuxt @onpdfbanner="onPDFBanner" @oncaveatsbanner="onCaveatsBanner" />
+      <nuxt @onpdfbanner="onPDFBanner" @oncaveatsbanner="onCaveatsBanner" @onwipbanner="onWIPBanner" />
     </page-content>
     <page-footer />
   </div>
 </template>
 
 <script>
-import { BIconExclamationCircleFill, BIconInfoCircleFill } from 'bootstrap-vue'
+import { BIconExclamationCircleFill, BIconInfoCircleFill, BIconWrench } from 'bootstrap-vue'
 
 export default {
   // eslint-disable-next-line vue/no-unused-components
-  components: { BIconInfoCircleFill, BIconExclamationCircleFill },
+  components: { BIconInfoCircleFill, BIconExclamationCircleFill, BIconWrench },
   data () {
     return {
       pdfBannerLink: null,
-      caveatsBannerLink: null
+      caveatsBannerLink: null,
+      wipBannerLink: null
     }
   },
   watch: {
     $route () {
       this.pdfBannerLink = null
       this.caveatsBannerLink = null
+      this.wipBannerLink = null
     }
   },
   methods: {
@@ -41,6 +48,9 @@ export default {
     },
     onCaveatsBanner (link) {
       this.caveatsBannerLink = link
+    },
+    onWIPBanner (link) {
+      this.wipBannerLink = link
     }
   }
 }

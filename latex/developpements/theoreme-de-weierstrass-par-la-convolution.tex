@@ -52,10 +52,10 @@
 		\[ \exists N \in \mathbb{N} \text{ tel que } \forall n \geq N, \, \int_{|t| \geq \eta} p_n(t) \, \mathrm{d}t < \epsilon \]
 		Donc, toujours avec le \cref{theoreme-de-weierstrass-par-la-convolution-1}, pour tout $n \geq N$ et pour tout $x \in \mathbb{R}$,
 		\begin{align*}
-			|f*p_n(x) - f(x)| \overset{(ii)}&{=} \left| \int_\mathbb{R} f(x-t) p_n(t) \, \mathrm{d}t - f(x) \int_\mathbb{R} p_n(t) \, \mathrm{d}t \right| \\
-			&= \left| \int_\mathbb{R} (f(x-t) - f(x)) p_n(t) \, \mathrm{d}t \right| \\
-			&\leq \int_\mathbb{R} \left| (f(x-t) - f(x)) p_n(t)  \right| \, \mathrm{d}t \\
-			\overset{(i)}&{=} \int_\mathbb{R} \left| f(x-t) - f(x) \right| p_n(t)  \, \mathrm{d}t \\
+			|f*p_n(x) - f(x)| \overset{(ii)}&{=} \left| \int_{\mathbb{R}} f(x-t) p_n(t) \, \mathrm{d}t - f(x) \int_{\mathbb{R}} p_n(t) \, \mathrm{d}t \right| \\
+			&= \left| \int_{\mathbb{R}} (f(x-t) - f(x)) p_n(t) \, \mathrm{d}t \right| \\
+			&\leq \int_{\mathbb{R}} \left| (f(x-t) - f(x)) p_n(t)  \right| \, \mathrm{d}t \\
+			\overset{(i)}&{=} \int_{\mathbb{R}} \left| f(x-t) - f(x) \right| p_n(t)  \, \mathrm{d}t \\
 			&= \int_{|t| \geq \eta} \left| f(x-t) - f(x) \right| p_n(t)  \, \mathrm{d}t + \int_{-\eta}^\eta \left| f(x-t) - f(x) \right| p_n(t)  \, \mathrm{d}t \\
 			&= 2 \Vert f \Vert_\infty \epsilon + \epsilon \int_{-\eta}^\eta p_n(t)  \, \mathrm{d}t \\
 			\overset{(i)}&{\leq} 2 \Vert f \Vert_\infty \epsilon + \epsilon \int_{\mathbb{R}} p_n(t) \, \mathrm{d}t \\

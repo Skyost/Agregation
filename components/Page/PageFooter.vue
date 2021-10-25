@@ -4,9 +4,14 @@
       <b-row>
         <b-col cols="12" md="6" class="mb-4 mb-md-0">
           <h2>Copyright</h2>
-          <p class="mb-0">
+          <p>
             Copyright &copy; 2021 - <a href="https://skyost.eu">Hugo Delaunay</a>. Tous droits réservés.
-            Ce site est totalement open-source, vous pouvez aller voir ça sur <a :href="githubPage">Github</a>.
+          </p>
+          <p class="mb-0">
+            Les contenus de ce site sont disponibles sous licence
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.
+            Le site en lui-même est totalement <a :href="`${githubPage}/blob/master/LICENSE`">open-source</a>,
+            vous pouvez aller voir ça sur <a :href="githubPage">Github</a>.
           </p>
         </b-col>
         <b-col cols="12" md="6">

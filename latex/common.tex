@@ -35,10 +35,10 @@
 \usepackage{aligned-overset}
 \usepackage[subpreambles=true]{standalone}
 \usepackage{environ}
-\usepackage{unicode-math}
 \usepackage{lua-ul}
 \usepackage{marginnote}
 \usepackage{etoolbox}
+\usepackage{setspace}
 
 % Police :
 
@@ -55,6 +55,7 @@
 \setlength{\fboxsep}{0pt}
 \titlespacing*{\chapter}{0pt}{-20pt}{10pt}
 \setlength{\marginparwidth}{1.5cm}
+\setstretch{1.1}
 
 % Métadonnées :
 
@@ -70,12 +71,6 @@
 
 \renewcommand{\thechapter}{\Roman{chapter}}
 
-% En-têtes :
-
-\pagestyle{fancy}
-\fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
-\fancyfoot[C]{\scriptsize \href{https://agreg.skyost.eu}{\texttt{agreg.skyost.eu}}}
-
 % Table des matières :
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
@@ -88,8 +83,10 @@
 
 % Nouvelles commandes :
 
+\newcommand{\website}{https://agreg.skyost.eu}
 \newcommand{\tr}[1]{\mathstrut ^t #1}
 \newcommand{\im}[1]{\mathrm{Im} (#1)}
+\newcommand{\rang}{\operatorname{rang}}
 
 \newcommand{\newpar}{\\[\medskipamount]}
 
@@ -113,12 +110,13 @@
 	\medskip%
 }
 
+\newcommand{\booklink}[1]{\website/bibliographie\#[#1]}
 \newcommand{\previousreference}{}
 \newcommand{\reference}[2][]{%
 	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
 	\marginnote{%
 		\centering%
-		\notblank{#1}{\href{https://agreg.skyost.eu/bibliographie\#[\previousreference]}{\textbf{[\previousreference]}}\\}{} \href{https://agreg.skyost.eu/bibliographie\#[\previousreference]}{p. #2}%
+		\notblank{#1}{\href{\booklink{\previousreference}}{\textbf{[\previousreference]}}\\}{} \href{\booklink{\previousreference}}{p. #2}%
 	}%
 }
 
@@ -130,6 +128,12 @@
 	\end{center}%
 	\medskip%
 }
+
+% En-têtes :
+
+\pagestyle{fancy}
+\fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
+\fancyfoot[C]{\scriptsize \href{\website}{\texttt{agreg.skyost.eu}}}
 
 % Couleurs :
 
@@ -155,17 +159,17 @@
 
 \newcommand{\newth}[3][style=theorem]{
 	\declaretheorem[%
-	name=#3,%
-	%within=section,
-	sibling=thm,%
-	mdframed={%
-		hidealllines=true,%
-		backgroundcolor={#2!98!white},%
-		innermargin=8pt,%
-		splittopskip=18pt,%
-		splitbottomskip=16pt,%
-	},%
-	#1%
+		name=#3,%
+		%within=section,
+		sibling=thm,%
+		mdframed={%
+			hidealllines=true,%
+			backgroundcolor={#2!98!white},%
+			innermargin=8pt,%
+			splittopskip=18pt,%
+			splitbottomskip=16pt,%
+		},%
+		#1%
 	]{#2}%
 }
 

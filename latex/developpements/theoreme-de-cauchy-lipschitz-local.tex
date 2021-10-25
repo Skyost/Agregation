@@ -57,7 +57,7 @@
 		\begin{align*}
 			\forall t \in K \, \cap \, L, \, \forall n \in \mathbb{N}, \, \Vert \varphi(t) - \phi(t) \Vert &\leq \left| \int_{t_0}^t \Vert F(u, \varphi(u)) - F(u, \phi(u)) \Vert \, \mathrm{d}u \right| \\
 			&\leq \frac{|t-t_0|^n}{n!} k^n \sup_{t \in K \, \cap \, L} |\varphi(t) - \phi(t)| \\
-			&\longrightarrow_{n \rightarrow +\infty} 0
+			&\longrightarrow 0
 		\end{align*}
 		Donc $\varphi$ et $\phi$ coïncident sur $K \, \cap \, L$.
 		\newpar
@@ -72,7 +72,7 @@
 		\]
 		(où $\phi \in S$ tel que $t$ est dans son intervalle de définition). Si $t \in J$, il existe $\phi \in \mathcal{S}$ tel que $t$ soit dans son intervalle de définition $K$. Comme $\phi$ et $\theta$ coïncident sur $K$, $\theta$ est dérivable sur $K$ et
 		\[ \forall t \in K, \, \theta'(t) = \phi'(t) = F(t, \phi(t)) = F(t, \theta(t)) \]
-		Ainsi, $\theta \in \mathcal{S}$ et $\theta$ prolonge toute solution. Donc $\theta$ est maximale et est bien unique.
+		Et comme $\theta(t_0) = y_0$, $\theta \in \mathcal{S}$ et prolonge toute solution. Donc $\theta$ est maximale et est bien unique.
 	\end{demonstration}
 	%</content>
 \end{document}

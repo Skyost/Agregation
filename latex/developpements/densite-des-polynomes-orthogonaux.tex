@@ -29,7 +29,7 @@
 	\begin{demonstration}
 		Soit $f \in \operatorname{Vect}(g_n)^\perp = \operatorname{Vect}(P_n)^\perp$. On définit
 		\[
-		\forall x \in \mathbb{R}, \quad \varphi(x) = \begin{cases} f(x) \rho(x) \text{ si } x \in I \\ 0 \text{ sinon} \end{cases}
+		\forall x \in \mathbb{R}, \quad \varphi(x) = \begin{cases} f(x) \rho(x) &\text{si } x \in I \\ 0 &\text{sinon} \end{cases}
 		\]
 		Montrons que $\varphi \in L_1(\mathbb{R})$. Remarquons tout d'abord que $\forall t \geq 0$, $t \leq \frac{1 + t^2}{2}$. Ainsi, on a
 		\[ \forall x \in I, \quad |f(x)|\rho(x) \leq \frac{(1 + |f(x)|)^2}{2} \rho(x) \]
@@ -64,11 +64,11 @@
 	\begin{cexample}
 		On considère, sur $I = \mathbb{R}^+_*$, la fonction poids $\rho : x \mapsto x^{-\ln(x)}$. On pose $\forall x \in I$, $f(x) = \sin(2 \pi \ln(x))$. On calcule
 		\begin{align*}
-			\langle f, g_n \rangle & = \int_I x^n \sin(2\pi \ln(x)) x^{-\ln(x)} \, \mathrm{d}x                                                     &   \\
-			&= \int_\mathbb{R} e^{(n+1)y} \sin(2 \pi y) e^{-y^2} \, \mathrm{d}y \text{, avec } y = \ln(x) \\
-			& = e^{\frac{(n+1)^2}{4}} \int_\mathbb{R} e^{- \left (y - \frac{n+1}{2} \right)^2} \sin(2 \pi y) \, \mathrm{d}y &   \\
-			&= (-1)^{n+1} e^{\frac{(n+1)^2}{4}} \int_\mathbb{R} \sin(2 \pi t) e^{-t^2} \, \mathrm{d}t \text{, avec } t = y - \frac{n+1}{2} \\
-			&= 0 \text{, par imparité de } f
+			\langle f, g_n \rangle &= \int_I x^n \sin(2\pi \ln(x)) x^{-\ln(x)} \, \mathrm{d}x \\
+			\overset{y = \ln(x)}&{=} \int_{\mathbb{R}} e^{(n+1)y} \sin(2 \pi y) e^{-y^2} \, \mathrm{d}y \\
+			&= e^{\frac{(n+1)^2}{4}} \int_{\mathbb{R}} e^{- \left (y - \frac{n+1}{2} \right)^2} \sin(2 \pi y) \, \mathrm{d}y \\
+			&= (-1)^{n+1} e^{\frac{(n+1)^2}{4}} \int_{\mathbb{R}} \sin(2 \pi t) e^{-t^2} \, \mathrm{d}t \text{, avec } t = y - \frac{n+1}{2} \\
+			\overset{f \text{ impaire}}&{=} 0
 		\end{align*}
 		Ainsi, la famille des $g_n$ n'est pas totale. La famille des polynômes orthogonaux associée à ce poids particulier n'est donc pas totale non plus : ce n'est pas une base hilbertienne.
 	\end{cexample}

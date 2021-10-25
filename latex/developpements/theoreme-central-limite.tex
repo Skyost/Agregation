@@ -83,12 +83,12 @@
 		\end{itemize}
 		Ce qui donne le développement limité en $0$ de $\phi$ à l'ordre $2$ (par la formule de Taylor-Young) :
 		\[ \phi(t) = \phi(0) + \frac{\phi'(0)}{1!} (t-0) + \frac{\phi''(0)}{2!} (t-0)^2 + o(t^2) = 1 - \frac{\sigma^2 t^2}{2} + o(t^2) \tag{$*$} \]
-		\newpar
-		Et,
+		Et, en appliquant le \cref{theoreme-central-limite-2} :
 		\begin{align*}
 			\left | \phi \left ( \frac{t}{\sqrt{n}} \right)^n - e^{-\frac{\sigma^2}{2} t^2} \right | &= \left | \phi \left ( \frac{t}{\sqrt{n}} \right)^n - \left( e^{- \frac{\sigma^2}{2n} t^2} \right)^n \right | \\
-			\overset{\text{\cref{theoreme-central-limite-2}}}&{\leq} n \left | \phi \left ( \frac{t}{\sqrt{n}} \right) - e^{-\frac{\sigma^2}{2n} t^2} \right |
+			&\leq n \left | \phi \left ( \frac{t}{\sqrt{n}} \right) - e^{-\frac{\sigma^2}{2n} t^2} \right |
 		\end{align*}
+		\[  \]
 		On a d'une part, par développement limité :
 		\[ e^{-\frac{\sigma^2}{2n} t^2} = 1 - \frac{\sigma^2}{2n} t^2 + o \left ( \frac{1}{n} \right) \]
 		Et d'autre part, par $(*)$ :
