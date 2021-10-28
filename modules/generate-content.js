@@ -234,7 +234,15 @@ function latexmk (directory, file) {
       return
     }
   }
-  execSync(`latexmk -quiet -pdflatex=lualatex -pdf "${file}"`, { cwd: directory })
+  try {
+    execSync(`latexmk -quiet -pdflatex=lualatex -pdf "${file}"`, { cwd: directory })
+  } catch (ex) {
+    logger.info('Here is the log file content :')
+    const logPath = path.resolve(directory, file.replace('.tex', '.log'))
+    if (fs.existsSync(logPath)) {
+      logger.info(fs.readFileSync(path.resolve(logPath, file), { encoding: 'utf8' }))
+    }
+  }
 }
 
 function getFileName (file) {
