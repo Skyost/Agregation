@@ -27,7 +27,7 @@
 	\begin{demonstration}
 		Tout élément de $A_n$ est produit d'un nombre pair de transpositions ; il suffit donc de vérifier que tout produit de deux transpositions peut s'écrire comme produit de $3$-cycles. Soient $\tau_1$ et $\tau_2$ deux transpositions :
 		\begin{itemize}
-			\item Si $\tau_1 = \tau_2$, alors $\tau_1 \tau_2 = \operatorname{Id}$, d'où le résultat.
+			\item Si $\tau_1 = \tau_2$, alors $\tau_1 \tau_2 = \id$, d'où le résultat.
 			\item Si leurs supports ont exactement un point commun, on écrit $\tau_1 = \begin{pmatrix} a & b \end{pmatrix}$ et $\tau_2 = \begin{pmatrix} b & c \end{pmatrix}$ et donc on a $\tau_1 \tau_2 =  \begin{pmatrix} a & b & c \end{pmatrix}$.
 			\item Si leurs supports sont disjoints, on écrit $\tau_1 = \begin{pmatrix} a & b \end{pmatrix}$ et $\tau_2 = \begin{pmatrix} c & d \end{pmatrix}$ et donc on a $\tau_1 \tau_2 =  \begin{pmatrix} a & b & c \end{pmatrix}\begin{pmatrix} b & c & d \end{pmatrix}$.
 		\end{itemize}
@@ -59,7 +59,7 @@
 		\newpar
 		Montrons que les permutations de type $[2,2]$ sont conjuguées dans $A_5$. Soient $\alpha = \begin{pmatrix} a_1 & b_1 \end{pmatrix} \begin{pmatrix} c_1 & d_1 \end{pmatrix} \begin{pmatrix} e_1 \end{pmatrix}$ et $\beta = \begin{pmatrix} a_2 & b_2 \end{pmatrix} \begin{pmatrix} c_2 & d_2 \end{pmatrix} \begin{pmatrix} e_2 \end{pmatrix}$ deux permutations de type $[2,2]$. Il suffit de prendre $\sigma \in A_5$ telle que $\sigma(a_1) = a_2$, $\sigma(b_1) = b_2$ et $\sigma(e_1) = e_2$ pour avoir $\sigma \alpha \sigma^{-1} = \beta$.
 		\newpar
-		Soit $H \lhd A_5$ tel que $H \neq \{ \operatorname{Id} \}$. Montrons que $H = A_5$.
+		Soit $H \lhd A_5$ tel que $H \neq \{ \id \}$. Montrons que $H = A_5$.
 		\begin{itemize}
 			\item Si $H$ contient une permutation de type $[2,2]$, alors par le point 1., il les contient toutes.
 			\item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
@@ -73,11 +73,11 @@
 	\end{theorem}
 
 	\begin{demonstration}
-		Soit $N \lhd A_n$ tel que $N \neq \{ \operatorname{Id} \}$. L'idée générale de la démonstration et de se ramener au cas $n = 5$ à l'aide d'une permutation bien spécifique.
+		Soit $N \lhd A_n$ tel que $N \neq \{ \id \}$. L'idée générale de la démonstration et de se ramener au cas $n = 5$ à l'aide d'une permutation bien spécifique.
 		\newpar
-		Soit $\sigma \in N \setminus \{ \operatorname{Id} \}$, il existe donc $a \in \llbracket 1, n \rrbracket$ tel que $\sigma(a) = b \neq a$. Soit $c \in \llbracket 1, n \rrbracket$ différent de $a$, $b$ et $\sigma(b)$. On pose $\tau = \begin{pmatrix} a & c & b \end{pmatrix} \in A_n$ (on a $\tau^{-1} = \begin{pmatrix} a & b & c \end{pmatrix})$. Soit $\rho = \tau \sigma \tau^{-1} \sigma^{-1}$. Par calcul :
+		Soit $\sigma \in N \setminus \{ \id \}$, il existe donc $a \in \llbracket 1, n \rrbracket$ tel que $\sigma(a) = b \neq a$. Soit $c \in \llbracket 1, n \rrbracket$ différent de $a$, $b$ et $\sigma(b)$. On pose $\tau = \begin{pmatrix} a & c & b \end{pmatrix} \in A_n$ (on a $\tau^{-1} = \begin{pmatrix} a & b & c \end{pmatrix})$. Soit $\rho = \tau \sigma \tau^{-1} \sigma^{-1}$. Par calcul :
 		\[ \rho = \begin{pmatrix} a & c & b \end{pmatrix} \sigma \begin{pmatrix} a & b & c \end{pmatrix} \sigma^{-1} = \begin{pmatrix} a & c & b \end{pmatrix} \begin{pmatrix} \sigma(a) & \sigma(b) & \sigma(c) \end{pmatrix} \]
-		Notons bien que $\rho \neq \operatorname{Id}$ (en tant que produit de $3$-cycles, car $\sigma(b) \neq c$). Or, $\tau \sigma \tau^{-1} \in N$ car $N$ est distingué et $\sigma^{-1}$ aussi car $N$ est un groupe, donc $\rho \in N$.
+		Notons bien que $\rho \neq \id$ (en tant que produit de $3$-cycles, car $\sigma(b) \neq c$). Or, $\tau \sigma \tau^{-1} \in N$ car $N$ est distingué et $\sigma^{-1}$ aussi car $N$ est un groupe, donc $\rho \in N$.
 		\newpar
 		Notons $\mathcal{F} = \{ a, b, c, \sigma(a), \sigma(b), \sigma(c) \}$. Comme $\sigma(a) = b$, $|\mathcal{F}| \leq 5$. Quitte à rajouter, au besoin, des éléments à $\mathcal{F}$, on peut supposer que $|\mathcal{F}| = 5$. On pose
 		\[ A(\mathcal{F}) = \{ \alpha \in A_n \mid \forall i \in \llbracket 1, n \rrbracket \setminus \mathcal{F}, \, \alpha(i) = i \} \]
@@ -93,7 +93,7 @@
 			\item $\beta \alpha \beta^{-1} \in A(\mathcal{F})$ car $A(\mathcal{F})$ est un groupe.
 			\item $\beta \alpha \beta^{-1} \in N$ car $N \lhd A_5$.
 		\end{itemize}
-		En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subset \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$ et par 1., $\rho \in N$). Donc $N_0 \neq \{ \operatorname{Id} \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
+		En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subset \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$ et par 1., $\rho \in N$). Donc $N_0 \neq \{ \id \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
 		\[ A(\mathcal{F}) = N \, \cap \, A(\mathcal{F}) \tag{$*$} \]
 		Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-du-groupe-alterne-3}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-du-groupe-alterne-2}), on a $N = A_n$.
 	\end{demonstration}

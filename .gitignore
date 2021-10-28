@@ -91,15 +91,20 @@ sw.*
 
 # Generated files
 *.aux
+*.bbl
+*.bcf
+*.blg
 *.fdb_latexmk
 *.fls
 *.sta
 *.out
 *.synctex.gz
+*.run.xml
 content/lecons/
 content/developpements/
 static/images/latex/
 static/pdf/
+latex/bibliography.bib
 latex/developpements.tex
 latex/lecons.tex
 latex/lecons-developpements.tex

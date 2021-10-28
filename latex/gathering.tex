@@ -1,11 +1,6 @@
-% Redéfinition des commandes :
+% Table des matières :
 
-\renewcommand{\imagespath}{images/}
-
-\renewcommand{\development}[3]{%
-	\section{#3}%
-	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
-}
+\setcounter{tocdepth}{1}
 
 % Nouvelles commandes :
 
@@ -23,9 +18,31 @@
 \makeatother
 
 \newcommand{\gathering}[1]{%
-  \title{#1}%
+	\title{#1}%
 	\chapter{#1}%
 	\thispagestyle{fancy}%
+}
+
+\newcommand{\resetsectioncount}{\setcounter{section}{0}}
+
+% Redéfinition des commandes :
+
+\renewcommand{\imagespath}{images/}
+
+\renewcommand{\lesson}[3]{%
+	\setcounter{section}{\numexpr #2 - 1}%
+	\section{#3}%
+	%\label{#2}
+	\fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+}
+
+\renewcommand{\development}[3]{%
+	\resetsectioncount%
+	\renewcommand{\resetsectioncount}{}
+	\hypertarget{#2}{}
+	\section{#3}%
+	%\label{#2}
+	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
 }
 
 % Premières pages :
@@ -33,14 +50,14 @@
 \AtBeginDocument{
 	\hypersetup{pdftitle={\gatheringtitle}}
 	\thispagestyle{empty}%
-	\vspace*{\fill}%
+	\vfill%
 	\begin{center}%
 		{\huge\bfseries Agrégation 2022}%
 
 		\smallskip%
-		{\gatheringtitle}%
+		\gatheringtitle%
 	\end{center}%
-	\vspace*{\fill}%
+	\vfill%
 	\newpage%
 	\tableofcontents%
 	\thispagestyle{empty}%

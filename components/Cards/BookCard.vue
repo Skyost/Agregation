@@ -1,7 +1,7 @@
 <template>
   <b-row :id="book.short" class="book">
     <b-col cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
-      <img class="preview" :src="book.preview" :alt="`${book.title} ${book.subtitle}`">
+      <img class="preview" :src="book.preview" :alt="alt">
     </b-col>
     <b-col class="info" cols="12" md="8" lg="9">
       <h2 class="mb-0">
@@ -17,7 +17,7 @@
       </span>
       <p class="mt-2 comment" v-text="book.comment" />
       <small class="text-muted d-block mb-2">
-        <u>Référence :</u> <span v-html="short" />.
+        <u>Référence :</u> <strong v-text="short" />.
       </small>
       <b-btn-group class="mt-2 align-self-start">
         <b-btn :href="`${book.buy}`" variant="dark">
@@ -44,11 +44,18 @@ export default {
     }
   },
   computed: {
+    alt () {
+      let alt = this.book.title
+      if (this.book.subtitle) {
+        alt += ': ' + this.book.subtitle
+      }
+      return alt
+    },
     authors () {
       return this.book.authors.join(', ')
     },
     short () {
-      return this.book.short.replace(/(\[[A-Z0-9\-']+])/g, '<strong>$1</strong>')
+      return `[${this.book.short}]`
     }
   }
 }

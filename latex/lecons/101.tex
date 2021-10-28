@@ -4,18 +4,425 @@
 	%<*content>
 	\lesson{algebra}{101}{Groupe opérant sur un ensemble. Exemples et applications.}
 	
-	Commençons par un premier théorème.
+	Soit $G$ un groupe.
 	
-	\begin{theorem}[Pythagore]
-		$a^2+b^2=c^2$
+	\subsection{Actions de groupe}
+	
+	Soit $X \neq \emptyset$ un ensemble.
+	
+	\subsubsection{Cas général}
+	
+	\reference[ULM21]{29}
+
+	\begin{definition}
+		On appelle \textbf{action} (à gauche) de $G$ sur $X$ toute application
+		\[
+		\begin{array}{cl}
+			G \times X &\rightarrow X \\
+			(g, x) &\mapsto g \cdot x
+		\end{array}
+		\]
+		satisfaisant les conditions suivantes :
+		\begin{enumerate}[(i)]
+			\item $\forall g, h \in G$, $\forall x \in X$, $g \cdot (h \cdot x) = (gh) \cdot x$.
+			\item $\forall x \in X$, $e_G \cdot x = x$.
+		\end{enumerate}
+	\end{definition}
+
+	\begin{remark}
+		On peut de même définir une action à droite de $G$ sur $X$.
+	\end{remark}
+
+	On supposera par la suite que $G$ agit sur $X$ à gauche par l'action $\cdot$.
+
+	\begin{example}
+		\begin{itemize}
+			\item Le groupe $S_X$ des bijections de $X$ dans $X$ opère naturellement sur $X$ par la relation $\sigma \cdot x = \sigma(x)$ pour tout $\sigma \in S_x$ et pour tout $x \in X$.
+			\item Pour un espace vectoriel $V$, le groupe $\mathrm{GL}(V)$ opère sur $V$.
+		\end{itemize}
+	\end{example}
+
+	\begin{theorem}
+		On a une correspondance bijective entre les actions de $G$ sur $X$ et les morphismes de $G$ dans $S_X$. En effet, si $\cdot : G \times X \rightarrow X$ est une action de $G$ sur $X$, on peut y faire correspondre le morphisme
+		\[ \varphi :
+		\begin{array}{cl}
+			G &\rightarrow S_X \\
+			g &\mapsto (x \mapsto g \cdot x)
+		\end{array}
+		\]
 	\end{theorem}
+
+	\begin{definition}
+		On définit pour tout $x \in X$ :
+		\begin{itemize}
+			\item $G \cdot x = \{ g \cdot x \mid g \in G \} \subset X$ l'\textbf{orbite de $x$}.
+			\item $\stab_G(x) = \{ g \in G \mid g \cdot x = x \} < G$ le \textbf{stabilisateur de $x$}.
+		\end{itemize}
+		On dit que l'action de $G$ sur $X$ est :
+		\begin{itemize}
+			\item \textbf{Libre} si $\stab_G(x) = \{ e_G \}$ pour tout $x \in X$.
+			\item \textbf{Transitive} si $G$ n'admet qu'une seule orbite.
+		\end{itemize}
+	\end{definition}
+
+	\begin{cexample}
+		L'action du groupe diédral $\mathcal{D}_3$ sur les sommets d'un triangle équilatéral est transitive mais n'est pas libre.
+	\end{cexample}
+
+	\begin{proposition}
+		\label{101-1}
+		La relation $\sim$ définie sur $X$ par
+		\[ x \sim y \iff x \in G \cdot y \]
+		est une relation d'équivalence dont les classes d'équivalence sont les orbites des éléments de $X$ sous l'action de $G$.
+	\end{proposition}
+
+	\reference[PER]{57}
+
+	\begin{application}
+		Toute permutation $\sigma \in S_n$ s'écrit comme produit
+		\[ \sigma = \gamma_1 \dots \gamma_m \]
+		de cycles $\gamma_i$ de longueur $\geq 2$ dont les supports sont deux-à-deux disjoints. Cette décomposition est unique à l'ordre près.
+	\end{application}
+
+	\reference[ULM21]{33}
+
+	\begin{definition}
+		Une action  $\varphi : G \rightarrow S_X$ une action de $G$ sur $X$ est dite \textbf{fidèle} si $\ker(\varphi) = \{ e_G \}$.
+	\end{definition}
+
+	\begin{proposition}
+		Soit $\varphi : G \rightarrow S_X$ une action de $G$ sur $X$. Alors,
+		\[ \ker(\varphi) = \bigcap_{x \in X} \stab_G(x) \]
+	\end{proposition}
+
+	\begin{corollary}
+		Une action libre est fidèle.
+	\end{corollary}
+
+	\reference{71}
+
+	\begin{proposition}
+		Soit $x \in X$. L'application
+		\[ f :
+		\begin{array}{cl}
+			 G/\stab_G(x) &\rightarrow G \cdot x \\
+			 g \stab_G(x) &\mapsto g \cdot x
+		\end{array}
+		\]
+		est une bijection.
+	\end{proposition}
+
+	\begin{remark}
+		Attention cependant, $G/\stab_G(x)$ n'est pas un groupe en général.
+	\end{remark}
 	
-	C'est le théorème de \textbf{Pythagore}. Ah, et voici une matrice
+	\subsubsection{Cas fini}
 	
-	\[ \begin{pmatrix}
-		1 & 2 & 3 \\
-		4 & 5 & 6 \\
-		7 & 8 & 9
-	\end{pmatrix} \]
+	On suppose ici que $G$ et $X$ sont finis.
+	
+	\begin{proposition}
+		Soit $x \in X$. Alors :
+		\begin{itemize}
+			\item $|G \cdot x| = (G : \stab_G(x))$.
+			\item $|G| = |\stab_G(x)| |G \cdot x|$.
+			\item $|G \cdot x| = \frac{|G|}{|\stab_G(x)|}$
+		\end{itemize}
+	\end{proposition}
+
+	\begin{definition}
+		On définit :
+		\begin{itemize}
+			\item $X^G = \{ x \in X \mid \forall g \in G, \, g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par tous les éléments de $G$.
+			\item $X^g = \{ x \in X \mid g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par $g \in G$.
+		\end{itemize}
+	\end{definition}
+
+	\begin{theorem}[Formule des classes]
+		Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1}. Alors,
+		\[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+	\end{theorem}
+
+	\begin{theorem}[Formule de Burnside]
+		Le nombre $r$ d'orbites de $X$ sous l'action de $G$ est donné par
+		\[ r = \frac{1}{|G|} \sum_{g \in G} |X^g| \]
+	\end{theorem}
+
+	\begin{corollary}
+		Soit $p$ un nombre premier. Si $G$ est un $p$-groupe (ie. l'ordre de $G$ est une puissance de $p$), alors,
+		\[ |X^G| \equiv |X| \mod p \]
+	\end{corollary}
+
+	\begin{theorem}[Cauchy]
+		Soit $p$ un nombre premier. Tout $p$-groupe admet au moins un élément d'ordre $p$.
+	\end{theorem}
+
+	\begin{corollary}
+		Soit $p$ un nombre premier. Le centre d'un $p$-groupe non trivial est non trivial.
+	\end{corollary}
+
+	\begin{corollary}
+		Soit $p$ un nombre premier. Un groupe d'ordre $p^2$ est toujours abélien.
+	\end{corollary}
+
+	\subsection{Action d'un groupe sur un groupe}
+	
+	\subsubsection{Action par translation}
+	
+	\reference{34}
+	
+	\begin{proposition}
+		$G$ agit sur lui-même par translation (à gauche) via l'action
+		\[ (g, h) \mapsto g \cdot h = gh \]
+		De plus, cette action est fidèle et transitive.
+	\end{proposition}
+
+	\begin{application}[Théorème de Cayley]
+		Tout groupe fini d'ordre $n$ est isomorphe à un sous-groupe de $S_n$.
+	\end{application}
+
+	\begin{proposition}
+		Soit $H < G$. Alors $G$ agit sur $G/H$ via l'action
+		\[ (g, hH) \mapsto g \cdot hH = (gh)H \]
+		De plus, cette action est transitive.
+	\end{proposition}
+
+	\begin{proposition}
+		Soit $H < G$. Soit $\varphi : G \rightarrow S_{G/H}$ le morphisme de l'action par translation de $G$ sur $G/H$. Alors,
+		\[ \ker(\varphi) = \bigcap_{g \in G} gHg^{-1} \]
+	\end{proposition}
+
+	\reference[PER]{17}
+
+	\begin{application}
+		On suppose que $G$ est de cardinal infini et que $G$ possède un sous-groupe d'indice fini distinct de $G$. Alors $G$ n'est pas simple.
+	\end{application}
+	
+	\subsubsection{Action par conjugaison}
+	
+	\reference[ULM21]{36}
+	
+	\begin{proposition}
+		$G$ agit sur lui-même par conjugaison via l'action
+		\[ (g, h) \mapsto g \cdot h = ghg^{-1} \]
+	\end{proposition}
+
+	\begin{definition}
+		\begin{itemize}
+			\item L'orbite de $g \in G$ sous l'action par conjugaison de $G$ sur lui-même s'appelle la \textbf{classe de conjugaison de $g$}.
+			\item Le stabilisateur de $g \in G$ sous l'action par conjugaison de $G$ sur lui-même s'appelle le \textbf{centralisateur de $g$}.
+			\item Deux éléments de $G$ qui appartiennent à la même classe de conjugaison sont dits \textbf{conjugués}.
+		\end{itemize}
+	\end{definition}
+
+	\reference[PER]{15}
+	
+	\begin{example}
+		\begin{itemize}
+			\item Si $\sigma = \begin{pmatrix} a_1 & \dots & a_p \end{pmatrix} \in S_n$ est un $p$-cycle, et si $\tau \in S_n$, alors
+			\[ \tau \sigma \tau^{-1} = \begin{pmatrix} \tau(a_1) & \dots & \tau(a_p) \end{pmatrix} \]
+			\item Par conséquent, dans $S_n$, les $p$-cycles sont conjugués.
+			\item Pour $n \geq 5$, les $3$-cycles sont conjugués dans $A_n$.
+		\end{itemize}
+	\end{example}
+
+	\reference[ULM21]{36}
+
+	\begin{proposition}
+		Soit $g \in G$. Alors $g$ appartient au centre de $G$ (noté $Z(G)$) si et seulement si sa classe de conjugaison est réduite à un seul élément.
+	\end{proposition}
+
+	\begin{corollary}
+		$Z(G)$ est l'union des classes de conjugaison de taille $1$.
+	\end{corollary}
+
+	\reference[GOU21]{24}
+
+	\begin{proposition}
+		Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1} pour l'action par conjugaison. On note $\Omega' = Z(G) \setminus \Omega$. Alors,
+		\[ |G| = |Z(G)| + \sum_{\omega \in \Omega'} \frac{|G|}{|\stab_G(\omega)|} \]
+	\end{proposition}
+
+	\reference{100}
+	\dev{theoreme-de-wedderburn}
+
+	\begin{application}[Théorème de Wedderburn]
+		Tout corps fini est commutatif.
+	\end{application}
+
+	\reference[ULM21]{38}
+
+	\begin{proposition}
+		\label{101-2}
+		$G$ agit sur ses sous-groupes par conjugaison via l'action
+		\[ (g, H) \mapsto g \cdot H = gHg^{-1} \]
+	\end{proposition}
+
+	\begin{proposition}
+		Soit $H < G$. Alors $H$ est distingué dans $G$ si et seulement si $H$ est un point fixe pour l'action de la \cref{101-2}.
+	\end{proposition}
+	
+	\subsection{Action d'un groupe sur un espace vectoriel}
+	
+	\subsubsection{Action par conjugaison sur les espaces de matrices}
+	
+	Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$.
+	
+	\reference[D-L]{137}
+	
+	\begin{theorem}
+		Soit $f \in \mathcal{L}(E)$. Soient $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E$. Alors,
+		\[ \operatorname{Mat}(f, \mathcal{B}_1) = P \operatorname{Mat}(f, \mathcal{B}_2) P^{-1} \]
+		où $P \in \mathrm{GL}_n(\mathbb{K})$ est la matrice de passage de $\mathcal{B}_1$ vers $\mathcal{B}_2$.
+	\end{theorem}
+
+	C'est ce théorème qui justifie que l'on va étudier l'action par conjugaison de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+	
+	\begin{definition}
+		Deux matrices qui sont dans le même orbite pour cette action sont dites \textbf{semblables}.
+	\end{definition}
+	
+	\begin{theorem}
+		Soient $A$ et $B$ deux matrices semblables. Alors :
+		\begin{itemize}
+			\item $\trace(A) = \trace(B)$.
+			\item $\det(A) = \det(B)$.
+			\item $\rang(A) = \rang(B)$.
+			\item $\chi_A = \chi_B$.
+			\item $\mu_A = \mu_B$.
+		\end{itemize}
+	\end{theorem}
+
+	\begin{cexample}
+		Les matrices $\begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix}$ et $\begin{pmatrix} 0 & 1 \\ 0 & 0\end{pmatrix}$ ont la même trace, le même déterminant, le même polynôme caractéristique, mais ne sont pas semblables.
+	\end{cexample}
+
+	\reference[GOU21]{397}
+	
+	\begin{notation}
+		Soient $f \in \mathcal{L}(E)$ et $x \in E$. On note $P_{f,x}$ le polynôme unitaire engendrant l'idéal $\{ P \in \mathbb{K}[X] \mid P(f)(x) = 0 \}$ et $E_{f,x} = \{ P(f)(x) \mid P \in \mathbb{K}[X] \}$.
+	\end{notation}
+
+	\begin{lemma}
+		Soit $f \in \mathcal{L}(E)$.
+		\begin{enumerate}[(i)]
+			\item Si $k = \deg(\mu_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
+			\item Soit $x \in E$. Si $l = \deg(P_{f,x})$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
+		\end{enumerate}
+	\end{lemma}
+
+	\begin{lemma}
+		Soit $f \in \mathcal{L}(E)$. Il existe $x \in E$ tel que $P_{f,x} = \mu_f$.
+	\end{lemma}
+
+	\dev{invariants-de-similitude}
+	
+	\begin{theorem}[Frobenius]
+		Soit $f \in \mathcal{L}(E)$. Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
+		\begin{enumerate}[(i)]
+			\item $E = \bigoplus_{i = 1}^r F_i$.
+			\item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
+			\item Si $P_i = \mu_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
+		\end{enumerate}
+		La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
+	\end{theorem}
+
+	\begin{corollary}
+		Deux endomorphismes sont semblables si et seulement s'ils ont les mêmes invariants de similitude.
+	\end{corollary}
+
+	\subsubsection{Représentations linéaires et caractères}
+	
+	On suppose ici que $G$ est fini.
+	
+	\reference[SER]{15}
+	
+	\begin{definition}
+		Une \textbf{représentation linéaire de $G$} est un morphisme $\rho$ de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace vectoriel de dimension finie sur le corps $\mathbb{C}$.
+	\end{definition}
+
+	\reference[ULM21]{143}
+	
+	\begin{remark}
+		Ceci correspond à la donnée d'une action de $G$ sur $V$ :
+		\[ (g, v) \mapsto g \cdot v = \rho(g)(v) \]
+	\end{remark}
+
+	\reference[SER]{15}
+
+	\begin{example}
+		\begin{itemize}
+			\item La \textbf{représentation triviale} de $G$ est donnée par $g \mapsto 1$.
+			\item Soit $V$ un espace vectoriel de dimension $|G|$ ayant une base $(e_g)_{g \in G}$ indexée par les éléments de $G$. La \textbf{représentation régulière} $\rho_r$ de $G$ est donnée par $g \mapsto \rho_r(g)$ où $\rho_r(g)$ est l'application linéaire de $V$ dans $V$ qui transforme $e_h$ en $e_{gh}$.
+		\end{itemize}
+	\end{example}
+
+	\begin{definition}
+		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$ et soit $W$ un sous-espace vectoriel de $V$ stable par $\rho(g)$ pour tout $g \in G$. Alors $\rho$ induit une représentation linéaire de $G$ par restriction à $W$ notée $\rho_W$. On dit alors que $\rho_W$ est une \textbf{sous-représentation} de $\rho$.
+	\end{definition}
+
+	\reference{19}
+	
+	\begin{definition}
+		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On dit $\rho$ est \textbf{irréductible} si elle admet uniquement deux sous-représentations : $\rho$ elle-même et $\rho_{\{ 0 \}}$.
+	\end{definition}
+
+	\begin{definition}
+		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
+	\end{definition}
+
+	\begin{theorem}[Maschke]
+		Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
+	\end{theorem}
+
+	\reference{23}
+
+	\begin{definition}
+		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On associe à $\rho$ la fonction $\chi_\rho : g \mapsto \trace(\rho(g))$ le \textbf{caractère de $\rho$}. De plus, $\chi_{\rho}$ est dit \textbf{irréductible} si $\rho$ l'est.
+	\end{definition}
+
+	\reference[ULM21]{151}
+	
+	\begin{example}
+		\[ \forall g \in G, \, \chi_{\rho_r}(g) = \begin{cases} |G| &\text{si } g = e_G \\ 0 &\text{sinon} \end{cases} \]
+	\end{example}
+
+	\reference[SER]{32}
+
+	\begin{theorem}
+		\begin{itemize}
+			\item Les caractères forment une base orthonormale de l'espace des fonctions centrales pour le produit scalaire $\langle ., . \rangle$ défini par
+			\[ \forall \chi, \Psi \text{ caractères}, \, \langle \chi, \Psi \rangle = \frac{1}{|G|} \sum_{g \in G} \chi(g) \overline{\Psi(g)} \]
+			\item Un caractère $\chi$ est irréductible si et seulement si $\langle \chi, \chi \rangle$.
+			\item Il y a autant de caractères irréductibles que de classes de conjugaison.
+		\end{itemize}
+	\end{theorem}
+
+	\begin{theorem}
+		Si $\rho_1 : G \rightarrow \mathrm{GL}(V_1), \dots, \rho_s : G \rightarrow \mathrm{GL}(V_s)$ sont les représentations linéaires irréductibles de $G$,
+		\[ \forall i \in \llbracket 1, s \rrbracket, \, |G| = \sum_{i=1}^n \dim(V_i)^2 = \sum_{i=1}^n \chi_{\rho_i}(e_G)^2 = \langle \chi_{\rho_r}, \chi_{\rho_i} \rangle \]
+	\end{theorem}
+
+	\reference[I-P]{73}
+
+	\begin{application}
+		La table des caractères de $S_4$ est :
+		
+		\medskip
+		\begin{whitetabularx}{|c|Y|Y|Y|Y|Y|}
+			\hline
+			& $\id$ & $\begin{pmatrix} 1 & 2 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 & 3 & 4 \end{pmatrix}$ & $\begin{pmatrix} 1 & 2 \end{pmatrix} \begin{pmatrix} 3 & 4 \end{pmatrix}$ \\
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+			\hline
+			$\chi_2$ & $1$ & $-1$ & $1$ & $-1$ & $1$ \\
+			\hline
+			$\chi_3$ & $2$ & $0$ & $-1$ & $0$ & $2$ \\
+			\hline
+			$\chi_4$ & $3$ & $1$ & $0$ & $-1$ & $-1$ \\
+			\hline
+			$\chi_5$ & $3$ & $-1$ & $0$ & $1$ & $-1$ \\
+			\hline
+		\end{whitetabularx}
+	\end{application}
 	%</content>
 \end{document}

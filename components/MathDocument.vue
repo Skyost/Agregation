@@ -92,11 +92,11 @@ export default {
     }
 
     .theorem {
-      @include environment(#ffebee);
+      @include environment(#fce4f2);
     }
 
     .corollary {
-      @include environment(#fce4ec);
+      @include environment(#ffebee);
     }
 
     .definition {

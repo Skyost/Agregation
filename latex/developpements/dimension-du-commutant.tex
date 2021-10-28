@@ -55,14 +55,14 @@
 			X &\mapsto AX-XA
 		\end{array}
 		\]
-		est linéaire, donc on peut considérer sa matrice $B \in \mathcal{M}_{n^2}(\mathbb{K})$ dans la base canonique de $\mathcal{M}_n(\mathbb{K})$ (il s'agit de la matrice associée au système d'équations linéaires). Alors $\mathcal{S} = \ker{B}$. Le rang est invariant par extension de corps, donc
+		est linéaire, donc on peut considérer sa matrice $B \in \mathcal{M}_{n^2}(\mathbb{K})$ dans la base canonique de $\mathcal{M}_n(\mathbb{K})$ (il s'agit de la matrice associée au système d'équations linéaires). Alors $\mathcal{S} = \ker(B)$. Le rang est invariant par extension de corps, donc
 		\[ \rang_{\mathbb{K}}(B) = \rang_{\mathbb{L}}(B) \]
 		d'où
 		\begin{align*}
-			\dim_{\mathbb{K}}(\mathcal{S}) &= \dim_{\mathbb{K}}(\ker{B}) \\
+			\dim_{\mathbb{K}}(\mathcal{S}) &= \dim_{\mathbb{K}}(\ker(B)) \\
 			&= n^2 - \rang_{\mathbb{K}}(B) \\
 			&= n^2 - \rang_{\mathbb{L}}(B) \\
-			&= \dim_{\mathbb{L}}(\ker{B}) \\
+			&= \dim_{\mathbb{L}}(\ker(B)) \\
 			&\geq n
 		\end{align*}
 		car $A$ est trigonalisable dans $\mathbb{L}$. D'où le résultat.
@@ -84,7 +84,7 @@
 			B &\mapsto Bx
 		\end{array}
 		\]
-		est linéaire injective. En effet, si $B \in \ker{\varphi}$, alors
+		est linéaire injective. En effet, si $B \in \ker(\varphi)$, alors
 		\[ \forall k \in \llbracket 0, n-1 \rrbracket, \, BA^kx = A^kBx = 0 \implies B = 0 \]
 		car $B$ s'annule sur une base de $\mathbb{K}^n$. D'où $\dim(\mathcal{C}(A)) \leq \dim(\mathbb{K}^n) = n$. On déduit à l'aide du \cref{dimension-du-commutant-2} que
 		\[ \dim(\mathcal{C}(A)) = n \]

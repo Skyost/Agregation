@@ -32,10 +32,10 @@
 			&= \tr (A_0 H) + A_0 H + o(\Vert H \Vert^2)
 		\end{align*}
 		où ($\Vert . \Vert$ désigne une quelconque norme d'algèbre sur $\mathcal{M}_n(\mathbb{R})$). Ainsi, on a $\mathrm{d} \varphi_{I_n}(H) = \tr(A_0 H) + A_0 H$. D'où
-		\[ \ker{\mathrm{d} \varphi_{I_n}} = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{A}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{A}_n(\mathbb{R}) \]
+		\[ \ker(\mathrm{d} \varphi_{I_n}) = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{A}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{A}_n(\mathbb{R}) \]
 		On définit donc
 		\[ F = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{S}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{S}_n(\mathbb{R})  \]
-		et on a $\mathcal{M}_n(\mathbb{R}) = F \oplus \ker{\mathrm{d} \varphi_{I_n}}$. Ainsi, la différentielle $\mathrm{d} (\varphi_{|F})_{I_n}$ est bijective (car $\ker{\mathrm{d} (\varphi_{|F})_{I_n}} = \ker{\mathrm{d} \varphi_{I_n}} \, \cap \, F = \{ 0 \}$).
+		et on a $\mathcal{M}_n(\mathbb{R}) = F \oplus \ker(\mathrm{d} \varphi_{I_n})$. Ainsi, la différentielle $\mathrm{d} (\varphi_{|F})_{I_n}$ est bijective (car $\ker(\mathrm{d} (\varphi_{|F})_{I_n}) = \ker(\mathrm{d} \varphi_{I_n}) \, \cap \, F = \{ 0 \}$).
 		\newpar
 		On peut donc appliquer le théorème d'inversion locale à $\varphi_{|F}$ : il existe $U$ un voisinage ouvert de $I_n$ dans $F$ tel que $(\varphi_{|U})$ soit $\mathcal{C}^1$-difféomorphisme de $U$ sur $V = \varphi(U)$. De plus, on peut supposer $U \subset \mathrm{GL}_n(\mathbb{R})$ (quitte à considérer $U \, \cap \, U'$ où $U'$ est un voisinage ouvert de $I_n$ dans $\mathrm{GL}_n(\mathbb{R})$ ; qui existe par continuité de $\det$).
 		\newpar

@@ -6,6 +6,7 @@ const fs = require('fs')
 const execSync = require('child_process').execSync
 const katex = require('katex')
 const matter = require('gray-matter')
+const YAML = require('yaml')
 const logger = require('./logger')
 
 // TODO: Cache system.
@@ -14,35 +15,64 @@ module.exports = function () {
   const srcDir = this.options.generateContent.srcDir
   const destDir = this.options.generateContent.destDir
   const pdfDir = this.options.generateContent.pdfDir
+  const booksDir = this.options.generateContent.booksDir
   const pandocRedefinitions = this.options.generateContent.pandocRedefinitions
   const imagesDir = this.options.generateContent.imagesDir
   const imagesDestDir = this.options.generateContent.imagesDestDir
   const gatherings = this.options.generateContent.gatherings
   const gatheringsTitles = this.options.generateContent.gatheringsTitles
+  const gatheringHeaders = this.options.generateContent.gatheringHeaders
   const ignored = this.options.generateContent.ignored.map(file => path.resolve(file))
   ignored.push(path.resolve(pandocRedefinitions))
   ignored.push(path.resolve(imagesDir))
   this.nuxt.hook('build:compile', async function ({ name }) {
     if (name === 'server') {
-      const gatheringsFiles = await generateGatherings(gatherings, gatheringsTitles, srcDir)
+      generateBibliography(booksDir, srcDir)
+      const gatheringsFiles = await generateGatherings(gatherings, gatheringsTitles, gatheringHeaders, srcDir)
       await processFiles(ignored, pandocRedefinitions, path.resolve(srcDir), path.resolve(destDir), path.resolve(pdfDir), gatheringsFiles)
       await handleImages(imagesDir, imagesDestDir)
     }
   })
 }
 
-function generateGatherings (gatherings, gatheringsTitles, srcDir) {
+function generateBibliography (booksDir, srcDir) {
+  logger.info('Generating bibliography...')
+  const files = fs.readdirSync(booksDir)
+  let content = ''
+  for (const file of files) {
+    const book = YAML.parse(fs.readFileSync(path.resolve(booksDir, file), { encoding: 'utf8' }))
+    const dateParts = book.date.split('/')
+    const date = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`
+    const subtitle = book.subtitle ? `\tsubtitle = {${book.subtitle ?? ''}},` : ''
+    content += `@book { [${book.short}],
+\tauthor = {${book.authors.join(' and ')}},
+\ttitle = {${book.title}},
+${subtitle}
+\tdate= {${date}},
+\tpublisher={${book.publisher.replace(/&/g, '\\&')}},
+\turl={${book.website}},
+}
+`
+  }
+  fs.writeFileSync(path.resolve(srcDir, 'bibliography.bib'), content)
+}
+
+function generateGatherings (gatherings, gatheringsTitles, gatheringHeaders, srcDir) {
   const gatheringFiles = new Set()
   for (const gathering of gatherings) {
     logger.info(`Generating gathering "${gathering}"...`)
     const directories = gathering.split('-')
+    const header = gatheringHeaders[gathering] ?? ''
     const title = directories
       .map(directory => gatheringsTitles[directory])
       .join(' \\& ')
-    let content = `\\input{common}
+    let content = `\\providecommand{\\bibliographypath}{bibliography.bib}
+\\input{common}
 \\input{gathering}
 
 \\renewcommand{\\gatheringtitle}{${title}}
+
+${header}
 
 \\begin{document}
 `
@@ -84,6 +114,7 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
         })
         const root = parse(htmlContent)
         handleReferences(root)
+        numberizeTitles(root)
         renderMath(root)
         addVueComponents(root)
         fs.writeFileSync(path.resolve(mdDir, fileName + '.md'), toString(root))
@@ -120,15 +151,20 @@ function handleReferences (root) {
   const references = root.querySelectorAll('.bookref')
   let previousReference
   for (const reference of references) {
-    const matches = reference.innerHTML.match(/\[[A-Z0-9\-']+]/)
-    if (matches) {
-      previousReference = matches[0]
+    const short = reference.querySelector('.bookrefshort').text.trim()
+    let html = reference.querySelector('.bookrefpage').text.trim()
+    if (short.length > 0) {
+      previousReference = short
+      html = `<strong>[${short}]</strong><br>${html}`
     }
     if (previousReference) {
-      const html = reference.innerHTML.trim().replace('<strong>[]</strong><br>', '')
       reference.innerHTML = `<a href="/bibliographie#${previousReference}">${html}</a>`
     }
   }
+}
+
+function numberizeTitles (root) {
+  // TODO
 }
 
 function addVueComponents (root) {
@@ -182,7 +218,13 @@ async function handleImages (imagesDir, imagesDestDir) {
 }
 
 function latexmk (directory, file) {
-  return execSync(`latexmk -quiet -pdflatex=lualatex -pdf "${file}"`, { cwd: directory })
+  if (process.env.DONT_REGENERATE_IF_PDF_FOUND ?? false) {
+    const pdfPath = path.resolve(directory, file.replace('.tex', '.pdf'))
+    if (fs.existsSync(pdfPath)) {
+      return
+    }
+  }
+  execSync(`latexmk -quiet -pdflatex=lualatex -pdf "${file}"`, { cwd: directory })
 }
 
 function getFileName (file) {

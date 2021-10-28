@@ -49,7 +49,8 @@
 
 \newcommand{\reference}[2][]{%
 	\begin{bookref}%
-		\textbf{[#1]} \\ p. #2%
+		\begin{bookrefshort}#1\end{bookrefshort}%
+		\begin{bookrefpage}p. #2\end{bookrefpage}%
 	\end{bookref}%
 }
 

@@ -28,7 +28,7 @@
 		\begin{enumerate}[(i)]
 			\item Montrons que la famille $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$ est à la fois libre et génératrice.
 			\begin{itemize}
-				\item Soit $P(f) \in \mathbb{K}[f]$. On fait la division euclidienne de $P$ par $\mu_f$ dans $\mathbb{K}[X]$ pour écrire $P = \mu_f Q + R$ avec $Q, R \in \mathbb{K}[X]$ et $\deg(R) < k = \deg(\mu_f)$. En évaluant en $f$, cela donne $P(f) = R(f) \in \operatorname{Vect}(\operatorname{id}_E, \dots, f^{k-1})$. Donc la famille est génératrice.
+				\item Soit $P(f) \in \mathbb{K}[f]$. On fait la division euclidienne de $P$ par $\mu_f$ dans $\mathbb{K}[X]$ pour écrire $P = \mu_f Q + R$ avec $Q, R \in \mathbb{K}[X]$ et $\deg(R) < k = \deg(\mu_f)$. En évaluant en $f$, cela donne $P(f) = R(f) \in \operatorname{Vect}(\id_E, \dots, f^{k-1})$. Donc la famille est génératrice.
 				\item Si $\sum_{i=0}^{k-1} \lambda_i f^i = 0$, alors le polynôme $P = \sum_{i=0}^{k-1} \lambda_i X^i$ vérifie $P(f) = 0$. Donc $\mu_f \mid P$, et comme $\deg(P) < \deg(\mu_f)$, on a $P = 0$. Donc $\lambda_0 = \dots = \lambda_{k-1} = 0$. Donc la famille est libre.
 			\end{itemize}
 			\item La deuxième assertion se montre sensiblement de la même manière.
@@ -43,7 +43,7 @@
 	\end{lemma}
 
 	\begin{remark}
-		La démonstration est un peu trop longue pour être incluse ici : c'est un résultat qui demande du temps pour le démontrer (et pourrait constituer un vrai développement à part entière). Nous vous renvoyons vers \textbf{[GOU21]} p. 178 pour la démonstration.
+		La démonstration est un peu trop longue pour être incluse ici : c'est un résultat qui demande du temps pour le démontrer (et pourrait constituer un vrai développement à part entière). Nous vous renvoyons vers \cite{[GOU21]} p. 178 pour la démonstration.
 	\end{remark}
 
 	\begin{theorem}[Frobenius]
@@ -53,7 +53,7 @@
 			\item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
 			\item Si $P_i = \mu_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
 		\end{enumerate}
-		La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que du choix de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
+		La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
 	\end{theorem}
 
 	\begin{demonstration}
@@ -84,8 +84,8 @@
 				g &\mapsto e_k^* \circ g
 			\end{array}
 			\]
-			Par définition de $\Gamma$, $\varphi$ est surjective. Soit $g \in \ker{\varphi}$. On a alors $e_k^* \circ g = 0$, et comme $g \in \mathbb{K}[f]$,
-			\[ g = \lambda_1 \operatorname{Id} + \dots \lambda_p f^{p-1} \text{ avec } \lambda_p \neq 0 \text{ et } p \leq k \]
+			Par définition de $\Gamma$, $\varphi$ est surjective. Soit $g \in \ker(\varphi)$. On a alors $e_k^* \circ g = 0$, et comme $g \in \mathbb{K}[f]$,
+			\[ g = \lambda_1 \id + \dots \lambda_p f^{p-1} \text{ avec } \lambda_p \neq 0 \text{ et } p \leq k \]
 			On a donc $0 = e_k^* \circ g(f^{k-p} (x)) = \lambda_p \neq 0$. Ainsi, $g = 0$ et $\phi$ est un isomorphisme. Donc $\dim(\operatorname{Vect}(\Gamma)) = \dim(\mathbb{K}[f]) = k$ par le \cref{invariants-de-similitude-1}, ce que l'on voulait.
 			\newpar
 			Soit $P_1$ le polynôme minimal de $f_{|F}$ (qui est le polynôme minimal de $f$ car $P_1 = \mu_{f_{|F}} = \underset{\mu_f = P_x}{=} \mu_f$). Soit $P_2$ le polynôme minimal de $f_{|G}$. Comme $G$ est stable par $f$, on a $P_1(f_{|G}) = \mu_f(f_{|G}) = 0$, donc $P_2 \mid P_1$. Il suffit alors de réitérer en remplaçant $f$ par $f_{|G}$ et $E$ par $G$ pour obtenir la décomposition voulu.
@@ -101,7 +101,7 @@
 	\end{demonstration}
 
 	\begin{remark}
-		Dans ce développement, il est courant de ne montrer que l'existence (à cause de la contrainte de temps, mais aussi de la contrainte de place).
+		Dans ce développement, il est courant de ne montrer que l'existence (à cause de la contrainte de temps, mais aussi de la contrainte d'espace).
 	\end{remark}
 	%</content>
 \end{document}

@@ -27,12 +27,12 @@
 
 	\begin{lemma}
 		\label{theoreme-de-frobenius-zolotarev-2}
-		Soient $u \in \mathrm{GL}(V)$ et $H$ un hyperplan de $V$ tel que $u_{|H} = \operatorname{Id}_H$. Si $\det(u) \neq 1$, alors $u$ est une dilatation.
+		Soient $u \in \mathrm{GL}(V)$ et $H$ un hyperplan de $V$ tel que $u_{|H} = \id_H$. Si $\det(u) \neq 1$, alors $u$ est une dilatation.
 	\end{lemma}
 
 	\begin{demonstration}
-		On note $n = \dim(V)$. Comme $u_{|H} = \operatorname{Id}_H$ et $\dim(H) = n-1$, on en déduit que $1$ est valeur propre de multiplicité $n-1$ de $u$ et que $H$ est le sous-espace propre associé :
-		\[ H = E_1(u) = \ker{u - \operatorname{Id}_V} \]
+		On note $n = \dim(V)$. Comme $u_{|H} = \id_H$ et $\dim(H) = n-1$, on en déduit que $1$ est valeur propre de multiplicité $n-1$ de $u$ et que $H$ est le sous-espace propre associé :
+		\[ H = E_1(u) = \ker(u - \id_V) \]
 		On pose $\lambda = \det(u) \notin \{ 0, 1 \}$. $\lambda$ est valeur propre de $u$ (on peut le voir par exemple en calculant le polynôme caractéristique de $u$) de multiplicité $1$. Donc $u$ est diagonalisable, et dans une base $\mathcal{B}$ adaptée à la diagonalisation, on a :
 		\[ \operatorname{Mat}(u, \mathcal{B}) =
 		\begin{pmatrix}

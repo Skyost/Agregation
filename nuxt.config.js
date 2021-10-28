@@ -1,5 +1,7 @@
 import { HOST_NAME, SITE_DESCRIPTION, SITE_NAME } from './utils/site'
 
+require('dotenv').config()
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -104,6 +106,7 @@ export default {
     srcDir: 'latex/',
     destDir: 'content/',
     pdfDir: 'static/pdf/',
+    booksDir: 'content/livres/',
     pandocRedefinitions: 'latex/pandoc.tex',
     ignored: [
       'latex/common.tex',
@@ -119,6 +122,13 @@ export default {
     gatheringsTitles: {
       lecons: 'Plans de leçons',
       developpements: 'Développements'
+    },
+    gatheringHeaders: {
+      'lecons-developpements': `\\renewcommand{\\dev}[1]{%
+\t\\reversemarginpar%
+\t\\marginnote[\\bfseries\\color{devcolor}\\hyperlink{#1}{DEV}]{}%
+\t\\normalmarginpar%
+}`
     }
   }
 }
