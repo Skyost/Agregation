@@ -9,6 +9,8 @@ const matter = require('gray-matter')
 const YAML = require('yaml')
 const logger = require('./logger')
 
+const dontRegenerateIfPDFFound = process.env.DONT_REGENERATE_IF_PDF_FOUND === 'true'
+
 // TODO: Cache system.
 
 module.exports = function () {
@@ -226,7 +228,7 @@ async function handleImages (imagesDir, imagesDestDir) {
 }
 
 function latexmk (directory, file) {
-  if (process.env.DONT_REGENERATE_IF_PDF_FOUND ?? false) {
+  if (dontRegenerateIfPDFFound) {
     const pdfPath = path.resolve(directory, file.replace('.tex', '.pdf'))
     if (fs.existsSync(pdfPath)) {
       return
