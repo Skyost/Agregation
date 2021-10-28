@@ -240,7 +240,7 @@ function latexmk (directory, file) {
     logger.info('Here is the log file content :')
     const logPath = path.resolve(directory, file.replace('.tex', '.log'))
     if (fs.existsSync(logPath)) {
-      logger.info(fs.readFileSync(path.resolve(logPath, file), { encoding: 'utf8' }))
+      logger.info(fs.readFileSync(logPath, { encoding: 'utf8' }))
     }
   }
 }
