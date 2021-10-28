@@ -34,7 +34,7 @@ jobs:
     - name: Install LaTeX 🖋
       run: sudo apt-get install -y texlive-latex-base texlive-lang-french texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-luatex biber latexmk
     - name: Install additionnal LaTeX packages ➕
-      run: sudo tlmgr install lua-ul
+      run: sudo tlmdr init-usertree && sudo tlmgr install lua-ul
     - name: Install Poppler 🖼
       run: sudo apt-get install -y poppler-utils
     - name: Generate ⚙️
