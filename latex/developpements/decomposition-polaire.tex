@@ -48,8 +48,8 @@
 	\begin{demonstration}
 		Montrer qu'une application est un homéomorphisme se fait en $4$ étapes : on montre qu'elle est continue, injective, surjective, et que la réciproque est elle aussi continue.
 		\begin{itemize}
-			\item \underLine{L'application est bien définie et continue :} Si $O \in \mathcal{O}_n(\mathbb{R})$ et $S \in \mathcal{S}_n^{++}(\mathbb{R})$, alors $OS \in \mathrm{GL}_n(\mathbb{R})$. De plus, $\mu$ est continue en tant que restriction de la multiplication matricielle.
-			\item \underLine{L'application est surjective :} Soit $M \in \mathrm{GL}_n(\mathbb{R})$. Si $x \neq 0$, on a
+			\item \uline{L'application est bien définie et continue :} Si $O \in \mathcal{O}_n(\mathbb{R})$ et $S \in \mathcal{S}_n^{++}(\mathbb{R})$, alors $OS \in \mathrm{GL}_n(\mathbb{R})$. De plus, $\mu$ est continue en tant que restriction de la multiplication matricielle.
+			\item \uline{L'application est surjective :} Soit $M \in \mathrm{GL}_n(\mathbb{R})$. Si $x \neq 0$, on a
 			\[ \tr x (\tr M M) x = \tr (Mx) (Mx) = \Vert Mx \Vert_2^2 > 0 \]
 			En particulier, $\tr M M \in \mathcal{S}_n^{++}(\mathbb{R})$. Par le théorème spectral, il existe $P \in \mathcal{O}_n(\mathbb{R})$ et $\lambda_1, \dots, \lambda_n > 0$ tels que $\tr M M = P \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1}$. On pose alors
 			\[ D = \operatorname{Diag} \left(\sqrt{\lambda_1}, \dots, \sqrt{\lambda_n} \right) \text{ et } S = P D P^{-1} \]
@@ -60,7 +60,7 @@
 			On pose donc $O = MS^{-1}$ (ie. $M = OS$), et on a
 			\[ \tr O O = \tr (MS^{-1}) MS^{-1} = \tr S^{-1} \tr M M S^{-1} = S^{-1} S^2 S^{-1} = I_n \implies O \in \mathcal{O}_n(\mathbb{R}) \]
 			Donc $\mu(O, S) = M$ et $\mu$ est surjective.
-			\item \underLine{L'application est injective :} Soit $M = OS \in \mathrm{GL}_n(\mathbb{R})$ (avec $O$ et $S$ comme précédemment). Soit $M = O'S'$ une autre décomposition polaire de $M$. Alors il vient,
+			\item \uline{L'application est injective :} Soit $M = OS \in \mathrm{GL}_n(\mathbb{R})$ (avec $O$ et $S$ comme précédemment). Soit $M = O'S'$ une autre décomposition polaire de $M$. Alors il vient,
 			\[ S^2 = \tr M M = \tr (O'S') O'S' = \tr S' \tr O' O' S' = S'^{2} \]
 			Soit $Q$ un polynôme tel que $\forall i \in \llbracket 1, n \rrbracket$, $Q(\lambda_i) = \sqrt{\lambda_i}$ (les polynômes d'interpolation de Lagrange conviennent parfaitement). Alors,
 			\[\ S = PD \tr P = PQ \left(D^2 \right) \tr P = Q \left(PD^2 \tr P \right) = Q \left(\tr M M \right) = Q \left(S^2 \right) = Q \left(S'^2 \right) \]
@@ -74,7 +74,7 @@
 				& \implies S = S'
 			\end{align*}
 			Ainsi, $O = MS^{-1} = MS'^{-1} = O'$. Donc $\mu$ est injective.
-			\item \underLine{L'application inverse est continue :} Soit $(M_p) \in \mathrm{GL}_n(\mathbb{R})^{\mathbb{N}}$ qui converge vers $M \in \mathrm{GL}_n(\mathbb{R})$. Il s'agit de montrer que la suite $\left (\mu^{-1} \left (M_p \right) \right) = (O_p, S_p)$ converge vers $\mu^{-1}(M) = (O, S)$. Comme $\mathcal{O}_n(\mathbb{R})$ est compact, il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que la suite extraite $(O_{\varphi(p)})$ converge vers une valeur d'adhérence $\overline{O} \in \mathcal{O}_n(\mathbb{R})$. Ainsi, la suite $(S_{\varphi(p)})$ converge vers $\overline{S} = \overline{O}^{-1} M$.
+			\item \uline{L'application inverse est continue :} Soit $(M_p) \in \mathrm{GL}_n(\mathbb{R})^{\mathbb{N}}$ qui converge vers $M \in \mathrm{GL}_n(\mathbb{R})$. Il s'agit de montrer que la suite $\left (\mu^{-1} \left (M_p \right) \right) = (O_p, S_p)$ converge vers $\mu^{-1}(M) = (O, S)$. Comme $\mathcal{O}_n(\mathbb{R})$ est compact, il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que la suite extraite $(O_{\varphi(p)})$ converge vers une valeur d'adhérence $\overline{O} \in \mathcal{O}_n(\mathbb{R})$. Ainsi, la suite $(S_{\varphi(p)})$ converge vers $\overline{S} = \overline{O}^{-1} M$.
 			\newpar
 			Mais, $\overline{S} = \overline{O}^{-1} M \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \overline{\mathcal{S}_n^{++}(\mathbb{R})}$. Donc par le \cref{decomposition-polaire-1},
 			\[ \overline{S} \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \mathcal{S}_n^{+}(\mathbb{R}) \]

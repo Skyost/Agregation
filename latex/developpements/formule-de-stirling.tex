@@ -59,8 +59,8 @@
 	\begin{demonstration}
 		Soit $(X_n)$ une suite de variable aléatoires indépendantes de même loi $\mathcal{E}(1)$. On pose $S_n = \sum_{k=0}^n X_k$. Montrons par récurrence que $S_n \sim \Gamma(n+1, 1)$.
 		\begin{itemize}
-			\item \underLine{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
-			\item \underLine{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
+			\item \uline{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
+			\item \uline{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
 		\end{itemize}
 		Par le \cref{formule-de-stirling-1} appliqué à $S_n$, p.p. en $x \in \mathbb{R}$,
 		\begin{align*}

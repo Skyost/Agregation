@@ -27,8 +27,8 @@
 	\begin{demonstration}
 		On procède par récurrence sur $n$.
 		\begin{itemize}
-			\item \underLine{Si $n = 1$ :} il n'y a rien à montrer, tout base est $\Phi$-orthogonale.
-			\item \underLine{On suppose le résultat vrai à un rang $n \geq 1$ et montrons le au rang $n + 1$.} Si $\Phi = 0$, alors tout base de $E$ est $\Phi$-orthogonale. Sinon, il existe $v \in E$ tel que $\Phi(v) \neq 0$. Dans ce cas, l'application $f = \varphi(v, .)$ est une forme linéaire non nulle sur $E$.
+			\item \uline{Si $n = 1$ :} il n'y a rien à montrer, tout base est $\Phi$-orthogonale.
+			\item \uline{On suppose le résultat vrai à un rang $n \geq 1$ et montrons le au rang $n + 1$.} Si $\Phi = 0$, alors tout base de $E$ est $\Phi$-orthogonale. Sinon, il existe $v \in E$ tel que $\Phi(v) \neq 0$. Dans ce cas, l'application $f = \varphi(v, .)$ est une forme linéaire non nulle sur $E$.
 			\newpar
 			$H = \ker(f)$ est un hyperplan de $E$ et comme $v \notin H$, on a $E = H \oplus \operatorname{Vect}(v)$. Or, $\dim(H) = n-1$, donc on peut appliquer l'hypothèse de récurrence à $\Phi_{|H}$, et on obtient une base $\mathcal{B}$ de $H$ qui est $\Phi$-orthogonale. En particulier, $\mathcal{B} \, \cup \, \{ v \}$ est une base $\Phi$-orthogonale de $E$.
 		\end{itemize}

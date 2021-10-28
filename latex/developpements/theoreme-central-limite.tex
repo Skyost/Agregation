@@ -19,11 +19,11 @@
 	\end{theorem}
 
 	\begin{demonstration}
-		\underLine{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
+		\uline{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
 		\[ \lim_{n \rightarrow +\infty} \mathbb{E}(g_t(X_n)) = \mathbb{E}(g_t(X)) \]
 		ce que l'on voulait.
 		\newpar
-		\underLine{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$, on pose $f = \widehat{\varphi}$. Alors
+		\uline{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$, on pose $f = \widehat{\varphi}$. Alors
 		\[ \mathbb{E}(f(X_n)) = \mathbb{E} \left ( \int_{\mathbb{R}} e^{itX_n} \varphi(t) \, \mathrm{d}t \right ) \]
 		Comme la fonction $(\omega, t) \mapsto e^{itX_n(\omega)} \varphi(t)$ est intégrable pour la mesure $\mathbb{P}_{X_n} \otimes \lambda$, on peut appliquer le théorème de Fubini-Lebesgue pour intervertir espérance et intégrale :
 		\begin{align*}

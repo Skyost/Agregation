@@ -33,8 +33,6 @@ jobs:
       run: wget https://github.com/jgm/pandoc/releases/download/2.15/pandoc-2.15-1-amd64.deb && sudo dpkg -i pandoc-2.15-1-amd64.deb
     - name: Install LaTeX 🖋
       run: sudo apt-get install -y texlive-latex-base texlive-lang-french texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-luatex biber latexmk
-    - name: Install additionnal LaTeX packages ➕
-      run: sudo tlmgr init-usertree && sudo tlmgr install lua-ul
     - name: Install Poppler 🖼
       run: sudo apt-get install -y poppler-utils
     - name: Generate ⚙️

@@ -21,10 +21,10 @@
 	\begin{demonstration}
 		Nous commençons par montrer l'existence en $4$ étapes.
 		\begin{itemize}
-			\item \underLine{Localisation :} Fixons un réel $r > 0$ tel que le produit $P = [t_0 - r, t_0 + r] \times \overline{B}(y_0, r)$ soit contenu dans $I \times \Omega$. $F$ est continue sur $P$ qui est compact, donc est bornée par $M$ sur $P$.
-			\item \underLine{Mise sous forme intégrale :} Comme une solution de $y' = F(t, y)$ est de ce fait $\mathcal{C}^1$, on a
+			\item \uline{Localisation :} Fixons un réel $r > 0$ tel que le produit $P = [t_0 - r, t_0 + r] \times \overline{B}(y_0, r)$ soit contenu dans $I \times \Omega$. $F$ est continue sur $P$ qui est compact, donc est bornée par $M$ sur $P$.
+			\item \uline{Mise sous forme intégrale :} Comme une solution de $y' = F(t, y)$ est de ce fait $\mathcal{C}^1$, on a
 			\[ y \in \mathcal{C}^1 \text{ vérifie } (C) \iff y(t) = y_0 + \int_{t_0}^t F(u, y(u)) \, \mathrm{d}u \tag{$*$} \]
-			\item \underLine{Choix d'un domaine stable :} Soit $\alpha \in ]0, r[$. Introduisons l'intervalle $I_\alpha = [t_0 - \alpha, t_0 + \alpha]$, l'espace $A_\alpha = \mathcal{C}(I_\alpha, \overline{B}(y_0, r))$, puis l'application
+			\item \uline{Choix d'un domaine stable :} Soit $\alpha \in ]0, r[$. Introduisons l'intervalle $I_\alpha = [t_0 - \alpha, t_0 + \alpha]$, l'espace $A_\alpha = \mathcal{C}(I_\alpha, \overline{B}(y_0, r))$, puis l'application
 			\[
 			\Psi :
 			\begin{array}{ll}
@@ -38,14 +38,14 @@
 				\implies& \Vert \Psi(\varphi)(t) - y_0 \Vert \leq M |t-t_0| \leq \alpha M
 			\end{align*}
 			Par suite, en choisissant $\alpha M < r$, le domaine $A_\alpha$ est stable par $\Psi$.
-			\item \underLine{Détermination d'un domaine de contraction :} Ici, $A_\alpha$ est normé par la norme $\Vert . \Vert_{\infty}$, et on veut faire de $\Psi$ une contraction stricte. Soient $\varphi, \phi \in A_\alpha$, par définition, pour tout $t \in I_\alpha$,
+			\item \uline{Détermination d'un domaine de contraction :} Ici, $A_\alpha$ est normé par la norme $\Vert . \Vert_{\infty}$, et on veut faire de $\Psi$ une contraction stricte. Soient $\varphi, \phi \in A_\alpha$, par définition, pour tout $t \in I_\alpha$,
 			\begin{align*}
 				\Vert (\Psi(\varphi) - \Psi(\phi)) (t) \Vert &= \left \Vert \int_{t_0}^t (F(u, \varphi(u)) - F(u, \phi(u))) \, \mathrm{d}u \right \Vert \\
 				&\leq k |t-t_0| \Vert \varphi - \phi \Vert_\infty \\
 				&\leq k \alpha \Vert \varphi - \phi \Vert_\infty
 			\end{align*}
 			où $k$ désigne le rapport de lipschitziannité de $F$. On choisit désormais $\alpha$ tel que $k \alpha < 1$ et $\alpha M < r$.
-			\item \underLine{Conclusion :} L'application $\Psi$ est, par choix de $\alpha$, une contraction stricte de $(A_\alpha, \Vert . \Vert_{\infty})$ dans lui-même. Le fermé $\overline{B}(y_0, r)$ de l'espace de Banach de $E$ est complet, par suite $(A_\alpha, \Vert . \Vert_{\infty})$ l'est aussi.
+			\item \uline{Conclusion :} L'application $\Psi$ est, par choix de $\alpha$, une contraction stricte de $(A_\alpha, \Vert . \Vert_{\infty})$ dans lui-même. Le fermé $\overline{B}(y_0, r)$ de l'espace de Banach de $E$ est complet, par suite $(A_\alpha, \Vert . \Vert_{\infty})$ l'est aussi.
 			\newpar
 			Par le théorème du point fixe de Banach, $\Psi$ possède donc un point fixe $\varphi$ dans $A_\alpha$. $\varphi$ est alors de classe $\mathcal{C}^1$ et vérifie $(C)$ par $(*)$.
 		\end{itemize}
