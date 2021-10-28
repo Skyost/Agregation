@@ -22,7 +22,7 @@
 
 % Commandes :
 
-\newcommand{\lesson}[3]{%
+\providecommand{\lesson}[3]{%
 	\begin{docname}%
 		\section*{#3}%
 	\end{docname}%
@@ -31,7 +31,7 @@
 	\end{doccategories}%
 }
 
-\newcommand{\development}[3]{%
+\providecommand{\development}[3]{%
 	\begin{docname}%
 		\section*{#3}%
 	\end{docname}%
@@ -40,27 +40,27 @@
 	\end{doccategories}%
 }
 
-\newcommand{\summary}[1]{%
+\providecommand{\summary}[1]{%
 	\begin{docsummary}%
 		#1%
 	\end{docsummary}%
 	\newpar%
 }
 
-\newcommand{\reference}[2][]{%
+\providecommand{\reference}[2][]{%
 	\begin{bookref}%
 		\begin{bookrefshort}#1\end{bookrefshort}%
 		\begin{bookrefpage}p. #2\end{bookrefpage}%
 	\end{bookref}%
 }
 
-\newcommand{\includelatexpicture}[1]{%
+\providecommand{\includelatexpicture}[1]{%
 	\begin{center}%
 		\includegraphics{/images/latex/#1.svg}%
 	\end{center}%
 }
 
-\renewcommand{\newpar}{
+\providecommand{\newpar}{
 
 
 }

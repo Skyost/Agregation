@@ -1,5 +1,5 @@
 import { parse } from 'node-html-parser'
-import { normalizeString } from '../utils/utils'
+import { normalizeString, romanize } from '../utils/utils'
 
 const path = require('path')
 const fs = require('fs')
@@ -108,7 +108,7 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
       const fileName = getFileName(file)
       if (!gatheringsFiles.has(filePath)) {
         fs.mkdirSync(mdDir, { recursive: true })
-        const htmlContent = execSync(`pandoc "${path.relative(directory, pandocRedefinitions)}" "${filePath}" -t html --gladtex`, {
+        const htmlContent = execSync(`pandoc "${path.relative(directory, pandocRedefinitions)}" "${filePath}" -t html --gladtex --number-sections`, {
           cwd: directory,
           encoding: 'utf-8'
         })
@@ -129,24 +129,6 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
   }
 }
 
-function renderMath (root) {
-  const mathElements = root.querySelectorAll('eq')
-  for (const mathElement of mathElements) {
-    mathElement.replaceWith(
-      katex.renderToString(filterUnknownSymbols(mathElement.text), {
-        displayMode: mathElement.getAttribute('env') === 'displaymath',
-        output: 'html'
-      })
-    )
-  }
-}
-
-function filterUnknownSymbols (text) {
-  return text
-    .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
-    .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}')
-}
-
 function handleReferences (root) {
   const references = root.querySelectorAll('.bookref')
   let previousReference
@@ -164,7 +146,33 @@ function handleReferences (root) {
 }
 
 function numberizeTitles (root) {
-  // TODO
+  const numbers = root.querySelectorAll('.header-section-number')
+  for (const number of numbers) {
+    const parts = number.text.trim().split('.')
+    if (parts.length === 2) {
+      number.innerHTML = `${romanize(parts[1])} -`
+    } else if (parts.length === 3) {
+      number.innerHTML = `${parts[2]}.`
+    }
+  }
+}
+
+function renderMath (root) {
+  const mathElements = root.querySelectorAll('eq')
+  for (const mathElement of mathElements) {
+    mathElement.replaceWith(
+      katex.renderToString(filterUnknownSymbols(mathElement.text), {
+        displayMode: mathElement.getAttribute('env') === 'displaymath',
+        output: 'html'
+      })
+    )
+  }
+}
+
+function filterUnknownSymbols (text) {
+  return text
+    .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
+    .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}')
 }
 
 function addVueComponents (root) {
