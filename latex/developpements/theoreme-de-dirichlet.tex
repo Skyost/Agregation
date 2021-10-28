@@ -1,0 +1,78 @@
+\input{../common}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{theoreme-de-dirichlet}{Théorème de Dirichlet}
+
+	\summary{On montre le théorème de Dirichlet, qui permet sous certaines hypothèse de régularité, de montrer la convergence ponctuelle d'une série de Fourier. On l'applique ensuite pour calculer $\sum_{n=1}^{+\infty} \frac{1}{n^2}$.}
+	
+	\begin{notation}
+		Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2 \pi$-périodique.
+		\begin{itemize}
+			\item On note $\forall n \in \mathbb{Z}$, $c_n(f)$ le $n$-ième coefficient de Fourier.
+			\item On note $\forall n \in \mathbb{Z}$, $a_n(f)$ et $b_n(f)$ les $n$-ièmes coefficients de Fourier réels.
+		\end{itemize}
+	\end{notation}
+
+	\reference[GOU20]{271}
+	
+	\begin{lemma}
+		\label{theoreme-de-dirichlet-1}
+		Soit $D_n$ le noyau de Dirichlet, défini par
+		\[ \forall n \in \mathbb{N}, \, \forall t \in \mathbb{R}, \, D_n(t) = \sum_{k=-n}^n e^{ikt} \]
+		Alors :
+		\[ \forall n \in \mathbb{N}, \, \forall t \in \mathbb{R} \setminus 2\pi\mathbb{Z}, \, D_n(t) = \frac{\sin \left ( \frac{(2n + 1)t}{2} \right)}{\sin \left ( \frac{t}{2} \right)} \]
+	\end{lemma}
+
+	\begin{demonstration}
+		Soient $n \in \mathbb{Z}$ et $t \in \mathbb{R}\setminus 2\pi\mathbb{Z}$. On calcul :
+		\begin{align*}
+			D_n(t) &= e^{-int} \sum_{k=0}^{2n} e^{ikt} \\
+			&= e^{-int} \frac{e^{(2n+1)it} - 1}{e^{it} - 1} \\
+			&= e^{-int} \frac{e^{\frac{i (2n+1) t}{2}}}{e^{\frac{i t}{2}}} \frac{e^{\frac{i (2n+1) t}{2}} - e^{\frac{-i (2n+1) t}{2}}}{e^{i\frac{t}{2}} - e^{-i \frac{t}{2}}} \\
+			&= \frac{2i \sin \left ( \frac{(2n + 1)t}{2} \right)}{2i \sin \left ( \frac{t}{2} \right)} \\
+			&= \frac{\sin \left ( \frac{(2n + 1)t}{2} \right)}{\sin \left ( \frac{t}{2} \right)}
+		\end{align*}
+	\end{demonstration}
+
+	\begin{theorem}[Dirichlet]
+		\label{theoreme-de-dirichlet-2}
+		Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2 \pi$-périodique et de classe $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Soit $t_0 \in \mathbb{R}$. Alors $\sum_{n \in \mathbb{Z}} c_n(f) e^{int_0}$ converge et
+		\[ \sum_{n = -\infty}^{+\infty} c_n(f) e^{int_0} = \frac{f(t_0+) + f(t_0-)}{2} \]
+	\end{theorem}
+
+	\begin{demonstration}
+		Quitte à composer par une translation $t \mapsto t + t_0$, on peut supposer $t_0 = 0$. Pour tout $n \in \mathbb{N}$, on note $s_n = \sum_{k=-n}^n c_k(f)$. Il s'agit de montrer que la suite $(u_n)$ définie $\forall n \in \mathbb{N}$ par $u_n = s_n - \frac{f(0+) + f(0-)}{2}$ tend vers $0$. Or,
+		\[ 2\pi s_n = \sum_{k=-n}^n \int_{-\pi}^{\pi} f(t) e^{-int} \, \mathrm{d}t = \int_{-\pi}^{\pi} f(t) D_n(t) \, \mathrm{d}t = \int^0_{-\pi} f(t) D_n(t) \, \mathrm{d}t + \int_0^{\pi} f(t) D_n(t) \, \mathrm{d}t \]
+		Comme $D_n$ est une fonction paire, on a
+		\[ \int^0_{-\pi} f(t) D_n(t) \, \mathrm{d}t = \int_0^{\pi} f(-t) D_n(t) \, \mathrm{d}t \]
+		D'où,
+		\[ 2 \pi s_n = \int_0^{\pi} (f(t) + f(-t)) D_n(t) \, \mathrm{d}t \]
+		On en déduit à l'aide du \cref{theoreme-de-dirichlet-1}, que :
+		\[ 2 \pi u_n = \int_0^{\pi} (f(t) + f(-t) - f(0+) - f(0-)) D_n(t) \, \mathrm{d}t = \int_0^{\pi} g(t) \sin \left ( \frac{(2n + 1)t}{2} \right) \, \mathrm{d}t \]
+		où $g : t \mapsto \frac{f(t) + f(-t) - f(0+) - f(0-)}{\sin \left ( \frac{t}{2} \right)}$ est continue par morceaux sur $]0, \pi[$ et bornée sur un voisinage de $0$ par hypothèse. La fonction $g$ est donc intégrable sur $]0, \pi]$ et le lemme de Riemann-Lebesgue entraîne $\lim_{n \rightarrow +\infty} 2 \pi u_n = 0$.
+	\end{demonstration}
+
+	\begin{application}
+		\[ \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^2}{6} \]
+	\end{application}
+
+	\begin{demonstration}
+		On définit $f : x \mapsto 1 - \frac{x^2}{\pi^2}$. La fonction $f$ est $2\pi$-périodique et est paire. Les coefficients $b_n$ sont donc nuls. Par ailleurs,
+		\[ a_0(f) = \frac{1}{\pi} \int_{-\pi}^{\pi} \left(1 - \frac{t^2}{\pi^2} \right) \, \mathrm{d}t = \frac{4}{3} \]
+		et $\forall n \in \mathbb{N}^*$,
+		\[ a_n(f) = \frac{1}{\pi} \int_{-\pi}^{\pi} \left(1 - \frac{t^2}{\pi^2} \right) \cos(nt) \, \mathrm{d}t = -\frac{2}{\pi^3} \int_{-\pi}^{\pi} t^2 \cos(nt) \, \mathrm{d}t \]
+		Après une double intégration par parties, on obtient :
+		\[ a_n(f) = (-1)^{n+1} \frac{4}{n^2 \pi^2} \]
+		Comme la fonction $f$ est $\mathcal{C}^{\infty}$, on peut appliquer le \cref{theoreme-de-dirichlet-2} en $t_0 = \pi$, qui donne :
+		\begin{align*}
+			0 &= f(\pi) \\
+			&= \frac{a_0(f)}{2} \sum_{n = 1}^{+\infty} a_n(f) \cos(n\pi) \\
+			&= \frac{2}{3} - \frac{4}{\pi^2} \sum_{n = 1}^{+\infty} (-1)^n \frac{\cos(n\pi)}{n^2} \\
+			&= \frac{2}{3} - \frac{4}{\pi^2} \sum_{n = 1}^{+\infty} \frac{1}{n^2}
+		\end{align*}
+		On en déduit :
+		\[ \sum_{n=1}^{+\infty} \frac{1}{n^2} = \frac{\pi^2}{6} \]
+	\end{demonstration}
+	%</content>
+\end{document}
