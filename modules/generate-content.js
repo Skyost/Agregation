@@ -10,6 +10,7 @@ const YAML = require('yaml')
 const logger = require('./logger')
 
 const dontRegenerateIfPDFFound = process.env.DONT_REGENERATE_IF_PDF_FOUND === 'true'
+const latexMkAdditionalArguments = process.env.LATEXMK_ADDITIONAL_ARGUMENTS ?? ''
 
 // TODO: Cache system.
 
@@ -234,15 +235,7 @@ function latexmk (directory, file) {
       return
     }
   }
-  try {
-    execSync(`latexmk -quiet -pdflatex=lualatex -pdf "${file}"`, { cwd: directory })
-  } catch (ex) {
-    logger.info('Here is the log file content :')
-    const logPath = path.resolve(directory, file.replace('.tex', '.log'))
-    if (fs.existsSync(logPath)) {
-      logger.info(fs.readFileSync(logPath, { encoding: 'utf8' }))
-    }
-  }
+  execSync(`latexmk -pdflatex=lualatex -pdf "${file}" ${latexMkAdditionalArguments}`, { cwd: directory })
 }
 
 function getFileName (file) {
