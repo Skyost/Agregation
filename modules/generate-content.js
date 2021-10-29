@@ -229,19 +229,7 @@ function latexmk (directory, file) {
       return
     }
   }
-  try {
-    execSync(`latexmk -pdflatex=lualatex -pdf "${file}" ${latexMkAdditionalArguments}`, { cwd: directory })
-  } catch (ex) {
-    logger.info('Here is the log file content :')
-    const logPath = path.resolve(directory, file.replace('.tex', '.log'))
-    if (fs.existsSync(logPath)) {
-      execSync(`cat "${file.replace('.tex', '.log')}"`, { cwd: directory })
-      execSync(`less "${file.replace('.tex', '.log')}"`, { cwd: directory })
-      const content = fs.readFileSync(logPath, { encoding: 'utf8' })
-      execSync(`echo "${content.replace('"', '\\""')}"`, { cwd: directory })
-      console.log(content)
-    }
-  }
+  execSync(`latexmk -pdflatex=lualatex -pdf "${file}" ${latexMkAdditionalArguments}`, { cwd: directory })
 }
 
 function getFileName (file) {
