@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1635511283",layout:"default",error:a,serverRendered:true,routePath:"\u002Fdeveloppements\u002Ftheoreme-de-weierstrass-par-les-probabilites",config:{_app:{basePath:"\u002F",assetsPath:"\u002F_nuxt\u002F",cdnURL:a},content:{dbHash:"924ec8a5"}}}}(null));
