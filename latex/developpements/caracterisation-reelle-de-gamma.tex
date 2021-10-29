@@ -16,7 +16,7 @@
 		\end{enumerate}
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		\begin{enumerate}[(i)]
 			\item Soit $x \in \mathbb{R}^+_*$. Alors :
 			\begin{align*}
@@ -35,7 +35,7 @@
 			\end{align*}
 			Donc $\ln \circ \Gamma$ vérifie bien l'inégalité de convexité sur $\mathbb{R}^+_*$ et ainsi, $\Gamma$ est log-convexe.
 		\end{enumerate}
-	\end{demonstration}
+	\end{proof}
 
 	\reference[RUD]{94}
 
@@ -43,7 +43,7 @@
 		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Par récurrence, on a d'après $(i)$ :
 		\[ \forall n \in \mathbb{N}^*, \forall x \in ]0, 1], \, f(x+n) = (x+n-1) \dots (x+1)xf(x) \tag{$*$} \]
 		Donc les valeurs prises par $f$ sur $\mathbb{R}^+_*$ sont entièrement déterminées par ses valeurs prises sur $]0, 1]$. Ainsi, pour démontrer le théorème, il suffit de vérifier $\forall x \in ]0, 1]$, $f(x) = \Gamma(x)$.
@@ -72,7 +72,7 @@
 		en faisant $n \longrightarrow +\infty$ dans la deuxième inégalité. Comme $\Gamma$ vérifie $(i)$, $(ii)$, et $(iii)$ ; le raisonnement précédent est a fortiori vrai aussi pour $\Gamma$. Donc
 		\[ \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} = f(x)  \]
 		ie. $f$ et $\Gamma$ coïncident bien sur $]0, 1]$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		À la fin de la preuve, on obtient une formule due à Gauss :

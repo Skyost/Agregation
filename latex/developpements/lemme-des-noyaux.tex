@@ -16,7 +16,7 @@
 		\[ \ker(P(f)) = \bigoplus_{i = 1}^k \ker(P_i(f)) \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		On procède par récurrence sur $k \geq 2$.
 		\begin{itemize}
 			\item \uline{Pour $k = 2$ :} par le théorème de Bézout, il existe $U, V \in \mathbb{K}[X]$ tels que $UP_1 + VP_2 = 1$. Donc,
@@ -42,13 +42,13 @@
 			\end{align*}
 			ce que l'on voulait.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 
 	\begin{application}
 		Soit $f \in \mathcal{L}(E)$. Alors $f$ est diagonalisable si et seulement s'il existe $P \in \mathbb{K}[X]$ scindé sur $\mathbb{K}$ à racines simples tel que $P(f) = 0$.
 	\end{application}
 
-	\begin{demonstration}
+	\begin{proof}
 		\uline{Sens direct :} Soient $\lambda_1, \dots, \lambda_k$ les valeurs propres distinctes de $f$ et $E_{\lambda_1}, \dots, E_{\lambda_k}$ les sous-espaces propres correspondants. On pose
 		\[ P = (X-\lambda_1) \dots (X-\lambda_k) \in \mathbb{K}[X] \]
 		On peut appliquer le \cref{lemme-des-noyaux-1} :
@@ -69,6 +69,6 @@
 		Notons $I = \{ i \in \llbracket 1, k \rrbracket \mid \ker(f - \lambda_i \id_E) \neq \{ 0 \} \}$. $\forall i \in I$, $\lambda_i$ est valeur propre de $f$ et $E_{\lambda_i} = \ker(f - \lambda_i \id_E)$ n'est autre que le sous-espace propre correspondant. Par $(*)$,
 		\[ E = \bigoplus_{i \in I} E_{\lambda_i} \]
 		donc $f$ est diagonalisable.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

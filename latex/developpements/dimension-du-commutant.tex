@@ -30,7 +30,7 @@
 		\[ \dim_{\mathbb{K}}(\mathcal{C}(A)) \geq n \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Commençons par poser le système d'équations linéaires homogène
 		\[ AX - XA = 0 \]
 		d'inconnue $X = (x_{i,j})_{i,j \in \llbracket 1, n \rrbracket} \in \mathcal{M}_n(\mathbb{K})$. On note $\mathcal{S}$ l'espace des solutions de ce système.
@@ -66,13 +66,13 @@
 			&\geq n
 		\end{align*}
 		car $A$ est trigonalisable dans $\mathbb{L}$. D'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}
 		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \mu_A = \chi_A \]
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		\uline{Sens direct :} Supposons $\mathbb{K}[A] = \mathcal{C}(A)$. Le \cref{dimension-du-commutant-2} entraîne que
 		\[ \deg(\mu_A) = \dim(\mathbb{K}[A]) \geq n \]
 		Mais comme $\deg(\mu_A) \leq n$, on a $\deg(\mu_A) = n$. Par le théorème de Cayley-Hamilton, on conclut
@@ -91,6 +91,6 @@
 		Notons de plus que
 		\[ \dim(\mathbb{K}[A]) = \deg(\mu_A) = \deg(\chi_A) = n \]
 		et comme $\mathbb{K}[A] \subset \mathcal{C}(A)$ (car tout polynôme en $A$ commute avec $A$), on a bien le résultat.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

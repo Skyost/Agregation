@@ -11,27 +11,27 @@
 		Les $3$-cycles sont conjugués dans $A_n$ pour $n \geq 5$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soient $\alpha = \begin{pmatrix} a_1 & a_2 & a_3 \end{pmatrix}$ et $\beta = \begin{pmatrix} b_1 & b_2 & b_3 \end{pmatrix}$ deux $3$-cycles. Soit $\sigma \in S_n$ telle que pour tout $i$, $\sigma(a_i) = b_i$. Alors on a $\sigma \alpha \sigma^{-1} = \begin{pmatrix} \sigma(a_1) & \sigma(a_2) & \sigma(a_3) \end{pmatrix} = \beta$. On a les deux cas suivants :
 		\begin{itemize}
 			\item Si $\sigma \in A_n$, alors $\alpha$ et $\beta$ sont bien conjuguées dans $A_n$.
 			\item Si $\sigma \notin A_n$, il existe $\tau \in S_n$ une transposition dont le support est disjoint de celui de $\alpha$ (c'est vrai car $n \geq 5$). Notons $\gamma = \sigma \tau$ et remarquons que $\gamma \in A_n$. Dans ce cas, $\gamma \alpha \gamma^{-1} = \begin{pmatrix} \gamma(a_1) & \gamma(a_2) & \gamma(a_3) \end{pmatrix} = \begin{pmatrix} \sigma(a_1) & \sigma(a_2) & \sigma(a_3) \end{pmatrix} = \beta$. Donc $\alpha$ et $\beta$ sont bien conjuguées dans $A_n$.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 
 	\begin{lemma}
 		\label{simplicite-du-groupe-alterne-2}
 		$A_n$ est engendré par les $3$-cycles.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Tout élément de $A_n$ est produit d'un nombre pair de transpositions ; il suffit donc de vérifier que tout produit de deux transpositions peut s'écrire comme produit de $3$-cycles. Soient $\tau_1$ et $\tau_2$ deux transpositions :
 		\begin{itemize}
 			\item Si $\tau_1 = \tau_2$, alors $\tau_1 \tau_2 = \id$, d'où le résultat.
 			\item Si leurs supports ont exactement un point commun, on écrit $\tau_1 = \begin{pmatrix} a & b \end{pmatrix}$ et $\tau_2 = \begin{pmatrix} b & c \end{pmatrix}$ et donc on a $\tau_1 \tau_2 =  \begin{pmatrix} a & b & c \end{pmatrix}$.
 			\item Si leurs supports sont disjoints, on écrit $\tau_1 = \begin{pmatrix} a & b \end{pmatrix}$ et $\tau_2 = \begin{pmatrix} c & d \end{pmatrix}$ et donc on a $\tau_1 \tau_2 =  \begin{pmatrix} a & b & c \end{pmatrix}\begin{pmatrix} b & c & d \end{pmatrix}$.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 
 	\reference[PER]{28}
 
@@ -40,7 +40,7 @@
 		$A_5$ est simple.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Commençons par décrire les types possibles des permutations de $A_5$ (le ``type'' d'une permutation désigne les cardinaux des supports des cycles apparaissant dans sa décomposition en cycles disjoints).
 		\newpar
 		\begin{whitetabularx}{|X|X|}
@@ -66,13 +66,13 @@
 			\item Si $H$ contient une permutation de type $[5]$ (qui est donc d'ordre $5$), alors $H$ contient le $5$-Sylow engendré par cet élément. Or, on sait par les théorèmes de Sylow que les sous-groupes de Sylow sont conjugués entre-eux. Donc $H$ contient tous les $5$-Sylow et donc contient tous les éléments d'ordre $5$.
 		\end{itemize}
 		Or, $H$ ne peut pas vérifier qu'un seul des points précédents en vertu du théorème de Lagrange, car ni $16 = 15 + 1$, ni $21 = 20 + 1$, ni $25 = 24 + 1$ ne divisent $|A_5| = 60$. Donc $H$ vérifie au moins deux des points précédents, et ainsi $|H| \geq 1 + 15 + 20 = 36$. Donc $|H|=60$ et $H = A_5$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}
 		$A_n$ est simple pour $n \geq 5$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $N \lhd A_n$ tel que $N \neq \{ \id \}$. L'idée générale de la démonstration et de se ramener au cas $n = 5$ à l'aide d'une permutation bien spécifique.
 		\newpar
 		Soit $\sigma \in N \setminus \{ \id \}$, il existe donc $a \in \llbracket 1, n \rrbracket$ tel que $\sigma(a) = b \neq a$. Soit $c \in \llbracket 1, n \rrbracket$ différent de $a$, $b$ et $\sigma(b)$. On pose $\tau = \begin{pmatrix} a & c & b \end{pmatrix} \in A_n$ (on a $\tau^{-1} = \begin{pmatrix} a & b & c \end{pmatrix})$. Soit $\rho = \tau \sigma \tau^{-1} \sigma^{-1}$. Par calcul :
@@ -96,6 +96,6 @@
 		En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subset \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$ et par 1., $\rho \in N$). Donc $N_0 \neq \{ \id \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
 		\[ A(\mathcal{F}) = N \, \cap \, A(\mathcal{F}) \tag{$*$} \]
 		Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-du-groupe-alterne-3}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-du-groupe-alterne-2}), on a $N = A_n$.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

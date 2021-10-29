@@ -123,7 +123,7 @@ export default {
       @include environment(#e8f5e9);
     }
 
-    .demonstration {
+    .proof {
       @include environment(#e1f5fe);
 
       margin-bottom: 0;

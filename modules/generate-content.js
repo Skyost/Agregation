@@ -179,15 +179,9 @@ function filterUnknownSymbols (text) {
 }
 
 function addVueComponents (root) {
-  const proofs = root.querySelectorAll('.demonstration')
+  const proofs = root.querySelectorAll('.proof')
   for (const proof of proofs) {
-    const insertProofTitleElement = proof.querySelector('> p') ?? proof
-    let html = '<em>Démonstration</em>.'
-    if (insertProofTitleElement.tagName !== 'P') {
-      html = `<p>${html}</p>`
-    }
-    insertProofTitleElement.innerHTML = `${html} ${insertProofTitleElement.innerHTML}`
-    proof.replaceWith(`<proof-collapsible>${proof.outerHTML}</proof-collapsible>`)
+    proof.replaceWith(`<proof-collapsible>${proof.outerHTML.replace('Proof.', 'Démonstration.')}</proof-collapsible>`)
   }
 }
 

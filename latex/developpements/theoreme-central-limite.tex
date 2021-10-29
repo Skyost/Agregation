@@ -18,7 +18,7 @@
 		\[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		\uline{Sens direct :} On suppose que $(X_n)$ converge en loi vers $X$. Pour tout $t \in \mathbb{R}$, la fonction $g_t : x \mapsto e^{itx}$ est continue et bornée sur $\mathbb{R}$. Donc par définition de la convergence en loi :
 		\[ \lim_{n \rightarrow +\infty} \mathbb{E}(g_t(X_n)) = \mathbb{E}(g_t(X)) \]
 		ce que l'on voulait.
@@ -44,7 +44,7 @@
 			&\leq 2 \Vert f - f_k \Vert_\infty + |\mathbb{E}(f_k(X_n)) - \mathbb{E}(f_k(X))| \\
 			&\longrightarrow 0
 		\end{align*}
-	\end{demonstration}
+	\end{proof}
 
 	\reference[G-K]{307}
 
@@ -54,16 +54,16 @@
 		\[ |z^n - u^n| \leq n |z-u| \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		$|z^n - u^n| = |(z-u) \sum_{k=0}^{n-1} z^k u^{n-1-k}| \leq n |z-u|$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Central limite]
 		Soit $(X_n)$ une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
 		\[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		On a $S_n = \sum_{k=1}^n (X_k - m)$. Notons $\phi$ la fonction caractéristique de $X_1 - m$. Comme les variables aléatoires $X_1 - m, \dots, X_n - m$ sont indépendantes de même loi, la fonction caractéristique de $\frac{S_n}{\sqrt{n}}$ vaut $\forall t \in \mathbb{R}$,
 		\begin{align*}
 			\phi_{\frac{S_n}{\sqrt{n}}}(t) &= \mathbb{E} \left( e^{iS_n \left( \frac{t}{\sqrt{n}} \right)} \right) \\
@@ -95,6 +95,6 @@
 		\[ \phi \left ( \frac{t}{\sqrt{n}} \right) = 1 - \frac{\sigma^2}{2n}t^2 + o \left ( \frac{1}{n} \right ) \]
 		On obtient ainsi le résultat cherché, à savoir :
 		\[ n \left | \phi \left ( \frac{t}{\sqrt{n}} \right) - e^{-\frac{\sigma^2}{2n} t^2} \right | = o (1) \]
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

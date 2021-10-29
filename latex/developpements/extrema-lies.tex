@@ -15,7 +15,7 @@
 
 	\reference{347}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $s = n-r$. Identifions $\mathbb{R}^n$ à $\mathbb{R}^s \times \mathbb{R}^r$ et écrivons les éléments $(x, y)$ de $\mathbb{R}^n$ sous la forme $(x, y) = (x_1, \dots, x_s, y_1, \dots, y_r)$. On notera également par la suite $a = (\alpha, \beta)$ avec $\alpha \in \mathbb{R}^s$ et $\beta \in \mathbb{R}^r$. On a déjà plusieurs informations :
 		\begin{itemize}
 			\item Déjà, $r \leq n$, car les formes linéaires $\mathrm{d}(g_i)_a$ forment une famille libre de $(\mathbb{R}^n)^*$, qui est de dimension $n$.
@@ -60,7 +60,7 @@
 		Par $(**)$ et $(***)$, les $s$ premiers vecteurs colonnes de cette matrice s'expriment linéairement en fonction de ses $r$ derniers. Donc $\operatorname{rang}(M) \leq r$. Mais, le rang des vecteurs lignes d'une matrice est égal au rang de ses vecteurs colonnes. Donc les $r+1$ vecteurs lignes de $M$ forment une famille liée. Mais par hypothèse, les $r$ dernières lignes sont libres. Donc la première ligne est combinaison linéaire des $r$ dernières, ce qui se réécrit :
 		\[ \exists \lambda_1, \dots, \lambda_r \in \mathbb{R} \text{ tels que } \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
 		L'unicité est claire car $(\mathrm{d}(g_i)_a)_{i \in \llbracket 1, r \rrbracket}$ est une famille libre.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		Attention à la rigueur et à la propreté dans cette démonstration. On peut très vite se perdre si l'on va trop vite ou si l'on ne prend pas le temps de bien écrire chaque donnée.

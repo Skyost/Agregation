@@ -28,8 +28,8 @@
 \usepackage{enumerate}
 \usepackage{tocloft}
 \usepackage{microtype}
-\usepackage{mdframed}
-\usepackage{thmtools}
+%\usepackage{mdframed}
+%\usepackage{thmtools}
 \usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage{aligned-overset}
@@ -41,6 +41,7 @@
 \usepackage{setspace}
 \usepackage[bibstyle=reading, citestyle=draft]{biblatex}
 \usepackage{xpatch}
+\usepackage[many, breakable]{tcolorbox}
 
 % Bibliographie :
 
@@ -179,43 +180,60 @@
 \definecolor{cexample}{HTML}{efebe9}
 \definecolor{application}{HTML}{e0f2f1}
 \definecolor{remark}{HTML}{e8f5e9}
-\definecolor{demonstration}{HTML}{e1f5fe}
+\definecolor{proof}{HTML}{e1f5fe}
 
 % Théorèmes :
 
-\declaretheoremstyle[bodyfont=\normalfont]{theorem}
-\declaretheoremstyle[headfont=\itshape]{remark}
+\theoremstyle{definition}
+\newtheorem{theorem}{Théorème}
 
-\newcounter{thm}[section]
+\newtheorem{property}[theorem]{Propriété}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{corollary}[theorem]{Corollaire}
 
-\newcommand{\newth}[3][style=theorem]{
-	\declaretheorem[%
-		name=#3,%
-		%within=section,
-		sibling=thm,%
-		mdframed={%
-			hidealllines=true,%
-			backgroundcolor={#2!98!white},%
-			innermargin=8pt,%
-			splittopskip=18pt,%
-			splitbottomskip=16pt,%
-		},%
-		#1%
-	]{#2}%
+\newtheorem{definition}[theorem]{Définition}
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{example}[theorem]{Exemple}
+\newtheorem{cexample}[theorem]{Contre-exemple}
+\newtheorem{application}[theorem]{Application}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remarque}
+
+\counterwithin*{theorem}{subsection}
+
+\newcommand{\applystyletotheorem}[1]{
+	\tcolorboxenvironment{#1}{
+		enhanced,
+		breakable,
+		colback=#1!98!white,
+		boxrule=0pt,
+		boxsep=0pt,
+		left=8pt,
+		right=8pt,
+		top=8pt,
+		bottom=8pt,
+		oversize=-16pt,
+		sharp corners,
+		before skip=\topsep,
+		after skip=\topsep,
+	}
 }
 
-\newth{property}{Propriété}
-\newth{proposition}{Proposition}
-\newth{lemma}{Lemme}
-\newth{theorem}{Théorème}
-\newth{corollary}{Corollaire}
-\newth{definition}{Définition}
-\newth{notation}{Notation}
-\newth{example}{Exemple}
-\newth{cexample}{Contre-exemple}
-\newth{application}{Application}
-\newth[style=remark]{remark}{Remarque}
-\newth[style=remark, numbered=no]{demonstration}{Démonstration}
+\applystyletotheorem{property}
+\applystyletotheorem{proposition}
+\applystyletotheorem{lemma}
+\applystyletotheorem{theorem}
+\applystyletotheorem{corollary}
+\applystyletotheorem{definition}
+\applystyletotheorem{notation}
+\applystyletotheorem{example}
+\applystyletotheorem{cexample}
+\applystyletotheorem{application}
+\applystyletotheorem{remark}
+\applystyletotheorem{proof}
 
 % Environnements :
 

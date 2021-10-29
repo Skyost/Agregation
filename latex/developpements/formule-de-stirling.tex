@@ -12,7 +12,7 @@
 		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_{Y}(n + x \sqrt{n}) \text{ p.p. en } x \in \mathbb{R} \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		$\forall x \in \mathbb{R}$,
 		\begin{align*}
 			F_{\frac{Y - n}{\sqrt{n}}}(x) & = \mathbb{P} \left(\frac{Y - n}{\sqrt{n}} \leq x \right) \\
@@ -21,7 +21,7 @@
 		\end{align*}
 		Or, la fonction de répartition d'une variable aléatoire réelle à densité est dérivable presque partout, et sa dérivée est presque partout égale à sa densité. Donc :
 		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_Y (x \sqrt{n} + n) \text{ p.p. en } x \in \mathbb{R} \]
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		Il ne s'agit ni plus ni moins qu'une version affaiblie du théorème de changement de variable.
@@ -34,7 +34,7 @@
 		Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $f_{a,\gamma} : x \mapsto \frac{\gamma^a}{\Gamma(a)} x^{a-1} e^{-\gamma x} \mathbb{1}_{\mathbb{R}^+}(x)$ la densité de la loi $\Gamma(a, \gamma)$. $\forall x \geq 0$, on a :
 		\begin{align*}
 			f_Z(x) & = \int_0^x f_{a, \gamma}(x-t)f_{b, \gamma}(t) \, \mathrm{d}t \\
@@ -48,7 +48,7 @@
 		Pour conclure, on utilise la condition de normalisation :
 		\[ 1 = \int_{\mathbb{R}} f_Z(x) \, \mathrm{d}x = K_{a,b} \int_{\mathbb{R}} f_{a+b, \gamma}(x) \, \mathrm{d}x = K_{a,b} \]
 		On obtient ainsi $f_Z = f_{a+b, \gamma}$, ce que l'on voulait.
-	\end{demonstration}
+	\end{proof}
 
 	\reference{556}
 
@@ -56,7 +56,7 @@
 		\[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $(X_n)$ une suite de variable aléatoires indépendantes de même loi $\mathcal{E}(1)$. On pose $S_n = \sum_{k=0}^n X_k$. Montrons par récurrence que $S_n \sim \Gamma(n+1, 1)$.
 		\begin{itemize}
 			\item \uline{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
@@ -98,6 +98,6 @@
 		\[ \int_0^1 g_n(x) \, \mathrm{d}x = a_n \int_0^1 h_n(x) \, \mathrm{d}x \implies \lim_{n \rightarrow +\infty} a_n = \frac{\lim_{n \rightarrow +\infty} \int_0^1 g_n(x) \, \mathrm{d}x}{\lim_{n \rightarrow +\infty} \int_0^1 h_n(x) \, \mathrm{d}x} = 1 \]
 		et comme $\Gamma(n+1) = n!$, par définition de $a_n$ :
 		\[ 1 = \lim_{n \rightarrow +\infty} a_n = \lim_{n \rightarrow +\infty} \frac{n^{n + \frac{1}{2}} e^{-n} \sqrt{2\pi}}{n!} \]
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

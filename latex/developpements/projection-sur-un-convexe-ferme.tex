@@ -14,13 +14,13 @@
 		\[ \Vert x + y \Vert^2 + \Vert x - y \Vert^2 = 2(\Vert x \Vert^2 + \Vert y \Vert^2) \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		D'une part,
 		\[ \Vert x + y \Vert^2 = \langle x + y, x + y \rangle = \Vert x \Vert^2 + \Vert y \Vert^2 + 2 \langle x, y \rangle \]
 		D'autre part,
 		\[ \Vert x - y \Vert^2 = \langle x - y, x - y \rangle = \Vert x \Vert^2 + \Vert y \Vert^2 - 2 \langle x, y \rangle \]
 		En additionnant les deux lignes, on obtient bien l'égalité voulue.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		L'interprétation géométrique de cette égalité est que dans le parallélogramme formé par les vecteurs $x$ et $y$, la somme des carrés des diagonales est égale à la somme des carrés des côtés.
@@ -38,7 +38,7 @@
 		\includelatexpicture{projection-sur-un-convexe-ferme-2}
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $x \in H$. Posons $\delta = d(x, C)$. Par la caractérisation séquentielle de la borne inférieure, il existe $(y_n)$ une suite de $C$ telle que $\Vert x - y_n \Vert \longrightarrow \delta$. Montrons que $(y_n)$ est une suite de Cauchy. On applique le \cref{projection-sur-un-convexe-ferme-1} :
 		\[ \forall p, q \in \mathbb{N}, \, \Vert (x - y_p) + (x - y_q) \Vert^2 + \Vert y_p - y_q \Vert^2 = 2(\Vert x - y_p \Vert^2 + \Vert x - y_q \Vert^2) \tag{$**$} \]
 		Or, $C$ est convexe. Donc $\forall p, q \in \mathbb{N}$, $\frac{y_p + y_q}{2} \in C$.
@@ -87,7 +87,7 @@
 			\overset{\lambda \longrightarrow 0}{\implies}& -2 \langle x - P_C(x), z_0 - P_C(x) \rangle \geq 0
 		\end{align*}
 		ce que l'on voulait.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		$(*)$ traduit le fait géométrique que l'angle du vecteur $\overrightarrow{P_C(x)x}$ avec $\overrightarrow{P_C(x)z}$ est obtus pour tout $z \in C$. En effet, en notant cet angle $\theta$, on a pour $z \in C$ :
@@ -99,7 +99,7 @@
 		Soit $F$ un sous-espace vectoriel fermé de $H$. Alors $F \oplus F^\perp = H$.
 	\end{corollary}
 
-	\begin{demonstration}
+	\begin{proof}
 		Si $x \in F \, \cap \, F^\perp$, alors $\Vert x \Vert = \langle x, x \rangle = 0$, et donc $x = 0$. Montrons maintenant que $F + F^\perp = H$. Soit $x \in H$. Comme $F$ est un convexe fermé de $H$ (en tant que sous-espace vectoriel fermé), on peut appliquer le \cref{projection-sur-un-convexe-ferme-2}. Ainsi, il existe un unique $P_F(x) \in F$ tel que $d(x, F) = d(x, P_F(x))$ et
 		\[ \forall z \in F, \, \langle x - P_F(x), z - P_F(x) \rangle \leq 0 \tag{$*$} \]
 		Soit $z_0 \in F$. on peut appliquer $(*)$ à $z = z_0$ :
@@ -111,6 +111,6 @@
 		donc $x - P_F(x) \in F^\perp$. En conclusion, on a :
 		\[ x = \underbrace{P_F(x)}_{\in F} + \underbrace{x - P_F(x)}_{\in F^\perp} \in F + F^\perp \]
 		et on a donc bien la somme directe $H = F \oplus F^\perp$.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

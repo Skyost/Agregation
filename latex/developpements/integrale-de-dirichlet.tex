@@ -11,11 +11,11 @@
 		\[ \forall y, t \in \mathbb{R}^+, \, |e^{-(y-i)t}| \leq 1 \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soient $y, t \in \mathbb{R}^+$. On a :
 		\[ |e^{-(y-i)t}| = |e^{-yt} e^{it}| = |e^{-yt}| |e^{it}| \]
 		Or, $e^{it}$ est un complexe de module $1$ et $yt \geq 0$, donc $e^{-yt} \leq 1$. D'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[G-K]{107}
 
@@ -32,7 +32,7 @@
 
 	\reference{478}
 
-	\begin{demonstration}
+	\begin{proof}
 		Posons $\forall x \in \mathbb{R}^+$ et $\forall t \in \mathbb{R}^+_*$, $f(x,t) = \frac{\sin(t)}{t} e^{-xt}$ ainsi que $\forall n \geq 1$, $F_n(x) = \int_0^n \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t$. On a :
 		\begin{itemize}
 			\item $\forall x \geq 0$, $t \mapsto f(x, t)$ est mesurable.
@@ -96,6 +96,6 @@
 		\end{align*}
 		Donc $\forall x > 0$, $F(x) = \frac{\pi}{2} - \arctan(x)$. En évaluant en $0$, on obtient :
 		\[ F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2} \]
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

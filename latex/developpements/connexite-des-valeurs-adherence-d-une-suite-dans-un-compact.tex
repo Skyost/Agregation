@@ -15,7 +15,7 @@
 		On suppose $E$ compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Pour tout $p \in \mathbb{N}$, on note $A_p = \{u_n \mid n\geq p\}$. On a $\Gamma = \bigcap_{p \in \mathbb{N}} \overline{A_p}$. $\Gamma$ est fermé (en tant qu'intersection de fermés) dans $E$ qui est compact, donc $\Gamma$ est compact.
 		Supposons que $\Gamma$ soit non connexe ; on peut alors écrire $\Gamma = A \, \sqcup \, B$, où $A$ et $B$ sont deux fermés disjoints de $\Gamma$. Comme $\Gamma$ est compact, $A$ et $B$ le sont aussi. Notons $\alpha = d(A, B) > 0$ (car $A \, \cap \, B = \emptyset$). Posons :
 		\[
@@ -41,7 +41,7 @@
 		ce qui prouve que $u_{n_0} \notin B'$. Comme $u_{n_0} \notin A'$, on a $u_{n_0} \in K$. On vient de montrer que,
 		\[ \forall N \geq N_0, \, \exists n_0 \geq N \text{ tel que } u_{n_0} \in K \]
 		On peut créer comme cela une sous-suite de $(u_n)$ dans $K$. Or $K$ est compact, donc $(u_n)$ admet une valeur d'adhérence dans $K$.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[QUE20]{142}
 
@@ -51,7 +51,7 @@
 		Alors $(x_n)$ converge si et seulement si $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$.
 	\end{application}
 
-	\begin{demonstration}
+	\begin{proof}
 		Le sens direct est évident. Montrons la réciproque. On suppose donc que $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$ et on note $\Gamma$ l'ensemble des valeurs d'adhérence de $(x_n)$. $\Gamma$ est non vide (car $(x_n)$ est bornée, donc admet une valeur d'adhérence par le théorème de Bolzano-Weierstrass) et est un connexe de $\mathbb{R}$ (par le \cref{connexite-des-valeurs-adherence-d-une-suite-dans-un-compact-1}), donc $\Gamma$ est un intervalle non vide.
 		\newpar
 		Soit $a \in \Gamma$. Il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante (on dit que $\varphi$ est une extractrice) telle que $x_{\varphi(n)} \longrightarrow a$. Mais alors,
@@ -63,6 +63,6 @@
 		Or, $c \in \Gamma$, donc
 		\[ \exists N \geq 0 \text{ tel que } |x_N - c| \leq \frac{h}{2} \implies x_N \in \Gamma \]
 		et en particulier, $x_N$ est un point fixe de $f$. Ainsi, $x_{n+1} = f(x_n) = x_n$ pour tout $n \geq N$ : absurde.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

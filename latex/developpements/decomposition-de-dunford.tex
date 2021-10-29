@@ -19,7 +19,7 @@
 		\end{itemize}
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		On écrit $\mu_f = (-1)^n \prod_{i=1}^s (X - \lambda_i)^{\alpha_i}$ et pour tout $i$, on note $N_i = \ker((f-\lambda_i \id_E)^{\alpha_i})$ le $i$-ième sous-espace caractéristique de $f$.
 		\newpar
 		\uline{Construction :} Comme $E = N_1 \oplus \dots \oplus N_s$, il suffit de définir $d$ et $n$ sur chaque $N_i$. On les définit pour tout $i$ et pour tout $x \in N_i$ comme tels :
@@ -40,7 +40,7 @@
 		D'autre part, comme $n = f-d$, $n' = f-d'$ et que $d$ et $d'$ commutent, $n$ et $n'$ commutent. Si on choisit $p$ et $q$ tels que $n^p = n'^q = 0$, alors :
 		\[ (n-n')^{p+q} = \sum_{i=0}^{p+q} \binom{p+q}{i} n^{i} (-1)^{p+q-i} n'^{p+q-i} = 0 \]
 		(dans chaque terme de la somme, soit $i \geq p$, soit $p+q-i \geq q$). Donc $n - n' = d' - d$ est nilpotent. Or nous avions montré que $d' - d$ est diagonalisable, donc $d'-d = 0$. Finalement, on a $d = d'$ et $n = n'$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		On peut démontrer que les endomorphismes $d$ et $n$ sont des polynômes en $f$.

@@ -18,7 +18,7 @@
 		\[ \forall A \in V, \, A = \tr \psi(A) A_0 \psi(A) \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		On définit l'application
 		\[ \varphi :
 		\begin{array}{cl}
@@ -42,7 +42,7 @@
 		Ainsi, $V$ est un voisinage ouvert de $A_0 = \varphi(I_n)$ dans $\mathcal{S}_n(\mathbb{R})$ vérifiant :
 		\[ \forall A \in V, \, A = \tr (\varphi_{|U})^{-1}(A) A_0 (\varphi_{|U})^{-1}(A) \]
 		Il suffit alors de poser $\psi = (\varphi_{|U})^{-1}$ (qui est bien une application de classe $\mathcal{C}^1$) pour avoir le résultat demandé.
-	\end{demonstration}
+	\end{proof}
 
 	\reference{344}
 
@@ -58,7 +58,7 @@
 		\[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		On écrit la formule de Taylor à l'ordre $1$ avec reste intégral au voisinage de $0$, qui donne :
 		\begin{align*}
 			&f(x) = f(0) + \mathrm{d} f_0(x) + \int_0^1 (1-t) \mathrm{d}^2 (1-t) f_{tx} (x, x) \, \mathrm{d}t \\
@@ -86,7 +86,7 @@
 			&= P M(0) h + o(\Vert h \Vert)
 		\end{align*}
 		d'où $\mathrm{d} \varphi_0 (h) = P M(0) h$. Or, $P M(0)$ est inversible, donc en particulier, $\mathrm{d} \varphi_0 (h)$ l'est aussi. On peut appliquer le théorème d'inversion locale à $\varphi$, qui donne l'existence de deux ouverts $V$ et $W$ contenant l'origine (car $\varphi(0) = 0$) tel que $\phi = \varphi_{|V}$ soit un $\mathcal{C}^1$-difféomorphisme de $V$ sur $W$.
-	\end{demonstration}
+	\end{proof}
 
 	\reference{331}
 
@@ -99,7 +99,7 @@
 		\end{enumerate}
 	\end{application}
 
-	\begin{demonstration}
+	\begin{proof}
 		Une équation cartésienne de $P$ est donnée par
 		\[ z - 0 = f(0) + \mathrm{d} f_0(x, y) \]
 		La différence d'altitude entre la surface $S$ et le plan tangent $P$ au point $h \in \mathbb{R}^2$ est donc donnée par
@@ -112,6 +112,6 @@
 			\item Si $\mathrm{d}^2 f_a$ est de signature $(0, 2)$, on a $\delta(h) < 0$ pour $h$ voisin de $0$ et $h \neq 0$.
 			\item Si $\mathrm{d}^2 f_a$ est de signature $(1, 1)$, on a $\delta(h) = \phi_1(h)^2 - \phi_2(h)^2$ et $S$ traverse $P$ selon une courbe admettant un point double en $(0, f(0))$.
 		\end{enumerate}
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

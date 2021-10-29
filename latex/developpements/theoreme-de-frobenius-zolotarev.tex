@@ -30,7 +30,7 @@
 		Soient $u \in \mathrm{GL}(V)$ et $H$ un hyperplan de $V$ tel que $u_{|H} = \id_H$. Si $\det(u) \neq 1$, alors $u$ est une dilatation.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		On note $n = \dim(V)$. Comme $u_{|H} = \id_H$ et $\dim(H) = n-1$, on en déduit que $1$ est valeur propre de multiplicité $n-1$ de $u$ et que $H$ est le sous-espace propre associé :
 		\[ H = E_1(u) = \ker(u - \id_V) \]
 		On pose $\lambda = \det(u) \notin \{ 0, 1 \}$. $\lambda$ est valeur propre de $u$ (on peut le voir par exemple en calculant le polynôme caractéristique de $u$) de multiplicité $1$. Donc $u$ est diagonalisable, et dans une base $\mathcal{B}$ adaptée à la diagonalisation, on a :
@@ -43,7 +43,7 @@
 		\end{pmatrix}
 		\]
 		d'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[I-P]{203}
 
@@ -52,11 +52,11 @@
 		Les dilatations engendrent $\mathrm{GL}(V)$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Pour obtenir le résultat, il suffit de montrer que toute transvection est la composée de deux dilatations (cf. \cref{theoreme-de-frobenius-zolotarev-1}). Soit $u$ une transvection d'hyperplan $H$. Comme $\mathbb{F}_p$ contient au moins $3$ éléments, il existe alors $v$ une dilatation d'hyperplan $H$ et de rapport $\lambda \neq 1$.
 		\newpar
 		Ainsi, l'application $w = u \circ v$ est dans $\mathrm{GL}(V)$ et fixe $H$. Comme $\det(w) = \det(v) = \lambda \neq 1$, le \cref{theoreme-de-frobenius-zolotarev-2} permet de conclure que $w$ est une dilatation. Ainsi, $u = w \circ v^{-1}$ est le produit de deux dilatations $v^{-1}$ est une dilatation (toujours d'après le \cref{theoreme-de-frobenius-zolotarev-2}).
-	\end{demonstration}
+	\end{proof}
 
 	\begin{notation}
 		Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$.
@@ -67,7 +67,7 @@
 		où $u$ est vu comme une permutation des éléments de $V$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Le groupe multiplicatif d'un corps fini est cyclique, donc il existe $a \in \mathbb{F}_p^*$ tel que
 		\[ \mathbb{F}_p^* = \langle a \rangle \]
 		En conséquence, si $u$ est la dilatation de $V$ de base $H$, de direction $G$, et de rapport $\lambda \in \mathbb{F}_p^*$, alors il existe $k \in \mathbb{N}^*$ tel que $\lambda = a^k$. On en déduit que si $v$ est la dilatation de $V$ de base $H$, de direction $G$, et de rapport $a$, alors $\forall x \in V$ écrit $x = g + h$ avec $g \in G$ et $h \in H$ :
@@ -99,6 +99,6 @@
 		et il y en a donc
 		\[ |H| \times (|G|-1) = p^{n-1}(p-1) \]
 		(car $H$ est un hyperplan et $G$ est une droite). Comme ces orbites sont de cardinal $p-1$, il y a donc exactement $p^{n-1}$ orbites. Or, $p^{n-1}$ est impair, donc $\epsilon(u)$ est de signe négatif. Ainsi, $\epsilon(u) = -1$.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

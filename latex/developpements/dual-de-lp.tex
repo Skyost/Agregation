@@ -17,18 +17,18 @@
 		Soient $p \in ]1, 2[$ et $f \in L_2$. Alors $f \in L_p$ telle que $\Vert f \Vert_p \leq M \Vert f \Vert_2$ où $M \geq 0$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Comme $p \in ]1, 2[$, on a $\frac{2}{p} > 1$. Soit $r$ tel que $\frac{p}{2} + \frac{1}{r} = 1$. On applique l'inégalité de Hölder à $g = \vert f \vert^p \mathbb{1}_X$ de sorte que
 		\[ \int_X \vert f \vert^p \, \mathrm{d}\mu = \Vert \vert f \vert^p \mathbb{1}_X \Vert_1 \leq \Vert \vert f \vert^p \Vert_{\frac{2}{p}} \Vert \mathbb{1}_X \Vert_r \leq \mu(X)^{\frac{1}{r}} \Vert f \Vert_2^p \]
 		d'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{lemma}
 		\label{dual-de-lp-2}
 		Soit $p \in ]1, 2[$. Alors $L_2$ est dense dans $L_p$ pour la norme $\Vert . \Vert_p$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $f \in L_p$. On considère la suite de fonction $(f_n)$ définie par
 		\[ \forall n \in \mathbb{N}, \, f_n = f \mathbb{1}_{|f| \leq n} \]
 		Clairement, $(f_n)$ est une suite de $L_2$. On va chercher à appliquer le théorème de convergence dominée à la suite de fonctions $(g_n)$ définie pour tout $n \in \mathbb{N}$ par $g_n = |f_n - f|^p$ :
@@ -41,7 +41,7 @@
 		On peut donc conclure
 		\[ \Vert f - f_n \Vert^p_p = \int_X |f - f_n|^p \, \mathrm{d}\mu \longrightarrow 0 \]
 		ce qu'il fallait démontrer.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[Z-Q]{216}
 
@@ -58,7 +58,7 @@
 		est une isométrie linéaire surjective. C'est donc un isomorphisme isométrique.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $g \in L_q$ et $f \in L_p$. L'inégalité de Hölder donne
 		\[ \vert \varphi_g(f) \vert \leq \Vert g \Vert_q \Vert f \Vert_p \]
 		donc $\varphi_g \in (L_p)'$ et $\VERT \varphi_g \VERT \leq \Vert g \Vert_q$. De plus, si $g = 0$, alors $\VERT \varphi_g \VERT = \Vert g \Vert_q = 0$. On peut donc supposer $g \neq 0$.
@@ -82,7 +82,7 @@
 		D'après le théorème de convergence monotone, on a
 		\[ \lim_{n \rightarrow +\infty} \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \left ( \int_X \vert g \vert^q \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \Vert g \Vert_q \leq \Vert \ell \Vert \]
 		Et en particulier, $g \in L_q$. Ainsi, on a $\forall f \in L_2$, $\ell(f) = \varphi_g(f)$. Les applications $\ell$ et $\varphi_g$ sont continues sur $L_p$ et $L_2$ est dense dans $L_p$ (par le \cref{dual-de-lp-2}), donc on a bien $\ell = \varphi_g = \varphi(g)$.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[LI]{140}
 

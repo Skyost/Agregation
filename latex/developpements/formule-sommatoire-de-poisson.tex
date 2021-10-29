@@ -15,7 +15,7 @@
 		où $\widehat{f}$ désigne la transformée de Fourier de $f$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Comme $f(x) = O \left( \frac{1}{x^2} \right)$, il existe $M > 0$ et $A > 0$ tel que
 		\[ \forall |x| > A, \, |f(x)| \leq \frac{M}{x^2} \tag{$*$} \]
 		Soit $K > 0$. On a $\forall x \in [-K, K]$, $\forall n \in \mathbb{Z}$ tel que $|n| > K + A$ :
@@ -38,13 +38,13 @@
 		Or, la transformée de Fourier d'une fonction $L_1$ est convergente. On peut donc écrire :
 		\[ c_n(F) = \int_{-\infty}^{+\infty} f(t) e^{-2i\pi n t} \, \mathrm{d}t = \widehat{f}(2\pi n) \]
 		Comme $F$ est de classe $\mathcal{C}^1$, sa série de Fourier converge uniformément vers $F$. D'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{application}
 		\[ \forall s > 0, \, \sum_{n=-\infty}^{+\infty} e^{-\pi n^2 s} = \frac{1}{\sqrt{s}} \sum_{n=-\infty}^{+\infty} e^{-\frac{\pi n^2}{s}} \]
 	\end{application}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $\alpha > 0$. On définit $G_\alpha : x \mapsto e^{-\alpha x^2}$ et on connaît sa transformée de Fourier :
 		\[ \forall \xi \in \mathbb{R}, \, \widehat{G_\alpha}(\xi) = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{\xi^2}{4 \alpha}} \]
 		Soit $s > 0$. Appliquons le \cref{formule-sommatoire-de-poisson-1} à la fonction $G_{\pi s}$ :
@@ -52,6 +52,6 @@
 			& \sum_{n \in \mathbb{Z}} e^{-\pi s (x + n)^2} = \frac{1}{\sqrt{s}} \sum_{n \in \mathbb{Z}} e^{-\frac{(2 \pi n)^2}{4 \pi s}} e^{2 i \pi n x} \\
 			\overset{x = 0}{\implies} & \sum_{n \in \mathbb{Z}} e^{-\pi s n^2} = \frac{1}{\sqrt{s}} \sum_{n \in \mathbb{Z}} e^{-\frac{\pi n^2}{s}}
 		\end{align*}
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

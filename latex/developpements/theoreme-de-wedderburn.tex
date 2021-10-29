@@ -13,15 +13,15 @@
 		Soient $\mathbb{K}$ et $\mathbb{L}$ deux corps tels que $\mathbb{K}$ est commutatif et $\mathbb{K} \subset \mathbb{L}$. Alors $\exists d \in \mathbb{N}^*$ tel que $|\mathbb{L}| = |\mathbb{K}|^d$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		$\mathbb{L}$ est un espace vectoriel sur $\mathbb{K}$ de dimension finie $d$ (car $\mathbb{L}$ est fini). Donc $\mathbb{L}$ est isomorphe en tant que $\mathbb{K}$-espace vectoriel à $\mathbb{K}^d$. En particulier, $|\mathbb{L}| = |\mathbb{K}|^d$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Wedderburn]
 		Tout corps fini est commutatif.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $\mathbb{K}$ un corps. L'idée va être de procéder par récurrence sur le cardinal du corps.
 		\begin{itemize}
 			\item \uline{Si $|\mathbb{K}| = 2$ :} alors $\mathbb{K} = \{0, 1\}$ est commutatif.
@@ -72,6 +72,6 @@
 			\includelatexpicture{theoreme-de-wedderburn}
 			cela nous permet de justifier l'inégalité stricte. On a donc une contradiction.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

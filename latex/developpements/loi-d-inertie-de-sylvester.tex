@@ -24,7 +24,7 @@
 		Il existe une base de $E$ qui soit $\Phi$-orthogonale.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		On procède par récurrence sur $n$.
 		\begin{itemize}
 			\item \uline{Si $n = 1$ :} il n'y a rien à montrer, tout base est $\Phi$-orthogonale.
@@ -32,14 +32,14 @@
 			\newpar
 			$H = \ker(f)$ est un hyperplan de $E$ et comme $v \notin H$, on a $E = H \oplus \operatorname{Vect}(v)$. Or, $\dim(H) = n-1$, donc on peut appliquer l'hypothèse de récurrence à $\Phi_{|H}$, et on obtient une base $\mathcal{B}$ de $H$ qui est $\Phi$-orthogonale. En particulier, $\mathcal{B} \, \cup \, \{ v \}$ est une base $\Phi$-orthogonale de $E$.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Loi d'inertie de Sylvester]
 		\[ \exists p, q \in \mathbb{N} \text{ et } \exists f_1, \dots, f_{p+q} \in E^* \text{ tels que } \Phi = \sum_{i=1}^p |f_i|^2 - \sum_{i=p+1}^q |f_i|^2 \]
 		où les formes linéaires $f_i$ sont linéairement indépendantes et où $p + q \leq n$. De plus, ces entiers ne dépendent que de $\Phi$ et pas de la décomposition choisie.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base $\Phi$-orthogonale (dont l'existence est assurée par le \cref{loi-d-inertie-de-sylvester-1}). En posant $\forall i \in \llbracket 1, n \rrbracket$, $\lambda_i = \Phi(e_i)$, on a
 		\[ \forall x \in E \text{ que l'on écrit } x = x_1 e_1 + \dots + x_n e_n, \, \Phi(x) = \sum_{i=1}^n |x_i|^2 \Phi(e_i) = \sum_{i=1}^n \lambda_i |x_i|^2 \]
 		Chaque $\lambda_i$ est strictement positif, strictement négatif, ou nul. Quitte à les réordonner, on peut supposer
@@ -57,7 +57,7 @@
 		Donc $\Phi(x) \leq 0$ par $(*)$. Supposons par l'absurde que
 		\[ g_1(x) = \dots = g_{p'}(x) = 0 \]
 		et comme $(g_i)_{i \in \llbracket 1, n \rrbracket}$ est une base de $E^*$ et que $x$ s'annule sur cette base, on a $x = 0$ : absurde. Donc, il existe $i \in \llbracket 1, p' \rrbracket$ tel que $g_i(x) \neq 0$. En particulier $\Phi(x) > 0$ par $(**)$ : contradiction. Ainsi, $p = p'$. On montre de même que $q = q'$.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		La preuve du Gourdon est un peu décousue. Il faut savoir recoller les morceaux pour bien montrer existence et ``l'unicité'' de la décomposition.

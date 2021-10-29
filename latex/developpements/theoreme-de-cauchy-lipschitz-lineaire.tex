@@ -12,7 +12,7 @@
 		Soit $I$ un intervalle compact. L'espace $(\mathcal{C} (X, \mathbb{K}^d), \Vert . \Vert_{\infty})$ est complet.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $(f_n)$ une suite de Cauchy de $(\mathcal{C} (I, \mathbb{K}^d), \Vert . \Vert_{\infty})$. Soit $x \in I$, on a
 		\[ \forall p, q \in \mathbb{N}, \, |f_p(x) - f_q(x)| \leq \Vert f_p - f_q \Vert_\infty \]
 		donc $(f_n(x))$ est de Cauchy dans $\mathbb{K}$. Comme $\mathbb{K}$ est complet, la suite $(f_n(x))$ converge vers une limite notée $f(x)$. Ainsi, la suite de fonctions $(f_n)$ converge simplement vers la fonction $f : I \rightarrow \mathbb{K}$ nouvellement définie. Il reste à montrer que la fonction $f$ est continue.
@@ -28,7 +28,7 @@
 		En faisant tendre $p$ vers l'infini, on obtient :
 		\[ \forall x \in I, \, \forall q \geq N, |f(x) - f_q(x)| < \epsilon \]
 		Nous venons d'écrire exactement la définition de la convergence uniforme ! Ainsi, $(f_n)$ est une suite de fonctions continues qui converge uniformément vers $f$, donc $f$ est continue.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[POM]{394}
 
@@ -38,7 +38,7 @@
 		admet une unique solution définie sur $I$ tout entier.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Commençons par supposer l'intervalle $I$ compact. On va montrer l'existence d'une solution globale. On écrit l'équation sous forme intégrale :
 		\[ Y \in \mathcal{C}^1 \text{ vérifie } (C) \iff Y(t) = y_0 + \int_{t_0}^t A(u) Y(u) + B(u) \, \mathrm{d}u \tag{$*$} \]
 		et on introduit la suite de fonctions $(Y_n)$ définie par récurrence sur $I$ par $Y_0 = y_0$ et :
@@ -74,6 +74,6 @@
 		\end{array}
 		\]
 		(où $Y_n$ est la solution de $(C)$ sur $K_n \ni t$). En particulier, $\theta$ est dérivable sur $I$ tout entier, vérifie $(C)$, et prolonge toute solution.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

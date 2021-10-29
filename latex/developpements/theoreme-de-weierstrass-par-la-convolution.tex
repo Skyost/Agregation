@@ -24,7 +24,7 @@
 		Autrement dit, $(p_n)$ est une \textbf{approximation positive de l'identité}.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Notons tout d'abord que
 		\[ \forall n \in \mathbb{N}^*, \, a_n = 2 \int_0^1 (1-t^2)^n \, \mathrm{d}t \geq 2 \int_0^1 t (1-t^2)^n \, \mathrm{d}t = \left[ - \frac{(1-t^2)^{n+1}}{n+1} \right]_0^1 = \frac{1}{n+1}  \]
 		\begin{enumerate}[(i)]
@@ -39,13 +39,13 @@
 				\[ \int_{|t| \geq \alpha} p_n(t) \, \mathrm{d}t = 0 \]
 			\end{itemize}
 		\end{enumerate}
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Weierstrass]
 		Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $f \in \mathcal{C}_C(\mathbb{R})$ continue. Montrons que $(f * p_n)$ converge uniformément vers $f$. Soit $\epsilon > 0$. Par le théorème de Heine $f$ est uniformément continue sur son support, donc l'est aussi sur $\mathbb{R}$ entier :
 		\[ \exists \eta > 0 \text{ tel que } \forall x, y \in \mathbb{R}, \, |x-y| < \eta \implies |f(x) - f(y)| < \epsilon \]
 		De plus, $f$ est bornée et atteint ses bornes (donc écrire $\Vert f \Vert_\infty$ a du sens). On peut appliquer le \cref{theoreme-de-weierstrass-par-la-convolution-1} point $(iii)$ :
@@ -82,6 +82,6 @@
 		\end{array}
 		\]
 		Comme $\widetilde{f} \circ \varphi$ est continue, à support dans $I$, on peut maintenant affirmer que $\widetilde{f} \circ \varphi$ est limite uniforme d'une suite de polynômes $(\rho_n)$. Donc $\widetilde{f}$ est limite uniforme de la suite $(\rho_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $\rho_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine. A fortiori, $f = \widetilde{f}_{|[a,b]}$ est aussi limite de fonctions polynômiales sur $[a,b]$.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

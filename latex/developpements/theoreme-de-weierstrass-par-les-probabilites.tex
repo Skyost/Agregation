@@ -15,7 +15,7 @@
 		le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $x \in ]0, 1[$. On se place sur un espace probabilité $(\Omega, \mathcal{A}, \mathbb{P})$ et considère $(X_k)$ une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(x)$. On note $\forall n \in \mathbb{N}^*$, $S_n = \sum_{k=1}^n X_k$. Ainsi, $S_n \sim \mathcal{B}(n, x)$ et donc par la formule de transfert,
 		\[ \mathbb{E} \left( \frac{S_n}{n} \right) = \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} = B_n(f)(x) \]
 		La fonction $f$ est continue sur $[0,1]$ qui est un compact de $\mathbb{R}$, donc par le théorème de Heine; elle y est uniformément continue. Soit donc $\epsilon > 0$,
@@ -43,13 +43,13 @@
 			\overset{\epsilon \longrightarrow 0}{\implies} &\limsup_{n \rightarrow +\infty} \Vert B_n(f) - f \Vert_\infty = 0 \\
 			\implies &\lim_{n \rightarrow +\infty} \Vert B_n(f) - f \Vert_\infty = 0
 		\end{align*}
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Weierstrass]
 		Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		On va avoir besoin du changement de variable suivant :
 		\[ \varphi :
 		\begin{array}{cl}
@@ -58,6 +58,6 @@
 		\end{array}
 		\]
 		Par le \cref{theoreme-de-weierstrass-par-les-probabilites-1}, la fonction $f \circ \varphi$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine.
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

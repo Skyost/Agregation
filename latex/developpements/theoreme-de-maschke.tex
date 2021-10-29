@@ -17,7 +17,7 @@
 		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation de $G$ et soit $W$ un sous-espace de $V$ stable par $\rho(g)$ pour tout $g \in G$. Alors il existe un supplémentaire de $W$ dans $V$ stable par $\rho(g)$ pour tout $g \in G$.
 	\end{lemma}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $p : V \mapsto W$ une projection de $V$ sur $W$. Formons la moyenne $p_0$ des transformés de $p$ par les éléments de $G$ :
 		\[ p_0 = \frac{1}{r} \sum_{g \in G} \rho(g) p \rho(g)^{-1} \]
 		Puisque $W$ est stable par $\rho(g)$ pour tout $g \in G$, on a $\mathrm{Im}(p_0) \subset W$.
@@ -31,18 +31,18 @@
 		car $g \mapsto hg$ est une bijection de $G$ dans $G$. Donc on a :
 		\[ \rho(h) p_0 = p_0 \rho(h) \]
 		Si maintenant $x \in W_0$, on a $p_0(x) = 0$. D'où $\forall g \in G, \, (p_0 \circ \rho(g))(x) = (\rho(g) \circ p_0)(x) = 0$ ie. $\rho(g)(x) \in W_0$, ce que l'on voulait.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{theorem}[Maschke]
 		Toute représentation linéaire de degré non-nul est somme directe d'un nombre fini de représentations linéaires irréductibles.
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On raisonne par récurrence sur $n = \dim(V)$.
 		\begin{itemize}
 			\item \uline{Si $n = 1$ :} la représentation $\rho$ est irréductible, donc le résultat est évident.
 			\item \uline{Supposons le résultat vrai à un rang $n \geq 1$ et montrons-le au rang $n+1$.} Si $\rho$ est irréductible, il n'y a rien à montrer. Dans le cas contraire, on note $W$ le sous-espace de $V$ laissé stable par $\rho(g)$ pour tout $g \in G$. Par le \cref{theoreme-de-maschke-1}, il existe $W_0$ tel que $E = W \oplus W_0$ avec $W_0$ laissé stable par $\rho(g)$ pour tout $g \in G$. Par l'hypothèse de récurrence, $\rho_W : g \mapsto \rho(g)_{|W}$ et $\rho_{W_0} : g \mapsto \rho(g)_{|{W_0}}$ sont sommes directes de représentations irréductibles, et comme $\rho = \rho_W \oplus \rho_{W_0}$, on a le résultat.
 		\end{itemize}
-	\end{demonstration}
+	\end{proof}
 	%</content>
 \end{document}

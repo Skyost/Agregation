@@ -13,7 +13,7 @@
 		\[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Notons que clairement $B_1 = 1$. Soit $n \in \mathbb{N}^*$, exprimons $B_{n+1}$ en fonction des termes précédents. Pour tout $k \leq n$, on note $E_k$ l'ensemble des partitions $P$ de $\llbracket 1, n+1 \rrbracket$ tel que la partie de $P$ qui contient l'entier $n+1$ est de taille $k+1$. Choisir $P$ dans $E_k$, c'est choisir $k$ entiers de $\llbracket 1, n \rrbracket$ (ceux de la partition de $P$ qui contient $n+1$), puis construire une partition des $n-k$ éléments restants. Donc $|E_k| = \binom{n}{k} B_{n-k}$.
 
 		\medskip
@@ -63,7 +63,7 @@
 		\end{align*}
 		Par unicité du développement en série entière d'une fonction, on en déduit, par identification des coefficients :
 		\[ \forall k \in \mathbb{N}^*, \, B_k = \frac{1}{e} \sum_{n=0}^{+\infty} \frac{n^k}{n!} \]
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		La partie sur le dénombrement (au début de la preuve) est un peu technique. N'hésitez pas à passer du temps dessus et à y réfléchir en faisant des exemples.

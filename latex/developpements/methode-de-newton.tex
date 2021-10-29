@@ -24,7 +24,7 @@
 		\end{enumerate}
 	\end{theorem}
 
-	\begin{demonstration}
+	\begin{proof}
 		Soit $x \in [c, d]$. Comme $f(a) = 0$, on peut écrire :
 		\begin{align*}
 			\varphi(x) - a &= x - a - \frac{f(x) - f(a)}{f'(x)} \\
@@ -47,7 +47,7 @@
 			&\leq C |x_n - a|^2
 		\end{align*}
 		D'où $c |x_n - a| \leq (C |x_0 - a|)^{2^n} \leq (C \alpha)^{2^n}$ où $C \alpha < 1$. On a donc bien convergence quadratique de la suite $(x_n)$ vers le réel $a$.
-	\end{demonstration}
+	\end{proof}
 
 	\reference[DEM]{100}
 
@@ -71,7 +71,7 @@
 		\end{enumerate}
 	\end{corollary}
 
-	\begin{demonstration}
+	\begin{proof}
 		La dérivée $f'$ est strictement croissante (car $f$ est strictement convexe) sur $]c, d[$. Ainsi, soit $x \in [a, d]$. Si $x = a$, on a $\varphi(x) = x$, et la suite $(x_n)$ est alors constante. Supposons maintenant $x > a$. On a :
 		\[ \varphi(x) = x - \frac{\overbrace{f(x)}^{> 0}}{\underbrace{f'(x)}_{> 0}} < x \]
 		Et par $(*)$ (de la démonstration précédente), $\exists z \in ]a, x[$ :
@@ -81,7 +81,7 @@
 		Enfin, si $x_0 \in ]a, d]$, on a comme dans $(*)$ :
 		\[ \forall n \in \mathbb{N}, \, x_n > a \text{ et } \frac{x_{n+1} - a}{(x_n - a)^2} = \frac{f''(z_n)}{f'(z)} \]
 		(en faisant la même démarche que pour $(*)$ on obtient $z_n \in ]a, x_n[$). On fait tendre $n$ vers l'infini et la fraction de droite tend vers $\frac{f''(a)}{f'(a)}$; d'où le résultat.
-	\end{demonstration}
+	\end{proof}
 
 	\begin{remark}
 		L'ajout de l'hypothèse de convexité à la méthode de Newton, nous permet de nous affranchir de l'intervalle $I$ tout en gardant la même vitesse de convergence.
