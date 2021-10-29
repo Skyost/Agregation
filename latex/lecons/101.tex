@@ -33,8 +33,6 @@
 		On peut de même définir une action à droite de $G$ sur $X$.
 	\end{remark}
 
-	On supposera par la suite que $G$ agit sur $X$ à gauche par l'action $\cdot$.
-
 	\begin{example}
 		\begin{itemize}
 			\item Le groupe $S_X$ des bijections de $X$ dans $X$ opère naturellement sur $X$ par la relation $\sigma \cdot x = \sigma(x)$ pour tout $\sigma \in S_x$ et pour tout $x \in X$.
@@ -42,8 +40,10 @@
 		\end{itemize}
 	\end{example}
 
+	On supposera par la suite que $G$ agit sur $X$ à gauche via l'action $\cdot$.
+
 	\begin{theorem}
-		On a une correspondance bijective entre les actions de $G$ sur $X$ et les morphismes de $G$ dans $S_X$. En effet, si $\cdot : G \times X \rightarrow X$ est une action de $G$ sur $X$, on peut y faire correspondre le morphisme
+		On a une correspondance bijective entre les actions de $G$ sur $X$ et les morphismes de $G$ dans $S_X$. En effet, si $\cdot$ désigne une action de $G$ sur $X$, on peut y faire correspondre le morphisme
 		\[ \varphi :
 		\begin{array}{cl}
 			G &\rightarrow S_X \\
@@ -65,9 +65,9 @@
 		\end{itemize}
 	\end{definition}
 
-	\begin{cexample}
+	\begin{example}
 		L'action du groupe diédral $\mathcal{D}_3$ sur les sommets d'un triangle équilatéral est transitive mais n'est pas libre.
-	\end{cexample}
+	\end{example}
 
 	\begin{proposition}
 		\label{101-1}
@@ -129,6 +129,11 @@
 		\end{itemize}
 	\end{proposition}
 
+	\begin{theorem}[Formule des classes]
+		Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1}. Alors,
+		\[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+	\end{theorem}
+
 	\begin{definition}
 		On définit :
 		\begin{itemize}
@@ -136,11 +141,6 @@
 			\item $X^g = \{ x \in X \mid g \cdot x = x \}$ l'ensemble des points de $X$ laissés fixes par $g \in G$.
 		\end{itemize}
 	\end{definition}
-
-	\begin{theorem}[Formule des classes]
-		Soit $\Omega$ un système de représentants associé à la relation $\sim$ de la \cref{101-1}. Alors,
-		\[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
-	\end{theorem}
 
 	\begin{theorem}[Formule de Burnside]
 		Le nombre $r$ d'orbites de $X$ sous l'action de $G$ est donné par
@@ -377,7 +377,7 @@
 	\reference{23}
 
 	\begin{definition}
-		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On associe à $\rho$ la fonction $\chi_\rho : g \mapsto \trace(\rho(g))$ le \textbf{caractère de $\rho$}. De plus, $\chi_{\rho}$ est dit \textbf{irréductible} si $\rho$ l'est.
+		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On associe à $\rho$ son \textbf{caractère} $\chi_\rho : g \mapsto \trace(\rho(g))$. On dit que $\chi_{\rho}$ est \textbf{irréductible} si $\rho$ l'est.
 	\end{definition}
 
 	\reference[ULM21]{151}
@@ -392,7 +392,7 @@
 		\begin{itemize}
 			\item Les caractères forment une base orthonormale de l'espace des fonctions centrales pour le produit scalaire $\langle ., . \rangle$ défini par
 			\[ \forall \chi, \Psi \text{ caractères}, \, \langle \chi, \Psi \rangle = \frac{1}{|G|} \sum_{g \in G} \chi(g) \overline{\Psi(g)} \]
-			\item Un caractère $\chi$ est irréductible si et seulement si $\langle \chi, \chi \rangle$.
+			\item Un caractère $\chi$ est irréductible si et seulement si $\langle \chi, \chi \rangle = 1$.
 			\item Il y a autant de caractères irréductibles que de classes de conjugaison.
 		\end{itemize}
 	\end{theorem}
