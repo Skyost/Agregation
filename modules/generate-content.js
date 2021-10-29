@@ -120,7 +120,7 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
         numberizeTitles(root)
         renderMath(root)
         addVueComponents(root)
-        fs.writeFileSync(path.resolve(mdDir, fileName + '.md'), toString(root))
+        fs.writeFileSync(path.resolve(mdDir, fileName + '.md'), toString(fileName, root))
       }
       latexmk(directory, file)
       fs.mkdirSync(pdfDir, { recursive: true })
@@ -185,17 +185,23 @@ function addVueComponents (root) {
   }
 }
 
-function toString (root) {
+function toString (slug, root) {
   const header = {}
   const name = root.querySelector('.docname h1')
+  let title = root.querySelector('.doctitle')
   if (name) {
     header.name = name.innerHTML.trim()
-    header['page-title'] = name.text.trim()
+    if (!title) {
+      title = name
+    }
+  }
+  if (title) {
+    header['page-title'] = title.text.trim()
     header['page-title-search'] = normalizeString(header['page-title'])
   }
   const categories = root.querySelector('.doccategories')
   if (categories) {
-    header.categories = categories.rawText.trim().split(', ')
+    header.categories = categories.text.trim().split(', ')
   }
   const summary = root.querySelector('.docsummary p')
   if (summary) {

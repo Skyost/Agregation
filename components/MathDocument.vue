@@ -70,6 +70,7 @@ export default {
   position: relative;
 
   ::v-deep {
+    .doctitle,
     .doccategories {
       display: none;
     }

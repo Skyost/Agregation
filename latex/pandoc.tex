@@ -2,8 +2,11 @@
 
 \providecommand{\lesson}[3]{%
 	\begin{docname}%
-		\section*{#3}%
+		\section*{\textbf{#2} #3}%
 	\end{docname}%
+  \begin{doctitle}%
+    #3%
+  \end{doctitle}%
 	\begin{doccategories}%
 		#1%
 	\end{doccategories}%
@@ -13,6 +16,9 @@
 	\begin{docname}%
 		\section*{#3}%
 	\end{docname}%
+  \begin{doctitle}%
+    #3%
+  \end{doctitle}%
 	\begin{doccategories}%
 		#1%
 	\end{doccategories}%
