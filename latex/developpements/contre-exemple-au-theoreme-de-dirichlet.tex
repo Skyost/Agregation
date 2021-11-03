@@ -1,0 +1,61 @@
+\input{../common}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{contre-exemple-au-theoreme-de-dirichlet}{Contre-exemple au théorème de Dirichlet}
+
+	\summary{On construit un contre-exemple au théorème de Dirichlet qui montre l'importance de l'hypothèse $\mathcal{C}^1$ par morceaux.}
+
+	\reference[GOU20]{275}
+	
+	\begin{cexample}
+		Soit $f : \mathbb{R} \rightarrow \mathbb{R}$ paire, $2\pi$-périodique telle que :
+		\[ \forall x \in [0, \pi], f(x) = \sum_{p=1}^{+\infty} \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{x}{2} \right)
+		\]
+		Alors $f$ est bien définie et continue sur $\mathbb{R}$. Cependant, sa série de Fourier diverge en $0$.
+	\end{cexample}
+
+	\begin{proof}
+		\[ \forall x \in [0, \pi], \, \left| \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{x}{2} \right) \right| \leq \frac{1}{p^2} \]
+		donc la série converge normalement sur $[0, \pi]$. Comme la fonction $x \mapsto \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{x}{2} \right)$ est continue (en tant que composée de fonctions continues), la fonction $f$ est continue sur $[0, \pi]$. On prolonge $f$ par parité en posant
+		\[ \forall x \in [-\pi, 0[, \, f(x) = f(-x) \]
+		Ainsi prolongée, $f$ est continue sur l'intervalle $[-\pi, \pi]$. Comme $f(\pi) = f(-\pi)$, on en déduit que $f$ est $2\pi$-périodique, et est donc continue sur $\mathbb{R}$ tout entier.
+		\newpar
+		Posons $\forall k \in \mathbb{N}$ :
+		\[ \forall n \in \mathbb{N}, \, a_{n,k} = \int_0^{\pi} \cos(nt) \sin \left( \frac{(2k+1) t}{2} \, \mathrm{d}t \right) \text{ et } \forall q \in \mathbb{N}, \, s_{q,k} = \sum_{n=0}^{q} a_{n,k} \]
+		Soient $k, n \in \mathbb{N}$. On va chercher à minorer $s_{n,k}$. Pour cela, calculons explicitement $a_{n,k}$ :
+		\begin{align*}
+			a_{n,k} &= \frac{1}{2} \int_0^{\pi} \sin \left( \left( \frac{2k+1}{2} + n \right) t \right) + \sin \left( \left( \frac{2k+1}{2} - n \right) t \right) \, \mathrm{d}t \\
+			&= \frac{1}{2} \left( \frac{1}{k+n+\frac{1}{2}} + \frac{1}{k-n+\frac{1}{2}} \right) \\
+			&= \frac{k+\frac{1}{2}}{\left( k + \frac{1}{2} \right)^2 - n^2}
+		\end{align*}
+		Par conséquent, à $k$ fixé, $a_{n,k} \geq 0$ pour tout $n \leq k$. Donc $s_{q,k} \geq 0$ pour tout $q \leq k$. Pour le cas $q > k$, on remarque que les $a_{q,k}$ sont, à un facteur $\frac{2}{\pi}$ près, les coefficients de Fourier $a_n(g_k)$ de la fonction paire
+		\[ g_k : t \mapsto \left| \sin \left( (k + \frac{1}{2}) t \right) \right| \]
+		qui est continue et $\mathcal{C}^1$ par morceaux. D'après le théorème de Dirichlet, sa série de Fourier converge simplement vers $g_k$ sur $\mathbb{R}$. En particulier, en $0$, cela donne :
+		\[ \frac{a_{0,k}}{2} + \sum_{n=1}^{+\infty} a_{n,k} = \frac{\pi}{2} g_k(0) = 0 \]
+		En faisant tendre $q$ vers $+\infty$, on a ainsi :
+		\[ s_{q,k} \longrightarrow \frac{a_{0,k}}{2} \]
+		Or, $a_{n,k}$ est positif pour $n \leq k$ et négatif pour $n > k$. Donc la suite $(s_{q,k})$ est décroissante à partir de l'indice $q = k$. Comme elle converge vers $\frac{a_{0,k}}{2}$, on en déduit que
+		\[ \forall q > k, \, s_{q, k} \geq \frac{a_{0,k}}{2} \geq 0 \]
+		Il nous reste à obtenir une minoration de $s_{k,k}$. Or, pour tout $k \in \mathbb{N}^*$,
+		\[ s_{k,k} \geq \sum_{n=1}^k \frac{k + \frac{1}{2}}{(k + \frac{1}{2})^2 - n^2} \]
+		Mais, la fonction $t \mapsto \frac{k + \frac{1}{2}}{(k + \frac{1}{2})^2 - t^2}$ est croissante. Donc par comparaison série-intégrale,
+		\begin{align*}
+			s_{k,k} &\geq \sum_{n=1}^k \int_{n-1}^n \frac{k + \frac{1}{2}}{(k + \frac{1}{2})^2 - t^2} \, \mathrm{d}t \\
+			&= \int_0^k \frac{k + \frac{1}{2}}{(k + \frac{1}{2})^2 - t^2} \, \mathrm{d}t \\
+			&= \frac{\ln(4k+3)}{2} \\
+			&\geq \frac{\ln(k)}{2}
+		\end{align*}
+		Comme $f$ est paire, les coefficients de Fourier $b_n(f)$ sont nuls. Par ailleurs, $\forall n \in \mathbb{N}$,
+		\begin{align*}
+			a_n(f) &= \frac{2}{\pi} \int_0^{\pi} f(t) \cos(nt) \, \mathrm{d}t \\
+			&= \frac{2}{\pi} \int_0^{\pi} \cos(nt) \sum_{p=1}^{+\infty} \frac{1}{p^2} \sin \left( (2^{p^3} + 1) \frac{t}{2} \right) \, \mathrm{d}t \\
+			&= \frac{2}{\pi} \sum_{p=1}^{+\infty} \frac{1}{p^2} \int_0^{\pi} \sin \left( (2^{p^3} + 1) \frac{t}{2} \right) \, \mathrm{d}t
+		\end{align*}
+		l'interversion somme-intégrale étant licite par convergence normale sur un segment. Donc,
+		\[ \forall n \in \mathbb{N}, \, a_n(f) = \frac{2}{\pi} \sum_{p=1}^{+\infty} \frac{1}{p^2} a_{n,2^{p^3 - 1}} \implies \forall n \in \mathbb{N}, \, S_n = \frac{\pi}{2} \sum_{k=0}^{n} a_k(f) = \sum_{p=1}^{+\infty} \frac{1}{p^2} s_{n,2^{p^3 - 1}} \]
+		Comme les $s_{q,k}$ sont positifs et que $s_{k,k} \geq \frac{\ln(k)}{2}$, on en déduit
+		\[ \forall p \in \mathbb{N}, \, S_{2^{p^3 - 1}} \geq \frac{1}{p^2} s_{2^{p^3 - 1}, 2^{p^3 - 1}} \geq \frac{1}{2p^2} \ln(2^{p^3 - 1}) = \frac{p^3 - 1}{2 p^2} \ln(2) \longrightarrow +\infty \]
+	\end{proof}
+	%</content>
+\end{document}
