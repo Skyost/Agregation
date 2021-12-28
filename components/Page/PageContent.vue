@@ -1,12 +1,15 @@
 <template>
-  <b-container id="page-content" class="pt-5 pb-5">
+  <ski-container id="page-content" class="pt-5 pb-5">
     <slot />
-  </b-container>
+  </ski-container>
 </template>
 
 <script>
+import { SkiContainer } from 'skimple-components'
+
 export default {
-  name: 'PageContent'
+  name: 'PageContent',
+  components: { SkiContainer }
 }
 </script>
 
@@ -24,5 +27,13 @@ export default {
 ::v-deep ul li {
   padding-left: 0 !important;
   list-style-type: '— ';
+}
+
+::v-deep a:not([role='button']) {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 </style>

@@ -23,11 +23,7 @@
 </template>
 
 <script>
-import { BIconExclamationCircleFill, BIconInfoCircleFill, BIconWrench } from 'bootstrap-vue'
-
 export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: { BIconInfoCircleFill, BIconExclamationCircleFill, BIconWrench },
   data () {
     return {
       pdfBannerLink: null,
@@ -68,29 +64,5 @@ h3,
 h4,
 h5 {
   font-family: 'Noto Sans JP', sans-serif;
-}
-
-.btn,
-input {
-  border-radius: 0 !important;
-}
-
-.btn-black {
-  $color: #343a40;
-
-  color: white !important;
-  background-color: $color;
-  border-color: lighten($color, 5%);
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: darken($color, 6%) !important;
-    border-color: $color !important;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($color, 0.5);
-  }
 }
 </style>

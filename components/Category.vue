@@ -1,16 +1,15 @@
 <template>
   <span>
-    <b-icon :icon="icon" /> {{ name }}
+    <ski-icon :icon="icon" /> {{ name }}
   </span>
 </template>
 
 <script>
-import { BIcon, BIconBezier, BIconList, BIconOption } from 'bootstrap-vue'
+import { SkiIcon } from 'skimple-components'
 
 export default {
   name: 'Category',
-  // eslint-disable-next-line vue/no-unused-components
-  components: { BIcon, BIconList, BIconBezier, BIconOption },
+  components: { SkiIcon },
   props: {
     category: {
       type: String,

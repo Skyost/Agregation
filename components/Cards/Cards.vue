@@ -1,9 +1,9 @@
 <template>
   <div class="cards">
-    <b-row class="header">
-      <b-col cols="12" :lg="searchFields ? 9 : null">
-        <b-btn-group class="categories mb-3 mb-lg-0">
-          <b-button
+    <ski-columns class="header">
+      <ski-column cols="12" :lg="searchFields ? '9' : null">
+        <ski-button-group class="categories mb-3 mb-lg-0">
+          <ski-button
             v-for="category in categories"
             :key="category"
             variant="link"
@@ -12,24 +12,29 @@
             @click="currentCategory = category"
           >
             <category class="category" :category="category" />
-          </b-button>
-        </b-btn-group>
-      </b-col>
-      <b-col v-if="searchFields" cols="12" lg="3" class="d-flex align-items-center">
-        <b-form-input v-model="search" placeholder="Chercher dans la liste" size="sm" />
-      </b-col>
-    </b-row>
+          </ski-button>
+        </ski-button-group>
+      </ski-column>
+      <ski-column v-if="searchFields" cols="12" lg="3" class="d-flex align-items-center">
+        <ski-form-control v-model="search" placeholder="Chercher dans la liste" size="sm" />
+      </ski-column>
+    </ski-columns>
     <div v-for="(item, position) in itemsToDisplay" :key="position" class="mt-4 item-card p-3">
       <slot :item="item" />
     </div>
+    <em v-if="itemsToDisplay.length === 0" class="d-block mt-5 text-muted">
+      Aucun contenu à afficher.
+    </em>
   </div>
 </template>
 
 <script>
+import { SkiButton, SkiButtonGroup, SkiColumn, SkiColumns, SkiFormControl } from 'skimple-components'
 import { normalizeString } from '~/utils/utils'
 
 export default {
   name: 'Cards',
+  components: { SkiColumns, SkiColumn, SkiButtonGroup, SkiButton, SkiFormControl },
   props: {
     items: {
       type: Array,
@@ -63,9 +68,6 @@ export default {
     }
   },
   methods: {
-    updateCurrentCategory (category) {
-      this.currentCategory = category
-    },
     filter (item) {
       let result = true
       if (this.currentCategory) {
@@ -111,8 +113,8 @@ export default {
       }
 
       &.active {
-        color: var(--primary);
-        border-bottom-color: rgba(var(--primary), 0.5);
+        color: var(--bs-blue);
+        border-bottom-color: rgba(var(--bs-blue), 0.5);
       }
 
       @media (max-width: $mobile-width) {

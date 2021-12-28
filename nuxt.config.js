@@ -51,10 +51,9 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    'skimple-components/nuxt'
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

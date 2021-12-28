@@ -1,9 +1,9 @@
 <template>
-  <b-row :id="book.short" class="book">
-    <b-col cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
+  <ski-columns :id="book.short" class="book">
+    <ski-column cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
       <img class="preview" :src="book.preview" :alt="alt">
-    </b-col>
-    <b-col class="info" cols="12" md="8" lg="9">
+    </ski-column>
+    <ski-column class="info" cols="12" md="8" lg="9">
       <h2 class="mb-0">
         <strong v-text="book.title" /> {{ book.subtitle }}
       </h2>
@@ -19,24 +19,24 @@
       <small class="text-muted d-block mb-2">
         <u>Référence :</u> <strong v-text="short" />.
       </small>
-      <b-btn-group class="mt-2 align-self-start">
-        <b-btn :href="`${book.buy}`" variant="dark">
-          <b-icon-cart /> Acheter le livre
-        </b-btn>
-        <b-btn :href="`${book.website}`">
-          <b-icon-info-circle /> Plus d'informations
-        </b-btn>
-      </b-btn-group>
-    </b-col>
-  </b-row>
+      <ski-button-group class="mt-2 align-self-start">
+        <ski-button :href="`${book.buy}`">
+          <ski-icon icon="cart" /> Acheter le livre
+        </ski-button>
+        <ski-button :href="`${book.website}`" variant="secondary">
+          <ski-icon icon="info-circle" /> Plus d'informations
+        </ski-button>
+      </ski-button-group>
+    </ski-column>
+  </ski-columns>
 </template>
 
 <script>
-import { BIconCart, BIconInfoCircle } from 'bootstrap-vue'
+import { SkiButton, SkiButtonGroup, SkiColumn, SkiColumns, SkiIcon } from 'skimple-components'
 
 export default {
   name: 'BookCard',
-  components: { BIconCart, BIconInfoCircle },
+  components: { SkiColumns, SkiColumn, SkiButton, SkiButtonGroup, SkiIcon },
   props: {
     book: {
       type: Object,

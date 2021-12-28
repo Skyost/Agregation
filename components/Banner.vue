@@ -1,6 +1,6 @@
 <template>
   <div class="banner" :class="variant">
-    <b-icon class="icon" :icon="icon" />
+    <ski-icon class="icon" :icon="icon" />
     <p class="mb-0">
       <slot />
     </p>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import { BIcon } from 'bootstrap-vue'
+import { SkiIcon } from 'skimple-components'
 
 export default {
   name: 'Banner',
-  components: { BIcon },
+  components: { SkiIcon },
   props: {
     icon: {
       type: String,

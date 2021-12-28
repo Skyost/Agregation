@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="text-right">
-      <b-btn class="collapse-button" :class="buttonClass" variant="link" @click="active = !active">
-        <b-icon-chevron-right /> Preuve
-      </b-btn>
+      <ski-button class="collapse-button" :class="buttonClass" variant="link" @click="active = !active">
+        <ski-icon icon="chevron-right" class="icon" /> Preuve
+      </ski-button>
     </div>
     <slide-up-down :active="active">
       <div class="slide-content">
@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import { BIconChevronRight } from 'bootstrap-vue'
+import { SkiButton, SkiIcon } from 'skimple-components'
 import SlideUpDown from 'vue-slide-up-down'
 
 export default {
   name: 'ProofCollapsible',
-  components: { BIconChevronRight, SlideUpDown },
+  components: { SkiButton, SkiIcon, SlideUpDown },
   data () {
     return {
       active: false
@@ -41,12 +41,12 @@ export default {
   text-decoration: none;
   color: rgba(black, 0.75);
 
-  .b-icon {
+  .icon::before {
     transition: transform 100ms;
     transform: rotate(0deg);
   }
 
-  &.expanded .b-icon {
+  &.expanded .icon::before {
     transform: rotate(90deg);
   }
 }

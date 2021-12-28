@@ -1,8 +1,8 @@
 <template>
   <footer id="page-footer" class="bg-dark">
-    <b-container class="pt-4 pb-4">
-      <b-row>
-        <b-col cols="12" md="6" class="mb-4 mb-md-0">
+    <ski-container class="pt-4 pb-4">
+      <ski-columns>
+        <ski-column cols="12" md="6" class="mb-4 mb-md-0">
           <h2>Copyright</h2>
           <p>
             Copyright &copy; 2021 - <a href="https://skyost.eu">Hugo Delaunay</a>. Tous droits réservés.
@@ -13,8 +13,8 @@
             Le site en lui-même est totalement <a :href="`${githubPage}/blob/master/LICENSE`">open-source</a>,
             vous pouvez aller voir ça sur <a :href="githubPage">Github</a>.
           </p>
-        </b-col>
-        <b-col cols="12" md="6">
+        </ski-column>
+        <ski-column cols="12" md="6">
           <h2>PDFs</h2>
           <p>
             Les contenus du site ont été écrits en <a href="https://fr.wikipedia.org/wiki/LaTeX">LaTeX</a>, et sont
@@ -25,17 +25,19 @@
             <li><a href="/pdf/developpements.pdf">Développements</a></li>
             <li><a href="/pdf/lecons-developpements.pdf">Plans de leçons &amp; développements</a></li>
           </ul>
-        </b-col>
-      </b-row>
-    </b-container>
+        </ski-column>
+      </ski-columns>
+    </ski-container>
   </footer>
 </template>
 
 <script>
+import { SkiColumn, SkiColumns, SkiContainer } from 'skimple-components'
 import { GITHUB_PAGE } from '~/utils/site'
 
 export default {
   name: 'PageFooter',
+  components: { SkiContainer, SkiColumns, SkiColumn },
   data () {
     return {
       githubPage: GITHUB_PAGE

@@ -2,23 +2,23 @@
   <div>
     <h2 v-html="object.name" />
     <slot />
-    <b-btn-group class="mt-2">
-      <b-btn :to="`/${linkPrefix}/${object.slug}`" variant="black">
-        <b-icon-box-arrow-in-right /> {{ btnCheck }}
-      </b-btn>
-      <b-btn :href="`/pdf/${linkPrefix}/${object.slug}.pdf`">
-        <b-icon-file-text /> Télécharger le PDF
-      </b-btn>
-    </b-btn-group>
+    <ski-button-group class="mt-2">
+      <ski-button :to="`/${linkPrefix}/${object.slug}`">
+        <ski-icon icon="box-arrow-in-right" /> {{ btnCheck }}
+      </ski-button>
+      <ski-button :href="`/pdf/${linkPrefix}/${object.slug}.pdf`" variant="secondary">
+        <ski-icon icon="file-text" /> Télécharger le PDF
+      </ski-button>
+    </ski-button-group>
   </div>
 </template>
 
 <script>
-import { BIconBoxArrowInRight, BIconFileText } from 'bootstrap-vue'
+import { SkiButton, SkiButtonGroup, SkiIcon } from 'skimple-components'
 
 export default {
   name: 'LatexContentCard',
-  components: { BIconBoxArrowInRight, BIconFileText },
+  components: { SkiButtonGroup, SkiButton, SkiIcon },
   props: {
     btnCheck: {
       type: String,

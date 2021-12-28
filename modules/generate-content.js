@@ -9,7 +9,7 @@ const matter = require('gray-matter')
 const YAML = require('yaml')
 const logger = require('./logger')
 
-const dontRegenerateIfPDFFound = process.env.DONT_REGENERATE_IF_PDF_FOUND === 'true'
+const dontRegenerateIfDestFound = process.env.DONT_REGENERATE_IF_DEST_FOUND === 'true'
 const latexMkAdditionalArguments = process.env.LATEXMK_ADDITIONAL_ARGUMENTS ?? ''
 
 // TODO: Cache system.
@@ -111,22 +111,26 @@ async function processFiles (ignored, pandocRedefinitions, directory, mdDir, pdf
       const fileName = getFileName(file)
       if (!gatheringsFiles.has(filePath)) {
         fs.mkdirSync(mdDir, { recursive: true })
-        const htmlContent = execSync(`pandoc "${path.relative(directory, pandocRedefinitions)}" "${filePath}" -t html --gladtex --number-sections`, {
-          cwd: directory,
-          encoding: 'utf-8'
-        })
-        const root = parse(htmlContent)
-        handleReferences(root)
-        numberizeTitles(root)
-        renderMath(root)
-        addVueComponents(root)
-        fs.writeFileSync(path.resolve(mdDir, fileName + '.md'), toString(fileName, root))
+        const mdFile = path.resolve(mdDir, fileName + '.md')
+        if (!dontRegenerateIfDestFound || !fs.existsSync(mdFile)) {
+          const htmlContent = execSync(`pandoc "${path.relative(directory, pandocRedefinitions)}" "${filePath}" -t html --gladtex --number-sections`, {
+            cwd: directory,
+            encoding: 'utf-8'
+          })
+          const root = parse(htmlContent)
+          handleReferences(root)
+          numberizeTitles(root)
+          renderMath(root)
+          addVueComponents(root)
+          fs.writeFileSync(mdFile, toString(fileName, root))
+        }
       }
-      latexmk(directory, file)
-      fs.mkdirSync(pdfDir, { recursive: true })
-      fs.copyFileSync(path.resolve(directory, `${fileName}.pdf`), path.resolve(pdfDir, `${fileName}.pdf`))
-      if (gatheringsFiles.has(filePath)) {
-        execSync('latexmk -quiet -c', { cwd: directory })
+      if (latexmk(directory, file)) {
+        fs.mkdirSync(pdfDir, { recursive: true })
+        fs.copyFileSync(path.resolve(directory, `${fileName}.pdf`), path.resolve(pdfDir, `${fileName}.pdf`))
+        if (gatheringsFiles.has(filePath)) {
+          execSync('latexmk -quiet -c', { cwd: directory })
+        }
       }
     }
   }
@@ -219,23 +223,24 @@ async function handleImages (imagesDir, imagesDestDir) {
       await handleImages(filePath, path.resolve(imagesDestDir, file))
     } else if (file.endsWith('.tex')) {
       logger.info(`Handling image "${filePath}"...`)
-      const fileName = getFileName(file)
-      latexmk(imagesDir, file)
-      execSync(`pdftocairo -svg "${fileName}.pdf" "${fileName}.svg"`, { cwd: imagesDir })
-      fs.mkdirSync(imagesDestDir, { recursive: true })
-      fs.copyFileSync(path.resolve(imagesDir, `${fileName}.svg`), path.resolve(imagesDestDir, `${fileName}.svg`))
+
+      if (latexmk(imagesDir, file)) {
+        const fileName = getFileName(file)
+        const imageDestFile = path.resolve(imagesDestDir, `${fileName}.svg`)
+        execSync(`pdftocairo -svg "${fileName}.pdf" "${fileName}.svg"`, { cwd: imagesDir })
+        fs.mkdirSync(imagesDestDir, { recursive: true })
+        fs.copyFileSync(path.resolve(imagesDir, `${fileName}.svg`), imageDestFile)
+      }
     }
   }
 }
 
 function latexmk (directory, file) {
-  if (dontRegenerateIfPDFFound) {
-    const pdfPath = path.resolve(directory, file.replace('.tex', '.pdf'))
-    if (fs.existsSync(pdfPath)) {
-      return
-    }
+  if (dontRegenerateIfDestFound && fs.existsSync(path.resolve(directory, file.replace('.tex', '.pdf')))) {
+    return false
   }
   execSync(`latexmk -pdflatex=lualatex -pdf "${file}" ${latexMkAdditionalArguments}`, { cwd: directory })
+  return true
 }
 
 function getFileName (file) {
