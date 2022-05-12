@@ -1,5 +1,5 @@
 const SITE_NAME = 'agreg.skyost.eu'
-const SITE_DESCRIPTION = 'Petite site contenant une flopée de resources pour l\'agrégation de mathématiques : plans, développements, bibliographie, ...'
+const SITE_DESCRIPTION = 'Petit site contenant une flopée de resources pour l\'agrégation de mathématiques : plans, développements, bibliographie, ...'
 const HOST_NAME = 'https://agreg.skyost.eu'
 const GITHUB_PAGE = 'https://github.com/Skyost/Agregation'
 
