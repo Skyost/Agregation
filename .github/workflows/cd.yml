@@ -25,7 +25,7 @@ jobs:
     needs: configure
     runs-on: ${{ matrix.os }}
     container:
-      image: skyost/latex
+      image: skyost/latex-docker
       options: --user ${{ needs.configure.outputs.containerUser }}
     strategy:
       matrix:
