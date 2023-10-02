@@ -5,40 +5,47 @@ on:
     branches:
       - main
       - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
-  cd:
+  configure:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        node: [14]
+        os: [ ubuntu-latest ]
+    outputs:
+      containerUser: ${{ steps.get-user.outputs.containerUser }}
+    steps:
+      - id: get-user
+        run: echo "containerUser=`id -u`:`id -g`" >> $GITHUB_OUTPUT
+  build:
+    needs: configure
+    runs-on: ${{ matrix.os }}
+    container:
+      image: skyost/latex
+      options: --user ${{ needs.configure.outputs.containerUser }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ latest ]
     steps:
     - name: Checkout 🛎
-      uses: actions/checkout@master
-    - name: Setup node env 🏗
-      uses: actions/setup-node@v2.1.2
+      uses: actions/checkout@v3
+    - name: Setup Node.js ${{ matrix.node }} 🏗
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
-    - name: Cache node_modules 📦
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        cache: 'npm'
     - name: Install dependencies 👨🏻‍💻
       run: npm ci
-    - name: Install pandoc 📄
-      run: wget https://github.com/jgm/pandoc/releases/download/2.15/pandoc-2.15-1-amd64.deb && sudo dpkg -i pandoc-2.15-1-amd64.deb
-    - name: Install LaTeX 🖋
-      run: sudo apt-get install -y texlive-latex-base texlive-lang-french texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-science texlive-luatex biber latexmk
-    - name: Install Poppler 🖼
-      run: sudo apt-get install -y poppler-utils
     - name: Generate ⚙️
       run: npm run generate
     - name: Deploy 🚀
-      uses: peaceiris/actions-gh-pages@v3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        folder: dist
+        branch: gh-pages
+        single-commit: true

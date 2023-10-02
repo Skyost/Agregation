@@ -102,8 +102,8 @@ sw.*
 *.run.xml
 content/lecons/
 content/developpements/
-static/images/latex/
-static/pdf/
+public/images/latex/
+public/pdf/
 latex/bibliography.bib
 latex/developpements.tex
 latex/lecons.tex

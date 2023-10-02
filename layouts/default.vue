@@ -1,68 +1,44 @@
+<script setup lang="ts">
+const banners = useBanners()
+</script>
+
 <template>
   <div>
     <page-header />
     <page-navbar />
-    <banner v-if="pdfBannerLink" icon="info-circle-fill">
-      Le contenu de cette page est disponible en version PDF.
-      Vous pouvez le télécharger <a :href="pdfBannerLink">ici</a>.
-    </banner>
-    <banner v-if="caveatsBannerLink" icon="exclamation-circle-fill" variant="red">
-      Pour signaler une erreur ou suggérer une amélioration, vous pouvez modifier
-      le <a :href="caveatsBannerLink">code source</a> de la page, ou me <a href="https://skyost.eu/#contact">contacter</a>.
-    </banner>
-    <banner v-if="wipBannerLink" icon="wrench" variant="teal">
-      Cette page et son contenu ne sont pas terminés :
-      il peut manquer des choses, et de nombreux changements vont encore intervenir.
-      Toute aide est <a :href="wipBannerLink">la bienvenue</a> !
-    </banner>
-    <page-content>
-      <nuxt @onpdfbanner="onPDFBanner" @oncaveatsbanner="onCaveatsBanner" @onwipbanner="onWIPBanner" />
+    <client-only>
+      <banner v-for="(banner, index) in banners" :key="`banner-${index}`" :banner="banner" />
+    </client-only>
+    <page-content id="page-content">
+      <slot />
     </page-content>
     <page-footer />
   </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      pdfBannerLink: null,
-      caveatsBannerLink: null,
-      wipBannerLink: null
-    }
-  },
-  watch: {
-    $route () {
-      this.pdfBannerLink = null
-      this.caveatsBannerLink = null
-      this.wipBannerLink = null
-    }
-  },
-  methods: {
-    onPDFBanner (link) {
-      this.pdfBannerLink = link
-    },
-    onCaveatsBanner (link) {
-      this.caveatsBannerLink = link
-    },
-    onWIPBanner (link) {
-      this.wipBannerLink = link
+<style lang="scss">
+#page-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    border-bottom: 1px solid rgba(black, 0.25);
+    padding-bottom: 0.2em;
+    margin-bottom: 0.5em;
+  }
+
+  ul li {
+    padding-left: 0 !important;
+    list-style-type: '— ';
+  }
+
+  a:not([role='button']) {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
-}
-</script>
-
-<style lang="scss">
-html,
-body {
-  font-family: 'Raleway', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Noto Sans JP', sans-serif;
 }
 </style>

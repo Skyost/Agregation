@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { siteMeta } from '~/site/meta'
+</script>
+
 <template>
   <footer id="page-footer" class="bg-dark">
     <ski-container class="pt-4 pb-4">
@@ -10,8 +14,8 @@
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.
-            Le site en lui-même est totalement <a :href="`${githubPage}/blob/master/LICENSE`">open-source</a>,
-            vous pouvez aller voir ça sur <a :href="githubPage">Github</a>.
+            Le site en lui-même est totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/master/LICENSE`">open-source</a>,
+            vous pouvez aller voir ça sur <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`">Github</a>.
           </p>
         </ski-column>
         <ski-column cols="12" md="6">
@@ -30,21 +34,6 @@
     </ski-container>
   </footer>
 </template>
-
-<script>
-import { SkiColumn, SkiColumns, SkiContainer } from 'skimple-components'
-import { GITHUB_PAGE } from '~/utils/site'
-
-export default {
-  name: 'PageFooter',
-  components: { SkiContainer, SkiColumns, SkiColumn },
-  data () {
-    return {
-      githubPage: GITHUB_PAGE
-    }
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 #page-footer {

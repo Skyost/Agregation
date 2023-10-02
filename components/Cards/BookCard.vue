@@ -1,10 +1,26 @@
+<script setup lang="ts">
+import type { Book } from '~/types'
+
+const props = defineProps<{ book: Book }>()
+
+const alt = computed(() => {
+  let alt = props.book.title
+  if (props.book.subtitle) {
+    alt += ': ' + props.book.subtitle
+  }
+  return alt
+})
+const authors = computed(() => props.book.authors.join(', '))
+const short = computed(() => `[${props.book.short}]`)
+</script>
+
 <template>
   <ski-columns :id="book.short" class="book">
     <ski-column cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
       <img class="preview" :src="book.preview" :alt="alt">
     </ski-column>
     <ski-column class="info" cols="12" md="8" lg="9">
-      <h2 class="mb-0">
+      <h2 class="title">
         <strong v-text="book.title" /> {{ book.subtitle }}
       </h2>
       <span class="text-muted d-block">
@@ -31,36 +47,6 @@
   </ski-columns>
 </template>
 
-<script>
-import { SkiButton, SkiButtonGroup, SkiColumn, SkiColumns, SkiIcon } from 'skimple-components'
-
-export default {
-  name: 'BookCard',
-  components: { SkiColumns, SkiColumn, SkiButton, SkiButtonGroup, SkiIcon },
-  props: {
-    book: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    alt () {
-      let alt = this.book.title
-      if (this.book.subtitle) {
-        alt += ': ' + this.book.subtitle
-      }
-      return alt
-    },
-    authors () {
-      return this.book.authors.join(', ')
-    },
-    short () {
-      return `[${this.book.short}]`
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
 .book {
   .preview {
@@ -70,6 +56,11 @@ export default {
   .info {
     display: flex;
     flex-direction: column;
+
+    .title {
+      border-bottom: none !important;
+      margin-bottom: 0px !important;
+    }
 
     .comment {
       flex: 1;

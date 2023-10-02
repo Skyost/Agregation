@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import { siteMeta } from '~/site/meta'
+</script>
+
 <template>
   <div>
-    <social-head :title="siteName" />
+    <page-head title="Accueil" />
     <h1>Bienvenue !</h1>
     <p>
       Bonjour et bienvenue sur ce site où je mettrai tout un tas de resources concernant l'agrégation de mathématiques.
@@ -50,26 +54,8 @@
     <p>
       Les contenus présents sur ce site sont disponibles sous licence
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.
-      Le site est, pour sa part, totalement <a :href="`${githubPage}/blob/master/LICENSE`">open-source</a>.
-      Vous pouvez aller consulter son code source sur <a :href="githubPage">Github</a>.
+      Le site est, pour sa part, totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/master/LICENSE`">open-source</a>.
+      Vous pouvez aller consulter son code source sur <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`">Github</a>.
     </p>
   </div>
 </template>
-
-<script>
-import { GITHUB_PAGE, SITE_NAME } from '~/utils/site'
-
-export default {
-  data () {
-    return {
-      siteName: SITE_NAME,
-      githubPage: GITHUB_PAGE
-    }
-  },
-  head () {
-    return {
-      title: 'Accueil'
-    }
-  }
-}
-</script>

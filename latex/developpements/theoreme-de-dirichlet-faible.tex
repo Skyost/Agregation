@@ -43,7 +43,21 @@
 		Or, $X^n - 1 = \prod_{d \mid n} \Phi_d$. En évaluant en $0$, on en tire :
 		\[ -1 = \prod_{d \mid n} \Phi_d(0) \implies \pm 1 = a_0 \text{, car } \forall d \mid n, \, \Phi_d \in \mathbb{Z}[X] \]
 		Ainsi, $N \equiv \pm 1 \mod \alpha$. Or $|N| = |\Phi_n(\alpha)| = \prod_{\xi \in \mu_n^*} |\alpha - \xi| \geq 2$. On peut en effet interpréter $|\alpha - \xi|$ comme la distance du complexe $\alpha$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité :
-		\includelatexpicture{theoreme-de-dirichlet-faible}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-3, 0) -- (5, 0) node[right] {$x$};
+				\draw[->] (0, -3) -- (0, 3.5) node[above] {$y$};
+				\draw[magenta, thick] (2, 0) -- (4, 0) node[below, shift={(-1,0)}]{$|1-\alpha|$};
+				\draw[teal, thick] (45:2) -- (4, 0) node[above, shift={(-1.2,0.6)}, rotate=-27.5]{$|\xi-\alpha|$};
+				\draw(0,2) node {$\bullet$};
+				\draw(0,2) node[above right]{$1$};
+				\draw(2,0) node {$\bullet$};
+				\draw(2,0) node[below right]{$1$};
+				\draw(0,0) circle (2);
+				\draw(4,0) node {$\bullet$} node[below]{$\alpha$};
+				\draw(45:2) node {$\bullet$} node[above right]{$\xi$};
+			\end{tikzpicture}
+		\end{center}
 		En particulier, $\exists p$ premier tel que $p \mid N$. Par le \cref{theoreme-de-dirichlet-faible-1} :
 		\begin{itemize}
 			\item Ou bien $p \mid n$, dans ce cas $p \mid \alpha = n p_1 \dots p_m$.

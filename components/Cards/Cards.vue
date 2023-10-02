@@ -1,3 +1,51 @@
+<script setup lang="ts">
+import type { Category, HasCategories } from '~/types'
+
+type HasCategoriesAndMore = HasCategories & { [key: string]: any }
+type CategoryOrUndefined = Category | undefined
+
+const props = defineProps<{
+  items: HasCategoriesAndMore[],
+  searchFields?: string[]
+}>()
+
+const currentCategory = ref<Category | undefined>()
+const search = ref<string>('')
+
+const categories = computed<CategoryOrUndefined[]>(() => {
+  let result: CategoryOrUndefined[] = []
+  for (const item of props.items) {
+    if (item.categories) {
+      result = result.concat(item.categories)
+    }
+  }
+  result = Array.from(new Set(result)).sort()
+  result.unshift(undefined)
+  return result
+})
+
+const itemsToDisplay = computed<HasCategoriesAndMore[]>(() => props.items.filter(filter).sort())
+
+const filter = (item: HasCategoriesAndMore) => {
+  let result = true
+  if (currentCategory.value) {
+    result = result && item.categories.includes(currentCategory.value)
+  }
+  if (search.value.length > 0) {
+    const normalizedSearch = normalizeString(search.value)
+    let searchResult = false
+    for (const searchField of props.searchFields ?? []) {
+      const value = item[searchField]
+      if (value) {
+        searchResult = searchResult || normalizeString(value.toString()).includes(normalizedSearch)
+      }
+    }
+    result = result && searchResult
+  }
+  return result
+}
+</script>
+
 <template>
   <div class="cards">
     <ski-columns class="header">
@@ -16,82 +64,20 @@
         </ski-button-group>
       </ski-column>
       <ski-column v-if="searchFields" cols="12" lg="3" class="d-flex align-items-center">
-        <ski-form-control v-model="search" placeholder="Chercher dans la liste" size="sm" />
+        <ski-form-control v-model="search" placeholder="Chercher dans la liste" class="form-control-sm" />
       </ski-column>
     </ski-columns>
     <div v-for="(item, position) in itemsToDisplay" :key="position" class="mt-4 item-card p-3">
       <slot :item="item" />
     </div>
-    <em v-if="itemsToDisplay.length === 0" class="d-block mt-5 text-muted">
+    <em v-if="itemsToDisplay.length === 0" class="d-block mt-5 text-muted text-center">
       Aucun contenu à afficher.
     </em>
   </div>
 </template>
 
-<script>
-import { SkiButton, SkiButtonGroup, SkiColumn, SkiColumns, SkiFormControl } from 'skimple-components'
-import { normalizeString } from '~/utils/utils'
-
-export default {
-  name: 'Cards',
-  components: { SkiColumns, SkiColumn, SkiButtonGroup, SkiButton, SkiFormControl },
-  props: {
-    items: {
-      type: Array,
-      required: true
-    },
-    searchFields: {
-      type: Array,
-      default: null
-    }
-  },
-  data () {
-    return {
-      currentCategory: null,
-      search: null
-    }
-  },
-  computed: {
-    categories () {
-      let result = []
-      for (const item of this.items) {
-        if (item.categories) {
-          result = result.concat(item.categories)
-        }
-      }
-      result = Array.from(new Set(result)).sort()
-      result.unshift(null)
-      return result
-    },
-    itemsToDisplay () {
-      return this.items.filter(this.filter).sort()
-    }
-  },
-  methods: {
-    filter (item) {
-      let result = true
-      if (this.currentCategory) {
-        result = result && item.categories.includes(this.currentCategory)
-      }
-      if (this.search) {
-        const search = normalizeString(this.search)
-        let searchResult = false
-        for (const searchField of this.searchFields) {
-          const value = item[searchField]
-          if (value) {
-            searchResult = searchResult || normalizeString(value.toString()).includes(search)
-          }
-        }
-        result = result && searchResult
-      }
-      return result
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
-@import 'assets/breakpoints';
+@import 'assets/bootstrap-mixins';
 
 .cards {
   .header {
@@ -117,7 +103,7 @@ export default {
         border-bottom-color: rgba(var(--bs-blue), 0.5);
       }
 
-      @media (max-width: $mobile-width) {
+      @include media-breakpoint-down(md) {
         width: 33.3%;
 
         .category {
@@ -130,7 +116,7 @@ export default {
     }
   }
 
-  ::v-deep .item-card {
+  :deep(.item-card) {
     background-color: rgba(black, 0.05);
     transition: background-color 200ms;
 
@@ -144,8 +130,8 @@ export default {
     }
   }
 
-  ::v-deep .btn {
-    @media (max-width: $mobile-width) {
+  :deep(.btn) {
+    @include media-breakpoint-down(md) {
       font-size: 14px;
     }
   }

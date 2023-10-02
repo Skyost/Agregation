@@ -37,7 +37,19 @@
 		\[ \hat{\varphi} : \xi \mapsto \int_I f(x) e^{-i \xi x} \rho(x) \, \mathrm{d}x \]
 		Montrons que $\hat{\varphi}$ se prolonge en une fonction $F$ holomorphe sur
 		\[ B_a = \left\{ z \in \mathbb{C} \mid \vert \operatorname{Im}(z) \vert < \frac{a}{2} \right\} \]
-		\includelatexpicture{densite-des-polynomes-orthogonaux}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-3, 0) -- (3, 0) node[right] {$x$};
+				\draw[->] (0, -3) -- (0, 3) node[above] {$y$};
+				\draw (-3, 2) -- (3, 2);
+				\draw (-3, -2) -- (3, -2);
+				\fill[opacity=0.3,blue!30] (-3,-2) rectangle (3,2);
+				\draw(0,2) node {$\bullet$};
+				\draw(0,2) node[above right]{$\frac{a}{2}$};
+				\draw(0,-2) node {$\bullet$};
+				\draw(0,-2) node[below right]{$-\frac{a}{2}$};
+			\end{tikzpicture}
+		\end{center}
 		Définissons à présent $g : (z, x) \mapsto e^{-izx} f(x) \rho(x)$. Pour $z \in B_a$, on a
 		\[ \int_I \vert g(z, x) \vert \, \mathrm{d}x \leq \int_I e^{\frac{a \vert x \vert}{2}} \vert f(x) \vert \rho(x) \, \mathrm{d}x \]
 		En utilisant l'inégalité de Cauchy-Schwarz pour $\Vert . \Vert_2$, on obtient de plus

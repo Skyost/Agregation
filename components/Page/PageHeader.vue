@@ -4,20 +4,11 @@
       <h1>Agrégation</h1>
       <hr>
       <p class="mb-0">
-        Plans et développements pour l'agrégation de mathématiques 2022.
+        Plans et développements pour l'agrégation de mathématiques.
       </p>
     </ski-container>
   </header>
 </template>
-
-<script>
-import { SkiContainer } from 'skimple-components'
-
-export default {
-  name: 'PageHeader',
-  components: { SkiContainer }
-}
-</script>
 
 <style lang="scss" scoped>
 #page-header {

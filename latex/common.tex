@@ -10,7 +10,7 @@
 \usepackage[french]{babel}
 %\usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}
-\usepackage[pdfencoding=auto, pdfauthor={Hugo Delaunay}]{hyperref}
+\usepackage[pdfencoding=auto, pdfauthor={Hugo Delaunay}, pdfsubject={Mathématiques}, pdfcreator={agreg.skyost.eu}]{hyperref}
 \usepackage{amsmath}
 \usepackage{amsthm}
 %\usepackage{amssymb}
@@ -24,7 +24,7 @@
 \usepackage{catchfilebetweentags}
 \usepackage[french, capitalise, noabbrev]{cleveref}
 \usepackage[fit, breakall]{truncate}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[top=2.5cm, right=2cm, bottom=2.5cm, left=2cm]{geometry}
 \usepackage{enumerate}
 \usepackage{tocloft}
 \usepackage{microtype}
@@ -143,15 +143,6 @@
 		\notblank{#1}{\cite{[\previousreference]}\\}{}%
 		\citelink{\previousreference}{p. #2}%
 	}%
-}
-
-\newcommand{\imagespath}{../images/}
-
-\providecommand{\includelatexpicture}[1]{%
-	\begin{center}%
-		\input{\imagespath#1}%
-	\end{center}%
-	\medskip%
 }
 
 \definecolor{devcolor}{HTML}{00695c}

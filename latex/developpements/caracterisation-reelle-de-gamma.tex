@@ -49,7 +49,19 @@
 		Donc les valeurs prises par $f$ sur $\mathbb{R}^+_*$ sont entièrement déterminées par ses valeurs prises sur $]0, 1]$. Ainsi, pour démontrer le théorème, il suffit de vérifier $\forall x \in ]0, 1]$, $f(x) = \Gamma(x)$.
 		\newpar
 		Soient donc $x \in ]0, 1]$ et $n \in \mathbb{N}^*$ ; on applique le lemme des trois pentes à la fonction convexe $\ln \circ f$ (d'après $(iii)$) aux points $n-1$, $n$, $n+x$ et $n+1$ :
-		\includelatexpicture{caracterisation-reelle-de-gamma}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw (0.15,4) .. controls (1,1) and (4,0) .. (6,2) coordinate[pos=0.95] (F) coordinate[pos=0.05] (A) coordinate[pos=0.5] (B) coordinate[pos=0.75] (C) coordinate[pos=0.85] (D);
+				\draw(A) node {$\bullet$} node[below left]{$n-1$};
+				\draw(B) node {$\bullet$} node[below left]{$n$};
+				\draw(C) node {$\bullet$} node[below]{$n+x$};
+				\draw(D) node {$\bullet$} node[below right]{$n+1$};
+				\draw(F) node[right,shift={(0.25,0)}]{$f(x)$};
+				\draw (A) -- (B);
+				\draw (B) -- (C);
+				\draw (B) -- (D);
+			\end{tikzpicture}
+		\end{center}
 		\[ \frac{(\ln \circ f)(n) - (\ln \circ f)(n-1)}{n - (n-1)} \leq \frac{(\ln \circ f)(n+x) - (\ln \circ f)(n)}{n+x-n} \leq \frac{(\ln \circ f)(n+1) - (\ln \circ f)(n)}{n+1-n} \]
 		Mais, d'après $(*)$ et $(ii)$, on a $f(n) = (n-1)!$. D'où :
 		\begin{align*}

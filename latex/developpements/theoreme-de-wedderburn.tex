@@ -69,7 +69,21 @@
 				&\geq |q-1|
 			\end{align*}
 			On peut en effet interpréter $|q - \xi|$ comme la distance du complexe $q$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité mais n'est pas sur l'axe réel :
-			\includelatexpicture{theoreme-de-wedderburn}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[->] (-3, 0) -- (5, 0) node[right] {$x$};
+					\draw[->] (0, -3) -- (0, 3.5) node[above] {$y$};
+					\draw[red, thick] (2, 0) -- (4, 0) node[below, shift={(-1,0)}]{$|1-q|$};
+					\draw[cyan, thick] (45:2) -- (4, 0) node[above, shift={(-1.2,0.6)}, rotate=-27.5]{$|\xi-q|$};
+					\draw(0,2) node {$\bullet$};
+					\draw(0,2) node[above right]{$1$};
+					\draw(2,0) node {$\bullet$};
+					\draw(2,0) node[below right]{$1$};
+					\draw(0,0) circle (2);
+					\draw(4,0) node {$\bullet$} node[below]{$q$};
+					\draw(45:2) node {$\bullet$} node[above right]{$\xi$};
+				\end{tikzpicture}
+			\end{center}
 			cela nous permet de justifier l'inégalité stricte. On a donc une contradiction.
 		\end{itemize}
 	\end{proof}

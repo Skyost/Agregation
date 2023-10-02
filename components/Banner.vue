@@ -1,33 +1,43 @@
+<script setup lang="ts">
+import { Banner, BannerType } from '~/composables/useBanner'
+
+const props = defineProps<{
+  banner: Banner
+}>()
+
+const variant = computed(() => {
+  switch (props.banner.type) {
+    case BannerType.pdf:
+      return 'dark'
+    case BannerType.caveats:
+      return 'red'
+    case BannerType.wip:
+      return 'teal'
+  }
+})
+
+const icon = computed(() => {
+  switch (props.banner.type) {
+    case BannerType.pdf:
+      return 'info-circle-fill'
+    case BannerType.caveats:
+      return 'exclamation-circle-fill'
+    case BannerType.wip:
+      return 'wrench'
+  }
+})
+</script>
+
 <template>
   <div class="banner" :class="variant">
     <ski-icon class="icon" :icon="icon" />
-    <p class="mb-0">
-      <slot />
-    </p>
+    <p class="mb-0" v-html="banner.message" />
   </div>
 </template>
 
-<script>
-import { SkiIcon } from 'skimple-components'
-
-export default {
-  name: 'Banner',
-  components: { SkiIcon },
-  props: {
-    icon: {
-      type: String,
-      required: true
-    },
-    variant: {
-      type: String,
-      default: 'dark'
-    }
-  }
-}
-</script>
-
 <style lang="scss" scoped>
-@import '../assets/breakpoints';
+@import 'assets/bootstrap-mixins';
+@import 'assets/colors';
 
 .banner {
   display: flex;
@@ -37,7 +47,7 @@ export default {
   padding: 8px 16px;
   text-align: center;
 
-  a {
+  :deep(a) {
     color: black;
     text-decoration: underline;
   }
@@ -46,27 +56,27 @@ export default {
   &.teal {
     color: rgba(white, 0.5);
 
-    a {
+    :deep(a) {
       color: rgba(white, 0.75);
     }
   }
 
   &.dark {
-    background-color: lighten(#343a40, 5%);
+    background-color: map-get($banner-colors, 'dark');
   }
 
   &.teal {
-    background-color: #00695c;
+    background-color: map-get($banner-colors, 'teal');
   }
 
   &.red {
-    background-color: #ffcdd2;
+    background-color: map-get($banner-colors, 'red');
   }
 
   .icon {
     margin-right: 8px;
 
-    @media (max-width: $mobile-width) {
+    @include media-breakpoint-down(md) {
       font-size: 2em;
       margin-right: 10px;
     }

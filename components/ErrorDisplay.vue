@@ -1,3 +1,27 @@
+<script setup lang="ts">
+const props = defineProps<{ error: any }>()
+
+const errorCode = computed(() => {
+  if (/^-?\d+$/.test(props.error.toString())) {
+    return parseInt(props.error.toString())
+  }
+  if (Object.prototype.hasOwnProperty.call(props.error, 'statusCode')) {
+    return parseInt(props.error.statusCode)
+  }
+  return null
+})
+
+const title = computed(() => {
+  if (errorCode.value === 404) {
+    return 'Page non trouvée !'
+  }
+  if (errorCode.value) {
+    return `Erreur ${errorCode.value}`
+  }
+  return 'Erreur'
+})
+</script>
+
 <template>
   <div>
     <h1 v-text="title" />
@@ -5,26 +29,9 @@
       Vous pouvez continuer votre navigation en allant sur <a href="javascript:history.back()">la page précédente</a> ou
       en allant sur <nuxt-link to="/">la page d'accueil</nuxt-link>.
       <span v-if="errorCode === 404">
-        Si quelque chose devait se trouver ici, n'hésitez pas à
-        <a href="https://skyost.eu/#contact">me contacter</a> pour me le signaler.
+        Si quelque chose devait se trouver ici,
+        n'hésitez pas à <a href="https://skyost.eu/#contact">me contacter</a> pour me le signaler.
       </span>
     </p>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'ErrorDisplay',
-  props: {
-    errorCode: {
-      type: Number,
-      default: 500
-    }
-  },
-  computed: {
-    title () {
-      return this.errorCode === 404 ? 'Page non trouvée !' : `Erreur ${this.statusCode}`
-    }
-  }
-}
-</script>

@@ -4,9 +4,9 @@
 	\begin{docname}%
 		\section*{\textbf{#2} #3}%
 	\end{docname}%
-  \begin{doctitle}%
-    #3%
-  \end{doctitle}%
+	\begin{doctitle}%
+		#3%
+	\end{doctitle}%
 	\begin{doccategories}%
 		#1%
 	\end{doccategories}%
@@ -16,9 +16,9 @@
 	\begin{docname}%
 		\section*{#3}%
 	\end{docname}%
-  \begin{doctitle}%
-    #3%
-  \end{doctitle}%
+	\begin{doctitle}%
+		#3%
+	\end{doctitle}%
 	\begin{doccategories}%
 		#1%
 	\end{doccategories}%
@@ -38,12 +38,6 @@
 	\end{bookref}%
 }
 
-\providecommand{\includelatexpicture}[1]{%
-	\begin{center}%
-		\includegraphics{/images/latex/#1.svg}%
-	\end{center}%
-}
-
 \providecommand{\newpar}{
 
 
@@ -52,3 +46,4 @@
 % Environnements :
 
 \renewenvironment{whitetabularx}[1]{\begin{tabularx}{\textwidth}{#1}}{\end{tabularx}}
+\renewenvironment{tikzpicture}{\begin{tikzpicture-image}}{\end{tikzpicture-image}}

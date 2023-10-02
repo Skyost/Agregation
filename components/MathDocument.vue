@@ -1,41 +1,77 @@
-<template>
-  <nuxt-content class="math-document" :document="document" />
-</template>
+<script setup lang="ts">
+import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
-<script>
-export default {
-  name: 'MathDocument',
-  props: {
-    document: {
-      type: Object,
-      required: true
-    }
-  },
-  mounted () {
-    this.$nextTick(() => {
-      const references = this.$el.querySelectorAll('.bookref')
-      let rightColumnWidth = 0
-      for (const reference of references) {
-        rightColumnWidth = Math.max(rightColumnWidth, reference.firstElementChild.offsetWidth)
-      }
-      const paddingRight = `${rightColumnWidth + 15}px`
-      this.$el.style.paddingRight = paddingRight
-      for (const reference of references) {
-        reference.firstChild.style.right = paddingRight
-      }
+defineProps<{ document: ParsedContent }>()
+const root = ref<HTMLElement | null>(null)
+const setupTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
 
-      const tables = this.$el.querySelectorAll('.math-document table')
-      for (const table of tables) {
-        table.classList.add('table')
-        table.classList.add('table-bordered')
-        table.classList.add('table-hover')
-      }
-    })
+const setupDocument = async () => {
+  await nextTick()
+  const references = root.value!.querySelectorAll<HTMLElement>('.bookref')
+  let rightColumnWidth = 0
+  for (const reference of references) {
+    const element: HTMLElement = reference.firstElementChild! as HTMLElement
+    rightColumnWidth = Math.max(rightColumnWidth, element.offsetWidth)
   }
+  const paddingRight = `${rightColumnWidth + 15}px`
+  root.value!.style.paddingRight = paddingRight
+  for (const reference of references) {
+    const element: HTMLElement = reference.firstElementChild! as HTMLElement
+    element.style.right = paddingRight
+  }
+
+  const proofs = root.value!.querySelectorAll<HTMLElement>('.proof')
+  for (let i = 0; i < proofs.length; i++) {
+    const proof = proofs[i]
+    proof.id = `proof-${i + 1}`
+    proof.classList.add('collapse')
+    const label = document.createElement('span')
+    label.classList.add('proof-label')
+    label.classList.add('btn')
+    label.classList.add('btn-link')
+    label.setAttribute('data-bs-toggle', 'collapse')
+    label.setAttribute('data-bs-target', `#proof-${i + 1}`)
+    label.innerHTML = '<i class="bi bi-chevron-down"></i> Preuve'
+    label.classList.add('collapsed')
+    proof.parentNode?.insertBefore(label, proof)
+  }
+
+  const refs = root.value!.querySelectorAll<HTMLElement>('[data-reference-type="ref"]')
+  for (const ref of refs) {
+    const refElement = root.value!.querySelector(`#${ref.getAttribute('data-reference')}`)
+    if (refElement) {
+      const titleElement = refElement.querySelector('strong, em')
+      if (titleElement && titleElement.textContent) {
+        ref.textContent = titleElement.textContent
+      }
+    }
+  }
+
+  setupTimeout.value = null
 }
+
+onMounted(async () => {
+  await nextTick()
+  setupTimeout.value = setTimeout(setupDocument, 1000)
+})
+
+onUnmounted(() => {
+  if (setupTimeout.value) {
+    clearTimeout(setupTimeout.value)
+    setupTimeout.value = null
+  }
+})
 </script>
 
+<template>
+  <div ref="root" class="math-document">
+    <content-renderer :value="document" />
+  </div>
+</template>
+
 <style lang="scss" scoped>
+@import 'assets/colors';
+
 @mixin bubble($color, $hover, $left: true) {
   @if $left {
     border-left: 10px solid darken($color, 10%);
@@ -64,110 +100,73 @@ export default {
   > *:last-child {
     margin-bottom: 0;
   }
+
+  a {
+    color: darken($color, 60%) !important;
+  }
 }
 
 .math-document {
   position: relative;
 
-  ::v-deep {
-    .doctitle,
-    .doccategories {
-      display: none;
+  :deep(.doctitle),
+  :deep(.doccategories) {
+    display: none;
+  }
+
+  :deep(.docsummary) {
+    font-style: italic;
+    color: rgba(black, 0.6);
+  }
+
+  @each $environment, $color in $math-environments {
+    :deep(.#{$environment}) {
+      @include environment($color);
+    }
+  }
+
+  :deep(.proof-label) {
+    margin-bottom: 1rem;
+    font-size: .8em;
+    padding: 0;
+    text-decoration: none;
+    color: rgba(0,0,0,.75);
+
+    .bi-chevron-down::before {
+      transition: transform 200ms;
     }
 
-    .docsummary {
-      font-style: italic;
-      color: rgba(black, 0.6);
-    }
-
-    .property {
-      @include environment(#fffde7);
-    }
-
-    .proposition {
-      @include environment(#fff8e1);
-    }
-
-    .lemma {
-      @include environment(#fff3e0);
-    }
-
-    .theorem {
-      @include environment(#fce4f2);
-    }
-
-    .corollary {
-      @include environment(#ffebee);
-    }
-
-    .definition {
-      @include environment(#ede7f6);
-    }
-
-    .notation {
-      @include environment(#f3e5f5);
-    }
-
-    .example {
-      @include environment(#e0f7fa);
-    }
-
-    .cexample {
-      @include environment(#efebe9);
-    }
-
-    .application {
-      @include environment(#e0f2f1);
-    }
-
-    .remark {
-      @include environment(#e8f5e9);
-    }
-
-    .proof {
-      @include environment(#e1f5fe);
-
-      margin-bottom: 0;
-
-      &::after {
-        float: right;
-        content: '\220e';
-      }
-
-      > :first-child {
-        display: inline;
+    &.collapsed {
+      .bi-chevron-down::before {
+        transform: rotate(-90deg);
       }
     }
+  }
 
-    .bookref {
-      // position: relative;
+  :deep(.bookref) {
+    // position: relative;
 
-      > *:first-child {
-        @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
+    > *:first-child {
+      @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
 
-        position: absolute;
-        // right: 0;
-        text-align: center;
-        padding: 7.5px;
-        margin-left: 10px;
-        font-size: 0.75em;
-        text-decoration: none;
-        color: black;
-        transform: translateX(calc(100% + 15px));
-      }
-
-      p {
-        margin-bottom: 0;
-      }
-    }
-
-    .table {
-      background-color: white;
-    }
-
-    .center {
+      position: absolute;
+      // right: 0;
       text-align: center;
+      padding: 7.5px;
+      margin-left: 10px;
+      font-size: 0.75em;
+      text-decoration: none !important;
+      color: black;
+      transform: translateX(calc(100% + 15px));
     }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  :deep(.center) {
+    text-align: center;
   }
 }
 </style>

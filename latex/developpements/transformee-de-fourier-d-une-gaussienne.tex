@@ -35,7 +35,28 @@
 		\end{array}
 		\]
 		Pour $R > 0$ et $\xi \in \mathbb{R}$, on note $\Gamma(R)$ le rectangle de sommets $-R, R, R + i\frac{\xi}{2a}, -R + i\frac{\xi}{2a}$ parcouru dans le sens direct :
-		\includelatexpicture{transformee-de-fourier-d-une-gaussienne}
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[->] (-4,0) -- (4,0) node[right] {$\operatorname{Re}$};
+				\draw[->] (0,-1) -- (0,3) node[above] {$\operatorname{Im}$};
+				\draw[color=magenta] (-3,0) -- (3,0) -- (3,2) -- (-3, 2) -- cycle;
+				\draw[->, color=magenta] (-3,0) -- (2,0);
+				\draw[->, color=magenta] (3,0) -- (3,1.5);
+				\draw[->, color=magenta] (3,2) -- (-2,2);
+				\draw[->, color=magenta] (-3,2) -- (-3,0.5);
+				\draw(3,1) node[right] {$\color{magenta}\Gamma(R)$};
+				\draw(3,0) node {$\bullet$};
+				\draw(3,0) node[below right]{$R$};
+				\draw(3,2) node {$\bullet$};
+				\draw(3,2) node[above right]{$R + i\frac{\xi}{2a}$};
+				\draw(-3,2) node {$\bullet$};
+				\draw(-3,2) node[above left]{$-R + i\frac{\xi}{2a}$};
+				\draw(-3,0) node {$\bullet$};
+				\draw(-3,0) node[below left]{$-R$};
+				\draw(0,2) node {$\bullet$};
+				\draw(0,2) node[above right]{$i\frac{\xi}{2a}$};
+			\end{tikzpicture}
+		\end{center}
 		On a,
 		\[ \underbrace{\int_{\Gamma(R)} e^{-az^2} \, \mathrm{d}z}_{= I(R)} = \underbrace{\int_{-R}^R e^{-az^2} \, \mathrm{d}z}_{= I_1(R)} + \underbrace{\int_R^{R + i\frac{\xi}{2a}} e^{-az^2} \, \mathrm{d}z}_{= I_2(R)} + \underbrace{\int_{R + i\frac{\xi}{2a}}^{-R + i\frac{\xi}{2a}} e^{-az^2} \, \mathrm{d}z}_{= I_3(R)} + \underbrace{\int_{-R + i\frac{\xi}{2a}}^{-R} e^{-az^2} \, \mathrm{d}z}_{= I_4(R)} \]
 		Nous allons traiter les intégrales séparément.

@@ -1,8 +1,18 @@
+<script setup lang="ts">
+import { LatexContentObject } from '~/types'
+
+defineProps<{
+  btnCheck: string,
+  linkPrefix: string,
+  object: LatexContentObject
+}>()
+</script>
+
 <template>
   <div>
-    <h2 v-html="object.name" />
+    <h2 class="card-title" v-html="object.name" />
     <slot />
-    <ski-button-group class="mt-2">
+    <ski-button-group>
       <ski-button :to="`/${linkPrefix}/${object.slug}`">
         <ski-icon icon="box-arrow-in-right" /> {{ btnCheck }}
       </ski-button>
@@ -13,25 +23,9 @@
   </div>
 </template>
 
-<script>
-import { SkiButton, SkiButtonGroup, SkiIcon } from 'skimple-components'
-
-export default {
-  name: 'LatexContentCard',
-  components: { SkiButtonGroup, SkiButton, SkiIcon },
-  props: {
-    btnCheck: {
-      type: String,
-      required: true
-    },
-    linkPrefix: {
-      type: String,
-      required: true
-    },
-    object: {
-      type: Object,
-      required: true
-    }
-  }
+<style lang="scss" scoped>
+.card-title {
+  border-bottom: none !important;
+  margin-bottom: 18px !important;
 }
-</script>
+</style>
