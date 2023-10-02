@@ -79,5 +79,11 @@ export default defineNuxtConfig({
 
   cname: {
     hostname: url
+  },
+
+  runtimeConfig: {
+    public: {
+      url
+    }
   }
 })

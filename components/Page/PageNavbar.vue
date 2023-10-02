@@ -5,13 +5,13 @@
         <ski-navbar-item to="/" :active="$route.path === '/'">
           <ski-icon icon="house-door-fill" /> Accueil
         </ski-navbar-item>
-        <ski-navbar-item to="/lecons" :active="$route.path.startsWith('/lecons')">
+        <ski-navbar-item to="/lecons/" :active="$route.path.startsWith('/lecons/')">
           <ski-icon icon="file-text-fill" /> Leçons
         </ski-navbar-item>
-        <ski-navbar-item to="/developpements" :active="$route.path.startsWith('/developpements')">
+        <ski-navbar-item to="/developpements/" :active="$route.path.startsWith('/developpements/')">
           <ski-icon icon="pencil-fill" /> Développements
         </ski-navbar-item>
-        <ski-navbar-item to="/bibliographie" :active="$route.path === '/bibliographie'">
+        <ski-navbar-item to="/bibliographie/" :active="$route.path === '/bibliographie/'">
           <ski-icon icon="book-fill" /> Bibliographie
         </ski-navbar-item>
       </ski-navbar-items>

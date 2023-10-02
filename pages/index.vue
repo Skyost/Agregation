@@ -14,13 +14,13 @@ import { siteMeta } from '~/site/meta'
     </p>
     <ul>
       <li>
-        Mes <nuxt-link to="/lecons">plans</nuxt-link> de leçons.
+        Mes <nuxt-link to="/lecons/">plans</nuxt-link> de leçons.
       </li>
       <li>
-        Mon choix de <nuxt-link to="/developpements">développements</nuxt-link>.
+        Mon choix de <nuxt-link to="/developpements/">développements</nuxt-link>.
       </li>
       <li>
-        Ma <nuxt-link to="/bibliographie">bibliographie</nuxt-link> personnelle.
+        Ma <nuxt-link to="/bibliographie/">bibliographie</nuxt-link> personnelle.
       </li>
     </ul>
     <p>

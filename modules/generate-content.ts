@@ -373,7 +373,7 @@ function handleReferences (root: HTMLElement) {
       html = `<strong>[${short}]</strong><br>${html}`
     }
     if (previousReference) {
-      reference.innerHTML = `<a href="/bibliographie#${previousReference}">${html}</a>`
+      reference.innerHTML = `<a href="/bibliographie/#${previousReference}">${html}</a>`
     }
   }
 }

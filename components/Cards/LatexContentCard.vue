@@ -13,7 +13,7 @@ defineProps<{
     <h2 class="card-title" v-html="object.name" />
     <slot />
     <ski-button-group>
-      <ski-button :to="`/${linkPrefix}/${object.slug}`">
+      <ski-button :to="`/${linkPrefix}/${object.slug}/`">
         <ski-icon icon="box-arrow-in-right" /> {{ btnCheck }}
       </ski-button>
       <ski-button :href="`/pdf/${linkPrefix}/${object.slug}.pdf`" variant="secondary">
