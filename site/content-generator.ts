@@ -113,7 +113,7 @@ export const contentGeneratorSettings: ContentGeneratorSettings = {
 \\input{common}
 \\input{gathering}
 
-\\renewcommand{\\gatheringtitle}{${gathering.data.map(data => data.title).join('\\&')}}
+\\renewcommand{\\gatheringtitle}{${gathering.data.map(data => data.title).join(' \\& ')}}
 
 ${gathering.header ?? ''}
 
@@ -123,7 +123,7 @@ ${gathering.header ?? ''}
       const files = fs
         .readdirSync(data.directory)
         .filter((file: string) => file.endsWith('.tex') && fs.lstatSync(path.resolve(data.directory, file)).isFile())
-      if (data.directory.length > 1) {
+      if (gathering.data.length > 1) {
         content += `\\gathering{${data.title}}\n`
       }
       for (let i = 0; i < files.length; i++) {

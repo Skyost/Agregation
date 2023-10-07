@@ -10,7 +10,7 @@ Vous trouverez donc sur ce site :
 * Ma [bibliographie](https://agreg.skyost.eu/bibliographie) personnelle.
 
 En espérant que le contenu de ce site vous aide dans votre préparation à l'oral. Si vous avez une quelconque remarque
-/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://skyost.eu/#contact) présent sur mon site.
+/ idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://skyost.eu/fr/#contact) présent sur mon site.
 
 ## Liens utiles
 

@@ -30,7 +30,7 @@ const title = computed(() => {
       en allant sur <nuxt-link to="/">la page d'accueil</nuxt-link>.
       <span v-if="errorCode === 404">
         Si quelque chose devait se trouver ici,
-        n'hésitez pas à <a href="https://skyost.eu/#contact">me contacter</a> pour me le signaler.
+        n'hésitez pas à <a href="https://skyost.eu/fr/#contact">me contacter</a> pour me le signaler.
       </span>
     </p>
   </div>

@@ -25,7 +25,7 @@ import { siteMeta } from '~/site/meta'
     </ul>
     <p>
       En espérant que le contenu de ce site vous aide dans votre préparation à l'oral. Si vous avez une quelconque remarque
-      / idée / correction à me soumettre, vous pouvez me contacter via <a href="https://skyost.eu/#contact">le formulaire</a>
+      / idée / correction à me soumettre, vous pouvez me contacter via <a href="https://skyost.eu/fr/#contact">le formulaire</a>
       présent sur mon site.
     </p>
     <h2>Liens utiles</h2>
