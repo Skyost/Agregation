@@ -1,6 +1,8 @@
 import * as crypto from 'crypto'
 import * as path from 'path'
 
+export const removeTrailingSlashIfPossible = (string: string) => string.endsWith('/') ? string.substring(0, string.length - 1) : string
+
 export const getFileName = (file: string) => {
   const extension = file.substring(file.lastIndexOf('.'))
   return path.basename(file.substring(0, file.length - extension.length))

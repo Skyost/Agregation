@@ -1,11 +1,10 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends HasCategories & { [key: string]: any }">
 import type { Category, HasCategories } from '~/types'
 
-type HasCategoriesAndMore = HasCategories & { [key: string]: any }
 type CategoryOrUndefined = Category | undefined
 
 const props = defineProps<{
-  items: HasCategoriesAndMore[],
+  items: T[],
   searchFields?: string[]
 }>()
 
@@ -24,9 +23,9 @@ const categories = computed<CategoryOrUndefined[]>(() => {
   return result
 })
 
-const itemsToDisplay = computed<HasCategoriesAndMore[]>(() => props.items.filter(filter).sort())
+const itemsToDisplay = computed<T[]>(() => props.items.filter(filter).sort())
 
-const filter = (item: HasCategoriesAndMore) => {
+const filter = (item: T) => {
   let result = true
   if (currentCategory.value) {
     result = result && item.categories.includes(currentCategory.value)
@@ -67,7 +66,7 @@ const filter = (item: HasCategoriesAndMore) => {
         <ski-form-control v-model="search" placeholder="Chercher dans la liste" class="form-control-sm" />
       </ski-column>
     </ski-columns>
-    <div v-for="(item, position) in itemsToDisplay" :key="position" class="mt-4 item-card p-3">
+    <div v-for="(item, position) in itemsToDisplay" :key="`card-${position}`" class="mt-4 item-card p-3">
       <slot :item="item" />
     </div>
     <em v-if="itemsToDisplay.length === 0" class="d-block mt-5 text-muted text-center">

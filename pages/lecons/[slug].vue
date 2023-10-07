@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { siteMeta } from '~/site/meta'
 import type { LessonContent } from '~/types'
+import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
 const { pending, data: lesson } = useLazyAsyncData(
@@ -8,8 +9,9 @@ const { pending, data: lesson } = useLazyAsyncData(
     .findOne()
 )
 
-usePdfBanner(`/pdf${route.path}.pdf`)
-useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/latex${route.path}.tex`)
+const path = removeTrailingSlashIfPossible(route.path)
+usePdfBanner(`/pdf${path}.pdf`)
+useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/latex${path}.tex`)
 </script>
 
 <template>
