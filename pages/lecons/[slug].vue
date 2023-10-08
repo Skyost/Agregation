@@ -5,6 +5,7 @@ import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
 const { pending, data: lesson } = useLazyAsyncData(
+  route.path,
   () => queryContent<LessonContent>('lecons', route.params.slug.toString())
     .findOne()
 )

@@ -22,7 +22,7 @@ const queryLessons = async () => {
 }
 
 const route = useRoute()
-const { pending, data: lessons } = useLazyAsyncData(queryLessons)
+const { pending, data: lessons } = useLazyAsyncData(route.path, queryLessons)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)

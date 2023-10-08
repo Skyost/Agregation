@@ -6,6 +6,7 @@ const route = useRoute()
 const keywords = ref<string>(route.query.requete?.toString() ?? '😉')
 
 const { pending: lessonsQueryPending, data: lessons } = useLazyAsyncData(
+  route.fullPath + '&lecons',
   () => queryContent('lecons')
     .where({
       'page-title-search': { $regex: `/${keywords.value}/ig` }
@@ -16,6 +17,7 @@ const { pending: lessonsQueryPending, data: lessons } = useLazyAsyncData(
 )
 
 const { pending: developmentsQueryPending, data: developments } = useLazyAsyncData(
+  route.fullPath + '&developpements',
   () => queryContent('developpements')
     .where({
       title: { $regex: `/${keywords.value}/ig` }

@@ -2,7 +2,9 @@
 import type { Book } from '~/types'
 import BookCard from '~/components/Cards/BookCard.vue'
 
+const route = useRoute()
 const { pending, data: books } = useLazyAsyncData(
+  route.path,
   () => queryContent<Book>('livres')
     .sort({ title: 1 })
     .find()

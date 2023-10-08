@@ -42,6 +42,7 @@
 \usepackage[bibstyle=reading, citestyle=draft]{biblatex}
 \usepackage{xpatch}
 \usepackage[many, breakable]{tcolorbox}
+\usepackage[backgroundcolor=white, bordercolor=white]{todonotes}
 
 % Bibliographie :
 
@@ -133,22 +134,23 @@
 	\medskip%
 }
 
+\tikzset{notestyleraw/.append style={inner sep=0pt, rounded corners=0pt, align=center}}
+
 %\newcommand{\booklink}[1]{\website/bibliographie\##1}
 \newcommand{\citelink}[2]{\hyperlink{cite.\therefsection @#1}{#2}}
 \newcommand{\previousreference}{}
 \providecommand{\reference}[2][]{%
 	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
-	\marginnote{%
-		\centering%
-		\notblank{#1}{\cite{[\previousreference]}\\}{}%
-		\citelink{\previousreference}{p. #2}%
+	\todo[noline]{%
+		\protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
+		\protect\citelink{\previousreference}{p. #2}%
 	}%
 }
 
 \definecolor{devcolor}{HTML}{00695c}
 \newcommand{\dev}[1]{%
 	\reversemarginpar%
-	\marginnote[\bfseries\color{devcolor}\href{\website/developpements/#1}{DEV}]{}%
+	\todo[noline]{\bfseries\color{devcolor}\href{\website/developpements/#1}{DEV}}%
 	\normalmarginpar%
 }
 

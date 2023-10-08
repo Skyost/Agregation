@@ -5,6 +5,7 @@ import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
 const { pending, data: development } = useLazyAsyncData(
+  route.path,
   () => queryContent<DevelopmentContent>('developpements', route.params.slug.toString())
     .findOne()
 )
