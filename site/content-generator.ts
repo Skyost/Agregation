@@ -103,7 +103,7 @@ export const contentGeneratorSettings: ContentGeneratorSettings = {
       ],
       header: `\\renewcommand{\\dev}[1]{%
 \t\\reversemarginpar%
-\t\\marginnote[\\bfseries\\color{devcolor}\\hyperlink{#1}{DEV}]{}%
+\t\\todo[noline]{\\bfseries\\color{devcolor}\\hyperlink{#1}{DEV}]{}%
 \t\\normalmarginpar%
 }`
     }
