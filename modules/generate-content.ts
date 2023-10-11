@@ -538,6 +538,12 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
       excludes: []
     },
     {
+      command: 'input',
+      directory: path.dirname(file),
+      extensions: ['.tex'],
+      excludes: []
+    },
+    {
       command: 'inputcontent',
       directory: null,
       extensions: [],
