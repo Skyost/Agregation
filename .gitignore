@@ -111,3 +111,4 @@ latex/lecons.tex
 latex/lecons-developpements.tex
 latex/images/*.svg
 latex/**/*.pdf
+content/latest-commit.json

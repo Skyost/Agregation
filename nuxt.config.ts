@@ -42,6 +42,7 @@ export default defineNuxtConfig({
   modules: [
     '~/modules/generate-content',
     '~/modules/generate-cname',
+    '~/modules/generate-commit-sha-file',
     'skimple-components/nuxt',
     '@nuxt/content',
     '@nuxtjs/google-fonts',

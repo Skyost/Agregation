@@ -10,6 +10,7 @@ import { siteMeta } from '~/site/meta'
           <h2>Copyright</h2>
           <p>
             Copyright &copy; 2021 - <a href="https://skyost.eu">Hugo Delaunay</a>. Tous droits réservés.
+            <current-commit-sha />
           </p>
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence
@@ -22,7 +23,7 @@ import { siteMeta } from '~/site/meta'
           <h2>PDFs</h2>
           <p>
             Les contenus du site ont été écrits en <a href="https://fr.wikipedia.org/wiki/LaTeX">LaTeX</a>, et sont
-            par conséquent téléchargeables en PDF.
+            par conséquent téléchargeables au format PDF.
           </p>
           <ul class="mb-0">
             <li><a href="/pdf/lecons.pdf">Plans de leçons</a></li>
@@ -48,7 +49,7 @@ import { siteMeta } from '~/site/meta'
     margin-bottom: 0.5em;
   }
 
-  a {
+  :deep(a) {
     text-decoration: underline;
     color: rgba(white, 0.75);
   }

@@ -29,16 +29,15 @@
 \renewcommand{\lesson}[3]{%
 	\setcounter{section}{\numexpr #2 - 1}%
 	\section{#3}%
-	%\label{#2}
+	\label{#2}
 	\fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
 }
 
 \renewcommand{\development}[3]{%
 	\resetsectioncount%
 	\renewcommand{\resetsectioncount}{}
-	\hypertarget{#2}{}
 	\section{#3}%
-	%\label{#2}
+	\label{#2}
 	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
 }
 

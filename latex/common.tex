@@ -142,6 +142,8 @@
 \providecommand{\reference}[2][]{%
 	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
 	\todo[noline]{%
+		\protect\vspace{16pt}%
+		\protect\par%
 		\protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
 		\protect\citelink{\previousreference}{p. #2}%
 	}%
@@ -150,7 +152,11 @@
 \definecolor{devcolor}{HTML}{00695c}
 \newcommand{\dev}[1]{%
 	\reversemarginpar%
-	\todo[noline]{\bfseries\color{devcolor}\href{\website/developpements/#1}{DEV}}%
+	\todo[noline]{
+		\protect\vspace{16pt}%
+		\protect\par%
+		\bfseries\color{devcolor}\href{\website/developpements/#1}{DEV}
+	}%
 	\normalmarginpar%
 }
 
