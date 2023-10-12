@@ -3,18 +3,17 @@ defineProps<{ id?: string }>()
 </script>
 
 <template>
-  <h3 :id="id">
+  <h4 :id="id">
     <slot />
-  </h3>
+  </h4>
 </template>
 
 <style lang="scss" scoped>
 h3 {
-  counter-increment: headline-3;
-  counter-reset: headline-4;
+  counter-increment: headline-4;
 
   &::before {
-    content: counter(headline-3) '. ';
+    content: counter(headline-4, upper-alpha) '. ';
   }
 }
 </style>
