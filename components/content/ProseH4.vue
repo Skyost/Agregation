@@ -13,7 +13,7 @@ h3 {
   counter-increment: headline-4;
 
   &::before {
-    content: counter(headline-4, upper-alpha) '. ';
+    content: counter(headline-4, lower-alpha) '. ';
   }
 }
 </style>
