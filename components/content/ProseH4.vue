@@ -9,7 +9,7 @@ defineProps<{ id?: string }>()
 </template>
 
 <style lang="scss" scoped>
-h3 {
+h4 {
   counter-increment: headline-4;
 
   &::before {
