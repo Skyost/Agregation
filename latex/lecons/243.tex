@@ -102,7 +102,7 @@
 	\dev{theoreme-d-abel-angulaire}
 
 	\begin{theorem}[Abel angulaire]
-		\label{abel-angulaire}
+		\label{243-1}
 		Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ tel que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
 		\begin{center}
 			\begin{tikzpicture}
@@ -145,12 +145,12 @@
 	
 	\begin{theorem}[Taubérien faible]
 		Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
-		\[ \exists S \in \mathbb{C}, \, \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
+		\[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
 		Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
 	\end{theorem}
 	
 	\begin{remark}
-		Ce dernier résultat est une réciproque partielle du \cref{abel-angulaire}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
+		Ce dernier résultat est une réciproque partielle du \cref{243-1}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
 	\end{remark}
 	
 	\subsection{Propriétés}

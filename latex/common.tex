@@ -42,7 +42,7 @@
 \usepackage[bibstyle=reading, citestyle=draft]{biblatex}
 \usepackage{xpatch}
 \usepackage[many, breakable]{tcolorbox}
-\usepackage[backgroundcolor=white, bordercolor=white]{todonotes}
+\usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
 
 % Bibliographie :
 
@@ -85,11 +85,15 @@
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesubsection}{\Roman{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\alph{paragraph}}
 
 \titleformat{\chapter}{\huge\bfseries}{\thechapter}{20pt}{\huge\bfseries}
 \titleformat*{\section}{\LARGE\bfseries}
 \titleformat{\subsection}{\Large\bfseries}{\thesubsection \, - \,}{0pt}{\Large\bfseries}
 \titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection. \,}{0pt}{\large\bfseries}
+\titleformat{\paragraph}{\bfseries}{\theparagraph. \,}{0pt}{\bfseries}
+
+\setcounter{secnumdepth}{4}
 
 % Table des matières :
 
@@ -214,10 +218,8 @@
 		right=8pt,
 		top=8pt,
 		bottom=8pt,
-		oversize=-16pt,
 		sharp corners,
-		before skip=\topsep,
-		after skip=\topsep,
+		after=\par,
 	}
 }
 
