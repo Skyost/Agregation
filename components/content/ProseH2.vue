@@ -3,7 +3,7 @@ defineProps<{ id?: string }>()
 </script>
 
 <template>
-  <h2>
+  <h2 :id="id">
     <slot />
   </h2>
 </template>
