@@ -113,7 +113,7 @@ export const contentGeneratorSettings: ContentGeneratorSettings = {
     }
   ],
   generateGatheringContent: (gathering: Gathering) => {
-    let content = `\\providecommand{\\bibliographypath}{bibliography.bib}
+    let content = `\\overridebibliographypath{bibliography.bib}
 \\input{common}
 \\input{gathering}
 

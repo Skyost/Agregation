@@ -546,13 +546,19 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
     {
       command: 'inputcontent',
       directory: null,
-      extensions: [],
+      extensions: ['.tex'],
       excludes: []
     },
     {
       command: 'inputcontent*',
       directory: null,
-      extensions: [],
+      extensions: ['.tex'],
+      excludes: []
+    },
+    {
+      command: 'overridebibliographypath',
+      directory: null,
+      extensions: ['.bib'],
       excludes: []
     }
   ]

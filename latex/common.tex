@@ -46,7 +46,8 @@
 
 % Bibliographie :
 
-\providecommand{\bibliographypath}{../bibliography.bib}
+\newcommand{\overridebibliographypath}[1]{\providecommand{\bibliographypath}{#1}}
+\overridebibliographypath{../bibliography.bib}
 \addbibresource{\bibliographypath}
 \defbibheading{bibliography}[\bibname]{%
 	\newpage
