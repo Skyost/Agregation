@@ -44,18 +44,11 @@
 \usepackage[many, breakable]{tcolorbox}
 \usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
 
-% Bibliographie :
+% Chemin vers la bibliographie :
 
-\newcommand{\overridebibliographypath}[1]{\providecommand{\bibliographypath}{#1}}
-\overridebibliographypath{../bibliography.bib}
-\addbibresource{\bibliographypath}
-\defbibheading{bibliography}[\bibname]{%
-	\newpage
-	\section*{#1}%
-}
-\renewbibmacro*{entryhead:full}{\printfield{labeltitle}}
-\DeclareFieldFormat{url}{\newline\footnotesize\url{#1}}
-\AtEndDocument{\printbibliography}
+\newcommand{\bibliographypath}{}
+\newcommand{\setbibliographypath}[1]{\renewcommand{\bibliographypath}{#1}}
+\setbibliographypath{../bibliography.bib}
 
 % Police :
 

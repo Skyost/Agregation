@@ -1,17 +1,18 @@
 \input{../common}
+\input{../bibliography}
 
 \begin{document}
 	%<*content>
 	\lesson{algebra}{101}{Groupe opérant sur un ensemble. Exemples et applications.}
-	
+
 	Soit $G$ un groupe.
-	
+
 	\subsection{Actions de groupe}
-	
+
 	Soit $X \neq \emptyset$ un ensemble.
-	
+
 	\subsubsection{Cas général}
-	
+
 	\reference[ULM21]{29}
 
 	\begin{definition}
@@ -115,11 +116,11 @@
 	\begin{remark}
 		Attention cependant, $G/\stab_G(x)$ n'est pas un groupe en général.
 	\end{remark}
-	
+
 	\subsubsection{Cas fini}
-	
+
 	On suppose ici que $G$ et $X$ sont finis.
-	
+
 	\begin{proposition}
 		Soit $x \in X$. Alors :
 		\begin{itemize}
@@ -165,11 +166,11 @@
 	\end{corollary}
 
 	\subsection{Action d'un groupe sur un groupe}
-	
+
 	\subsubsection{Action par translation}
-	
+
 	\reference{34}
-	
+
 	\begin{proposition}
 		$G$ agit sur lui-même par translation (à gauche) via l'action
 		\[ (g, h) \mapsto g \cdot h = gh \]
@@ -196,11 +197,11 @@
 	\begin{application}
 		On suppose que $G$ est de cardinal infini et que $G$ possède un sous-groupe d'indice fini distinct de $G$. Alors $G$ n'est pas simple.
 	\end{application}
-	
+
 	\subsubsection{Action par conjugaison}
-	
+
 	\reference[ULM21]{36}
-	
+
 	\begin{proposition}
 		$G$ agit sur lui-même par conjugaison via l'action
 		\[ (g, h) \mapsto g \cdot h = ghg^{-1} \]
@@ -215,7 +216,7 @@
 	\end{definition}
 
 	\reference[PER]{15}
-	
+
 	\begin{example}
 		\begin{itemize}
 			\item Si $\sigma = \begin{pmatrix} a_1 & \dots & a_p \end{pmatrix} \in S_n$ est un $p$-cycle, et si $\tau \in S_n$, alors
@@ -260,15 +261,15 @@
 	\begin{proposition}
 		Soit $H < G$. Alors $H$ est distingué dans $G$ si et seulement si $H$ est un point fixe pour l'action de la \cref{101-2}.
 	\end{proposition}
-	
+
 	\subsection{Action d'un groupe sur un espace vectoriel}
-	
+
 	\subsubsection{Action par conjugaison sur les espaces de matrices}
-	
+
 	Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$.
-	
+
 	\reference[D-L]{137}
-	
+
 	\begin{theorem}
 		Soit $f \in \mathcal{L}(E)$. Soient $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E$. Alors,
 		\[ \operatorname{Mat}(f, \mathcal{B}_1) = P \operatorname{Mat}(f, \mathcal{B}_2) P^{-1} \]
@@ -276,11 +277,11 @@
 	\end{theorem}
 
 	C'est ce théorème qui justifie que l'on va étudier l'action par conjugaison de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
-	
+
 	\begin{definition}
 		Deux matrices qui sont dans le même orbite pour cette action sont dites \textbf{semblables}.
 	\end{definition}
-	
+
 	\begin{theorem}
 		Soient $A$ et $B$ deux matrices semblables. Alors :
 		\begin{itemize}
@@ -297,7 +298,7 @@
 	\end{cexample}
 
 	\reference[GOU21]{397}
-	
+
 	\begin{notation}
 		Soient $f \in \mathcal{L}(E)$ et $x \in E$. On note $P_{f,x}$ le polynôme unitaire engendrant l'idéal $\{ P \in \mathbb{K}[X] \mid P(f)(x) = 0 \}$ et $E_{f,x} = \{ P(f)(x) \mid P \in \mathbb{K}[X] \}$.
 	\end{notation}
@@ -315,7 +316,7 @@
 	\end{lemma}
 
 	\dev{invariants-de-similitude}
-	
+
 	\begin{theorem}[Frobenius]
 		Soit $f \in \mathcal{L}(E)$. Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
 		\begin{enumerate}[(i)]
@@ -331,17 +332,17 @@
 	\end{corollary}
 
 	\subsubsection{Représentations linéaires et caractères}
-	
+
 	On suppose ici que $G$ est fini.
-	
+
 	\reference[SER]{15}
-	
+
 	\begin{definition}
 		Une \textbf{représentation linéaire de $G$} est un morphisme $\rho$ de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace vectoriel de dimension finie sur le corps $\mathbb{C}$.
 	\end{definition}
 
 	\reference[ULM21]{143}
-	
+
 	\begin{remark}
 		Ceci correspond à la donnée d'une action de $G$ sur $V$ :
 		\[ (g, v) \mapsto g \cdot v = \rho(g)(v) \]
@@ -361,7 +362,7 @@
 	\end{definition}
 
 	\reference{19}
-	
+
 	\begin{definition}
 		Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On dit $\rho$ est \textbf{irréductible} si elle admet uniquement deux sous-représentations : $\rho$ elle-même et $\rho_{\{ 0 \}}$.
 	\end{definition}
@@ -381,7 +382,7 @@
 	\end{definition}
 
 	\reference[ULM21]{151}
-	
+
 	\begin{example}
 		\[ \forall g \in G, \, \chi_{\rho_r}(g) = \begin{cases} |G| &\text{si } g = e_G \\ 0 &\text{sinon} \end{cases} \]
 	\end{example}

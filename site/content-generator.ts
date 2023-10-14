@@ -113,9 +113,10 @@ export const contentGeneratorSettings: ContentGeneratorSettings = {
     }
   ],
   generateGatheringContent: (gathering: Gathering) => {
-    let content = `\\overridebibliographypath{bibliography.bib}
-\\input{common}
+    let content = `\\input{common}
 \\input{gathering}
+\\setbibliographypath{bibliography.bib}
+\\input{bibliography}
 
 \\renewcommand{\\gatheringtitle}{${gathering.data.map(data => data.title).join(' \\& ')}}
 
