@@ -140,6 +140,7 @@ ${gathering.header ?? ''}
     return content
   },
   ignored: [
+    'latex/bibliography.tex',
     'latex/common.tex',
     'latex/gathering.tex'
   ]
