@@ -77,9 +77,9 @@
 		\end{itemize}
 		Et on peut encore prolonger cette fonction sur $\mathbb{R}$ tout entier en une fonction $\widetilde{f}$ telle que $\widetilde{f} = 0$ pour tout $x \notin [c, d]$. On a donc $\widetilde{f} \in \mathcal{C}_C(\mathbb{R})$. Nous allons maintenant avoir besoin du changement de variable suivant :
 		\[ \varphi :
-		\begin{array}{cl}
-			I &\rightarrow [c, d] \\
-			x &\mapsto (d-c)x + \frac{c+d}{2}
+		\begin{array}{ccc}
+			I &\rightarrow& [c, d] \\
+			x &\mapsto& (d-c)x + \frac{c+d}{2}
 		\end{array}
 		\]
 		Comme $\widetilde{f} \circ \varphi$ est continue, à support dans $I$, on peut maintenant affirmer que $\widetilde{f} \circ \varphi$ est limite uniforme d'une suite de polynômes $(\rho_n)$. Donc $\widetilde{f}$ est limite uniforme de la suite $(\rho_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $\rho_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine. A fortiori, $f = \widetilde{f}_{|[a,b]}$ est aussi limite de fonctions polynômiales sur $[a,b]$.
