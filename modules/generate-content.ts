@@ -5,7 +5,7 @@ import { HTMLElement, parse } from 'node-html-parser'
 import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
 import * as katex from 'katex'
-import * as matter from 'gray-matter'
+import matter from 'gray-matter'
 import { createResolver, defineNuxtModule, Resolver } from '@nuxt/kit'
 import YAML from 'yaml'
 import * as logger from '../utils/logger'
@@ -562,16 +562,16 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
       excludes: []
     }
   ]
-  const fileName = getFileName(file)
   const checksums: { [key: string]: string } = {}
-  checksums[fileName] = generateChecksum(fs.readFileSync(file, { encoding: 'utf-8' }))
+  checksums[`file:${getFileName(file)}`] = generateChecksum(fs.readFileSync(file, { encoding: 'utf-8' }))
   for (const latexIncludeCommand of latexIncludeCommands) {
     const regex = new RegExp(`\\\\${latexIncludeCommand.command}(\\[[A-Za-zÀ-ÖØ-öø-ÿ\\d, =.\\\\-]*])?{([A-Za-zÀ-ÖØ-öø-ÿ\\d/, .-]+)}`, 'gs')
     const content = fs.readFileSync(file, { encoding: 'utf-8' })
     let match = regex.exec(content)
     while (match != null) {
       const fileName = match[2]
-      if (!latexIncludeCommand.excludes.includes(fileName) && !(fileName in checksums)) {
+      const checksumKey = `${latexIncludeCommand.command}:${fileName}`
+      if (!latexIncludeCommand.excludes.includes(fileName) && !(checksumKey in checksums)) {
         const extensions = ['', ...latexIncludeCommand.extensions]
         let includeFile = latexIncludeCommand.directory ? resolver.resolve(latexIncludeCommand.directory, fileName) : fileName
         for (const extension of extensions) {
@@ -586,7 +586,7 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
           match = regex.exec(content)
           continue
         }
-        checksums[fileName] = generateChecksum(fs.readFileSync(includeFile, { encoding: 'utf-8' }))
+        checksums[checksumKey] = generateChecksum(fs.readFileSync(includeFile, { encoding: 'utf-8' }))
       }
       match = regex.exec(content)
     }
