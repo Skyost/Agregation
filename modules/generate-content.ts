@@ -557,7 +557,7 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
     },
     {
       command: 'setbibliographypath',
-      directory: null,
+      directory: path.dirname(file),
       extensions: ['.bib'],
       excludes: []
     }

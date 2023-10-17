@@ -20,6 +20,20 @@ const setupDocument = async () => {
     element.style.right = paddingRight
   }
 
+  const devLinks = root.value!.querySelectorAll<HTMLElement>('.devlink')
+  for (const devLink of devLinks) {
+    const linkA = document.createElement('a')
+    linkA.classList.add('btn')
+    linkA.classList.add('btn-link')
+    linkA.classList.add('collapsed')
+    linkA.innerHTML = '<i class="bi bi-chevron-down"></i> Développement'
+    linkA.setAttribute('href', `/developpements/${devLink.textContent!.trim()}/`)
+    devLink.replaceChildren(...[linkA])
+    if (devLink.nextElementSibling) {
+      devLink.parentNode?.insertBefore(devLink.nextElementSibling, devLink)
+    }
+  }
+
   const proofs = root.value!.querySelectorAll<HTMLElement>('.proof')
   for (let i = 0; i < proofs.length; i++) {
     const proof = proofs[i]
@@ -38,7 +52,7 @@ const setupDocument = async () => {
 
   const refs = root.value!.querySelectorAll<HTMLElement>('[data-reference-type="ref"]')
   for (const ref of refs) {
-    const refElement = root.value!.querySelector(`#${ref.getAttribute('data-reference')}`)
+    const refElement = document.getElementById(ref.getAttribute('data-reference')!)
     if (refElement) {
       const titleElement = refElement.querySelector('strong, em')
       if (titleElement && titleElement.textContent) {
@@ -125,11 +139,12 @@ onUnmounted(() => {
     }
   }
 
-  :deep(.proof-label) {
+  :deep(.proof-label),
+  :deep(.devlink > a) {
     margin-bottom: 1rem;
     font-size: .8em;
     padding: 0;
-    text-decoration: none;
+    text-decoration: none !important;
     color: rgba(0,0,0,.75);
 
     .bi-chevron-down::before {
