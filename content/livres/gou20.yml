@@ -6,7 +6,8 @@ authors: ["Xavier Gourdon"]
 date: "21/04/2020"
 categories: ["analysis"]
 publisher: "Ellipses"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2340038561&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2340038561"
+isbn10: "2340038561"
 buy: "https://url.skyost.eu/agreg-gou20"
 website: "https://www.editions-ellipses.fr/accueil/10446-les-maths-en-tete-analyse-3e-edition-9782340038561.html"
 comment: >

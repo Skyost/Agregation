@@ -6,7 +6,8 @@ authors: ["Walter Rudin"]
 date: "21/10/2020"
 categories: ["analysis"]
 publisher: "Dunod"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2100534475&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2100534475"
+isbn10: "2100534475"
 buy: "https://url.skyost.eu/agreg-rud"
 website: "https://www.dunod.com/sciences-techniques/analyse-reelle-et-complexe-cours-et-exercices-0"
 comment: >

@@ -5,7 +5,8 @@ authors: ["Alain Pommelet"]
 date: "15/02/1994"
 categories: ["analysis"]
 publisher: "Ellipses"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2729894160&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2729894160"
+isbn10: "2729894160"
 buy: "https://url.skyost.eu/agreg-pom"
 website: "https://www.eyrolles.com/Sciences/Livre/cours-d-analyse-agregation-de-mathematiques-9782729894160/"
 comment: >

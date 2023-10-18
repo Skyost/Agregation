@@ -1,14 +1,16 @@
 import { dirname } from 'path'
 import fs from 'fs'
 import { createResolver, defineNuxtModule } from '@nuxt/kit'
+import * as logger from '../utils/logger'
 
 export interface ModuleOptions {
   hostname: string
 }
 
+const name = 'generate-cname'
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'generate-cname',
+    name,
     version: '0.0.1',
     configKey: 'cname',
     compatibility: { nuxt: '^3.0.0' }
@@ -18,7 +20,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup: (options, nuxt) => {
     const resolver = createResolver(import.meta.url)
-    const filePath = resolver.resolve(nuxt.options.srcDir, 'node_modules/.cache/.cname/CNAME')
+    const filePath = resolver.resolve(nuxt.options.srcDir, 'node_modules/.cache/cname/CNAME')
     const fileDirectory = dirname(filePath)
     if (!fs.existsSync(fileDirectory)) {
       fs.mkdirSync(fileDirectory, { recursive: true })
@@ -28,6 +30,8 @@ export default defineNuxtModule<ModuleOptions>({
       baseURL: '/',
       dir: dirname(filePath)
     })
-    fs.writeFileSync(filePath, new URL(options.hostname).host)
+    const { host } = new URL(options.hostname)
+    fs.writeFileSync(filePath, host)
+    logger.success(name, `Generated CNAME for ${host}.`)
   }
 })

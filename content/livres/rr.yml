@@ -5,7 +5,8 @@ authors: ["Olivier Rodot", "Jean-Étienne Rombaldi"]
 date: "30/08/2022"
 categories: ["algebra", "analysis"]
 publisher: "De Boeck Supérieur"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2807339883&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2807339883"
+isbn10: "2807339883"
 buy: "https://url.skyost.eu/agreg-rr"
 website: "https://www.deboecksuperieur.com/ouvrage/9782807339880-formulaire-de-maths"
 comment: >

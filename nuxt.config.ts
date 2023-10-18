@@ -40,6 +40,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    '~/modules/fetch-books-covers',
     '~/modules/generate-content',
     '~/modules/generate-cname',
     '~/modules/generate-commit-sha-file',

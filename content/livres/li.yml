@@ -5,7 +5,8 @@ authors: ["Daniel Li"]
 date: "03/12/2013"
 categories: ["analysis"]
 publisher: "Ellipses"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2729883053&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2729883053"
+isbn10: "2729883053"
 buy: "https://url.skyost.eu/agreg-li"
 website: "https://www.editions-ellipses.fr/accueil/6558-cours-danalyse-fonctionnelle-avec-200-exercices-corriges-9782729883058.html"
 comment: >

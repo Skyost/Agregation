@@ -5,9 +5,10 @@ authors: ["Gabriel Peyré"]
 date: "15/01/2004"
 categories: ["algebra"]
 publisher: "Ellipses"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=2729818677&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2729818677"
+isbn10: "2729818677"
 buy: "https://url.skyost.eu/agreg-pey"
-website: "http://www.cmap.polytechnique.fr/~peyre/adtf/"
+website: "https://adtf-livre.github.io/"
 comment: >
   Magnifique référence en ce qui concerne les représentations linéaires de groupes finis et la transformée de Fourier
   discrète.

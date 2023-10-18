@@ -12,12 +12,20 @@ const alt = computed(() => {
 })
 const authors = computed(() => props.book.authors.join(', '))
 const short = computed(() => `[${props.book.short}]`)
+const image = computed(() => `/images/livres/${props.book.isbn10}.jpg`)
+
+const changeImageSrc = (event: Event) => {
+  const newSrc = `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${props.book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`
+  const imageElement = event.target as HTMLImageElement
+  imageElement.src = newSrc
+  imageElement.onerror = null
+}
 </script>
 
 <template>
   <ski-columns :id="book.short" class="book">
     <ski-column cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
-      <img class="preview" :src="book.preview" :alt="alt">
+      <img class="preview" :src="image" :alt="alt" @error="changeImageSrc">
     </ski-column>
     <ski-column class="info" cols="12" md="8" lg="9">
       <h2 class="title">

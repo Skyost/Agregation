@@ -511,58 +511,61 @@ function generatePdf (resolver: Resolver, directory: string, file: string, previ
   return { builtPdf: null, wasCached: false }
 }
 
-function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: string, file: string) {
+function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: string, file: string, currentDirectory?: string) {
+  currentDirectory ??= path.dirname(file)
   interface LatexIncludeCommand {
     command: string,
     directory: string | null,
     extensions: string[],
-    excludes: string[]
+    excludes: string[],
+    hasIncludes: boolean
   }
+  type Checksums = { [key: string]: string | Checksums }
   const latexIncludeCommands: LatexIncludeCommand[] = [
     {
       command: 'includegraphics',
       directory: includedImagesDir,
       extensions: ['.pdf', '.svg', '.png', '.jpeg', '.jpg'],
-      excludes: []
-    },
-    {
-      command: 'documentclass',
-      directory: path.dirname(file),
-      extensions: ['.cls'],
-      excludes: ['standalone']
+      excludes: [],
+      hasIncludes: false
     },
     {
       command: 'include',
-      directory: path.dirname(file),
+      directory: currentDirectory,
       extensions: ['.tex'],
-      excludes: []
+      excludes: [],
+      hasIncludes: true
     },
     {
       command: 'input',
-      directory: path.dirname(file),
+      directory: currentDirectory,
       extensions: ['.tex'],
-      excludes: []
+      excludes: [],
+      hasIncludes: true
     },
     {
       command: 'inputcontent',
       directory: null,
       extensions: ['.tex'],
-      excludes: []
+      excludes: [],
+      hasIncludes: true
     },
     {
       command: 'inputcontent*',
       directory: null,
       extensions: ['.tex'],
-      excludes: []
+      excludes: [],
+      hasIncludes: true
     },
     {
       command: 'setbibliographypath',
-      directory: path.dirname(file),
+      directory: currentDirectory,
       extensions: ['.bib'],
-      excludes: []
+      excludes: [],
+      hasIncludes: false
     }
   ]
-  const checksums: { [key: string]: string } = {}
+  const checksums: Checksums = {}
   checksums[`file:${getFileName(file)}`] = generateChecksum(fs.readFileSync(file, { encoding: 'utf-8' }))
   for (const latexIncludeCommand of latexIncludeCommands) {
     const regex = new RegExp(`\\\\${latexIncludeCommand.command}(\\[[A-Za-zÀ-ÖØ-öø-ÿ\\d, =.\\\\-]*])?{([A-Za-zÀ-ÖØ-öø-ÿ\\d/, .-]+)}`, 'gs')
@@ -582,11 +585,15 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
           }
         }
         if (!fs.existsSync(includeFile)) {
-          logger.warn(name, `Unable to find file "${includeFile}[${latexIncludeCommand.extensions.join(' | ')}]".`)
+          // logger.warn(name, `Unable to find file "${includeFile}[${latexIncludeCommand.extensions.join(' | ')}]".`)
           match = regex.exec(content)
           continue
         }
-        checksums[checksumKey] = generateChecksum(fs.readFileSync(includeFile, { encoding: 'utf-8' }))
+        if (latexIncludeCommand.hasIncludes) {
+          checksums[checksumKey] = calculateTexFileChecksums(resolver, includedImagesDir, includeFile, currentDirectory)
+        } else {
+          checksums[checksumKey] = generateChecksum(fs.readFileSync(includeFile, { encoding: 'utf-8' }))
+        }
       }
       match = regex.exec(content)
     }

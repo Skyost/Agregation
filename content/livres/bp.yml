@@ -6,7 +6,8 @@ authors: ["Marc Briane", "Gilles Pages"]
 date: "16/01/2018"
 categories: ["analysis"]
 publisher: "De Boeck Supérieur"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=280731788X&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2807317888"
+isbn10: "2807317888"
 buy: "https://url.skyost.eu/agreg-bp"
 website: "https://www.deboecksuperieur.com/ouvrage/9782807317888-analyse-theorie-de-l-integration"
 comment: >

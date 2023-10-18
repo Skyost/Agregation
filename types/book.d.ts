@@ -8,7 +8,8 @@ export interface Book extends HasCategories {
   authors: string[]
   date: string
   publisher: string
-  preview: string
+  isbn10: string
+  isbn13: string
   buy: string
   website: string
   comment: string

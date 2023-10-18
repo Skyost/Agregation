@@ -13,3 +13,5 @@ export const generateChecksum = (string: string) => crypto
   .createHash('md5')
   .update(string, 'utf8')
   .digest('hex')
+
+export const getNested = (obj: Object, ...args: any[]) => args.reduce((obj, level) => obj && obj[level], obj)

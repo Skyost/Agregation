@@ -5,7 +5,8 @@ authors: ["Olivier Garet", "Aline Kurtzmann"]
 date: "28/05/2019"
 categories: ["analysis"]
 publisher: "Ellipses"
-preview: "https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=234003020X&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=agreg-skyost-eu-21&language=fr_FR"
+isbn13: "978-2340030206"
+isbn10: "234003020X"
 buy: "https://url.skyost.eu/agreg-gk"
 website: "https://www.editions-ellipses.fr/accueil/4593-14919-de-l-integration-aux-probabilites-2e-edition-augmentee-9782340030206.html"
 comment: >
