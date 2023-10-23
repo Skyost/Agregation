@@ -568,7 +568,7 @@ function calculateTexFileChecksums (resolver: Resolver, includedImagesDir: strin
   const checksums: Checksums = {}
   checksums[`file:${getFileName(file)}`] = generateChecksum(fs.readFileSync(file, { encoding: 'utf-8' }))
   for (const latexIncludeCommand of latexIncludeCommands) {
-    const regex = new RegExp(`\\\\${latexIncludeCommand.command}(\\[[A-Za-zÀ-ÖØ-öø-ÿ\\d, =.\\\\-]*])?{([A-Za-zÀ-ÖØ-öø-ÿ\\d/, .\\-:]+)}`, 'gs')
+    const regex = new RegExp(`\\\\${latexIncludeCommand.command}(\\[[A-Za-zÀ-ÖØ-öø-ÿ\\d, =.\\\\-]*])?{([A-Za-zÀ-ÖØ-öø-ÿ\\d/, .\\-:_]+)}`, 'gs')
     const content = fs.readFileSync(file, { encoding: 'utf-8' })
     let match = regex.exec(content)
     while (match != null) {
