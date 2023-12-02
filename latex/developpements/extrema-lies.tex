@@ -58,7 +58,7 @@
 			\left( \frac{\partial f}{\partial x_j}(a) \right)_{j \in \llbracket 1, s \rrbracket} & \left( \frac{\partial f}{\partial y_j}(a) \right)_{j \in \llbracket 1, r \rrbracket} \\
 			\left( \frac{\partial g_i}{\partial x_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, s \rrbracket}} & \left( \frac{\partial g_i}{\partial y_j}(a) \right)_{\substack{i \in \llbracket 1, r \rrbracket \\ j \in \llbracket 1, r \rrbracket}}
 		\end{pmatrix} \]
-		Par $(**)$ et $(***)$, les $s$ premiers vecteurs colonnes de cette matrice s'expriment linéairement en fonction de ses $r$ derniers. Donc $\operatorname{rang}(M) \leq r$. Mais, le rang des vecteurs lignes d'une matrice est égal au rang de ses vecteurs colonnes. Donc les $r+1$ vecteurs lignes de $M$ forment une famille liée. Mais par hypothèse, les $r$ dernières lignes sont libres. Donc la première ligne est combinaison linéaire des $r$ dernières, ce qui se réécrit :
+		Par $(**)$ et $(***)$, les $s$ premiers vecteurs colonnes de cette matrice s'expriment linéairement en fonction de ses $r$ derniers. Donc $\rang (M) \leq r$. Mais, le rang des vecteurs lignes d'une matrice est égal au rang de ses vecteurs colonnes. Donc les $r+1$ vecteurs lignes de $M$ forment une famille liée. Mais par hypothèse, les $r$ dernières lignes sont libres. Donc la première ligne est combinaison linéaire des $r$ dernières, ce qui se réécrit :
 		\[ \exists \lambda_1, \dots, \lambda_r \in \mathbb{R} \text{ tels que } \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
 		L'unicité est claire car $(\mathrm{d}(g_i)_a)_{i \in \llbracket 1, r \rrbracket}$ est une famille libre.
 	\end{proof}

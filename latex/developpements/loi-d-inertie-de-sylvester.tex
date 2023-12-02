@@ -38,6 +38,8 @@
 	\begin{theorem}[Loi d'inertie de Sylvester]
 		\[ \exists p, q \in \mathbb{N} \text{ et } \exists f_1, \dots, f_{p+q} \in E^* \text{ tels que } \Phi = \sum_{i=1}^p |f_i|^2 - \sum_{i=p+1}^q |f_i|^2 \]
 		où les formes linéaires $f_i$ sont linéairement indépendantes et où $p + q \leq n$. De plus, ces entiers ne dépendent que de $\Phi$ et pas de la décomposition choisie.
+		\newpar
+		Le couple $(p,q)$ est la \textbf{signature} de $\Phi$ et le rang $\Phi$ est égal à $p+q$.
 	\end{theorem}
 
 	\begin{proof}
@@ -57,7 +59,15 @@
 		\[ \exists x \neq 0 \text{ tel que } f_1(x) = \dots = f_p(x) = g_{p'+1}(x) = \dots = g_n(x) = 0 \]
 		Donc $\Phi(x) \leq 0$ par $(*)$. Supposons par l'absurde que
 		\[ g_1(x) = \dots = g_{p'}(x) = 0 \]
-		et comme $(g_i)_{i \in \llbracket 1, n \rrbracket}$ est une base de $E^*$ et que $x$ s'annule sur cette base, on a $x = 0$ : absurde. Donc, il existe $i \in \llbracket 1, p' \rrbracket$ tel que $g_i(x) \neq 0$. En particulier $\Phi(x) > 0$ par $(**)$ : contradiction. Ainsi, $p = p'$. On montre de même que $q = q'$.
+		Comme $(g_i)_{i \in \llbracket 1, n \rrbracket}$ est une base de $E^*$ et que $x$ s'annule sur cette base, on a $x = 0$ : c'est absurde. Donc, il existe $i \in \llbracket 1, p' \rrbracket$ tel que $g_i(x) \neq 0$. En particulier $\Phi(x) > 0$ par $(**)$ : contradiction. Ainsi, $p = p'$. On montre de même que $q = q'$.
+		\newpar
+		Dans la base $\Phi$-orthogonale $(e_1, \dots, e_n)$, la matrice de $\Phi$ est
+		\[ \begin{pmatrix}
+			I_p & 0 & 0 \\
+			0 & -I_q & 0 \\
+			0 & 0 & 0
+		\end{pmatrix} \]
+		d'où le rang de $\Phi$.
 	\end{proof}
 
 	\begin{remark}
