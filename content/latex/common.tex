@@ -1,0 +1,285 @@
+\documentclass[12pt, a4paper]{report}
+
+% LuaLaTeX :
+
+\RequirePackage{iftex}
+\RequireLuaTeX
+
+% Packages :
+
+\usepackage[french]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage[pdfencoding=auto, pdfauthor={Hugo Delaunay}, pdfsubject={Mathématiques}, pdfcreator={agreg.skyost.eu}]{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%\usepackage{amssymb}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{fontspec}
+\defaultfontfeatures[Erewhon]{FontFace = {bx}{n}{Erewhon-Bold.otf}}
+\usepackage{fourier-otf}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{catchfilebetweentags}
+\usepackage[french, capitalise, noabbrev]{cleveref}
+\usepackage[fit, breakall]{truncate}
+\usepackage[top=2.5cm, right=2cm, bottom=2.5cm, left=2cm]{geometry}
+\usepackage{enumerate}
+\usepackage{tocloft}
+\usepackage{microtype}
+%\usepackage{mdframed}
+%\usepackage{thmtools}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{aligned-overset}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{environ}
+\usepackage[normalem]{ulem}
+\usepackage{marginnote}
+\usepackage{etoolbox}
+\usepackage{setspace}
+\usepackage[bibstyle=reading, citestyle=draft]{biblatex}
+\usepackage{xpatch}
+\usepackage[many, breakable]{tcolorbox}
+\usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
+\usepackage{luacode}
+
+% Chemin vers la bibliographie :
+
+\begin{luacode*}
+function findBibFiles(folder)
+	local files = {}
+	local lfs = require("lfs")
+	if isDir(folder) then
+		for file in lfs.dir(folder) do
+			if file:match("%.bib$") then
+				table.insert(files, folder .. "/" .. file)
+			end
+		end
+	end
+	return files
+end
+
+function isDir(name)
+	if type(name)~="string" then return false end
+	local cd = lfs.currentdir()
+	local is = lfs.chdir(name) and true or false
+	lfs.chdir(cd)
+	return is
+end
+\end{luacode*}
+
+\newcommand{\setbibliographypath}[1]{
+	\directlua{
+		local files = findBibFiles("#1")
+		for _, file in ipairs(files) do
+			tex.print("\\addbibresource{" .. file .. "}")
+		end
+	}
+}
+
+\setbibliographypath{../bibliographie}
+
+% Police :
+
+\setmathfont{Erewhon Math}
+
+% Tikz :
+
+\usetikzlibrary{calc}
+
+% Longueurs :
+
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{15pt}
+\setlength{\fboxsep}{0pt}
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+\setlength{\marginparwidth}{1.5cm}
+\setstretch{1.1}
+
+% Métadonnées :
+
+\author{agreg.skyost.eu}
+\date{\today}
+
+% Titres :
+
+\setcounter{secnumdepth}{3}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesubsection}{\Roman{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\alph{paragraph}}
+
+\titleformat{\chapter}{\huge\bfseries}{\thechapter}{20pt}{\huge\bfseries}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat{\subsection}{\Large\bfseries}{\thesubsection \, - \,}{0pt}{\Large\bfseries}
+\titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection. \,}{0pt}{\large\bfseries}
+\titleformat{\paragraph}{\bfseries}{\theparagraph. \,}{0pt}{\bfseries}
+
+\setcounter{secnumdepth}{4}
+
+% Table des matières :
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\addtolength{\cftsecnumwidth}{10pt}
+
+% Redéfinition des commandes :
+
+\renewcommand*\thesection{\arabic{section}}
+\renewcommand{\ker}{\mathrm{Ker}}
+
+% Nouvelles commandes :
+
+\newcommand{\website}{https://agreg.skyost.eu}
+
+\newcommand{\tr}[1]{\mathstrut ^t #1}
+\newcommand{\im}{\mathrm{Im}}
+\newcommand{\rang}{\operatorname{rang}}
+\newcommand{\trace}{\operatorname{trace}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\stab}{\operatorname{Stab}}
+
+\providecommand{\newpar}{\\[\medskipamount]}
+
+\providecommand{\lesson}[3]{%
+	\title{#3}%
+	\hypersetup{pdftitle={#3}}%
+	\setcounter{section}{\numexpr #2 - 1}%
+	\section{#3}%
+	\fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+}
+
+\providecommand{\development}[3]{%
+	\title{#3}%
+	\hypersetup{pdftitle={#3}}%
+	\section*{#3}%
+	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+}
+
+\providecommand{\summary}[1]{%
+	\textit{#1}%
+	\medskip%
+}
+
+\tikzset{notestyleraw/.append style={inner sep=0pt, rounded corners=0pt, align=center}}
+
+%\newcommand{\booklink}[1]{\website/bibliographie\##1}
+\newcommand{\citelink}[2]{\hyperlink{cite.\therefsection @#1}{#2}}
+\newcommand{\previousreference}{}
+\providecommand{\reference}[2][]{%
+	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
+	\todo[noline]{%
+		\protect\vspace{16pt}%
+		\protect\par%
+		\protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
+		\protect\citelink{\previousreference}{p. #2}%
+	}%
+}
+
+\definecolor{devcolor}{HTML}{00695c}
+\providecommand{\dev}[1]{%
+	\reversemarginpar%
+	\todo[noline]{
+		\protect\vspace{16pt}%
+		\protect\par%
+		\bfseries\color{devcolor}\href{\website/developpements/#1}{DEV}
+	}%
+	\normalmarginpar%
+}
+
+% En-têtes :
+
+\pagestyle{fancy}
+\fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
+\fancyfoot[C]{\scriptsize \href{\website}{\texttt{agreg.skyost.eu}}}
+
+% Couleurs :
+
+\definecolor{property}{HTML}{fffde7}
+\definecolor{proposition}{HTML}{fff8e1}
+\definecolor{lemma}{HTML}{fff3e0}
+\definecolor{theorem}{HTML}{fce4f2}
+\definecolor{corollary}{HTML}{ffebee}
+\definecolor{definition}{HTML}{ede7f6}
+\definecolor{notation}{HTML}{f3e5f5}
+\definecolor{example}{HTML}{e0f7fa}
+\definecolor{cexample}{HTML}{efebe9}
+\definecolor{application}{HTML}{e0f2f1}
+\definecolor{remark}{HTML}{e8f5e9}
+\definecolor{proof}{HTML}{e1f5fe}
+
+% Théorèmes :
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Théorème}
+
+\newtheorem{property}[theorem]{Propriété}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemme}
+\newtheorem{corollary}[theorem]{Corollaire}
+
+\newtheorem{definition}[theorem]{Définition}
+\newtheorem{notation}[theorem]{Notation}
+
+\newtheorem{example}[theorem]{Exemple}
+\newtheorem{cexample}[theorem]{Contre-exemple}
+\newtheorem{application}[theorem]{Application}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remarque}
+
+\counterwithin*{theorem}{section}
+
+\newcommand{\applystyletotheorem}[1]{
+	\tcolorboxenvironment{#1}{
+		enhanced,
+		breakable,
+		colback=#1!98!white,
+		boxrule=0pt,
+		boxsep=0pt,
+		left=8pt,
+		right=8pt,
+		top=8pt,
+		bottom=8pt,
+		sharp corners,
+		after=\par,
+	}
+}
+
+\applystyletotheorem{property}
+\applystyletotheorem{proposition}
+\applystyletotheorem{lemma}
+\applystyletotheorem{theorem}
+\applystyletotheorem{corollary}
+\applystyletotheorem{definition}
+\applystyletotheorem{notation}
+\applystyletotheorem{example}
+\applystyletotheorem{cexample}
+\applystyletotheorem{application}
+\applystyletotheorem{remark}
+\applystyletotheorem{proof}
+
+% Environnements :
+
+\NewEnviron{whitetabularx}[1]{%
+	\renewcommand{\arraystretch}{2.5}
+	\colorbox{white}{%
+		\begin{tabularx}{\textwidth}{#1}%
+			\BODY%
+		\end{tabularx}%
+	}%
+}
+
+% Maths :
+
+\DeclareFontEncoding{FMS}{}{}
+\DeclareFontSubstitution{FMS}{futm}{m}{n}
+\DeclareFontEncoding{FMX}{}{}
+\DeclareFontSubstitution{FMX}{futm}{m}{n}
+\DeclareSymbolFont{fouriersymbols}{FMS}{futm}{m}{n}
+\DeclareSymbolFont{fourierlargesymbols}{FMX}{futm}{m}{n}
+\DeclareMathDelimiter{\VERT}{\mathord}{fouriersymbols}{152}{fourierlargesymbols}{147}
+

@@ -1,9 +1,38 @@
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import type { LatexContentObject } from '~/types/latex.d'
 
+/**
+ * Represents a development, extending the LatexContentObject interface.
+ *
+ * @interface
+ * @extends {LatexContentObject}
+ */
 export interface Development extends LatexContentObject {
-  summary: string,
-  'page-description': string
+  /**
+   * The summary of the development.
+   *
+   * @type {string}
+   */
+  summary: string;
+
+  /**
+   * The page description of the development.
+   *
+   * @type {string}
+   */
+  'page-description': string;
 }
 
-export interface DevelopmentContent extends Development, ParsedContent {}
+/**
+ * Represents the content of a development, extending the Development interface.
+ *
+ * @interface
+ * @extends {Development}
+ */
+export interface DevelopmentContent extends Development {
+  /**
+   * The body content of the development.
+   *
+   * @type {string}
+   */
+  body: string;
+}

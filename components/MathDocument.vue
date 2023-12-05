@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
-
-defineProps<{ document: ParsedContent }>()
+defineProps<{ body: string }>()
 const root = ref<HTMLElement | null>(null)
 const setupTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
 
@@ -78,9 +76,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="root" class="math-document">
-    <content-renderer :value="document" />
-  </div>
+  <div ref="root" class="math-document" v-html="document.body" />
 </template>
 
 <style lang="scss" scoped>

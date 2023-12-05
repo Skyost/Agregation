@@ -40,10 +40,12 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    '~/modules/fetch-books-covers',
-    '~/modules/generate-content',
-    '~/modules/generate-cname',
-    '~/modules/generate-commit-sha-file',
+    '~/modules/books-cover-fetcher',
+    '~/modules/cname-generator',
+    '~/modules/commit-sha-file-generator',
+    '~/modules/latex-pdf-generator',
+    '~/modules/nuxt-content-bibtex',
+    '~/modules/nuxt-content-latex',
     'skimple-components/nuxt',
     '@nuxt/content',
     '@nuxtjs/google-fonts',
@@ -53,7 +55,10 @@ export default defineNuxtConfig({
   ],
 
   content: {
-    watch: false
+    watch: false,
+    ignores: 'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf'
+      .split(',')
+      .map(extension => `\\.${extension}$`)
   },
 
   googleFonts: {

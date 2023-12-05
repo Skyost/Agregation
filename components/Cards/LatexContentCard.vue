@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LatexContentObject } from '~/types'
+import type { LatexContentObject } from '~/types'
 
 defineProps<{
   btnCheck: string,

@@ -4,6 +4,7 @@ const banners = useBanners()
 
 <template>
   <div>
+    <nuxt-loading-indicator color="white" />
     <page-header />
     <page-navbar />
     <client-only>

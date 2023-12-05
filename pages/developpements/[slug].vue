@@ -4,15 +4,15 @@ import type { DevelopmentContent } from '~/types'
 import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
-const { pending, data: development } = useLazyAsyncData(
+const { error, pending, data: development } = useLazyAsyncData(
   route.path,
-  () => queryContent<DevelopmentContent>('developpements', route.params.slug.toString())
+  () => queryContent<DevelopmentContent>('latex', 'developpements', route.params.slug.toString())
     .findOne()
 )
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
-useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/latex${path}.tex`)
+useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/content/latex${path}.tex`)
 </script>
 
 <template>
@@ -26,10 +26,10 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
       <Meta name="description" :content="development['page-description']" />
       <Meta name="og:description" :content="development['page-description']" />
       <Meta name="twitter:description" :content="development['page-description']" />
-      <math-document :document="development" />
+      <math-document :body="development.body" />
     </div>
     <div v-else>
-      <error-display :error="404" />
+      <error-display :error="error" />
     </div>
   </div>
 </template>

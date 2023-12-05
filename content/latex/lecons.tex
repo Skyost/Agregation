@@ -1,0 +1,95 @@
+\input{common}
+\input{bibliography}
+
+% Table des matières :
+
+\setcounter{tocdepth}{1}
+
+% Nouvelles commandes :
+
+\newcommand{\gatheringtitle}{Plans de leçons}
+
+\makeatletter
+\newcommand\inputcontent{\@ifstar{\inputcontent@star}{\inputcontent@nostar}}
+\newcommand{\inputcontent@star}[1]{%
+	\ExecuteMetaData[#1]{content}%
+}
+\newcommand{\inputcontent@nostar}[1]{%
+	\newpage%
+	\inputcontent@star{#1}%
+}
+\makeatother
+
+\newcommand{\gathering}[1]{%
+	{\title{#1}\chapter{#1}}%
+	\thispagestyle{fancy}%
+}
+
+\newcommand{\resetsectioncount}{\setcounter{section}{0}}
+
+% Redéfinition des commandes :
+
+\renewcommand{\lesson}[3]{%
+	\setcounter{section}{\numexpr #2 - 1}%
+	\section{#3}%
+	\label{#2}
+	\fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+}
+
+\renewcommand{\development}[3]{%
+	\resetsectioncount%
+	\renewcommand{\resetsectioncount}{}
+	\section{#3}%
+	\label{#2}
+	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+}
+
+% Premières pages :
+
+\AtBeginDocument{
+	\hypersetup{pdftitle={\gatheringtitle}}%
+	\thispagestyle{empty}%
+ 	\clearpage%
+ 	\vspace*{\fill}%
+	\begin{center}%
+		{\huge\bfseries Agrégation 2023}%
+
+		\smallskip%
+		\gatheringtitle%
+	\end{center}%
+	\vfill%
+	\clearpage%
+	{%
+		\pagestyle{empty}%
+		\fancypagestyle{plain}%
+		{%
+			\fancyhf{}%
+			\renewcommand{\headrulewidth}{0pt}%
+			\renewcommand{\footrulewidth}{0pt}%
+		}%
+		\tableofcontents%
+		\thispagestyle{empty}%
+	}%
+	\newpage%
+	\setcounter{page}{1}%
+}
+
+% Bibliographie :
+
+\setbibliographypath{bibliography}
+
+
+
+\begin{document}
+
+\inputcontent*{lecons/101.tex}
+\inputcontent{lecons/144.tex}
+\inputcontent{lecons/148.tex}
+\inputcontent{lecons/221.tex}
+\inputcontent{lecons/229.tex}
+\inputcontent{lecons/230.tex}
+\inputcontent{lecons/239.tex}
+\inputcontent{lecons/243.tex}
+
+
+\end{document}

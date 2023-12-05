@@ -4,15 +4,15 @@ import type { LessonContent } from '~/types'
 import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
-const { pending, data: lesson } = useLazyAsyncData(
+const { error, pending, data: lesson } = useLazyAsyncData(
   route.path,
-  () => queryContent<LessonContent>('lecons', route.params.slug.toString())
+  () => queryContent<LessonContent>('latex', 'lecons', route.params.slug.toString())
     .findOne()
 )
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
-useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/latex${path}.tex`)
+useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/content/latex${path}.tex`)
 </script>
 
 <template>
@@ -23,10 +23,10 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
     </div>
     <div v-else-if="lesson">
       <Title>Leçon {{ lesson.slug }} : {{ lesson['page-title'] }}</Title>
-      <math-document :document="lesson" />
+      <math-document :body="lesson.body" />
     </div>
     <div v-else>
-      <error-display :error="404" />
+      <error-display :error="error" />
     </div>
   </div>
 </template>

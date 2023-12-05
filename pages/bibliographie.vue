@@ -3,9 +3,9 @@ import type { Book } from '~/types'
 import BookCard from '~/components/Cards/BookCard.vue'
 
 const route = useRoute()
-const { pending, data: books } = useLazyAsyncData(
+const { error, pending, data: books } = useLazyAsyncData(
   route.path,
-  () => queryContent<Book>('livres')
+  () => queryContent<Book>('latex', 'bibliographie')
     .sort({ title: 1 })
     .find()
 )
@@ -26,7 +26,7 @@ const { pending, data: books } = useLazyAsyncData(
       </cards>
     </div>
     <div v-else>
-      <error-display :error="500" />
+      <error-display :error="error" />
     </div>
   </div>
 </template>

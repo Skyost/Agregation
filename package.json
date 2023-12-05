@@ -24,6 +24,7 @@
     "@nuxtjs/eslint-config-typescript": "12.1.0",
     "@nuxtjs/google-fonts": "^3.1.0",
     "@octokit/core": "^5.0.2",
+    "@retorquere/bibtex-parser": "^7.0.8",
     "@types/adm-zip": "^0.5.5",
     "@types/katex": "^0.16.7",
     "adm-zip": "^0.5.10",
@@ -43,7 +44,6 @@
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard-scss": "^11.1.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-stylelint": "^5.2.1",
-    "yaml": "^2.3.4"
+    "vite-plugin-stylelint": "^5.2.1"
   }
 }

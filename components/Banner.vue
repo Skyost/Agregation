@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Banner, BannerType } from '~/composables/useBanner'
+import { type Banner, BannerType } from '~/composables/useBanner'
 
 const props = defineProps<{
   banner: Banner
