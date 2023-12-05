@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Development } from '~/types'
 import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
-import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const queryDevelopments = () => queryContent<Development>('latex', 'developpements')
   .sort({ 'page-title-search': 1 })

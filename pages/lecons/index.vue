@@ -2,7 +2,6 @@
 import { siteMeta } from '~/site/meta'
 import type { Lesson } from '~/types'
 import LessonCard from '~/components/Cards/LessonCard.vue'
-import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const queryLessons = () => queryContent<Lesson>('latex', 'lecons')
   .sort({ slug: 1 })

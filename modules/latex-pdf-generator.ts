@@ -5,6 +5,7 @@ import { Octokit } from '@octokit/core'
 import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
 import * as latex from '../utils/latex'
 import * as logger from '../utils/logger'
+import { getFileName } from '../utils/utils'
 import { type GithubRepository, siteMeta } from '../site/meta'
 import { latexOptions, type LatexGenerateOptions } from '../site/latex'
 import { debug } from '../site/debug'
@@ -36,7 +37,7 @@ export default defineNuxtModule<ModuleOptions>({
     const downloadResult = await downloadPreviousBuild(resolver, previousBuildDirectoryPath, options)
     previousBuildDirectoryPath = resolver.resolve(previousBuildDirectoryPath, options.destinationDirectory)
 
-    generateGatherings(resolver, latexDirectoryPath, options)
+    const generatedGatherings = generateGatherings(resolver, latexDirectoryPath, options)
 
     const ignore = options.ignore.map(file => resolver.resolve(srcDir, file))
     const destinationDirectoryPath = resolver.resolve(srcDir, 'node_modules', `.${name}`, options.destinationDirectory)
@@ -50,6 +51,11 @@ export default defineNuxtModule<ModuleOptions>({
       options
     )
 
+    for (const generatedGathering of generatedGatherings) {
+      fs.unlinkSync(generatedGathering)
+      logger.success(name, `Deleted gathering ${getFileName(generatedGathering)}.`)
+    }
+
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: `/${options.destinationDirectory}/`,
@@ -58,22 +64,33 @@ export default defineNuxtModule<ModuleOptions>({
   }
 })
 
-const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, options: ModuleOptions) => {
+/**
+ * Downloads the previous build from Github pages.
+ * @param {Resolver} resolver The resolver instance.
+ * @param {string} directoryPath The download destination.
+ * @param {ModuleOptions} options The module options.
+ * @return {Promise<boolean>} Whether the download is a success.
+ */
+const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, options: ModuleOptions): Promise<boolean> => {
   try {
     logger.info(name, `Downloading and unzipping the previous build at ${options.github.username}/${options.github.repository}@gh-pages...`)
     if (fs.existsSync(directoryPath)) {
       logger.success(name, 'Already downloaded.')
       return true
     }
+    // We create the Octokit instance.
     const octokit = new Octokit()
     const response = await octokit.request('GET /repos/{owner}/{repo}/zipball/{ref}', {
       owner: options.github.username,
       repo: options.github.repository,
       ref: 'gh-pages'
     })
+
+    // We read the response using AdmZip.
     const zip = new AdmZip(Buffer.from(response.data as Buffer))
     const zipRootDir = zip.getEntries()[0].entryName
 
+    // We extract it to the parent folder.
     const parentPath = path.dirname(directoryPath)
     if (!fs.existsSync(parentPath)) {
       fs.mkdirSync(parentPath, { recursive: true })
@@ -81,6 +98,8 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
     for (const previousBuildCacheDirectory of options.previousBuildCacheDirectories) {
       zip.extractEntryTo(`${zipRootDir}${previousBuildCacheDirectory}/`, parentPath)
     }
+
+    // Then we can rename the main entry into the destination folder name.
     fs.renameSync(resolver.resolve(parentPath, zipRootDir), resolver.resolve(parentPath, path.basename(directoryPath)))
     logger.success(name, 'Done.')
     return true
@@ -90,43 +109,79 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
   return false
 }
 
-const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, options: ModuleOptions) => {
+/**
+ * Generate gatherings of Latex files.
+ * @param {Resolver} resolver The resolver instance.
+ * @param {string} latexDirectoryPath An absolute path to the Latex content.
+ * @param {ModuleOptions} options The module options.
+ * @return {string[]} The generated files.
+ */
+const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, options: ModuleOptions): string[] => {
   const generatedGatherings = []
+
   for (const gathering of options.gatherings) {
     let fileName = ''
+    // Generate a unique file name based on gathering data directories.
     for (const data of gathering.data) {
       fileName += (data.directory + '-')
     }
     fileName = fileName.substring(0, fileName.length - 1)
+
     logger.info(name, `Generating gathering "${fileName}"...`)
     const gatheringFile = resolver.resolve(latexDirectoryPath, `${fileName}.tex`)
     generatedGatherings.push(gatheringFile)
 
+    // Read the gathering template.
     const template = fs.readFileSync(resolver.resolve(latexDirectoryPath, options.gatheringTemplate), { encoding: 'utf8' })
     let content = ''
+
+    // Iterate over each data directory in the gathering.
     for (const data of gathering.data) {
       const directory = resolver.resolve(latexDirectoryPath, data.directory)
+
+      // Filter and get only .tex files in the directory.
       const files = fs
         .readdirSync(directory)
-        .filter((file: string) => file.endsWith('.tex') && fs.lstatSync(resolver.resolve(directory, file)).isFile())
+        .filter(file => file.endsWith('.tex') && fs.lstatSync(resolver.resolve(directory, file)).isFile())
+
+      // If there are multiple data directories, add a gathering command.
       if (gathering.data.length > 1) {
         content += `\\gathering{${data.title}}\n`
       }
+
+      // Add input commands for each .tex file in the directory.
       for (let i = 0; i < files.length; i++) {
         const file = files[i]
         content += '\\inputcontent' + (i === 0 ? '*' : '') + `{${data.directory}/${file}}\n`
       }
     }
-    fs.writeFileSync(gatheringFile, template
-      .replace('%s', gathering.data.map(data => data.title).join(' \\& '))
-      .replace('%s', gathering.header ?? '')
-      .replace('%s', content)
+
+    // Write the generated gathering file.
+    fs.writeFileSync(
+      gatheringFile,
+      template
+        .replace('%s', gathering.data.map(data => data.title).join(' \\& '))
+        .replace('%s', gathering.header ?? '')
+        .replace('%s', content)
     )
+
     logger.success(name, 'Done.')
   }
+
   return generatedGatherings
 }
 
+/**
+ * Recursively generates PDF files from Latex files in a directory.
+ *
+ * @param {Resolver} resolver The resolver instance.
+ * @param {string} texDirectoryRelativePath Relative path to the Latex content directory.
+ * @param {string} directoryPath Absolute path to the directory containing Latex files.
+ * @param {string} destinationDirectoryPath Absolute path to the destination directory for generated PDFs.
+ * @param {string[]} ignore List of files to ignore during the generation process.
+ * @param {string | null} previousBuildDirectory Absolute path to the directory containing previous build files.
+ * @param {ModuleOptions} options Module options.
+ */
 const generatePdf = (
   resolver: Resolver,
   texDirectoryRelativePath: string,
@@ -136,13 +191,20 @@ const generatePdf = (
   previousBuildDirectory: string | null,
   options: ModuleOptions
 ) => {
+  // Get a list of files in the current directory.
   const files = fs.readdirSync(directoryPath)
+
+  // Iterate over each file in the directory.
   for (const file of files) {
     const filePath = resolver.resolve(directoryPath, file)
+
+    // Ignore specified files and directories.
     if (ignore.includes(filePath) || !fs.existsSync(filePath)) {
       logger.info(name, `Ignored ${filePath}.`)
       continue
     }
+
+    // If the file is a directory, recursively generate PDFs for its contents.
     if (fs.lstatSync(filePath).isDirectory()) {
       generatePdf(
         resolver,
@@ -156,26 +218,38 @@ const generatePdf = (
       continue
     }
 
+    // If the file has a .tex extension, process it to generate a PDF.
     const extension = path.extname(file)
     if (extension === '.tex') {
       logger.info(name, `Processing "${filePath}"...`)
+
+      // Generate PDF and checksums files.
       const { builtFilePath, checksumsFilePath } = latex.generatePdf(
         filePath,
         options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
         { cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory }
       )
+
+      // If PDF generation is successful, copy files to the destination directory.
       if (builtFilePath) {
         fs.mkdirSync(destinationDirectoryPath, { recursive: true })
         fs.copyFileSync(builtFilePath, resolver.resolve(destinationDirectoryPath, path.parse(builtFilePath).base))
+
+        // Optionally move files instead of copying.
         if (options.moveFiles) {
           fs.unlinkSync(builtFilePath)
         }
+
+        // Copy checksums file if available.
         if (checksumsFilePath) {
           fs.copyFileSync(checksumsFilePath, resolver.resolve(destinationDirectoryPath, path.parse(checksumsFilePath).base))
+
+          // Optionally move checksums file instead of copying.
           if (options.moveFiles) {
             fs.unlinkSync(checksumsFilePath)
           }
         }
+
         logger.success(name, 'Done.')
       } else {
         logger.warn(name, 'Error.')

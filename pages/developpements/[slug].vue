@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { siteMeta } from '~/site/meta'
 import type { DevelopmentContent } from '~/types'
-import { removeTrailingSlashIfPossible } from '~/utils/utils'
 
 const route = useRoute()
 const { error, pending, data: development } = useLazyAsyncData(
