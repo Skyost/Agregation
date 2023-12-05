@@ -11,9 +11,13 @@ import type { Book } from '../types'
  * @interface
  */
 export interface ModuleOptions {
-  /** The directory where the book BibTeX files are located. */
+  /**
+   * The directory where the book BibTeX files are located.
+   */
   booksDirectory: string;
-  /** The URL path where book cover images will be served. */
+  /**
+   * The URL path where book cover images will be served.
+   */
   booksImagesUrl: string;
 }
 
@@ -75,6 +79,73 @@ export default defineNuxtModule<ModuleOptions>({
 })
 
 /**
+ * Represents a download source.
+ */
+interface DownloadSource {
+  /**
+   * The download source name.
+   */
+  name: string,
+  /**
+   * Should return the book cover URL.
+   * @param{Book} book The book.
+   * @returns {Promise<string | null>} The book cover URL.
+   */
+  getBookCoverUrl: (book: Book) => Promise<string | null>
+
+  /**
+   * Whether not to log if getBookCoverUrl returns null.
+   */
+  dontLogNoBookCover?: boolean
+}
+
+/**
+ * Download source representing the specified URL in the BIB file.
+ */
+const altCoverDownloadSource: DownloadSource = {
+  name: 'Book alt cover',
+  // eslint-disable-next-line require-await
+  getBookCoverUrl: async (book: Book) => 'altcover' in book && book.altcover ? book.altcover!.toString() : null,
+  dontLogNoBookCover: false
+}
+
+/**
+ * Download on Google servers.
+ */
+const googleDownloadSource: DownloadSource = {
+  name: 'Google servers',
+  getBookCoverUrl: async (book: Book) => {
+    const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
+    if (response.items && response.items.length > 0) {
+      const thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
+      if (thumbnailUrl) {
+        return thumbnailUrl
+      }
+      logger.warn(name, `[${book.short}] has been found on Google servers, but there is no cover in it.`)
+    }
+    return null
+  }
+}
+
+/**
+ * Download on Amazon servers using the Amazon partners widget.
+ */
+const amazonWidgetsDownloadSource: DownloadSource = {
+  name: 'Amazon widgets',
+  // eslint-disable-next-line require-await
+  getBookCoverUrl: async (book: Book) => `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`
+}
+
+/**
+ * Download on Amazon servers using an Amazon link.
+ */
+const amazonServersDownloadSource: DownloadSource = {
+  name: 'Amazon servers',
+  // eslint-disable-next-line require-await
+  getBookCoverUrl: async (book: Book) => `http://z2-ec2.images-amazon.com/images/P/${book.isbn10}.01.MAIN._SCRM_.jpg`
+}
+
+/**
  * Fetches a book cover from various sources and saves it to a cache directory.
  *
  * @param {Resolver} resolver - The resolver for resolving paths.
@@ -87,35 +158,22 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
   if (fs.existsSync(destinationFile)) {
     return true
   }
-  if ('cover' in book) {
-    try {
-      await downloadImage(book.cover!.toString(), destinationFile)
-      return true
-    } catch (ex) {
-      logger.warn(name, `[${book.short}] has a cover URL specified, but it could not be downloaded.`)
-    }
-  }
-  try {
-    const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
-    if (response.items && response.items.length > 0) {
-      const thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
-      if (thumbnailUrl) {
-        await downloadImage(thumbnailUrl, destinationFile)
-        return true
+  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonWidgetsDownloadSource, amazonServersDownloadSource]) {
+    logger.info(name, `Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
+    const coverUrl = await downloadSource.getBookCoverUrl(book)
+    if (!coverUrl) {
+      if (!downloadSource.dontLogNoBookCover) {
+        logger.warn(name, `Failed to resolve the cover URL of [${book.short}] from source "${downloadSource.name}".`)
       }
-      logger.warn(name, `[${book.short}] has been found on Google servers, but there is no cover in it.`)
-    } else {
-      logger.warn(name, `[${book.short}] has not been found on Google servers.`)
+      continue
     }
-  } catch (ex) {
-    logger.warn(name, `Failed to fetch [${book.short}] data from Google.`)
-  }
-  try {
-    logger.info(name, 'Trying with Amazon...')
-    await downloadImage(`https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`, destinationFile)
+    const result = await downloadImage(coverUrl, destinationFile)
+    if (!result) {
+      logger.warn(name, `The downloading of the book [${book.short}] cover url "${coverUrl}" from "${downloadSource.name}" source failed.`)
+      continue
+    }
+    logger.success(name, `Successfully downloaded the book cover of [${book.short}] from source "${downloadSource.name}" !`)
     return true
-  } catch (ex) {
-    logger.warn(name, `Failed to fetch [${book.short}] data from Amazon.`)
   }
   return false
 }
@@ -125,10 +183,14 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
  *
  * @param {string} url - The URL of the image to download.
  * @param {string} destinationFile - The path to save the downloaded image.
- * @returns {Promise<void>} - A promise indicating the completion of the download process.
+ * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
  */
-async function downloadImage (url: string, destinationFile: string): Promise<void> {
-  const blob = await ofetch(url)
-  const buffer = Buffer.from(await blob.arrayBuffer())
-  fs.writeFileSync(destinationFile, buffer)
+async function downloadImage (url: string, destinationFile: string): Promise<boolean> {
+  const blob = await ofetch(url, { responseType: 'blob' })
+  if (blob.type === 'image/jpeg' && blob.size > 0) {
+    const buffer = Buffer.from(await blob.arrayBuffer())
+    fs.writeFileSync(destinationFile, buffer)
+    return true
+  }
+  return false
 }

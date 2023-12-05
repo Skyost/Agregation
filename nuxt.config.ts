@@ -56,7 +56,7 @@ export default defineNuxtConfig({
 
   content: {
     watch: false,
-    ignores: 'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf'
+    ignores: 'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums'
       .split(',')
       .map(extension => `\\.${extension}$`)
   },

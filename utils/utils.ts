@@ -25,7 +25,8 @@ export const parseBib = (bibContent: string): Book => {
     isbn13: fields.isbn13[0],
     buy: fields.buy[0],
     website: fields.url[0],
-    comment: fields.comment[0]
+    comment: fields.comment[0],
+    altcover: 'altcover' in fields ? fields.altcover[0] : undefined
   }
 }
 

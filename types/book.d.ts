@@ -90,4 +90,11 @@ export interface Book extends HasCategories {
    * @type {string}
    */
   comment: string;
+
+  /**
+   * The book alternate cover.
+   *
+   * @type {string | undefined}
+   */
+  altcover?: string;
 }
