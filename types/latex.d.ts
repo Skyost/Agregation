@@ -27,9 +27,9 @@ export interface LatexContentObject extends HasCategories {
   'page-title': string;
 
   /**
-   * The search-friendly page title of the LaTeX content object.
+   * The search-friendly page name of the LaTeX content object.
    *
    * @type {string}
    */
-  'page-title-search': string;
+  'page-name-search': string;
 }

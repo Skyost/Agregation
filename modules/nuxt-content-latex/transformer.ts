@@ -473,10 +473,10 @@ const getHeader = (slug: string, root: HTMLElement): { [key: string]: any } => {
     if (!title) {
       title = name
     }
+    header['page-name-search'] = normalizeString(name.text.trim())
   }
   if (title) {
     header['page-title'] = title.text.trim()
-    header['page-title-search'] = normalizeString(header['page-title'])
   }
 
   // Get and parse categories.

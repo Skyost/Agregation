@@ -103,5 +103,8 @@ sw.*
 *.synctex.gz
 *.run.xml
 *.checksums
+content/latex/developpements.tex
+content/latex/lecons.tex
+content/latex/lecons-developpements.tex
 content/latest-commit.json
 content/**/*.pdf

@@ -3,7 +3,7 @@ import type { Development } from '~/types'
 import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
 
 const queryDevelopments = () => queryContent<Development>('latex', 'developpements')
-  .sort({ 'page-title-search': 1 })
+  .sort({ 'page-name-search': 1 })
   .without(['body'])
   .find()
 
