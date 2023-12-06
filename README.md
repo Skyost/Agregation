@@ -16,7 +16,7 @@ En espérant que le contenu de ce site vous aide dans votre préparation à l'or
 
 Je me permets de glisser quelques liens vers des sites qui m'ont grandement aidés personnellement :
 
-* Le [site du jury](https://agreg.org). Vous y trouverez des annales, les rapports des années passés, 
+* Le [site du jury](https://agreg.org). Vous y trouverez des annales, les rapports des années passées, 
   les convocations aux oraux, des informations pratiques, ... Bref, à consulter régulièrement !
 * [agreg-maths.fr](https://agreg-maths.fr/). Un super site qui contient plein de plans, de développements,
   et d'outils en tout genre pour préparer votre oral. Je ne peux que conseiller les profils

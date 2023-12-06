@@ -34,7 +34,7 @@ import { siteMeta } from '~/site/meta'
     </p>
     <ul>
       <li>
-        Le <a href="https://agreg.org">site du jury</a>. Vous y trouverez des annales, les rapports des années passés,
+        Le <a href="https://agreg.org">site du jury</a>. Vous y trouverez des annales, les rapports des années passées,
         les convocations aux oraux, des informations pratiques, ... Bref, à consulter régulièrement !
       </li>
       <li>
