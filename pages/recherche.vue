@@ -1,33 +1,47 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import LessonCard from '~/components/Cards/LessonCard.vue'
 import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
-import type { Development, Lesson } from '~/types'
+import type { LatexContentObject, Development, Lesson } from '~/types'
 
 const route = useRoute()
-const keywords = ref<string>(route.query.requete?.toString() ?? '😉')
+const request = computed(() => route.query.requete)
+const regex = computed(() => request.value ? RegExp(normalizeString(request.value.toString()), 'ig') : /.*/ig)
 
-const { pending: lessonsQueryPending, data: lessons } = useLazyAsyncData(
-  route.fullPath + '&lecons',
+const { pending: lessonsQueryPending, data: allLessons } = useLazyAsyncData(
+  route.path + '?lecons',
+  // TODO: Follow this issue : https://github.com/nuxt/content/issues/1758 for implementing a "true" search page.
   () => queryContent<Lesson>('latex', 'lecons')
-    .where({
-      'page-name-search': { $regex: `/${keywords.value}/ig` }
-    })
     .sort({ slug: 1 })
-    // TODO: Follow this issue : https://github.com/nuxt/content/issues/1758 for implementing a "true" search page.
+    .without(['body'])
     .find()
 )
 
-const { pending: developmentsQueryPending, data: developments } = useLazyAsyncData(
-  route.fullPath + '&developpements',
+const { pending: developmentsQueryPending, data: allDevelopments } = useLazyAsyncData(
+  route.path + '?developpements',
   () => queryContent<Development>('latex', 'developpements')
-    .where({
-      'page-name-search': { $regex: `/${keywords.value}/ig` }
-    })
     .sort({ slug: 1 })
+    .without(['body'])
     .find()
 )
 
-const isEmpty = computed(() => lessons.value?.length === 0 && developments.value?.length === 0)
+const doSearch = <T extends LatexContentObject>(list: Ref<Omit<T, string>[] | null>): T[] => {
+  const result: T[] = []
+  if (!list.value) {
+    return result
+  }
+  for (const value of list.value) {
+    const latexObject = value as T
+    if (regex.value.test(latexObject['page-name-search'])) {
+      result.push(latexObject)
+    }
+  }
+  return result
+}
+
+const lessons = computed<Lesson[]>(() => doSearch<Lesson>(allLessons))
+const developments = computed<Lesson[]>(() => doSearch<Development>(allDevelopments))
+const isEmpty = computed(() => lessons.value.length === 0 && developments.value.length === 0)
 </script>
 
 <template>
@@ -42,7 +56,7 @@ const isEmpty = computed(() => lessons.value?.length === 0 && developments.value
         Votre recherche n'a donné aucun résultat.
       </p>
       <p v-else class="mb-0">
-        Voici les résultats pour votre recherche <q v-text="keywords" />.
+        Voici les résultats pour votre recherche de <q v-text="request && request.length > 0 ? request : 'Tout'" />.
       </p>
 
       <div v-if="lessons && !isEmpty" class="mt-4">

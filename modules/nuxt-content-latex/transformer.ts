@@ -20,17 +20,8 @@ export default defineTransformer({
   extensions: ['.tex'],
   // @ts-ignore
   parse (_id: string, rawContent: string) {
-    // Convert colons in the identifier to forward slashes.
-    const relativeFilePath = _id.replaceAll(':', '/')
-
     // Latex transformation options.
     const options = latexOptions.transform
-
-    // Ignore the file if it's listed in the ignore options.
-    if (options.ignore.includes(relativeFilePath)) {
-      logger.info(name, `Ignored ${relativeFilePath}.`)
-      return { _id }
-    }
 
     // Resolver for creating absolute paths.
     const resolver = createResolver(import.meta.url)
@@ -42,7 +33,7 @@ export default defineTransformer({
     const contentDirectoryPath = resolver.resolve(sourceDirectoryPath, 'content')
 
     // Absolute path to the .tex file.
-    const filePath = resolver.resolve(sourceDirectoryPath, relativeFilePath)
+    const filePath = resolver.resolve(sourceDirectoryPath, _id.replaceAll(':', '/'))
 
     // Relative path of the .tex file from the content directory.
     const texFileRelativePath = path.relative(contentDirectoryPath, filePath)

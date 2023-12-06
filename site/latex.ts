@@ -44,10 +44,6 @@ export interface LatexTransformOptions {
    * Template for pictures.
    */
   picturesTemplate: { [key: string]: string };
-  /**
-   * List of files to ignore during the transformation process.
-   */
-  ignore: string[];
 }
 
 /**
@@ -81,17 +77,7 @@ const latexTransformOptions: LatexTransformOptions = {
   picturesTemplate: {
     tikzpicture: 'content/latex/templates/tikzpicture.tex'
   },
-  pandocRedefinitions: 'content/latex/pandoc.tex',
-  ignore: [
-    'content/latex/bibliography.tex',
-    'content/latex/common.tex',
-    'content/latex/pandoc.tex',
-    'content/latex/templates/gathering.tex',
-    'content/latex/templates/tikzpicture.tex',
-    'content/latex/developpements.tex',
-    'content/latex/lecons.tex',
-    'content/latex/lecons-developpements.tex'
-  ]
+  pandocRedefinitions: 'content/latex/pandoc.tex'
 }
 
 /**

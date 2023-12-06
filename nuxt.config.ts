@@ -56,9 +56,19 @@ export default defineNuxtConfig({
 
   content: {
     watch: false,
-    ignores: 'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums'
-      .split(',')
-      .map(extension => `\\.${extension}$`)
+    ignores: [
+      ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums'
+        .split(',')
+        .map(extension => `\\.${extension}$`),
+      '/latex/bibliography.tex',
+      '/latex/common.tex',
+      '/latex/pandoc.tex',
+      '/latex/developpements.tex',
+      '/latex/lecons.tex',
+      '/latex/lecons-developpements.tex',
+      '/latex/templates/gathering.tex',
+      '/latex/templates/tikzpicture.tex'
+    ]
   },
 
   googleFonts: {
@@ -81,7 +91,10 @@ export default defineNuxtConfig({
   },
 
   linkChecker: {
-    failOnError: false
+    failOnError: false,
+    excludeLinks: [
+      '/pdf/**'
+    ]
   },
 
   cname: {
@@ -91,6 +104,14 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       url
+    }
+  },
+
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: 'append'
+      }
     }
   }
 })

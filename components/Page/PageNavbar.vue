@@ -14,9 +14,12 @@
         <ski-navbar-item to="/bibliographie/" :active="$route.path === '/bibliographie/'">
           <ski-icon icon="book-fill" /> Bibliographie
         </ski-navbar-item>
+        <ski-navbar-item class="d-none" to="/recherche/" :active="$route.path === '/recherche/'">
+          <ski-icon icon="search" /> Recherche
+        </ski-navbar-item>
       </ski-navbar-items>
       <ski-navbar-items>
-        <form action="/recherche" method="get">
+        <form action="/recherche/" method="get">
           <ski-input-group size="sm" data-bs-theme="light">
             <ski-form-control placeholder="Rechercher" name="requete" />
             <ski-button type="submit" variant="secondary">
