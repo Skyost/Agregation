@@ -3,8 +3,17 @@ defineProps<{ body: string }>()
 const root = ref<HTMLElement | null>(null)
 const setupTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
 
-const setupDocument = async () => {
-  await nextTick()
+const setupDocument = () => {
+  const tables = root.value!.querySelectorAll<HTMLElement>('table')
+  for (const table of tables) {
+    table.classList.add('table', 'table-bordered', 'table-hover')
+    const parent = table.parentNode
+    const wrapper = document.createElement('div')
+    wrapper.classList.add('table-responsive')
+    parent!.replaceChild(wrapper, table)
+    wrapper.appendChild(table)
+  }
+
   const references = root.value!.querySelectorAll<HTMLElement>('.bookref')
   let rightColumnWidth = 0
   for (const reference of references) {
@@ -64,7 +73,7 @@ const setupDocument = async () => {
 
 onMounted(async () => {
   await nextTick()
-  setupTimeout.value = setTimeout(setupDocument, 1000)
+  setupDocument()
 })
 
 onUnmounted(() => {
@@ -127,6 +136,44 @@ onUnmounted(() => {
   :deep(.docsummary) {
     font-style: italic;
     color: rgba(black, 0.6);
+  }
+
+  :deep(h2) {
+    counter-increment: headline-2;
+    counter-reset: headline-3 headline-4;
+
+    &:before {
+      content: counter(headline-2, upper-roman) ' - ';
+    }
+  }
+
+  :deep(h3) {
+    counter-increment: headline-3;
+    counter-reset: headline-4;
+
+    &::before {
+      content: counter(headline-3) '. ';
+    }
+  }
+
+  :deep(h4) {
+    counter-increment: headline-4;
+
+    &::before {
+      content: counter(headline-4, lower-alpha) '. ';
+    }
+  }
+
+  :deep(img) {
+    max-width: 100%;
+  }
+
+  :deep(table) {
+    background-color: white;
+
+    td {
+      height: 2.5em;
+    }
   }
 
   @each $environment, $color in $math-environments {

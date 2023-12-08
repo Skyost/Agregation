@@ -10,12 +10,24 @@ import { type GithubRepository, siteMeta } from '../site/meta'
 import { latexOptions, type LatexGenerateOptions } from '../site/latex'
 import { debug } from '../site/debug'
 
+/**
+ * Options for the PDF generator module.
+ *
+ * @interface
+ */
 export interface ModuleOptions extends LatexGenerateOptions {
   github: GithubRepository,
   moveFiles: boolean
 }
 
+/**
+ * The name of the module.
+ */
 const name = 'latex-pdf-generator'
+
+/**
+ * Nuxt module to compile Latex files into PDF.
+ */
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name,
@@ -33,12 +45,16 @@ export default defineNuxtModule<ModuleOptions>({
     const srcDir = nuxt.options.srcDir
     const latexDirectoryPath = resolver.resolve(srcDir, options.sourceDirectory)
 
+    // Download the previous build.
+    // This allows to not compile files if they haven't changed.
     let previousBuildDirectoryPath = resolver.resolve(srcDir, options.previousBuildDirectoryPath)
     const downloadResult = await downloadPreviousBuild(resolver, previousBuildDirectoryPath, options)
     previousBuildDirectoryPath = resolver.resolve(previousBuildDirectoryPath, options.destinationDirectory)
 
+    // Generate Latex gatherings.
     const generatedGatherings = generateGatherings(resolver, latexDirectoryPath, options)
 
+    // And generate all PDFs !
     const ignore = options.ignore.map(file => resolver.resolve(srcDir, file))
     const destinationDirectoryPath = resolver.resolve(srcDir, 'node_modules', `.${name}`, options.destinationDirectory)
     generatePdf(
@@ -51,11 +67,13 @@ export default defineNuxtModule<ModuleOptions>({
       options
     )
 
+    // Remove all Latex gathering files.
     for (const generatedGathering of generatedGatherings) {
       fs.unlinkSync(generatedGathering)
       logger.success(name, `Deleted gathering ${getFileName(generatedGathering)}.`)
     }
 
+    // Register all generated files in Nitro.
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: `/${options.destinationDirectory}/`,
