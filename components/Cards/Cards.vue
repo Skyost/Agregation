@@ -48,7 +48,7 @@ const filter = (item: T) => {
 <template>
   <div class="cards">
     <ski-columns class="header">
-      <ski-column cols="12" :lg="searchFields ? '9' : null">
+      <ski-column cols="12" :lg="searchFields ? '9' : undefined">
         <ski-button-group class="categories mb-3 mb-lg-0">
           <ski-button
             v-for="category in categories"

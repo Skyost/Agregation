@@ -67,7 +67,7 @@ const changeImageSrc = (event: Event) => {
 
     .title {
       border-bottom: none !important;
-      margin-bottom: 0px !important;
+      margin-bottom: 0 !important;
     }
 
     .comment {

@@ -13,7 +13,7 @@ export enum BannerType {
 /**
  * Represents a banner with a type and a message.
  */
-interface Banner {
+export interface Banner {
   /**
    * The type of the banner
    */
