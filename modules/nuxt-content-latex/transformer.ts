@@ -89,6 +89,7 @@ export default defineTransformer({
       resolver,
       root,
       texFileRelativePath,
+      sourceDirectoryPath,
       contentDirectoryPath,
       assetsDestinationDirectoryPath,
       options
@@ -212,6 +213,7 @@ const extractImages = (
  * @param {Resolver} resolver - The resolver for creating absolute paths.
  * @param {HTMLElement} root - The root of the HTML tree.
  * @param {string} texFileRelativePath - The relative path of the LaTeX file from the content directory.
+ * @param {string} sourceDirectoryPath - The absolute path to the source directory.
  * @param {string} contentDirectoryPath - The absolute path to the content directory.
  * @param {string} assetsDestinationDirectoryPath - The absolute path to the directory for storing assets.
  * @param {LatexTransformOptions} options - The options for LaTeX transformation.
@@ -220,6 +222,7 @@ const replaceImages = (
   resolver: Resolver,
   root: HTMLElement,
   texFileRelativePath: string,
+  sourceDirectoryPath: string,
   contentDirectoryPath: string,
   assetsDestinationDirectoryPath: string,
   options: LatexTransformOptions
@@ -265,7 +268,7 @@ const replaceImages = (
             filePath,
             directories.map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
             assetsDestinationDirectoryPath,
-            resolver.resolve(options.cacheDirectory, destinationInAssetsDirectory)
+            resolver.resolve(sourceDirectoryPath, options.cacheDirectory, destinationInAssetsDirectory)
           )
 
           // Format the resolved source as an absolute path.
