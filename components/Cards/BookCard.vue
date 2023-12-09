@@ -13,6 +13,10 @@ const alt = computed(() => {
 const authors = computed(() => props.book.authors.join(', '))
 const short = computed(() => `[${props.book.short}]`)
 const image = computed(() => `/images/livres/${props.book.isbn10}.jpg`)
+const date = computed(() => {
+  const parts = props.book.date.split('-')
+  return `${parts[2]}/${parts[1]}/${parts[0]}`
+})
 
 const changeImageSrc = (event: Event) => {
   const newSrc = `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${props.book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`
@@ -34,7 +38,7 @@ const changeImageSrc = (event: Event) => {
       <span class="text-muted d-block">
         {{ authors }}
         &bull;
-        {{ book.date }}
+        {{ date }}
         &bull;
         Éditions {{ book.publisher }}
         <span v-if="book.edition">&bull; {{ book.edition }}<sup>ème</sup> édition</span>
