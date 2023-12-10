@@ -188,10 +188,11 @@ const extractImages = (
       if (builtFilePath) {
         logger.success(name, `${blockType}[${(i + 1)}] -> ${builtFilePath} from ${texFileRelativePath}.`)
         result = result.replace(match[0], `\\includegraphics{${path.parse(builtFilePath).base}}`)
+        fs.rmSync(extractedImageTexFilePath)
       }
 
       // Move to the next match.
-      match = regex.exec(result)
+      match = regex.exec(latexContent)
 
       // Increment the counter.
       i++
