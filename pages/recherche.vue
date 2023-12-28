@@ -5,8 +5,8 @@ import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
 import type { LatexContentObject, Development, Lesson } from '~/types'
 
 const route = useRoute()
-const request = computed(() => route.query.requete)
-const regex = computed(() => request.value ? RegExp(normalizeString(request.value.toString()), 'ig') : /.*/ig)
+const request = computed<string | undefined>(() => route.query.requete?.toString())
+const regexPattern = computed<string>(() => request.value ? normalizeString(request.value.toString()) : '.*')
 
 const { pending: lessonsQueryPending, data: allLessons } = useLazyAsyncData(
   route.path + '?lecons',
@@ -31,8 +31,9 @@ const doSearch = <T extends LatexContentObject>(list: Ref<Omit<T, string>[] | nu
     return result
   }
   for (const value of list.value) {
+    const regex = RegExp(regexPattern.value, 'ig')
     const latexObject = value as T
-    if (regex.value.test(latexObject['page-name-search'])) {
+    if (regex.test(latexObject['page-name-search'])) {
       result.push(latexObject)
     }
   }
