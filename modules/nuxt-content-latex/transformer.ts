@@ -182,7 +182,7 @@ const extractImages = (
         extractedImageTexFilePath,
         {
           includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texFileRelativePath).map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
-          cacheDirectory: resolver.resolve(sourceDirectoryPath, options.cacheDirectory, destination),
+          cacheDirectory: resolver.resolve(sourceDirectoryPath, options.cacheDirectory, path.dirname(destination)),
           optimize: true
         }
       )
