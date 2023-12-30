@@ -242,7 +242,7 @@ const generatePdf = (
       logger.info(name, `Processing "${filePath}"...`)
 
       // Generate PDF and checksums files.
-      const { builtFilePath, checksumsFilePath } = latex.generatePdf(
+      const { wasCached, builtFilePath, checksumsFilePath } = latex.generatePdf(
         filePath,
         {
           includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
@@ -270,7 +270,11 @@ const generatePdf = (
           }
         }
 
-        logger.success(name, 'Done.')
+        if (wasCached) {
+          logger.success(name, `Fully cached PDF found in ${previousBuildDirectory}.`)
+        } else {
+          logger.success(name, previousBuildDirectory ? `File was not cached in ${previousBuildDirectory} but has been generated with success.` : 'Done.')
+        }
       } else {
         logger.warn(name, 'Error.')
       }

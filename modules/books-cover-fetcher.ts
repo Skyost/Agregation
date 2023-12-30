@@ -4,6 +4,7 @@ import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
 import * as logger from '../utils/logger'
 import { getNested, parseBib } from '../utils/utils'
 import type { Book } from '../types'
+import { siteMeta } from '../site/meta'
 
 /**
  * Options for the books cover fetcher module.
@@ -12,13 +13,17 @@ import type { Book } from '../types'
  */
 export interface ModuleOptions {
   /**
+   * The site URL.
+   */
+  siteUrl: string
+  /**
    * The directory where the book BibTeX files are located.
    */
-  booksDirectory: string;
+  booksDirectory: string
   /**
    * The URL path where book cover images will be served.
    */
-  booksImagesUrl: string;
+  booksImagesUrl: string
 }
 
 /**
@@ -37,6 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
     compatibility: { nuxt: '^3.0.0' }
   },
   defaults: {
+    siteUrl: siteMeta.url,
     booksDirectory: 'content/latex/bibliographie/',
     booksImagesUrl: '/images/livres/'
   },
@@ -65,7 +71,7 @@ export default defineNuxtModule<ModuleOptions>({
     for (const bookFile of books) {
       const filePath = resolver.resolve(booksDirectory, bookFile)
       const book = parseBib(fs.readFileSync(filePath, { encoding: 'utf-8' }))
-      if (!(await fetchBookCover(resolver, book, destinationDirectory))) {
+      if (!(await fetchBookCover(resolver, book, destinationDirectory, options))) {
         failed.push(book.short)
       }
     }
@@ -88,10 +94,11 @@ interface DownloadSource {
   name: string,
   /**
    * Should return the book cover URL.
-   * @param{Book} book The book.
+   * @param {Book} book The book.
+   * @param {ModuleOptions} options The module options.
    * @returns {Promise<string | null>} The book cover URL.
    */
-  getBookCoverUrl: (book: Book) => Promise<string | null>
+  getBookCoverUrl: (book: Book, options: ModuleOptions) => Promise<string | null>
 
   /**
    * Whether not to log if getBookCoverUrl returns null.
@@ -146,21 +153,30 @@ const amazonServersDownloadSource: DownloadSource = {
 }
 
 /**
+ * Download the previous build.
+ */
+const previousBuildDownloadSource: DownloadSource = {
+  name: 'agreg.skyost.eu',
+  getBookCoverUrl: async (book: Book, options: ModuleOptions) => `${options.siteUrl}${options.booksImagesUrl}${book.isbn10}.jpg`
+}
+
+/**
  * Fetches a book cover from various sources and saves it to a cache directory.
  *
  * @param {Resolver} resolver - The resolver for resolving paths.
  * @param {Book} book - The book for which to fetch the cover.
  * @param {string} destinationDirectory - The directory to store the fetched covers.
+ * @param {ModuleOptions} options - The module options.
  * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
  */
-async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string): Promise<boolean> {
+async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, options: ModuleOptions): Promise<boolean> {
   const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
   if (fs.existsSync(destinationFile)) {
     return true
   }
-  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonWidgetsDownloadSource, amazonServersDownloadSource]) {
+  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonWidgetsDownloadSource, amazonServersDownloadSource, previousBuildDownloadSource]) {
     logger.info(name, `Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
-    const coverUrl = await downloadSource.getBookCoverUrl(book)
+    const coverUrl = await downloadSource.getBookCoverUrl(book, options)
     if (!coverUrl) {
       if (!downloadSource.dontLogNoBookCover) {
         logger.warn(name, `Failed to resolve the cover URL of [${book.short}] from source "${downloadSource.name}".`)
