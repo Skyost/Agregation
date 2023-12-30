@@ -244,8 +244,10 @@ const generatePdf = (
       // Generate PDF and checksums files.
       const { builtFilePath, checksumsFilePath } = latex.generatePdf(
         filePath,
-        options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
-        { cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory }
+        {
+          includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
+          cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory
+        }
       )
 
       // If PDF generation is successful, copy files to the destination directory.

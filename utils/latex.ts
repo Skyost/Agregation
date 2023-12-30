@@ -1,26 +1,53 @@
+// noinspection ES6PreferShortImport
+
 import path from 'path'
 import fs from 'fs'
 import { execSync } from 'child_process'
+import { optimize, type PluginConfig } from 'svgo'
+import type { XastElement, XastParent, XastRoot } from 'svgo/lib/types'
 import { debug } from '../site/debug'
 import { generateChecksum, getFileName } from './utils'
 import * as logger from './logger'
 
 /**
- * Interface for options when generating a PDF.
+ * Extension of checksums files.
+ */
+const checksumsExtension = '.checksums'
+
+/**
+ * Interface for options when generating a PDF or a SVG.
  */
 export interface GenerateOptions {
   /**
    * If true, generate the PDF even if it already exists.
    */
-  generateIfExists?: boolean;
+  generateIfExists?: boolean
   /**
-   * Directory for caching generated files.
+   * Directory to find cached generated files.
    */
-  cacheDirectory?: string;
+  cacheDirectory?: string
+  /**
+   * The cached file name.
+   */
+  cachedFileName?: string
   /**
    * If true, clean auxiliary files after compilation.
    */
-  clean?: boolean;
+  clean?: boolean
+  /**
+   * Directories to search for graphics files.
+   */
+  includeGraphicsDirectories?: string[]
+}
+
+/**
+ * Options for generating SVGs.
+ */
+export interface SvgGenerateOptions extends GenerateOptions {
+  /**
+   * Whether to compress the SVG.
+   */
+  optimize?: boolean
 }
 
 /**
@@ -30,11 +57,11 @@ export interface GenerateResult {
   /**
    * Path to the generated file or null if generation fails.
    */
-  builtFilePath: string | null;
+  builtFilePath: string | null
   /**
    * Indicates whether the file was retrieved from the cache.
    */
-  wasCached: boolean;
+  wasCached: boolean
 }
 
 /**
@@ -44,7 +71,7 @@ export interface PdfGenerateResult extends GenerateResult {
   /**
    * Path to the checksums file or null if generation fails.
    */
-  checksumsFilePath: string | null;
+  checksumsFilePath: string | null
 }
 
 /**
@@ -54,19 +81,19 @@ interface CacheResult {
   /**
    * Indicates whether the file and its checksums are fully cached.
    */
-  isFullyCached: boolean;
+  isFullyCached: boolean
   /**
    * Checksums of the file and its dependencies.
    */
-  checksums: string;
+  checksums: string
   /**
    * Path to the cached PDF file.
    */
-  cachedPdfFilePath: string;
+  cachedPdfFilePath: string
   /**
    * Path to the cached checksums file.
    */
-  cachedChecksumsFilePath: string;
+  cachedChecksumsFilePath: string
 }
 
 /**
@@ -76,43 +103,42 @@ interface LatexIncludeCommand {
   /**
    * LaTeX command for inclusion.
    */
-  command: string;
+  command: string
   /**
    * Directories to search for files related to this command.
    */
-  directories: (string | null)[];
+  directories: (string | null)[]
   /**
    * Possible file extensions for this command.
    */
-  extensions: string[];
+  extensions: string[]
   /**
    * File names to exclude for this command.
    */
-  excludes: string[];
+  excludes: string[]
   /**
    * Indicates whether the command involves nested includes.
    */
-  hasIncludes: boolean;
+  hasIncludes: boolean
   /**
    * Indicates whether the target of the command is a directory.
    */
-  targetIsDirectory: boolean;
+  targetIsDirectory: boolean
 }
 
 /**
  * Type definition for checksums.
  */
-type Checksums = { [key: string]: string | Checksums };
+type Checksums = { [key: string]: string | Checksums }
 
 /**
  * Generates a PDF file from a LaTeX source file.
  *
  * @param {string} texFilePath - Path to the main LaTeX file.
- * @param {string[]} includeGraphicsDirectories - Directories to search for graphics files.
  * @param {GenerateOptions} options - Generation options.
  * @returns {PdfGenerateResult} - Result of PDF generation.
  */
-export const generatePdf = (texFilePath: string, includeGraphicsDirectories: string[] = [], options: GenerateOptions = {}): PdfGenerateResult => {
+export const generatePdf = (texFilePath: string, options: GenerateOptions = {}): PdfGenerateResult => {
   // Extract the file name and directory from the given LaTeX file path.
   const fileName = getFileName(texFilePath)
   const directory = path.dirname(texFilePath)
@@ -123,14 +149,16 @@ export const generatePdf = (texFilePath: string, includeGraphicsDirectories: str
   // Determine if PDF generation should occur even if the file already exists.
   const generateIfExists = options && options.generateIfExists !== undefined ? options.generateIfExists : !debug
 
+  // Initialize the path to the checksums file.
+  const checksumsFilePath = path.resolve(directory, `${fileName}${checksumsExtension}`)
+
   // Check if the PDF file exists and generation is not forced.
   if (fs.existsSync(pdfFilePath) && !generateIfExists) {
     // If the checksums file does not exist, generate and save checksums.
-    const checksumsFilePath = path.resolve(directory, `${fileName}.pdf.checksums`)
     if (!fs.existsSync(checksumsFilePath)) {
       fs.writeFileSync(
         checksumsFilePath,
-        JSON.stringify(calculateTexFileChecksums(texFilePath, includeGraphicsDirectories)),
+        JSON.stringify(calculateTexFileChecksums(texFilePath, options.includeGraphicsDirectories)),
         { encoding: 'utf8' }
       )
     }
@@ -138,11 +166,8 @@ export const generatePdf = (texFilePath: string, includeGraphicsDirectories: str
     return { builtFilePath: pdfFilePath, checksumsFilePath, wasCached: true }
   }
 
-  // Initialize the path to the checksums file.
-  const checksumsFilePath = path.resolve(directory, `${fileName}.pdf.checksums`)
-
   // Retrieve cache information if caching is enabled.
-  const cacheResult = options.cacheDirectory ? getCacheInfo(texFilePath, options.cacheDirectory, includeGraphicsDirectories) : null
+  const cacheResult = options.cacheDirectory ? getCacheInfo(texFilePath, options) : null
 
   // Check if the file and its checksums are fully cached.
   if (cacheResult && cacheResult.isFullyCached) {
@@ -162,7 +187,7 @@ export const generatePdf = (texFilePath: string, includeGraphicsDirectories: str
   if (pdfFilePath) {
     fs.writeFileSync(
       checksumsFilePath,
-      cacheResult?.checksums ?? JSON.stringify(calculateTexFileChecksums(texFilePath, includeGraphicsDirectories)),
+      cacheResult?.checksums ?? JSON.stringify(calculateTexFileChecksums(texFilePath, options.includeGraphicsDirectories)),
       { encoding: 'utf8' }
     )
     execSync('latexmk -quiet -c', { cwd: directory })
@@ -176,11 +201,10 @@ export const generatePdf = (texFilePath: string, includeGraphicsDirectories: str
  * Generates an SVG file from a LaTeX source file.
  *
  * @param {string} texFilePath - Path to the main LaTeX file.
- * @param {string[]} includeGraphicsDirectories - Directories to search for graphics files.
  * @param {GenerateOptions} options - Generation options.
  * @returns {GenerateResult} - Result of SVG generation.
  */
-export const generateSvg = (texFilePath: string, includeGraphicsDirectories: string[] = [], options: GenerateOptions = {}): GenerateResult => {
+export const generateSvg = (texFilePath: string, options: SvgGenerateOptions = { optimize: true }): GenerateResult => {
   // Extract the file name and directory from the given LaTeX file path.
   const fileName = getFileName(texFilePath)
   const directory = path.dirname(texFilePath)
@@ -197,28 +221,42 @@ export const generateSvg = (texFilePath: string, includeGraphicsDirectories: str
     return { builtFilePath: svgFilePath, wasCached: true }
   }
 
-  // Initialize the path to the PDF file.
-  let pdfFilePath = path.resolve(directory, `${fileName}.pdf`)
-  let wasCached = false
+  // Generate the PDF file, if not cached.
+  const pdfGenerateResult = generatePdf(texFilePath, options)
 
-  // Check if the PDF file does not exist.
-  if (!fs.existsSync(pdfFilePath)) {
-    // Generate the PDF file, if not cached.
-    const result = generatePdf(texFilePath, includeGraphicsDirectories, options)
-    // If PDF generation fails, return information about the failure.
-    if (!result.builtFilePath) {
-      return { builtFilePath: null, wasCached: false }
-    }
-    // Update the PDF file path and cache status.
-    pdfFilePath = result.builtFilePath
-    wasCached = result.wasCached
+  // If PDF generation fails, return information about the failure.
+  if (!pdfGenerateResult.builtFilePath) {
+    return { builtFilePath: null, wasCached: false }
   }
 
   // Convert the PDF file to SVG using pdftocairo.
-  svgFilePath = pdftocairo(path.dirname(pdfFilePath), `${fileName}.pdf`)
+  if (!pdfGenerateResult.wasCached || !fs.existsSync(svgFilePath)) {
+    svgFilePath = pdftocairo(path.dirname(pdfGenerateResult.builtFilePath), `${fileName}.pdf`)
+    if (svgFilePath && options.optimize) {
+      const svgContent = fs.readFileSync(svgFilePath, { encoding: 'utf8' })
+      const size = fs.statSync(svgFilePath).size
+      const { data: optimizedSvgContent } = optimize(svgContent, {
+        path: svgFilePath,
+        multipass: true,
+        floatPrecision: size >= 100000 ? 2 : 5,
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false
+              }
+            }
+          },
+          forceUnit
+        ]
+      })
+      fs.writeFileSync(svgFilePath, optimizedSvgContent)
+    }
+  }
 
   // Return information about the generated SVG file.
-  return { builtFilePath: svgFilePath, wasCached }
+  return { builtFilePath: svgFilePath, wasCached: pdfGenerateResult.wasCached }
 }
 
 /**
@@ -250,7 +288,7 @@ const latexmk = (directory: string, texFile: string, clean: boolean): string | n
     // Log additional information from the compilation log if available.
     const logFile = path.resolve(directory, `${getFileName(texFile)}.log`)
     if (fs.existsSync(logFile)) {
-      const logString = fs.readFileSync(logFile, { encoding: 'utf-8' })
+      const logString = fs.readFileSync(logFile, { encoding: 'utf8' })
       logger.fatal('latexmk', 'Here is the log:')
       logger.fatal('latexmk', logString)
     }
@@ -267,7 +305,7 @@ const latexmk = (directory: string, texFile: string, clean: boolean): string | n
  * @param {string} pdfFile - Path to the PDF file.
  * @returns {string} - Path to the generated SVG file.
  */
-const pdftocairo = (directory: string, pdfFile: string): string => {
+export const pdftocairo = (directory: string, pdfFile: string): string => {
   // Generate the desired SVG file name based on the PDF file name.
   const svgFile = `${getFileName(pdfFile)}.svg`
   // Generate the full path to the SVG file.
@@ -287,26 +325,25 @@ const pdftocairo = (directory: string, pdfFile: string): string => {
  * Retrieves information from the cache if available.
  *
  * @param {string} texFilePath - Path to the main LaTeX file.
- * @param {string} cacheDirectory - Directory where cached files are stored.
- * @param {string[]} includeGraphicsDirectories - Directories to search for graphics files.
+ * @param {GenerateOptions} options - The generate options.
  * @returns {CacheResult | null} - Cache information or null if not fully cached.
  */
-const getCacheInfo = (texFilePath: string, cacheDirectory: string, includeGraphicsDirectories: string[] = []): CacheResult => {
+const getCacheInfo = (texFilePath: string, options: GenerateOptions): CacheResult => {
   // Extract the file name from the given LaTeX file path.
-  const fileName = getFileName(texFilePath)
+  const fileName = options.cachedFileName ?? getFileName(texFilePath)
 
   // Calculate the checksums for the current LaTeX file, including graphics directories.
-  const checksums = JSON.stringify(calculateTexFileChecksums(texFilePath, includeGraphicsDirectories))
+  const checksums = JSON.stringify(calculateTexFileChecksums(texFilePath, options.includeGraphicsDirectories))
 
   // Generate paths to the cached PDF and checksums files.
-  const cachedPdfFilePath = path.resolve(cacheDirectory, `${fileName}.pdf`)
-  const cachedChecksumsFilePath = path.resolve(cacheDirectory, `${fileName}.pdf.checksums`)
+  const cachedPdfFilePath = path.resolve(options.cacheDirectory!, `${fileName}.pdf`)
+  const cachedChecksumsFilePath = path.resolve(options.cacheDirectory!, `${fileName}${checksumsExtension}`)
 
   // Check if both the cached PDF and checksums files exist, and if the checksums match the expected values.
   const isFullyCached =
     fs.existsSync(cachedPdfFilePath) &&
     fs.existsSync(cachedChecksumsFilePath) &&
-    checksums === fs.readFileSync(cachedChecksumsFilePath, { encoding: 'utf-8' })
+    checksums === fs.readFileSync(cachedChecksumsFilePath, { encoding: 'utf8' })
 
   // Return the cache information, including the cached file paths and checksums.
   return {
@@ -357,33 +394,6 @@ const calculateTexFileChecksums = (filePath: string, includeGraphicsDirectories:
       excludes: [],
       hasIncludes: true,
       targetIsDirectory: false
-    },
-    // inputcontent command for other LaTeX files.
-    {
-      command: 'inputcontent',
-      directories: [null, currentDirectory],
-      extensions: ['.tex'],
-      excludes: [],
-      hasIncludes: true,
-      targetIsDirectory: false
-    },
-    // inputcontent* command for other LaTeX files.
-    {
-      command: 'inputcontent\\*',
-      directories: [null, currentDirectory],
-      extensions: ['.tex'],
-      excludes: [],
-      hasIncludes: true,
-      targetIsDirectory: false
-    },
-    // setbibliographypath command for bibliography files.
-    {
-      command: 'setbibliographypath',
-      directories: [null, currentDirectory],
-      extensions: ['.bib'],
-      excludes: [],
-      hasIncludes: false,
-      targetIsDirectory: true
     }
   ]
 
@@ -391,7 +401,7 @@ const calculateTexFileChecksums = (filePath: string, includeGraphicsDirectories:
   const checksums: Checksums = {}
 
   // Calculate and store the checksum for the main LaTeX file.
-  checksums[`file:${getFileName(filePath)}`] = generateChecksum(fs.readFileSync(filePath, { encoding: 'utf-8' }))
+  checksums[`file:${getFileName(filePath)}`] = generateChecksum(fs.readFileSync(filePath, { encoding: 'utf8' }))
 
   // Iterate through each LaTeX include command.
   for (const latexIncludeCommand of latexIncludeCommands) {
@@ -399,7 +409,7 @@ const calculateTexFileChecksums = (filePath: string, includeGraphicsDirectories:
     const regex = new RegExp(`\\\\${latexIncludeCommand.command}(\\[[A-Za-zÀ-ÖØ-öø-ÿ\\d, =.\\\\-]*])?{([A-Za-zÀ-ÖØ-öø-ÿ\\d/, .\\-:_]+)}`, 'gs')
 
     // Read the content of the LaTeX file.
-    const content = fs.readFileSync(filePath, { encoding: 'utf-8' })
+    const content = fs.readFileSync(filePath, { encoding: 'utf8' })
 
     // Execute the regular expression on the content.
     let match = regex.exec(content)
@@ -470,4 +480,42 @@ const calculateTexFileChecksums = (filePath: string, includeGraphicsDirectories:
   }
   // Return the calculated checksums.
   return checksums
+}
+
+/**
+ * An SVGO plugin that allows to force a given unit on width and height attributes of SVGs.
+ */
+const forceUnit: PluginConfig = {
+  name: 'forceUnit',
+  fn: (_root: XastRoot, params: any) => {
+    const requiredUnit = params?.unit ?? 'pt'
+    const size: {[key: string]: string | null } = { width: null, height: null }
+    return {
+      element: {
+        enter: (node: XastElement, parentNode: XastParent) => {
+          if (node.name === 'svg' && parentNode.type === 'root') {
+            const viewBox = node.attributes.viewBox
+            if (viewBox) {
+              const parts = viewBox.split(' ')
+              node.attributes.width = parts[2] + requiredUnit
+              node.attributes.height = parts[3] + requiredUnit
+              return
+            }
+            const attributes = ['width', 'height']
+            for (const attribute of attributes) {
+              let value = node.attributes[attribute]
+              if (!value || value.endsWith(requiredUnit)) {
+                continue
+              }
+              const unitRegex = /[0-9]+\.?[0-9]*(px|pt|cm|mm|in|em|ex|pc)?/g
+              const number = value.replace(unitRegex, match => parseFloat(match).toString())
+              size[attribute] = number
+              value = number + requiredUnit
+              node.attributes[attribute] = value
+            }
+          }
+        }
+      }
+    }
+  }
 }

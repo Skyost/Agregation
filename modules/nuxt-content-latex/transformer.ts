@@ -7,7 +7,7 @@ import { HTMLElement, parse } from 'node-html-parser'
 import katex from 'katex'
 import { createResolver, type Resolver } from '@nuxt/kit'
 import { name } from './index'
-import { normalizeString } from '~/utils/utils'
+import { getFileName, normalizeString } from '~/utils/utils'
 import * as latex from '~/utils/latex'
 import * as logger from '~/utils/logger'
 import { latexOptions, type LatexTransformOptions } from '~/site/latex'
@@ -178,15 +178,19 @@ const extractImages = (
       fs.writeFileSync(extractedImageTexFilePath, template.replace('%s', match[0]))
 
       // Generate SVG from the extracted image LaTeX file.
-      const { builtFilePath } = latex.generateSvg(
+      const { builtFilePath, wasCached } = latex.generateSvg(
         extractedImageTexFilePath,
-        options.getIncludeGraphicsDirectories(texFileRelativePath).map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
-        { cacheDirectory: resolver.resolve(sourceDirectoryPath, options.cacheDirectory, destination) }
+        {
+          includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texFileRelativePath).map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
+          cacheDirectory: resolver.resolve(sourceDirectoryPath, options.cacheDirectory, destination),
+          optimize: true
+        }
       )
 
       // If SVG is generated successfully, replace the LaTeX block with an HTML-friendly image reference.
       if (builtFilePath) {
-        logger.success(name, `${blockType}[${(i + 1)}] -> ${builtFilePath} from ${texFileRelativePath}.`)
+        const cachedDebugInfo = wasCached ? ' (was cached)' : ''
+        logger.success(name, `${blockType}[${(i + 1)}] -> ${builtFilePath} from ${texFileRelativePath}${cachedDebugInfo}.`)
         result = result.replace(match[0], `\\includegraphics{${path.parse(builtFilePath).base}}`)
         fs.rmSync(extractedImageTexFilePath)
       }
@@ -229,7 +233,7 @@ const replaceImages = (
   options: LatexTransformOptions
 ) => {
   // Possible image file extensions.
-  const extensions = ['', '.pdf', '.svg', '.png', '.jpeg', '.jpg', '.gif']
+  const extensions = ['', '.svg', '.tex', '.pdf', '.png', '.jpeg', '.jpg', '.gif']
 
   // Select all image elements in the HTML tree.
   const images = root.querySelectorAll('img')
@@ -265,7 +269,7 @@ const replaceImages = (
         // Check if the file exists.
         if (fs.existsSync(filePath)) {
           // Resolve the image source.
-          let resolvedSrc = resolveImageSrc(
+          const resolvedSrc = resolveImageSrc(
             filePath,
             directories.map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
             assetsDestinationDirectoryPath,
@@ -274,12 +278,11 @@ const replaceImages = (
 
           // Format the resolved source as an absolute path.
           if (resolvedSrc) {
-            resolvedSrc = '/' + resolvedSrc.replace(/\\/g, '/')
             logger.success(name, `Resolved image ${src} to ${resolvedSrc} in ${texFileRelativePath}.`)
 
             // Update the image source and alt attribute.
             image.setAttribute('src', resolvedSrc)
-            image.setAttribute('alt', src)
+            image.setAttribute('alt', getFileName(src))
             resolved = true
             break
           }
@@ -309,13 +312,17 @@ const resolveImageSrc = (
   assetsDestinationDirectoryPath: string,
   cacheDirectoryPath: string
 ): string | null => {
+  const extension = path.extname(imagePath)
   // Check if the image has a PDF extension.
-  if (path.extname(imagePath) === '.pdf') {
+  if (extension === '.tex') {
     // Generate an SVG from the PDF.
     const { builtFilePath } = latex.generateSvg(
       imagePath,
-      includeGraphicsDirectories,
-      { cacheDirectory: cacheDirectoryPath }
+      {
+        includeGraphicsDirectories,
+        cacheDirectory: cacheDirectoryPath,
+        optimize: true
+      }
     )
 
     // If the PDF couldn't be converted to SVG, return null.
@@ -325,10 +332,12 @@ const resolveImageSrc = (
 
     // Update the image path to the generated SVG.
     imagePath = builtFilePath
+  } else if (extension === '.pdf') {
+    imagePath = latex.pdftocairo(path.dirname(imagePath), path.basename(imagePath))
   }
 
   // Return the relative path from the assets destination directory.
-  return path.relative(assetsDestinationDirectoryPath, imagePath)
+  return '/' + path.relative(path.dirname(assetsDestinationDirectoryPath), imagePath).replace(/\\/g, '/')
 }
 
 /**
