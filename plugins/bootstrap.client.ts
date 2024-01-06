@@ -1,4 +1,4 @@
-import * as collapse from 'bootstrap/js/dist/collapse'
+import collapse from 'bootstrap/js/dist/collapse'
 
 /**
  * Bootstrap plugin for Nuxt.
