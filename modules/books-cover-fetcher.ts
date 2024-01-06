@@ -157,6 +157,7 @@ const amazonServersDownloadSource: DownloadSource = {
  */
 const previousBuildDownloadSource: DownloadSource = {
   name: 'agreg.skyost.eu',
+  // eslint-disable-next-line require-await
   getBookCoverUrl: async (book: Book, options: ModuleOptions) => `${options.siteUrl}${options.booksImagesUrl}${book.isbn10}.jpg`
 }
 
@@ -202,11 +203,15 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
  * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
  */
 async function downloadImage (url: string, destinationFile: string): Promise<boolean> {
-  const blob = await ofetch(url, { responseType: 'blob' })
-  if (blob.type === 'image/jpeg' && blob.size > 0) {
-    const buffer = Buffer.from(await blob.arrayBuffer())
-    fs.writeFileSync(destinationFile, buffer)
-    return true
+  try {
+    const blob = await ofetch(url, {responseType: 'blob'})
+    if (blob.type === 'image/jpeg' && blob.size > 0) {
+      const buffer = Buffer.from(await blob.arrayBuffer())
+      fs.writeFileSync(destinationFile, buffer)
+      return true
+    }
+  } catch (ex) {
+    logger.warn(name, ex)
   }
   return false
 }
