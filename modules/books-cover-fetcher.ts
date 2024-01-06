@@ -204,7 +204,7 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
  */
 async function downloadImage (url: string, destinationFile: string): Promise<boolean> {
   try {
-    const blob = await ofetch(url, {responseType: 'blob'})
+    const blob = await ofetch(url, { responseType: 'blob' })
     if (blob.type === 'image/jpeg' && blob.size > 0) {
       const buffer = Buffer.from(await blob.arrayBuffer())
       fs.writeFileSync(destinationFile, buffer)
