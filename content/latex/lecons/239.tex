@@ -89,7 +89,7 @@
 			\item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
 			\item p.p. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
 			\item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
-			\[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in I, \text{p.p. en } x \]
+			\[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{p.p. en } x \]
 		\end{enumerate}
 		Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
 		\[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
@@ -142,7 +142,7 @@
 			\item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
 			\item p.p. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-			\[ \left| \frac{\partial f}{\partial z}(x,z) \right| \leq g_K(x) \quad \forall z \in \Omega, \text{p.p. en } x \]
+			\[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{p.p. en } x \]
 		\end{enumerate}
 		Alors $F$ est holomorphe dans $\Omega$ avec
 		\[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
