@@ -12,7 +12,7 @@
 	Soit $E$ un espace vectoriel de dimension finie sur un corps commutatif $\mathbb{K}$.
 
 	\begin{theorem}[Décomposition de Dunford]
-		Soit $f \in \mathcal{E}$ un endomorphisme tel que son polynôme minimal $\mu_f$ soit scindé sur $\mathbb{K}$. Alors il existe un unique couple d'endomorphismes $(d, n)$ tel que :
+		Soit $f \in \mathcal{E}$ un endomorphisme tel que son polynôme minimal $\pi_f$ soit scindé sur $\mathbb{K}$. Alors il existe un unique couple d'endomorphismes $(d, n)$ tel que :
 		\begin{itemize}
 			\item $f = d + n$.
 			\item $d$ est diagonalisable et $n$ est nilpotent.
@@ -21,7 +21,7 @@
 	\end{theorem}
 
 	\begin{proof}
-		On écrit $\mu_f = (-1)^n \prod_{i=1}^s (X - \lambda_i)^{\alpha_i}$ et pour tout $i$, on note $N_i = \ker((f-\lambda_i \id_E)^{\alpha_i})$ le $i$-ième sous-espace caractéristique de $f$.
+		On écrit $\pi_f = (-1)^n \prod_{i=1}^s (X - \lambda_i)^{\alpha_i}$ et pour tout $i$, on note $N_i = \ker((f-\lambda_i \id_E)^{\alpha_i})$ le $i$-ième sous-espace caractéristique de $f$.
 		\newpar
 		\uline{Construction :} Comme $E = N_1 \oplus \dots \oplus N_s$, il suffit de définir $d$ et $n$ sur chaque $N_i$. On les définit pour tout $i$ et pour tout $x \in N_i$ comme tels :
 		\begin{itemize}

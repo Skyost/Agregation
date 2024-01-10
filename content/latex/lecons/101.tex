@@ -289,7 +289,7 @@
 			\item $\det(A) = \det(B)$.
 			\item $\rang(A) = \rang(B)$.
 			\item $\chi_A = \chi_B$.
-			\item $\mu_A = \mu_B$.
+			\item $\pi_A = \pi_B$.
 		\end{itemize}
 	\end{theorem}
 
@@ -306,13 +306,13 @@
 	\begin{lemma}
 		Soit $f \in \mathcal{L}(E)$.
 		\begin{enumerate}[(i)]
-			\item Si $k = \deg(\mu_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
+			\item Si $k = \deg(\pi_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
 			\item Soit $x \in E$. Si $l = \deg(P_{f,x})$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
 		\end{enumerate}
 	\end{lemma}
 
 	\begin{lemma}
-		Soit $f \in \mathcal{L}(E)$. Il existe $x \in E$ tel que $P_{f,x} = \mu_f$.
+		Soit $f \in \mathcal{L}(E)$. Il existe $x \in E$ tel que $P_{f,x} = \pi_f$.
 	\end{lemma}
 
 	\dev{invariants-de-similitude}
@@ -322,7 +322,7 @@
 		\begin{enumerate}[(i)]
 			\item $E = \bigoplus_{i = 1}^r F_i$.
 			\item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
-			\item Si $P_i = \mu_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
+			\item Si $P_i = \pi_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
 		\end{enumerate}
 		La suite $(P_i)_{i \in \llbracket 1, r \rrbracket}$ ne dépend que de $f$ et non du choix de la décomposition (elle est donc unique). On l'appelle \textbf{suite des invariants de $f$}.
 	\end{theorem}

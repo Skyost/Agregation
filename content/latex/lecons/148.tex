@@ -146,12 +146,12 @@
 		Soient $E$ et $F$ deux espaces vectoriels sur $\mathbb{K}$ avec $E$ de dimension finie. Alors,
 		\[ \dim(E) = \dim(\ker (f)) + \rang (f) \]
 	\end{theorem}
-	
+
 	\begin{corollary}
 		Soit $f \in \mathcal{L}(E, F)$ où $E$ et $F$ sont de même dimension finie. Alors :
 		\[ f \text{ bijective} \iff f \text{ injective} \iff f \text{ surjective} \]
 	\end{corollary}
-	
+
 	\begin{cexample}
 		L'application
 		\[
@@ -162,9 +162,9 @@
 		\]
 		est linéaire surjective, mais pas injective.
 	\end{cexample}
-	
+
 	\reference{138}
-	
+
 	\begin{application}
 		L'application
 		\[
@@ -177,13 +177,13 @@
 	\end{application}
 
 	\subsubsection{Rang d'une matrice}
-	
+
 	\reference{128}
 
 	\begin{definition}
 		Soit $A \in \mathcal{M}_{p,q}(\mathbb{K})$. On appelle \textbf{rang} de $A$ la dimension du sous-espace vectoriel de $\mathbb{K}^q$ engendré par les colonnes de $A$. Si $A$ est la matrice d'une application linéaire $f$, on a $\rang (A) = \rang (f)$.
 	\end{definition}
-	
+
 	\begin{remark}
 		Soit $A \in \mathcal{M}_{p,q}(\mathbb{K})$.
 		\begin{itemize}
@@ -191,7 +191,7 @@
 			\item Si $p = q$, $A$ est inversible si et seulement si $\rang(A) = p$.
 		\end{itemize}
 	\end{remark}
-	
+
 	\begin{theorem}
 		Soit $A \in \mathcal{M}_{p,q}(\mathbb{K})$. Si $A$ est de rang $r \geq 1$, alors $A$ est équivalente à
 		\[ J_r =
@@ -201,27 +201,27 @@
 		\end{pmatrix}
 		\]
 	\end{theorem}
-	
+
 	\begin{corollary}
 		Deux matrices $A$ et $B \in \mathcal{M}_{p,q}(\mathbb{K})$ sont équivalentes si et seulement si elles ont le même rang.
 	\end{corollary}
-	
+
 	\begin{theorem}
 		Le rang d'une matrice est le plus grand des ordres des matrices carrées inversibles extraites de cette matrice.
 	\end{theorem}
-	
+
 	\begin{corollary}
 		Le rang de toute matrice est égal au rang de sa transposée.
 	\end{corollary}
-	
+
 	\begin{remark}
 		Autrement dit, la dimension du sous-espace engendré par les vecteurs colonnes d'une matrice est égal à la dimension du sous-espace engendré par ses vecteurs lignes.
 	\end{remark}
-	
+
 	\begin{proposition}
 		On ne change pas le rang d'une matrice par opérations élémentaires.
 	\end{proposition}
-	
+
 	\begin{example}
 		On peut utiliser l'algorithme du pivot de Gauss pour trouver le rang d'une matrice. Ainsi,
 		\[ \rang
@@ -242,13 +242,13 @@
 	\subsection{Applications}
 
 	\subsubsection{Dualité}
-	
+
 	Soit $E$ un espace vectoriel sur $\mathbb{K}$ de dimension finie $n$.
-	
+
 	\begin{definition}
 		L'ensemble $E^* = \mathcal{L}(E, \mathbb{K})$ est appelé \textbf{dual} de $E$. Ses éléments sont les \textbf{formes linéaires} sur $E$.
 	\end{definition}
-	
+
 	\begin{definition}
 		Soit $B = (e_1, \dots, e_n)$ une base de $E$. Pour tout $i \in \llbracket 1, n \rrbracket$, on définit
 		\[
@@ -260,20 +260,20 @@
 		\]
 		la \textbf{forme linéaire coordonnée} d'indice $i$.
 	\end{definition}
-	
+
 	\begin{theorem}
 		$B^* = (e_1^*, \dots, e_n^*)$ est une base de $E^*$ appelée \textbf{base duale} de $B$. $B$ est alors la \textbf{base antéduale} de $B^*$.
 	\end{theorem}
-	
+
 	\begin{corollary}
 		\begin{itemize}
 			\item $E^*$ est de dimension finie et $\dim(E^*) = n$.
 			\item $\forall \varphi \in E^*, \, \varphi = \sum_{i=1}^n \varphi(e_i) e_i^*$.
 		\end{itemize}
 	\end{corollary}
-	
+
 	\reference[ROM21]{442}
-	
+
 	\begin{application}[Formule de Taylor]
 		Pour tout $j \in \llbracket 0, n \rrbracket$, on définit :
 		\[
@@ -286,11 +286,11 @@
 	\end{application}
 
 	\subsubsection{Classification des formes quadratiques}
-	
+
 	\reference[GOU21]{239}
-	
+
 	Soit $E$ un espace vectoriel sur $\mathbb{K}$ de dimension $n$.
-	
+
 	\begin{definition}
 		Soit $\varphi : E \times E \rightarrow \mathbb{K}$ une application.
 		\begin{itemize}
@@ -298,7 +298,7 @@
 			\item Si de plus $\forall x, y \in E, \, \varphi(x, y) = \varphi(y, x)$, on dit que $\varphi$ est \textbf{symétrique}.
 		\end{itemize}
 	\end{definition}
-	
+
 	\begin{definition}
 		On appelle \textbf{forme quadratique} sur $E$ toute application $q$ de la forme
 		\[
@@ -310,22 +310,22 @@
 		\]
 		où $\varphi$ est une forme bilinéaire symétrique sur $E$.
 	\end{definition}
-	
+
 	\begin{proposition}
 		Soit $q$ une forme quadratique sur $E$. Il existe une unique forme bilinéaire symétrique $\varphi$ telle que pour tout $x \in E$, $q(x)=\varphi(x,x)$.
 		\newpar
 		$\varphi$ est alors la \textbf{forme polaire} de $q$, et on a
 		\[ \forall x, y \in E, \, \varphi(x,y) = \frac{1}{2} (q(x+y) - q(x) - q(y)) \]
 	\end{proposition}
-	
+
 	\begin{definition}
 		Soit $q$ une forme quadratique sur $E$. On appelle \textbf{rang} de $q$ (noté $\rang(q)$) le rang de la matrice de sa forme polaire.
 	\end{definition}
-	
+
 	\begin{lemma}
 		Soit $\Phi$ une forme quadratique sur $E$. Il existe une base $\Phi$-orthogonale (ie. si $\varphi$ est la forme polaire de $\Phi$, une base $B$ où $\forall e, e' \in B, \, \varphi(e, e') = 0$ si $e \neq e'$).
 	\end{lemma}
-	
+
 	\dev{loi-d-inertie-de-sylvester}
 
 	\begin{theorem}[Loi d'inertie de Sylvester]
@@ -335,78 +335,78 @@
 		\newpar
 		Le couple $(p,q)$ est la \textbf{signature} de $\Phi$ et le rang $\Phi$ est égal à $p+q$.
 	\end{theorem}
-	
+
 	\begin{example}
 		La signature de la forme quadratique $\Phi : (x,y,z) \mapsto x^2 - 2y^2 + xz + yz$ est $(2,1)$, donc son rang est $3$.
 	\end{example}
-	
+
 	\subsubsection{Extensions de corps}
-	
+
 	\reference[GOZ]{21}
-	
+
 	\begin{definition}
 		On appelle \textbf{extension} de $\mathbb{K}$ tout corps $\mathbb{L}$ tel qu'il existe un morphisme de corps de $\mathbb{K}$ dans $\mathbb{L}$. On notera $\mathbb{L} / \mathbb{K}$ pour signifier que $\mathbb{L}$ est une extension de $\mathbb{K}$ par la suite.
 	\end{definition}
-	
+
 	\begin{definition}
 		Soit $\mathbb{L}/\mathbb{K}$ une extension de $\mathbb{K}$. On appelle \textbf{degré} de $\mathbb{L}/\mathbb{K}$ et on note $[\mathbb{L}:\mathbb{K}]$, la dimension de $\mathbb{L}$ comme $\mathbb{K}$-espace vectoriel.
 	\end{definition}
-	
+
 	\begin{theorem}[Base télescopique]
 		Soient $\mathbb{L}/\mathbb{K}$ une extension de $\mathbb{K}$ et $E$ un espace vectoriel sur $\mathbb{L}$.
 		Soient $(e_i)_{i \in I}$ une base de $E$ en tant que $\mathbb{L}$-espace vectoriel et $(\alpha_j)_{j \in J}$ une base de $\mathbb{L}$ en tant que $\mathbb{K}$-espace vectoriel.
 		\newpar
 		Alors $(\alpha_j e_i)_{(i,j) \in I \times J}$ est une base de $E$ en tant que $\mathbb{K}$-espace vectoriel.
 	\end{theorem}
-	
+
 	\begin{corollary}[Multiplicativité des degrés]
 		Soient $\mathbb{L}/\mathbb{K}$ une extension de $\mathbb{K}$ et $\mathbb{M}/\mathbb{L}$ une extension de $\mathbb{L}$. Alors, sont équivalentes :
 		\begin{enumerate}[(i)]
 			\item $\mathbb{M}$ est un $\mathbb{K}$-espace vectoriel de dimension finie.
-			\item $\mathbb{M}$ est un $\mathbb{L}$-espace vectoriel de dimension finie et $\mathbb{L}$ est un $\mathbb{K}$-espace vectoriel de dimension finie. 
+			\item $\mathbb{M}$ est un $\mathbb{L}$-espace vectoriel de dimension finie et $\mathbb{L}$ est un $\mathbb{K}$-espace vectoriel de dimension finie.
 		\end{enumerate}
 		On a alors :
 		\[ \dim_{\mathbb{K}}(M) = \dim_{\mathbb{L}}(M) \dim_{\mathbb{K}}(L) \iff [\mathbb{M}:\mathbb{K}] = [\mathbb{M}:\mathbb{L}] [\mathbb{L}:\mathbb{K}] \]
 	\end{corollary}
-	
+
 	\reference{46}
-	
+
 	\begin{example}
 		\[ [\mathbb{Q}[i + \sqrt{2}]:\mathbb{Q}] = 4 \]
 	\end{example}
 
 	\subsubsection{Commutant}
-	
+
 	Soit $A \in \mathcal{M}_n(\mathbb{K})$.
-	
+
 	\reference[GOU21]{289}
-	
+
 	\begin{lemma}
-		Si $\mu_A = \chi_A$, alors $A$ est cyclique :
+		Si $\pi_A = \chi_A$, alors $A$ est cyclique :
 		\[ \exists x \in \mathbb{K}^n \setminus \{ 0 \} \text{ tel que } (x, Ax, \dots, A^{n-1}x) \text{ est une base de } \mathbb{K}^n \]
 	\end{lemma}
-	
+
 	\reference[FGN2]{160}
-	
+
 	\begin{notation}
 		\begin{itemize}
 			\item On note $\mathcal{T}_n(\mathbb{K})$ l'ensemble des matrices carrées triangulaires supérieures d'ordre $n$ à coefficients dans le corps $\mathbb{K}$.
 			\item On note $\mathcal{C}(A)$ le commutant de $A$.
 		\end{itemize}
 	\end{notation}
-	
+
 	\begin{lemma}
 		\[ \dim_{\mathbb{K}}(\mathcal{C}(A)) \geq n \]
 	\end{lemma}
-	
+
 	\begin{lemma}
 		Le rang de $A$ est invariant par extension de corps.
 	\end{lemma}
-	
+
 	\dev{dimension-du-commutant}
-	
+
 	\begin{theorem}
-		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \mu_A = \chi_A \]
+		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \pi_A = \chi_A \]
 	\end{theorem}
 	%</content>
 \end{document}

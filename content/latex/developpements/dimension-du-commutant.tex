@@ -20,7 +20,7 @@
 
 	\begin{remark}
 		\label{dimension-du-commutant-1}
-		On considère acquis le fait que si $\mu_A = \chi_A$, alors $A$ est cyclique :
+		On considère acquis le fait que si $\pi_A = \chi_A$, alors $A$ est cyclique :
 		\[ \exists x \in \mathbb{K}^n \setminus \{ 0 \} \text{ tel que } (x, Ax, \dots, A^{n-1}x) \text{ est une base de } \mathbb{K}^n \]
 	\end{remark}
 
@@ -70,15 +70,15 @@
 	\end{proof}
 
 	\begin{theorem}
-		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \mu_A = \chi_A \]
+		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \pi_A = \chi_A \]
 	\end{theorem}
 
 	\begin{proof}
 		\uline{Sens direct :} Supposons $\mathbb{K}[A] = \mathcal{C}(A)$. Le \cref{dimension-du-commutant-2} entraîne que
-		\[ \deg(\mu_A) = \dim(\mathbb{K}[A]) \geq n \]
-		Mais comme $\deg(\mu_A) \leq n$, on a $\deg(\mu_A) = n$. Par le théorème de Cayley-Hamilton, on conclut
-		\[ \mu_A = \chi_A \]
-		\uline{Réciproque :} On suppose $\mu_A = \chi_A$. Par la \cref{dimension-du-commutant-1}, on peut trouver $x \in \in \mathbb{K}^n \setminus \{ 0 \}$ tel que $(x, Ax, \dots, A^{n-1}x)$ est une base de $\mathbb{K}^n$. Ainsi, l'application
+		\[ \deg(\pi_A) = \dim(\mathbb{K}[A]) \geq n \]
+		Mais comme $\deg(\pi_A) \leq n$, on a $\deg(\pi_A) = n$. Par le théorème de Cayley-Hamilton, on conclut
+		\[ \pi_A = \chi_A \]
+		\uline{Réciproque :} On suppose $\pi_A = \chi_A$. Par la \cref{dimension-du-commutant-1}, on peut trouver $x \in \in \mathbb{K}^n \setminus \{ 0 \}$ tel que $(x, Ax, \dots, A^{n-1}x)$ est une base de $\mathbb{K}^n$. Ainsi, l'application
 		\[ \varphi :
 		\begin{array}{ccc}
 			\mathcal{C}(A) &\rightarrow& \mathbb{K}^n \\
@@ -90,7 +90,7 @@
 		car $B$ s'annule sur une base de $\mathbb{K}^n$. D'où $\dim(\mathcal{C}(A)) \leq \dim(\mathbb{K}^n) = n$. On déduit à l'aide du \cref{dimension-du-commutant-2} que
 		\[ \dim(\mathcal{C}(A)) = n \]
 		Notons de plus que
-		\[ \dim(\mathbb{K}[A]) = \deg(\mu_A) = \deg(\chi_A) = n \]
+		\[ \dim(\mathbb{K}[A]) = \deg(\pi_A) = \deg(\chi_A) = n \]
 		et comme $\mathbb{K}[A] \subset \mathcal{C}(A)$ (car tout polynôme en $A$ commute avec $A$), on a bien le résultat.
 	\end{proof}
 	%</content>
