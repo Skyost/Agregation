@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     '~/modules/books-cover-fetcher',
     '~/modules/cname-generator',
     '~/modules/commit-sha-file-generator',
+    '~/modules/nuxt-content-absolute-links',
     '~/modules/latex-pdf-generator',
     '~/modules/nuxt-content-bibtex',
     '~/modules/nuxt-content-latex',
@@ -56,6 +57,9 @@ export default defineNuxtConfig({
 
   content: {
     watch: false,
+    markdown: {
+      anchorLinks: false
+    },
     ignores: [
       ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums'
         .split(',')
