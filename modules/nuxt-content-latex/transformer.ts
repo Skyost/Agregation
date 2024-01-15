@@ -337,7 +337,7 @@ const resolveImageSrc = (
   }
 
   // Return the relative path from the assets destination directory.
-  return '/' + path.relative(path.dirname(assetsDestinationDirectoryPath), imagePath).replace(/\\/g, '/')
+  return '/' + path.relative(assetsDestinationDirectoryPath, imagePath).replace(/\\/g, '/')
 }
 
 /**
