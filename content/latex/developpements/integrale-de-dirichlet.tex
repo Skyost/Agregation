@@ -92,10 +92,12 @@
 			|F(y)| &= \left| \int_0^{+\infty} \frac{\sin(t)}{t} e^{-yt} \, \mathrm{d}t \right| \\
 			&\leq \int_0^{+\infty} \left| \frac{\sin(t)}{t} e^{-yt} \right| \, \mathrm{d}t \\
 			&\leq \int_0^{+\infty} e^{-yt} \, \mathrm{d}t \\
-			&= \frac{1}{y}
-			&\longleftrightarrow 0
+			&= \frac{1}{y} \\
+			&\longrightarrow_{y \rightarrow +\infty} 0
 		\end{align*}
-		Donc $\forall x > 0$, $F(x) = \frac{\pi}{2} - \arctan(x)$. En évaluant en $0$, on obtient :
+		Il suffit donc de faire tendre $y$ vers $+\infty$ pour obtenir :
+		\[ \forall x > 0, \, F(x) = \frac{\pi}{2} - \arctan(x) \]
+		Ce qui, en faisant tendre $x$ vers $0$, donne :
 		\[ F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2} \]
 	\end{proof}
 	%</content>
