@@ -17,9 +17,9 @@
 		On suppose :
 		\begin{enumerate}[(i)]
 			\item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
-			\item p.p. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
+			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
 			\item $\exists g \in L_1(X)$ positive telle que
-			\[ |f(t,x)| \leq g(x) \quad \forall t \in E, \text{p.p. en } x \in X \]
+			\[ |f(t,x)| \leq g(x) \quad \forall t \in E, \text{pp. en } x \in X \]
 		\end{enumerate}
 		Alors $F$ est continue en $t_0$.
 	\end{theorem}
@@ -28,9 +28,9 @@
 		On suppose :
 		\begin{enumerate}[(i)]
 			\item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
-			\item p.p. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
+			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
 			\item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
-			\[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{p.p. en } x \]
+			\[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{pp. en } x \]
 		\end{enumerate}
 		Alors $F$ est continue sur $E$.
 	\end{corollary}
@@ -68,9 +68,9 @@
 		On suppose :
 		\begin{enumerate}[(i)]
 			\item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
-			\item p.p. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
+			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
-			\[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{p.p. en } x \]
+			\[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
 		\end{enumerate}
 		Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
 		\[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
@@ -87,9 +87,9 @@
 		On suppose :
 		\begin{enumerate}[(i)]
 			\item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
-			\item p.p. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
+			\item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
 			\item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
-			\[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{p.p. en } x \]
+			\[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
 		\end{enumerate}
 		Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
 		\[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
@@ -140,9 +140,9 @@
 		On suppose :
 		\begin{enumerate}[(i)]
 			\item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
-			\item p.p. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
+			\item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-			\[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{p.p. en } x \]
+			\[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
 		\end{enumerate}
 		Alors $F$ est holomorphe dans $\Omega$ avec
 		\[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
@@ -179,8 +179,8 @@
 		\begin{enumerate}[(i)]
 			\item Si $p, q \in [1, +\infty]$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, alors $(f * g)(x)$ existe \underline{pour tout} $x \in \mathbb{R}^d$ et est uniformément continue. On a, $\Vert f * g \Vert_\infty \leq \Vert f \Vert_p \Vert g \Vert_q$ et, si $p \neq 1, +\infty$, $f * g \in \mathcal{C}_0(\mathbb{R})$.
 			\item Si $p = 1$ et $q = +\infty$, alors $(f * g)(x)$ existe \underline{pour tout} $x \in \mathbb{R}^d$ et $f * g \in \mathcal{C}_b(\mathbb{R})$.
-			\item Si $p = 1$ et $q \in [1, +\infty[$, alors $(f * g)(x)$ existe \underline{p.p.} en $x \in \mathbb{R}^d$ et $f * g \in L_q(\mathbb{R})$ telle que $\Vert f * g \Vert_q \leq \Vert f \Vert_1 \Vert g \Vert_q$.
-			\item Si $p = 1$ et $q = 1$, alors $(f * g)(x)$ existe \underline{p.p.} en $x \in \mathbb{R}^d$ et $f * g \in L_1(\mathbb{R})$ telle que $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
+			\item Si $p = 1$ et $q \in [1, +\infty[$, alors $(f * g)(x)$ existe \underline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_q(\mathbb{R})$ telle que $\Vert f * g \Vert_q \leq \Vert f \Vert_1 \Vert g \Vert_q$.
+			\item Si $p = 1$ et $q = 1$, alors $(f * g)(x)$ existe \underline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_1(\mathbb{R})$ telle que $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
 		\end{enumerate}
 	\end{theorem}
 
@@ -355,7 +355,7 @@
 
 	\begin{theorem}[Formule d'inversion de Fourier]
 		Si $f \in L_1(\mathbb{R}^d)$ est telle que $\widehat{f} \in L_1(\mathbb{R}^d)$, alors
-		\[ \widehat{\widehat{f}}(x) = (2\pi)^d f(x) \text{ p.p. en } x \in \mathbb{R}^d \]
+		\[ \widehat{\widehat{f}}(x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
 	\end{theorem}
 
 	\begin{proposition}

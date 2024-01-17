@@ -10,7 +10,7 @@
 	\begin{lemma}
 		\label{formule-de-stirling-1}
 		Soit $Y$ une variable aléatoire réelle à densité. Alors $\forall n \geq 1$, $\frac{Y - n}{\sqrt{n}}$ est à densité et,
-		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_{Y}(n + x \sqrt{n}) \text{ p.p. en } x \in \mathbb{R} \]
+		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_{Y}(n + x \sqrt{n}) \text{ pp. en } x \in \mathbb{R} \]
 	\end{lemma}
 
 	\begin{proof}
@@ -21,7 +21,7 @@
 			&= F_Y (x \sqrt{n} + n)
 		\end{align*}
 		Or, la fonction de répartition d'une variable aléatoire réelle à densité est dérivable presque partout, et sa dérivée est presque partout égale à sa densité. Donc :
-		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_Y (x \sqrt{n} + n) \text{ p.p. en } x \in \mathbb{R} \]
+		\[ f_{\frac{Y - n}{\sqrt{n}}}(x) = \sqrt{n} f_Y (x \sqrt{n} + n) \text{ pp. en } x \in \mathbb{R} \]
 	\end{proof}
 
 	\begin{remark}
@@ -63,7 +63,7 @@
 			\item \uline{Pour $n = 0$ :} c'est clair car $\mathcal{E}(1) = \Gamma(1, 1)$.
 			\item \uline{On suppose le résultat vrai à un rang $n \geq 0$.} Pour montrer qu'il reste vrai au rang $n+1$, il suffit d'appliquer le \cref{formule-de-stirling-2} à $S_n \sim \Gamma(n, 1)$ et $X_{n+1} \sim \Gamma(1, 1)$ (qui sont bien indépendantes).
 		\end{itemize}
-		Par le \cref{formule-de-stirling-1} appliqué à $S_n$, p.p. en $x \in \mathbb{R}$,
+		Par le \cref{formule-de-stirling-1} appliqué à $S_n$, pp. en $x \in \mathbb{R}$,
 		\begin{align*}
 			\overbrace{f_{\frac{S_n - n}{\sqrt{n}}}(x)}^{= g_n(x)} & = \sqrt{n} f_{S_n} (n + x \sqrt{n}) \\
 			& = \frac{\sqrt{n}}{\Gamma(n+1)} n^n \left(1 + \frac{x}{\sqrt{n}} \right)^n e^{-(n + x\sqrt{n})} \mathbb{1}_{[-\sqrt{n}, +\infty[}(x) \\
