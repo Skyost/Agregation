@@ -61,7 +61,7 @@ interface SiteMeta {
  */
 export const siteMeta: SiteMeta = {
   title: 'agreg.skyost.eu',
-  description: 'Petit site contenant une flopée de resources pour l\'agrégation de mathématiques : plans, développements, bibliographie, ...',
+  description: 'Petit site contenant une flopée de ressources pour l\'agrégation de mathématiques : plans, développements, bibliographie, ...',
   url: 'https://agreg.skyost.eu',
   github: {
     username: 'Skyost',

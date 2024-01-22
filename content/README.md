@@ -1,6 +1,6 @@
 # Bienvenue !
 
-Bonjour et bienvenue sur ce site où je mettrai tout un tas de resources concernant l'agrégation de mathématiques.
+Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant l'agrégation de mathématiques.
 Vous trouverez donc sur ce site :
 
 * Mes [plans](https://agreg.skyost.eu/lecons) de leçons.
