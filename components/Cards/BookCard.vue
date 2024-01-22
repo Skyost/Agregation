@@ -19,7 +19,7 @@ const date = computed(() => {
 })
 
 const changeImageSrc = (event: Event) => {
-  const newSrc = `http://z2-ec2.images-amazon.com/images/P/${props.book.isbn10}.01.MAIN._SCRM_.jpg`
+  const newSrc = props.book.altcover ? props.book.altcover : `http://z2-ec2.images-amazon.com/images/P/${props.book.isbn10}.01.MAIN._SCRM_.jpg`
   const imageElement = event.target as HTMLImageElement
   imageElement.src = newSrc
   imageElement.onerror = null
