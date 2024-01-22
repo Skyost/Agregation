@@ -5,8 +5,7 @@ import fs from 'fs'
 import { defineTransformer } from '@nuxt/content/transformers'
 import { HTMLElement, parse } from 'node-html-parser'
 import katex from 'katex'
-import { createResolver, type Resolver } from '@nuxt/kit'
-import { name } from './index'
+import { name } from './common'
 import { getFileName, normalizeString } from '~/utils/utils'
 import * as latex from '~/utils/latex'
 import * as logger from '~/utils/logger'
@@ -23,17 +22,14 @@ export default defineTransformer({
     // Latex transformation options.
     const options = latexOptions.transform
 
-    // Resolver for creating absolute paths.
-    const resolver = createResolver(import.meta.url)
-
     // Absolute path to the source directory.
     const sourceDirectoryPath = path.resolve('./')
 
     // Absolute path to the content directory.
-    const contentDirectoryPath = resolver.resolve(sourceDirectoryPath, 'content')
+    const contentDirectoryPath = path.resolve(sourceDirectoryPath, 'content')
 
     // Absolute path to the .tex file.
-    const filePath = resolver.resolve(sourceDirectoryPath, _id.replaceAll(':', '/'))
+    const filePath = path.resolve(sourceDirectoryPath, _id.replaceAll(':', '/'))
 
     // Relative path of the .tex file from the content directory.
     const texFileRelativePath = path.relative(contentDirectoryPath, filePath)
@@ -41,11 +37,10 @@ export default defineTransformer({
     logger.info(name, `Processing ${texFileRelativePath}...`)
 
     // Absolute path to the directory for storing assets.
-    const assetsDestinationDirectoryPath = resolver.resolve(sourceDirectoryPath, options.assetsDestinationDirectory)
+    const assetsDestinationDirectoryPath = path.resolve(sourceDirectoryPath, options.assetsDestinationDirectory)
 
     // Extract images from the .tex file content and return the modified content.
     const content = extractImages(
-      resolver,
       rawContent,
       assetsDestinationDirectoryPath,
       texFileRelativePath,
@@ -55,7 +50,7 @@ export default defineTransformer({
     )
 
     // Load the Pandoc redefinitions header content.
-    const pandocHeader = fs.readFileSync(resolver.resolve(sourceDirectoryPath, options.pandocRedefinitions), { encoding: 'utf8' })
+    const pandocHeader = fs.readFileSync(path.resolve(sourceDirectoryPath, options.pandocRedefinitions), { encoding: 'utf8' })
 
     // Run Pandoc to convert the .tex content to HTML.
     const pandocResult = spawnSync(
@@ -86,7 +81,6 @@ export default defineTransformer({
 
     // Replace images in the HTML content.
     replaceImages(
-      resolver,
       root,
       texFileRelativePath,
       sourceDirectoryPath,
@@ -124,7 +118,6 @@ export default defineTransformer({
 /**
  * Extract images from LaTeX content and replace them with HTML-friendly references.
  *
- * @param {Resolver} resolver - The resolver for creating absolute paths.
  * @param {string} latexContent - The content of the LaTeX file.
  * @param {string} assetsDestinationDirectoryPath - The absolute path to the directory for storing assets.
  * @param {string} texFileRelativePath - The relative path of the LaTeX file from the content directory.
@@ -134,7 +127,6 @@ export default defineTransformer({
  * @returns {string} - The modified LaTeX content with HTML-friendly image references.
  */
 const extractImages = (
-  resolver: Resolver,
   latexContent: string,
   assetsDestinationDirectoryPath: string,
   texFileRelativePath: string,
@@ -166,10 +158,10 @@ const extractImages = (
 
       // Destination path for the extracted image LaTeX file.
       const destination = options.getAssetDestination(`${destinationInAssetsDirectory}/${fileName}.tex`)
-      const extractedImageTexFilePath = resolver.resolve(assetsDestinationDirectoryPath, destination)
+      const extractedImageTexFilePath = path.resolve(assetsDestinationDirectoryPath, destination)
 
       // Read the template for the current block type.
-      const template = fs.readFileSync(resolver.resolve(sourceDirectoryPath, options.picturesTemplate[blockType]), { encoding: 'utf8' })
+      const template = fs.readFileSync(path.resolve(sourceDirectoryPath, options.picturesTemplate[blockType]), { encoding: 'utf8' })
 
       // Create directories if they don't exist.
       fs.mkdirSync(path.dirname(extractedImageTexFilePath), { recursive: true })
@@ -181,8 +173,8 @@ const extractImages = (
       const { builtFilePath, wasCached } = latex.generateSvg(
         extractedImageTexFilePath,
         {
-          includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texFileRelativePath).map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
-          cacheDirectory: resolver.resolve(sourceDirectoryPath, options.cacheDirectory, path.dirname(destination)),
+          includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texFileRelativePath).map(includedGraphicDirectory => path.resolve(contentDirectoryPath, includedGraphicDirectory)),
+          cacheDirectory: path.resolve(sourceDirectoryPath, options.cacheDirectory, path.dirname(destination)),
           optimize: true
         }
       )
@@ -215,7 +207,6 @@ const extractImages = (
 /**
  * Replace LaTeX image references in the HTML tree with resolved image sources.
  *
- * @param {Resolver} resolver - The resolver for creating absolute paths.
  * @param {HTMLElement} root - The root of the HTML tree.
  * @param {string} texFileRelativePath - The relative path of the LaTeX file from the content directory.
  * @param {string} sourceDirectoryPath - The absolute path to the source directory.
@@ -224,7 +215,6 @@ const extractImages = (
  * @param {LatexTransformOptions} options - The options for LaTeX transformation.
  */
 const replaceImages = (
-  resolver: Resolver,
   root: HTMLElement,
   texFileRelativePath: string,
   sourceDirectoryPath: string,
@@ -262,18 +252,18 @@ const replaceImages = (
       for (const extension of extensions) {
         // Get the destination path of the image in the assets directory.
         const destinationInAssetsDirectory = options.getAssetDestination(
-          path.relative(contentDirectoryPath, resolver.resolve(contentDirectoryPath, directory, src + extension))
+          path.relative(contentDirectoryPath, path.resolve(contentDirectoryPath, directory, src + extension))
         )
-        const filePath = resolver.resolve(assetsDestinationDirectoryPath, destinationInAssetsDirectory)
+        const filePath = path.resolve(assetsDestinationDirectoryPath, destinationInAssetsDirectory)
 
         // Check if the file exists.
         if (fs.existsSync(filePath)) {
           // Resolve the image source.
           const resolvedSrc = resolveImageSrc(
             filePath,
-            directories.map(includedGraphicDirectory => resolver.resolve(contentDirectoryPath, includedGraphicDirectory)),
+            directories.map(includedGraphicDirectory => path.resolve(contentDirectoryPath, includedGraphicDirectory)),
             assetsDestinationDirectoryPath,
-            resolver.resolve(sourceDirectoryPath, options.cacheDirectory, destinationInAssetsDirectory)
+            path.resolve(sourceDirectoryPath, options.cacheDirectory, destinationInAssetsDirectory)
           )
 
           // Format the resolved source as an absolute path.

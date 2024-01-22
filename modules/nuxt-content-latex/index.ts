@@ -3,11 +3,7 @@ import path from 'path'
 import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
 import * as logger from '../../utils/logger'
 import { latexOptions, type LatexTransformOptions } from '../../site/latex'
-
-/**
- * The name of the module.
- */
-export const name = 'nuxt-content-latex'
+import { name } from './common'
 
 /**
  * Nuxt module for transforming .tex files in Nuxt content.
