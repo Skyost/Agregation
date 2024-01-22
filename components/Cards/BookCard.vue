@@ -19,7 +19,7 @@ const date = computed(() => {
 })
 
 const changeImageSrc = (event: Event) => {
-  const newSrc = `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${props.book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`
+  const newSrc = `http://z2-ec2.images-amazon.com/images/P/${props.book.isbn10}.01.MAIN._SCRM_.jpg`
   const imageElement = event.target as HTMLImageElement
   imageElement.src = newSrc
   imageElement.onerror = null

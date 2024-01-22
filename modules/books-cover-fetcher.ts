@@ -135,15 +135,6 @@ const googleDownloadSource: DownloadSource = {
 }
 
 /**
- * Download on Amazon servers using the Amazon partners widget.
- */
-const amazonWidgetsDownloadSource: DownloadSource = {
-  name: 'Amazon widgets',
-  // eslint-disable-next-line require-await
-  getBookCoverUrl: async (book: Book) => `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${book.isbn10}&Format=_SL250_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=skyost-21&language=fr_FR`
-}
-
-/**
  * Download on Amazon servers using an Amazon link.
  */
 const amazonServersDownloadSource: DownloadSource = {
@@ -153,7 +144,7 @@ const amazonServersDownloadSource: DownloadSource = {
 }
 
 /**
- * Download the previous build.
+ * Download from the previous build.
  */
 const previousBuildDownloadSource: DownloadSource = {
   name: 'agreg.skyost.eu',
@@ -175,7 +166,7 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
   if (fs.existsSync(destinationFile)) {
     return true
   }
-  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonWidgetsDownloadSource, amazonServersDownloadSource, previousBuildDownloadSource]) {
+  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonServersDownloadSource, previousBuildDownloadSource]) {
     logger.info(name, `Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
     const coverUrl = await downloadSource.getBookCoverUrl(book, options)
     if (!coverUrl) {
