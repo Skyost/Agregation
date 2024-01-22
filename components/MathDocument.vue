@@ -138,7 +138,7 @@ onUnmounted(() => {
     color: rgba(black, 0.6);
   }
 
-  :deep(h2) {
+  :deep(h2:not(.unnumbered)) {
     counter-increment: headline-2;
     counter-reset: headline-3 headline-4;
 
@@ -147,7 +147,7 @@ onUnmounted(() => {
     }
   }
 
-  :deep(h3) {
+  :deep(h3:not(.unnumbered)) {
     counter-increment: headline-3;
     counter-reset: headline-4;
 
@@ -156,7 +156,7 @@ onUnmounted(() => {
     }
   }
 
-  :deep(h4) {
+  :deep(h4:not(.unnumbered)) {
     counter-increment: headline-4;
 
     &::before {
@@ -173,6 +173,16 @@ onUnmounted(() => {
 
     td {
       height: 2.5em;
+    }
+  }
+
+  :deep(figure figcaption) {
+    text-align: center;
+    counter-increment: figure;
+
+    &:before {
+      content: 'Figure ' counter(figure) '. ';
+      font-weight: bold;
     }
   }
 
