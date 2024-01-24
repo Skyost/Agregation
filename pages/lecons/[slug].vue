@@ -23,7 +23,9 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
     <div v-else-if="lesson">
       <Title>Leçon {{ lesson.slug }} : {{ lesson['page-title'] }}</Title>
       <Meta property="article:modified_time" :content="lesson['page-last-modification-time']" />
-      <math-document :body="lesson.body" />
+      <main>
+        <math-document :body="lesson.body" />
+      </main>
     </div>
     <div v-else>
       <error-display :error="error" />

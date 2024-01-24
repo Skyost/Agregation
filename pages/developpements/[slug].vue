@@ -26,7 +26,9 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
       <Meta property="og:description" :content="development['page-description']" />
       <Meta name="twitter:description" :content="development['page-description']" />
       <Meta property="article:modified_time" :content="development['page-last-modification-time']" />
-      <math-document :body="development.body" />
+      <main>
+        <math-document :body="development.body" />
+      </main>
     </div>
     <div v-else>
       <error-display :error="error" />
