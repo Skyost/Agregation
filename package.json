@@ -1,6 +1,6 @@
 {
   "name": "agregation",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "npx nuxi dev",
@@ -15,7 +15,6 @@
   "dependencies": {
     "@nuxt/content": "^2.11.0",
     "@nuxt/kit": "^3.9.3",
-    "katex": "^0.16.8",
     "skimple-components": "^0.6.0"
   },
   "devDependencies": {
@@ -26,7 +25,6 @@
     "@octokit/core": "^5.1.0",
     "@retorquere/bibtex-parser": "^7.0.8",
     "@types/adm-zip": "^0.5.5",
-    "@types/katex": "^0.16.7",
     "adm-zip": "^0.5.10",
     "dotenv": "^16.3.2",
     "eslint": "^8.55.0",
@@ -42,7 +40,7 @@
     "stylelint": "^16.2.0",
     "stylelint-config-recommended-vue": "^1.5.0",
     "stylelint-config-standard-scss": "^13.0.0",
-    "svgo": "^3.1.0",
+    "that-latex-lib": "^1.0.6",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-stylelint": "^5.2.1"
   }

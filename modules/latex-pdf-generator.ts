@@ -3,7 +3,7 @@ import path from 'path'
 import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
 import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
-import * as latex from '../utils/latex'
+import * as latex from 'that-latex-lib'
 import * as logger from '../utils/logger'
 import { getFileName } from '../utils/utils'
 import { type GithubRepository, siteMeta } from '../site/meta'
@@ -246,7 +246,8 @@ const generatePdf = (
         filePath,
         {
           includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
-          cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory
+          cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory,
+          generateIfExists: !debug
         }
       )
 

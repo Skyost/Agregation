@@ -23,8 +23,9 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
     <div v-else-if="development">
       <Title>{{ development['page-title'] }}</Title>
       <Meta name="description" :content="development['page-description']" />
-      <Meta name="og:description" :content="development['page-description']" />
+      <Meta property="og:description" :content="development['page-description']" />
       <Meta name="twitter:description" :content="development['page-description']" />
+      <Meta property="article:modified_time" :content="development['page-last-modification-time']" />
       <math-document :body="development.body" />
     </div>
     <div v-else>

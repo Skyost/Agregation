@@ -23,13 +23,13 @@ const currentAddress = `${runtimeConfig.public.url}${route.path}`
   <Head class="page-head">
     <Title>{{ title }}</Title>
     <Meta name="description" :content="description" />
-    <Meta name="og:title" :content="title" />
-    <Meta name="og:description" :content="description" />
-    <Meta name="og:type" content="website" />
-    <Meta name="og:site_name" :content="siteMeta.title" />
-    <Meta name="og:url" :content="currentAddress" />
-    <Meta name="og:image" :content="openGraphImage" />
-    <Meta name="og:locale" content="fr" />
+    <Meta property="og:title" :content="title" />
+    <Meta property="og:description" :content="description" />
+    <Meta property="og:type" content="website" />
+    <Meta property="og:site_name" :content="siteMeta.title" />
+    <Meta property="og:url" :content="currentAddress" />
+    <Meta property="og:image" :content="openGraphImage" />
+    <Meta property="og:locale" content="fr" />
     <Meta name="twitter:card" :content="twitterCard" />
     <Meta name="twitter:title" :content="title" />
     <Meta name="twitter:description" :content="description" />

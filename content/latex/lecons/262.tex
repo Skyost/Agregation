@@ -169,28 +169,28 @@
 	\end{corollary}
 
 	\subsection{Convergence \texorpdfstring{$L_p$}{Lp}}
-	
+
 	\reference{268}
-	
+
 	\begin{definition}
 		On dit que $(X_n)$ \textbf{converge dans $L_p$} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
 		\[ \forall n \in \mathbb{N}, X_n \in L_p, \, X \in L_p \text{ et } \mathbb{E}(\vert X_n - X \vert^p) \]
 		On note cela $X_n \overset{(L_p)}{\longrightarrow} X$.
 	\end{definition}
-	
+
 	\reference[D-L]{510}
-	
+
 	\begin{proposition}
 		Comme les espaces sont de mesure finie,
 		\[ p \geq q \implies L_p(\Omega, \mathcal{A}, \mathbb{P}) \subseteq L_q(\Omega, \mathcal{A}, \mathbb{P}) \]
 	\end{proposition}
-	
+
 	\begin{corollary}
 		Pour $1 \leq p \leq q$, la convergence dans $L_q$ implique la convergence dans $L_p$ qui implique elle-même la convergence dans $L_1$.
 	\end{corollary}
-	
+
 	\reference[HAU]{365}
-	
+
 	\begin{cexample}
 		Si,
 		\[
@@ -198,35 +198,35 @@
 		\]
 		alors, $(X_n)$ converge dans $L_1$ mais pas dans $L_2$.
 	\end{cexample}
-	
+
 	\reference[G-K]{65}
-	
+
 	\begin{theorem}[Convergence dominée]
 		Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $\exists g \in L_1$ telle que $\Vert X_n \Vert_1 \leq g$, alors $X_n \overset{(L_1)}{\longrightarrow} X$.
 	\end{theorem}
-	
+
 	\reference[HAU]{365}
-	
+
 	\begin{cexample}
 		On se place dans le cas où $(\Omega, \mathcal{A}, \mathbb{P}) = ([0,1[, \mathcal{B}([0,1[), \lambda_{[0,1[})$. Si $\forall n \geq 1, \, X_n = n \mathbb{1}_{\left] 0, \frac{1}{n} \right[}$, alors $(X_n)$ converge vers $0$ presque sûrement, mais pas dans $L_1$.
 	\end{cexample}
-	
+
 	\reference[G-K]{265}
-	
+
 	\begin{proposition}
 		Si $X_n \overset{(L_p)}{\longrightarrow} X$, alors il existe une sous-suite $(X_{n_k})$ de $(X_n)$ telle que $X_{n_k} \overset{(ps.)}{\longrightarrow} X$.
 	\end{proposition}
-	
+
 	\begin{theorem}
 		La convergence dans $L_p$ (pour $p \geq 1$) implique la convergence en probabilité.
 	\end{theorem}
-	
+
 	\begin{example}
 		La convergence en probabilité de l'\cref{262-1} est en fait une convergence dans $L_2$.
 	\end{example}
-	
+
 	\reference{281}
-	
+
 	\begin{cexample}
 		Soit $X$ une variable aléatoire de densité $f : x \mapsto e^{-x} \mathbb{1}_{\mathbb{R}^+}$. On pose $\forall n \geq 1, \, Y_n = X \mathbb{1}_{[0,n[}(X) + e^{2n} \mathbb{1}_{[n,+\infty[}(X)$. Alors $(Y_n)$ converge vers $X$ en probabilité, mais pas dans $L_1$.
 	\end{cexample}
@@ -234,23 +234,23 @@
 	\subsection{Convergence en loi}
 
 	\subsubsection{Définition et premières propriétés}
-	
+
 	\reference{295}
-	
+
 	\begin{definition}
 		On dit que $(X_n)$ \textbf{converge en loi} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
 		\[ \forall f \in \mathcal{C}_b(\mathbb{R}^d, \mathbb{R}), \, \mathbb{E}(f(X_n)) \longrightarrow_{n \rightarrow +\infty} \mathbb{E}(f(X)) \]
 		On note cela $X_n \overset{(d)}{\longrightarrow} X$.
 	\end{definition}
-	
+
 	\reference{313}
-	
+
 	\begin{example}
 		Si $\forall n \geq 1$, $X_n$ suit une loi uniforme sur $\llbracket 1, n-1 \rrbracket$, alors $\frac{X_n}{n}$ converge en loi vers la loi uniforme sur $[0,1]$.
 	\end{example}
-	
+
 	\reference{295}
-	
+
 	\begin{proposition}
 		Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} Y$, alors :
 		\begin{enumerate}[(i)]
@@ -259,7 +259,7 @@
 		\end{enumerate}
 		Plus généralement, si $\forall n \in \mathbb{N}$, $X_n$ et $X$ sont à valeurs dans $E$, alors $f(X_n) \overset{(d)}{\longrightarrow} f(X)$ pour toute $f$ fonction définie et continue sur $E$.
 	\end{proposition}
-	
+
 	\begin{theorem}[Lemme de Scheffé]
 		On suppose :
 		\begin{itemize}
@@ -268,7 +268,7 @@
 		\end{itemize}
 		Alors, $X_n \overset{(L_1)}{\longrightarrow} X$.
 	\end{theorem}
-	
+
 	\begin{corollary}
 		On suppose :
 		\begin{itemize}
@@ -278,28 +278,28 @@
 		\end{itemize}
 		Alors, $X_n \overset{(d)}{\longrightarrow} X$.
 	\end{corollary}
-	
+
 	\begin{corollary}
 		Si $X$ et $X_n$ sont des variables aléatoires à valeurs dans un ensemble dénombrable $D$ pour tout $n \in \mathbb{N}$, en supposant
 		\[ \forall k \in D, \, \mathbb{P}(X_n = k) = \mathbb{P}(X = k) \]
 		alors $X_n \overset{(d)}{\longrightarrow} X$.
 	\end{corollary}
-	
+
 	\begin{application}
 		Soit, pour $n \geq 1$, une variable aléatoire $X_n$ suivant la loi binomiale de paramètres $n$ et $p_n$. On suppose que $\lim_{n \rightarrow +\infty} n p_n = \lambda > 0$.
 		Alors,
 		\[ X_n \overset{(d)}{\longrightarrow} X \]
 		où $X$ suit une loi de Poisson de paramètre $\lambda$.
 	\end{application}
-	
+
 	\reference{302}
-	
+
 	\begin{theorem}
 		En notant $F_X$ la fonction de répartition d'une variable aléatoire $X$, on a,
 		\[ X_n \overset{(d)}{\longrightarrow} X \iff F_{X_n}(x) \longrightarrow_{n \rightarrow +\infty} F_X(x) \]
 		en tout point $x$ où $F_X$ est continue.
 	\end{theorem}
-	
+
 	\begin{theorem}
 		Soit $X : \Omega \rightarrow \mathbb{R}^d$ une variable aléatoire.
 		\begin{enumerate}[(i)]
@@ -307,17 +307,17 @@
 			\item Si $(X_n)$ converge en loi vers une constante $a$ (ou de manière équivalente, vers une masse de Dirac $\delta_a$), alors $(X_n)$ converge en probabilité vers $a$.
 		\end{enumerate}
 	\end{theorem}
-	
+
 	\reference[HAU]{362}
-	
+
 	\begin{cexample}
 		Si $(X_n)$ est une suite de variables aléatoires indépendantes identiquement distribuées de loi $\mathcal{B}(p)$, alors $(X_n)$ converge en loi vers $\mathcal{B}(2p(1-p))$, mais pas en probabilité.
 	\end{cexample}
 
 	\subsubsection{Théorème central limite et applications}
-	
+
 	\reference[G-K]{305}
-	
+
 	\begin{theorem}[Slutsky]
 		Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} c$ où $c$ est un vecteur constant, alors :
 		\begin{enumerate}[(i)]
@@ -325,44 +325,45 @@
 			\item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, c \rangle$.
 		\end{enumerate}
 	\end{theorem}
-	
+
 	\begin{notation}
 		Si $X$ est une variable aléatoire réelle, on note $\phi_X$ sa fonction caractéristique.
 	\end{notation}
-	
+
 	\reference[Z-Q]{536}
-	
+
 	\begin{theorem}[Lévy]
 		On suppose que $(X_n)$ est une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
 		\[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
 	\end{theorem}
-	
+
 	\reference[G-K]{307}
 	\dev{theoreme-central-limite}
-	
+
 	\begin{theorem}[Central limite]
 		On suppose que $(X_n)$ est une suite de variables aléatoires réelles indépendantes de même loi admettant un moment d'ordre $2$. On note $m$ l'espérance et $\sigma^2$ la variance commune à ces variables. On pose $S_n = X_1 + \dots + X_n - nm$. Alors,
 		\[ \left ( \frac{S_n}{\sqrt{n}} \right) \overset{(d)}{\longrightarrow} \mathcal{N}(0, \sigma^2) \]
 	\end{theorem}
-	
+
 	\begin{application}[Théorème de Moivre-Laplace]
 		On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
 		\[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
 	\end{application}
-	
+
 	\reference{180}
-	\dev{formule-de-stirling}
-	
+
 	\begin{lemma}
 		Soient $X$ et $Y$ deux variables aléatoires indépendantes telles que $X \sim \Gamma(a, \gamma)$ et $Y \sim \Gamma(b, \gamma)$. Alors $Z = X + Y \sim \Gamma(a+b, \gamma)$.
 	\end{lemma}
-	
+
+	\dev{formule-de-stirling}
+
 	\begin{application}[Formule de Stirling]
 		\[ n! \sim \sqrt{2n\pi} \left(\frac{n}{e} \right)^n \]
 	\end{application}
-	
+
 	\subsection*{Annexes}
-	
+
 	\begin{figure}[h]
 		\begin{center}
 			\begin{tikzpicture}
