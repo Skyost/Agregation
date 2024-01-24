@@ -246,8 +246,42 @@ const generatePdf = (
         filePath,
         {
           includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
-          cacheDirectory: previousBuildDirectory == null ? undefined : previousBuildDirectory,
-          generateIfExists: !debug
+          cacheDirectoryPath: previousBuildDirectory == null ? undefined : previousBuildDirectory,
+          generateIfExists: !debug,
+          checksumsCalculator: (texFilePath, includeGraphicsDirectories) => latex.calculateTexFileChecksums(
+            texFilePath,
+            includeGraphicsDirectories,
+            null,
+            [
+              // inputcontent command for other LaTeX files.
+              {
+                command: 'inputcontent',
+                directories: [],
+                extensions: ['.tex'],
+                excludes: [],
+                hasIncludes: true,
+                targetIsDirectory: false
+              },
+              // inputcontent* command for other LaTeX files.
+              {
+                command: 'inputcontent\\*',
+                directories: [],
+                extensions: ['.tex'],
+                excludes: [],
+                hasIncludes: true,
+                targetIsDirectory: false
+              },
+              // setbibliographypath command for bibliography files.
+              {
+                command: 'setbibliographypath',
+                directories: [],
+                extensions: ['.bib'],
+                excludes: [],
+                hasIncludes: false,
+                targetIsDirectory: true
+              }
+            ]
+          )
         }
       )
 

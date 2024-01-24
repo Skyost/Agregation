@@ -185,13 +185,12 @@
 	\end{theorem}
 
 	\begin{example}
-		$\mathbb{1}_{[0,+\infty[} * (\mathbb{1}_{[-1,0]} - \mathbb{1}_{[0,1]})$ existe pour tout $x \in \mathbb{R}$ et
-		\[ (\mathbb{1}_{[0,+\infty[} * (\mathbb{1}_{[-1,0]} - \mathbb{1}_{[0,1]}))(x) =
+		Soient $a < b \in \mathbb{R}^+_*$. Alors $\mathbb{1}_{[-a, a]} * \mathbb{1}_{[-b,b]}$ existe pour tout $x \in \mathbb{R}$ et
+		\[ \left( \mathbb{1}_{[-a, a]} * \mathbb{1}_{[-b,b]} \right)(x) =
 		\begin{cases}
-			0 \text{ si } x < -1 \\
-			1+x \text{ si } x \in [-1,0] \\
-			1-x \text{ si } x \in [0,1] \\
-			0 \text{ si } x > 1 \\
+			2a &\text{si } 0 \leq \vert x \vert \leq b-a \\
+			b+a-\vert x \vert &\text{si } b-a \leq \vert x \vert \leq b+a \\
+			0 &\text{sinon}
 		\end{cases}
 		\]
 	\end{example}
@@ -338,9 +337,9 @@
 		\[ \forall f, g \in L_1(\mathbb{R}^d), \int_{\mathbb{R}^d} f(t) \widehat{g}(t) \, \mathrm{d}t = \int_{\mathbb{R}^d} \widehat{f}(t) g(t) \, \mathrm{d}t \]
 	\end{theorem}
 
-	\begin{theorem}
+	\begin{corollary}
 		La transformation de Fourier $\mathcal{F} : L_1(\mathbb{R}^d) \rightarrow \mathcal{C}_0(\mathbb{R}^d)$ est une application injective.
-	\end{theorem}
+	\end{corollary}
 
 	\reference[BMP]{140}
 	\dev{densite-polynomes-orthogonaux}
@@ -391,7 +390,7 @@
 
 	\begin{definition}
 		Soit $X$ un vecteur aléatoire. On appelle \textbf{fonction caractéristique} de $X$, notée $\phi_X$, la transformée de Fourier de la loi $\mathbb{P}_X$ (définie à un signe près) :
-		\[ \phi_X = \mathbb{E}(e^{i \langle t, x \rangle}) \]
+		\[ \phi_X : t \mapsto \mathbb{E}(e^{i \langle t, x \rangle}) \]
 	\end{definition}
 
 	\begin{theorem}

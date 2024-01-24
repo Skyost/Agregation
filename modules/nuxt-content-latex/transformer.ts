@@ -9,6 +9,7 @@ import { normalizeString, getFileName } from '~/utils/utils'
 import * as logger from '~/utils/logger'
 import { latexOptions } from '~/site/latex'
 import { debug } from '~/site/debug'
+import { execSync } from 'child_process'
 
 /**
  * Nuxt content transformer for .tex files.
@@ -31,7 +32,7 @@ export default defineTransformer({
     const filePath = path.resolve(sourceDirectoryPath, _id.replaceAll(':', '/'))
 
     // Relative path of the .tex file from the content directory.
-    const texFileRelativePath = path.relative(contentDirectoryPath, filePath)
+    const texFileRelativePath = path.relative(contentDirectoryPath, filePath).replace(/\\/g, '/')
 
     logger.info(name, `Processing ${texFileRelativePath}...`)
 
@@ -80,7 +81,7 @@ export default defineTransformer({
     return {
       _id,
       body: root.outerHTML,
-      ...getHeader(path.parse(filePath).name, root, filePath)
+      ...getHeader(path.parse(filePath).name, root, texFileRelativePath)
     }
   }
 })
@@ -183,10 +184,10 @@ const renderMathElement = (element: HTMLElement): string => latex.renderMathElem
  *
  * @param {string} slug - The slug of the document.
  * @param {HTMLElement} root - The root HTML element of the document.
- * @param {HTMLElement} texFilePath - The absolute path to the Latex file.
+ * @param {HTMLElement} texFileRelativePath - The relative path to the Latex file.
  * @returns {{ [key: string]: any }} Header information.
  */
-const getHeader = (slug: string, root: HTMLElement, texFilePath: string): { [key: string]: any } => {
+const getHeader = (slug: string, root: HTMLElement, texFileRelativePath: string): { [key: string]: any } => {
   // Initialize the header object with the slug.
   const header: { [key: string]: any } = { slug }
 
@@ -220,7 +221,8 @@ const getHeader = (slug: string, root: HTMLElement, texFilePath: string): { [key
   }
 
   // Get and set document modification time.
-  header['page-last-modification-time'] = fs.statSync(texFilePath).mtime.toISOString()
+  const gitDate = execSync(`git log -1 --pretty="format:%ci" content/${texFileRelativePath}`).toString().trim()
+  header['page-last-modification-time'] = (gitDate.length === 0 ? new Date() : new Date(gitDate)).toISOString()
 
   return header
 }
