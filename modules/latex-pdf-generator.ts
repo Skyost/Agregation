@@ -253,6 +253,7 @@ const generatePdf = (
             includeGraphicsDirectories,
             null,
             [
+              ...latex.defaultLatexIncludeCommands,
               // inputcontent command for other LaTeX files.
               {
                 command: 'inputcontent',
