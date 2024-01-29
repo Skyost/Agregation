@@ -1,5 +1,6 @@
 import path from 'path'
 import fs from 'fs'
+import { execSync } from 'child_process'
 // @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers'
 import { HTMLElement } from 'node-html-parser'
@@ -9,7 +10,6 @@ import { normalizeString, getFileName } from '~/utils/utils'
 import * as logger from '~/utils/logger'
 import { latexOptions } from '~/site/latex'
 import { debug } from '~/site/debug'
-import { execSync } from 'child_process'
 
 /**
  * Nuxt content transformer for .tex files.
