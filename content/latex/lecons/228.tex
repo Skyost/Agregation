@@ -182,6 +182,33 @@
 		On suppose $f$ deux fois dérivable. Alors, $f$ est convexe si et seulement si $f''(x) \geq 0$ pour tout $x \in I$.
 	\end{proposition}
 	
+	\reference[ROU]{142}
+	\dev{methode-de-newton}
+	
+	\begin{application}[Méthode de Newton]
+		Soit $g : [c, d] \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^2$ strictement croissante sur $[c, d]$. On considère la fonction
+		\[ \varphi :
+		\begin{array}{ccc}
+			[c, d] &\rightarrow& \mathbb{R} \\
+			x &\mapsto& x - \frac{g(x)}{g'(x)}
+		\end{array}
+		\]
+		(qui est bien définie car $g' > 0$). Alors :
+		\begin{enumerate}[(i)]
+			\item $\exists! a \in [c, d]$ tel que $g(a) = 0$.
+			\item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
+			\item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
+		\end{enumerate}
+	\end{application}
+	
+	\begin{corollary}
+		En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $g$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
+		\begin{enumerate}[(i)]
+			\item $(x_n)$ est strictement décroissante (ou constante).
+			\item $x_{n+1} - a \sim \frac{g''(a)}{g'(a)} (x_n - a)^2$ pour $x_0 > a$.
+		\end{enumerate}
+	\end{corollary}
+	
 	\subsubsection{Fonction monotones}
 	
 	\reference[R-R]{31}
@@ -321,6 +348,9 @@
 		\[ \forall n \in \mathbb{N}^*, \, \forall x \in [0,1], \, B_n(f)(x) = \sum_{k=0}^n f \left(\frac{k}{n}\right) b_n^k(x) \text{ avec } b_n^k(x) = \binom{n}{k} x^k (1-x)^{n-k} \]
 	\end{theorem}
 	
+	\reference{304}
+	\dev{theoreme-de-weierstrass-par-la-convolution}
+	
 	\begin{theorem}[Weierstrass]
 		Toute fonction continue sur un compact est limite uniforme de fonctions polynômiales.
 	\end{theorem}
@@ -328,6 +358,8 @@
 	\subsection{Régularité des fonctions limites}
 	
 	\subsubsection{Suites et séries de fonctions}
+	
+	\reference{233}
 	
 	\begin{proposition}
 		Si une suite de fonctions est continue en un point $a$ et converge uniformément vers une fonction limite, alors celle-ci est continue en $a$.
