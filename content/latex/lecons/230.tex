@@ -343,6 +343,34 @@
 	\begin{theorem}[Abel angulaire]
 		\label{230-1}
 		Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ tel que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+		\newpar
+		Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
+	\end{theorem}
+	
+	\begin{application}
+		\[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
+	\end{application}
+	
+	\begin{application}
+		\[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+	\end{application}
+	
+	\begin{theorem}[Taubérien faible]
+		Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
+		\[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
+		Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
+	\end{theorem}
+	
+	\begin{remark}
+		Ce dernier résultat est une réciproque partielle du \cref{230-1}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
+	\end{remark}
+	
+	\newpage
+	\section*{Annexes}
+	
+	\reference[GOU20]{263}
+	
+	\begin{figure}[H]
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[->] (-3, 0) -- (3, 0) node[right] {$x$};
@@ -371,25 +399,7 @@
 				\draw (212:3.7) node {$\Delta_{\theta_0}$};
 			\end{tikzpicture}
 		\end{center}
-		Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
-	\end{theorem}
-	
-	\begin{application}
-		\[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{(2n+1)} = \frac{\pi}{4} \]
-	\end{application}
-	
-	\begin{application}
-		\[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
-	\end{application}
-	
-	\begin{theorem}[Taubérien faible]
-		Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que
-		\[ \exists S \in \mathbb{C} \text{ tel que } \lim_{\substack{x \rightarrow 1 \\ x < 1}} f(x) = S \]
-		Si $a_n = o \left( \frac{1}{n} \right)$, alors $\sum a_n$ converge et $\sum_{n=0}^{+\infty} a_n = S$.
-	\end{theorem}
-	
-	\begin{remark}
-		Ce dernier résultat est une réciproque partielle du \cref{230-1}. Il reste vrai en supposant $a_n = O \left( \frac{1}{n} \right)$ (c'est le théorème Taubérien fort).
-	\end{remark}
+		\caption{Illustration du théorème d'Abel angulaire}
+	\end{figure}
 	%</content>
 \end{document}
