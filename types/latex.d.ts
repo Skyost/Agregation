@@ -32,11 +32,4 @@ export interface LatexContentObject extends HasCategories {
    * @type {string}
    */
   'page-name-search': string;
-
-  /**
-   * The last modification time.
-   *
-   * @type {string}
-   */
-  'page-last-modification-time': string;
 }

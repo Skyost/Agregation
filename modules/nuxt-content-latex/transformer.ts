@@ -1,6 +1,5 @@
 import path from 'path'
 import fs from 'fs'
-import { execSync } from 'child_process'
 // @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers'
 import { HTMLElement } from 'node-html-parser'
@@ -81,7 +80,7 @@ export default defineTransformer({
     return {
       _id,
       body: root.outerHTML,
-      ...getHeader(path.parse(filePath).name, root, texFileRelativePath)
+      ...getHeader(path.parse(filePath).name, root)
     }
   }
 })
@@ -184,10 +183,9 @@ const renderMathElement = (element: HTMLElement): string => latex.renderMathElem
  *
  * @param {string} slug - The slug of the document.
  * @param {HTMLElement} root - The root HTML element of the document.
- * @param {HTMLElement} texFileRelativePath - The relative path to the Latex file.
  * @returns {{ [key: string]: any }} Header information.
  */
-const getHeader = (slug: string, root: HTMLElement, texFileRelativePath: string): { [key: string]: any } => {
+const getHeader = (slug: string, root: HTMLElement): { [key: string]: any } => {
   // Initialize the header object with the slug.
   const header: { [key: string]: any } = { slug }
 
@@ -219,10 +217,6 @@ const getHeader = (slug: string, root: HTMLElement, texFileRelativePath: string)
     header.summary = summary.innerHTML.trim()
     header['page-description'] = summary.text.trim()
   }
-
-  // Get and set document modification time.
-  const gitDate = execSync(`git log -1 --pretty="format:%ci" content/${texFileRelativePath}`).toString().trim()
-  header['page-last-modification-time'] = (gitDate.length === 0 ? new Date() : new Date(gitDate)).toISOString()
 
   return header
 }
