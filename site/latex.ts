@@ -201,7 +201,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
 \t\\todo[noline]{
 \t\t\\protect\\vspace{16pt}%
 \t\t\\protect\\par%
-\t\t\\bfseries\\color{devcolor}\\hyperref[#1]{DEV}]{}%
+\t\t\\bfseries\\color{devcolor}\\hyperref[#1]{[DEV]}{}%
 }%
 \t\\normalmarginpar%
 }`
