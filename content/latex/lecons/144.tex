@@ -218,7 +218,7 @@
 	\reference{57}
 
 	\begin{definition}
-		Soit $P \in \mathbb{K}[X]$ irréductible. On dit que $\mathbb{L}$ est un \textbf{corps de rupture} de $P$ si $\mathbb{L} = \mathbb{K}[\alpha]$ où $\alpha \in \mathbb{L}$ est une racine de $P$.
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $P \in \mathbb{K}[X]$ irréductible. On dit que $\mathbb{L}$ est un \textbf{corps de rupture} de $P$ si $\mathbb{L} = \mathbb{K}[\alpha]$ où $\alpha \in \mathbb{L}$ est une racine de $P$.
 	\end{definition}
 
 	\begin{example}
@@ -238,7 +238,11 @@
 	\end{theorem}
 
 	\begin{definition}
-		Soit $P \in \mathbb{K}[X]$ de degré $n \geq 1$. On dit que $\mathbb{L}$ est un \textbf{corps de décomposition} de $P$ si $\mathbb{L} = \mathbb{K}[\alpha_1, \dots, \alpha_n]$ où $\alpha_1, \dots, \alpha_n$ sont des racines de $P$ dans $\mathbb{L}$.
+		Soit $P \in \mathbb{K}[X]$ de degré $n \geq 1$. On dit que $\mathbb{L}$ est un \textbf{corps de décomposition} de $P$ si :
+		\begin{itemize}
+			\item Il existe $a \in \mathbb{L}$ et $\alpha_1, \dots, \alpha_n \in \mathbb{L}$ tels que $P = a(X-\alpha_1) \dots (X-\alpha_n)$.
+			\item $\mathbb{L} = \mathbb{K}[\alpha_1, \dots, \alpha_n]$.
+		\end{itemize}
 	\end{definition}
 
 	\begin{example}
@@ -250,7 +254,7 @@
 	\end{example}
 
 	\begin{theorem}
-		Soit $P \in \mathbb{K}[X]$ un polynôme irréductible sur $\mathbb{K}$.
+		Soit $P \in \mathbb{K}[X]$ un polynôme de degré supérieur ou égal à $1$.
 		\begin{itemize}
 			\item Il existe un corps de décomposition de $P$.
 			\item Deux corps de décomposition de $P$ sont $\mathbb{K}$-isomorphes.
