@@ -2,13 +2,18 @@ import path from 'path'
 import fs from 'fs'
 // @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers'
+import { consola } from 'consola'
 import { HTMLElement } from 'node-html-parser'
 import * as latex from 'that-latex-lib'
 import { name } from './common'
 import { normalizeString, getFileName } from '~/utils/utils'
-import * as logger from '~/utils/logger'
 import { latexOptions } from '~/site/latex'
 import { debug } from '~/site/debug'
+
+/**
+ * The logger instance.
+ */
+const logger = consola.withTag(name)
 
 /**
  * Nuxt content transformer for .tex files.
@@ -33,7 +38,7 @@ export default defineTransformer({
     // Relative path of the .tex file from the content directory.
     const texFileRelativePath = path.relative(contentDirectoryPath, filePath).replace(/\\/g, '/')
 
-    logger.info(name, `Processing ${texFileRelativePath}...`)
+    logger.info(`Processing ${texFileRelativePath}...`)
 
     // Load the Pandoc redefinitions header content.
     const pandocHeader = fs.readFileSync(path.resolve(sourceDirectoryPath, options.pandocRedefinitions), { encoding: 'utf8' })
@@ -74,7 +79,7 @@ export default defineTransformer({
     // Handle references in the HTML content.
     handleReferences(root)
 
-    logger.success(name, `Successfully processed ${texFileRelativePath} !`)
+    logger.success(`Successfully processed ${texFileRelativePath} !`)
 
     // Return the parsed content object.
     return {

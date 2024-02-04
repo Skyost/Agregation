@@ -1,7 +1,8 @@
+// noinspection ES6PreferShortImport
+
 import fs from 'fs'
 import { ofetch } from 'ofetch'
-import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
-import * as logger from '../utils/logger'
+import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { getNested, parseBib } from '../utils/utils'
 import type { Book } from '../types'
 import { siteMeta } from '../site/meta'
@@ -32,6 +33,11 @@ export interface ModuleOptions {
 const name = 'books-cover-fetcher'
 
 /**
+ * The logger instance.
+ */
+const logger = useLogger(name)
+
+/**
  * Nuxt module to fetch book covers and store them in a cache directory.
  */
 export default defineNuxtModule<ModuleOptions>({
@@ -47,7 +53,7 @@ export default defineNuxtModule<ModuleOptions>({
     booksImagesUrl: '/images/livres/'
   },
   setup: async (options, nuxt) => {
-    logger.info(name, 'Fetching books covers...')
+    logger.info('Fetching books covers...')
 
     const resolver = createResolver(import.meta.url)
     const destinationDirectory = resolver.resolve(nuxt.options.srcDir, 'node_modules/.cache/books-covers/')
@@ -77,9 +83,9 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     if (failed.length === 0) {
-      logger.success(name, 'Fetched books covers.')
+      logger.success('Fetched books covers.')
     } else {
-      logger.warn(name, `Fetched books covers. An error occurred with the following books : ${failed.join(', ')}.`)
+      logger.warn(`Fetched books covers. An error occurred with the following books : ${failed.join(', ')}.`)
     }
   }
 })
@@ -128,7 +134,7 @@ const googleDownloadSource: DownloadSource = {
       if (thumbnailUrl) {
         return thumbnailUrl
       }
-      logger.warn(name, `[${book.short}] has been found on Google servers, but there is no cover in it.`)
+      logger.warn(`[${book.short}] has been found on Google servers, but there is no cover in it.`)
     }
     return null
   }
@@ -167,20 +173,20 @@ async function fetchBookCover (resolver: Resolver, book: Book, destinationDirect
     return true
   }
   for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonServersDownloadSource, previousBuildDownloadSource]) {
-    logger.info(name, `Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
+    logger.info(`Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
     const coverUrl = await downloadSource.getBookCoverUrl(book, options)
     if (!coverUrl) {
       if (!downloadSource.dontLogNoBookCover) {
-        logger.warn(name, `Failed to resolve the cover URL of [${book.short}] from source "${downloadSource.name}".`)
+        logger.warn(`Failed to resolve the cover URL of [${book.short}] from source "${downloadSource.name}".`)
       }
       continue
     }
     const result = await downloadImage(coverUrl, destinationFile)
     if (!result) {
-      logger.warn(name, `The downloading of the book [${book.short}] cover url "${coverUrl}" from "${downloadSource.name}" source failed.`)
+      logger.warn(`The downloading of the book [${book.short}] cover url "${coverUrl}" from "${downloadSource.name}" source failed.`)
       continue
     }
-    logger.success(name, `Successfully downloaded the book cover of [${book.short}] from source "${downloadSource.name}" !`)
+    logger.success(`Successfully downloaded the book cover of [${book.short}] from source "${downloadSource.name}" !`)
     return true
   }
   return false
@@ -202,7 +208,7 @@ async function downloadImage (url: string, destinationFile: string): Promise<boo
       return true
     }
   } catch (ex) {
-    logger.warn(name, ex)
+    logger.warn(ex)
   }
   return false
 }

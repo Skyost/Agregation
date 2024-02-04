@@ -1,10 +1,11 @@
+// noinspection ES6PreferShortImport
+
 import fs from 'fs'
 import path from 'path'
 import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
-import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
+import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import * as latex from 'that-latex-lib'
-import * as logger from '../utils/logger'
 import { getFileName } from '../utils/utils'
 import { type GithubRepository, siteMeta } from '../site/meta'
 import { latexOptions, type LatexGenerateOptions } from '../site/latex'
@@ -24,6 +25,11 @@ export interface ModuleOptions extends LatexGenerateOptions {
  * The name of the module.
  */
 const name = 'latex-pdf-generator'
+
+/**
+ * The logger instance.
+ */
+const logger = useLogger(name)
 
 /**
  * Nuxt module to compile Latex files into PDF.
@@ -70,7 +76,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Remove all Latex gathering files.
     for (const generatedGathering of generatedGatherings) {
       fs.unlinkSync(generatedGathering)
-      logger.success(name, `Deleted gathering ${getFileName(generatedGathering)}.`)
+      logger.success(`Deleted gathering ${getFileName(generatedGathering)}.`)
     }
 
     // Register all generated files in Nitro.
@@ -91,9 +97,9 @@ export default defineNuxtModule<ModuleOptions>({
  */
 const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, options: ModuleOptions): Promise<boolean> => {
   try {
-    logger.info(name, `Downloading and unzipping the previous build at ${options.github.username}/${options.github.repository}@gh-pages...`)
+    logger.info(`Downloading and unzipping the previous build at ${options.github.username}/${options.github.repository}@gh-pages...`)
     if (fs.existsSync(directoryPath)) {
-      logger.success(name, 'Already downloaded.')
+      logger.success('Already downloaded.')
       return true
     }
     // We create the Octokit instance.
@@ -119,10 +125,10 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
 
     // Then we can rename the main entry into the destination folder name.
     fs.renameSync(resolver.resolve(parentPath, zipRootDir), resolver.resolve(parentPath, path.basename(directoryPath)))
-    logger.success(name, 'Done.')
+    logger.success('Done.')
     return true
   } catch (exception) {
-    logger.warn(name, exception)
+    logger.warn(exception)
   }
   return false
 }
@@ -145,7 +151,7 @@ const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, opti
     }
     fileName = fileName.substring(0, fileName.length - 1)
 
-    logger.info(name, `Generating gathering "${fileName}"...`)
+    logger.info(`Generating gathering "${fileName}"...`)
     const gatheringFile = resolver.resolve(latexDirectoryPath, `${fileName}.tex`)
     generatedGatherings.push(gatheringFile)
 
@@ -183,7 +189,7 @@ const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, opti
         .replace('%s', content)
     )
 
-    logger.success(name, 'Done.')
+    logger.success('Done.')
   }
 
   return generatedGatherings
@@ -218,7 +224,7 @@ const generatePdf = (
 
     // Ignore specified files and directories.
     if (ignore.includes(filePath) || !fs.existsSync(filePath)) {
-      logger.info(name, `Ignored ${filePath}.`)
+      logger.info(`Ignored ${filePath}.`)
       continue
     }
 
@@ -239,7 +245,7 @@ const generatePdf = (
     // If the file has a .tex extension, process it to generate a PDF.
     const extension = path.extname(file)
     if (extension === '.tex') {
-      logger.info(name, `Processing "${filePath}"...`)
+      logger.info(`Processing "${filePath}"...`)
 
       // Generate PDF and checksums files.
       const { wasCached, builtFilePath, checksumsFilePath } = latex.generatePdf(
@@ -307,12 +313,12 @@ const generatePdf = (
         }
 
         if (wasCached) {
-          logger.success(name, `Fully cached PDF found in ${previousBuildDirectory}.`)
+          logger.success(`Fully cached PDF found in ${previousBuildDirectory}.`)
         } else {
-          logger.success(name, previousBuildDirectory ? `File was not cached in ${previousBuildDirectory} but has been generated with success.` : 'Done.')
+          logger.success(previousBuildDirectory ? `File was not cached in ${previousBuildDirectory} but has been generated with success.` : 'Done.')
         }
       } else {
-        logger.warn(name, 'Error.')
+        logger.warn('Error.')
       }
     }
   }

@@ -1,7 +1,6 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
-import * as logger from '../utils/logger'
+import { createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 
 /**
  * Options for the commit SHA file generator module.
@@ -17,6 +16,11 @@ export interface ModuleOptions {
  * The name of the commit SHA file generator module.
  */
 const name = 'commit-sha-file-generator'
+
+/**
+ * The logger instance.
+ */
+const logger = useLogger(name)
 
 /**
  * Nuxt module to generate a file containing the latest commit hash information.

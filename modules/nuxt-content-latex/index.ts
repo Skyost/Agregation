@@ -1,9 +1,15 @@
+// noinspection ES6PreferShortImport
+
 import fs from 'fs'
 import path from 'path'
-import { createResolver, defineNuxtModule, type Resolver } from '@nuxt/kit'
-import * as logger from '../../utils/logger'
+import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { latexOptions, type LatexTransformOptions } from '../../site/latex'
 import { name } from './common'
+
+/**
+ * The logger instance.
+ */
+const logger = useLogger(name)
 
 /**
  * Nuxt module for transforming .tex files in Nuxt content.
@@ -25,6 +31,7 @@ export default defineNuxtModule<LatexTransformOptions>({
     nuxt.options.nitro.externals.inline.push(resolver.resolve('.'))
 
     // Register a hook to modify content context and add a transformer for .tex files.
+    // @ts-ignore
     nuxt.hook('content:context', (contentContext) => {
       contentContext.transformers.push(resolver.resolve('transformer.ts'))
     })
@@ -86,7 +93,7 @@ const processAssets = (
       fs.copyFileSync(filePath, destinationPath)
 
       // Log the successful copying of an asset file.
-      logger.success(name, `${filePath} -> ${destinationPath}`)
+      logger.success(`${filePath} -> ${destinationPath}`)
     }
   }
 }
