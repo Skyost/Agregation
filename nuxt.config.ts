@@ -41,7 +41,7 @@ export default defineNuxtConfig({
 
   modules: [
     '~/modules/books-cover-fetcher',
-    '~/modules/cname-generator',
+    'nuxt-cname-generator',
     '~/modules/commit-sha-file-generator',
     '~/modules/nuxt-content-absolute-links',
     '~/modules/latex-pdf-generator',
@@ -102,7 +102,7 @@ export default defineNuxtConfig({
   },
 
   cname: {
-    hostname: url
+    host: url
   },
 
   runtimeConfig: {
