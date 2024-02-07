@@ -1,0 +1,184 @@
+\input{../common}
+\input{../bibliography}
+
+\begin{document}
+	%<*content>
+	\development{analysis}{theoreme-de-fejer}{Théorème de Fejér}
+
+	\summary{Dans ce développement, on montre le théorème de Fejér, qui assure la convergence de la série de Fourier d'une fonction vers sa série de Fourier au sens de Cesàro.}
+	
+	\begin{notation}
+		Pour tout $p \in [1, +\infty]$, on note $L_p^{2\pi}$ l'espace des fonctions $f : \mathbb{R} \rightarrow \mathbb{C}$, $2\pi$-périodiques et mesurables, telles que $\Vert f \Vert_p < +\infty$.
+	\end{notation}
+	
+	\begin{notation}
+		On note $\forall N \in \mathbb{N}^*$ :
+		\begin{itemize}
+			\item $e_n : x \mapsto e^{inx}$.
+			\item $D_N : x \mapsto \sum_{n=-N}^N e_n$, le noyau de Dirichlet.
+			\item $K_N = \frac{D_0 + \dots + D_{N-1}}{N}$, le noyau de Fejér.
+		\end{itemize}
+	\end{notation}
+	
+	\begin{notation}
+		On note également, pour toute fonction $f \in L_1^{2\pi}$.
+		\begin{itemize}
+			\item $c_n(f) = \frac{1}{2\pi} \int_{- \pi}^\pi f(t) e^{-int} \, \mathrm{d}t$, le $n$-ième coefficient de Fourier de $f$.
+			\item $S_N(f) : x \mapsto \sum_{n=-N}^N c_n(f) e_n$, la somme partielle d'ordre $N$ de la série de Fourier de $f$.
+			\item $\sigma_N(f) : x \mapsto \frac{1}{N - 1} \sum_{n=0}^N S_n(f)(x)$, la moyenne de Cesàro des sommes partielles de la série de Fourier de $f$.
+		\end{itemize}
+	\end{notation}
+	
+	\reference[AMR08]{184}
+	
+	\begin{lemma}
+		\label{theoreme-de-fejer-1}
+		Soit $N \in \mathbb{N}$.
+		\begin{enumerate}[(i)]
+			\item $D_N$ est une fonction paire, $2\pi$-périodique, et de norme $1$.
+			\item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, D_N(x) = \frac{\sin \left(\left( N + \frac{1}{2} \right) x \right)}{\sin \left( \frac{x}{2} \right)} \]
+			\item Pour tout $f \in L_1^{2 \pi}, \, S_N(f) = f * D_N$.
+		\end{enumerate}
+	\end{lemma}
+	
+	\begin{proof}
+		Soit $N \in \mathbb{N}$.
+		\begin{enumerate}[(i)]
+			\item Soit $x \in \mathbb{R}$.
+			\[ D_N(-x) = \sum_{n=-N}^{N} e_n(-x) = \sum_{n=-N}^{N} e_{-n}(x) = \sum_{n=-N}^{N} e_n(x) = D_N(x) \]
+			Donc $D_N$ est bien paire. Elle est $2\pi$-périodique car $e_n$ l'est pour tout $n \in \mathbb{Z}$. De plus,
+			\[ 1 = c_0(D_N) = \int_{-\pi}^{\pi} D_N(x) \, \mathrm{d}x = \Vert D_N \Vert_1 \]
+			\item Soit $x \in \mathbb{R}\setminus 2\pi\mathbb{Z}$. On a :
+			\begin{align*}
+				D_n(x) &= e^{-iNx} \sum_{n=0}^{2N} e^{inx} \\
+				&= e^{-iNx} \frac{e^{(2N+1)ix} - 1}{e^{ix} - 1} \\
+				&= e^{-iNx} \frac{e^{(2N+1) i\frac{x}{2}} \left ( e^{(2N+1) i\frac{x}{2}} - e^{-(2N+1) i\frac{x}{2}} \right )}{e^{i\frac{x}{2}} \left( e^{i\frac{x}{2}} - e^{-i \frac{x}{2}} \right)} \\
+				&= \frac{2i \sin \left( \left( N + \frac{1}{2} \right) x \right)}{2i \sin \left ( \frac{x}{2} \right)} \\
+				&= \frac{\sin \left( \left( N + \frac{1}{2} \right) x \right)}{\sin \left ( \frac{x}{2} \right)}
+			\end{align*}
+			\item Soit $f \in L_1^{2 \pi}$.
+			\[ f * D_N(f) = \sum_{n=-N}^N f * e_n = \sum_{n=-N}^N c_n(f) e_n = S_N(f) \]
+		\end{enumerate}
+	\end{proof}
+	
+	\begin{lemma}
+		\label{theoreme-de-fejer-2}
+		Soient $N \in \mathbb{N}^*$ et $f \in L_1^{2 \pi}$.
+		\begin{enumerate}[(i)]
+			\item $K_N$ est une fonction positive et de norme $1$.
+			\item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, K_N(x) = \frac{1}{N} \left(\frac{\sin \left( \frac{Nx}{2} \right)}{\sin \left( \frac{x}{2} \right)}\right)^2 \]
+			\item $K_N = \sum_{n=-N}^{N} \left(1 - \frac{\vert n \vert}{N}\right) e_n$.
+			\item $\sigma_N(f) = f * K_N$.
+		\end{enumerate}
+	\end{lemma}
+	
+	\begin{proof}
+		Soit $N\in\mathbb{N}^*$. Nous allons user et abuser du \cref{theoreme-de-fejer-1}.
+		\begin{enumerate}[(i)]
+			\item La positivité résulte directement du point suivant. De plus,
+			\[ \Vert K_N \Vert_1 = \frac{1}{2\pi} \int_0^{2\pi} K_N(x) \, \mathrm{d}x = 1 \]
+			\item Soit $x\in\mathbb{R}\setminus 2\pi\mathbb{Z}$.
+			\begin{align*}
+				NK_N(x)&=\sum_{n=0}^{N-1} D_n(x) \\
+				&= \sum_{n=0}^{N-1} \left( \sum_{\vert n \vert \leq j} e_j \right) \\
+				&= \sum_{\vert n \vert \leq N-1} e_n \left( \sum_{\vert n \vert \leq j \leq N-1} 1 \right) \\
+				&= \sum_{\vert n \vert \leq N-1} (N - \vert n \vert) e_n \\
+				&= \sum_{n=-N}^{N} (N - \vert n \vert) e_n
+			\end{align*}
+			\item \begin{align*}
+				NK_N&=\sum_{n=0}^{N-1}{D_n} \\
+				&=\sum_{n=0}^{N}{\frac{\sin \left( \left( n + \frac{1}{2} \right) x \right)}{\sin \left ( \frac{x}{2} \right)}} \\
+				&=\frac{1}{\sin \left ( \frac{x}{2} \right)}\operatorname{Im} \left( \sum_{n=0}^{N-1}{e^{i(n+\frac{1}{2})x}} \right) \\
+				&=\frac{1}{\sin \left ( \frac{x}{2} \right)}\operatorname{Im} \left ( e^{\frac{ix}{2}}\frac{e^{iNx-1}}{e^{ix}-1} \right) \\
+				&=\frac{1}{\sin \left ( \frac{x}{2} \right)} \operatorname{Im} \left ( e^{\frac{ix}{2}}\frac{e^{\frac{iNx}{2}}2i\sin \left( \frac{Nx}{2} \right)}{e^{\frac{ix}{2}}2i \sin \left ( \frac{x}{2} \right)} \right ) \\
+				&=\frac{\sin \left( \frac{Nx}{2} \right)}{\sin \left ( \frac{x}{2} \right)^2}\operatorname{Im} \left(e^{\frac{iNx}{2}} \right) \\
+				&=\frac{\sin \left( \frac{Nx}{2} \right)^2}{\sin \left ( \frac{x}{2} \right)^2}
+			\end{align*}
+			\item \[ N \sigma_N(f) = \sum_{n=0}^{N-1} S_n(f) = \sum_{n=0}^{N-1} f * D_n = f * \left (\sum_{n=0}^{N-1} D_n \right) \]
+			Donc on a bien $\sigma_N(f) = f * K_N$.
+		\end{enumerate}
+	\end{proof}
+
+	\reference[AMR08]{190}
+
+	\begin{theorem}[Fejér]
+		Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2\pi$-périodique.
+		\begin{enumerate}
+			\item Si $f$ est continue, alors $\Vert \sigma_N(f) \Vert_\infty \leq \Vert f \Vert_\infty$ et $(\sigma_N(f))$ converge uniformément vers $f$.
+			\item Si $f \in L_p^{2\pi}$ pour $p \in [1,+\infty[$, alors $\Vert \sigma_N(f) \Vert_p \leq \Vert f \Vert_p$ et $(\sigma_N(f))$ converge vers $f$ pour $\Vert . \Vert_p$.
+		\end{enumerate}
+	\end{theorem}
+	
+	\begin{proof}
+		\begin{enumerate}[(i)]
+			\item On suppose $f$ continue.
+			\begin{itemize}
+				\item Sur l'intervalle compact $[0, 2\pi]$, $f$ est bornée et atteint ses bornes. En particulier, $\Vert f \Vert_\infty$ est bien définie. De plus, si $x \in \mathbb{R}$, par le \cref{theoreme-de-fejer-2} on a :
+				\[ \sigma_N(f)(x) = (f * K_N)(x) \]
+				Donc,
+				\[ \vert \sigma_N(f)(x) \vert \leq \Vert f \Vert_\infty \underbrace{\Vert K_N \Vert_1}_{=1} = \Vert f \Vert_\infty \]
+				d'où $\sigma_N(f)$ est bornée avec 
+				\[ \Vert \sigma_N(f) \Vert_\infty \leq \Vert f \Vert_\infty \]
+				\item Soit $\delta \in ]0,\pi]$. Posons
+				\[ \omega(\delta) = \sup_{\vert u - v \vert \leq \delta} \{ \vert f(u) - f(v) \vert \} \]
+				le module de continuité de $f$. Pour tout $x \in \mathbb{R}$, on a :
+				\begin{align*}
+					f(x) - \sigma_N(f)(x) &= f(x) - (f * K_N)(x) \\
+					&= f(x) - \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) K_N(t) \, \mathrm{d}t \\
+					&= \frac{1}{2\pi} \int_{-\pi}^{\pi} (f(x) - f(x-t)) K_N(t) \, \mathrm{d}t \tag{*}
+				\end{align*}
+				d'où
+				\begin{align*}
+					\vert f(x) - \sigma_N(f)(x) \vert &\leq \frac{1}{2\pi} \int_{\vert t \vert \leq \delta} (f(x) - f(x-t)) K_N(t) \, \mathrm{d}t \\
+					&\quad + \frac{1}{2\pi} \int_{\delta \leq \vert t \vert \leq \pi} (f(x) - f(x-t)) K_N(t) \, \mathrm{d}t \\
+					&\leq \frac{\omega(\delta)}{2\pi} \int_{\vert t \vert \leq \delta} K_N(t) \, \mathrm{d}t + 2 \Vert f \Vert_\infty \frac{1}{2\pi} \int_{\delta \leq \vert t \vert \leq \pi} K_N(t) \, \mathrm{d}t \\
+					&\leq \frac{\omega(\delta)}{2\pi} \int_{-\pi}^{\pi} K_N(t) \, \mathrm{d}t + \frac{2 \Vert f \Vert_\infty}{N \sin \left(\frac{\delta}{2} \right)^2} \\
+					&= \omega(\delta) + \frac{2 \Vert f \Vert_\infty}{N \sin \left(\frac{\delta}{2} \right)^2}
+				\end{align*}
+				Donc, on a :
+				\[ \Vert f(x) - \sigma_N(f)(x) \Vert_\infty \leq \omega(\delta) + \frac{2 \Vert f \Vert_\infty}{N \sin \left(\frac{\delta}{2} \right)^2} \tag{**} \]
+				On peut passer à la limite supérieure dans $(**)$ pour obtenir :
+				\[ \limsup_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty \leq \omega(\delta) \]
+				Comme $f$ est continue sur le compact $[0,2\pi]$, elle y est uniformément continue par le théorème de Heine :
+				\[ \forall \epsilon>0, \exists \delta>0, \forall(x,y)\in[0,2\pi]^2, |x-y|<\delta\Rightarrow |f(x)-f(y)|<\epsilon \]
+				On peut donc faire tendre $\delta$ vers $0$ pour obtenir $\limsup_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty \leq 0$
+				ie.
+				\[ \limsup_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty = 0 \]
+				Comme,
+				\[ 0 \leq \liminf_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty \leq \limsup_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty = 0 \]
+				On a bien,
+				\[ \lim_{N \rightarrow +\infty} \Vert f(x) - \sigma_N(f)(x) \Vert_\infty = 0 \]
+			\end{itemize}
+			\item \begin{itemize}
+				\item Par le \cref{theoreme-de-fejer-2}, on a :
+				\[ \forall x \in \mathbb{R}, \, \vert \sigma_N(f)(x) \vert^p = \left \vert \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x-t) K_N(t) \, \mathrm{d}t \right \vert^p \]
+				On applique l'inégalité de Hölder à $\frac{K_N}{2\pi}$ :
+				\[ \forall x \in \mathbb{R}, \, \vert \sigma_N(f)(x) \vert^p \leq \frac{1}{2\pi} \int_{-\pi}^{\pi} \vert f(x-t) \vert^p K_N(t) \, \mathrm{d}t \]
+				Enfin, en intégrant par parties et en utilisant le théorème de Fubini-Tonelli :
+				\begin{align*}
+					\Vert \sigma_N(f) \Vert_p^p &\leq \frac{1}{4\pi^2} \int_{-\pi}^{\pi} K_N(t) \left( \vert f(x-t) \vert^p \, \mathrm{d}x \right) \, \mathrm{d}t \\
+					&= \frac{1}{4\pi^2} \int_{-\pi}^{\pi} K_N(t) \left( \vert f(x) \vert^p \, \mathrm{d}x \right) \, \mathrm{d}t \\
+					&= \Vert K_N \Vert_1 \Vert f \Vert_p^p \\
+					&= \Vert f \Vert_p^p
+				\end{align*}
+				\item Par $(*)$ :
+				\[ \Vert \sigma_N (f) - f \Vert_p^p \leq \frac{1}{4\pi^2} \int_{-\pi}^{\pi} K_N(t) \left( \vert f(x-t) \vert^p \, \mathrm{d}x \right) \, \mathrm{d}t \]
+				En posant $g : t \mapsto \Vert f - \tau_t f \Vert_p^p$ (où $\tau$ est l'opérateur de translation) :
+				\begin{align*}
+					\Vert \sigma_N (f) - f \Vert_p^p &\leq \frac{1}{2\pi} \int_{-\pi}^{\pi} K_N(t) g(-t) \, \mathrm{d}t \\
+					&= (g * K_N)(0) \\
+					&= \sigma_N(g)(0)
+				\end{align*}
+				Comme $g$ est continue et $2\pi$-périodique, on a par le point précédent
+				\[ \sigma_N(g)(0) \longrightarrow_{\rightarrow +\infty} g(0) = 0 \]
+				Donc, on a bien,
+				\[ \lim_{N \rightarrow +\infty} \Vert \sigma_N (f) - f \Vert_p = 0 \]
+			\end{itemize}
+		\end{enumerate}
+	\end{proof}
+	
+	\begin{remark}
+		Dans ce développement, il est courant de ne prouver que le premier point.
+	\end{remark}
+	%</content>
+\end{document}
