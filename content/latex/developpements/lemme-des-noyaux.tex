@@ -28,11 +28,11 @@
 			\newpar
 			Soit maintenant $x \in \ker(P(f))$. Par calcul,
 			\[ P_2(f)(UP_1(f)(x)) = (UP_1P_2)(f)(x) = (U(f) \circ P(f))(x) = 0 \]
-			ie. $UP_1(f)(x) \in \ker(P_2(f))$. De même, $VP_2(f)(x) \in \ker(P_1(f))$. Par $(*)$, $x \in \ker(P_1(f)) + \ker(P_2(f))$. Donc $\ker(P(f)) \subset \ker(P_1(f)) \oplus \ker(P_2(f))$.
+			ie. $UP_1(f)(x) \in \ker(P_2(f))$. De même, $VP_2(f)(x) \in \ker(P_1(f))$. Par $(*)$, $x \in \ker(P_1(f)) + \ker(P_2(f))$. Donc $\ker(P(f)) \subseteq \ker(P_1(f)) \oplus \ker(P_2(f))$.
 			\newpar
 			Et si $x \in \ker(P_1(f))$,
 			\[ P(f)(x) = (P_1(f) \circ P_2(f))(x) = (P_2(f) \circ P_1(f))(x) = 0 \]
-			donc $x \in \ker(P(f))$ et $\ker(P_1)(f) \subset \ker(P(f))$. De même, on montre que $\ker(P_2)(f) \subset \ker(P(f))$. Comme $\ker(P(f))$ est un espace vectoriel, on a bien l'inclusion réciproque.
+			donc $x \in \ker(P(f))$ et $\ker(P_1)(f) \subseteq \ker(P(f))$. De même, on montre que $\ker(P_2)(f) \subseteq \ker(P(f))$. Comme $\ker(P(f))$ est un espace vectoriel, on a bien l'inclusion réciproque.
 			\item \uline{On suppose le résultat vrai à un rang $k \geq 2$.} Montrons qu'il reste vrai au rang $k+1$. Écrivons
 			\[ P = Q_1Q_2 \text{ avec } Q_1 = P_1 \dots P_k, Q_2 = P_{k+1} \]
 			Les polynômes $Q_1$ et $Q_2$ sont premiers entre-eux, donc le cas $k = 2$ permet d'obtenir :

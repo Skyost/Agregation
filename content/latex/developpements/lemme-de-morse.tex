@@ -38,7 +38,7 @@
 		\[ F = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid A_0 M \in \mathcal{S}_n(\mathbb{R}) \} = A_0^{-1} \mathcal{S}_n(\mathbb{R})  \]
 		et on a $\mathcal{M}_n(\mathbb{R}) = F \oplus \ker(\mathrm{d} \varphi_{I_n})$. Ainsi, la différentielle $\mathrm{d} (\varphi_{|F})_{I_n}$ est bijective (car $\ker(\mathrm{d} (\varphi_{|F})_{I_n}) = \ker(\mathrm{d} \varphi_{I_n}) \, \cap \, F = \{ 0 \}$).
 		\newpar
-		On peut donc appliquer le théorème d'inversion locale à $\varphi_{|F}$ : il existe $U$ un voisinage ouvert de $I_n$ dans $F$ tel que $(\varphi_{|U})$ soit $\mathcal{C}^1$-difféomorphisme de $U$ sur $V = \varphi(U)$. De plus, on peut supposer $U \subset \mathrm{GL}_n(\mathbb{R})$ (quitte à considérer $U \, \cap \, U'$ où $U'$ est un voisinage ouvert de $I_n$ dans $\mathrm{GL}_n(\mathbb{R})$ ; qui existe par continuité de $\det$).
+		On peut donc appliquer le théorème d'inversion locale à $\varphi_{|F}$ : il existe $U$ un voisinage ouvert de $I_n$ dans $F$ tel que $(\varphi_{|U})$ soit $\mathcal{C}^1$-difféomorphisme de $U$ sur $V = \varphi(U)$. De plus, on peut supposer $U \subseteq \mathrm{GL}_n(\mathbb{R})$ (quitte à considérer $U \, \cap \, U'$ où $U'$ est un voisinage ouvert de $I_n$ dans $\mathrm{GL}_n(\mathbb{R})$ ; qui existe par continuité de $\det$).
 		\newpar
 		Ainsi, $V$ est un voisinage ouvert de $A_0 = \varphi(I_n)$ dans $\mathcal{S}_n(\mathbb{R})$ vérifiant :
 		\[ \forall A \in V, \, A = \tr (\varphi_{|U})^{-1}(A) A_0 (\varphi_{|U})^{-1}(A) \]
@@ -55,7 +55,7 @@
 			\item La matrice symétrique $\mathrm{H} (f)_0$ est inversible.
 			\item La signature de $\mathrm{H}(f)_0$ est $(p, n-p)$.
 		\end{itemize}
-		Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subset U$ et $W$ tel que $\varphi(0) = 0$ et
+		Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
 		\[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
 	\end{lemma}
 

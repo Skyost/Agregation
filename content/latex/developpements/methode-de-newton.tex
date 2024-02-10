@@ -40,9 +40,9 @@
 		\[ \varphi(x) - a = \frac{f''(z)}{2f'(x)}(x-a)^2 \tag{$*$} \]
 		Soit $C = \frac{\max_{x \in [c, d]} |f''(x)|}{2\min_{x \in [c, d]} |f'(x)|}$. Par $(*)$, on a :
 		\[ \forall x \in [c, d], \, |\varphi(x)-a| \leq C |x-a|^2 \]
-		Soit maintenant $\alpha > 0$ suffisamment petit pour que $C\alpha < 1$ et que $I = [a - \alpha, a + \alpha] \subset [c, d]$. Alors :
+		Soit maintenant $\alpha > 0$ suffisamment petit pour que $C\alpha < 1$ et que $I = [a - \alpha, a + \alpha] \subseteq [c, d]$. Alors :
 		\[ x \in I \implies |\varphi(x) - a| \leq C\alpha^2 < \alpha \]
-		(la première inégalité se voit en faisant un dessin, et la seconde vient du fait que $C\alpha < 1$). D'où $\varphi(I) \subset I$. Et si $x_0 \in I$, on a donc $\forall n \in \mathbb{N}$, $x_n \in I$ et
+		(la première inégalité se voit en faisant un dessin, et la seconde vient du fait que $C\alpha < 1$). D'où $\varphi(I) \subseteq I$. Et si $x_0 \in I$, on a donc $\forall n \in \mathbb{N}$, $x_n \in I$ et
 		\begin{align*}
 			|x_{n+1} - a| &= |\varphi(x_n) - a| \\
 			&\leq C |x_n - a|^2

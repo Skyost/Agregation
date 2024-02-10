@@ -72,11 +72,11 @@
 		\[ \VERT \varphi_g \VERT \geq \left ( \int_X \vert g \vert^{q} \, \mathrm{d}\mu \right )^{1 - \frac{1}{p}} = \left ( \int_X \vert g \vert^{q} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \Vert g \Vert_q \]
 		donc $\VERT \varphi_g \VERT = \Vert g \Vert_q$ et $\varphi$ est une isométrie.
 		\newpar
-		Montrons qu'elle est surjective. Soit $\ell \in (L_p)'$. D'après le \cref{dual-de-lp-1}, on a $L_2 \subset L_p$, donc on peut considérer la restriction $\widetilde{\ell} = \ell_{| L_2}$.
+		Montrons qu'elle est surjective. Soit $\ell \in (L_p)'$. D'après le \cref{dual-de-lp-1}, on a $L_2 \subseteq L_p$, donc on peut considérer la restriction $\widetilde{\ell} = \ell_{| L_2}$.
 		\[ \forall f \in L_2, \quad \vert \widetilde{\ell}(f) \vert \leq \Vert \ell \Vert \Vert f \Vert_p \leq M \Vert \ell \Vert \Vert f \Vert_2 \implies \widetilde{\ell} \in (L_2)' \]
 		Comme $L_2$ est un espace de Hilbert, on peut appliquer le théorème de représentation de Riesz à $\widetilde{\ell}$. Il existe $g \in L_2$ telle que
 		\[ \forall f \in L_2, \quad \widetilde{\ell}(f) = \int_X f \overline{g} \, \mathrm{d}\mu \]
-		Pour conclure, il reste à montrer que $g \in L_q$ et que l'égalité précédente est vérifiée sur $L_p$. Comme dans précédemment, on considère $u$ de module $1$ telle que $g = u \vert g \vert$ et on pose $f_n = \overline{u} \vert g \vert^{q-1} \mathbb{1}_{\vert g \vert \leq n} \in L_\infty \subset L_2$. On a
+		Pour conclure, il reste à montrer que $g \in L_q$ et que l'égalité précédente est vérifiée sur $L_p$. Comme dans précédemment, on considère $u$ de module $1$ telle que $g = u \vert g \vert$ et on pose $f_n = \overline{u} \vert g \vert^{q-1} \mathbb{1}_{\vert g \vert \leq n} \in L_\infty \subseteq L_2$. On a
 		\[ \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu = \ell(f_n) \leq \Vert \ell \Vert \Vert f_n \Vert_p = \Vert \ell \Vert \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{p}} \]
 		D'où
 		\[ \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{\frac{1}{q}} = \left ( \int_X \vert g \vert^q \mathbb{1}_{\vert g \vert \leq n} \, \mathrm{d}\mu \right )^{1 - \frac{1}{p}} \leq \Vert \ell \Vert \]

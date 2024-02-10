@@ -8,7 +8,7 @@
 	\summary{On montre le théorème de projection sur un convexe fermé dans un espace de Hilbert réel en utilisant les suites de Cauchy et des propriétés du produit scalaire.}
 
 	Soit $H$ un espace de Hilbert réel de norme $\Vert . \Vert$ et dont on note $\langle ., . \rangle$ le produit scalaire associé.
-	
+
 	\reference[LI]{32}
 
 	\begin{lemma}[Identité du parallélogramme]
@@ -48,7 +48,7 @@
 
 	\begin{theorem}[Projection sur un convexe fermé]
 		\label{projection-sur-un-convexe-ferme-2}
-		Soit $C \subset H$ un convexe fermé non-vide. Alors :
+		Soit $C \subseteq H$ un convexe fermé non-vide. Alors :
 		\[ \forall x \in H, \exists! y \in C \text{ tel que } d(x, C) = \inf_{z \in C} \Vert x - z \Vert = d(x, y) \]
 		On peut donc noter $y = P_C(x)$, le \textbf{projeté orthogonal de $x$ sur $C$}. Il s'agit de l'unique point de $C$ vérifiant
 		\[ \forall z \in C, \, \langle x - P_C(x), z - P_C(x) \rangle \leq 0 \tag{$*$} \]
