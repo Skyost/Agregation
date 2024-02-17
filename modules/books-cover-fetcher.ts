@@ -3,6 +3,7 @@
 import fs from 'fs'
 import { ofetch } from 'ofetch'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
+import { parse } from 'node-html-parser'
 import { getNested, parseBib } from '../utils/utils'
 import type { Book } from '../types'
 import { siteMeta } from '../site/meta'
@@ -74,10 +75,17 @@ export default defineNuxtModule<ModuleOptions>({
 
     const books = fs.readdirSync(booksDirectory)
     const failed = []
+    const downloadSources: DownloadSource[] = [
+      new AltCoverDownloadSource(),
+      new GoogleServersDownloadSource(),
+      new EditionsEllipsesServersDownloadSource(),
+      new DeBoeckSuperieurServersDownloadSource(),
+      new PreviousBuildDownloadSource(options.siteUrl, options.booksImagesUrl)
+    ]
     for (const bookFile of books) {
       const filePath = resolver.resolve(booksDirectory, bookFile)
       const book = parseBib(fs.readFileSync(filePath, { encoding: 'utf-8' }))
-      if (!(await fetchBookCover(resolver, book, destinationDirectory, options))) {
+      if (!(await fetchBookCover(resolver, book, destinationDirectory, downloadSources))) {
         failed.push(book.short)
       }
     }
@@ -93,44 +101,100 @@ export default defineNuxtModule<ModuleOptions>({
 /**
  * Represents a download source.
  */
-interface DownloadSource {
+abstract class DownloadSource {
   /**
-   * The download source name.
+   * Creates a new download source instance.
+   *
+   * @param {string} name The download source name.
+   * @param {boolean} dontLogNoBookCover Whether not to log if getBookCoverUrl returns null.
    */
-  name: string,
+  protected constructor (private readonly name: string, private readonly dontLogNoBookCover: boolean = true) {
+    this.name = name
+    this.dontLogNoBookCover = dontLogNoBookCover
+  }
+
+  async download (book: Book, destinationFile: string): Promise<boolean> {
+    logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
+    const coverUrl = await this.getBookCoverUrl(book)
+    if (!coverUrl) {
+      if (!this.dontLogNoBookCover) {
+        logger.warn(`Failed to resolve the cover URL of [${book.short}] from source "${this.name}".`)
+      }
+      return false
+    }
+    const result = await this.downloadImage(coverUrl, destinationFile)
+    if (!result) {
+      logger.warn(`The downloading of the book [${book.short}] cover url "${coverUrl}" from "${this.name}" source failed.`)
+      return true
+    }
+    logger.success(`Successfully downloaded the book cover of [${book.short}] from source "${this.name}" !`)
+    return true
+  }
+
+  /**
+   * Downloads an image from a URL and saves it to a file.
+   *
+   * @param {string} url - The URL of the image to download.
+   * @param {string} destinationFile - The path to save the downloaded image.
+   * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
+   */
+  async downloadImage (url: string, destinationFile: string): Promise<boolean> {
+    try {
+      const blob = await ofetch(url, { responseType: 'blob' })
+      if (blob.type === 'image/jpeg' && blob.size > 0) {
+        const buffer = Buffer.from(await blob.arrayBuffer())
+        fs.writeFileSync(destinationFile, buffer)
+        return true
+      }
+    } catch (ex) {
+      logger.warn(ex)
+    }
+    return false
+  }
+
   /**
    * Should return the book cover URL.
    * @param {Book} book The book.
-   * @param {ModuleOptions} options The module options.
    * @returns {Promise<string | null>} The book cover URL.
    */
-  getBookCoverUrl: (book: Book, options: ModuleOptions) => Promise<string | null>
-
-  /**
-   * Whether not to log if getBookCoverUrl returns null.
-   */
-  dontLogNoBookCover?: boolean
+  abstract getBookCoverUrl (book: Book): Promise<string | null>
 }
 
 /**
  * Download source representing the specified URL in the BIB file.
  */
-const altCoverDownloadSource: DownloadSource = {
-  name: 'Book alt cover',
-  // eslint-disable-next-line require-await
-  getBookCoverUrl: async (book: Book) => 'altcover' in book && book.altcover ? book.altcover!.toString() : null,
-  dontLogNoBookCover: false
+class AltCoverDownloadSource extends DownloadSource {
+  /**
+   * Creates a new alt cover download source instance.
+   */
+  constructor () {
+    super('Book alt cover', false)
+  }
+
+  override getBookCoverUrl (book: Book): Promise<string | null> {
+    return Promise.resolve('altcover' in book && book.altcover ? book.altcover!.toString() : null)
+  }
 }
 
 /**
- * Download on Google servers.
+ * Download from Google servers.
  */
-const googleDownloadSource: DownloadSource = {
-  name: 'Google servers',
-  getBookCoverUrl: async (book: Book) => {
+class GoogleServersDownloadSource extends DownloadSource {
+  /**
+   * Creates a new Google Servers download source instance.
+   */
+  constructor () {
+    super('Google Servers')
+  }
+
+  override async getBookCoverUrl (book: Book): Promise<string | null> {
     const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
     if (response.items && response.items.length > 0) {
-      const thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
+      let thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
+      if (thumbnailUrl) {
+        return thumbnailUrl
+      }
+      thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'thumbnail')
       if (thumbnailUrl) {
         return thumbnailUrl
       }
@@ -141,21 +205,60 @@ const googleDownloadSource: DownloadSource = {
 }
 
 /**
- * Download on Amazon servers using an Amazon link.
+ * Download from Éditions Ellipses servers.
  */
-const amazonServersDownloadSource: DownloadSource = {
-  name: 'Amazon servers',
-  // eslint-disable-next-line require-await
-  getBookCoverUrl: async (book: Book) => `http://z2-ec2.images-amazon.com/images/P/${book.isbn10}.01.MAIN._SCRM_.jpg`
+class EditionsEllipsesServersDownloadSource extends DownloadSource {
+  /**
+   * Creates a new alt cover download source instance.
+   */
+  constructor () {
+    super('Éditions Ellipses')
+  }
+
+  override async getBookCoverUrl (book: Book): Promise<string | null> {
+    if (book.publisher !== 'Ellipses') {
+      return null
+    }
+    const root = await ofetch(book.website, { parseResponse: parse })
+    // noinspection CssInvalidPseudoSelector, JSStringConcatenationToES6Template
+    const image = root.querySelector('meta[og:image]')
+    return image.text
+  }
+}
+
+/**
+ * Download from De Boeck Supérieur servers.
+ */
+class DeBoeckSuperieurServersDownloadSource extends DownloadSource {
+  /**
+   * Creates a new alt cover download source instance.
+   */
+  constructor () {
+    super('De Boeck Supérieur servers')
+  }
+
+  override getBookCoverUrl (book: Book): Promise<string | null> {
+    if (book.publisher !== 'De Boeck Supérieur') {
+      return Promise.resolve(null)
+    }
+    return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/produit_couverture_fiche/public/produits/images/couvertures/${book.isbn13.replace('-', '')}-g.jpg`)
+  }
 }
 
 /**
  * Download from the previous build.
  */
-const previousBuildDownloadSource: DownloadSource = {
-  name: 'agreg.skyost.eu',
-  // eslint-disable-next-line require-await
-  getBookCoverUrl: async (book: Book, options: ModuleOptions) => `${options.siteUrl}${options.booksImagesUrl}${book.isbn10}.jpg`
+class PreviousBuildDownloadSource extends DownloadSource {
+  /**
+   * Creates a new previous build download source instance.
+   */
+  constructor (private siteUrl: string, private booksImagesUrl: string) {
+    super('agreg.skyost.eu')
+  }
+
+  override getBookCoverUrl (book: Book): Promise<string | null> {
+    return Promise.resolve(`${this.siteUrl}${this.booksImagesUrl}${book.isbn10}.jpg`)
+  }
 }
 
 /**
@@ -164,51 +267,18 @@ const previousBuildDownloadSource: DownloadSource = {
  * @param {Resolver} resolver - The resolver for resolving paths.
  * @param {Book} book - The book for which to fetch the cover.
  * @param {string} destinationDirectory - The directory to store the fetched covers.
- * @param {ModuleOptions} options - The module options.
+ * @param {DownloadSource[]} downloadSources - The download sources.
  * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
  */
-async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, options: ModuleOptions): Promise<boolean> {
+async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
   const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
   if (fs.existsSync(destinationFile)) {
     return true
   }
-  for (const downloadSource of [altCoverDownloadSource, googleDownloadSource, amazonServersDownloadSource, previousBuildDownloadSource]) {
-    logger.info(`Trying to download the book cover of [${book.short}] from source "${downloadSource.name}"...`)
-    const coverUrl = await downloadSource.getBookCoverUrl(book, options)
-    if (!coverUrl) {
-      if (!downloadSource.dontLogNoBookCover) {
-        logger.warn(`Failed to resolve the cover URL of [${book.short}] from source "${downloadSource.name}".`)
-      }
-      continue
-    }
-    const result = await downloadImage(coverUrl, destinationFile)
-    if (!result) {
-      logger.warn(`The downloading of the book [${book.short}] cover url "${coverUrl}" from "${downloadSource.name}" source failed.`)
-      continue
-    }
-    logger.success(`Successfully downloaded the book cover of [${book.short}] from source "${downloadSource.name}" !`)
-    return true
-  }
-  return false
-}
-
-/**
- * Downloads an image from a URL and saves it to a file.
- *
- * @param {string} url - The URL of the image to download.
- * @param {string} destinationFile - The path to save the downloaded image.
- * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
- */
-async function downloadImage (url: string, destinationFile: string): Promise<boolean> {
-  try {
-    const blob = await ofetch(url, { responseType: 'blob' })
-    if (blob.type === 'image/jpeg' && blob.size > 0) {
-      const buffer = Buffer.from(await blob.arrayBuffer())
-      fs.writeFileSync(destinationFile, buffer)
+  for (const downloadSource of downloadSources) {
+    if (await downloadSource.download(book, destinationFile)) {
       return true
     }
-  } catch (ex) {
-    logger.warn(ex)
   }
   return false
 }
