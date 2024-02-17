@@ -3,7 +3,7 @@
 import fs from 'fs'
 import { ofetch } from 'ofetch'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
-import { parse } from 'node-html-parser'
+import { parse, type HTMLElement } from 'node-html-parser'
 import { getNested, parseBib } from '../utils/utils'
 import type { Book } from '../types'
 import { siteMeta } from '../site/meta'
@@ -219,10 +219,9 @@ class EditionsEllipsesServersDownloadSource extends DownloadSource {
     if (book.publisher !== 'Ellipses') {
       return null
     }
-    const root = await ofetch(book.website, { parseResponse: parse })
-    // noinspection CssInvalidPseudoSelector, JSStringConcatenationToES6Template
-    const image = root.querySelector('meta[og:image]')
-    return image.text
+    const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
+    const image = root.querySelector('meta[property="og:image"]')
+    return image && image.text ? image.text : null
   }
 }
 
