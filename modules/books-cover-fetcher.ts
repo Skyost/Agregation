@@ -80,6 +80,7 @@ export default defineNuxtModule<ModuleOptions>({
       new GoogleServersDownloadSource(),
       new EditionsEllipsesServersDownloadSource(),
       new DeBoeckSuperieurServersDownloadSource(),
+      new DunodServersDownloadSource(),
       new PreviousBuildDownloadSource(options.siteUrl, options.booksImagesUrl)
     ]
     for (const bookFile of books) {
@@ -209,7 +210,7 @@ class GoogleServersDownloadSource extends DownloadSource {
  */
 class EditionsEllipsesServersDownloadSource extends DownloadSource {
   /**
-   * Creates a new alt cover download source instance.
+   * Creates a new Éditions Ellipses servers download source instance.
    */
   constructor () {
     super('Éditions Ellipses')
@@ -220,8 +221,8 @@ class EditionsEllipsesServersDownloadSource extends DownloadSource {
       return null
     }
     const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
-    const image = root.querySelector('meta[property="og:image"]')
-    return image && image.text ? image.text : null
+    const image = root.querySelector('meta[property="og:image"]')?.getAttribute('content')
+    return image ?? null
   }
 }
 
@@ -230,7 +231,7 @@ class EditionsEllipsesServersDownloadSource extends DownloadSource {
  */
 class DeBoeckSuperieurServersDownloadSource extends DownloadSource {
   /**
-   * Creates a new alt cover download source instance.
+   * Creates a new De Boeck Supérieur servers download source instance.
    */
   constructor () {
     super('De Boeck Supérieur servers')
@@ -241,6 +242,25 @@ class DeBoeckSuperieurServersDownloadSource extends DownloadSource {
       return Promise.resolve(null)
     }
     return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/produit_couverture_fiche/public/produits/images/couvertures/${book.isbn13.replace('-', '')}-g.jpg`)
+  }
+}
+
+/**
+ * Download from Dunod servers.
+ */
+class DunodServersDownloadSource extends DownloadSource {
+  /**
+   * Creates a new Dunod servers download source instance.
+   */
+  constructor () {
+    super('Dunod servers')
+  }
+
+  override getBookCoverUrl (book: Book): Promise<string | null> {
+    if (book.publisher !== 'Dunod') {
+      return Promise.resolve(null)
+    }
+    return Promise.resolve(`https://www.dunod.com/sites/default/files/styles/principal_desktop/public/thumbnails/image/${book.isbn13.replace('-', '')}-001-X.jpeg`)
   }
 }
 
