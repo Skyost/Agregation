@@ -4,6 +4,7 @@ import fs from 'fs'
 import { ofetch } from 'ofetch'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { parse, type HTMLElement } from 'node-html-parser'
+import sharp from 'sharp'
 import { getNested, parseBib } from '../utils/utils'
 import type { Book } from '../types'
 import { siteMeta } from '../site/meta'
@@ -100,6 +101,28 @@ export default defineNuxtModule<ModuleOptions>({
 })
 
 /**
+ * Fetches a book cover from various sources and saves it to a cache directory.
+ *
+ * @param {Resolver} resolver - The resolver for resolving paths.
+ * @param {Book} book - The book for which to fetch the cover.
+ * @param {string} destinationDirectory - The directory to store the fetched covers.
+ * @param {DownloadSource[]} downloadSources - The download sources.
+ * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
+ */
+async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
+  const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
+  if (fs.existsSync(destinationFile)) {
+    return true
+  }
+  for (const downloadSource of downloadSources) {
+    if (await downloadSource.download(book, destinationFile)) {
+      return true
+    }
+  }
+  return false
+}
+
+/**
  * Represents a download source.
  */
 abstract class DownloadSource {
@@ -114,6 +137,13 @@ abstract class DownloadSource {
     this.dontLogNoBookCover = dontLogNoBookCover
   }
 
+  /**
+   * Downloads the book to the given directory.
+   *
+   * @param {Book} book The book.
+   * @param {string} destinationFile The destination file.
+   * @returns {Promise<boolean>} Whether the operation is a success.
+   */
   async download (book: Book, destinationFile: string): Promise<boolean> {
     logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
     const coverUrl = await this.getBookCoverUrl(book)
@@ -142,9 +172,12 @@ abstract class DownloadSource {
   async downloadImage (url: string, destinationFile: string): Promise<boolean> {
     try {
       const blob = await ofetch(url, { responseType: 'blob' })
-      if (blob.type === 'image/jpeg' && blob.size > 0) {
+      if (blob.type.startsWith('image/') && blob.size > 0) {
         const buffer = Buffer.from(await blob.arrayBuffer())
-        fs.writeFileSync(destinationFile, buffer)
+        await sharp(buffer)
+          .resize(null, 250)
+          .jpeg()
+          .toFile(destinationFile)
         return true
       }
     } catch (ex) {
@@ -278,26 +311,4 @@ class PreviousBuildDownloadSource extends DownloadSource {
   override getBookCoverUrl (book: Book): Promise<string | null> {
     return Promise.resolve(`${this.siteUrl}${this.booksImagesUrl}${book.isbn10}.jpg`)
   }
-}
-
-/**
- * Fetches a book cover from various sources and saves it to a cache directory.
- *
- * @param {Resolver} resolver - The resolver for resolving paths.
- * @param {Book} book - The book for which to fetch the cover.
- * @param {string} destinationDirectory - The directory to store the fetched covers.
- * @param {DownloadSource[]} downloadSources - The download sources.
- * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
- */
-async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
-  const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
-  if (fs.existsSync(destinationFile)) {
-    return true
-  }
-  for (const downloadSource of downloadSources) {
-    if (await downloadSource.download(book, destinationFile)) {
-      return true
-    }
-  }
-  return false
 }

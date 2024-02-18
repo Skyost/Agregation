@@ -49,7 +49,7 @@ export default defineTransformer({
     for (const image in options.picturesTemplate) {
       templates[image] = fs.readFileSync(path.resolve(sourceDirectoryPath, options.picturesTemplate.tikzpicture), { encoding: 'utf8' })
     }
-    const root = // Transforms the raw content into HTML.
+    const { htmlResult: root } = // Transforms the raw content into HTML.
       latex.transformToHtml(
         filePath,
         {
