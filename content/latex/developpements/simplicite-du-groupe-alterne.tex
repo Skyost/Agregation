@@ -19,6 +19,8 @@
 			\item Si $\sigma \notin A_n$, il existe $\tau \in S_n$ une transposition dont le support est disjoint de celui de $\alpha$ (c'est vrai car $n \geq 5$). Notons $\gamma = \sigma \tau$ et remarquons que $\gamma \in A_n$. Dans ce cas, $\gamma \alpha \gamma^{-1} = \begin{pmatrix} \gamma(a_1) & \gamma(a_2) & \gamma(a_3) \end{pmatrix} = \begin{pmatrix} \sigma(a_1) & \sigma(a_2) & \sigma(a_3) \end{pmatrix} = \beta$. Donc $\alpha$ et $\beta$ sont bien conjuguées dans $A_n$.
 		\end{itemize}
 	\end{proof}
+	
+	\reference[GOU21]{27}
 
 	\begin{lemma}
 		\label{simplicite-du-groupe-alterne-2}
@@ -34,7 +36,7 @@
 		\end{itemize}
 	\end{proof}
 
-	\reference[PER]{28}
+	\reference[ROM21]{66}
 
 	\begin{lemma}
 		\label{simplicite-du-groupe-alterne-3}
@@ -62,12 +64,27 @@
 		\newpar
 		Soit $H \lhd A_5$ tel que $H \neq \{ \id \}$. Montrons que $H = A_5$.
 		\begin{itemize}
-			\item Si $H$ contient une permutation de type $[2,2]$, alors par le point 1., il les contient toutes.
-			\item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
-			\item Si $H$ contient une permutation de type $[5]$ (qui est donc d'ordre $5$), alors $H$ contient le $5$-Sylow engendré par cet élément. Or, on sait par les théorèmes de Sylow que les sous-groupes de Sylow sont conjugués entre-eux. Donc $H$ contient tous les $5$-Sylow et donc contient tous les éléments d'ordre $5$.
+			\item Si $H$ contient une permutation de type $[2,2]$, alors par le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
+			\item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-du-groupe-alterne-2}, il les contient toutes.
+			\item Si $H$ contient une permutation de type $[5]$, $\sigma = \begin{pmatrix} a & b & c & d & e \end{pmatrix}$, il contient alors le commutateur
+			\begin{array*}
+				\begin{pmatrix} a & b & c \end{pmatrix} \sigma \begin{pmatrix} a & b & c \end{pmatrix}^{-1} \sigma^{-1} &= \begin{pmatrix} a & b & c \end{pmatrix} \sigma \begin{pmatrix} c & b & a \end{pmatrix} \sigma^{-1} \\
+				&= \begin{pmatrix} a & b & c \end{pmatrix} \begin{pmatrix} \sigma(c) & \sigma(b) & \sigma(a) \end{pmatrix} \\
+				&= \begin{pmatrix} a & b & c \end{pmatrix} \begin{pmatrix} d & c & b \end{pmatrix} \\
+				&= \begin{pmatrix} b & d & a \end{pmatrix}
+			\end{array*}
+			qui est un $3$-cycle. Par le \cref{simplicite-du-groupe-alterne-2}, il les contient tous.
 		\end{itemize}
-		Or, $H$ ne peut pas vérifier qu'un seul des points précédents en vertu du théorème de Lagrange, car ni $16 = 15 + 1$, ni $21 = 20 + 1$, ni $25 = 24 + 1$ ne divisent $|A_5| = 60$. Donc $H$ vérifie au moins deux des points précédents, et ainsi $|H| \geq 1 + 15 + 20 = 36$. Donc $|H|=60$ et $H = A_5$.
+		Or, $H$ ne peut pas vérifier qu'un seul des points précédents en vertu du théorème de Lagrange, car ni $16 = 15 + 1$, ni $21 = 20 + 1$ ne divisent $|A_5| = 60$. Donc $H$ vérifie au moins deux des points précédents, et ainsi $|H| \geq 1 + 15 + 20 = 36$. Donc $|H|=60$ et $H = A_5$.
 	\end{proof}
+	
+	\reference[PER]{28}
+	
+	Si les théorèmes de Sylow sont mentionnés dans le plan, il est préférable de mentionner l'argument suivant.
+	
+	\begin{remark}
+		Dans le raisonnement précédent, si $H$ contient une permutation de type $[5]$ (qui est donc d'ordre $5$), alors $H$ contient le $5$-Sylow engendré par cet élément. Or, on sait par les théorèmes de Sylow que les sous-groupes de Sylow sont conjugués entre-eux. Donc $H$ contient tous les $5$-Sylow et donc contient tous les éléments d'ordre $5$.
+	\end{remark}
 
 	\begin{theorem}
 		$A_n$ est simple pour $n \geq 5$.
