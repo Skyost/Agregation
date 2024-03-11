@@ -46,6 +46,6 @@ export default defineNuxtModule<ModuleOptions>({
     // Write commit information to file.
     fs.writeFileSync(resolver.resolve(srcDir, 'content', options.fileName), JSON.stringify({ long, short }))
 
-    logger.success(name, `Wrote latest commit info for ${long}.`)
+    logger.success(`Wrote latest commit info for ${long}.`)
   }
 })
