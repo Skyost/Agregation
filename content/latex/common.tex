@@ -170,15 +170,18 @@ end
 \tikzset{notestyleraw/.append style={inner sep=0pt, rounded corners=0pt, align=center}}
 
 %\newcommand{\booklink}[1]{\website/bibliographie\##1}
-\newcommand{\citelink}[2]{\hyperlink{cite.\therefsection @#1}{#2}}
+\newcounter{reference}
 \newcommand{\previousreference}{}
 \providecommand{\reference}[2][]{%
-	\notblank{#1}{\renewcommand{\previousreference}{#1}}{}%
+	\notblank{#1}{
+		\renewcommand{\previousreference}{#1}%
+		\label{reference-\previousreference-\thereference}%
+	}{}%
 	\todo[noline]{%
 		\protect\vspace{16pt}%
 		\protect\par%
 		\protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
-		\protect\citelink{\previousreference}{p. #2}%
+		\protect\hyperref[reference-\previousreference-\thereference]{p. #2}%
 	}%
 }
 

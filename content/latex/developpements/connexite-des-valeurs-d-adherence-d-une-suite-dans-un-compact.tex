@@ -3,7 +3,7 @@
 
 \begin{document}
 	%<*content>
-	\development{analysis}{connexite-des-valeurs-adherence-d-une-suite-dans-un-compact}{Connexité des valeurs d'adhérence d'une suite dans un compact}
+	\development{analysis}{connexite-des-valeurs-d-adherence-d-une-suite-dans-un-compact}{Connexité des valeurs d'adhérence d'une suite dans un compact}
 
 	\summary{On montre que l'ensemble des valeurs d'adhérence d'une suite d'un espace métrique compact est connexe en raisonnant par l'absurde, puis on utilise ce résultat pour démontrer le lemme des grenouilles.}
 
@@ -12,7 +12,7 @@
 	Soit $(E, d)$ un espace métrique.
 
 	\begin{theorem}
-		\label{connexite-des-valeurs-adherence-d-une-suite-dans-un-compact-1}
+		\label{connexite-des-valeurs-d-adherence-d-une-suite-dans-un-compact-1}
 		On suppose $E$ compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
 	\end{theorem}
 
@@ -73,7 +73,7 @@
 	\end{application}
 
 	\begin{proof}
-		Le sens direct est évident. Montrons la réciproque. On suppose donc que $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$ et on note $\Gamma$ l'ensemble des valeurs d'adhérence de $(x_n)$. $\Gamma$ est non vide (car $(x_n)$ est bornée, donc admet une valeur d'adhérence par le théorème de Bolzano-Weierstrass) et est un connexe de $\mathbb{R}$ (par le \cref{connexite-des-valeurs-adherence-d-une-suite-dans-un-compact-1}), donc $\Gamma$ est un intervalle non vide.
+		Le sens direct est évident. Montrons la réciproque. On suppose donc que $\lim_{n \rightarrow +\infty } x_{n+1} - x_n = 0$ et on note $\Gamma$ l'ensemble des valeurs d'adhérence de $(x_n)$. $\Gamma$ est non vide (car $(x_n)$ est bornée, donc admet une valeur d'adhérence par le théorème de Bolzano-Weierstrass) et est un connexe de $\mathbb{R}$ (par le \cref{connexite-des-valeurs-d-adherence-d-une-suite-dans-un-compact-1}), donc $\Gamma$ est un intervalle non vide.
 		\newpar
 		Soit $a \in \Gamma$. Il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante (on dit que $\varphi$ est une extractrice) telle que $x_{\varphi(n)} \longrightarrow a$. Mais alors,
 		\[ x_{\varphi(n) + 1} - x_{\varphi(n)} = f(x_{\varphi(n)}) - x_{\varphi(n)} \longrightarrow f(a) - a \]
