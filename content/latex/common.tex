@@ -175,6 +175,7 @@ end
 \providecommand{\reference}[2][]{%
 	\notblank{#1}{
 		\renewcommand{\previousreference}{#1}%
+		\stepcounter{reference}%
 		\label{reference-\previousreference-\thereference}%
 	}{}%
 	\todo[noline]{%

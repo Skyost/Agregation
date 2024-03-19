@@ -56,21 +56,21 @@
 	\reference{12}
 
 	\begin{definition}
-		On définit le \textbf{centre} de $G$ noté $\mathrm{Z}(G)$ par
-		\[ \mathrm{Z}(G) = \{ g \in G \mid \forall h \in H, \, gh=hg \} \]
-		Autrement dit, $\mathrm{Z}(G)$ est l'intersection des centralisateurs des éléments de $G$.
+		On définit le \textbf{centre} de $G$ noté $Z(G)$ par
+		\[ Z(G) = \{ g \in G \mid \forall h \in H, \, gh=hg \} \]
+		Autrement dit, $Z(G)$ est l'intersection des centralisateurs des éléments de $G$.
 	\end{definition}
 
 	\begin{example}
-		Si $G$ est abélien, alors $\mathrm{Z}(G) = G$.
+		Si $G$ est abélien, alors $Z(G) = G$.
 	\end{example}
 
 	\reference[ULM21]{36}
 
 	\begin{proposition}
-		Soit $g \in G$. Alors, $g \in \mathrm{Z}(G)$ si et seulement si sa classe de conjugaison est réduite à un élément.
+		Soit $g \in G$. Alors, $g \in Z(G)$ si et seulement si sa classe de conjugaison est réduite à un élément.
 		\newpar
-		$\mathrm{Z}(G)$ est l'union des classes de conjugaison de taille $1$.
+		$Z(G)$ est l'union des classes de conjugaison de taille $1$.
 	\end{proposition}
 
 	\subsubsection{Application au \texorpdfstring{$p$}{p}-groupes}
@@ -90,8 +90,8 @@
 	\begin{corollary}
 		On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
 		\begin{align*}
-			\vert G \vert &= \vert \mathrm{Z}(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
-			&= \vert \mathrm{Z}(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+			\vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
+			&= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
 		\end{align*}
 	\end{corollary}
 
@@ -148,7 +148,7 @@
 
 	\begin{example}
 		\begin{itemize}
-			\item $\{ e_G \} \lhd G, G \lhd G \text{ et } \mathrm{Z}(G) \lhd G$.
+			\item $\{ e_G \} \lhd G, G \lhd G \text{ et } Z(G) \lhd G$.
 			\item L'intersection de deux sous-groupes distingués dans $G$ est distinguée dans $G$.
 			\item Si $G$ est abélien, tout sous-groupe de $G$ est distingué dans $G$.
 		\end{itemize}
@@ -246,7 +246,7 @@
 	\begin{example}
 		\begin{itemize}
 			\item Tout groupe cyclique d'ordre $n$ est isomorphe à $\mathbb{Z}/n\mathbb{Z}$.
-			\item $G/\mathrm{Z}(G) \cong \operatorname{Int}(G)$.
+			\item $G/Z(G) \cong \operatorname{Int}(G)$.
 		\end{itemize}
 	\end{example}
 
@@ -327,8 +327,8 @@
 
 	\begin{corollary}
 		\begin{enumerate}
-			\item $\mathrm{Z}(\mathrm{GL}(E)) = \{ \lambda \operatorname{id}_E \mid \lambda \in \mathbb{K}^* \}$.
-			\item $\mathrm{Z}(\mathrm{SL}(E)) = \mathrm{Z}(\mathrm{GL}(E)) \, \cap \, \mathrm{SL}(E) \cong \mu_n(\mathbb{K})$.
+			\item $Z(\mathrm{GL}(E)) = \{ \lambda \operatorname{id}_E \mid \lambda \in \mathbb{K}^* \}$.
+			\item $Z(\mathrm{SL}(E)) = Z(\mathrm{GL}(E)) \, \cap \, \mathrm{SL}(E) \cong \mu_n(\mathbb{K})$.
 		\end{enumerate}
 	\end{corollary}
 
