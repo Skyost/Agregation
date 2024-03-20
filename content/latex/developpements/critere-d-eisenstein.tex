@@ -12,7 +12,7 @@
 	\begin{notation}
 		Soit $P \in A[X]$. On note $\gamma(P)$ le contenu du polynôme $P$.
 	\end{notation}
-	
+
 	\reference[ULM18]{32}
 
 	\begin{lemma}
@@ -28,7 +28,7 @@
 		\end{align*}
 		et ainsi $A/(p)$ est bien intègre.
 	\end{proof}
-	
+
 	\reference{22}
 
 	\begin{lemma}
@@ -62,14 +62,14 @@
 	\begin{lemma}[Gauss]
 		\label{critere-d-eisenstein-4}
 		On suppose $A$ factoriel. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Le produit de deux polynômes primitifs est primitif.
 			\item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$.
 		\end{enumerate}
 	\end{lemma}
 
 	\begin{proof}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Soient $P, Q \in A[X]$ tels que $\gamma(P) = \gamma(Q) = 1$. Supposons $\gamma(PQ) \neq 1$. Alors, il existe $p \in A$ irréductible tel que $p$ divise tous les coefficients de $PQ$. Donc, dans $A/(p)$, $\overline{PQ} = \overline{P} \, \overline{Q} = 0$.
 			\newpar
 			Mais, par le \cref{critere-d-eisenstein-3}, $(p)$ est premier. Donc par le \cref{critere-d-eisenstein-1} $A/(p)$ est intègre, et en particulier, $A/(p)[X]$ l'est aussi par le \cref{critere-d-eisenstein-2}. Ainsi, $\overline{P} = 0$ ou $\overline{Q} = 0$ : absurde.
@@ -80,7 +80,7 @@
 	\begin{theorem}[Critère d'Eisenstein]
 		\label{critere-d-eisenstein-5}
 		Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. On suppose que $A$ est factoriel et qu'il existe $p \in A$ irréductible tel que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
 			\item $p \nmid a_n$.
 			\item $p^2 \nmid a_0$.

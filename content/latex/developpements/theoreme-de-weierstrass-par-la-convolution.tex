@@ -17,7 +17,7 @@
 	\begin{lemma}
 		\label{theoreme-de-weierstrass-par-la-convolution-1}
 		La suite $(p_n)$ vérifie :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall n \in \mathbb{N}$, $p_n \geq 0$.
 			\item $\forall n \in \mathbb{N}$, $\int_{\mathbb{R}} p_n(t) = 1$.
 			\item $\forall \alpha > 0$, $\lim_{n \rightarrow +\infty} \int_{|t| > \alpha} p_n(t) \, \mathrm{d}t = 0$.
@@ -28,7 +28,7 @@
 	\begin{proof}
 		Notons tout d'abord que
 		\[ \forall n \in \mathbb{N}^*, \, a_n = 2 \int_0^1 (1-t^2)^n \, \mathrm{d}t \geq 2 \int_0^1 t (1-t^2)^n \, \mathrm{d}t = \left[ - \frac{(1-t^2)^{n+1}}{n+1} \right]_0^1 = \frac{1}{n+1}  \]
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall n \in \mathbb{N}$, $p_n \geq 0$ car $a_n \geq 0$ et $(1-t^2)^n \geq 0$ pour tout $t \in [-1, 1]$.
 			\item $\forall n \in \mathbb{N}$, $\int_{\mathbb{R}} p_n(t) \, \mathrm{d}t = \frac{1}{a_n} \int_{-1}^1 (1-t^2)^n \, \mathrm{d}t = 1$.
 			\item Soit $\alpha > 0$.

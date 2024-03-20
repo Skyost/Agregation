@@ -15,7 +15,7 @@
 
 	\begin{theorem}[Continuité sous le signe intégral]
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
 			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
 			\item $\exists g \in L_1(X)$ positive telle que
@@ -26,7 +26,7 @@
 
 	\begin{corollary}
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
 			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
 			\item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
@@ -66,7 +66,7 @@
 	\begin{theorem}[Dérivation sous le signe intégral]
 		\label{239-2}
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
 			\item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -85,7 +85,7 @@
 
 	\begin{theorem}[$k$-ième dérivée sous le signe intégral]
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
 			\item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
 			\item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
@@ -123,7 +123,7 @@
 		On pose $\forall x \geq 0$,
 		\[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
 		alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
 			\item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
 			\item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
@@ -138,7 +138,7 @@
 
 	\begin{theorem}[Holomorphie sous le signe intégral]
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
 			\item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -176,7 +176,7 @@
 
 	\begin{theorem}
 		Soient $p, q > 0$ et $f \in L_p(\mathbb{R}^d)$ et $g \in L_q(\mathbb{R}^d)$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $p, q \in [1, +\infty]$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, alors $(f * g)(x)$ existe \underline{pour tout} $x \in \mathbb{R}^d$ et est uniformément continue. On a, $\Vert f * g \Vert_\infty \leq \Vert f \Vert_p \Vert g \Vert_q$ et, si $p \neq 1, +\infty$, $f * g \in \mathcal{C}_0(\mathbb{R})$.
 			\item Si $p = 1$ et $q = +\infty$, alors $(f * g)(x)$ existe \underline{pour tout} $x \in \mathbb{R}^d$ et $f * g \in \mathcal{C}_b(\mathbb{R})$.
 			\item Si $p = 1$ et $q \in [1, +\infty[$, alors $(f * g)(x)$ existe \underline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_q(\mathbb{R})$ telle que $\Vert f * g \Vert_q \leq \Vert f \Vert_1 \Vert g \Vert_q$.
@@ -212,7 +212,7 @@
 
 	\begin{definition}
 		On appelle \textbf{approximation de l'identité} toute suite $(\rho_n)$ de fonctions mesurables de $L_1(\mathbb{R}^d)$ telles que
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall n \in \mathbb{N}, \, \int_{\mathbb{R}^d} \rho_n \, \mathrm{d}\lambda_d = 1$.
 			\item $\sup_{n \geq 1} \Vert \rho_n \Vert < +\infty$.
 			\item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R} \setminus B(0, \epsilon)} \rho_n(x) \, \mathrm{d}x = 0$.
@@ -269,7 +269,7 @@
 	\reference[AMR08]{96}
 
 	\begin{application}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $\mathcal{C}_K(\mathbb{R}^d)$ pour $\Vert . \Vert_\infty$.
 			\item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $L_p(\mathbb{R}^d)$ pour $\Vert . \Vert_p$ avec $p \in [1, +\infty[$.
 		\end{enumerate}
@@ -371,7 +371,7 @@
 
 	\begin{theorem}
 		Soit $f \in L_2(\mathbb{R}^d)$. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Il existe une suite $(f_n)$ de $L_1(\mathbb{R}^d) \, \cap \, L_2(\mathbb{R}^d)$ qui converge vers $f$ dans $L_2(\mathbb{R}^d)$.
 			\item Pour une telle suite $(f_n)$, la suite $(\widehat{f_n})$ converge dans $L_2(\mathbb{R}^d)$ vers une limite $\widetilde{f}$ indépendante de la suite choisie.
 		\end{enumerate}

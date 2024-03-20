@@ -17,7 +17,7 @@
 
 	\begin{lemma}
 		\label{invariants-de-similitude-1}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $k = \deg(\pi_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
 			\item Soit $x \in E$. Si $l = \deg(P_x)$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
 		\end{enumerate}
@@ -26,7 +26,7 @@
 	\reference{61}
 
 	\begin{proof}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Montrons que la famille $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$ est à la fois libre et génératrice.
 			\begin{itemize}
 				\item Soit $P(f) \in \mathbb{K}[f]$. On fait la division euclidienne de $P$ par $\pi_f$ dans $\mathbb{K}[X]$ pour écrire $P = \pi_f Q + R$ avec $Q, R \in \mathbb{K}[X]$ et $\deg(R) < k = \deg(\pi_f)$. En évaluant en $f$, cela donne $P(f) = R(f) \in \operatorname{Vect}(\id_E, \dots, f^{k-1})$. Donc la famille est génératrice.
@@ -49,7 +49,7 @@
 
 	\begin{theorem}[Frobenius]
 		Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $E = \bigoplus_{i = 1}^r F_i$.
 			\item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
 			\item Si $P_i = \pi_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.

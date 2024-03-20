@@ -211,6 +211,19 @@ onUnmounted(() => {
     }
   }
 
+  :deep(ol) {
+    counter-reset: ol;
+
+    > li {
+      list-style: none;
+      counter-increment: ol;
+    }
+
+    > li::marker {
+      content: "(" counter(ol, lower-roman) ") ";
+    }
+  }
+
   :deep(.bookref) {
     // position: relative;
 

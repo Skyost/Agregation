@@ -26,7 +26,7 @@
 \usepackage[french, capitalise, noabbrev]{cleveref}
 \usepackage[fit, breakall]{truncate}
 \usepackage[top=2.5cm, right=2cm, bottom=2.5cm, left=2cm]{geometry}
-\usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{tocloft}
 \usepackage{microtype}
 %\usepackage{mdframed}
@@ -161,6 +161,8 @@ end
 	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
 }
 
+\providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
+
 \providecommand{\summary}[1]{%
 	\textit{#1}%
 	\par%
@@ -205,18 +207,18 @@ end
 
 % Couleurs :
 
-\definecolor{property}{HTML}{fffde7}
-\definecolor{proposition}{HTML}{fff8e1}
-\definecolor{lemma}{HTML}{fff3e0}
-\definecolor{theorem}{HTML}{fce4f2}
-\definecolor{corollary}{HTML}{ffebee}
-\definecolor{definition}{HTML}{ede7f6}
-\definecolor{notation}{HTML}{f3e5f5}
-\definecolor{example}{HTML}{e0f7fa}
-\definecolor{cexample}{HTML}{efebe9}
-\definecolor{application}{HTML}{e0f2f1}
-\definecolor{remark}{HTML}{e8f5e9}
-\definecolor{proof}{HTML}{e1f5fe}
+\definecolor{property}{HTML}{ffeb3b}
+\definecolor{proposition}{HTML}{ffc107}
+\definecolor{lemma}{HTML}{ff9800}
+\definecolor{theorem}{HTML}{f44336}
+\definecolor{corollary}{HTML}{e91e63}
+\definecolor{definition}{HTML}{673ab7}
+\definecolor{notation}{HTML}{9c27b0}
+\definecolor{example}{HTML}{00bcd4}
+\definecolor{cexample}{HTML}{795548}
+\definecolor{application}{HTML}{009688}
+\definecolor{remark}{HTML}{3f51b5}
+%\definecolor{proof}{HTML}{e1f5fe}
 
 % Théorèmes :
 
@@ -244,13 +246,15 @@ end
 	\tcolorboxenvironment{#1}{
 		enhanced,
 		breakable,
-		colback=#1!98!white,
+		colback=#1!8!white,
+		%right=0pt,
+		%top=8pt,
+		%bottom=8pt,
 		boxrule=0pt,
-		boxsep=0pt,
-		left=8pt,
-		right=8pt,
-		top=8pt,
-		bottom=8pt,
+		frame hidden,
+		sharp corners,
+		enhanced,borderline west={4pt}{0pt}{#1},
+		%interior hidden,
 		sharp corners,
 		after=\par,
 	}
@@ -267,7 +271,7 @@ end
 \applystyletotheorem{cexample}
 \applystyletotheorem{application}
 \applystyletotheorem{remark}
-\applystyletotheorem{proof}
+%\applystyletotheorem{proof}
 
 % Environnements :
 
@@ -289,4 +293,5 @@ end
 \DeclareSymbolFont{fouriersymbols}{FMS}{futm}{m}{n}
 \DeclareSymbolFont{fourierlargesymbols}{FMX}{futm}{m}{n}
 \DeclareMathDelimiter{\VERT}{\mathord}{fouriersymbols}{152}{fourierlargesymbols}{147}
+
 

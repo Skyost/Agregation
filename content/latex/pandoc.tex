@@ -1,3 +1,7 @@
+% Listes :
+
+\setlist[enumerate,1]{label=(\roman*)}
+
 % Commandes :
 
 \providecommand{\lesson}[3]{%
@@ -23,6 +27,8 @@
 		#1%
 	\end{doccategories}%
 }
+
+\providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
 
 \providecommand{\summary}[1]{%
 	\begin{docsummary}%

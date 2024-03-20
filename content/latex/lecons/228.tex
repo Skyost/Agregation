@@ -26,7 +26,7 @@
 	\end{example}
 
 	\begin{theorem}[Caractérisations séquentielle et topologique de la continuité]
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $f$ est continue en $a \in I$ si et seulement si toute suite de points de $I$ qui converge vers $a$ est transformée par $f$ en une suite convergente vers $f(a)$.
 			\item $f$ est continue en $a \in I$ si et seulement si l'image réciproque par $f$ de tout ouvert (resp. fermé) de $\mathbb{R}$ est un ouvert (resp. fermé) de $I$.
 		\end{enumerate}
@@ -124,7 +124,7 @@
 
 	\begin{proposition}
 		Si $f$ et $g$ sont deux fonctions définies sur $I$ à valeurs réelles et dérivables en $a \in I$. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall \lambda, \mu \in \mathbb{R}, \, \lambda f + \mu g$ est dérivable en $a$ et $(\lambda f + \mu g)'(a) = \lambda f'(a) + \mu g'(a)$.
 			\item $fg$ est dérivable en $a$ et $(fg)'(a) = f'(a) g(a) + f(a) g'(a)$.
 			\item Si $g(a) \neq 0$, alors $\frac{f}{g}$ est dérivable en $a$ et $\left(\frac{f}{g}\right)'(a) = \frac{f'(a) g(a) - f(a) g'(a)}{g(a)^2}$.
@@ -194,7 +194,7 @@
 		\end{array}
 		\]
 		(qui est bien définie car $g' > 0$). Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\exists! a \in [c, d]$ tel que $g(a) = 0$.
 			\item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
 			\item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
@@ -203,7 +203,7 @@
 
 	\begin{corollary}
 		En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $g$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $(x_n)$ est strictement décroissante (ou constante).
 			\item $x_{n+1} - a \sim \frac{g''(a)}{g'(a)} (x_n - a)^2$ pour $x_0 > a$.
 		\end{enumerate}
@@ -248,7 +248,7 @@
 
 	\begin{theorem}[Bijection]
 		Si $f$ est une application continue et strictement monotone sur $I$, alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $f(I)$ est un intervalle.
 			\item $f^{-1}$ est continue.
 			\item $f^{-1}$ est strictement monotone de même sens de variation que $f$.
@@ -373,7 +373,7 @@
 
 	\begin{proposition}
 		On suppose que $I$ est un segment $[a,b]$ de $\mathbb{R}$ non réduit à un point. Soit $(f_n)$ une suite de fonctions de $I$ dans $\mathbb{R}$. On suppose que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Il existe $x_0 \in [a,b]$ tel que $(f_n(x_0))$ converge.
 			\item La suite $(f'_n)$ converge uniformément sur $[a,b]$ vers une fonction $g$.
 		\end{enumerate}
@@ -394,7 +394,7 @@
 
 	\begin{theorem}[Continuité sous le signe intégral]
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in E$, $x \mapsto g(t,x)$ est mesurable.
 			\item pp. en $x \in X$, $t \mapsto g(t,x)$ est continue en $t_0 \in E$.
 			\item $\exists h \in L_1(X)$ positive telle que
@@ -405,7 +405,7 @@
 
 	\begin{theorem}[Dérivation sous le signe intégral]
 		On suppose :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall t \in I$, $x \mapsto g(t,x) \in L_1(X)$.
 			\item pp. en $x \in X$, $t \mapsto g(t,x)$ est dérivable sur $I$. On notera $\frac{\partial g}{\partial t}$ cette dérivée définie presque partout.
 			\item $\forall K \subseteq I$ compact, $\exists h_K \in L_1(X)$ positive telle que
@@ -421,7 +421,7 @@
 		On pose $\forall x \geq 0$,
 		\[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
 		alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
 			\item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
 			\item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.

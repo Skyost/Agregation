@@ -48,7 +48,7 @@
 	\begin{lemma}
 		\label{theoreme-des-deux-carres-fermat-3}
 		Voici quelques propriétés sur $N$ et $\mathbb{Z}[i]$ dont nous aurons besoin :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $N$ est multiplicative.
 			\item $\mathbb{Z}[i]^* = \{ z \in \mathbb{Z}[i] \mid N(z) = 1 \} = \{ \pm 1, \pm i \}$.
 			\item $\mathbb{Z}[i]$ est euclidien de stathme $N$.
@@ -56,7 +56,7 @@
 	\end{lemma}
 
 	\begin{proof}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item On a $\forall z, z' \in \mathbb{C}$, $|zz'|^2 = |z|^2 |z'|^2$ (par multiplicativité de $(.)^2$ et de $|.|$). Et $N$ n'est que la restriction de $|.|^2$ à $\mathbb{Z}[i]$. Il est également tout-à-fait possible de montrer cette propriété par un calcul direct.
 			\item Soit $z \in \mathbb{Z}[i]^*$. On a $N(z)N(z^{-1}) = N(zz^{-1}) = N(1) = 1$. Comme $N$ est à valeurs dans $\mathbb{N}$, on a $N(z) = N(z^{-1}) = 1$. En écrivant $z = a+ib$, on a $N(z) = a^2 + b^2 = 1$, d'où $a = \pm 1$ ou $b = \pm 1$. Réciproquement, $\pm 1$ et $\pm i$ sont bien inversibles dans $\mathbb{Z}[i]$ et de module $1$.
 			\item Soient $z, t \in \mathbb{Z}[i]$. On pose $\frac{z}{t} = x + iy \in \mathbb{C}$ avec $x, y \in \mathbb{R}$. Soient $a, b \in \mathbb{Z}$ tels que :

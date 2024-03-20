@@ -21,7 +21,7 @@
 
 	\begin{lemma}[Abel]
 		Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
 			\item $\forall r \in ]0,z_0[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
 		\end{enumerate}
@@ -46,7 +46,7 @@
 	Soient $\sum a_n z^n$ et $\sum b_n z^n$ deux séries entières dont on note $R_a$ et $R_b$ les rayons de convergence respectifs.
 
 	\begin{proposition}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $\forall n \in \mathbb{N}$, on a $|a_n| \leq |b_n|$, alors $R_a \geq R_b$.
 			\item Si $a_n = O(b_n)$, alors $R_a \geq R_b$.
 			\item Si $a_n \sim b_n$, alors $R_a = R_b$.
@@ -162,7 +162,7 @@
 
 	\begin{proposition}
 		On note $R_{c}$ le rayon de convergence du produit de Cauchy $\sum c_n z^n$. Alors,
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $R_c \geq \min \{R_a, R_b\}$.
 			\item $\forall z \in D(0, \min \{R_a, R_b\}), \, \sum_{n = 0}^{+\infty} c_n z^n = (\sum_{n = 0}^{+\infty} a_n z^n) (\sum_{n = 0}^{+\infty} b_n z^n)$.
 		\end{enumerate}
@@ -225,7 +225,7 @@
 
 	\begin{proposition}
 		Soient $f : x \mapsto \sum_{n=0}^{+\infty} a_n x^n$ et $g : x \mapsto \sum_{n=0}^{+\infty} b_n x^n$ deux fonctions développables en séries entières en $0$. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall \lambda \in \mathbb{C}$, $\lambda f + g$ est développable en série entière et son développement est
 			\[ \sum_{n=0}^{+\infty} (\lambda a_n + b_n) x^n \]
 			\item $fg$ est développable en série entière et son développement est le produit de Cauchy des deux séries entières.
@@ -234,7 +234,7 @@
 
 	\begin{proposition}
 		Soit $f : x \mapsto \sum_{n=0}^{+\infty} a_n x^n$ une fonction développable en série entière en $0$. Alors $\exists I \subseteq \mathbb{R}$ avec $0 \in I$ tel que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $f'$ est développable en série entière en $0$ son développement est
 			\[ \sum_{n=0}^{+\infty} (n+1) a_{n+1} x^n \]
 			\item $f$ est donc $\mathcal{C}^\infty$.
@@ -325,7 +325,7 @@
 
 	\begin{proposition}
 		Pour résoudre une équation différentielle linéaire $(L)$ à l'aide des séries entières :
-		\begin{enumerate}
+		\begin{enumerate}[label=(\roman*)]
 			\item On suppose que $\varphi(x) = \sum_{n=0}^{+\infty} a_n x^n$ est solution de $(L)$ et on l'introduit dans $(L)$.
 			\item On se ramène à $\sum_{n=0}^{+\infty} b_nx^n = 0$ où les $b_n$ dépendent des $a_n$.
 			\item On trouve une relation liant les $a_n$ et on vérifie que la série $\sum_{n=0}^{+\infty} a_n x^n$ a un rayon de convergence non-nul.

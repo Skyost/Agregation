@@ -16,7 +16,7 @@
 
 	\begin{definition}
 		Un sous ensemble $I \subseteq A$ est un \textbf{idéal} de $A$ si :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $(I,+)$ est un sous groupe de $(A,+)$.
 			\item Les produits $ai$ et $ia$ appartiennent à $I$ pour tout $a$ dans $A$ et $i \in I$ (propriété d'absorption).
 		\end{enumerate}
@@ -41,7 +41,7 @@
 
 	\begin{proposition}
 		Soient $\varphi : A \rightarrow B$ un morphisme d'anneaux et $I \subseteq A$, $J \subseteq B$ deux idéaux.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item L'ensemble $\varphi^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(\varphi)$ est un idéal de $A$.
 			\item Si $\varphi$ est surjectif, alors $\varphi(I)$ est un idéal de $B$.
 		\end{enumerate}
@@ -68,7 +68,7 @@
 
 	\begin{proposition}
 		On suppose $A$ commutatif. Soit $I$ un idéal de $A$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $I$ est maximal si et seulement si $A/I$ est un corps.
 			\item $I$ est premier si et seulement si $A/I$ est un anneau intègre.
 		\end{enumerate}
@@ -107,7 +107,7 @@
 
 	\begin{theorem}
 		On suppose $A$ principal. Soit $a \in A$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $(a)$ est premier si et seulement si $a$ est irréductible.
 			\item En supposant $a \neq 0$, $(a)$ est premier si et seulement si $(a)$ est maximal.
 		\end{enumerate}
@@ -148,7 +148,7 @@
 
 	\begin{corollary}
 		On suppose $A$ commutatif. Les assertions suivantes sont équivalentes :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $A$ est un corps commutatif.
 			\item $A[X]$ est un anneau euclidien.
 			\item $A[X]$ est un anneau principal.
@@ -192,12 +192,12 @@
 		Soient $a_1, \dots, a_n \in A^*$.
 		\begin{itemize}
 			\item $d \in A$ est un \textbf{plus grand commun diviseur} ``pgcd'' de $a_1, \dots, a_m$ si $d$ satisfait les deux propriétés suivantes :
-			\begin{enumerate}[(i)]
+			\begin{enumerate}[label=(\roman*)]
 				\item $d \mid a_i, \forall i \in \llbracket 1, n \rrbracket$.
 				\item Si $\exists d' \in A$ tel que $d' \mid a_i, \forall i \in \llbracket 1, n \rrbracket$, alors $d' \mid d$.
 			\end{enumerate}
 			\item $m \in A$ est un \textbf{plus petit commun multiple} ``ppcm'' de $a_1, \dots, a_n$ si $m$ satisfait les deux propriétés suivantes :
-			\begin{enumerate}[(i)]
+			\begin{enumerate}[label=(\roman*)]
 				\item $a_i \mid m, \forall i \in \llbracket 1, n \rrbracket$.
 				\item Si $\exists m' \in A$ tel que $a_i \mid m', \forall i \in \llbracket 1, n \rrbracket$, alors $m \mid m'$.
 			\end{enumerate}
@@ -218,7 +218,7 @@
 
 	\begin{theorem}[Décomposition de Bézout]
 		On suppose $A$ principal. Soient $a_1, \dots, a_n \in A^*$. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Il existe $d$ un $\operatorname{pgcd}$ de $a_1, \dots, a_n$. $d$ est tel que $(d) = (a_1, \dots, a_n)$. En particulier, $d$ est de la forme $d = b_1 a_1 + \dots + b_n a_n$ avec $\forall i \in \llbracket 1, n \rrbracket, \, b_i \in A$.
 			\item Il existe $m$ un $\operatorname{ppcm}$ de $a_1, \dots, a_n$. $m$ est tel que $(m) = (a_1) \cap \dots \cap (a_n)$.
 		\end{enumerate}
@@ -257,7 +257,7 @@
 
 	\begin{definition}
 		$A$ est dit \textbf{factoriel} s'il est intègre et si, pour tout élément $a \in A^*$ non inversible, les conditions suivantes sont satisfaites :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item \label{122-2} $a = q_1 q_2 \dots q_s$ avec $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible (existence d'une décomposition en produit d'irréductibles).
 			\item \label{122-3} Si $a = q_1 q_2 \dots q_s = \widetilde{q_1} \widetilde{q_2} \dots \widetilde{q_m}$ avec $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible et $\forall i \in \llbracket 1, s \rrbracket, \, q_i$ irréductible, alors $s = m$ et pour toute permutation $\pi$ d'indice, $q_i \widetilde{q_{\pi(i)}}, \, \forall i \in \llbracket 1, s \rrbracket$ (``unicité'' de la décomposition).
 		\end{enumerate}
@@ -267,7 +267,7 @@
 
 	\begin{proposition}
 		Si $A$ vérifie le \cref{122-2}, alors les assertions suivantes sont équivalentes :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $A$ vérifie le \cref{122-3}.
 			\item $A$ vérifie le lemme d'Euclide : si $p \in A$ est irréductible, alors $p \mid ab \implies p \mid a \text { ou } p \mid b$.
 			\item Pour tout $p \in A$, $p$ est irréductible si et seulement si $(p)$ premier.
@@ -289,7 +289,7 @@
 
 	\begin{proposition}
 		On suppose $A$ factoriel. Soient $a, b \in A^*$. Alors, en reprenant les notations précédentes :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $a \mid b \iff v_p(a) \leq v_p(b)$ pour tout $p \in \mathcal{S}$.
 			\item $\prod_{p \in \mathcal{S}} p^{\min(v_p(a), v_p(b))}$ est un pgcd de $a$ et de $b$.
 			\item $\prod_{p \in \mathcal{S}} p^{\max(v_p(a), v_p(b))}$ est un ppcm de $a$ et de $b$.
@@ -309,7 +309,7 @@
 
 	\begin{lemma}[Gauss]
 		On suppose $A$ factoriel. Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Le produit de deux polynômes primitifs est primitif (ie. dont le pgcd des coefficients est associé à $1$).
 			\item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
 		\end{enumerate}
@@ -319,7 +319,7 @@
 
 	\begin{theorem}[Critère d'Eisenstein]
 		Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. On suppose que $A$ est factoriel et qu'il existe $p \in A$ irréductible tel que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
 			\item $p \nmid a_n$.
 			\item $p^2 \nmid a_0$.
@@ -405,7 +405,7 @@
 	\end{lemma}
 
 	\begin{lemma}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $N$ est multiplicative.
 			\item $\mathbb{Z}[i]^* = \{ z \in \mathbb{Z}[i] \mid N(z) = 1 \} = \{ \pm 1, \pm i \}$.
 			\item $\mathbb{Z}[i]$ est euclidien de stathme $N$.

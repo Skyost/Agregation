@@ -13,7 +13,7 @@
 
 	\begin{definition}
 		Soit $H$ un espace vectoriel réel (resp. complexe). On appelle \textbf{produit scalaire} sur $H$ une forme bilinéaire $\langle . , . \rangle$ telle que :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\forall y \in H, \, x \mapsto \langle x, y \rangle$ est une forme linéaire.
 			\item $\forall x \in H, \, \langle x, x \rangle \geq 0$ avec égalité si et seulement si $x = 0$.
 			\item $\forall x, y \in H, \, \langle x, y \rangle = \langle y, x \rangle$ (resp. $\langle x, y \rangle = \overline{\langle y, x \rangle}$).
@@ -49,7 +49,7 @@
 	\begin{proposition}[Identités de polarisation]
 		\label{213-1}
 		Soient $x, y \in H$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\Vert x + y \Vert^2 = \Vert x \Vert^2 + 2 \langle x, y \rangle + \Vert y \Vert^2$ (si $\mathbb{K} = \mathbb{R}$).
 			\item $\Vert x + y \Vert^2 = \Vert x \Vert^2 + 2 \operatorname{Re}(\langle x, y \rangle) + \Vert y \Vert^2$ (si $\mathbb{K} = \mathbb{C}$).
 		\end{enumerate}
@@ -99,7 +99,7 @@
 
 	\begin{proposition}
 		Soit $A \subseteq H$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $A^\perp$ est un sous-espace vectoriel fermé de $H$.
 			\item $A^\perp = (\operatorname{Vect}(A))^\perp$.
 			\item $A^\perp = (\overline{A})^\perp$.
@@ -158,7 +158,7 @@
 
 	\begin{theorem}[Projection sur un sous-espace fermé]
 		Soit $F$ un sous-espace vectoriel fermé de $H$.
-		\begin{enumerate}
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $x \in H$, le projeté $P_F(x)$ de $x$ sur $F$ est l'unique élément $p \in H$ qui vérifie
 			\[ p \in F \text{ et } x - p \in F^\perp \]
 			\item $P_F : H \rightarrow F$ est linéaire, continue, surjective.
@@ -255,7 +255,7 @@
 	\reference[BMP]{108}
 
 	\begin{theorem}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Tout espace de Hilbert admet une base hilbertienne.
 			\item Tout espace de Hilbert séparable (ie. admettant une partie dénombrable dense) admet une base hilbertienne dénombrable.
 		\end{enumerate}
@@ -268,7 +268,7 @@
 	\begin{theorem}
 		\label{213-2}
 		Soit $H$ un espace de Hilbert séparable et $(e_n)_{n \in I}$ une famille orthonormée dénombrable de $H$. Les propriétés suivantes sont équivalentes :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $H$.
 			\item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, e_n \rangle e_n$.
 			\item \label{213-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, e_n \rangle \vert^2$.

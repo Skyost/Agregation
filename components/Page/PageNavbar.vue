@@ -11,6 +11,9 @@
         <ski-navbar-item to="/developpements/" :active="$route.path.startsWith('/developpements/')">
           <ski-icon icon="pencil-fill" /> Développements
         </ski-navbar-item>
+        <ski-navbar-item to="/fiches/" :active="$route.path.startsWith('/fiches/')">
+          <ski-icon icon="backpack-fill" /> Fiches
+        </ski-navbar-item>
         <ski-navbar-item to="/bibliographie/" :active="$route.path === '/bibliographie/'">
           <ski-icon icon="book-fill" /> Bibliographie
         </ski-navbar-item>
@@ -42,3 +45,5 @@
   }
 }
 </style>
+<script setup lang="ts">
+</script>

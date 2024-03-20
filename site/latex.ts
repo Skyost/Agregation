@@ -172,6 +172,14 @@ export const latexGenerateOptions: LatexGenerateOptions = {
     {
       data: [
         {
+          directory: 'fiches',
+          title: 'Fiches'
+        }
+      ]
+    },
+    {
+      data: [
+        {
           directory: 'lecons',
           title: 'Plans de leçons'
         }

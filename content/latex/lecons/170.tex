@@ -104,7 +104,7 @@
 	\end{definition}
 
 	\begin{proposition}
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $A \subseteq E$, $A^\perp = (\operatorname{Vect}(A))^\perp$.
 			\item Si $A \subseteq E$, $A \subseteq A^{\perp\perp}$.
 			\item Si $A \subseteq B \subseteq E$, $B^{\perp} \subseteq A^{\perp}$.
@@ -129,7 +129,7 @@
 
 	\begin{proposition}
 		Soit $F$ un sous-espace vectoriel de $E$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\dim(E) = \dim(F) + \dim(F^\perp) - \dim(F \, \cap \, \ker(q))$.
 			\item $F^{\perp\perp} = F + \ker(q)$.
 			\item Si la restriction de $q$ à $F$ $q_{|F}$ est définie, alors $E = F \oplus F^{\perp}$.
@@ -179,7 +179,7 @@
 		On écrit
 		\[ q(x_1, \dots, x_n) = \sum_{i=1}^n a_{i,i} x_i^2 + \sum_{1 \leq i<j \leq n} a_{i,j} x_ix_j \]
 		et on cherche à écrire $q$ comme combinaison linéaire de carrés de formes linéaires indépendantes. On a deux cas :
-		\begin{enumerate}
+		\begin{enumerate}[label=(\roman*)]
 			\item \underline{Il existe $i \in \llbracket 1, n \rrbracket$ tel que $a_{i,i} \neq 0$.} On peut suppose $i = 1$, on pose alors $a = a_{1,1}$. On réécrit $q$ sous la forme :
 			\begin{align*}
 				q(x_1, \dots, x_n) &= ax_1^2 + x_1B(x_2, \dots, x_n) + C(x_2, \dots, x_n) \\
@@ -275,7 +275,7 @@
 
 	\begin{corollary}
 		On note $\operatorname{sign}(q)$ la signature de $q$.
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $q$ est définie positive si et seulement si $\operatorname{sign}(q) = (n, 0)$ si et seulement s'il existe des bases $q$-orthonormées.
 			\item $q$ est définie négative si et seulement si $\operatorname{sign}(q) = (0, n)$.
 			\item $q$ est non dégénérée si et seulement si $\operatorname{sign}(q) = (p, n-p)$.
@@ -426,7 +426,7 @@
 
 	\begin{application}
 		Soit $S$ la surface d'équation $z = f(x, y)$ où $f$ est de classe $\mathcal{C}^3$ au voisinage de l'origine. On suppose la forme quadratique $\mathrm{d}^2 f_0$ non dégénérée. Alors, en notant $P$ le plan tangent à $S$ en $0$ :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item Si $\mathrm{d}^2 f_0$ est de signature $(2, 0)$, alors $S$ est au-dessus de $P$ au voisinage de $0$.
 			\item Si $\mathrm{d}^2 f_0$ est de signature $(0, 2)$, alors $S$ est en-dessous de $P$ au voisinage de $0$.
 			\item Si $\mathrm{d}^2 f_0$ est de signature $(1, 1)$, alors $S$ traverse $P$ selon une courbe admettant un point double en $(0, f(0))$.

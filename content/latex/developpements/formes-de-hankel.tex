@@ -15,7 +15,7 @@
 		On note $x_1, \dots, x_t$ les racines complexes de $P$ de multiplicités respectives $m_1, \dots, m_t$. On pose
 		\[ s_0 = n \text{ et } \forall k \geq 1, \, s_k = \sum_{i=1}^t m_i x_i^k \]
 		Alors :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $\sigma = \sum_{i, j \in \llbracket 0, n-1 \rrbracket} s_{i+j} X_i X_j$ définit une forme quadratique sur $\mathbb{C}^n$ ainsi qu'une forme quadratique $\sigma_{\mathbb{R}}$ sur $\mathbb{R}^n$.
 			\item Si on note $(p,q)$ la signature de $\sigma_{\mathbb{R}}$, on a :
 			\begin{itemize}
@@ -64,7 +64,7 @@
 
 	\begin{proposition}[Sommes de Newton]
 		On pose $P = \sum_{k=0}^n a_k X^k$. Les sommes de Newton vérifient les relations suivantes :
-		\begin{enumerate}[(i)]
+		\begin{enumerate}[label=(\roman*)]
 			\item $s_0 = n$.
 			\item $\forall k \in \llbracket 1, n-1 \rrbracket, \, s_k = -k a_{n-k} \sum_{i=1}^{k-1} s_i a_{n-k+i}$.
 			\item $\forall p \in \mathbb{N}, \, s_{p+n} = \sum_{i=1}^{n} s_i a_{p+n-i}$.

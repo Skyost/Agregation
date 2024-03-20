@@ -150,11 +150,11 @@ const handleProofs = (root: HTMLElement) => {
  * @param {HTMLElement} root - The root HTML element.
  */
 const handleReferences = (root: HTMLElement) => {
-  const references = root.querySelectorAll('.bookref')
+  const bookReferences = root.querySelectorAll('.bookref')
   let previousReference
-  for (const reference of references) {
-    const short = reference.querySelector('.bookrefshort')!.text.trim()
-    let html = reference.querySelector('.bookrefpage')!.text.trim()
+  for (const bookReference of bookReferences) {
+    const short = bookReference.querySelector('.bookrefshort')!.text.trim()
+    let html = bookReference.querySelector('.bookrefpage')!.text.trim()
     // If 'short' is not empty, format the HTML with the short reference.
     if (short.length > 0) {
       previousReference = short
@@ -162,9 +162,46 @@ const handleReferences = (root: HTMLElement) => {
     }
     // If there's a previous reference, link to the bibliography.
     if (previousReference) {
-      reference.innerHTML = `<a href="/bibliographie/#${previousReference}">${html}</a>`
+      bookReference.innerHTML = `<a href="/bibliographie/#${previousReference}">${html}</a>`
     }
   }
+  const references = root.querySelectorAll('a[data-reference-type="ref+label"]')
+  for (const reference of references) {
+    const href = reference.getAttribute('href')
+    if (!href) {
+      continue
+    }
+    const target = root.getElementById(href.substring(1))
+    if (!target) {
+      continue
+    }
+    const name = findRefName(target)
+    if (name) {
+      reference.innerHTML = name
+    }
+  }
+}
+
+/**
+ * Finds the ref name of an element.
+ *
+ * @param element The element.
+ */
+const findRefName = (element: HTMLElement | null) => {
+  if (element == null) {
+    return null
+  }
+  if (element.tagName === 'DIV') {
+    return element.querySelector('> p > strong')?.text
+  }
+  if (element.tagName === 'LI') {
+    const index = Array.from(element.parentNode.childNodes).indexOf(element)
+    return `Point ${(index - 1)}`
+  }
+  if (element.tagName === 'SPAN' || element.tagName === 'P') {
+    return findRefName(element.parentNode)
+  }
+  return null
 }
 
 /**
