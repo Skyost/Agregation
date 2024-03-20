@@ -2,6 +2,7 @@
 import type { Ref } from 'vue'
 import LessonCard from '~/components/Cards/LessonCard.vue'
 import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
+import SheetCard from '~/components/Cards/SheetCard.vue'
 import type { LatexContentObject, Development, Lesson, Sheet } from '~/types'
 
 const route = useRoute()
@@ -98,7 +99,7 @@ const isEmpty = computed(() => lessons.value.length === 0 && developments.value.
         </p>
         <cards v-if="sheets.length > 0" :items="sheets">
           <template #default="slotProps">
-            <development-card :development="slotProps.item" />
+            <sheet-card :sheet="slotProps.item" />
           </template>
         </cards>
       </div>

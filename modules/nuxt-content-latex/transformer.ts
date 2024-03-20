@@ -187,12 +187,12 @@ const handleReferences = (root: HTMLElement) => {
  *
  * @param element The element.
  */
-const findRefName = (element: HTMLElement | null) => {
+const findRefName = (element: HTMLElement | null): string | null => {
   if (element == null) {
     return null
   }
   if (element.tagName === 'DIV') {
-    return element.querySelector('> p > strong')?.text
+    return element.querySelector('> p > strong')?.text ?? null
   }
   if (element.tagName === 'LI') {
     const index = Array.from(element.parentNode.childNodes).indexOf(element)

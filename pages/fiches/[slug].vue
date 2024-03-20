@@ -16,7 +16,7 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
 
 <template>
   <div>
-    <page-head title="Affichage d'un développement" />
+    <page-head title="Affichage d'une fiche" />
     <div v-if="pending">
       <spinner />
     </div>

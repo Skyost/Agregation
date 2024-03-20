@@ -68,6 +68,7 @@ export default defineNuxtConfig({
       '/latex/common.tex',
       '/latex/pandoc.tex',
       '/latex/developpements.tex',
+      '/latex/fiches.tex',
       '/latex/lecons.tex',
       '/latex/lecons-developpements.tex',
       '/latex/templates/gathering.tex',
