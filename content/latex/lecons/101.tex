@@ -269,34 +269,55 @@
 
 	Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$.
 
-	\reference[D-L]{137}
+	\reference[ROM21]{199}
 
-	\begin{theorem}
-		Soit $f \in \mathcal{L}(E)$. Soient $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E$. Alors,
-		\[ \operatorname{Mat}(f, \mathcal{B}_1) = P \operatorname{Mat}(f, \mathcal{B}_2) P^{-1} \]
-		où $P \in \mathrm{GL}_n(\mathbb{K})$ est la matrice de passage de $\mathcal{B}_1$ vers $\mathcal{B}_2$.
-	\end{theorem}
+  \begin{proposition}
+    L'application
+    \[
+      \begin{array}{ccc}
+        \mathrm{GL}_n(\mathbb{K}) \times \mathcal{M}_n(\mathbb{K}) &\rightarrow& \mathcal{M}_n(\mathbb{K}) \\
+        (P, A) &\mapsto& PAP^{-1}
+      \end{array}
+    \]
+    définit une action de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+  \end{proposition}
 
-	C'est ce théorème qui justifie que l'on va étudier l'action par conjugaison de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+  \begin{definition}
+    Deux matrices qui sont dans la même orbite pour cette action sont dites \textbf{semblables}.
+  \end{definition}
 
-	\begin{definition}
-		Deux matrices qui sont dans le même orbite pour cette action sont dites \textbf{semblables}.
-	\end{definition}
+  \reference[GOU21]{127}
 
-	\begin{theorem}
-		Soient $A$ et $B$ deux matrices semblables. Alors :
-		\begin{itemize}
-			\item $\trace(A) = \trace(B)$.
-			\item $\det(A) = \det(B)$.
-			\item $\rang(A) = \rang(B)$.
-			\item $\chi_A = \chi_B$.
-			\item $\pi_A = \pi_B$.
-		\end{itemize}
-	\end{theorem}
+  \begin{remark}
+    Deux matrices semblables représentes la même application linéaire dans deux bases de $\mathbb{K}^n$.
+  \end{remark}
 
-	\begin{cexample}
-		Les matrices $\begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix}$ et $\begin{pmatrix} 0 & 1 \\ 0 & 0\end{pmatrix}$ ont la même trace, le même déterminant, le même polynôme caractéristique, mais ne sont pas semblables.
-	\end{cexample}
+  C'est cette remarque qui justifie que l'on va étudier l'action par conjugaison de $\mathrm{GL}_n(\mathbb{K})$ sur $\mathcal{M}_n(\mathbb{K})$.
+
+  \reference[ROM21]{199}
+
+  \begin{theorem}
+    Soient $A$ et $B$ deux matrices semblables. Alors :
+    \begin{itemize}
+      \item $\trace(A) = \trace(B)$.
+      \item $\det(A) = \det(B)$.
+      \item $\rang(A) = \rang(B)$.
+      \item $\chi_A = \chi_B$.
+      \item $\pi_A = \pi_B$.
+    \end{itemize}
+  \end{theorem}
+
+  \reference[D-L]{137}
+
+  \begin{cexample}
+    Les matrices $\begin{pmatrix} 0 & 0 \\ 0 & 0\end{pmatrix}$ et $\begin{pmatrix} 0 & 1 \\ 0 & 0\end{pmatrix}$ ont la même trace, le même déterminant, le même polynôme caractéristique, mais ne sont pas semblables.
+  \end{cexample}
+
+  \reference[GOU21]{167}
+
+  \begin{theorem}
+    Soient $\mathbb{L}$ une extension de $\mathbb{K}$ et $A, B \in \mathcal{M}_n(\mathbb{K})$. On suppose $\mathbb{K}$ infini et $A, B$  semblables sur $\mathbb{L}$. Alors $A$ et $B$ sont semblables sur $\mathbb{K}$.
+  \end{theorem}
 
 	\reference[GOU21]{397}
 
