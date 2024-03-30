@@ -84,14 +84,12 @@
 		Un produit fini d'espaces métriques est connexe si et seulement si ces espaces métriques sont tous connexes.
 	\end{proposition}
 
-	\reference{46}
+	\reference[I-P]{116}
 	\dev{connexite-des-valeurs-d-adherence-d-une-suite-dans-un-compact}
 
 	\begin{application}
 		Soit $(E, d)$ un espace métrique compact. Soit $(u_n)$ une suite de $E$ telle que $d(u_n,u_{n-1}) \longrightarrow 0$. Alors l'ensemble $\Gamma$ des valeurs d'adhérence de $(u_n)$ est connexe.
 	\end{application}
-
-	\reference[QUE20]{142}
 
 	\begin{corollary}[Lemme de la grenouille]
 		Soient $f : [0, 1] \rightarrow [0, 1]$ continue et $(x_n)$ une suite de $[0, 1]$ tel que
@@ -293,5 +291,25 @@
 	\begin{application}
 		$\exp : \mathcal{M}_n(\mathbb{C}) \rightarrow \mathrm{GL}_n(\mathbb{C})$ est surjective.
 	\end{application}
+
+	\reference[I-P]{396}
+
+  \begin{lemma}
+    \begin{enumerate}[label=(\roman*)]
+      \item Soit $A \in \mathcal{M}_n(\mathbb{C})$. Alors $\exp(A) \in \mathrm{GL}_n(\mathbb{C})$.
+      \item $\exp$ est différentiable en $0$ et $\mathrm{d}\exp_0 = \operatorname{id}_{\mathcal{M}_n(\mathbb{C})}$.
+      \item Soit $M \in \mathrm{GL}_n(\mathbb{C})$. Alors $M^{-1} \in \mathbb{C}[M]$.
+    \end{enumerate}
+  \end{lemma}
+
+  \dev{surjectivite-de-l-exponentielle}
+
+  \begin{theorem}
+    $\exp : \mathcal{M}_n(\mathbb{C}) \rightarrow \mathrm{GL}_n(\mathbb{C})$ est surjective.
+  \end{theorem}
+
+  \begin{application}
+    $\exp(\mathcal{M}_n(\mathbb{R})) = \mathrm{GL}_n(\mathbb{R})^2$, où $\mathrm{GL}_n(\mathbb{R})^2$ désigne les carrés de $\mathrm{GL}_n(\mathbb{R})$.
+  \end{application}
 	%</content>
 \end{document}
