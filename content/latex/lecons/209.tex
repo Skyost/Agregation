@@ -271,17 +271,17 @@
 	\reference{109}
 
 	\begin{theorem}
-		\label{246-2}
+		\label{209-1}
 		Soit $H$ un espace de Hilbert et $(\epsilon_n)_{n \in I}$ une famille orthonormée dénombrable de $H$. Les propriétés suivantes sont équivalentes :
 		\begin{enumerate}[label=(\roman*)]
 			\item La famille orthonormée $(\epsilon_n)_{n \in I}$ est une base hilbertienne de $H$.
 			\item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, \epsilon_n \rangle \epsilon_n$.
-			\item \label{246-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
+			\item \label{209-2} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
 		\end{enumerate}
 	\end{theorem}
 
 	\begin{remark}
-		L'égalité du \cref{246-2} \cref{246-3} est appelée \textbf{égalité de Parseval}.
+		L'égalité du \cref{209-1} \cref{209-2} est appelée \textbf{égalité de Parseval}.
 	\end{remark}
 
 	\reference{123}
@@ -291,14 +291,13 @@
 	\end{theorem}
 
 	\begin{corollary}
-		\label{246-4}
+		\label{209-3}
 		\[ \forall f \in L_2^{2 \pi}, \, f = \sum_{n = -\infty}^{+\infty} c_n(f) e_n \]
 	\end{corollary}
 
 	\reference[GOU20]{272}
 
 	\begin{example}
-		\label{246-5}
 		On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
 		\[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
 	\end{example}
@@ -306,7 +305,7 @@
 	\reference[BMP]{124}
 
 	\begin{remark}
-		L'égalité du \cref{246-4} est valable dans $L_2^{2\pi}$, elle signifie donc que
+		L'égalité du \cref{209-3} est valable dans $L_2^{2\pi}$, elle signifie donc que
 		\[ \left\Vert \sum_{n = -N}^{N} c_n(f) e_n - f \right\Vert_2 \longrightarrow_{N \rightarrow +\infty} 0 \]
 	\end{remark}
 
