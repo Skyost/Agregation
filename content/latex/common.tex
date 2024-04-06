@@ -53,22 +53,14 @@
 function findBibFiles(folder)
 	local files = {}
 	local lfs = require("lfs")
-	if isDir(folder) then
-		for file in lfs.dir(folder) do
-			if file:match("%.bib$") then
-				table.insert(files, folder .. "/" .. file)
-			end
+	local current_dir = lfs.currentdir()
+	local folder_path = current_dir .. package.config:sub(1,1) .. folder
+	for file in lfs.dir(folder_path) do
+		if file:match("%.bib$") then
+			table.insert(files, folder .. "/" .. file)
 		end
 	end
 	return files
-end
-
-function isDir(name)
-	if type(name)~="string" then return false end
-	local cd = lfs.currentdir()
-	local is = lfs.chdir(name) and true or false
-	lfs.chdir(cd)
-	return is
 end
 \end{luacode*}
 
