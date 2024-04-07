@@ -1,4 +1,4 @@
-import { HasCategories } from '~/types/category'
+import { HasCategories } from '../types'
 
 /**
  * Represents a book with detailed information.
