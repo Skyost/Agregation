@@ -17,19 +17,12 @@ const date = computed(() => {
   const parts = props.book.date.split('-')
   return `${parts[2]}/${parts[1]}/${parts[0]}`
 })
-
-const changeImageSrc = (event: Event) => {
-  const newSrc = props.book.altcover ? props.book.altcover : `http://z2-ec2.images-amazon.com/images/P/${props.book.isbn10}.01.MAIN._SCRM_.jpg`
-  const imageElement = event.target as HTMLImageElement
-  imageElement.src = newSrc
-  imageElement.onerror = null
-}
 </script>
 
 <template>
   <ski-columns :id="book.short" class="book">
     <ski-column cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
-      <img class="preview" :src="image" :alt="alt" @error="changeImageSrc">
+      <img class="preview" :src="image" :alt="alt">
     </ski-column>
     <ski-column class="info" cols="12" md="8" lg="9">
       <h2 class="title">
