@@ -49,48 +49,7 @@
 
 % Chemin vers la bibliographie :
 
-\begin{luacode*}
-function findBibFiles(folder)
-	local files = {}
-	local lfs = require("lfs")
-	local currentDir = lfs.currentdir()
-	local folderPath = currentDir .. package.config:sub(1,1) .. folder
-    local isDirectory, errMsg = lfs.attributes(folderPath, "mode")
-	if not isDirectory or errMsg ~= "directory" then
-		return files
-	end
-	for file in lfs.dir(folderPath) do
-		if file:match("%.bib$") then
-			table.insert(files, folder .. "/" .. file)
-		end
-	end
-	return files
-end
-
-function exists(file)
-	local ok, err, code = os.rename(file, file)
-	if not ok then
-		if code == 13 then
-			return true
-		end
-	end
-	return ok, err
-end
-
-function isDir(path)
-	return exists(path.."/")
-end
-\end{luacode*}
-
-\newcommand{\setbibliographypath}[1]{
-	\directlua{
-		local files = findBibFiles("#1")
-		for _, file in ipairs(files) do
-			tex.print("\\addbibresource{" .. file .. "}")
-		end
-	}
-}
-
+\newcommand{\setbibliographypath}[1]{\addbibresource[glob=true]{#1/*.bib}}
 \setbibliographypath{../bibliographie}
 
 % Police :
