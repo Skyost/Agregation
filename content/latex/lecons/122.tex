@@ -191,12 +191,12 @@
 	\begin{definition}
 		Soient $a_1, \dots, a_n \in A^*$.
 		\begin{itemize}
-			\item $d \in A$ est un \textbf{plus grand commun diviseur} ``pgcd'' de $a_1, \dots, a_m$ si $d$ satisfait les deux propriétés suivantes :
+			\item $d \in A$ est un \textbf{plus grand commun diviseur} ``PGCD'' de $a_1, \dots, a_m$ si $d$ satisfait les deux propriétés suivantes :
 			\begin{enumerate}[label=(\roman*)]
 				\item $d \mid a_i, \forall i \in \llbracket 1, n \rrbracket$.
 				\item Si $\exists d' \in A$ tel que $d' \mid a_i, \forall i \in \llbracket 1, n \rrbracket$, alors $d' \mid d$.
 			\end{enumerate}
-			\item $m \in A$ est un \textbf{plus petit commun multiple} ``ppcm'' de $a_1, \dots, a_n$ si $m$ satisfait les deux propriétés suivantes :
+			\item $m \in A$ est un \textbf{plus petit commun multiple} ``PPCM'' de $a_1, \dots, a_n$ si $m$ satisfait les deux propriétés suivantes :
 			\begin{enumerate}[label=(\roman*)]
 				\item $a_i \mid m, \forall i \in \llbracket 1, n \rrbracket$.
 				\item Si $\exists m' \in A$ tel que $a_i \mid m', \forall i \in \llbracket 1, n \rrbracket$, alors $m \mid m'$.
@@ -205,16 +205,29 @@
 	\end{definition}
 
 	\begin{remark}
-		Un pgcd (resp. un ppcm), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux pgcd (resp. ppcm) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{pgcd}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
+		Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{pgcd}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
 	\end{remark}
 
 	\reference[GOU21]{60}
 
 	\begin{example}
-		Soient $\mathbb{K}$ un corps commutatif. On pose $P_n = X^n - 1 \in \mathbb{K}[X]$ pour $n \in \mathbb{N}^*$. Alors, pour $a, b \in \mathbb{N}^*$, le pgcd unitaire de $P_a$ et $P_b$ est égal à $P_{\operatorname{pgcd}(a,b)}$.
+		Soient $\mathbb{K}$ un corps commutatif. On pose $P_n = X^n - 1 \in \mathbb{K}[X]$ pour $n \in \mathbb{N}^*$. Alors, pour $a, b \in \mathbb{N}^*$, le PGCD unitaire de $P_a$ et $P_b$ est égal à $P_{\operatorname{pgcd}(a,b)}$.
 	\end{example}
 
-	\reference[ULM18]{42}
+  \reference[ULM18]{40}
+
+  \begin{proposition}
+    Soient $a, b \in A^*$. Un élément $c \in A$ est un PPCM de $a$ et $b$ si et seulement si $(a) \, \cap \, (b) = (c)$. En particulier, $a$ et $b$ admettent un PPCM si et seulement si $(a) \, \cap \, (b)$ est un idéal principal.
+  \end{proposition}
+
+  \begin{proposition}
+    Soient $a, b \in A^*$. Soit $d \in A$. Les assertions suivantes sont équivalentes.
+    \begin{enumerate}[label=(\roman*)]
+      \item $d \mid a$, $d \mid b$ et il existe $u, v \in A$ tels que $d = au + bv$.
+      \item $d \sim \operatorname{pgcd}(a, b)$ et il existe $u, v \in A$ tels que $d = au + bv$.
+      \item $(d) = (a,b)$.
+    \end{enumerate}
+  \end{proposition}
 
 	\begin{theorem}[Décomposition de Bézout]
 		On suppose $A$ principal. Soient $a_1, \dots, a_n \in A^*$. Alors :
@@ -228,16 +241,21 @@
 		Une façon d'obtenir ces coefficients si $A$ est euclidien est d'utiliser l'algorithme d'Euclide généralisé.
 	\end{remark}
 
-	\reference{54}
+	\reference{52}
+
+	\begin{example}
+		Dans $\mathbb{F}_2[X]$ :
+		\[ -X(X^3+X^2+1) + (1+X^2)(X^2+X+1) = 1 \]
+	\end{example}
 
 	\begin{application}
-		$\overline{X}^2+1$ est inversible dans $\mathbb{F}_2[X]/(X^5 + X^2 + 1)$ d'inverse $\overline{X}^4+\overline{X}^2+X+1$.
+		$\overline{X}^2+1$ est inversible dans $\mathbb{F}_2[X]/(X^3 + X^2 + 1)$ d'inverse $\overline{X}^2+X+1$.
 	\end{application}
 
 	\reference{41}
 
 	\begin{definition}
-		Deux éléments $a$ et $b$ de $A$ sont dits \textbf{premiers entre eux} si $\operatorname{pgcd}(a,b) \sim 1$.
+		Deux éléments $a$ et $b$ de $A$ sont dits \textbf{premiers entre eux} s'ils admettent un PGCD et $\operatorname{pgcd}(a,b) \sim 1$.
 	\end{definition}
 
 	\begin{example}
@@ -291,8 +309,8 @@
 		On suppose $A$ factoriel. Soient $a, b \in A^*$. Alors, en reprenant les notations précédentes :
 		\begin{enumerate}[label=(\roman*)]
 			\item $a \mid b \iff v_p(a) \leq v_p(b)$ pour tout $p \in \mathcal{S}$.
-			\item $\prod_{p \in \mathcal{S}} p^{\min(v_p(a), v_p(b))}$ est un pgcd de $a$ et de $b$.
-			\item $\prod_{p \in \mathcal{S}} p^{\max(v_p(a), v_p(b))}$ est un ppcm de $a$ et de $b$.
+			\item $\prod_{p \in \mathcal{S}} p^{\min(v_p(a), v_p(b))}$ est un PGCD de $a$ et de $b$.
+			\item $\prod_{p \in \mathcal{S}} p^{\max(v_p(a), v_p(b))}$ est un PPCM de $a$ et de $b$.
 		\end{enumerate}
 	\end{proposition}
 
@@ -310,7 +328,7 @@
 	\begin{lemma}[Gauss]
 		On suppose $A$ factoriel. Alors :
 		\begin{enumerate}[label=(\roman*)]
-			\item Le produit de deux polynômes primitifs est primitif (ie. dont le pgcd des coefficients est associé à $1$).
+			\item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est associé à $1$).
 			\item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
 		\end{enumerate}
 	\end{lemma}
