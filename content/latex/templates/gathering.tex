@@ -1,11 +1,26 @@
 \input{common}
 \input{bibliography}
 
+% Nouveaux paquets :
+
+\usepackage{xstring}
+\usepackage{catchfile}
+
 % Table des matières :
 
 \setcounter{tocdepth}{1}
 
 % Nouvelles commandes :
+
+\CatchFileDef{\headfull}{../../.git/HEAD.}{}
+\StrGobbleRight{\headfull}{1}[\head]
+\StrBehind[2]{\head}{/}[\branch]
+\IfFileExists{../../.git/refs/heads/\branch.}{%
+	\CatchFileDef{\commit}{../../.git/refs/heads/\branch.}{}}{%
+	\newcommand{\commit}{%
+		\dots~(in \emph{packed-refs})%
+	}%
+}
 
 \newcommand{\gatheringtitle}{%s}
 
@@ -71,6 +86,10 @@
 				\bigskip
 
 				{\footnotesize \textit{Une coquille ? Une correction à apporter ?} Rendez-vous sur le dépôt Github ``\href{https://github.com/Skyost/Agregation}{\texttt{Skyost/Agregation}}'' ou contactez-moi via mon site web personnel \href{https://skyost.eu/fr/\#contact}{\texttt{skyost.eu}}.}
+				
+				\bigskip
+				
+				{\tiny \texttt{\#\commit}}
 			\end{center}%
 			\vfill%
 		}%
