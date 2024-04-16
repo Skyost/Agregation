@@ -3,82 +3,46 @@
 
 \begin{document}
 	%<*content>
-	\lesson{algebra}{150}{Polynômes d'endomorphisme en dimension finie. Réduction d'un endomorphisme en dimension finie. Applications.}
+	\lesson{algebra}{152}{Endomorphismes diagonalisables en dimension finie.}
 
-	Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps commutatif $\mathbb{K}$. Soit $u \in \mathcal{L}(E)$.
+	Soit $E$ un espace vectoriel sur un corps $\mathbb{K}$ de dimension finie $n$. Soit $u \in \mathcal{L}(E)$ un endomorphisme de $E$.
+
+	\subsection{Spectre d'un endomorphisme}
 	
-	\subsection{Polynômes d'endomorphismes}
+	\subsubsection{Valeurs propres, vecteurs propres}
 	
-	\subsubsection{L'algèbre \texorpdfstring{$\mathbb{K}[u]$}{K[u]}}
-	
-	\reference[ROM21]{603}
-	
-	\begin{notation}
-		On note $u^0 = \operatorname{id}_E$ et
-		\[ u^k = \underbrace{u \circ \dots \circ u}_{k \text{ fois}} \]
-	\end{notation}
+	\reference[GOU21]{171}
 	
 	\begin{definition}
-		À tout polynôme $P = \sum_{k=0}^{n} a_k X^k \in \mathbb{K}[X]$ on fait correspondre l'endomorphisme $P(u) = \sum_{k=1}^{n} a_k u^k$.
-	\end{definition}
-	
-	\begin{proposition}
-		L'ensemble,
-		\[ \mathbb{K}[u] = \{ P(u) \mid P \in \mathbb{K}[X] \} \]
-		est une sous-algèbre commutative de $\mathcal{L}(E)$, de dimension inférieure ou égale à $n^2$.
-	\end{proposition}
-	
-	\begin{remark}
-		Au vu de l'isomorphisme entre $\mathcal{L}(E)$ et $\mathcal{M}_n(\mathbb{K})$, on définit de même $\mathbb{K}[A]$ pour une matrice $A \in \mathcal{M}_n(\mathbb{K})$. Si $A$ est la matrice de $u$ dans une base de $E$, alors pour tout $P \in \mathbb{K}[X]$, $P(A)$ est la matrice de $P(u)$ dans cette même base. Toute les propriétés énoncées pour les endomorphismes sont vraies pour les matrices, et réciproquement.
-	\end{remark}
-	
-	\reference[GOU21]{184}
-	
-	\begin{proposition}
-		Soient $M \in \mathcal{M}_n(\mathbb{K})$ triangulaire de la forme
-		\[
-			M = \begin{pmatrix}
-				\alpha_1 & * & \dots & * \\
-				0 & \alpha_2 & \ddots & \vdots \\
-				\vdots & \ddots & \ddots & * \\
-				0 & \dots & 0 & \alpha_n
-			\end{pmatrix}
-		\]
-		et $P \in \mathbb{K}[X]$. Alors, $P(M)$ est de la forme
-		\[
-		P(M) = \begin{pmatrix}
-			P(\alpha_1) & * & \dots & * \\
-			0 & P(\alpha_2) & \ddots & \vdots \\
-			\vdots & \ddots & \ddots & * \\
-			0 & \dots & 0 & P(\alpha_n)
-		\end{pmatrix}
-		\]
-	\end{proposition}
-	
-	\subsubsection{Polynôme caractéristique de \texorpdfstring{$u$}{u}}
-	
-	\reference[ROM21]{643}
-	
-	\begin{definition}
-		\label{150-1}
 		Soit $\lambda \in \mathbb{K}$.
 		\begin{itemize}
-			\item On dit que $\lambda$ est \textbf{valeur propre} de $u$ si $E_\lambda = \ker(u - \lambda \operatorname{id}_E)$ n'est pas réduit à $\{ 0 \}$.
+			\item On dit que $\lambda$ est \textbf{valeur propre} de $u$ si $u - \lambda \operatorname{id}_E$ est non injective.
 			\item Un vecteur $x \neq 0$ tel que $u(x) = \lambda x$ est un \textbf{vecteur propre} de $u$ associé à la valeur propre $\lambda$.
-			\item $E_\lambda$ est le \textbf{sous-espace propre} associé à la valeur propre $\lambda$.
+			\item $E_\lambda = \ker(u - \lambda \operatorname{id}_E)$ est le \textbf{sous-espace propre} associé à la valeur propre $\lambda$.
 			\item L'ensemble des valeurs propres de $u$ est appelé \textbf{spectre} de $u$. On le note $\operatorname{Sp}(u)$.
 		\end{itemize}
 	\end{definition}
 	
-	\begin{proposition}
-		En notant $\chi_u = \det(X \operatorname{id}_E - u)$,
-		\[ \operatorname{Sp}(u) = \{ \lambda \in \mathbb{K} \mid \chi_u(\lambda) = 0 \} \]
-	\end{proposition}
+	\begin{remark}
+		\begin{itemize}
+			\item $0$ est valeur propre de $u$ si et seulement si $\ker(f) \neq \{ 0 \}$.
+			\item On peut définir de la même manière les mêmes notions pour une matrice de $\mathcal{M}_n(\mathbb{K})$ (une valeur est propre pour une matrice si et seulement si elle l'est pour l'endomorphisme associé). On reprendra les mêmes notations.
+			\item Les sous-espaces $E_\lambda$ sont stables par $u$ pour toute valeur propre $\lambda$.
+		\end{itemize}
+	\end{remark}
 	
-	\reference{604}
+	\begin{example}
+		$\begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}$ est vecteur propre de $\begin{pmatrix} 0 & 2 & -1 \\ 3 & -2 & 0 \\ -2 & 2 & 1 \end{pmatrix}$ associé à la valeur propre $1$.
+	\end{example}
 	
 	\begin{theorem}
-		Soit $P \in \mathbb{K}[X]$. Pour tout valeur propre $\lambda$ de $u$ (voir \cref{150-1}), $P(\lambda)$ est une valeur propre de $P(u)$. Si le corps $\mathbb{K}$ est algébriquement clos, on a alors
+		Soient $\lambda_1, \dots, \lambda_k$ des valeurs propres de $u$, distinctes deux à deux. Alors les sous-espaces propres $E_{\lambda_1}, \dots, E_{\lambda_k}$ sont en somme directe.
+	\end{theorem}
+	
+	\reference[ROM21]{604}
+	
+	\begin{theorem}
+		Soit $P \in \mathbb{K}[X]$. Pour tout valeur propre $\lambda$ de $u$, $P(\lambda)$ est une valeur propre de $P(u)$. Si le corps $\mathbb{K}$ est algébriquement clos, on a alors
 		\[ \operatorname{Sp}(P(u)) = \{ P(\lambda) \mid \lambda \in \operatorname{Sp}(u) \} \]
 	\end{theorem}
 	
@@ -86,14 +50,21 @@
 		Pour $A = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \in \mathcal{M}_2(\mathbb{R})$ et $P = X^2$, on a $A^2 = -I_2$ et $\operatorname{Sp}(A) = \emptyset$.
 	\end{cexample}
 	
+	\subsubsection{Polynôme caractéristique}
+	
 	\reference{644}
+	
+	\begin{proposition}
+		En notant $\chi_u = \det(X \operatorname{id}_E - u)$,
+		\[ \operatorname{Sp}(u) = \{ \lambda \in \mathbb{K} \mid \chi_u(\lambda) = 0 \} \]
+	\end{proposition}
 	
 	\begin{definition}
 		Le polynôme $\chi_u$ précédent est appelé \textbf{polynôme caractéristique} de $u$.
 	\end{definition}
 	
 	\begin{remark}
-		On peut définir de la même manière les mêmes notions pour une matrice de $\mathcal{M}_n(\mathbb{K})$ (une valeur est propre pour une matrice si et seulement si elle l'est pour l'endomorphisme associé). On reprendra les mêmes notations.
+		On peut définir la même notion pour une matrice $A \in \mathcal{M}_n(\mathbb{K})$, ces deux notions coïncidant bien si $A$ est la matrice de $u$ dans une base quelconque de $E$.
 	\end{remark}
 	
 	\begin{example}
@@ -113,8 +84,8 @@
 			\item Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\chi_A = \sum_{k=0}^n a_k X^k$. Alors, $a_0 = \det(A)$ et $a_{n-1} = \trace(A)$ (à un signe près).
 		\end{enumerate}
 	\end{proposition}
-		
-	\subsubsection{Polynôme minimal de \texorpdfstring{$u$}{u}}
+	
+	\subsubsection{Polynôme minimal}
 	
 	\reference[ROM21]{604}
 	
@@ -158,20 +129,7 @@
 		$\pi_u$ et $\chi_u$ partagent dont les mêmes racines.
 	\end{remark}
 	
-	\reference[ROM21]{606}
-	
-	\begin{theorem}
-		$P \mapsto P(u)$ induit un isomorphisme :
-		\[ \mathbb{K}[X]/(\pi_u) \cong \mathbb{K}[u] \]
-	\end{theorem}
-	
-	\begin{corollary}
-		L'espace vectoriel $\mathbb{K}[u]$ est de dimension égale à $p_u = \deg(\pi_u)$, une base étant donnée par $(u^k)_{k \in \llbracket 1, p_u \rrbracket}$.
-	\end{corollary}
-	
-	\begin{corollary}
-		\[ \mathbb{K}[u] \text{ est un corps} \iff \mathbb{K}[u] \text{ est intègre} \iff \mathbb{K}[u] \text{ est irréductible} \]
-	\end{corollary}
+	\reference[ROM21]{607}
 	
 	\begin{theorem}[Cayley-Hamilton]
 		\[ \pi_u \mid \chi_u \]
@@ -181,19 +139,9 @@
 		\[ \dim(\mathbb{K}[u]) \leq n \]
 	\end{corollary}
 	
-	\begin{corollary}
-		Si $u$ est inversible,
-		\[ u^{-1} = -\frac{1}{\det(u)} \sum_{k=1}^n a_k u^{k-1} \]
-		En particulier, $u^{-1} \in \mathbb{K}[u]$.
-	\end{corollary}
+	\subsection{Diagonalisabilité}
 	
-	\begin{corollary}
-		$u$ est nilpotent si et seulement si $\chi_u = X^n$.
-	\end{corollary}
-	
-	\subsection{Réduction d'endomorphismes}
-	
-	\subsubsection{Diagonalisation}
+	\subsubsection{Définition}
 	
 	\reference{683}
 	
@@ -217,6 +165,8 @@
 		\end{itemize}
 	\end{example}
 	
+	\subsubsection{Critères}
+	
 	\reference[ROM21]{683}
 	
 	\begin{proposition}
@@ -224,7 +174,6 @@
 	\end{proposition}
 	
 	\reference{609}
-	\dev{lemme-des-noyaux}
 	
 	\begin{theorem}[Lemme des noyaux]
 		Soit $P = P_1 \dots P_k \in \mathbb{K}[X]$ où les polynômes $P_1, \dots, P_k$ sont premiers entre eux deux à deux. Alors,
@@ -251,54 +200,102 @@
 		$\begin{pmatrix} 0 & 2 & -1 \\ 3 & -2 & 0 \\ -2 & 2 & 1 \end{pmatrix}$ est diagonalisable, semblable à $\begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -4 \end{pmatrix}$.
 	\end{example}
 	
-	\reference[ROM21]{684}
-	
 	\begin{theorem}[Diagonalisation simultanée]
 		Soit $(u_i)_{i \in I}$ une famille d'endomorphismes de $E$ diagonalisables. Il existe une base commune de diagonalisation dans $E$ pour $(u_i)_{i \in I}$ si et seulement si ces endomorphismes commutent deux-à-deux.
 	\end{theorem}
 	
-	\reference{734}
-	
-	\begin{theorem}[Spectral]
-		Tout endomorphisme symétrique se diagonalise dans une base orthonormée.
-	\end{theorem}
-	
-	\subsubsection{Trigonalisation}
-	
-	\reference{675}
-	
-	\begin{definition}
-		\begin{itemize}
-			\item On dit que $u$ est \textbf{trigonalisable} s'il existe une base de $E$ dans laquelle la matrice de $u$ est triangulaire supérieure.
-			\item On dit qu'une matrice $A \in \mathcal{M}_n(\mathbb{K})$ est \textbf{trigonalisable} si elle est semblable à une matrice diagonale.
-		\end{itemize}
-	\end{definition}
-	
 	\begin{remark}
-		$u$ est trigonalisable si et seulement si sa matrice dans n'importe quelle base de $E$ l'est.
+		La réciproque est vraie.
 	\end{remark}
 	
-	\begin{example}
-		Une matrice à coefficients réels ayant des valeurs propres imaginaires pures n'est pas trigonalisable dans $\mathcal{M}_n(\mathbb{R})$.
-	\end{example}
+	\subsubsection{Exemples d'endomorphismes diagonalisables dans un espace euclidien ou hermitien}
 	
-	\begin{theorem}
-		$u$ est trigonalisable sur $\mathbb{K}$ si et seulement si $\chi_u$ est scindé sur $\mathbb{K}$.
-	\end{theorem}
+	On se place dans le cas où $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$.
+	Si $\mathbb{K} = \mathbb{R}$, on munit $E$ d'un produit scalaire $\langle ., . \rangle$. Si $\mathbb{K} = \mathbb{C}$, on munit $E$ d'un produit scalaire hermitien $\langle ., . \rangle$.
 	
-	\begin{corollary}
-		Si $\mathbb{K}$ est algébriquement clos, tout endomorphisme de $u$ est trigonalisable sur $\mathbb{K}$.
-	\end{corollary}
+	\paragraph{Endomorphismes autoadjoints}
+	
+	\reference[GOU21]{255}
+	
+	\begin{lemma}
+		Il existe un unique $u^* \in \mathcal{L}(E)$ tel que
+		\[ \forall x, y \in E, \, \langle u(x), y \rangle = \langle x, u^*(y) \rangle \]
+	\end{lemma}
+	
+	\begin{definition}
+		L'endomorphisme $u^*$ précédent est \textbf{l'adjoint} de $u$. On dit que $u$ est \textbf{autoadjoint} si $u = u^*$.
+	\end{definition}
 	
 	\begin{proposition}
-		Si $u$ est trigonalisable, sa trace est la somme de ses valeurs propres et son déterminant est le produit de ses valeurs propres.
+		Soit $v \in \mathcal{L}(E)$. Alors $v = u^*$ si et seulement si la matrice de $v$ dans une base orthonormée $\mathcal{B}$ de $E$ est la transposée (transconjuguée dans le cas hermitien) de la matrice de $u$ dans $\mathcal{B}$.
 	\end{proposition}
 	
-	\begin{theorem}[Trigonalisation simultanée]
-		Soit $(u_i)_{i \in I}$ une famille d'endomorphismes de $E$ diagonalisables qui commutent deux-à-deux. Alors, il existe une base commune de trigonalisation.
+	\begin{theorem}
+		Tout endomorphisme autoadjoint se diagonalise dans une base orthonormée, ses valeurs propres étant réelles.
 	\end{theorem}
 	
-	\subsubsection{Décomposition de Dunford}
+	\reference[C-G]{376}
+	
+	\begin{lemma}
+		\[ \forall A \in \mathcal{S}_n^{++}(\mathbb{R}) \, \exists! B \in \mathcal{S}_n^{++}(\mathbb{R}) \text{ telle que } B^2 = A \]
+	\end{lemma}
+	
+	\dev{decomposition-polaire}
+	
+	\begin{application}[Décomposition polaire]
+		L'application
+		\[ \mu :
+		\begin{array}{ccc}
+			\mathcal{O}_n(\mathbb{R}) \times \mathcal{S}_n^{++}(\mathbb{R}) &\rightarrow& \mathrm{GL}_n(\mathbb{R}) \\
+			(O, S) &\mapsto& OS
+		\end{array}
+		\]
+		est un homéomorphisme.
+	\end{application}
+	
+	\paragraph{Endomorphismes normaux}
+	
+	On suppose dans toute cette sous-section que $\mathbb{K} = \mathbb{C}$.
+	
+	\reference[GRI]{286}
+	
+	\begin{definition}
+		$u$ est dit \textbf{normal} s'il est tel que $u \circ u^* = u^* \circ u$.
+	\end{definition}
+	
+	\begin{proposition}
+		On suppose $u$ normal. Soit $\lambda \in \mathbb{C}$ une valeur propre de $u$. Alors :
+		\begin{enumerate}[label=(\roman*)]
+			\item $E_\lambda^\perp = \{ x \in E^\lambda \mid \forall y \in E^\lambda, \, \langle x, y \rangle = 0 \}$ est stable par $u$.
+			\item $u_{| E_\lambda^\perp}$ est normal.
+		\end{enumerate}
+	\end{proposition}
+	
+	\begin{corollary}
+		On suppose $u$ normal. Alors $u$ est diagonalisable dans une base orthonormée.
+	\end{corollary}
+	
+	\subsubsection{Topologie}
+	
+	\reference[BMP]{179}
+	
+	\begin{proposition}
+		L'ensemble $\mathcal{D}_n(\mathbb{C})$ des matrices diagonalisables à coefficients complexes est dense dans $\mathcal{M}_n(\mathbb{C})$.
+	\end{proposition}
+	
+	\begin{application}
+		L'application qui à une matrice $M \in \mathcal{M}_n(\mathbb{C})$ associe la partie diagonalisable de sa décomposition de Dunford $M = D + N$ n'est pas continue.
+	\end{application}
+	
+	\reference{217}
+	
+	\begin{application}
+		\[ \forall U \in \mathcal{M}_n(\mathbb{C}) \, \chi_U(U) = 0 \]	
+	\end{application}
+	
+	\subsection{Applications}
+	
+	\subsubsection{Réduction}
 	
 	\reference[GOU21]{203}
 	\dev{decomposition-de-dunford}
@@ -320,28 +317,7 @@
 		On peut montrer de plus que $d$ et $n$ sont des polynômes en $u$.
 	\end{remark}
 	
-	\subsection{Applications}
-	
-	\subsubsection{Commutant}
-	
-	\reference[FGN2]{160}
-	
-	Soit $A \in \mathcal{M}_n(\mathbb{K})$.
-	
-	\begin{notation}
-		On note $\mathcal{C}(A)$ le commutant de $A$.
-	\end{notation}
-	
-	\begin{lemma}
-		\[ \dim_{\mathbb{K}}(\mathcal{C}(A)) \geq n \]
-	\end{lemma}
-	
-	\begin{application}
-		Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\mathcal{C}(A)$ le commutant de $A$. Alors,
-		\[ \mathbb{K}[A] = \mathcal{C}(A) \iff \pi_A = \chi_A = \det(XI_n - A) \]
-	\end{application}
-	
-	\subsubsection{Exponentielles de matrices}
+	\subsubsection{Calcul d'exponentielles}
 	
 	\reference[ROM21]{761}
 	
@@ -361,9 +337,6 @@
 	\begin{theorem}
 		Soit $A \in \mathcal{M}_n(\mathbb{K})$.
 		\begin{enumerate}[label=(\roman*)]
-			\item $\exp : \mathcal{M}_n(\mathbb{K}) \rightarrow \mathcal{M}_n(\mathbb{K})$ est continue.
-			\item Si $A$ est nilpotente d'indice $q$, $\exp(A) = \sum_{k=0}^{q-1} \frac{A^k}{k!}$.
-			\item $\exp(A) \in \mathbb{K}[A]$. En particulier, $\exp(A)$ commute avec $A$.
 			\item Si $A = \operatorname{Diag}(\lambda_1, \dots, \lambda_n)$, alors $\exp(A) = \operatorname{Diag}(e^\lambda_1, \dots, e^\lambda_n)$.
 			\item Si $B = PAP^{-1}$ pour $P \in \mathrm{GL}_n(\mathbb{K})$, alors $e^B = P^{-1} e^A P$.
 			\item $\det(e^A) = e^{\trace(A)}$.
@@ -375,10 +348,6 @@
 		Soient $A, B \in \mathcal{M}_n(\mathbb{K})$ qui commutent. Alors,
 		\[ e^A e^B = e^{A+B} = e^B e^A \]
 	\end{proposition}
-	
-	\begin{corollary}
-		Soit $A \in \mathcal{M}_n(\mathbb{K})$. Alors, $e^A$ est inversible, d'inverse $e^{-A}$.
-	\end{corollary}
 	
 	\begin{example}
 		Soit $A \in \mathcal{M}_n(\mathbb{K})$ qui admet une décomposition de Dunford $A = D+N$ où $D$ est diagonalisable et $N$ est nilpotente d'indice $q$. Alors,
@@ -395,66 +364,5 @@
 		\[ \begin{cases} Y' = AY \\ Y(0) = y_0 \end{cases} \]
 		a pour (unique) solution $t \mapsto e^{tA} y_0$.
 	\end{application}
-	
-	\reference[GOU21]{200}
-	
-	\begin{lemma}
-		Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
-	\end{lemma}
-	
-	\begin{application}[Équation de Sylvester]
-		Soient $A$ et $B \in \mathcal{M}_n(\mathbb{C})$ deux matrices dont les valeurs propres sont de partie réelle strictement négative. Alors pour tout $C \in \mathcal{M}_n(\mathbb{C})$, l'équation $AX + XB = C$ admet une unique solution $X$ dans $\mathcal{M}_n(\mathbb{C})$.
-	\end{application}
-	
-	\subsubsection{Étude d'une suite de polygones}
-	
-	\reference{153}
-	
-	\begin{lemma}[Déterminant circulant]
-		Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
-		\[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
-		où $P = \sum_{k=0}^{n-1} a_k X^k$.
-	\end{lemma}
-	
-	\reference[I-P]{389}
-	
-	\begin{application}[Suite de polygones]
-		Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
-		\newpar
-		Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
-	\end{application}
-	
-	\newpage
-	\subsection*{Annexes}
-	
-	\reference[I-P]{389}
-	
-	\begin{figure}[h]
-		\begin{center}
-			\begin{tikzpicture}
-				\coordinate (A) at (0:3);
-				\coordinate (B) at (72:3);
-				\coordinate (C) at (2*72:3);
-				\coordinate (D) at (3*72:3);
-				\coordinate (E) at (4*72:3);
-				\coordinate (F) at (A);
-				\foreach \i in {0,...,10} {
-					\draw(A) node {$\bullet$};
-					\draw(B) node {$\bullet$};
-					\draw(C) node {$\bullet$};
-					\draw(D) node {$\bullet$};
-					\draw(E) node {$\bullet$};
-					\draw[fill=cyan!60, fill opacity=0.2](A) -- (B) -- (C) -- (D) -- (E) -- (A);
-					\coordinate (A) at ($(A)!0.5!(B)$);
-					\coordinate (B) at ($(B)!0.5!(C)$);
-					\coordinate (C) at ($(C)!0.5!(D)$);
-					\coordinate (D) at ($(D)!0.5!(E)$);
-					\coordinate (E) at ($(E)!0.5!(F)$);
-					\coordinate (F) at (A);
-				}
-			\end{tikzpicture}
-		\end{center}
-		\caption{La suite de polygones.}
-	\end{figure}
 	%</content>
 \end{document}
