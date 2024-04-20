@@ -276,13 +276,13 @@
 		Les assertions suivantes sont équivalentes :
 		\begin{enumerate}[label=(\roman*)]
 			\item Il existe une base de $E$ telle que la matrice de $u$ est $J_n(0)$.
-			\item $u$ est nilpotent et cyclique.
+			\item $u$ est nilpotent et cyclique (voir \cref{151-2}).
 			\item $u$ est nilpotent d'indice de nilpotence $n$.
 		\end{enumerate}
 	\end{proposition}
 
 	\begin{theorem}[Réduction de Jordan d'un endomorphisme nilpotent]
-		On suppose que $u$ est nilpotent. Alors il existe des entiers $n_1 \geq \dots \geq n_p$ est une base $\mathcal{B}$ de $E$ telle que :
+		On suppose que $u$ est nilpotent. Alors il existe des entiers $n_1 \geq \dots \geq n_p$ et une base $\mathcal{B}$ de $E$ tels que :
 		\[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} J_{n_1}(0) & & \\ & \ddots & \\ & & J_{n_p}(0) \end{pmatrix} \]
 		De plus, on a unicité dans cette décomposition.
 	\end{theorem}
@@ -294,9 +294,9 @@
 	\reference[GOU21]{209}
 
 	\begin{theorem}[Réduction de Jordan d'un endomorphisme]
-		On suppose que le polynôme caractérstique de $u$ est scindé sur $\mathbb{K}$ :
+		On suppose que le polynôme caractéristique de $u$ est scindé sur $\mathbb{K}$ :
 		\[ \chi_u = \prod_{i=1}^p (X - \lambda_i)^{\alpha_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
-		Alors il existe des entiers $n_1 \geq \dots \geq n_p$ est une base $\mathcal{B}$ de $E$ telle que :
+		Alors il existe des entiers $n_1 \geq \dots \geq n_p$ et une base $\mathcal{B}$ de $E$ tels que :
 		\[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} J_{n_1}(\lambda_1) & & \\ & \ddots & \\ & & J_{n_p}(\lambda_p) \end{pmatrix} \]
 		De plus, on a unicité dans cette décomposition.
 	\end{theorem}
@@ -306,6 +306,7 @@
 	\reference{397}
 
 	\begin{definition}
+	  \label{151-2}
 		On dit que $u$ est \textbf{cyclique} s'il existe $x \in E$ tel que $\{ P(u)(x) \mid P \in \mathbb{K}[X] \} = E$.
 	\end{definition}
 
