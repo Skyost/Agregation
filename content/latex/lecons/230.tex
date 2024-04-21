@@ -272,6 +272,8 @@
 
 	\subsubsection{Séries de Fourier}
 
+	\reference{267}
+
 	\begin{definition}
 		Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. On appelle \textbf{coefficients de Fourier} de $f$ les nombres complexes définis par
 		\[ \forall n \in \mathbb{Z}, \, c_n(f) = \int_{0}^{2\pi} f(t) e^{-int} \, \mathrm{d}t \]
@@ -354,6 +356,11 @@
 	\begin{application}
 		\[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
 	\end{application}
+
+  \begin{cexample}
+    La réciproque est fausse :
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+  \end{cexample}
 
 	\begin{theorem}[Taubérien faible]
 		Soit $\sum a_n z^n$ une série entière de rayon de convergence $1$. On note $f$ la somme de cette série sur $D(0,1)$. On suppose que

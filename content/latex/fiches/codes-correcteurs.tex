@@ -39,34 +39,34 @@
 		Ainsi, soit $b_1, \dots, b_7$ une suite de $7$ bits. On calcule :
 		\[ b_8 = b_1 + \dots + b_7 \mod 2 \]
 		Si le nombre de bits égaux à $1$ est pair, $b_8 = 0$, sinon, $b_8 = 1$. Ainsi, le mot $(b_1, \dots, b_8)$ a toujours un nombre de bits égaux à $1$ qui est pair. On peut alors détecter, à la lecteur d'un mot, si une erreur a eu lieu lors de sa réception : il y aura un nombre impair de bits égaux à $1$.
-		\begin{center}
-			\begin{minipage}{0.45\textwidth}
-				Dans le cadre d'un mot de taille $2$, on peut représenter la situation par un cube. Sur cette illustration, nous voyons en turquoise l'ensemble des mots $\mathcal{C}$ du code. Une unique erreur correspond à un déplacement sur le cube le long d'une arête. Dans ce cas, le récepteur reçoit un point noir dont la somme de toutes les lettres est un entier impair. En revanche, un tel point est toujours à proximité de trois points turquoise, le récepteur ne dispose donc d'aucun moyen pour une correction automatique.
-			\end{minipage}
-			\hfill
-			\begin{minipage}{0.45\textwidth}
-				\begin{figure}[H]
-					\begin{center}
-						\begin{tikzpicture}[scale=2]
-							\draw (1,0,0) -- (0,0,0) -- (0,1,0) -- (1,1,0);
-							\draw (1,0,0) -- (1,0,-1) -- (1,1,-1) -- (1,1,0) -- cycle;
-							\draw(0,1,0) -- (0,1,-1) -- (1,1,-1);
-							\draw[dashed] (1,0,-1) -- (0,0,-1)-- (0,1,-1);
-							\draw[dashed] (0,0,0) -- (0,0,-1);
-							\draw(0,0,0) node{\color{teal}$\bullet$} node[below]{\tiny\color{teal}$(0,0,0)$};
-							\draw(0,1,-1) node{\color{teal}$\bullet$} node[above]{\tiny\color{teal}$(1,1,0)$};
-							\draw(1,1,0) node{\color{teal}$\bullet$} node[above]{\tiny\color{teal}$(0,1,1)$};
-							\draw(1,0,-1) node{\color{teal}$\bullet$} node[right]{\tiny\color{teal}$(1,0,1)$};
-							\draw(1,0,0) node{$\bullet$} node[below]{\tiny$(0,0,1)$};
-							\draw(0,0,-1) node{$\bullet$} node[left]{\tiny$(1,0,0)$};
-							\draw(0,1,0) node{$\bullet$} node[left]{\tiny$(0,1,0)$};
-							\draw(1,1,-1) node{$\bullet$} node[above]{\tiny$(1,1,1)$};
-						\end{tikzpicture}
-					\end{center}
-					\caption{Mots de $\mathbb{F}_2$ de longueur $2$ avec un bit de parité.}
-				\end{figure}
-			\end{minipage}
-		\end{center}
+		\newpar
+		\begin{minipage}{0.45\textwidth}
+			Dans le cadre d'un mot de taille $2$, on peut représenter la situation par un cube. Sur cette illustration, nous voyons en turquoise l'ensemble des mots $\mathcal{C}$ du code. Une unique erreur correspond à un déplacement sur le cube le long d'une arête. Dans ce cas, le récepteur reçoit un point noir dont la somme de toutes les lettres est un entier impair. En revanche, un tel point est toujours à proximité de trois points turquoise, le récepteur ne dispose donc d'aucun moyen pour une correction automatique.
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.45\textwidth}
+			\begin{figure}[H]
+				\begin{center}
+					\begin{tikzpicture}[scale=2]
+						\draw (1,0,0) -- (0,0,0) -- (0,1,0) -- (1,1,0);
+						\draw (1,0,0) -- (1,0,-1) -- (1,1,-1) -- (1,1,0) -- cycle;
+						\draw(0,1,0) -- (0,1,-1) -- (1,1,-1);
+						\draw[dashed] (1,0,-1) -- (0,0,-1)-- (0,1,-1);
+						\draw[dashed] (0,0,0) -- (0,0,-1);
+						\draw(0,0,0) node{\color{teal}$\bullet$} node[below]{\tiny\color{teal}$(0,0,0)$};
+						\draw(0,1,-1) node{\color{teal}$\bullet$} node[above]{\tiny\color{teal}$(1,1,0)$};
+						\draw(1,1,0) node{\color{teal}$\bullet$} node[above]{\tiny\color{teal}$(0,1,1)$};
+						\draw(1,0,-1) node{\color{teal}$\bullet$} node[right]{\tiny\color{teal}$(1,0,1)$};
+						\draw(1,0,0) node{$\bullet$} node[below]{\tiny$(0,0,1)$};
+						\draw(0,0,-1) node{$\bullet$} node[left]{\tiny$(1,0,0)$};
+						\draw(0,1,0) node{$\bullet$} node[left]{\tiny$(0,1,0)$};
+						\draw(1,1,-1) node{$\bullet$} node[above]{\tiny$(1,1,1)$};
+					\end{tikzpicture}
+				\end{center}
+				\caption{Mots de $\mathbb{F}_2$ de longueur $2$ avec un bit de parité.}
+			\end{figure}
+		\end{minipage}
+		\newpar
 		Ainsi, ce code, a deux inconvénients :
 		\begin{itemize}
 			\item il est impossible de détecter où l'erreur a eu lieu, et donc, de la corriger ;
