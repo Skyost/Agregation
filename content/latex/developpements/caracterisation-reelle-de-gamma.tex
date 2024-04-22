@@ -13,9 +13,9 @@
 		\label{caracterisation-reelle-de-gamma-1}
 		La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
 		\begin{enumerate}[label=(\roman*)]
-			\item $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
-			\item $\Gamma(1) = 1$.
-			\item $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
+			\item \label{caracterisation-reelle-de-gamma-2} $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
+			\item \label{caracterisation-reelle-de-gamma-3} $\Gamma(1) = 1$.
+			\item \label{caracterisation-reelle-de-gamma-4} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
 		\end{enumerate}
 	\end{lemma}
 
@@ -43,15 +43,15 @@
 	\reference[RUD]{94}
 
 	\begin{theorem}[Bohr-Mollerup]
-		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
+		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{caracterisation-reelle-de-gamma-2}, le \cref{caracterisation-reelle-de-gamma-3} et le \cref{caracterisation-reelle-de-gamma-4} du \cref{caracterisation-reelle-de-gamma-1}. Alors $f = \Gamma$.
 	\end{theorem}
 
 	\begin{proof}
-		Par récurrence, on a d'après $(i)$ :
+		Par récurrence, on a d'après le \cref{caracterisation-reelle-de-gamma-2} :
 		\[ \forall n \in \mathbb{N}^*, \forall x \in ]0, 1], \, f(x+n) = (x+n-1) \dots (x+1)xf(x) \tag{$*$} \]
 		Donc les valeurs prises par $f$ sur $\mathbb{R}^+_*$ sont entièrement déterminées par ses valeurs prises sur $]0, 1]$. Ainsi, pour démontrer le théorème, il suffit de vérifier $\forall x \in ]0, 1]$, $f(x) = \Gamma(x)$.
 		\newpar
-		Soient donc $x \in ]0, 1]$ et $n \in \mathbb{N}^*$ ; on applique le lemme des trois pentes à la fonction convexe $\ln \circ f$ (d'après $(iii)$) aux points $n-1$, $n$, $n+x$ et $n+1$ :
+		Soient donc $x \in ]0, 1]$ et $n \in \mathbb{N}^*$ ; on applique le lemme des trois pentes à la fonction convexe $\ln \circ f$ (d'après le \cref{caracterisation-reelle-de-gamma-4} appliqué aux points $n-1$, $n$, $n+x$ et $n+1$ :
 		\begin{center}
 			\begin{tikzpicture}
 				\draw (0.15,4) .. controls (1,1) and (4,0) .. (6,2) coordinate[pos=0.95] (F) coordinate[pos=0.05] (A) coordinate[pos=0.5] (B) coordinate[pos=0.75] (C) coordinate[pos=0.85] (D);
@@ -66,7 +66,7 @@
 			\end{tikzpicture}
 		\end{center}
 		\[ \frac{(\ln \circ f)(n) - (\ln \circ f)(n-1)}{n - (n-1)} \leq \frac{(\ln \circ f)(n+x) - (\ln \circ f)(n)}{n+x-n} \leq \frac{(\ln \circ f)(n+1) - (\ln \circ f)(n)}{n+1-n} \]
-		Mais, d'après $(*)$ et $(ii)$, on a $f(n) = (n-1)!$. D'où :
+		Mais, d'après $(*)$ et le \cref{caracterisation-reelle-de-gamma-3}, on a $f(n) = (n-1)!$. D'où :
 		\begin{align*}
 			&\ln(n-1) \leq \frac{(\ln \circ f)(n+x) - \ln((n-1)!)}{x} \leq \ln(n) \\
 			\implies &\ln((n-1)^x) \leq (\ln \circ f)(n+x) - \ln((n-1)!) \leq \ln(n^x) \\
@@ -84,7 +84,7 @@
 			\implies & f(x) \frac{n}{x+n} \leq \frac{n^x n!}{(x+n) \dots (x+1)x} \leq f(x) \\
 			\implies & f(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x}
 		\end{align*}
-		en faisant $n \longrightarrow +\infty$ dans la deuxième inégalité. Comme $\Gamma$ vérifie $(i)$, $(ii)$, et $(iii)$ ; le raisonnement précédent est a fortiori vrai aussi pour $\Gamma$. Donc
+		en faisant $n \longrightarrow +\infty$ dans la deuxième inégalité. Comme $\Gamma$ vérifie le \cref{caracterisation-reelle-de-gamma-2}, le \cref{caracterisation-reelle-de-gamma-3}, et le \cref{caracterisation-reelle-de-gamma-4} ; le raisonnement précédent est a fortiori vrai aussi pour $\Gamma$. Donc
 		\[ \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} = f(x)  \]
 		ie. $f$ et $\Gamma$ coïncident bien sur $]0, 1]$.
 	\end{proof}

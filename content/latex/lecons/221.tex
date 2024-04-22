@@ -178,7 +178,7 @@
 	\end{definition}
 
 	\begin{proposition}
-		Une équation différentielle linéaire homogène $(H) : Y' = AY$ (où $A$ est constante en $t$) a ses solutions maximales définies sur $\mathbb{R}$ et le problème de Cauchy
+		Une équation différentielle linéaire homogène $(H) : Y' = AY$ (où $A \in \mathcal{M}_n(\mathbb{R})$ est constante en $t$) a ses solutions maximales définies sur $\mathbb{R}$ et le problème de Cauchy
 		\[ \begin{cases} Y' = AY \\ Y(0) = y_0 \end{cases} \]
 		a pour (unique) solution $t \mapsto e^{tA} y_0$.
 	\end{proposition}
@@ -311,11 +311,12 @@
 	\end{application}
 
 	\reference[I-P]{177}
-	\dev{equation-de-sylvester}
 
 	\begin{lemma}
 		Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
 	\end{lemma}
+
+  \dev{equation-de-sylvester}
 
 	\begin{application}[Équation de Sylvester]
 		Soient $A$ et $B \in \mathcal{M}_n(\mathbb{C})$ deux matrices dont les valeurs propres sont de partie réelle strictement négative. Alors pour tout $C \in \mathcal{M}_n(\mathbb{C})$, l'équation $AX + XB = C$ admet une unique solution $X$ dans $\mathcal{M}_n(\mathbb{C})$.

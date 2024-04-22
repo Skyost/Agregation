@@ -138,7 +138,7 @@
 	\reference[ROM19]{225}
 
 	\begin{definition}
-		\label{229-2}
+		\label{229-1}
 		\begin{itemize}
 			\item $I$ est \textbf{convexe} si $\forall a, b \in I, \, [a,b] \subseteq I$.
 			\item Une fonction $f : I \rightarrow \mathbb{R}$ est \textbf{convexe} si
@@ -181,7 +181,7 @@
 	\reference[GOU20]{95}
 
 	\begin{remark}
-		Dans le cadre réel, la \cref{229-2} revient à dire que les cordes $[(a, f(a)), (b, f(b))]$ sont au-dessus du graphe de $f$ pour tout $a, b \in I$ avec $a < b$.
+		Dans le cadre réel, la \cref{229-1} revient à dire que les cordes $[(a, f(a)), (b, f(b))]$ sont au-dessus du graphe de $f$ pour tout $a, b \in I$ avec $a < b$.
 	\end{remark}
 
 	\begin{proposition}
@@ -257,19 +257,19 @@
 	\dev{caracterisation-reelle-de-gamma}
 
 	\begin{lemma}
-		\label{229-1}
+		\label{229-2}
 		La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
 		\begin{enumerate}[label=(\roman*)]
-			\item $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
-			\item $\Gamma(1) = 1$.
-			\item $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
+			\item \label{229-3} $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
+			\item \label{229-4} $\Gamma(1) = 1$.
+			\item \label{229-5} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
 		\end{enumerate}
 	\end{lemma}
 
 	\reference[RUD]{94}
 
 	\begin{theorem}[Bohr-Mollerup]
-		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant les points $(i)$, $(ii)$ et $(iii)$ du \cref{229-1}. Alors $f = \Gamma$.
+		Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{229-3}, \cref{229-4} et \cref{229-5} du \cref{229-2}. Alors $f = \Gamma$.
 	\end{theorem}
 
 	\begin{remark}
