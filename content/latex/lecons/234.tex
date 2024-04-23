@@ -430,11 +430,18 @@
 		On considère $f : (x,y) \mapsto 2e^{-2xy} - e^{-xy}$. Alors, $\int_{[0,1]} \left( \int_{\mathbb{R}^+} f(x,y) \, \mathrm{d}x \right) \mathrm{d}y = 0$, mais $\int_{\mathbb{R}^+} \left( \int_{[0,1]} f(x,y) \, \mathrm{d}y \right) \mathrm{d}x = \ln(2)$.
 	\end{cexample}
 
+  \reference[GOU20]{359}
+
+  \begin{example}
+    Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
+    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+  \end{example}
+
 	\subsection{L'espace \texorpdfstring{$L_2$}{L₂}}
 
 	\subsubsection{Aspect hilbertien}
 
-	\reference{185}
+	\reference[B-P]{185}
 
 	\begin{definition}
 		L'application
