@@ -351,10 +351,12 @@
 
 	\reference{242}
 
-	\begin{theorem}[Bernstein]
+  \begin{theorem}[Bernstein]
 		On suppose $I = [0,1]$ et $f$ continue sur $[0,1]$. On note
-		\[ \forall n \in \mathbb{N}^*, \, \forall x \in [0,1], \, B_n(f)(x) = \sum_{k=0}^n f \left(\frac{k}{n}\right) b_n^k(x) \text{ avec } b_n^k(x) = \binom{n}{k} x^k (1-x)^{n-k} \]
-	\end{theorem}
+    \[ B_n(f) : x \mapsto \sum_{k=0}^{n} f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k} \]
+    Alors,
+    \[ \Vert B_n(f) - f \Vert_\infty \longrightarrow_{n \rightarrow +\infty} 0 \]
+  \end{theorem}
 
 	\reference{304}
 	\dev{theoreme-de-weierstrass-par-la-convolution}
