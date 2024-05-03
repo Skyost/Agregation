@@ -46,6 +46,7 @@
 \usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
 \usepackage{luacode}
 \usepackage{float}
+\usepackage{listings}
 
 % Chemin vers la bibliographie :
 
@@ -187,6 +188,7 @@
 \definecolor{cexample}{HTML}{795548}
 \definecolor{application}{HTML}{009688}
 \definecolor{remark}{HTML}{3f51b5}
+\definecolor{lstlisting}{HTML}{000000}
 %\definecolor{proof}{HTML}{e1f5fe}
 
 % Théorèmes :
@@ -241,6 +243,7 @@
 \applystyletotheorem{application}
 \applystyletotheorem{remark}
 %\applystyletotheorem{proof}
+\applystyletotheorem{lstlisting}
 
 % Environnements :
 
@@ -262,5 +265,40 @@
 \DeclareSymbolFont{fouriersymbols}{FMS}{futm}{m}{n}
 \DeclareSymbolFont{fourierlargesymbols}{FMX}{futm}{m}{n}
 \DeclareMathDelimiter{\VERT}{\mathord}{fouriersymbols}{152}{fourierlargesymbols}{147}
+
+% Code :
+
+\definecolor{greencode}{rgb}{0,0.6,0}
+\definecolor{graycode}{rgb}{0.5,0.5,0.5}
+\definecolor{mauvecode}{rgb}{0.58,0,0.82}
+\definecolor{bluecode}{HTML}{1976d2}
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	%captionpos=b,
+	commentstyle=\color{greencode},
+	deletekeywords={...},
+	escapeinside={\%*}{*)},
+	extendedchars=true,
+	frame=none,
+	keepspaces=true,
+	keywordstyle=\color{bluecode},
+	language=Python,
+	otherkeywords={*,...},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{graycode},
+	rulecolor=\color{black},
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stepnumber=2,
+	stringstyle=\color{mauvecode},
+	tabsize=2,
+	xleftmargin=10pt,
+	%title=\lstname
+}
+
 
 
