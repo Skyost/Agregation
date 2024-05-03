@@ -32,22 +32,7 @@
 	
 	Dans un premier temps, on peut écrire l'algorithme de calcul suivant.
 	
-\begin{lstlisting}
-# Exponentiation rapide. Calcul x^n.
-def power(x, n):
-	if n == 0:
-		return 1
-	if n == 1:
-		return x
-	if n % 2 == 0:
-		return power(x*x, n//2)
-	return x * power(x*x, (n-1)//2)
-
-# Algorithme naïf pour calculer la transformée de Fourier rapide de f.
-def naive_dft(f, omega):
-	n = len(f)
-	return [sum(f[k] * power(omega, i*k) for k in range(n)) for i in range(n)]
-\end{lstlisting}
+	\inputalgorithm{transformee-de-fourier-discrete-1.py}
 	
 	\begin{definition}
 		Le \textbf{produit de convolution} de deux vecteurs $f = (f_0, \dots, f_{n-1})$ et $g = (g_0, \dots, g_{n-1})$ de $\mathbb{C}^n$ est le vecteur de $\mathbb{C}^n$ noté $f *_n g$ défini par
@@ -178,31 +163,8 @@ def naive_dft(f, omega):
 	
 	On déduit de la \cref{transformee-de-fourier-discrete-4} et de la \cref{transformee-de-fourier-discrete-5} un algorithme récursif de calcul de $\operatorname{DFT}_\omega$ qui a une complexité de $O(n \ln(n))$.
 	
-\begin{lstlisting}
-# Renvoie les indices impairs d'une liste.
-def odd_indices(l):
-	return [l[2*k+1] for k in range(len(l)//2)]
+	\inputalgorithm{transformee-de-fourier-discrete-2.py}
 
-# Fusionne deux listes de longueur égale en alternant les termes.
-def alternate_merge(l1, l2):
-	return [val for pair in zip(l1, l2) for val in pair]
-
-# Calcule et renvoie les puissances successives de la racine primitive n-ième omega.
-def primitive_root_powers(omega, n):
-	return [power(omega, k) for k in range(n)]
-
-# Cette fonction renvoie la transformée de Fourier discrète de F en omega. La liste l demandée est la liste des puissances de omega.
-def fft(F, m, l):
-	n = m + 1
-	if n == 1:
-		return [0] if F == 0 else [F.list()[0]]
-	(F1, F0) = F.quo_rem(X^(n/2))
-	R0 = F0+F1
-	R1 = F0-F1
-	l2 = odd_indices(l)
-	return alternate_merge(fft(R0, n/2-1, l2), fft(R1.substitute(X=l[1]*X), n/2-1, l2))
-\end{lstlisting}
-	
 	\begin{theorem}
 		Soient $F$ et $G$ deux polynômes de degré strictement inférieur à $\frac{n}{2}$ dont on note $f$ et $g$ les vecteurs de $\mathbb{C}^n$ associés. Alors
 		\[ FG = H \]
@@ -216,69 +178,12 @@ def fft(F, m, l):
 	\end{proof}
 	
 	En utilisant l'algorithme écrit précédemment, on peut donc écrire un nouvel algorithme permettant de calculer le produit de deux polynômes de degré strictement inférieur à $\frac{n}{2}$ en $O(n \ln(n))$.
-	
-\begin{lstlisting}
-def fast_polynomial_multiply(F, G, n, omega):
-	l1 = primitive_root_powers(omega, n)
-	l2 = primitive_root_powers(power(omega, n-1), n)
-	prod = [fft(F, n-1, l1)[i] * fft(G, n-1, l1)[i] for i in range(n)]
-	h = fft(sum(prod[k] * X^k for k in range(len(prod))), n-1, l2)
-	return sum(1/n * h[k] * X^k for k in range(len(h)))
-\end{lstlisting}
+
+	\inputalgorithm{transformee-de-fourier-discrete-3.py}
 
 	\begin{remark}
-		On pourrait imaginer un algorithme calculant le produit de deux polynômes de degrés quelconques $n$ et $m$ sur le même modèle en considérant $F$ et $G$ comme des polynômes de degré $2^k$ où $k$ est tel que $2^(k-1) \leq
+		On pourrait imaginer un algorithme calculant le produit de deux polynômes de degrés quelconques $n$ et $m$ sur le même modèle en considérant $F$ et $G$ comme des polynômes de degré $2^k$ où $k$ est tel que $2^{(k-1)} \leq
 		\max(n, m) \leq 2^k$. Il suffit ensuite de choisir $\omega$ racine primitive $2^k$-ième de l'unité.
 	\end{remark}
-	
-	\begin{comment}
-	\subsection{Transformée de Fourier discrète dans un anneau}
-	
-	On peut généraliser ce que l'on a fait précédemment à un anneau $A$ quelconque sous réserve que $A$ possède certaines propriétés.
-	
-	\begin{definition}
-		Soit $\omega \in A$. On dit que $\omega$ est une \textbf{racine primitive $n$-ième de l'unité} si $w^n = 1$ et que pour tout $p$ diviseur premier de $n$, $\omega^{\frac{n}{p}} - 1$ n'est pas un diviseur de $0$.
-	\end{definition}
-	
-	\begin{example}
-		Soit $\omega \in \mathbb{C}$ une racine primitive $n$-ième de l'unité. Alors $\omega I_n$ est une racine primitive $n$-ième de l'unité de $\mathcal{M}_n(\mathbb{C})$ car :
-		\begin{itemize}
-			\item $(\omega I_n)^n = \omega^n I_n = I_n$.
-			\item Soit $p$ un diviseur premier de $n$ et soit $M \in \mathcal{M}_n(\mathbb{C}$). Alors,
-			\[ (\omega I_n)^{\frac{n}{p}} M = 0 \iff \omega^{\frac{n}{p}} M = 0 \iff M = 0 \]
-		\end{itemize}
-	\end{example}
-	
-	\begin{proposition}
-		Soit $\omega \in A$ une racine primitive $n$-ième de l'unité. Soit $k \in \llbracket 1, n-1 \rrbracket$.
-		\begin{enumerate}[label=(\roman*)]
-			\item $\omega^k - 1$ n'est pas un diviseur de $0$.
-			\item $\sum_{j=0}^{n-1} \omega^{kj} = 0$.
-		\end{enumerate}
-	\end{proposition}
-	
-	\begin{proof}
-		\begin{enumerate}[label=(\roman*)]
-			\item Admis.
-			\item Posons $S_{n-1} = \sum_{j=0}^{n-1} \omega^{kj}$. Soit $l \in \llbracket 1, n-1 \rrbracket$. On a,
-			\[ 0 = 1 - (\omega^n)^k = \omega^l S_{n-1} - S_{n-1} = (\omega^l - 1)S_{n-1} \]
-			Or $w^l - 1$ n'est pas un diviseur de $0$. Donc forcément $S_{n-1} = 0$.
-		\end{enumerate}
-	\end{proof}
-	
-	\begin{theorem}
-		Supposons que $A$ contient une racine primitive $n$-ième de l'unité. Alors l'algorithme décrit pour $\mathbb{C}$ fonctionne encore pour l'anneau $A$.
-	\end{theorem}
-	
-	\begin{proof}
-		Soit $\omega$ une racine primitive $n$-ième de l'unité. On définit de la même manière $\operatorname{DFT}_\omega$, le produit de convolution $*_n$ entre deux vecteurs de $A^n$ et le produit coordonnée par coordonnée $\cdot$ entre deux vecteurs de $A^n$.
-		\newpar
-		On a encore que $\forall f \in \mathbb{C}^n$, $\operatorname{DFT}_\omega(f) = V_\omega \, ^t f$ (en reprenant les notations du \cref{transformee-de-fourier-discrete-2}). Or,
-		\[ \det{V_\omega} = \prod_{0 \leq i < j \leq n-1} \omega^i - \omega^j = \prod_{0 \leq i < j \leq n-1} \omega^i (1 - \omega^{j-i}) \neq 0 \]
-		donc $V_\omega$ est inversible. Par calcul (comme dans la \cref{transformee-de-fourier-discrete-3}), on trouve $V_\omega^{-1} = \frac{1}{n} V_{\omega^{-1}}$ (et $\omega \omega^{n-1} = \omega^n = 1$ donc $\omega^{-1}$ existe).
-		\newpar
-		Soient $f$ et $g$ deux vecteurs de $A^n$. Il ne reste plus qu'à montrer la relation $\operatorname{DFT}_\omega(f) \cdot \operatorname{DFT}_\omega(g) = \operatorname{DFT}_\omega(f *_n g)$. En constatant que la \cref{transformee-de-fourier-discrete-1} s'applique encore dans l'anneau $A$, on peut montrer le résultat de la même manière que dans $\mathbb{C}$.
-	\end{proof}
-	\end{comment}
 	%</content>
 \end{document}

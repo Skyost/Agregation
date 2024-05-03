@@ -30,6 +30,7 @@
 % Redéfinition des commandes :
 
 \renewcommand{\lesson}[3]{%
+	\renewcommand{\codedirectory}{lecons/}%
 	\setcounter{section}{\numexpr #2 - 1}%
 	\section{#3}%
 	\label{#2}
@@ -38,10 +39,16 @@
 
 \renewcommand{\development}[3]{%
 	\resetsectioncount%
+	\renewcommand{\codedirectory}{developpements/}%
 	\renewcommand{\resetsectioncount}{}
 	\section{#3}%
 	\label{#2}
 	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+}
+
+\renewcommand{\sheet}[3]{%
+	\development{#1}{#2}{#3}%
+	\renewcommand{\codedirectory}{fiches/}%
 }
 
 % Premières pages :

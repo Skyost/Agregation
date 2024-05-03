@@ -286,6 +286,15 @@ const generatePdf = (
                 excludes: [],
                 hasIncludes: false,
                 targetIsDirectory: true
+              },
+              // inputalgorithm command for bibliography files.
+              {
+                command: 'inputalgorithm',
+                directories: [],
+                extensions: ['.py'],
+                excludes: [],
+                hasIncludes: false,
+                targetIsDirectory: false
               }
             ]
           )

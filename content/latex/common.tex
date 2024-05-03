@@ -22,6 +22,7 @@
 \usepackage{fourier-otf}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
+\usepackage{listings}
 \usepackage{catchfilebetweentags}
 \usepackage[french, capitalise, noabbrev]{cleveref}
 \usepackage[fit, breakall]{truncate}
@@ -46,7 +47,6 @@
 \usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
 \usepackage{luacode}
 \usepackage{float}
-\usepackage{listings}
 
 % Chemin vers la bibliographie :
 
@@ -188,7 +188,7 @@
 \definecolor{cexample}{HTML}{795548}
 \definecolor{application}{HTML}{009688}
 \definecolor{remark}{HTML}{3f51b5}
-\definecolor{lstlisting}{HTML}{000000}
+\definecolor{algorithm}{HTML}{009688}
 %\definecolor{proof}{HTML}{e1f5fe}
 
 % Théorèmes :
@@ -207,6 +207,8 @@
 \newtheorem{example}[theorem]{Exemple}
 \newtheorem{cexample}[theorem]{Contre-exemple}
 \newtheorem{application}[theorem]{Application}
+
+\newtheorem{algorithm}[theorem]{Algorithme}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remarque}
@@ -243,7 +245,7 @@
 \applystyletotheorem{application}
 \applystyletotheorem{remark}
 %\applystyletotheorem{proof}
-\applystyletotheorem{lstlisting}
+\applystyletotheorem{algorithm}
 
 % Environnements :
 
@@ -296,8 +298,17 @@
 	stepnumber=2,
 	stringstyle=\color{mauvecode},
 	tabsize=2,
+	%texcl=true,
 	xleftmargin=10pt,
 	%title=\lstname
+}
+
+\newcommand{\codedirectory}{}
+\newcommand{\inputalgorithm}[1]{%
+	\begin{algorithm}%
+		\strut%
+		\lstinputlisting{\codedirectory#1}%
+	\end{algorithm}%
 }
 
 
