@@ -31,3 +31,7 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@import 'assets/highlighting';
+</style>

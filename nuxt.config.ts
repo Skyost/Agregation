@@ -61,7 +61,7 @@ export default defineNuxtConfig({
       anchorLinks: false
     },
     ignores: [
-      ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums'
+      ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums,py'
         .split(',')
         .map(extension => `\\.${extension}$`),
       '/latex/bibliography.tex',

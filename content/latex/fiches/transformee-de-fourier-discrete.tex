@@ -104,7 +104,7 @@
 			\[ F(\omega^i) G(\omega^i) = (FG)(\omega^i) = H(\omega^i) \]
 			Donc $\operatorname{DFT}_\omega(f) \cdot \operatorname{DFT}_\omega(g) = \operatorname{DFT}_\omega(h)$, et ainsi, $\operatorname{DFT}_\omega$ est bien un morphisme d'algèbres.
 			\item Clairement,
-			\[ \operatorname{DFT}_\omega(f_0, \dots, f_{n-1}) = V_\omega \, ^t (f_0, \dots, f_{n-1}) \]
+			\[ \operatorname{DFT}_\omega(f_0, \dots, f_{n-1}) = V_\omega \, \tr{(f_0, \dots, f_{n-1})} \]
 			donc la matrice dans la base canonique de $\operatorname{DFT}_\omega$ est $V_\omega$. Or, les $\omega^k$ sont distincts deux-à-deux, donc $V_\omega$ est inversible (car de déterminant non nul, en vertu de la formule de Vandermonde).
 		\end{itemize}
 	\end{proof}
@@ -140,13 +140,13 @@
 	\begin{proposition}
 		\label{transformee-de-fourier-discrete-4}
 		Soit $n = 2^k$, soit $\omega$ une racine $n$-ième de l'unité et soit $F \in \mathbb{C}[x]$ de degré inférieur ou égal à $n$. On suppose qu'il existe $F_0$ et $F_1$ tels que $F = F_1 X^{\frac{n}{2}} + F_0$ et on pose $R_0 = F_0 + F_1$ et $R_1 = F_0 - F_1$. Alors
-		\[ \forall k \in \left\llbracket 0, \frac{n}{2} \right\rrbracket, \, F(\omega^{2k}) = R_0(\omega^{2k}) \text{ et } F(\omega^{2k+1}) = R_1(\omega^{2k+1}) \]
+		\[ \forall k \in \llbracket 0, \frac{n}{2} \rrbracket, \, F(\omega^{2k}) = R_0(\omega^{2k}) \text{ et } F(\omega^{2k+1}) = R_1(\omega^{2k+1}) \]
 	\end{proposition}
 	
 	\begin{proof}
 		Écrivons $F = F_1 X^{\frac{n}{2}} + F_0$. On a donc
 		\[ F - F_0 - F_1 = F_1(x^{\frac{n}{2}} - 1) \iff F = F_1(x^{\frac{n}{2}} - 1) + R_0 \]
-		Soit $ k \in \left\llbracket 0, \frac{n}{2} \right\rrbracket$, on évalue en $\omega^{2k}$ :
+		Soit $ k \in \llbracket 0, \frac{n}{2} \rrbracket$, on évalue en $\omega^{2k}$ :
 		\[ F(\omega^{2k}) = F_1(\omega^{2k})(\omega^{nk} - 1) + R_0(\omega^{2k}) = R_0(\omega^{2k}) \]
 		et la deuxième égalité s'obtient par un calcul similaire (en utilisant le fait que $\omega^{\frac{n}{2}} = -1$).
 	\end{proof}

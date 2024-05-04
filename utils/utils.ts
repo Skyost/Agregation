@@ -13,20 +13,20 @@ export const parseBib = (bibContent: string): Book => {
   const data = parse(bibContent)
   const fields = data.entries[0].fields
   return {
-    title: fields.title[0],
-    subtitle: 'subtitle' in fields ? fields.subtitle[0] : undefined,
-    edition: 'edition' in fields ? parseInt(fields.edition[0]) : undefined,
-    short: fields.short[0],
-    authors: fields.author,
-    date: fields.date[0],
-    publisher: fields.publisher[0],
-    categories: fields.categories[0].split(', ') as Category[],
-    isbn10: fields.isbn10[0],
-    isbn13: fields.isbn13[0],
-    buy: fields.buy[0],
-    website: fields.url[0],
-    comment: fields.comment[0],
-    altcover: 'altcover' in fields ? fields.altcover[0] : undefined
+    title: fields.title,
+    subtitle: 'subtitle' in fields ? fields.subtitle : undefined,
+    edition: 'edition' in fields ? parseInt(fields.edition) : undefined,
+    short: fields.short,
+    authors: fields.author?.map(author => author.firstName + ' ' + author.lastName) ?? [],
+    date: fields.date,
+    publisher: fields.publisher![0],
+    categories: fields.categories.split(', ') as Category[],
+    isbn10: fields.isbn10,
+    isbn13: fields.isbn13,
+    buy: fields.buy,
+    website: fields.url,
+    comment: fields.comment,
+    altcover: 'altcover' in fields ? fields.altcover : undefined
   }
 }
 
