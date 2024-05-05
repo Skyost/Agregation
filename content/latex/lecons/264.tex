@@ -68,10 +68,10 @@
 	\end{example}
 
 	\begin{example}[Loi uniforme]
-		Soit $E \subseteq \Omega$. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
+		Soit $E \subseteq \Omega$ fini. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
 		\[
 		\begin{array}{ccc}
-			\mathcal{P}(\Omega) &\rightarrow& \{ 0; 1 \} \\
+			\mathcal{P}(\Omega) &\rightarrow& \llbracket 0, 1 \rrbracket \\
 			A &\mapsto& \frac{\vert A \, \cap \, E \vert}{\vert E \vert}
 		\end{array}
 		\]
@@ -155,9 +155,11 @@
 		Soient $X_1, \dots, X_n$ des variables aléatoires discrètes définies sur $(\Omega, \mathcal{A}, \mathbb{P})$, $f : X_1(\Omega) \times \dots \times X_m(\Omega) \rightarrow F$ et $g : X_{m+1}(\Omega) \times \dots \times X_n(\Omega) \rightarrow F'$ deux fonctions. Si $X_1, \dots, X_n$ sont indépendantes, alors il en est de même de $f(X_1, \dots, X_m)$ et $g(X_{m+1}, \dots, X_n)$.
 	\end{proposition}
 
+	\newpage
+
 	\subsubsection{Espérance}
 
-	\reference{159}
+	\reference[G-K]{159}
 
 	\begin{definition}
 		\begin{itemize}
@@ -262,6 +264,8 @@
 	\begin{theorem}
 		$X \in \mathcal{L}_1$ si et seulement si $G_X$ admet une dérivée à gauche en $1$. Dans ce cas, $G'_X(1) = \mathbb{E}(X)$.
 	\end{theorem}
+	
+	\newpage
 
 	\subsection{Application en analyse réelle}
 
@@ -324,7 +328,6 @@
 		Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
 	\end{theorem}
 
-	\newpage
 	\subsection{Théorèmes limites et d'approximations}
 
 	\subsubsection{Théorèmes limites}
