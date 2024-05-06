@@ -127,6 +127,7 @@ onUnmounted(() => {
 
 .math-document {
   position: relative;
+  counter-reset: figure;
 
   :deep(.doctitle),
   :deep(.doccategories) {
