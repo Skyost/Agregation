@@ -151,10 +151,10 @@
 		\label{reference-\previousreference-\thereference}%
 	}{}%
 	\todo[noline]{%
-		\protect\vspace{16pt}%
+		\protect\vspace{20pt}%
 		\protect\par%
-		\protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
-		\protect\hyperref[reference-\previousreference-\thereference]{p. #2}%
+		\protect\notblank{#1}{\scriptsize\cite{[\previousreference]}\\[-4pt]}{}%
+		\protect\hyperref[reference-\previousreference-\thereference]{\scriptsize p. #2}%
 	}%
 }
 
@@ -162,9 +162,9 @@
 \providecommand{\dev}[1]{%
 	\reversemarginpar%
 	\todo[noline]{
-		\protect\vspace{16pt}%
+		\protect\vspace{20pt}%
 		\protect\par%
-		\bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
+		\scriptsize\bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
 	}%
 	\normalmarginpar%
 }

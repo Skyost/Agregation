@@ -207,9 +207,9 @@ export const latexGenerateOptions: LatexGenerateOptions = {
       header: `\\renewcommand{\\dev}[1]{%
 \t\\reversemarginpar%
 \t\\todo[noline]{
-\t\t\\protect\\vspace{16pt}%
+\t\t\\protect\\vspace{20pt}%
 \t\t\\protect\\par%
-\t\t\\bfseries\\color{devcolor}\\hyperref[#1]{[DEV]}{}%
+\t\t\\scriptsize\\bfseries\\color{devcolor}\\hyperref[#1]{[DEV]}{}%
 }%
 \t\\normalmarginpar%
 }`
