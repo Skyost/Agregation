@@ -20,7 +20,7 @@
 \usepackage{fontspec}
 \defaultfontfeatures[Erewhon]{FontFace = {bx}{n}{Erewhon-Bold.otf}}
 \usepackage{fourier-otf}
-\usepackage{titlesec}
+\usepackage[nobottomtitles*]{titlesec}
 \usepackage{fancyhdr}
 \usepackage{listings}
 \usepackage{catchfilebetweentags}
@@ -116,27 +116,32 @@
 
 \providecommand{\newpar}{\\[\medskipamount]}
 
+\newcommand{\annexessection}{%
+  \newpage%
+  \subsection*{Annexes}%
+}
+
 \providecommand{\lesson}[3]{%
-	\title{#3}%
-	\hypersetup{pdftitle={#2 : #3}}%
-	\setcounter{section}{\numexpr #2 - 1}%
-	\section{#3}%
-	\fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+  \title{#3}%
+  \hypersetup{pdftitle={#2 : #3}}%
+  \setcounter{section}{\numexpr #2 - 1}%
+  \section{#3}%
+  \fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
 }
 
 \providecommand{\development}[3]{%
-	\title{#3}%
-	\hypersetup{pdftitle={#3}}%
-	\section*{#3}%
-	\fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+  \title{#3}%
+  \hypersetup{pdftitle={#3}}%
+  \section*{#3}%
+  \fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
 }
 
 \providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
 
 \providecommand{\summary}[1]{%
-	\textit{#1}%
-	\par%
-	\medskip%
+  \textit{#1}%
+  \par%
+  \medskip%
 }
 
 \tikzset{notestyleraw/.append style={inner sep=0pt, rounded corners=0pt, align=center}}
@@ -145,28 +150,28 @@
 \newcounter{reference}
 \newcommand{\previousreference}{}
 \providecommand{\reference}[2][]{%
-	\notblank{#1}{
-		\renewcommand{\previousreference}{#1}%
-		\stepcounter{reference}%
-		\label{reference-\previousreference-\thereference}%
-	}{}%
-	\todo[noline]{%
-		\protect\vspace{20pt}%
-		\protect\par%
-		\protect\notblank{#1}{\scriptsize\cite{[\previousreference]}\\[-4pt]}{}%
-		\protect\hyperref[reference-\previousreference-\thereference]{\scriptsize p. #2}%
-	}%
+  \notblank{#1}{
+    \renewcommand{\previousreference}{#1}%
+    \stepcounter{reference}%
+    \label{reference-\previousreference-\thereference}%
+  }{}%
+  \todo[noline]{%
+    \protect\vspace{20pt}%
+    \protect\par%
+    \protect\notblank{#1}{\scriptsize\cite{[\previousreference]}\\[-4pt]}{}%
+    \protect\hyperref[reference-\previousreference-\thereference]{\scriptsize p. #2}%
+  }%
 }
 
 \definecolor{devcolor}{HTML}{00695c}
 \providecommand{\dev}[1]{%
-	\reversemarginpar%
-	\todo[noline]{
-		\protect\vspace{20pt}%
-		\protect\par%
-		\scriptsize\bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
-	}%
-	\normalmarginpar%
+  \reversemarginpar%
+  \todo[noline]{
+    \protect\vspace{20pt}%
+    \protect\par%
+    \scriptsize\bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
+  }%
+  \normalmarginpar%
 }
 
 % En-têtes :
@@ -216,21 +221,21 @@
 \counterwithin*{theorem}{section}
 
 \newcommand{\applystyletotheorem}[1]{
-	\tcolorboxenvironment{#1}{
-		enhanced,
-		breakable,
-		colback=#1!8!white,
-		%right=0pt,
-		%top=8pt,
-		%bottom=8pt,
-		boxrule=0pt,
-		frame hidden,
-		sharp corners,
-		enhanced,borderline west={4pt}{0pt}{#1},
-		%interior hidden,
-		sharp corners,
-		after=\par,
-	}
+  \tcolorboxenvironment{#1}{
+    enhanced,
+    breakable,
+    colback=#1!8!white,
+    %right=0pt,
+    %top=8pt,
+    %bottom=8pt,
+    boxrule=0pt,
+    frame hidden,
+    sharp corners,
+    enhanced,borderline west={4pt}{0pt}{#1},
+    %interior hidden,
+    sharp corners,
+    after=\par,
+  }
 }
 
 \applystyletotheorem{property}
@@ -250,12 +255,12 @@
 % Environnements :
 
 \NewEnviron{whitetabularx}[1]{%
-	\renewcommand{\arraystretch}{2.5}
-	\colorbox{white}{%
-		\begin{tabularx}{\textwidth}{#1}%
-			\BODY%
-		\end{tabularx}%
-	}%
+  \renewcommand{\arraystretch}{2.5}
+  \colorbox{white}{%
+    \begin{tabularx}{\textwidth}{#1}%
+      \BODY%
+    \end{tabularx}%
+  }%
 }
 
 % Maths :
@@ -275,40 +280,40 @@
 \definecolor{mauvecode}{rgb}{0.58,0,0.82}
 \definecolor{bluecode}{HTML}{1976d2}
 \lstset{
-	basicstyle=\footnotesize\ttfamily,
-	breakatwhitespace=false,
-	breaklines=true,
-	%captionpos=b,
-	commentstyle=\color{greencode},
-	deletekeywords={...},
-	escapeinside={\%*}{*)},
-	extendedchars=true,
-	frame=none,
-	keepspaces=true,
-	keywordstyle=\color{bluecode},
-	language=Python,
-	otherkeywords={*,...},
-	numbers=left,
-	numbersep=5pt,
-	numberstyle=\tiny\color{graycode},
-	rulecolor=\color{black},
-	showspaces=false,
-	showstringspaces=false,
-	showtabs=false,
-	stepnumber=2,
-	stringstyle=\color{mauvecode},
-	tabsize=2,
-	%texcl=true,
-	xleftmargin=10pt,
-	%title=\lstname
+  basicstyle=\footnotesize\ttfamily,
+  breakatwhitespace=false,
+  breaklines=true,
+  %captionpos=b,
+  commentstyle=\color{greencode},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  frame=none,
+  keepspaces=true,
+  keywordstyle=\color{bluecode},
+  language=Python,
+  otherkeywords={*,...},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{graycode},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=2,
+  stringstyle=\color{mauvecode},
+  tabsize=2,
+  %texcl=true,
+  xleftmargin=10pt,
+  %title=\lstname
 }
 
 \newcommand{\codedirectory}{}
 \newcommand{\inputalgorithm}[1]{%
-	\begin{algorithm}%
-		\strut%
-		\lstinputlisting{\codedirectory#1}%
-	\end{algorithm}%
+  \begin{algorithm}%
+    \strut%
+    \lstinputlisting{\codedirectory#1}%
+  \end{algorithm}%
 }
 
 
