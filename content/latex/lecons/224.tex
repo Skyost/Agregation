@@ -171,6 +171,8 @@
     On note $\forall n \in \mathbb{N}^*, \, H_n = \sum_{k=1}^{n} \frac{1}{k}$. Alors, quand $n$ tend vers $+\infty$,
     \[ H_n = \ln(n) + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + o\left( \frac{1}{n^2} \right) \]
   \end{proposition}
+  
+  \reference[GOU20]{212}
 
   \begin{application}[Série de Bertrand]
     La série de Bertrand $\sum \frac{1}{n^\alpha \ln(n)^\beta}$ converge si et seulement si $\alpha > 1$ ou si $\alpha = 1$ et $\beta > 1$.
@@ -189,7 +191,7 @@
     Si $(u_n)$ converge vers $\ell \in \mathbb{K}$, alors sa suite des moyennes de Cesàro converge vers $\ell$. On dit que $(u_n)$ converge \textbf{au sens de Cesàro}.
   \end{theorem}
 
-  \reference[FGN2]{142}
+  \reference[FGN3]{142}
 
   \begin{proposition}
     Soit $f$ une application continue définie au voisinage de $0^+$ admettant
@@ -209,7 +211,7 @@
     \[ u_n = \sqrt{\frac{3}{n}} - \frac{3 \sqrt{3}}{10} \frac{\ln(n)}{n\sqrt{n}} + o\left( \frac{\ln(n)}{n\sqrt{n}} \right) \]
   \end{proposition}
 
-  \reference[FGN2]{148}
+  \reference[FGN3]{148}
 
   \begin{example}
     On définit $(u_n)$ par $u_0 \in \mathbb{R}$ et $\forall n \in \mathbb{N}, \, u_{n+1} = u_n + e^{-u_n}$, on a l'équivalent en $+\infty$ :
@@ -252,7 +254,7 @@
 
   \subsubsection{Suites définies implicitement}
 
-  \reference{181}
+  \reference[FGN3]{181}
 
   \begin{example}
     Soit $n \in \mathbb{N}$. Soit $a_n$ la plus grande racine réelle de $X^{2n} - 2n X + 1$. Alors,
@@ -301,7 +303,7 @@
 
   \begin{proposition}
     Soit $f : \mathbb{R}^+ \rightarrow \mathbb{R}$ une fonction continue par morceaux et décroissante, telle que l'intégrale $\int_0^{+\infty} f(t) \, \mathrm{d}t$ converge et est non nulle. Alors, $\sum_{n=1}^{+\infty} f(nt)$ converge et,
-    \[ \sum_{n=1}^{+\infty} f(nt) \sim \frac{1}{t} \sum_0^{+\infty} f(t) \, \mathrm{d}t \]
+    \[ \sum_{n=1}^{+\infty} f(nt) \sim \frac{1}{t} \sum_{n=0}^{+\infty} f(t) \, \mathrm{d}t \]
   \end{proposition}
 
   \begin{example}
@@ -311,7 +313,7 @@
 
   \subsubsection{Fonctions définies par une intégrale}
 
-  \reference[GOU20]{163}
+  \reference{163}
 
   \begin{theorem}
     Soient $[a,b[$ un intervalle semi-ouvert de $\mathbb{R}$ (avec $-\infty < a < b \leq +\infty$), $E$ un espace de Banach sur $\mathbb{R}$, $f : [a,b[ \rightarrow E$ et $g : [a,b[ \rightarrow \mathbb{R}^+_*$ deux applications continues par morceaux sur $[a,b[$.
@@ -343,7 +345,7 @@
     pour $\mu \notin \{ -1, 0 \}$. Alors,
     \begin{enumerate}[label=(\roman*)]
       \item Si $\mu > -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ diverge et $\int_a^x g(t) \, \mathrm{d}t \sim \frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
-      \item Si $\mu < -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ converge et $\int_x^+\infty g(t) \, \mathrm{d}t \sim -\frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
+      \item Si $\mu < -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ converge et $\int_x^{+\infty} g(t) \, \mathrm{d}t \sim -\frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
     \end{enumerate}
   \end{application}
 

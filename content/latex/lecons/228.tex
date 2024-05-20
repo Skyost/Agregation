@@ -147,7 +147,7 @@
 
   \begin{corollary}
     Soient $J$ un intervalle de $\mathbb{R}$ et $h : I \rightarrow J$ une bijection dérivable en $a \in I$. Alors, $h^{-1}$ est dérivable en $b = h(a)$ si et seulement si $h'(a) \neq 0$, et on a,
-    \[ (f^{-1})'(b) = \frac{1}{f'(a)} = \frac{1}{f'(f^{-1}(b))} \]
+    \[ (h^{-1})'(b) = \frac{1}{h'(a)} = \frac{1}{h'(h^{-1}(b))} \]
   \end{corollary}
 
   \begin{corollary}
@@ -308,7 +308,7 @@
   \end{corollary}
 
   \begin{corollary}
-    On suppose $f$ continue sur $[a,b[$ et dérivable sur $]a,b[$ et telle que $\ell = \lim_{\substack{t \rightarrow a \\ t > a} f'(t)}$ existe. Alors, $f$ est dérivable en $a$ et $f'(a) = \ell$.
+    On suppose $f$ continue sur $[a,b[$ et dérivable sur $]a,b[$ et telle que $\ell = \lim_{\substack{t \rightarrow a \\ t > a}} f'(t)$ existe. Alors, $f$ est dérivable en $a$ et $f'(a) = \ell$.
   \end{corollary}
 
   \reference{80}
@@ -340,9 +340,9 @@
 
   \reference{31}
 
-  \begin{proposition}
+  \begin{theorem}[des bornes]
     Une fonction continue sur un compact est bornée et atteint ses bornes.
-  \end{proposition}
+  \end{theorem}
 
   \begin{theorem}[Heine]
     Une fonction continue sur un compact y est uniformément continue.

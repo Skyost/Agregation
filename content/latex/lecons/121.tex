@@ -393,17 +393,22 @@
 
   \reference[ROM21]{22}
 
-  Soit $G$ un groupe.
+  Soit $G$ un groupe fini opérant sur un ensemble fini $X$.
 
   \begin{definition}
     On dit que $G$ est un \textbf{$p$-groupe} s'il est d'ordre une puissance d'un nombre premier $p$.
   \end{definition}
 
-  \begin{proposition}
-    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe opérant sur un ensemble $X$, alors,
+  \begin{theorem}[Formule des classes]
+    Soit $\Omega$ un système de représentants des orbites de l'action de $G$ sur $X$. Alors,
+    \[ |X| = \sum_{\omega \in \Omega} |G \cdot \omega| = \sum_{\omega \in \Omega} (G : \stab_G(\omega)) = \sum_{\omega \in \Omega} \frac{|G|}{|\stab_G(\omega)|} \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soit $p$ un nombre premier. Si $G$ est un $p$-groupe opérant sur $X$, alors,
     \[ |X^G| \equiv |X| \mod p \]
     où $X^G$ désigne l'ensemble des points fixes de $X$ sous l'action de $G$.
-  \end{proposition}
+  \end{corollary}
 
   \begin{corollary}
     On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
@@ -424,9 +429,9 @@
   \begin{application}[Théorème de Cauchy]
     On suppose $G$ non trivial et fini. Soit $p$ un premier divisant l'ordre de $G$. Alors il existe un élément d'ordre $p$ dans $G$.
   \end{application}
-  
+
   \reference[GOU21]{44}
-  
+
   \begin{application}[Premier théorème de Sylow]
     On suppose $G$ fini d'ordre $n p^\alpha$ avec $n, \alpha \in \mathbb{N}$ et $p$ premier tel que $p \nmid n$. Alors, il existe un sous-groupe de $G$ d’ordre $p^\alpha$.
   \end{application}

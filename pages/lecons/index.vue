@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { siteMeta } from '~/site/meta'
 import type { Lesson } from '~/types'
 import LessonCard from '~/components/Cards/LessonCard.vue'
 
@@ -13,7 +12,7 @@ const { error, pending, data: lessons } = useLazyAsyncData(route.path, queryLess
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
-useWipBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/tree/master/content/latex${path}`)
+// useWipBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/tree/master/content/latex${path}`)
 </script>
 
 <template>
