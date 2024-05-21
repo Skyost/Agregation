@@ -196,8 +196,6 @@
 
   \subsubsection{Les espaces vectoriels normés \texorpdfstring{$L_p$}{Lₚ}}
 
-  \paragraph{Généralités}
-
   \reference{171}
 
   \begin{definition}
@@ -227,8 +225,8 @@
   \begin{theorem}
     On se place sur $(\mathbb{R}, \mathcal{B}(\mathbb{R}), \lambda)$. Alors :
     \begin{enumerate}[label=(\roman*)]
-      \item L'ensemble des fonctions en escalier à support compact est dense dans $L_p$ pour tout $p \in 1, +\infty[$.
-      \item L'ensemble des fonctions continues à support compact est dense dans $L_p$ pour tout $p \in 1, +\infty[$.
+      \item L'ensemble des fonctions en escalier à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
+      \item L'ensemble des fonctions continues à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
     \end{enumerate}
   \end{theorem}
 
@@ -419,7 +417,7 @@
   \begin{theorem}[Fubini-Lebesgue]
     Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
     \begin{enumerate}[label=(\roman*)]
-      \item $x \mapsto f(x,y)$ et $y \mapsto f(x,y)$ sont intégrables.
+      \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
       \item On a :
       \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
@@ -489,7 +487,7 @@
 
   \paragraph{Base hilbertienne de \texorpdfstring{$L_2$}{L₂}}
 
-  \reference{110}
+  \reference[BMP]{110}
 
   Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
 

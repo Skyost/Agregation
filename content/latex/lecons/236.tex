@@ -130,7 +130,7 @@
   \begin{theorem}[Fubini-Lebesgue]
     Soient $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ deux espaces mesurés et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
     \begin{enumerate}[label=(\roman*)]
-      \item $x \mapsto f(x,y)$ et $y \mapsto f(x,y)$ sont intégrables.
+      \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
       \item On a :
       \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
