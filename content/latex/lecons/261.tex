@@ -187,7 +187,7 @@
     Soit $g$ une fonction mesurable. Si $X$ est une variable aléatoire admettant $f$ comme densité, alors
     \[ g(X) \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert g \vert f \, \mathrm{d}\lambda < +\infty \]
     et dans ce cas,
-    \[ \mathbb{E}(g(X)) = int_{\mathbb{R}} \vert g \vert f \, \mathrm{d}\lambda \]
+    \[ \mathbb{E}(g(X)) = \int_{\mathbb{R}} \vert g \vert f \, \mathrm{d}\lambda \]
   \end{corollary}
 
   \begin{remark}
@@ -229,10 +229,6 @@
   \begin{corollary}
     Soient $X$ et $Y$ deux variables aléatoires indépendantes. Alors, $\mathbb{P}_{X+Y} = \mathbb{P}_X * \mathbb{P}_Y$.
   \end{corollary}
-
-  \begin{proposition}
-    Soient $X$ et $Y$ deux variables aléatoires indépendantes. Alors, $\mathbb(E)(XY) = \mathbb{E}(X) \mathbb{E}(Y)$.
-  \end{proposition}
 
   \subsection{Caractérisation de la loi par des fonctions}
 
@@ -304,10 +300,15 @@
       \item $\phi$ est uniformément continue sur $\mathbb{R}^d$.
     \end{enumerate}
   \end{theorem}
+  
+  \begin{theorem}
+    Soient $X$ et $Y$ deux variables aléatoires indépendantes et $\mathcal{L}_1$. Alors,
+    \[ \mathbb{E}(X Y) = \mathbb{E}(X) \mathbb{E}(Y) \]
+  \end{theorem}
 
-  \begin{proposition}
-    Si deux variables aléatoires réelles sont indépendantes, alors $\phi_{X+Y} = \phi_X \phi_Y$.
-  \end{proposition}
+  \begin{corollary}
+    Si deux variables aléatoires réelles $X$ et $Y$ sont indépendantes, alors $\phi_{X+Y} = \phi_X \phi_Y$.
+  \end{corollary}
 
   \begin{theorem}
     Si $X$ admet un moment d'ordre $N$ (ie. $\mathbb{E}(\Vert X \Vert^N)) < +\infty$), alors $\phi_X$ est $\mathcal{C}^N$ et, si $d = 1$,
@@ -354,15 +355,10 @@
     \end{itemize}
   \end{example}
 
-  \begin{theorem}
-    Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et $\mathcal{L}_1$. Alors,
-    \[ \mathbb{E}(X_1 X_2) = \mathbb{E}(X_1) \mathbb{E}(X_2) \]
-  \end{theorem}
-
-  \begin{corollary}
+  \begin{proposition}
     Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et à valeurs dans $\mathbb{N}$. Alors,
     \[ G_{X_1 X_2} = G_{X_1} + G_{X_2} \]
-  \end{corollary}
+  \end{proposition}
 
   \begin{theorem}
     Sur $[0,1]$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec

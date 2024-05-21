@@ -17,13 +17,13 @@
   \begin{proof}
     On fait la décomposition de Dunford de $A$ : $A = D+N$. Comme $D$ et $N$ commutent, on a $e^{tA} = e^{tD} e^{tN}$. Soient $P$ la matrice de passage donnée par la base de diagonalisation de $D$ et $\lambda_1, \dots, \lambda_n$ ses valeurs propres. En notant $\VERT . \VERT$ la norme subordonnée à $\Vert . \Vert_\infty$ sur $\mathbb{C}^n$, on a $\forall t \geq 0$,
     \begin{align*}
-      \left \VERT e^{tD} \right \VERT &= \left \VERT e^{tP \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1}} \right \VERT \\
-      & = \left \VERT P e^{t \operatorname{Diag}(\lambda_1, \dots, \lambda_n)} P^{-1} \right \VERT \\
-      & \leq \underbrace{\VERT P \VERT \left \VERT P^{-1} \right \VERT}_{= \alpha} \sup_{\Vert x \Vert_\infty = 1} \left \Vert \operatorname{Diag}(e^{t \lambda_1}, \dots, e^{t \lambda_n}) x \right \Vert_{\infty} \\
+      \VERT e^{tD} \VERT &= \VERT e^{tP \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1}} \VERT \\
+      & = \VERT P e^{t \operatorname{Diag}(\lambda_1, \dots, \lambda_n)} P^{-1} \VERT \\
+      & \leq \underbrace{\VERT P \VERT \VERT P^{-1} \VERT}_{= \alpha} \sup_{\Vert x \Vert_\infty = 1} \Vert \operatorname{Diag}(e^{t \lambda_1}, \dots, e^{t \lambda_n}) x \Vert_{\infty} \\
       & \leq \alpha \sup_{i \in \llbracket 1, n \rrbracket} e^{t\lambda_i} \\
       & \leq \alpha e^{-\lambda t}
     \end{align*}
-    où $\lambda > 0$ par hypothèse. En dimension finie, toutes les normes sont équivalentes, donc il existe $\beta > 0$ tel que $\left \VERT e^{tD} \right \VERT \leq \beta e^{- \lambda t}$.
+    où $\lambda > 0$ par hypothèse. En dimension finie, toutes les normes sont équivalentes, donc il existe $\beta > 0$ tel que $\VERT e^{tD} \VERT \leq \beta e^{- \lambda t}$.
     \newpar
     Pour conclure, en notant $r$ l'indice de nilpotence de $N$,
     \begin{align*}
