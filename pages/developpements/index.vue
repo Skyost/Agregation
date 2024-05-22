@@ -8,7 +8,7 @@ const queryDevelopments = () => queryContent<Development>('latex', 'developpemen
   .find()
 
 const route = useRoute()
-const { error, pending, data: developments } = useLazyAsyncData(route.path, queryDevelopments)
+const { error, pending, data: developments } = useLazyAsyncData<Development[]>(route.path, queryDevelopments)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)

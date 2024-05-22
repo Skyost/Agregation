@@ -1,3 +1,5 @@
+import type { HasCategories } from '~/types/category.d'
+
 /**
  * Represents an object containing LaTeX-related content.
  *

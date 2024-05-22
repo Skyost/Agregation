@@ -8,7 +8,7 @@ const props = defineProps<{
   searchFields?: string[]
 }>()
 
-const currentCategory = ref<Category | undefined>()
+const currentCategory = ref<CategoryOrUndefined>()
 const search = ref<string>('')
 
 const categories = computed<CategoryOrUndefined[]>(() => {

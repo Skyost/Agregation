@@ -18,6 +18,28 @@ import { siteMeta } from '~/site/meta'
             Le site en lui-même est totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/master/LICENSE`">open-source</a>,
             vous pouvez aller voir ça sur <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`">Github</a>.
           </p>
+          <ul class="logos">
+            <li>
+              <a href="https://www.latex-project.org/">
+                <img src="/images/technologies/latex.svg" alt="LaTeX" title="LaTeX">
+              </a>
+            </li>
+            <li>
+              <a href="https://vuejs.org/">
+                <img src="/images/technologies/vue.svg" alt="Vue" title="Vue">
+              </a>
+            </li>
+            <li>
+              <a href="https://nuxtjs.org/">
+                <img src="/images/technologies/nuxt.svg" alt="Nuxt" title="Nuxt">
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com">
+                <img src="/images/technologies/github.svg" alt="Github" title="Github">
+              </a>
+            </li>
+          </ul>
         </ski-column>
         <ski-column cols="12" md="6">
           <h2>PDFs</h2>
@@ -47,6 +69,27 @@ import { siteMeta } from '~/site/meta'
     border-bottom: 1px solid rgba(white, 0.75);
     padding-bottom: 0.15em;
     margin-bottom: 0.5em;
+  }
+
+  .logos {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding-left: 0;
+
+    li {
+      margin-right: 0.6rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    img {
+      height: 1rem;
+    }
   }
 
   :deep(a) {

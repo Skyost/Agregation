@@ -8,11 +8,10 @@ const queryLessons = () => queryContent<Lesson>('latex', 'lecons')
   .find()
 
 const route = useRoute()
-const { error, pending, data: lessons } = useLazyAsyncData(route.path, queryLessons)
+const { error, pending, data: lessons } = useLazyAsyncData<Lesson[]>(route.path, queryLessons)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
-// useWipBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/tree/master/content/latex${path}`)
 </script>
 
 <template>
