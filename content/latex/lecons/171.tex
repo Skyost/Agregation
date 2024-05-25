@@ -182,13 +182,13 @@
     \[ q(x_1, \dots, x_n) = \sum_{i=1}^n a_{i,i} x_i^2 + \sum_{1 \leq i<j \leq n} a_{i,j} x_ix_j \]
     et on cherche à écrire $q$ comme combinaison linéaire de carrés de formes linéaires indépendantes. On a deux cas :
     \begin{enumerate}[label=(\roman*)]
-      \item \underline{Il existe $i \in \llbracket 1, n \rrbracket$ tel que $a_{i,i} \neq 0$.} On peut suppose $i = 1$, on pose alors $a = a_{1,1}$. On réécrit $q$ sous la forme :
+      \item \uline{Il existe $i \in \llbracket 1, n \rrbracket$ tel que $a_{i,i} \neq 0$.} On peut suppose $i = 1$, on pose alors $a = a_{1,1}$. On réécrit $q$ sous la forme :
       \begin{align*}
         q(x_1, \dots, x_n) &= ax_1^2 + x_1B(x_2, \dots, x_n) + C(x_2, \dots, x_n) \\
         &= a\left( x_1 + \frac{B(x_2, \dots, x_n)}{2a} \right)^2 + \left( C(x_2, \dots, x_n) - \frac{B(x_2, \dots, x_n)^2}{4a} \right)
       \end{align*}
       où $B$ est une forme linéaire et $C$ une forme quadratique. On itère alors le procédé avec $C - \frac{B^2}{4a}$.
-      \item \underline{Sinon.} Si $q = 0$, c'est terminé. Sinon, il existe un $a_{i,j}$ non nul. On peut suppose $(i,j) = (1,2)$, on pose alors $a = a_{1,2}$. On réécrit $q$ sous la forme :
+      \item \uline{Sinon.} Si $q = 0$, c'est terminé. Sinon, il existe un $a_{i,j}$ non nul. On peut suppose $(i,j) = (1,2)$, on pose alors $a = a_{1,2}$. On réécrit $q$ sous la forme :
       \[ q(x_1, \dots, x_n) = ax_1x_2 + x_1B(x_3, \dots, x_n) + x_2C(x_3, \dots, x_n) + D(x_3, \dots, x_n) \]
       où $B$ et $C$ sont des formes linéaires et $D$ une forme quadratique. En utilisant une identité remarquable :
       \begin{align*}
@@ -296,19 +296,19 @@
 
   \begin{theorem}[Classification des coniques]
     \begin{enumerate}[label=(\roman*)]
-      \item \underline{Si $q$ est non dégénérée :} On peut réécrire l'équation $(E)$ de manière équivalente sous la forme
+      \item \uline{Si $q$ est non dégénérée :} On peut réécrire l'équation $(E)$ de manière équivalente sous la forme
       \[ ax^2 + by^2 = h \]
       avec $a, b, h \in \mathbb{R}$.
       \begin{itemize}
-        \item \underline{Si $\operatorname{sign}(q) = (2,0)$ :} si $h = 0$, $\mathcal{C}$ se réduit à un point ; si $h < 0$, $\mathcal{C} = \emptyset$. Supposons que $h > 0$, alors $\mathcal{C}$ est une ellipse, de centre $\left( \frac{r}{a}, \frac{s}{b} \right)$.
-        \item \underline{Si $\operatorname{sign}(q) = (1,1)$ :} si $h \neq 0$, $\mathcal{C}$ est une hyperbole. Si $h = 0$, $\mathcal{C}$ se réduit aux deux droites d'équation $y = \pm \sqrt{\left\vert \frac{a}{b} \right\vert}x$.
+        \item \uline{Si $\operatorname{sign}(q) = (2,0)$ :} si $h = 0$, $\mathcal{C}$ se réduit à un point ; si $h < 0$, $\mathcal{C} = \emptyset$. Supposons que $h > 0$, alors $\mathcal{C}$ est une ellipse, de centre $\left( \frac{r}{a}, \frac{s}{b} \right)$.
+        \item \uline{Si $\operatorname{sign}(q) = (1,1)$ :} si $h \neq 0$, $\mathcal{C}$ est une hyperbole. Si $h = 0$, $\mathcal{C}$ se réduit aux deux droites d'équation $y = \pm \sqrt{\left\vert \frac{a}{b} \right\vert}x$.
       \end{itemize}
-      \item \underline{Si $q$ est dégénérée :} On a $ab = 0$ et $\operatorname{sign(q)} = (1,0)$ ; on peut réécrire l'équation $(E)$ de manière équivalente sous la forme
+      \item \uline{Si $q$ est dégénérée :} On a $ab = 0$ et $\operatorname{sign(q)} = (1,0)$ ; on peut réécrire l'équation $(E)$ de manière équivalente sous la forme
       \[ a \left( x - \frac{r}{a} \right)^2 - 2sy = h \]
       avec $h \in \mathbb{R}$.
       \begin{itemize}
-        \item \underline{Si $s \neq 0$ :} $\mathcal{C}$ est une parabole.
-        \item \underline{Si $s = 0$ :} si $h = 0$, $\mathcal{C}$ se réduit à la droite $x = 0$ ; si $h < 0$, $\mathcal{C} = \emptyset$. Supposons que $h > 0$, alors $\mathcal{C}$ est constituée des deux droites parallèles d'équation $x = \pm h$.
+        \item \uline{Si $s \neq 0$ :} $\mathcal{C}$ est une parabole.
+        \item \uline{Si $s = 0$ :} si $h = 0$, $\mathcal{C}$ se réduit à la droite $x = 0$ ; si $h < 0$, $\mathcal{C} = \emptyset$. Supposons que $h > 0$, alors $\mathcal{C}$ est constituée des deux droites parallèles d'équation $x = \pm h$.
       \end{itemize}
     \end{enumerate}
   \end{theorem}

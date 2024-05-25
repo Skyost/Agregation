@@ -38,15 +38,15 @@
 \usepackage[subpreambles=true]{standalone}
 \usepackage{environ}
 \usepackage[normalem]{ulem}
-\usepackage{marginnote}
 \usepackage{etoolbox}
 \usepackage{setspace}
 \usepackage[bibstyle=reading, citestyle=draft]{biblatex}
 \usepackage{xpatch}
 \usepackage[many, breakable]{tcolorbox}
-\usepackage[backgroundcolor=white, bordercolor=white, textsize=small]{todonotes}
+\usepackage[backgroundcolor=white, bordercolor=white, textsize=scriptsize]{todonotes}
 \usepackage{luacode}
 \usepackage{float}
+\usepackage{needspace}
 
 % Chemin vers la bibliographie :
 
@@ -150,7 +150,9 @@
 \newcounter{reference}
 \newcommand{\previousreference}{}
 \providecommand{\reference}[2][]{%
+  \needspace{20pt}%
   \notblank{#1}{
+    \needspace{20pt}%
     \renewcommand{\previousreference}{#1}%
     \stepcounter{reference}%
     \label{reference-\previousreference-\thereference}%
@@ -158,8 +160,8 @@
   \todo[noline]{%
     \protect\vspace{20pt}%
     \protect\par%
-    \protect\notblank{#1}{\scriptsize\cite{[\previousreference]}\\[-4pt]}{}%
-    \protect\hyperref[reference-\previousreference-\thereference]{\scriptsize p. #2}%
+    \protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
+    \protect\hyperref[reference-\previousreference-\thereference]{p. #2}%
   }%
 }
 
@@ -169,7 +171,7 @@
   \todo[noline]{
     \protect\vspace{20pt}%
     \protect\par%
-    \scriptsize\bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
+    \bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
   }%
   \normalmarginpar%
 }

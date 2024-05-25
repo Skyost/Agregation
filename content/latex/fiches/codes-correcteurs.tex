@@ -242,8 +242,8 @@
   Imaginons maintenant que l'on réceptionne un mot $a' \in \mathbb{F}_q^m$. On calcule son syndrome via une matrice de contrôle $H$ et on a deux cas :
 
   \begin{itemize}
-    \item \underline{Le syndrome est nul :} $a' \in \mathcal{C}$ : on considère alors qu'il n'y a pas d'erreur.
-    \item \underline{Le syndrome est non nul :} il existe $a \in \mathcal{C}$ (le mot d'origine) et $e \in \mathbb{F}_q^n$ (l'erreur) tels que $a' = a + e$. Alors,
+    \item \uline{Le syndrome est nul :} $a' \in \mathcal{C}$ : on considère alors qu'il n'y a pas d'erreur.
+    \item \uline{Le syndrome est non nul :} il existe $a \in \mathcal{C}$ (le mot d'origine) et $e \in \mathbb{F}_q^n$ (l'erreur) tels que $a' = a + e$. Alors,
     \[ Ha' = H(a+e) = Ha + He = He \]
     En notant $h_j$ le $j$-ième vecteur colonne de $H$ et $e_j$ la $j$-ième coordonnée de $e$ :
     \[ Ha' = \sum_{j \text{ tel que } e_j \neq 0} h_j e_j \tag{$*$} \]
@@ -275,10 +275,10 @@
   \begin{proof}
     On sait (par la théorie des corps), que $\mathbb{F}_q[X]/(X^n-1)$ est un espace vectoriel sur $\mathbb{F}_q$ de dimension $n$. En effet, en notant $\overline{X}$ la classe de $X$ dans $\mathbb{F}_q[X]/(X^n-1)$ :
     \begin{itemize}
-      \item \underline{La famille $(\overline{1}, \dots, \overline{X}^{n-1})$ est libre.} Soient $\lambda_0, \dots, \lambda_{n-1} \in \mathbb{K}$ tels que
+      \item \uline{La famille $(\overline{1}, \dots, \overline{X}^{n-1})$ est libre.} Soient $\lambda_0, \dots, \lambda_{n-1} \in \mathbb{K}$ tels que
       \[ \sum_{i=0}^{n-1} \lambda_i \overline{X}^i = \overline{\sum_{i=0}^{n-1} \lambda_i X^i} = 0 \]
       Alors, le polynôme $\sum_{i=0}^{n-1} \lambda_i X^i$ est dans l'idéal $(X^n-1)$, mais est de degré strictement inférieur à $n$. Donc ses coefficients sont nuls : on a $\forall i \in \llbracket 1, n \rrbracket$, $\lambda_i = 0$.
-      \item \underline{La famille $(\overline{1}, \dots, \overline{X}^{n-1})$ est génératrice.} Soit $\overline{P} \in \mathbb{F}_q[X]/(X^n-1)$. On fait la division euclidienne de $P$ par $X^n - 1$ dans $\mathbb{F}_q[X]$ :
+      \item \uline{La famille $(\overline{1}, \dots, \overline{X}^{n-1})$ est génératrice.} Soit $\overline{P} \in \mathbb{F}_q[X]/(X^n-1)$. On fait la division euclidienne de $P$ par $X^n - 1$ dans $\mathbb{F}_q[X]$ :
       \[ \exists (Q,R) \in \mathbb{F}_q[X] \text{ tel que } P = Q(X^n-1) + R \text{ avec } \deg(R) < n \text{ ou } R = 0 \]
       En repassant modulo $(X^n - 1)$, on a bien
       \[ \overline{P} = \overline{R} \]
@@ -304,8 +304,8 @@
       &= \overline{X}\varphi(a)
     \end{align*}
     \begin{itemize}
-      \item \underline{Supposons $\mathcal{C}$ cyclique.} Alors, par ce qu'on vient de dire, $\widetilde{\mathcal{C}}$ est stable par multiplication par $X$. Mais $\widetilde{\mathcal{C}}$ est un sous-espace vectoriel de $\mathbb{F}_q[X]/(X^n-1)$, donc il est aussi stable par addition et par multiplication par un scalaire. Finalement, $\widetilde{\mathcal{C}}$ est bien un idéal de $\mathbb{F}_q[X]/(X^n-1)$.
-      \item \underline{Supposons $\widetilde{\mathcal{C}}$ idéal de $\mathbb{F}_q[X]/(X^n-1)$.} Alors, $\widetilde{\mathcal{C}}$ est stable par multiplication par $X$. Donc par le raisonnement précédent, $\mathcal{C}$ est clairement cyclique.
+      \item \uline{Supposons $\mathcal{C}$ cyclique.} Alors, par ce qu'on vient de dire, $\widetilde{\mathcal{C}}$ est stable par multiplication par $X$. Mais $\widetilde{\mathcal{C}}$ est un sous-espace vectoriel de $\mathbb{F}_q[X]/(X^n-1)$, donc il est aussi stable par addition et par multiplication par un scalaire. Finalement, $\widetilde{\mathcal{C}}$ est bien un idéal de $\mathbb{F}_q[X]/(X^n-1)$.
+      \item \uline{Supposons $\widetilde{\mathcal{C}}$ idéal de $\mathbb{F}_q[X]/(X^n-1)$.} Alors, $\widetilde{\mathcal{C}}$ est stable par multiplication par $X$. Donc par le raisonnement précédent, $\mathcal{C}$ est clairement cyclique.
     \end{itemize}
   \end{proof}
 

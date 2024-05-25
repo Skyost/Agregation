@@ -180,6 +180,20 @@ const handleReferences = (root: HTMLElement) => {
       reference.innerHTML = name
     }
   }
+  const citations = root.querySelectorAll('.citation')
+  for (const citation of citations) {
+    const cite = citation.getAttribute('data-cites')
+    if (cite) {
+      let short = cite
+      if (short.startsWith('[')) {
+        short = short.substring(1)
+      }
+      if (short.endsWith(']')) {
+        short = short.substring(0, short.length - 1)
+      }
+      citation.innerHTML = `<a href="/bibliographie/#${short}">${cite}</a>`
+    }
+  }
 }
 
 /**
@@ -195,8 +209,14 @@ const findRefName = (element: HTMLElement | null): string | null => {
     return element.querySelector('> p > strong')?.text ?? null
   }
   if (element.tagName === 'LI') {
-    const index = Array.from(element.parentNode.childNodes).indexOf(element)
-    return `Point ${(index - 1)}`
+    const listItems = []
+    for (const child of element.parentNode.childNodes) {
+      if (child.rawTagName.toUpperCase() === 'LI') {
+        listItems.push(child)
+      }
+    }
+    const index = listItems.indexOf(element)
+    return `Point ${(index + 1)}`
   }
   if (element.tagName === 'SPAN' || element.tagName === 'P') {
     return findRefName(element.parentNode)

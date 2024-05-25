@@ -3,7 +3,8 @@
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant l'agrégation de mathématiques.
 Vous trouverez donc sur ce site :
 
-* Mes [plans](https://agreg.skyost.eu/lecons) de leçons.
+* Mes [plans](https://agreg.skyost.eu/lecons) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence,
+  et / ou de maîtrise du sujet, j'ai fait l'impasse sur les leçons _161_, _181_ et _220_.
 * Mon choix de [developpements](https://agreg.skyost.eu/developpements).
 * Quelques [fiches](https://agreg.skyost.eu/fiches) de révision.
 * Ma [bibliographie](https://agreg.skyost.eu/bibliographie) personnelle.
@@ -21,8 +22,6 @@ Je me permets de glisser quelques liens vers des sites que j'utilise régulière
   et d'outils en tout genre pour préparer votre oral. Je ne peux que conseiller les profils
   d'[Owen](https://agreg-maths.fr/users/21875), d'[Antoine](https://agreg-maths.fr/users/32881),
   d'[Inès](https://agreg-maths.fr/users/629) et de [Marie](https://agreg-maths.fr/users/156).
-* [Coquillages & Poincaré](https://www.coquillagesetpoincare.fr/agregation-2019.html). Véritable mine d'or remplie
-  de plans et de développements avec des références très précises.
 * [@AgregNancy sur Twitter](https://twitter.com/AgregNancy) <em>(oui, j'ai bien écrit <q>Twitter</q>...)</em>. Des 
   exercices pour se préparer pour le jour J.
 

@@ -17,8 +17,8 @@
   \begin{proof}
     Soit $X$ une partie fermée bornée de $\mathbb{R}^n$. Soit $(x_n)$ une suite de $X$. On note $\forall k \in \mathbb{N}$, $\forall i \in \llbracket 1, n \rrbracket$, $x_k^i$ la $i$-ième composante du vecteur $x_k$. Comme $X$ est bornée, alors $(\Vert x_n \Vert_\infty)$ est une suite réelle bornée. Montrons par récurrence que, pour tout $k \in \llbracket 1, n \rrbracket$, il existe des extractrices $\varphi_1, \dots, \varphi_i$ telle que la suite réelle $(x^i_{\varphi_1 \circ \dots \circ \varphi_i (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$.
     \begin{itemize}
-      \item \underline{Pour $k = 1$}, c'est une réécriture du théorème de Bolzano-Weierstrass.
-      \item \underline{Pour $k > 1$}, supposons avoir construit $\varphi_1, \dots, \varphi_k$ telles que $(x^i_{\varphi_1 \circ \dots \circ \varphi_k (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$. Comme
+      \item \uline{Pour $k = 1$}, c'est une réécriture du théorème de Bolzano-Weierstrass.
+      \item \uline{Pour $k > 1$}, supposons avoir construit $\varphi_1, \dots, \varphi_k$ telles que $(x^i_{\varphi_1 \circ \dots \circ \varphi_k (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$. Comme
       \[ \vert x^{k+1}_n \vert \leq \Vert x_n \Vert_\infty \]
       $(x^{k+1}_{\varphi_1 \circ \dots \circ \varphi_k (n)})$ est une suite réelle bornée. Toujours par le théorème de Bolzano-Weierstrass, il existe une extractrice $\varphi_{k+1}$ telle que $(x^{k+1}_{\varphi_1 \circ \dots \circ \varphi_{k+1}}(n))$ converge. D'où l'hérédité.
     \end{itemize}

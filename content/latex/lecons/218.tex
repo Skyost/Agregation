@@ -160,9 +160,9 @@
   \begin{application}
     \[ \lim_{x \rightarrow 0} \frac{\tan(x) - x}{\sin(x) - x} = -2 \]
   \end{application}
-  
+
   \reference[I-P]{380}
-  
+
   \begin{application}[Développement asymptotique de la série harmonique]
     On note $\forall n \in \mathbb{N}^*, \, H_n = \sum_{k=1}^{n} \frac{1}{k}$. Alors, quand $n$ tend vers $+\infty$,
     \[ H_n = \ln(n) + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + o\left( \frac{1}{n^2} \right) \]
@@ -297,10 +297,10 @@
   \begin{application}[Calculs approchés d'intégrales]
     On note $I(f) = \int_a^b f(t) \, \mathrm{d}t$. L'objectif est d'approximer $I(f)$ par une expression $P(f)$ et de majorer l'erreur d'approximation $E(f) = \vert I(f) - P(f) \vert$.
     \begin{enumerate}[label=(\roman*)]
-      \item \underline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
-      \item \underline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
-      \item \underline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.
-      \item \underline{Méthode de Simpson.} On suppose $f$ de classe $\mathcal{C}^4$. Avec $P(f) = \frac{b-a}{6} \left(f(a) + f(b) + 4f \left( \frac{a+b}{2} \right)\right)$, on a $E(f) \leq \frac{(b-a)^3}{2880} \Vert f^{(4)} \Vert_\infty$.
+      \item \uline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
+      \item \uline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.
+      \item \uline{Méthode de Simpson.} On suppose $f$ de classe $\mathcal{C}^4$. Avec $P(f) = \frac{b-a}{6} \left(f(a) + f(b) + 4f \left( \frac{a+b}{2} \right)\right)$, on a $E(f) \leq \frac{(b-a)^3}{2880} \Vert f^{(4)} \Vert_\infty$.
     \end{enumerate}
   \end{application}
 

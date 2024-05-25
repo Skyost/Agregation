@@ -151,8 +151,8 @@
   \begin{lemma}
     On suppose $A$ euclidien de stathme $\nu$. Soient $a, b \in A^*$ et $r$ un reste dans la division euclidienne de $a$ par $b$. À inversible près, on a alors :
     \begin{itemize}
-      \item \underline{Si $r = 0$ :} $\operatorname{pgcd}(a,b) = b$.
-      \item \underline{Sinon :} $\operatorname{pgcd}(a,b) = \operatorname{pgcd}(b,r)$.
+      \item \uline{Si $r = 0$ :} $\operatorname{pgcd}(a,b) = b$.
+      \item \uline{Sinon :} $\operatorname{pgcd}(a,b) = \operatorname{pgcd}(b,r)$.
     \end{itemize}
   \end{lemma}
 
@@ -178,14 +178,14 @@
   \begin{proposition}[Algorithme d'Euclide généralisé]
     En reprenant les notations du \cref{142-1} :
     \begin{itemize}
-      \item \underline{Étape 0 :} On écrit $r_0 = a = u_0 \times a + v_0 \times b$ avec $(u_0, v_0) = (1, 0)$.
-      \item \underline{Étape 1 :} On écrit $r_1 = b = u_1 \times a + v_1 \times b$ avec $(u_1, v_1) = (0, 1)$.
-      \item \underline{Étape 2 :} On écrit $r_0 - q_1r_1 = r_2 = u_2 \times a + v_2 \times b$ avec $(u_2, v_2) = (1, -q_1)$.
+      \item \uline{Étape 0 :} On écrit $r_0 = a = u_0 \times a + v_0 \times b$ avec $(u_0, v_0) = (1, 0)$.
+      \item \uline{Étape 1 :} On écrit $r_1 = b = u_1 \times a + v_1 \times b$ avec $(u_1, v_1) = (0, 1)$.
+      \item \uline{Étape 2 :} On écrit $r_0 - q_1r_1 = r_2 = u_2 \times a + v_2 \times b$ avec $(u_2, v_2) = (1, -q_1)$.
       \item \dots
-      \item \underline{Étape $k$ :} On écrit $r_{k-1} - q_k r_k = r_{k+1} = u_{k+1} \times a + v_{k+1} \times b$.
+      \item \uline{Étape $k$ :} On écrit $r_{k-1} - q_k r_k = r_{k+1} = u_{k+1} \times a + v_{k+1} \times b$.
       \item \dots
-      \item \underline{Étape $n-1$ :} On écrit $r_{n-2} - q_{n-1} r_{n-1} = r_n = u_n \times a + v_n \times b$.
-      \item \underline{Étape $n$ :} On écrit $r_{n-1} - q_n r_n = 0 = u_{n+1} \times a + v_{n+1} \times b$.
+      \item \uline{Étape $n-1$ :} On écrit $r_{n-2} - q_{n-1} r_{n-1} = r_n = u_n \times a + v_n \times b$.
+      \item \uline{Étape $n$ :} On écrit $r_{n-1} - q_n r_n = 0 = u_{n+1} \times a + v_{n+1} \times b$.
     \end{itemize}
     À la fin, on obtient $\operatorname{pgcd}(a,b) = r_n = u_n a + v_n b$.
   \end{proposition}
@@ -330,7 +330,7 @@
 
   \reference{285}
   \dev{theoreme-chinois}
-  
+
   \begin{theorem}[Chinois]
     Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
     \newpar
