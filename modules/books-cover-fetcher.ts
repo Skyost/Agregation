@@ -151,7 +151,7 @@ abstract class DownloadSource {
       }
       return false
     }
-    const result = await this.downloadImage(coverUrl, destinationFile)
+    const result = await this.downloadImage(book, coverUrl, destinationFile)
     if (!result) {
       logger.warn(`The downloading of the book [${book.short}] cover url "${coverUrl}" from "${this.name}" source failed.`)
       return true
@@ -163,18 +163,34 @@ abstract class DownloadSource {
   /**
    * Downloads an image from a URL and saves it to a file.
    *
+   * @param {Book} book - The book.
    * @param {string} url - The URL of the image to download.
    * @param {string} destinationFile - The path to save the downloaded image.
    * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
    */
-  async downloadImage (url: string, destinationFile: string): Promise<boolean> {
+  async downloadImage (book: Book, url: string, destinationFile: string): Promise<boolean> {
     try {
       const blob = await ofetch(url, { responseType: 'blob' })
+      let description = book.title
+      if (book.subtitle) {
+        description += ` ${book.subtitle}`
+      }
+      if (book.edition) {
+        description += `, Éd. ${book.edition}`
+      }
       if (blob.type.startsWith('image/') && blob.size > 0) {
         const buffer = Buffer.from(await blob.arrayBuffer())
         await sharp(buffer)
           .resize(null, 250)
           .jpeg()
+          .withExifMerge({
+            IFD0: {
+              ImageId: book.isbn13,
+              Copyright: `Copyright (c) ${book.date.split('-')[0]}, ${book.publisher}. Tous droits réservés.`,
+              ImageDescription: description,
+              UserComment: `Image de "[${book.short}]" téléchargée à partir de "${url}".`
+            }
+          })
           .toFile(destinationFile)
         return true
       }
