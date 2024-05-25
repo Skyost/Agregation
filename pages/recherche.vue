@@ -67,7 +67,9 @@ const isEmpty = computed(() => lessons.value.length === 0 && developments.value.
         Votre recherche n'a donné aucun résultat.
       </p>
       <p v-else class="mb-0">
-        Voici les résultats pour votre recherche de <q v-text="request && request.length > 0 ? request : 'Tout'" />.
+        <client-only fallback="Voici les résultats pour votre recherche.">
+          Voici les résultats pour votre recherche de <q v-text="request && request.length > 0 ? request : 'Tout'" />.
+        </client-only>
       </p>
 
       <div v-if="lessons && !isEmpty" class="mt-4">
