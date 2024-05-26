@@ -206,7 +206,13 @@ const findRefName = (element: HTMLElement | null): string | null => {
     return null
   }
   if (element.tagName === 'DIV') {
-    return element.querySelector('> p > strong')?.text ?? null
+    for (const tag of ['strong', 'em']) {
+      const text = element.querySelector(`> p > ${tag}:first-child`)?.text
+      if (text) {
+        return text
+      }
+    }
+    return null
   }
   if (element.tagName === 'LI') {
     const listItems = []
