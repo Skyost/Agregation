@@ -44,7 +44,7 @@
 
   \begin{proposition}
     Soient $a_1, \dots, a_r \in \mathbb{K}$ des racines de $P$ distinctes deux à deux et d'ordre $h_1, \dots, h_r$. Alors, $\exists Q \in \mathbb{K}[X]$ tel que
-    \[ P = (X-a_1)^{h_1} \dots (X-a_r)^{h_r} Q(X) \quad \text{ et } \quad Q(a_i) \neq 0 \forall i \in \llbracket 1, n \rrbracket \]
+    \[ P = (X-a_1)^{h_1} \dots (X-a_r)^{h_r} Q(X) \quad \text{ et } \quad Q(a_i) \neq 0 \, \forall i \in \llbracket 1, n \rrbracket \]
   \end{proposition}
 
   \begin{corollary}
@@ -85,7 +85,7 @@
 
   \begin{corollary}
     On suppose $\mathbb{K}$ de caractéristique nulle et $P \neq 0$. Alors $a \in \mathbb{K}$ est racine d'ordre $h$ de $P$ si et seulement si
-    \[ \forall i \in \llbracket 1, h-1 \rrbracket, P^{(i)}(a) = 0 \quad \text{ et } \quad F^{(h)}(a) \neq 0 \]
+    \[ \forall i \in \llbracket 1, h-1 \rrbracket, P^{(i)}(a) = 0 \quad \text{ et } \quad P^{(h)}(a) \neq 0 \]
   \end{corollary}
 
   \begin{example}
@@ -212,7 +212,7 @@
   \end{example}
 
   L'idée dans la suite va être de chercher comment ``rajouter'' des racines à des polynômes pourtant irréductibles sur un corps.
-  
+
   \subsubsection{Corps de rupture}
 
   \reference{57}
@@ -236,7 +236,7 @@
       \item Si $\mathbb{L} = \mathbb{K}[\alpha]$ et $\mathbb{L}' = \mathbb{K}[\beta]$ sont deux corps de rupture de $P$, alors il existe un unique $\mathbb{K}$-isomorphisme $\varphi : \mathbb{L} \rightarrow \mathbb{L}'$ tel que $\varphi(\alpha) = \beta$.
     \end{itemize}
   \end{theorem}
-  
+
   \subsubsection{Corps de décomposition}
 
   \begin{definition}
@@ -262,7 +262,7 @@
       \item Deux corps de décomposition de $P$ sont $\mathbb{K}$-isomorphes.
     \end{itemize}
   \end{theorem}
-  
+
   \subsubsection{Clôture algébrique}
 
   \begin{definition}
@@ -309,7 +309,7 @@
   \reference{186}
 
   \begin{definition}
-    Soit $A \in \mathcal{M}_n(K)$. On appelle :
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On appelle :
     \begin{itemize}
       \item \textbf{Polynôme caractéristique} de $A$ le polynôme $\chi_A = \det(A - XI_n)$.
       \item \textbf{Polynôme minimal} de $A$ l'unique polynôme unitaire $\pi_A$ qui engendre l'idéal $\mathrm{Ann}(A) = \{ Q \in \mathbb{K}[X] \mid Q(A) = 0 \}$.

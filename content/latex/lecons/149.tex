@@ -243,7 +243,36 @@
 
   \subsection{Applications}
 
-  \subsubsection{Aux systèmes d'équations linéaires}
+  \subsubsection{En géométrie}
+
+  \paragraph{Volume d'un parallélépipède}
+
+  \reference[GRI]{130}
+
+  \begin{theorem}
+    L'aire $\mathcal{A}(v,w)$ du parallélogramme engendré par deux vecteurs $v, w \in \mathbb{R}^n$ est égale à
+    \[ \mathcal{A}(v,w) = \vert \det(v,w) \vert \]
+  \end{theorem}
+
+  \begin{corollary}
+    Soient $v_1, \dots, v_n \in \mathbb{R}^n$. On note $\mathcal{V}(v_1, \dots, v_n)$ le volume du parallélépipède rectangle engendré par $v_1, \dots, v_n$ (ie. l'ensemble $\{ z \in \mathbb{R}^n \mid z = \sum_{i=1}^n \lambda_i v_i, \, \lambda_i \in [0,1] \}$). On a alors :
+    \[ \mathcal{V}(v_1, \dots, v_n) = \vert \det(v_1, \dots, v_n) \vert \]
+  \end{corollary}
+
+  \paragraph{Suite de polygones}
+
+  \reference[I-P]{389}
+  \dev{suite-de-polygones}
+
+  \begin{theorem}[Suite de polygones]
+    Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
+    \newpar
+    Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
+  \end{theorem}
+
+  \subsubsection{En algèbre linéaire}
+
+  \paragraph{Aux systèmes d'équations linéaires}
 
   \reference{143}
 
@@ -286,63 +315,36 @@
   \begin{example}
     Si,
     \[
-      (S) \iff
-      \begin{cases}
-        x + 2y + z + t = 1 \\
-        x - z - t = 1 \\
-        -x + y + z + 2t = m
-      \end{cases}
-      \quad
-      m \in \mathbb{R}
+    (S) \iff
+    \begin{cases}
+      x + 2y + z + t = 1 \\
+      x - z - t = 1 \\
+      -x + y + z + 2t = m
+    \end{cases}
+    \quad
+    m \in \mathbb{R}
     \]
     on a $\rang(A) = 2$, $(S)$ admet des solutions si et seulement si $m=-1$, et
     \[
-      (S)
-      \iff \begin{cases}
-        x + 2y = 1 + z - t \\
-        x = 1 + z + t
-      \end{cases}
-      \iff \begin{cases}
-        x = 1 + z + t \\
-        y = -t
-      \end{cases}
+    (S)
+    \iff \begin{cases}
+      x + 2y = 1 + z - t \\
+      x = 1 + z + t
+    \end{cases}
+    \iff \begin{cases}
+      x = 1 + z + t \\
+      y = -t
+    \end{cases}
     \]
   \end{example}
 
-  \subsubsection{En géométrie}
-
-  \paragraph{Volume d'un parallélépipède}
-
-  \reference[GRI]{130}
-
-  \begin{theorem}
-    L'aire $\mathcal{A}(v,w)$ du parallélogramme engendré par deux vecteurs $v, w \in \mathbb{R}^n$ est égale à
-    \[ \mathcal{A}(v,w) = \vert \det(v,w) \vert \]
-  \end{theorem}
-
-  \begin{corollary}
-    Soient $v_1, \dots, v_n \in \mathbb{R}^n$. On note $\mathcal{V}(v_1, \dots, v_n)$ le volume du parallélépipède rectangle engendré par $v_1, \dots, v_n$ (ie. l'ensemble $\{ z \in \mathbb{R}^n \mid z = \sum_{i=1}^n \lambda_i v_i, \, \lambda_i \in [0,1] \}$). On a alors :
-    \[ \mathcal{V}(v_1, \dots, v_n) = \vert \det(v_1, \dots, v_n) \vert \]
-  \end{corollary}
-
-  \paragraph{Suite de polygones}
-
-  \reference[I-P]{389}
-  \dev{suite-de-polygones}
-
-  \begin{theorem}[Suite de polygones]
-    Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
-    \newpar
-    Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
-  \end{theorem}
-
-  \subsubsection{En algèbre linéaire}
+  \paragraph{À la réduction des endomorphismes}
 
   \reference[GOU21]{171}
   \reference{186}
 
   \begin{definition}
-    Soit $A \in \mathcal{M}_n(K)$. On appelle :
+    Soit $A \in \mathcal{M}_n(\mathbb{K})$. On appelle :
     \begin{itemize}
       \item \textbf{Polynôme caractéristique} de $A$ le polynôme $\chi_A = \det(A - XI_n)$.
       \item \textbf{Polynôme minimal} de $A$ l'unique polynôme unitaire $\pi_A$ qui engendre l'idéal $\mathrm{Ann}(A) = \{ Q \in \mathbb{K}[X] \mid Q(A) = 0 \}$.
@@ -372,7 +374,7 @@
     \[ \pi_u \mid \chi_u \]
   \end{theorem}
 
-  \subsubsection{À l'étude du groupe linéaire}
+  \paragraph{À l'étude du groupe linéaire}
 
   \reference[ROM21]{140}
 
