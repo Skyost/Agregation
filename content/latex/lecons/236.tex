@@ -41,12 +41,12 @@
 
   \begin{proposition}
     Soit $F \in \mathbb{R}(X)$. Pour intégrer $x \mapsto F(x)$, on fait une décomposition en éléments simples de $F$, qui nous ramène à calculer des primitives de la forme
-    \[ \int \frac{\mathrm{d}x}{(x-a)^h} \text{ et } \int \frac{ax+b}{(x^2+cx+d)^h} \, \mathrm{d}x \]
+    \[ \int \frac{\mathrm{d}x}{(x-a)^h} \, \mathrm{d}x \text{ et } \int \frac{ax+b}{(x^2+cx+d)^h} \, \mathrm{d}x \]
     où $h \in \mathbb{N}^*$ et $c-4d < 0$.
   \end{proposition}
 
   \begin{example}
-    \[ \int^x \frac{1-x}{(x^2+x+1)} \, \mathrm{d}x = \frac{x+1}{x^2+x+1} + \frac{2}{\sqrt{3}} \arctan \left( \frac{2x+1}{\sqrt{3}} \right) + k \text{ avec } k \in \mathbb{R} \]
+    \[ \int^x \frac{1-x}{(x^2+x+1)^2} \, \mathrm{d}x = \frac{x+1}{x^2+x+1} + \frac{2}{\sqrt{3}} \arctan \left( \frac{2x+1}{\sqrt{3}} \right) + k \text{ avec } k \in \mathbb{R} \]
   \end{example}
 
   \subsubsection{Changement de variable}

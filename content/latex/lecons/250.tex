@@ -72,12 +72,12 @@
   \begin{proposition}
     Soit $f \in L_1(\mathbb{R}^d)$. Alors :
     \begin{enumerate}[label=(\roman*)]
-      \item $(\mathcal{F}(x \mapsto f(-x))) = (\xi \mapsto \mathcal{F}(f)(-\xi))$.
-      \item $(\mathcal{F}(\overline{f})) = (\xi \mapsto \overline{\mathcal{F}(f)(-\xi)})$.
+      \item $\mathcal{F}(x \mapsto f(-x)) = \xi \mapsto \mathcal{F}(f)(-\xi)$.
+      \item $\mathcal{F}(\overline{f}) = \xi \mapsto \overline{\mathcal{F}(f)(-\xi)}$.
       \item Pour tout $\lambda \in \mathbb{R}_*$, et $\xi \in \mathbb{R}^d$,
-      \[ (\mathcal{F}(x \mapsto f(\lambda x))) = (\frac{1}{\vert \lambda \vert^d} \mathcal{F}(f) \left( \frac{\xi}{\lambda} \right)) \]
+      \[ \mathcal{F}(x \mapsto f(\lambda x)) = \frac{1}{\vert \lambda \vert^d} \mathcal{F}(f) \left( \frac{\xi}{\lambda} \right) \]
       \item Pour tout $a \in \mathbb{R}^d$,
-      \[ (\mathcal{F}(x \mapsto f(x - a))) = (e^{-i \langle a, \xi \rangle} \mathcal{F}(f)) \text{ et } (\mathcal{F}(x \mapsto e^{-i \langle a, \xi \rangle} f(x))) = (\xi \mapsto \mathcal{F}(f)(\xi - a)) \]
+      \[ \mathcal{F}(x \mapsto f(x - a)) = e^{-i \langle a, \xi \rangle} \mathcal{F}(f) \text{ et } \mathcal{F}(x \mapsto e^{-i \langle a, \xi \rangle} f(x)) = \xi \mapsto \mathcal{F}(f)(\xi - a) \]
     \end{enumerate}
   \end{proposition}
 
@@ -87,7 +87,7 @@
     Soit $f \in L_1(\mathbb{R}^d)$.
     \begin{enumerate}[label=(\roman*)]
       \item On suppose $f \in \mathcal{C}^1(\mathbb{R}^d)$ et $\frac{\partial f}{\partial x_j} \in L_1(\mathbb{R}^d)$. Alors,
-      \[ \forall \xi = (\xi_1, \dots, \xi_d) \in \mathbb{R}^d, \, \widehat{\frac{\partial f}{\partial x_j}}(\xi) = i \xi_j \xi \widehat{f}(\xi) \]
+      \[ \forall \xi = (\xi_1, \dots, \xi_d) \in \mathbb{R}^d, \, \widehat{\frac{\partial f}{\partial x_j}}(\xi) = i \xi_j \widehat{f}(\xi) \]
       \item On suppose $y_j f \in L_1(\mathbb{R}^d)$. Alors, la $j$-ième dérivée partielle de $\widehat{f}$ existe, et,
       \[ \forall \xi \in \mathbb{R}^d, \, \frac{\partial \widehat{f}}{\partial x_j}(\xi) = -i \widehat{(y_j f)}(\xi) \]
     \end{enumerate}

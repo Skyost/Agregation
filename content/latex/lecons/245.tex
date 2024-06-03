@@ -13,7 +13,7 @@
 
   \begin{definition}
     On dit que $f$ est \textbf{holomorphe} en $a \in \Omega$ s'il existe un complexe $f'(a)$ tel que
-    \[ f'(a) = \lim{\substack{h \rightarrow 0 \\ h \neq 0}} \frac{f(a+h) - f(a)}{h} \]
+    \[ f'(a) = \lim_{\substack{h \rightarrow 0 \\ h \neq 0}} \frac{f(a+h) - f(a)}{h} \]
     On dit que $f$ est holomorphe sur $\Omega$ si elle l'est en tout point de $\Omega$ et on note $f'$ la fonction $f' : z \mapsto f'(z)$ ainsi que $\mathcal{H}(\Omega)$ l'ensemble des fonctions holomorphes sur $\Omega$.
   \end{definition}
 
@@ -110,7 +110,7 @@
 
   \subsubsection{Analycité}
 
-  \reference{77}
+  \reference{57}
 
   \begin{definition}
     On dit que $f$ est \textbf{analytique} sur $\Omega$ si, pour tout $a \in \Omega$, il existe $r > 0$ et une série entière $\sum a_n z^n$ de rayon de convergence $\geq r$, tels que
@@ -121,7 +121,7 @@
   \begin{proposition}
     Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{A}(D(0, r))$ et, si $\vert z - a \vert \leq r - \vert a \vert$ :
     \[ f(z) = \sum_{k=0}^{+\infty} \frac{S^{(k)}(a)}{k!} (z-a)^k \]
-    (où $S^{(k)}$ désigne la $k$-ième dérivée complexe de $S$, voir la section suivante).
+    (où $S^{(k)}$ désigne la $k$-ième dérivée complexe de $S$).
   \end{proposition}
 
   \reference{85}
@@ -130,7 +130,7 @@
     $\mathcal{A}(\Omega) \subseteq \mathcal{H}(\Omega)$.
   \end{proposition}
 
-  \reference{77}
+  \reference{78}
 
   \begin{proposition}
     Si $f = P/Q$ est une fraction rationnelle, alors $f$ est développable en série entière au voisinage de chaque point qui n'est pas un pôle de $f$ (cf. \cref{245-2}).
