@@ -15,7 +15,7 @@
 
   \begin{theorem}[Lévy]
     \label{theoreme-central-limite-1}
-    Soient $(X_n)$ une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
+    Soient $(X_n)$ une suite de variables aléatoires réelles définies sur un espace probabilité $(\Omega, \mathcal{A}, \mathbb{P})$ et $X$ une variable aléatoire réelle définie sur le même espace. Alors :
     \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
   \end{theorem}
 
@@ -24,9 +24,9 @@
     \[ \lim_{n \rightarrow +\infty} \mathbb{E}(g_t(X_n)) = \mathbb{E}(g_t(X)) \]
     ce que l'on voulait.
     \newpar
-    \uline{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$, on pose $f = \widehat{\varphi}$. Alors
+    \uline{Réciproque :} Soit $\varphi \in L_1(\mathbb{R})$. On suppose que sa transformée de Fourier, $f = \widehat{\varphi}$ appartient également à $L_1(\mathbb{R})$. Alors
     \[ \mathbb{E}(f(X_n)) = \mathbb{E} \left ( \int_{\mathbb{R}} e^{itX_n} \varphi(t) \, \mathrm{d}t \right ) \]
-    Comme la fonction $(\omega, t) \mapsto e^{itX_n(\omega)} \varphi(t)$ est intégrable pour la mesure $\mathbb{P}_{X_n} \otimes \lambda$, on peut appliquer le théorème de Fubini-Lebesgue pour intervertir espérance et intégrale :
+    Comme la fonction $(\omega, t) \mapsto e^{itX_n(\omega)} \varphi(t)$ est intégrable pour la mesure $\mathbb{P} \otimes \lambda$, on peut appliquer le théorème de Fubini-Lebesgue pour intervertir espérance et intégrale :
     \begin{align*}
       \mathbb{E}(f(X_n)) = \int_{\mathbb{R}} \mathbb{E} (e^{itX_n}) \varphi(t) \, \mathrm{d}t
     \end{align*}
@@ -34,11 +34,11 @@
     \begin{itemize}
       \item $\forall n \in \mathbb{N}$, $g_n$ est mesurable.
       \item La suite de fonction $(g_n)$ converge presque partout vers $g : t \mapsto \mathbb{E} (e^{itX}) \varphi(t)$ par hypothèse.
-      \item $\forall n \in \mathbb{N}$ et pp. en $t \in \mathbb{R}$, $|g_n(t)| \leq \mathbb{E} (|e^{itX_n}|) |\varphi(t)| \leq \mathbb{P}_X(\mathbb{R}) |\varphi(t)|$ avec $|\varphi| \in L_1(\mathbb{R})$.
+      \item $\forall n \in \mathbb{N}$ et pp. en $t \in \mathbb{R}$, $|g_n(t)| \leq \mathbb{E} (|e^{itX_n}|) |\varphi(t)| \leq \mathbb{P}(\Omega) |\varphi(t)| = |\varphi(t)|$ avec $|\varphi| \in L_1(\mathbb{R})$.
     \end{itemize}
     On peut donc appliquer le théorème de convergence dominée pour obtenir
     \[ \mathbb{E}(f(X_n)) \longrightarrow \int_{\mathbb{R}} \mathbb{E} (e^{itX}) \varphi(t) \, \mathrm{d}t = \mathbb{E}(f(X)) \]
-    Ainsi, le résultat est vrai pour toute fonction dans l'image de $L_1(\mathbb{R})$ par la transformée de Fourier. En particulier, il est vrai pour tout $f \in \mathcal{S}(\mathbb{R})$, dense dans $(\mathcal{C}(\mathbb{R}), \Vert . \Vert_\infty)$. Soient maintenant $f \in \mathcal{C}(\mathbb{R})$ et $(f_k)$ une suite de fonctions de $\mathcal{S}(\mathbb{R})$ qui converge uniformément vers $f$. Alors,
+    Ainsi, le résultat est vrai pour toute fonction $L_1(\mathbb{R})$ dans l'image de $L_1(\mathbb{R})$ par la transformée de Fourier. En particulier, il est vrai pour tout $f \in \mathcal{S}(\mathbb{R})$, dense dans $(\mathcal{C}(\mathbb{R}), \Vert . \Vert_\infty)$. Soient maintenant $f \in \mathcal{C}(\mathbb{R})$ et $(f_k)$ une suite de fonctions de $\mathcal{S}(\mathbb{R})$ qui converge uniformément vers $f$. Alors,
     \begin{align*}
       |\mathbb{E}(f(X_n)) - \mathbb{E}(f(X))| &= |\mathbb{E}(f(X_n)) - \mathbb{E}(f_k(X_n)) + \mathbb{E}(f_k(X_n)) \\
       &- \mathbb{E}(f_k(X)) + \mathbb{E}(f_k(X)) - \mathbb{E}(f(X))| \\
