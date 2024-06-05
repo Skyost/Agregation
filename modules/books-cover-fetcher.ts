@@ -236,17 +236,21 @@ class GoogleServersDownloadSource extends DownloadSource {
   }
 
   override async getBookCoverUrl (book: Book): Promise<string | null> {
-    const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
-    if (response.items && response.items.length > 0) {
-      let thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
-      if (thumbnailUrl) {
-        return thumbnailUrl
+    try {
+      const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
+      if (response.items && response.items.length > 0) {
+        let thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'smallThumbnail')
+        if (thumbnailUrl) {
+          return thumbnailUrl
+        }
+        thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'thumbnail')
+        if (thumbnailUrl) {
+          return thumbnailUrl
+        }
+        logger.warn(`[${book.short}] has been found on Google servers, but there is no cover in it.`)
       }
-      thumbnailUrl = getNested(response.items[0], 'volumeInfo', 'imageLinks', 'thumbnail')
-      if (thumbnailUrl) {
-        return thumbnailUrl
-      }
-      logger.warn(`[${book.short}] has been found on Google servers, but there is no cover in it.`)
+    } catch (ex) {
+      logger.warn(ex)
     }
     return null
   }
@@ -264,9 +268,14 @@ class OpenGraphImageDownloadSource extends DownloadSource {
   }
 
   override async getBookCoverUrl (book: Book): Promise<string | null> {
-    const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
-    const image = root.querySelector('meta[property="og:image"]')?.getAttribute('content')
-    return image ?? null
+    try {
+      const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
+      const image = root.querySelector('meta[property="og:image"]')?.getAttribute('content')
+      return image ?? null
+    } catch (ex) {
+      logger.warn(ex)
+    }
+    return null
   }
 }
 
