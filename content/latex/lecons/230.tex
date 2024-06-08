@@ -135,14 +135,14 @@
   \begin{example}
     La série de Bertrand $\sum \frac{1}{n^\alpha \ln(n)^\beta}$ converge si et seulement si $\alpha > 1$ ou si $\alpha = 1$ et $\beta > 1$.
   \end{example}
-  
+
   \reference[I-P]{380}
-  
+
   \begin{lemma}
     Soit $\alpha > 1$. Lorsque $n$ tend vers $+\infty$, on a
     \[ \sum_{k=n+1}^{+\infty} \frac{1}{n^\alpha} \sim \frac{1}{\alpha - 1} \frac{1}{n^{\alpha - 1}} \]
   \end{lemma}
-  
+
   \dev{developpement-asymptotique-de-la-serie-harmonique}
 
   \begin{application}[Développement asymptotique de la série harmonique]
@@ -352,7 +352,7 @@
 
   \begin{theorem}[Abel angulaire]
     \label{230-1}
-    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ tel que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence supérieur ou égal à $1$ telle que $\sum a_n$ converge. On note $f$ la somme de cette série sur le disque unité $D$ de $\mathbb{C}$. On fixe $\theta_0 \in \left[ 0, \frac{\pi}{2} \right[$ et on pose $\Delta_{\theta_0} = \{ z \in D \mid \exists \rho > 0 \text{ et } \exists \theta \in [-\theta_0, \theta_0] \text{ tels que } z = 1 - \rho e^{i\theta} \}$.
     \newpar
     Alors $\lim_{\substack{z \rightarrow 1 \\ z \in \Delta_{\theta_0}}} f(z) = \sum_{n=0}^{+\infty} a_n$.
   \end{theorem}
