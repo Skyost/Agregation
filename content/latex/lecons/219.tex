@@ -175,10 +175,10 @@
     \[ \forall T \in H', \, \exists! U \in H' \text{ tel que } \forall x, y \in H, \, \langle T(x), y \rangle = \langle x, U(y) \rangle \]
     On note alors $U = T^*$ : c'est \textbf{l'adjoint} de $T$. On a alors $\VERT T \VERT = \VERT T^* \VERT$.
   \end{corollary}
-  
+
   \reference[I-P]{336}
   \dev{optimisation-dans-un-hilbert}
-  
+
   \begin{application}
     Soit $J : H \rightarrow \mathbb{R}$ une fonction convexe, continue et vérifiant
     %\[ \forall M \in \mathbb{R}, \, \exists r > 0 \text{ tel que } \forall x \in H \text{ de norme } \geq r, \, f(x) \geq M \]
@@ -239,8 +239,8 @@
   \begin{example}
     On suppose $\mathrm{d}f_a = 0$. On pose $(r,s,t) = \left(  \frac{\partial^2}{\partial x_i \partial x_j} f \right)_{i+j=2}$. Alors :
     \begin{enumerate}[label=(\roman*)]
-      \item Si $rt-s^2 > 0$ (resp. $< 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
-      \item Si $rt-s^2 < 0$ (resp. $< 0$), $f$ n'a pas d'extremum en $a$.
+      \item Si $rt-s^2 > 0$ et $r > 0$ (resp. $r < 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
+      \item Si $rt-s^2 < 0$, $f$ n'a pas d'extremum en $a$.
       \item Si $rt-s^2 = 0$, on ne peut rien conclure.
     \end{enumerate}
   \end{example}
