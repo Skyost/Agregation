@@ -33,7 +33,7 @@
     \forall x \in \mathbb{R}, \quad \varphi(x) = \begin{cases} f(x) \rho(x) &\text{si } x \in I \\ 0 &\text{sinon} \end{cases}
     \]
     Montrons que $\varphi \in L_1(\mathbb{R})$. Remarquons tout d'abord que $\forall t \geq 0$, $t \leq \frac{1 + t^2}{2}$. Ainsi, on a
-    \[ \forall x \in I, \quad |f(x)|\rho(x) \leq \frac{(1 + |f(x)|)^2}{2} \rho(x) \]
+    \[ \forall x \in I, \quad |f(x)|\rho(x) \leq \frac{1 + |f(x)|^2}{2} \rho(x) \]
     Comme $\rho$ et $\rho f^2$ sont intégrables sur $I$, on en déduit que $\varphi \in L_1(\mathbb{R})$. On peut donc considérer sa transformée de Fourier
     \[ \widehat{\varphi} : \xi \mapsto \int_I f(x) e^{-i \xi x} \rho(x) \, \mathrm{d}x \]
     Montrons que $\widehat{\varphi}$ se prolonge en une fonction $F$ holomorphe sur
