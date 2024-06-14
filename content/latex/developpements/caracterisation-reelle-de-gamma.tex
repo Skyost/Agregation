@@ -73,16 +73,16 @@
     Par croissance de la fonction $\ln$, cela donne :
     \[ (n-1)^x (n-1)! \leq f(n+x) \leq n^x (n-1)! \]
     Et en appliquant $(*)$, on obtient :
-    \[ \frac{(n-1)^x (n-1)!}{(x+n-1) \dots (x+1)x} \leq f(x) \leq \frac{n^x (n-1)!}{(x+n-1) \dots (x+1)} \]
+    \[ \frac{(n-1)^x (n-1)!}{(x+n-1) \dots (x+1)x} \leq f(x) \leq \frac{n^x (n-1)!}{(x+n-1) \dots (x+1)x} \]
     En ne considérant que la première inégalité, on peut remplacer $n$ par $n+1$ (car les deux inégalités sont vraies pour tout $n \in \mathbb{N}^*$) :
     \[ \frac{n^x n!}{(x+n) \dots (x+1)x} \leq f(x) \]
-    Or, $\frac{n^x (n-1)!}{(x+n-1) \dots (x+1)} = \frac{n^x n!}{(x+n) \dots (x+1)x} \frac{x+n}{n}$, donc :
+    Or, $\frac{n^x (n-1)!}{(x+n-1) \dots (x+1)x} = \frac{n^x n!}{(x+n) \dots (x+1)x} \frac{x+n}{n}$, donc :
     \begin{align*}
       &\frac{n^x n!}{(x+n) \dots (x+1)x} \leq f(x) \leq \frac{n^x n!}{(x+n) \dots (x+1)x} \frac{x+n}{n} \\
       \implies & f(x) \frac{n}{x+n} \leq \frac{n^x n!}{(x+n) \dots (x+1)x} \leq f(x) \\
       \implies & f(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x}
     \end{align*}
-    en faisant $n \longrightarrow +\infty$ dans la deuxième inégalité. Comme $\Gamma$ vérifie le \cref{caracterisation-reelle-de-gamma-2}, le \cref{caracterisation-reelle-de-gamma-3}, et le \cref{caracterisation-reelle-de-gamma-4} ; le raisonnement précédent est a fortiori vrai aussi pour $\Gamma$. Donc
+    en faisant $n \longrightarrow +\infty$ dans la deuxième implication. Comme $\Gamma$ vérifie le \cref{caracterisation-reelle-de-gamma-2}, le \cref{caracterisation-reelle-de-gamma-3}, et le \cref{caracterisation-reelle-de-gamma-4} ; le raisonnement précédent est a fortiori vrai aussi pour $\Gamma$. Donc
     \[ \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} = f(x)  \]
     ie. $f$ et $\Gamma$ coïncident bien sur $]0, 1]$.
   \end{proof}
@@ -91,6 +91,10 @@
     À la fin de la preuve, on obtient une formule due à Gauss :
     \[ \forall x \in ]0, 1], \Gamma(x) = \lim_{n \rightarrow +\infty} \frac{n^x n!}{(x+n) \dots (x+1)x} \]
     que l'on peut aisément étendre à $\mathbb{R}^+_*$ entier.
+  \end{remark}
+  
+  \begin{remark}
+    La preuve, telle qu'elle est écrite ici, est issue d'un livre de Walter Rudin. Elle est également disponible (sous une forme un peu différente) comme l'indique la référence, dans \cite{[ROM19-1]}.
   \end{remark}
   %</content>
 \end{document}
