@@ -20,7 +20,7 @@
       \VERT e^{tD} \VERT &= \VERT e^{tP \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1}} \VERT \\
       & = \VERT P e^{t \operatorname{Diag}(\lambda_1, \dots, \lambda_n)} P^{-1} \VERT \\
       & \leq \underbrace{\VERT P \VERT \VERT P^{-1} \VERT}_{= \alpha} \sup_{\Vert x \Vert_\infty = 1} \Vert \operatorname{Diag}(e^{t \lambda_1}, \dots, e^{t \lambda_n}) x \Vert_{\infty} \\
-      & \leq \alpha \sup_{i \in \llbracket 1, n \rrbracket} e^{t\lambda_i} \\
+      & \leq \alpha \sup_{i \in \llbracket 1, n \rrbracket} \vert e^{t\lambda_i} \vert \\
       & \leq \alpha e^{-\lambda t}
     \end{align*}
     où $\lambda > 0$ par hypothèse. En dimension finie, toutes les normes sont équivalentes, donc il existe $\beta > 0$ tel que $\VERT e^{tD} \VERT \leq \beta e^{- \lambda t}$.
@@ -53,7 +53,7 @@
     \[ \Vert Y(t) \Vert = \Vert e^{tA} C e^{tB} \Vert \leq \Vert C \Vert P(t) e^{-2 \lambda t} \]
     En particulier, on a bien $Y(t) \longrightarrow 0$. De plus, comme $C P(t) e^{-2 \lambda t}$ est intégrable sur $[0, +\infty[$ et domine $\Vert Y(t) \Vert$, alors $Y$ est aussi intégrable $[0, +\infty[$. Finalement, en faisant $t \longrightarrow +\infty$, on obtient :
     \[ -C = A \times \int_{0}^{+\infty} Y(s) \, \mathrm{d}s + \int_{0}^{+\infty} Y(s) \, \mathrm{d}s \times B \]
-    Donc $\varphi(X) = X$ : $\varphi$ est surjective et $X$ est bien la solution de l'équation de Sylvester.
+    Donc $\varphi(X) = C$ : $\varphi$ est surjective et $X$ est bien la solution de l'équation de Sylvester.
   \end{proof}
   
   \reference[GOU21]{189}
