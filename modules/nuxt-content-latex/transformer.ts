@@ -227,6 +227,9 @@ const findRefName = (element: HTMLElement | null): string | null => {
   if (element.tagName === 'SPAN' || element.tagName === 'P') {
     return findRefName(element.parentNode)
   }
+  if (element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'H4') {
+    return `Section ${element.text}`
+  }
   return null
 }
 
