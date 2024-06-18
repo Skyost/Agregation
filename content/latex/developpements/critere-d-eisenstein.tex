@@ -95,10 +95,10 @@
     \[ a^2 \gamma(P) = \gamma(U_1) \gamma(V_1) \tag{$*$} \]
     En factorisant, on écrit $U_1 = \gamma(U_1) U_2$ et $V_1 = \gamma(V_1) V_2$ avec $U_2, V_2 \in A[X]$. Il vient :
     \[ a^2 P = \gamma(U_1) \gamma(V_1) U_2 V_2 \overset{(*)}{=} a^2 \gamma(P) U_2 V_2 \]
-    Et comme $a \in A \setminus \{ 0 \}$ et que $A$ est intègre, on a $P = \gamma(P) U_2 V_2$ avec $U_2$, $V_2 \in A[X]$ de degré supérieur ou égal à $1$.
+    Et comme $a \in A \setminus \{ 0 \}$ et que $A$ est intègre, on a $P = \gamma(P) U_2 V_2 = U_3 V_3$ avec $U_3 = \gamma(P) U_2 \in A[X]$ et $V_3 = V_2 \in A[X]$ (dans un souci de symétrie des notations) qui sont de degré supérieur ou égal à $1$.
     \newpar
-    On pose $U_2 = \sum_{i=0}^r b_i X^i$ et $V_2 = \sum_{j=0}^s c_j X^j$ avec $b_r c_s = a_n \neq 0$ par définition de $P$. Dans $A/(p)$, on a
-    \[ \underbrace{\overline{P}}_{= \overline{a_n} X^n} = \overline{U_2 V_2} = \overline{U_2} \, \overline{V_2} \]
+    On pose $U_3 = \sum_{i=0}^r b_i X^i$ et $V_3 = \sum_{j=0}^s c_j X^j$ avec $b_r c_s = a_n \neq 0$ par définition de $P$. Dans $A/(p)$, on a
+    \[ \underbrace{\overline{P}}_{= \overline{a_n} X^n} = \overline{U_3 V_3} = \overline{U_3} \, \overline{V_3} \]
     et en particulier, le terme de degré $0$, $\overline{b_0 c_0} = \overline{b_0} \overline{c_0}$ est nul. Mais, $p$ est irréductible et $A$ est factoriel, donc au vu du \cref{critere-d-eisenstein-3}, $(p)$ est premier et $A/(p)$ est intègre par le \cref{critere-d-eisenstein-1}. Donc par le \cref{critere-d-eisenstein-2}, $A/(p)[X]$ est aussi intègre. D'où $\overline{b_0} = 0$ ou $\overline{c_0} = 0$ (mais pas les deux car sinon $p^2 \mid b_0 c_0 = a_0$, ce qui serait en contradiction avec le \cref{critere-d-eisenstein-9}).
     \newpar
     On suppose donc $\overline{b_0} = 0$ et $\overline{c_0} \neq 0$. Si on avait $\forall i \in \llbracket 0, r \rrbracket$, $\overline{b_i} = 0$, on aurait en particulier $\overline{b_r} = 0$, et donc $\overline{b_r} \overline{c_s} = \overline{a_n} = 0$ (exclu par le \cref{critere-d-eisenstein-8}). Donc,

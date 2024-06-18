@@ -65,7 +65,7 @@
       \[ S^2 = \tr M M = \tr (O'S') O'S' = \tr S' \tr O' O' S' = S'^{2} \]
       Soit $Q$ un polynôme tel que $\forall i \in \llbracket 1, n \rrbracket$, $Q(\lambda_i) = \sqrt{\lambda_i}$ (les polynômes d'interpolation de Lagrange conviennent parfaitement). Alors,
       \[\ S = PD \tr P = PQ \left(D^2 \right) \tr P = Q \left(PD^2 \tr P \right) = Q \left(\tr M M \right) = Q \left(S^2 \right) = Q \left(S'^2 \right) \]
-      Mais $S'$ commute avec $S'^2$, donc avec $S = Q \left(S'^2 \right)$. En particulier, $S$ et $S'$ sont codiagonalisables, il existe $P_0 \in \mathbb{GL}_n(\mathbb{R})$ et $\mu_1, \dots, \mu_n, \mu'_1, \dots, \mu'_n \in \mathbb{R}$ tels que
+      Mais $S'$ commute avec $S'^2$, donc avec $S = Q \left(S'^2 \right)$. En particulier, $S$ et $S'$ sont codiagonalisables, il existe $P_0 \in \mathrm{GL}_n(\mathbb{R})$ et $\mu_1, \dots, \mu_n, \mu'_1, \dots, \mu'_n \in \mathbb{R}$ tels que
       \[ S = P_0 \operatorname{Diag}(\mu_1, \dots, \mu_n) P_0^{-1} \text{ et } S' = P_0 \operatorname{Diag} \left (\mu'_1, \dots, \mu'_n \right) P_0^{-1} \]
       d'où :
       \begin{align*}
@@ -81,7 +81,7 @@
       \[ \overline{S} \in \mathrm{GL}_n(\mathbb{R}) \, \cap \, \mathcal{S}_n^{+}(\mathbb{R}) \]
       et par le \cref{decomposition-polaire-2},
       \[ \overline{S} \in \mathcal{S}_n^{++}(\mathbb{R}) \]
-      Par unicité de la décomposition polaire, on a $M = \overline{O} \overline{S}$, d'où $\overline{O} = O$ et $\overline{S} = S$.
+      On a $M = \overline{O} \overline{S}$, d'où, par unicité de la décomposition polaire, $\overline{O} = O$ et $\overline{S} = S$.
     \end{itemize}
   \end{proof}
 

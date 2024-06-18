@@ -31,7 +31,7 @@
       \item Soit $x_0 \in A$. Comme $x_0$ est valeur d'adhérence de $(u_n)$, $\exists n_1 > N$ tel que $d(x_0, u_{n_1}) < \frac{\alpha}{3}$. Donc $u_{n_1} \in A'$.
       \item Soit $y_0 \in B$. De même, $\exists n_2 > n_1$ tel que $d(y_0, u_{n_2}) < \frac{\alpha}{3}$. Donc $u_{n_2} \in B'$.
     \end{itemize}
-    Soit maintenant $n_0$ le premier entier supérieur à $n_1$ tel que $u_{n_0} \notin A'$ (un tel entier existe car $u_{n_2} \in A'$). On a alors $u_{n_0 - 1} \in A'$.
+    Soit maintenant $n_0$ le premier entier supérieur à $n_1$ tel que $u_{n_0} \notin A'$ (un tel entier existe car $u_{n_2} \notin A'$). On a alors $u_{n_0 - 1} \in A'$.
     \begin{center}
       \begin{tikzpicture}[scale=1, pics/a/.style n args={3}{code={\draw [thick, fill=#1, fill opacity=0.3, scale=#2, shift={#3}]  plot[smooth, tension=.7] coordinates {(-3,2.5) (-3.5,2.2) (-4.2,1) (-2,0.8) (-1.2,2) (-3,2.5)};}}, pics/b/.style n args={3}{code={\draw [thick, fill=#1, fill opacity=0.3, scale=#2, shift={#3}]  plot[smooth, tension=.7] coordinates {(-1.95,-0.35) (-2.5,-0.7) (-3.4,-1.9) (-1,-2) (-0.1,-0.05) (-1.95,-0.35)};}}]
         \draw [thick, fill=black, fill opacity=0.05]  plot[smooth, tension=.7] coordinates {(-4,2.5) (-3,3) (-2,2.8) (-0.8,2.5) (-0.5,1.5) (0.5,0) (0,-2) (-1.5,-2.5) (-4,-2) (-3.5,-0.5) (-5,1) (-4,2.5)};
