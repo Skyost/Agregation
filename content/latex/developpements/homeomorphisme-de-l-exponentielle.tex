@@ -89,11 +89,11 @@
         \item Si $\lambda_k \longrightarrow +\infty$, $e^{\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{\lambda_k}$ est valeur propre de $A_k$, donc $\rho(A_k) \longrightarrow +\infty$ : absurde car $(A_k)$ converge.
         \item Si $\lambda_k \longrightarrow -\infty$, $e^{-\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{-\lambda_k}$ est valeur propre de $A_k^{-1}$, donc $\rho(A_k^{-1}) \longrightarrow +\infty$ : absurde car $(A_k^{-1})$ converge par continuité de $M \mapsto M^{-1}$.
       \end{itemize}
-      Donc la suite $(B_k)$ est bornée. Par le théorème de Bolzano-Weierstrass, $(B_k)$ admet une valeur d'adhérence $\widetilde{B}$. Comme $\mathcal{S}_n(\mathbb{R})$ est fermé (c'est le \cref{homeomorphisme-de-l-exponentielle-1}), $\widetilde{B} \in \mathcal{S}_n(\mathbb{R})$.
+      Donc la suite $(B_k)$ est bornée. Par le théorème de Bolzano-Weierstrass, $(B_k)$ admet une valeur d'adhérence $\widetilde{B_0}$. Comme $\mathcal{S}_n(\mathbb{R})$ est fermé (c'est le \cref{homeomorphisme-de-l-exponentielle-1}), $\widetilde{B_0} \in \mathcal{S}_n(\mathbb{R})$.
       \newpar
-      Soit $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $B_{\varphi(k)} \longrightarrow \widetilde{B}$. Alors,
+      Soit $\widetilde{B} \in \mathcal{S}_n(\mathbb{R})$ une valeur d'adhérence de $(B_k)$ et soit $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $B_{\varphi(k)} \longrightarrow \widetilde{B}$. Alors,
       \[ \exp(B) = A \longleftarrow A_{\varphi(k)} = \exp(B_{\varphi(k)}) \longrightarrow \exp(\widetilde{B}) \]
-      ie. $\exp(B) = \exp(\widetilde{B})$ ; donc $B = \widetilde{B}$ par injectivité de $\exp$. Donc par le \cref{homeomorphisme-de-l-exponentielle-2}, $B_k \longrightarrow B$.
+      ie. $\exp(B) = \exp(\widetilde{B})$ ; donc $B = \widetilde{B} = \widetilde{B_0}$ par injectivité de $\exp$. Donc par le \cref{homeomorphisme-de-l-exponentielle-2}, $B_k \longrightarrow B$.
     \end{itemize}
   \end{proof}
   %</content>
