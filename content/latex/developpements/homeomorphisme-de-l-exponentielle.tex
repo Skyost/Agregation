@@ -66,7 +66,7 @@
       où $\lambda_1, \dots, \lambda_n$ désignent les valeurs propres de $S$. On a donc
       \begin{align*}
         \exp(S) &= P^{-1} \exp(D) P \\
-        &= P^{-1} \operatorname{Diag}(e^{\lambda_1}, \dots, \lambda_n) P
+        &= P^{-1} \operatorname{Diag}(e^{\lambda_1}, \dots, e^{\lambda_n}) P
       \end{align*}
       Or, $P^{-1} = \tr P$, donc $\tr \exp(S) = \exp(S)$ et $\exp(S) \in \mathcal{S}_n(\mathbb{R})$. De plus, $\forall x \in \mathbb{R}^n$,
       \[ \tr x S x = \tr (Px) D (Px) > 0 \]
@@ -83,8 +83,8 @@
         &= P \operatorname{Diag}(\lambda_1, \dots, \lambda_n) P^{-1} \\
         &= S
       \end{align*}
-      et de même, $L(\exp(S')) = S'$. D'où $S = S'$.
-      \item \uline{L'application inverse est continue :} Soit $(A_k)$ une suite de $\mathcal{S}^{++}_n(\mathbb{R})$ qui converge vers $A \in \mathcal{S}^{++}_n(\mathbb{R})$. Il s'agit de montrer que la suite $(B_k)$ de terme général $B_k = \exp^{-1}(A_k)$ converge vers $B = \exp^{-1}(A)$. Supposons tout d'abord $(B_k)$ non bornée. Comme sur $\mathcal{S}_n(\mathbb{R})$, $\VERT . \VERT_2 = \rho(.)$ (par le \cref{homeomorphisme-de-l-exponentielle-3}), il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $\rho(B_\varphi(k)) \longrightarrow +\infty$. On peut donc extraire une suite de valeurs propres $(\lambda_k)$ telle que $|\lambda_k| \longrightarrow +\infty$. Encore une fois, quitte à extraire, on peut supposer $\lambda_k \longrightarrow +\infty$ ou $\lambda_k \longrightarrow -\infty$.
+      et de même, $L(\exp(S')) = S'$. D'où $S = S'$ car on a supposé $\exp(S) = \exp(S')$.
+      \item \uline{L'application inverse est continue :} Soit $(A_k)$ une suite de $\mathcal{S}^{++}_n(\mathbb{R})$ qui converge vers $A \in \mathcal{S}^{++}_n(\mathbb{R})$. Il s'agit de montrer que la suite $(B_k)$ de terme général $B_k = \exp^{-1}(A_k)$ converge vers $B = \exp^{-1}(A)$. Supposons tout d'abord $(B_k)$ non bornée. Comme sur $\mathcal{S}_n(\mathbb{R})$, $\VERT . \VERT_2 = \rho(.)$ (par le \cref{homeomorphisme-de-l-exponentielle-3}), il existe $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $\rho(B_{\varphi(k)}) \longrightarrow +\infty$. On peut donc extraire une suite de valeurs propres $(\lambda_k)$ telle que $|\lambda_k| \longrightarrow +\infty$. Encore une fois, quitte à extraire, on peut supposer $\lambda_k \longrightarrow +\infty$ ou $\lambda_k \longrightarrow -\infty$.
       \begin{itemize}
         \item Si $\lambda_k \longrightarrow +\infty$, $e^{\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{\lambda_k}$ est valeur propre de $A_k$, donc $\rho(A_k) \longrightarrow +\infty$ : absurde car $(A_k)$ converge.
         \item Si $\lambda_k \longrightarrow -\infty$, $e^{-\lambda_k} \longrightarrow +\infty$. Mais $\forall k \in \mathbb{N}$, $e^{-\lambda_k}$ est valeur propre de $A_k^{-1}$, donc $\rho(A_k^{-1}) \longrightarrow +\infty$ : absurde car $(A_k^{-1})$ converge par continuité de $M \mapsto M^{-1}$.
