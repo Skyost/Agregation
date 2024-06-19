@@ -22,14 +22,14 @@
       \[ \vert x^{k+1}_n \vert \leq \Vert x_n \Vert_\infty \]
       $(x^{k+1}_{\varphi_1 \circ \dots \circ \varphi_k (n)})$ est une suite réelle bornée. Toujours par le théorème de Bolzano-Weierstrass, il existe une extractrice $\varphi_{k+1}$ telle que $(x^{k+1}_{\varphi_1 \circ \dots \circ \varphi_{k+1}}(n))$ converge. D'où l'hérédité.
     \end{itemize}
-    La propriété est en particulier pour $k = n$. En posant $\varphi = \varphi_1 \circ \dots \circ \varphi_n$, on obtient une extractrice telle que
+    La propriété est en particulier vraie pour $k = n$. En posant $\varphi = \varphi_1 \circ \dots \circ \varphi_n$, on obtient une extractrice telle que
     \[ \forall i \in \llbracket 1, n \rrbracket, \, (x^i_{\varphi(n)}) \text{ converge} \]
     et on en déduit que $(x_{\varphi(n)})$ converge vers un réel $x \in \mathbb{R}^n$. Comme $X$ est fermé, $x \in X$. $X$ est donc séquentiellement compact, donc compact.
   \end{proof}
 
   \begin{proposition}
     \label{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz-2}
-    Soient $(E,d_E)$, $(F,d_f)$ deux espaces métriques et $f : E \rightarrow F$ continue. Si $E$ est compact, alors $f(E)$ est compact dans $F$.
+    Soient $(E,d_E)$, $(F,d_F)$ deux espaces métriques et $f : E \rightarrow F$ continue. Si $E$ est compact, alors $f(E)$ est compact dans $F$.
   \end{proposition}
 
   \begin{proof}
@@ -53,15 +53,19 @@
     \[
       f :
       \begin{array}{ccc}
-        (\mathbb{R}^n, \Vert . \vert_\infty) &\rightarrow& (E, \mathcal{N}) \\
+        (\mathbb{R}^n, \Vert . \Vert_\infty) &\rightarrow& (E, \mathcal{N}) \\
         (x_1, \dots, x_n) &\mapsto& \sum_{i=1}^n x_i e_i
       \end{array}
     \]
     La fonction $f$ vérifie
-    \[ \forall x \in \mathbb{R}^n, \, \mathcal{N}(f(x)) \leq \alpha \Vert x \vert_\infty \]
-    c'est une application linéaire bornée, qui est donc continue. Comme elle est bijective, l'ensemble
-    \[ S_E = \{ x \in E \mid \mathcal{N}_\infty(x) = 1 \} = f(S) \]
-    où $S$ désigne la sphère unité de $(\mathbb{R}^n, \Vert. \Vert_\infty)$, qui est compacte d'après le \cref{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz-1}. D'après le \cref{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz-2}, $S_E$ est compacte comme image d'un compact par une application continue.  L'application $\mathcal{N} : E \rightarrow \mathbb{R}$ est continue car lipschitzienne ($\forall x, y \in E, \, \vert \mathcal{N}(x) - \mathcal{N}(y) \vert \leq \mathcal{N}(x - y)$), donc est bornée et atteint ses bornes sur la sphère $S_E$. On note $x_0 \in E$ ce minimum :
+    \[ \forall x \in \mathbb{R}^n, \, \mathcal{N}(f(x)) \leq \alpha \Vert x \Vert_\infty \]
+    c'est une application linéaire bornée, qui est donc continue. On considère l'ensemble
+    \[ S_E = f(S) \]
+    où $S$ désigne la sphère unité de $(\mathbb{R}^n, \Vert. \Vert_\infty)$ qui est compacte d'après le \cref{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz-1}. D'après le \cref{equivalence-des-normes-en-dimension-finie-et-theoreme-de-riesz-2}, $S_E$ est compacte comme image d'un compact par une application continue.
+    \newpar
+    Montrons que $S_E$ est la sphère unité de $(E, \mathcal{N}_\infty)$. Déjà, si $x \in S$, alors $\mathcal{N}_\infty(f(x)) = \Vert x \Vert_\infty = 1$, d'où l'inclusion directe. Pour l'inclusion réciproque, si $y \in S_E$, par bijectivité de $f$, on peut écrire $y = f^{-1}(x)$ avec $x \in \mathbb{R}^n$ et ainsi $\Vert x \Vert_\infty = \mathcal{N}_\infty(f(x)) = 1$.
+    \newpar
+    L'application $\mathcal{N} : E \rightarrow \mathbb{R}$ est continue car lipschitzienne ($\forall x, y \in E, \, \vert \mathcal{N}(x) - \mathcal{N}(y) \vert \leq \mathcal{N}(x - y)$), donc est bornée et atteint ses bornes sur la sphère $S_E$. On note $x_0 \in E$ ce minimum :
     \[ \forall x \in E \text{ tel que } \mathcal{N}_\infty(x) = 1, \text{ on a } \mathcal{N}(x) \geq \underbrace{\mathcal{N}(x_0)}_{= \beta} \]
     Ainsi,
     \[ \forall x \in E, \mathcal{N} \left(\frac{x}{\mathcal{N}_\infty(x)} \right) \geq \beta \text{ ie. } \mathcal{N}(x) \geq \beta \mathcal{N}_\infty(x) \]
@@ -73,18 +77,18 @@
   \end{theorem}
 
   \begin{proof}
-    Notons $\overline{B}$ la boule unité fermée de $E$ et supposons $E$ de dimension finie $n \in \mathbb{N}$. Comme dans la démonstration du théorème précédent, $\overline{B}$ est compacte comme image de la boule unité fermée de $\mathbb{R}^n$ par l'application continue $f$. Réciproquement, supposons $E$ de dimension finie et, par l'absurde, également que $\overline{B}$ est compacte. On a,
+    Notons $\overline{B}$ la boule unité fermée de $E$ et supposons $E$ de dimension finie $n \in \mathbb{N}$. Comme dans la démonstration du théorème précédent, $\overline{B}$ est compacte comme image de la boule unité fermée de $(\mathbb{R}^n, \Vert . \Vert_\infty)$ par l'application continue $f$. Réciproquement, supposons $E$ de dimension finie et, par l'absurde, également que $\overline{B}$ est compacte. On a,
     \[ \overline{B} \subseteq \bigcup_{x \in E} B(x,1) \]
     où $B(x,1)$ désigne la boule ouverte centrée en $x$ de rayon $1$. Par la propriété de Borel-Lebesgue, il existe $x_1, \dots, x_n \in E$ tels que
     \[ \overline{B} \subseteq \bigcup_{i=1}^n B(x_i,1) \]
     On définit $F = \operatorname{Vect}(x_1, \dots, x_n)$. Comme $F$ est de dimension finie et $E$ de dimension infinie, on peut trouver $y \in E \setminus F$. Soit $x_0 \in F$ le projeté de $y$ sur $F$ :
-    \[ d(y, F) = \Vert y - x_0 \Vert \]
+    \[ d(y, F) = \Vert y - x_0 \Vert > 0 \]
     On pose
     \[ u = \frac{y - x_0}{\Vert y - x_0 \Vert} \]
     On a $u$ de norme $1$, donc $u \in \overline{B}$ et il existe $i \in \llbracket 1, n \rrbracket$ tel que $\Vert u - x_i \Vert < 1$. Or,
     \begin{align*}
       \Vert u - x_i \Vert &= \frac{\Vert y - x_0 - \Vert y - x_0 \Vert x_i \Vert}{\Vert y - x_0 \Vert} \\
-      &= \frac{\Vert y - (x_0 - \Vert y - x_0 \Vert x_i) \Vert}{\Vert y - x_0 \Vert} \\
+      &= \frac{\Vert y - (x_0 - \Vert y + x_0 \Vert x_i) \Vert}{\Vert y - x_0 \Vert} \\
       &\geq \frac{d(y, F)}{\Vert y - x_0 \Vert} \\
       &= 1
     \end{align*}

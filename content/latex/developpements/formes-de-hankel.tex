@@ -27,7 +27,7 @@
 
   \begin{proof}
     $\sigma$ est un polynôme homogène de degré $2$ sur $\mathbb{C}$ (car la somme des exposants est $2$ pour chacun des monômes), qui définit donc une forme quadratique sur $\mathbb{C}^n$. De plus, on peut écrire :
-    \[ \forall k \geq 1, \, s_k = \sum_{\substack{x \text{ racine de P} \\ x \in \mathbb{R}}} m_k x^k + \sum_{\substack{x \text{ racine de P} \\ x \in \mathbb{C}}} m_k (x^k + \overline{x}^k) \]
+    \[ \forall k \geq 1, \, s_k = \sum_{\substack{x_i \text{ racine de P} \\ x_i \in \mathbb{R}}} m_i x^i + \sum_{\substack{x \text{ racine de P} \\ x_i \in \mathbb{C}}} m_i (x^i + \overline{x}^k) \]
     donc $s_k = \overline{s_k}$ ie. $s_k \in \mathbb{R}$. Donc $\sigma$ définit une forme quadratique $\sigma_{\mathbb{R}}$ sur $\mathbb{R}^n$. D'où le premier point.
     \newpar
     Soit $\varphi_k$ la forme linéaire sur $\mathbb{C}^n$ définie par le polynôme homogène de degré $1$
@@ -36,16 +36,16 @@
     \[ \varphi_k = e_0^* + x_k e_1^* + \dots + x_k^{n-1} e_{n-1}^* \]
     Et comme
     \[ \det((\varphi_k)_{k \in \llbracket 0, t \rrbracket}) = \begin{vmatrix} 1 & 1 & \dots & 1 \\ x_0 & x_1 & \dots & x_t \\ \vdots & \ddots & \ddots & \vdots \\ x_0^{n-1} & x_1^{n-1} & \dots & x_t^{n-1} \end{vmatrix} \overset{\text{Vandermonde}}{\neq} 0 \]
-    la famille $(\varphi_k)_{k \in \llbracket 0, t \rrbracket}$ est de rang $t$ sur $\mathbb{C}$. Or, le coefficient de $X_i X_j$ dans $\sum_{k=1}^t m_k \varphi_k^2$ vaut
+    la famille $(\varphi_k)_{k \in \llbracket 0, t \rrbracket}$ est de rang $t$ sur $\mathbb{C}$. Or, le coefficient de $X_i X_j$ dans $\sum_{k=1}^t m_k P_k^2$ vaut
     \[ \begin{cases} \sum_{k=1}^t m_k x_k^{2i} = s_{i+j} &\text{ si } i=j \\ \sum_{k=1}^t 2 m_k x_k^i x_k^j = \sum_{k=1}^t 2 m_k x_k^{i+j} = 2s_{i+j} &\text{ sinon} \end{cases} \]
-    donc, $\sigma = \sum_{k=1}^t m_k \varphi_k^2$. En particulier, $\rang (\sigma) = t$ par indépendant des $\varphi_k$. On en déduit,
-    \[ p+q = \rang(\sigma) = \rang(\sigma_{\mathbb{R}}) = t \]
+    donc, $\sigma = \sum_{k=1}^t m_k \varphi_k^2$. En particulier, $\rang (\sigma) = t$ par indépendance des $\varphi_k$. On en déduit,
+    \[ p+q = \rang(\sigma_{\mathbb{R}}) = \rang(\sigma) = t \]
     (le rang est invariant par extension de corps).
     \newpar
     Soit $k \in \llbracket 0, t \rrbracket$. Calculons la signature de la forme quadratique $\varphi_k^2 + \overline{\varphi_k}^2$ :
     \begin{itemize}
       \item Si $x_k \in \mathbb{R}$, on a $\varphi_k^2 + \overline{\varphi_k}^2 = 2 \varphi_k^2$, qui est de signature $(1, 0)$ car $\varphi_k \neq 0$.
-      \item Si $x_k \notin \mathbb{R}$, on a $\varphi_k^2 + \overline{\varphi_k}^2 = 2 \operatorname{Re}(\varphi_k)^2 - 2 \operatorname{Im}(\varphi_k)^2$ qui est bien une forme quadratique réelle. Et $x_k = \overline{x_k}$, donc la matrice
+      \item Si $x_k \notin \mathbb{R}$, on a $\varphi_k^2 + \overline{\varphi_k}^2 = 2 \operatorname{Re}(\varphi_k)^2 - 2 \operatorname{Im}(\varphi_k)^2$ qui est bien une forme quadratique réelle. Et $x_k \neq \overline{x_k}$, donc la matrice
       \[ \begin{pmatrix} 1 & 1 \\ x_k & \overline{x_k} \\ \vdots & \vdots \\ x_k^{n-1} & \overline{x_k}^{n-1} \end{pmatrix} \]
       est de rang $2$ (cf. le mineur correspondant aux deux premières lignes). Donc $\varphi_k$ et $\overline{\varphi_k}$ sont indépendantes. Ainsi, $\rang(\varphi_k^2 + \overline{\varphi_k}^2) = 2$ sur $\mathbb{C}$, donc sur $\mathbb{R}$ aussi (toujours par invariance du rang par extension de corps). Donc la signature de $\varphi_k^2 + \overline{\varphi_k}^2$ est $(1, 1)$.
     \end{itemize}

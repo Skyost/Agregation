@@ -29,8 +29,8 @@
         \filldraw[cyan!50] (B) -- (A) -- (C) -- (2,1) -- cycle;
         \filldraw[cyan!80] (B) -- (A) -- (1,0.25) -- (D) -- cycle;
         \draw[domain=0.625:2.5, smooth, variable=\x, cyan] plot ({\x}, {1/(\x*\x)});
-        \node (G) at (4,2) {\color{cyan!50} Aire du rectangle égale à $\frac{1}{k}$};
-        \node (H) at (1.5,-1) {\color{cyan!80} Aire du rectangle égale à $\frac{1}{k+1}$};
+        \node (G) at (4,2) {\color{cyan!50} Aire du rectangle égale à $\frac{1}{k^\alpha}$};
+        \node (H) at (1.5,-1) {\color{cyan!80} Aire du rectangle égale à $\frac{1}{(k+1)^\alpha}$};
         \draw[cyan, ->] ($(G)-(0,0.2)$) to [out=-120,in=80] (1.75,0.75);
         \draw[cyan, ->] ($(H)+(0,0.2)$) to [out=120,in=-90] (1.5,0.125);
         \node at (A) {$\bullet$};
@@ -51,7 +51,7 @@
       \end{tikzpicture}
     \end{center}
     On a
-    \[ \forall k \geq 1, \, \frac{1}{k+1} \leq \int_k^{k+1} \frac{1}{x^\alpha} \, \mathrm{d}x \leq \frac{1}{k^\alpha} \]
+    \[ \forall k \geq 1, \, \frac{1}{(k+1)^\alpha} \leq \int_k^{k+1} \frac{1}{x^\alpha} \, \mathrm{d}x \leq \frac{1}{k^\alpha} \]
     D'où :
     \[ \forall k \geq 2, \, \int_k^{k+1} \frac{1}{x^\alpha} \, \mathrm{d}x \leq \frac{1}{k^\alpha} \leq \int_{k-1}^k \frac{1}{x^\alpha} \, \mathrm{d}x \]
     Soit $N \geq 2$. Pour tout $n \in \llbracket 2, N \rrbracket$,

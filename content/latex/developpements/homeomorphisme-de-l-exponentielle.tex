@@ -62,7 +62,7 @@
     Montrer qu'une application est un homéomorphisme se fait en $4$ étapes : on montre qu'elle est continue, injective, surjective, et que la réciproque est elle aussi continue.
     \begin{itemize}
       \item \uline{L'application est bien définie et continue :} Soit $S \in \mathcal{S}_n(\mathbb{R})$. D'après le théorème spectral,
-      \[ \exists P \in \mathcal{O}_n(\mathbb{R}) \text{ telle que } S = P \underbrace{\operatorname{Diag}(\lambda_1, \dots, \lambda_n)}_{= D}P^{-1} \]
+      \[ \exists P \in \mathcal{O}_n(\mathbb{R}) \text{ telle que } S = P^{-1} \underbrace{\operatorname{Diag}(\lambda_1, \dots, \lambda_n)}_{= D}P \]
       où $\lambda_1, \dots, \lambda_n$ désignent les valeurs propres de $S$. On a donc
       \begin{align*}
         \exp(S) &= P^{-1} \exp(D) P \\
@@ -70,7 +70,7 @@
       \end{align*}
       Or, $P^{-1} = \tr P$, donc $\tr \exp(S) = \exp(S)$ et $\exp(S) \in \mathcal{S}_n(\mathbb{R})$. De plus, $\forall x \in \mathbb{R}^n$,
       \[ \tr x S x = \tr (Px) D (Px) > 0 \]
-      car $D \in \mathcal{S}^{++}_n(\mathbb{R})$. Donc $S \in \mathcal{S}^{++}_n(\mathbb{R})$.
+      car $D \in \mathcal{S}^{++}_n(\mathbb{R})$. Donc $S \in \mathcal{S}^{++}_n(\mathbb{R})$. Elle est de plus continue en tant que restriction de l'exponentielle définie sur $\mathcal{M}_n(\mathbb{K})$ (qui est la somme d'une série normalement convergente sur toute boule ouverte de $\mathcal{M}_n(\mathbb{K})$).
       \item \uline{L'application est surjective :} Soit $S \in \mathcal{S}^{++}_n(\mathbb{R})$. On peut écrire
       \[ S = P \operatorname{Diag}(\mu_1, \dots, \mu_n) P^{-1} \]
       Il suffit alors de poser $U = P^{-1} \operatorname{Diag}(\ln(\mu_1), \dots, \ln(\mu_n)) P \in \mathcal{S}_n(\mathbb{R})$ pour avoir $\exp(U) = S$ ; d'où la surjectivité.
