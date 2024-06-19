@@ -30,7 +30,7 @@
     \newpar
     Par $(*)$ appliqué à $N = 0$, $\exists n_0 \geq 0$ tel que $d(x_{n_0}, \ell) > \epsilon$. On définit donc $\varphi(0) = n_0$.
     \newpar
-    Supposons construite $\varphi(i)$ jusqu'à un rang $k$ telle que $\forall i <\leq> k$, $\varphi(i+1) > \varphi(i)$ (lorsque cela à un sens) et $d(x_{\varphi(i)}, \ell) > \epsilon$. Il suffit alors d'appliquer $(*)$ à $N = \varphi(n) + 1$ pour obtenir un $n_k \geq \varphi(n) + 1 > \varphi(n)$ tel que $d(x_{n_k}, \ell) > \epsilon$ ; on définit alors $\varphi(k+1) = n_k$.
+    Supposons construite $\varphi(i)$ jusqu'à un rang $k$ telle que $\forall i \leq k$, $\varphi(i+1) > \varphi(i)$ (lorsque cela à un sens) et $d(x_{\varphi(i)}, \ell) > \epsilon$. Il suffit alors d'appliquer $(*)$ à $N = \varphi(n) + 1$ pour obtenir un $n_k \geq \varphi(n) + 1 > \varphi(n)$ tel que $d(x_{n_k}, \ell) > \epsilon$ ; on définit alors $\varphi(k+1) = n_k$.
     \newpar
     Nous venons donc de construire par récurrence une application $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante et telle que $\forall n \in \mathbb{N}$, $d(x_{\varphi(n)}, \ell) > \epsilon$. La suite $(x_{\varphi(n)})$ est bornée (par hypothèse) : elle est contenue dans un compact et admet une valeur d'adhérence $\ell'$ (par le théorème de Bolzano-Weierstrass). Soit donc $\phi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $(x_{(\varphi \circ \psi)(n)})$ converge vers $\ell'$.
     \newpar
