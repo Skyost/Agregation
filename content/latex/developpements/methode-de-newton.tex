@@ -47,7 +47,7 @@
       |x_{n+1} - a| &= |\varphi(x_n) - a| \\
       &\leq C |x_n - a|^2
     \end{align*}
-    D'où $c |x_n - a| \leq (C |x_0 - a|)^{2^n} \leq (C \alpha)^{2^n}$ où $C \alpha < 1$. On a donc bien convergence quadratique de la suite $(x_n)$ vers le réel $a$.
+    D'où $C |x_n - a| \leq (C |x_0 - a|)^{2^n} \leq (C \alpha)^{2^n}$ où $C \alpha < 1$. On a donc bien convergence quadratique de la suite $(x_n)$ vers le réel $a$.
   \end{proof}
 
   \reference[DEM]{100}
@@ -80,7 +80,7 @@
     En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
     \begin{enumerate}[label=(\roman*)]
       \item $(x_n)$ est strictement décroissante (ou constante).
-      \item $x_{n+1} - a \sim \frac{f''(a)}{f'(a)} (x_n - a)^2$ pour $x_0 > a$.
+      \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
     \end{enumerate}
   \end{corollary}
 
@@ -92,7 +92,7 @@
     Ainsi, $I = [a, d]$ est stable par $\varphi$ et pour $x_0 \in ]a, d]$, on a $x_n \in ]a, d]$ pour tout $n \in \mathbb{N}$ et la suite $(x_n)$ est strictement décroissante. La suite $(x_n)$ admet donc une limite $\ell$ vérifiant $\varphi(\ell) = \ell \iff f(\ell) = 0$ ie. $\ell = a$ par unicité. Comme dans le théorème précédent, la convergence est quadratique :
     \[ 0 \leq x_{n+1} - a \leq C (x_n - a)^2 \]
     Enfin, si $x_0 \in ]a, d]$, on a comme dans $(*)$ :
-    \[ \forall n \in \mathbb{N}, \, x_n > a \text{ et } \frac{x_{n+1} - a}{(x_n - a)^2} = \frac{f''(z_n)}{f'(z)} \]
+    \[ \forall n \in \mathbb{N}, \, x_n > a \text{ et } \frac{x_{n+1} - a}{(x_n - a)^2} = \frac{f''(z_n)}{2f'(x_n)} \]
     (en faisant la même démarche que pour $(*)$ on obtient $z_n \in ]a, x_n[$). On fait tendre $n$ vers l'infini et la fraction de droite tend vers $\frac{f''(a)}{f'(a)}$; d'où le résultat.
   \end{proof}
 

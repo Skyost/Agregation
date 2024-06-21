@@ -62,15 +62,15 @@
   \begin{proof}
     On écrit la formule de Taylor à l'ordre $1$ avec reste intégral au voisinage de $0$, qui donne :
     \begin{align*}
-      &f(x) = f(0) + \mathrm{d} f_0(x) + \int_0^1 (1-t) \mathrm{d}^2 (1-t) f_{tx} (x, x) \, \mathrm{d}t \\
+      &f(x) = f(0) + \mathrm{d} f_0(x) + \int_0^1 (1-t) \mathrm{d}^2 f_{tx} (x, x) \, \mathrm{d}t \\
       \iff& f(x) - f(0) = \tr x Q(x) x \tag{$*$}
     \end{align*}
     où $Q(x)$ est la matrice symétrique définie par $Q(x) = \int_0^1 (1-t) \mathrm{Hess} f_{tx} \, \mathrm{d}t$ (qui est une application $\mathcal{C}^1$ sur $U$ car $f$ est $\mathcal{C}^3$ sur $U$).
     \newpar
     Par hypothèse, $Q(0) = \frac{\mathrm{Hess} (f)_0}{2}$ est une matrice symétrique inversible, donc en vertu du \cref{lemme-de-morse-1}, il existe un voisinage $V_1$ de $Q(0)$ dans $\mathcal{S}_n(\mathbb{R})$ et une application $\psi : V_1 \rightarrow \mathrm{GL}_n(\mathbb{R})$ de classe $\mathcal{C}^1$ tels que :
-    \[ \forall A \in V_1, \, Q(0) = \psi(A) Q(0) \psi(A) \]
+    \[ \forall A \in V_1, \, A = \tr{\psi(A)} Q(0) \psi(A) \]
     Mais, l'application $x \mapsto Q(x)$ est continue sur $U$ (puisque $f$ est de classe $\mathcal{C}^3$ sur $U$), donc il existe $V_2$ voisinage de $0$ dans $U$ tel que $\forall x \in V_2$, $Q(x) \in V_1$. On peut donc définir l'application $M = \psi \circ Q_{|V_2}$, qui nous permet d'écrire
-    \[ \forall x \in V_2, \, Q(x) = \tr M (x) Q(0) M (x) \tag{$*$} \]
+    \[ \forall x \in V_2, \, Q(x) = \tr M (x) Q(0) M (x) \tag{$**$} \]
     Or, $Q(0)$ est de signature $(p, n-p)$, donc d'après la loi d'inertie de Sylvester, il existe $P \in \mathrm{GL}_n(\mathbb{R})$ telle que
     \[ Q(0) = \tr P \underbrace{\begin{pmatrix} I_p & \\ & - I_{n-p} \end{pmatrix}}_{= D} P \tag{$***$} \]
     Finalement en combinant $(*)$ avec $(**)$ et $(***)$, cela donne
@@ -86,7 +86,7 @@
       &= P( M(0) + \mathrm{d} M_0 (h) + o(\Vert h \Vert))h \\
       &= P M(0) h + o(\Vert h \Vert)
     \end{align*}
-    d'où $\mathrm{d} \varphi_0 (h) = P M(0) h$. Or, $P M(0)$ est inversible, donc en particulier, $\mathrm{d} \varphi_0 (h)$ l'est aussi. On peut appliquer le théorème d'inversion locale à $\varphi$, qui donne l'existence de deux ouverts $V$ et $W$ contenant l'origine (car $\varphi(0) = 0$) tel que $\phi = \varphi_{|V}$ soit un $\mathcal{C}^1$-difféomorphisme de $V$ sur $W$.
+    d'où $\mathrm{d} \varphi_0 (h) = P M(0) h$. Or, $P M(0)$ est inversible, donc en particulier, $\mathrm{d} \varphi_0$ l'est aussi. On peut appliquer le théorème d'inversion locale à $\varphi$, qui donne l'existence de deux ouverts $V$ et $W$ contenant l'origine (car $\varphi(0) = 0$) tel que $\phi = \varphi_{|V}$ soit un $\mathcal{C}^1$-difféomorphisme de $V$ sur $W$.
   \end{proof}
 
   \reference{341}

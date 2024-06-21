@@ -34,7 +34,7 @@
   \reference{478}
 
   \begin{proof}
-    Posons $\forall x \in \mathbb{R}^+$ et $\forall t \in \mathbb{R}^+_*$, $f(x,t) = \frac{\sin(t)}{t} e^{-xt}$ ainsi que $\forall n \geq 1$, $F_n(x) = \int_0^n \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t$. On a :
+    Posons $\forall x \in \mathbb{R}^+$ et $\forall t \in \mathbb{R}^+_*$, $f(x,t) = \frac{\sin(t)}{t} e^{-xt}$ ainsi que $\forall n \geq 1$, $F_n(x) = \int_0^n f(x,t) \, \mathrm{d}t$. On a :
     \begin{itemize}
       \item $\forall x \geq 0$, $t \mapsto f(x, t)$ est mesurable.
       \item Presque partout en $t > 0$, $x \mapsto f(x, t)$ est continue.
@@ -59,12 +59,12 @@
     Ce qui nous donne :
     \begin{align*}
       \left| \int_p^q (x-i) \frac{e^{-(x-i)t}}{t} \, \mathrm{d}t \right| &= \left| \left[ u(t)v(t) \right]_p^q - \int_p^q u(t) v'(t) \, \mathrm{d}t \right| \\
-      &= \left| \frac{e^{-(q-i)t}}{q} - \frac{e^{-(p-i)t}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right|
+      &= \left| \frac{e^{-(x-i)q}}{q} - \frac{e^{-(x-i)p}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right|
     \end{align*}
     On applique maintenant le \cref{integrale-de-dirichlet-1} :
     \begin{align*}
-      \left| \frac{e^{-(q-i)t}}{q} - \frac{e^{-(p-i)t}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right| &\leq \frac{1}{p} + \frac{1}{q} + \int_p^q \frac{1}{t^2} \, \mathrm{d}t \\
-      &= \frac{1}{p} + \frac{1}{q} - \left[ \frac{1}{t} \right]^q_p \\
+      \left| \frac{e^{-(x-i)q}}{q} - \frac{e^{-(x-i)p}}{p} +  \int_p^q \frac{e^{-(x-i)t}}{t^2} \, \mathrm{d}t \right| &\leq \frac{1}{p} + \frac{1}{q} + \int_p^q \frac{1}{t^2} \, \mathrm{d}t \\
+      &= \frac{1}{q} + \frac{1}{p} - \left[ \frac{1}{t} \right]^q_p \\
       &\leq \frac{2}{N}
     \end{align*}
     D'où :

@@ -26,35 +26,36 @@
     \end{itemize}
   \end{proof}
 
-   \reference[ROM21]{49}
+  \reference[ROM21]{49}
 
   \begin{lemma}
     \label{simplicite-du-groupe-alterne-2}
-    Le produit de deux transpositions est un produit de $3$-cycles.
+    $A_n$ est engendré par les $3$-cycles pour $n \geq 3$.
   \end{lemma}
 
   \begin{proof}
-    Soient $\alpha = \begin{pmatrix} a_1 & a_2 \end{pmatrix}$ et $\beta = \begin{pmatrix} b_1 & b_2 \end{pmatrix}$ deux transpositions. Si $\alpha = \beta$, alors $\alpha\beta = \operatorname{id} = \sigma^3$ où $\sigma$ désigne n'importe quel $3$-cycle.
+    Montrons tout d'abord qu'un produit de deux transpositions est un produit de $3$-cycles. Soient $\alpha = \begin{pmatrix} a_1 & a_2 \end{pmatrix}$ et $\beta = \begin{pmatrix} b_1 & b_2 \end{pmatrix}$ deux transpositions. Si $\alpha = \beta$, alors $\alpha\beta = \operatorname{id} = \sigma^3$ où $\sigma$ désigne n'importe quel $3$-cycle.
     \newpar
     Si $\alpha \neq \beta$, on a deux possibilités :
     \begin{itemize}
       \item Leur support comporte un élément commun : $a_1 = b_1 = c$. Donc $\alpha = \begin{pmatrix} c & a_2 \end{pmatrix}$ et $\beta = \begin{pmatrix} c & b_2 \end{pmatrix}$ avec $c, a_2, b_2$ distincts. Donc $\alpha\beta = \begin{pmatrix} a_2, c, b_2 \end{pmatrix}$.
       \item Leur support n'a pas d'élément commun. Dans ce cas $a_1, a_2, a_1, b_2$ sont distincts et $\alpha\beta = \begin{pmatrix} a_1 & a_2 & b_1 \end{pmatrix} \begin{pmatrix} a_2 & b_1 & b_2 \end{pmatrix}$.
     \end{itemize}
-  \end{proof}
-
-  \begin{lemma}
-    \label{simplicite-du-groupe-alterne-3}
-    $A_n$ est engendré par les $3$-cycles pour $n \geq 3$.
-  \end{lemma}
-
-  \begin{proof}
-    Soit $\sigma \in A_n$. Comme $\sigma$ est paire, on peut la décomposer en un produit d'un nombre pair $n$ de transpositions :
+    Soit maintenant $\sigma \in A_n$. Comme $\sigma$ est paire, on peut la décomposer en un produit d'un nombre pair $n$ de transpositions :
     \[ \sigma = \prod_{i=1}^{n-1} \tau_i\tau_{i+1} \]
-    Par le \cref{simplicite-du-groupe-alterne-1}, chaque produit $\tau_i\tau_{i+1}$ peut s'écrire comme un produit de $3$-cycles. Donc $\sigma$ est bien un produit de $3$-cycles.
+    qui est bien un produit de $3$-cycles.
   \end{proof}
 
   \reference{66}
+  
+  \begin{lemma}
+    \label{simplicite-du-groupe-alterne-3}
+    Les doubles transpositions sont conjuguées dans $A_n$ pour $n \geq 5$.
+  \end{lemma}
+  
+  \begin{proof}
+    Soient $\alpha = \begin{pmatrix} a_1 & b_1 \end{pmatrix} \begin{pmatrix} c_1 & d_1 \end{pmatrix} \begin{pmatrix} e_1 \end{pmatrix}$ et $\beta = \begin{pmatrix} a_2 & b_2 \end{pmatrix} \begin{pmatrix} c_2 & d_2 \end{pmatrix} \begin{pmatrix} e_2 \end{pmatrix}$ deux doubles transpositions. Il suffit de prendre $\sigma \in A_5$ telle que $\sigma(a_1) = a_2$, $\sigma(b_1) = b_2$ et $\sigma(e_1) = e_2$ pour avoir $\sigma \alpha \sigma^{-1} = \beta$.
+  \end{proof}
 
   \begin{lemma}
     \label{simplicite-du-groupe-alterne-4}
@@ -63,26 +64,24 @@
 
   \begin{proof}
     Commençons par décrire les types possibles des permutations de $A_5$ (le ``type'' d'une permutation désigne les cardinaux des supports des cycles apparaissant dans sa décomposition en cycles disjoints).
-    \newpar
-    \begin{whitetabularx}{|X|X|}
-      \hline
-      \textbf{Type de permutation} & \textbf{Nombre de permutations} \\
-      \hline
-      $[1]$ & $1$ \\
-      \hline
-      $[3]$ & $\frac{5 \times 4 \times 3}{3} = 20$ \\
-      \hline
-      $[5]$ & $\frac{5 \times 4 \times 3 \times 2 \times 1}{5} = 24$ \\
-      \hline
-      $[2,2]$ & $\frac{1}{2} \frac{5 \times 4 \times 3 \times 2}{4} = 15$ \\
-      \hline
-    \end{whitetabularx}
-    \newpar
-    Montrons que les permutations de type $[2,2]$ sont conjuguées dans $A_5$. Soient $\alpha = \begin{pmatrix} a_1 & b_1 \end{pmatrix} \begin{pmatrix} c_1 & d_1 \end{pmatrix} \begin{pmatrix} e_1 \end{pmatrix}$ et $\beta = \begin{pmatrix} a_2 & b_2 \end{pmatrix} \begin{pmatrix} c_2 & d_2 \end{pmatrix} \begin{pmatrix} e_2 \end{pmatrix}$ deux permutations de type $[2,2]$. Il suffit de prendre $\sigma \in A_5$ telle que $\sigma(a_1) = a_2$, $\sigma(b_1) = b_2$ et $\sigma(e_1) = e_2$ pour avoir $\sigma \alpha \sigma^{-1} = \beta$.
-    \newpar
+    \begin{center}
+      \begin{whitetabularx}{|X|X|}
+        \hline
+        \textbf{Type de permutation} & \textbf{Nombre de permutations} \\
+        \hline
+        $[1]$ & $1$ \\
+        \hline
+        $[3]$ & $\frac{5 \times 4 \times 3}{3} = 20$ \\
+        \hline
+        $[5]$ & $\frac{5 \times 4 \times 3 \times 2 \times 1}{5} = 24$ \\
+        \hline
+        $[2,2]$ & $\frac{1}{2} \frac{5 \times 4 \times 3 \times 2}{4} = 15$ \\
+        \hline
+      \end{whitetabularx}
+    \end{center}
     Soit $H \lhd A_5$ tel que $H \neq \{ \id \}$. Montrons que $H = A_5$.
     \begin{itemize}
-      \item Si $H$ contient une permutation de type $[2,2]$, alors par le \cref{simplicite-du-groupe-alterne-2}, le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
+      \item Si $H$ contient une permutation de type $[2,2]$, alors par le \cref{simplicite-du-groupe-alterne-3}, il contient toutes les permutations de type $[3]$.
       \item Si $H$ contient une permutation de type $[3]$, alors par le \cref{simplicite-du-groupe-alterne-1}, il les contient toutes.
       \item Si $H$ contient une permutation de type $[5]$, $\sigma = \begin{pmatrix} a & b & c & d & e \end{pmatrix}$, il contient alors le commutateur
       \begin{align*}
@@ -113,7 +112,7 @@
     \newpar
     Soit $\sigma \in N \setminus \{ \id \}$, il existe donc $a \in \llbracket 1, n \rrbracket$ tel que $\sigma(a) = b \neq a$. Soit $c \in \llbracket 1, n \rrbracket$ différent de $a$, $b$ et $\sigma(b)$. On pose $\tau = \begin{pmatrix} a & c & b \end{pmatrix} \in A_n$ (on a $\tau^{-1} = \begin{pmatrix} a & b & c \end{pmatrix})$. Soit $\rho = \tau \sigma \tau^{-1} \sigma^{-1}$. Par calcul :
     \[ \rho = \begin{pmatrix} a & c & b \end{pmatrix} \sigma \begin{pmatrix} a & b & c \end{pmatrix} \sigma^{-1} = \begin{pmatrix} a & c & b \end{pmatrix} \begin{pmatrix} \sigma(a) & \sigma(b) & \sigma(c) \end{pmatrix} \]
-    Notons bien que $\rho \neq \id$ (en tant que produit de $3$-cycles, car $\sigma(b) \neq c$). Or, $\tau \sigma \tau^{-1} \in N$ car $N$ est distingué et $\sigma^{-1}$ aussi car $N$ est un groupe, donc $\rho \in N$.
+    Notons bien que $\rho \neq \id$ (en tant que produit de $3$-cycles, car $\sigma(b) \neq c$, donc $\rho(b) \neq b$ par calcul). Or, $\tau \sigma \tau^{-1} \in N$ car $N$ est distingué et $\sigma^{-1}$ aussi car $N$ est un groupe, donc $\rho \in N$.
     \newpar
     Notons $\mathcal{F} = \{ a, b, c, \sigma(a), \sigma(b), \sigma(c) \}$. Comme $\sigma(a) = b$, $|\mathcal{F}| \leq 5$. Quitte à rajouter, au besoin, des éléments à $\mathcal{F}$, on peut supposer que $|\mathcal{F}| = 5$. On pose
     \[ A(\mathcal{F}) = \{ \alpha \in A_n \mid \forall i \in \llbracket 1, n \rrbracket \setminus \mathcal{F}, \, \alpha(i) = i \} \]
@@ -129,9 +128,9 @@
       \item $\beta \alpha \beta^{-1} \in A(\mathcal{F})$ car $A(\mathcal{F})$ est un groupe.
       \item $\beta \alpha \beta^{-1} \in N$ car $N \lhd A_5$.
     \end{itemize}
-    En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subseteq \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$ et par 1., $\rho \in N$). Donc $N_0 \neq \{ \id \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
+    En particulier, $N_0$ est distingué dans $A(\mathcal{F})$ qui est simple. De plus, $\rho \in N_0$ (car $\operatorname{Supp}(\rho) \subseteq \mathcal{F}$ et $\epsilon(\rho) = (-1)^{6} = 1$ donc $\rho \in A(\mathcal{F})$, et on avait déjà $\rho \in N$). Donc $N_0 \neq \{ \id \}$, et ainsi $N_0 = A(\mathcal{F})$. On en déduit :
     \[ A(\mathcal{F}) = N \, \cap \, A(\mathcal{F}) \tag{$*$} \]
-    Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-du-groupe-alterne-1}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-du-groupe-alterne-3}), on a $N = A_n$.
+    Finalement, $\tau$ est un $3$-cycle qui n'agit que sur $\mathcal{F}$, donc $\tau \in A(\mathcal{F})$ et par $(*)$, $\tau \in N$. Or, $\tau$ est un $3$-cycle et les $3$-cycles sont conjugués dans $A_n$ (par le \cref{simplicite-du-groupe-alterne-1}) donc $N$ contient tous les $3$-cycles. Et comme ceux-ci engendrent $A_n$ (par le \cref{simplicite-du-groupe-alterne-2}), on a $N = A_n$.
   \end{proof}
   %</content>
 \end{document}

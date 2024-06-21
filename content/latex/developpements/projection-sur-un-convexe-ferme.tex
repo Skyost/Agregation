@@ -100,14 +100,14 @@
     \[ \Vert y_p - y_q \Vert \leq 2((\underbrace{\Vert x - y_p \Vert^2}_{\longrightarrow \delta^2} - \delta^2) + (\underbrace{\Vert x - y_q \Vert^2}_{\longrightarrow \delta^2} - \delta^2)) \longrightarrow 0 \]
     Ainsi $(y_n)$ est une suite de Cauchy de $H$ qui est complet, donc $(y_n)$ converge vers $y \in H$. Mais, $C$ est fermé et $(y_n)$ est une suite de $C$, donc $y \in C$.
     \newpar
-    Montrons maintenant que $y$ est unique. Soit $z \in C$ tel que $\delta = d(x, C)$. On définit la suite $(z_n)$ par
+    Montrons maintenant que $y$ est unique. Soit $z \in C$ tel que $\delta = \Vert x - z \Vert$. On définit la suite $(z_n)$ par
     \[ \forall n \in \mathbb{N}, \, z_n =
     \begin{cases}
       y &\text{si } n \text{ est pair} \\
       z &\text{si } n \text{ est impair} \\
     \end{cases}
     \]
-    Cette suite vérifie $\forall n \in \mathbb{N}$, $\Vert x - y_n \Vert = \delta$ donc en particulier $\Vert x - y_n \Vert \longrightarrow \delta$, et on peut tout-à-fait refaire le raisonnement précédent pour montrer que $(z_n)$ converge (vers $y = z$, donc). Ainsi, on a bien existence et unicité du projeté.
+    Cette suite vérifie $\forall n \in \mathbb{N}$, $\Vert x - z_n \Vert = \delta$ donc en particulier $\Vert x - z_n \Vert \longrightarrow \delta$, et on peut tout-à-fait refaire le raisonnement précédent pour montrer que $(z_n)$ converge (vers $y = z$, donc). Ainsi, on a bien existence et unicité du projeté.
     \newpar
     Soit $y \in C$ vérifiant $(*)$. Montrons que $y = P_C(x)$. $\forall z \in C$,
     \begin{align*}
@@ -118,7 +118,7 @@
     \end{align*}
     ie. $\Vert z - x \Vert \geq \Vert x - y \Vert$. De plus, $y \in C$, donc $d(y, C) = d(x, C)$. D'où $y = P_C(x)$.
     \newpar
-    Montrons maintenant que $P_C(x)$ vérifie bien $(*)$. Et $\forall z \in C$, on a
+    Montrons maintenant que $P_C(x)$ vérifie bien $(*)$. $\forall z \in C$, on a
     \[ \Vert x - z \Vert^2 \geq \Vert x - P_C(x) \Vert^2 \]
     Or, en développant :
     \begin{align*}
@@ -126,7 +126,7 @@
       &= \Vert x - P_C(x) \Vert^2 + \Vert z - P_C(x) \Vert^2 - 2 \langle x - P_C(x), z - P_C(x) \rangle \\
       &\geq \Vert x - P_C(x) \Vert^2
     \end{align*}
-    D'où,
+    D'où, par la dernière inégalité,
     \[ \Vert z - P_C(x) \Vert^2 - 2 \langle x - P_C(x), z - P_C(x) \rangle \geq 0 \tag{$***$} \]
     Soit maintenant $z_0 \in C$. On va appliquer $(***)$ à $z = \lambda z_0 + (1 - \lambda) z_0 \in C$ pour $\lambda \in ]0, 1]$ :
     \begin{align*}
