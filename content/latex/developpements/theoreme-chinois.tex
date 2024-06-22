@@ -13,8 +13,8 @@
 
   \begin{notation}
     Pour tout $i \in \llbracket 1, r \rrbracket$, on note
-    \[ \pi_i : \pi_{(a_i)} : A \rightarrow A/(a_i) \]
-    la surjection canonique de $A$ sur $A/(a_i)$.
+    \[ \pi_i = \pi_{(a_i)} : A \rightarrow A/(a_i) \]
+    la surjection canonique de $A$ sur $A/(a_i)$. On note également $\pi = \pi_{(a_1 \dots a_r)} : A \rightarrow A/(a_1 \dots A_r)$.
   \end{notation}
 
   \begin{theorem}[Chinois]
@@ -32,7 +32,7 @@
       est un morphisme d'anneaux de noyau $\ker(\varphi) = (a_1 \dots a_r)$.
       \item Il existe $u_1, \dots, u_r \in A$ tels que
       \[ \sum_{i=1}^{r} u_i b_i = 1 \]
-      où $\forall i \in \llbracket 1, r \rrbracket$, $b_i = \frac{a}{a_i}$
+      où $\forall i \in \llbracket 1, r \rrbracket$, $b_i = \frac{a}{a_i}$ et $a = a_1 \dots a_r$.
       \item $\varphi$ est surjectif et induit un isomorphisme $\overline{\varphi} : A/(a_1 \dots a_r) \rightarrow A/(a_1) \times \dots \times A/(a_r)$. On a,
       \[
         \overline{\varphi}^{-1} :
@@ -49,7 +49,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item On vérifie sans difficulté que $\varphi$ est un morphisme d'anneaux (du fait que les projections canoniques sur les quotients en sont). De là,
       \begin{align*}
-        \ker(\varphi) &= \{ x \in A \mid \forall i \in \llbracket 1, r \rrbracket, \, x \equiv 0 \mod a_i \} \\
+        \ker(\varphi) &= \{ x \in A \mid \forall i \in \llbracket 1, r \rrbracket, \, \pi_i(x) = 0 \} \\
         &= \{ x \in A \mid \forall i \in \llbracket 1, r \rrbracket, \, a_i \mid x \} \\
         &= \{ x \in A \mid \operatorname{ppcm}(a_1, \dots, a_r) \mid x \}
       \end{align*}
@@ -66,8 +66,8 @@
       Donc, $\pi_j(b_j)$ est inversible dans $A/(a_j)$, d'inverse $\pi_j(u_j)$. Ainsi, soient $\pi_1(x_1), \dots, \pi_r(x_r) \in A/(a_1) \times \dots \times A/(a_r)$. En posant
       \[ x = \sum_{i=1}^r x_i u_i b_i \]
       on a
-      \[ \pi_j(x) = \pi_j(x_j) + \pi_j(u_j) + \pi_j(b_j) = \pi_j(x_j) \]
-      donc $\varphi(\pi(x)) = (\pi_1(x_1), \dots, \pi_r(x_r))$. Le morphisme $\varphi$ est surjectif. Par le théorème de factorisation des morphismes, il induit un isomorphisme
+      \[ \pi_j(x) = \pi_j(x_j) \pi_j(u_j) \pi_j(b_j) = \pi_j(x_j) \]
+      donc $\varphi(x) = (\pi_1(x_1), \dots, \pi_r(x_r))$. Le morphisme $\varphi$ est surjectif. Par le théorème de factorisation des morphismes, il induit un isomorphisme
       \[
         \overline{\varphi} :
         \begin{array}{ccc}

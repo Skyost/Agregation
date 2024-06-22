@@ -187,9 +187,9 @@
   \reference[ULM18]{103}
 
   \begin{proof}
-    On suppose $\alpha$ constructible. Alors, il existe un point $M$ tel que $\alpha$ est l'abscisse de $M$. $M$ s'obtient à l'aide d'un nombre fini de constructions de points $M_1, \dots, M_m$. Pour tout $i \in \llbracket 1, n \rrbracket$, on note $(x_i, y_i)$ les coordonnées de $M_i$. De ce fait, on a une tour d'extension
+    On suppose $\alpha$ constructible. Alors, il existe un point $M$ tel que $\alpha$ est l'abscisse de $M$. $M$ s'obtient à l'aide d'un nombre fini de constructions de points $M_1, \dots, M_m$. Pour tout $i \in \llbracket 1, m \rrbracket$, on note $(x_i, y_i)$ les coordonnées de $M_i$. De ce fait, on a une tour d'extension
     \[ \underbrace{K_0}_{= \mathbb{Q}} \subseteq K_1 \subseteq \dots \subseteq K_m \]
-    avec $\alpha \in K_m$ et pour tout $0 \in \llbracket 1, m-1 \rrbracket$, $\mathbb{K}_{i+1} = K_i(x_i, y_i)$. Soit $i \in \llbracket 1, m-1 \rrbracket$. Montrons que $[K_{i+1}:K_i] \leq 2$. On a différents cas possibles :
+    avec $\alpha \in K_m$ et pour tout $0 \in \llbracket 1, m-1 \rrbracket$, $K_{i+1} = K_i(x_i, y_i)$. Soit $i \in \llbracket 1, m-1 \rrbracket$. Montrons que $[K_{i+1}:K_i] \leq 2$. On a différents cas possibles :
     \begin{itemize}
       \item \uline{$M_i$ est l'intersection de deux droites} passant par des nombres constructibles de $K_i$. Alors, les coordonnées $(x_i, y_i)$ de $M_i$ sont solution d'un système d'équations de la forme
       \[
@@ -229,7 +229,7 @@
       \]
       ce qui nous ramène au cas précédent.
     \end{itemize}
-    Il suffit alors d'extraire de la suite $(K_0, \dots, K_m)$ une suite $(L_0, \dots, L_p)$ strictement croissante (au sens de l'inclusion) en ne conservant dans la suite initiale que les corps extension quadratique du précédent (avec $L_0 = K_0$ et $L_p = K_n$). Obtient une suite de sous-corps de $\mathbb{R}$ (par le \cref{theoreme-de-wantzel-2}) qui remplit les trois conditions annoncées.
+    Il suffit alors d'extraire de la suite $(K_0, \dots, K_m)$ une sous-suite $(L_0, \dots, L_p)$ strictement croissante (au sens de l'inclusion) en ne conservant dans la suite initiale que les corps extension quadratique du précédent (avec $L_0 = K_0$ et $L_p = K_n$). On obtient une suite de sous-corps de $\mathbb{R}$ (par le \cref{theoreme-de-wantzel-2}) qui remplit les trois conditions annoncées.
     \newpar
     Réciproquement, supposons l'existence d'une suite $(L_0, \dots, L_p)$ de sous-corps de $\mathbb{R}$ répondant aux trois conditions de l'énoncé. Montrons par récurrence que
     \[ \forall j \in \llbracket 0, p \rrbracket, \, L_j \subseteq \mathbb{E} \]
@@ -238,10 +238,10 @@
       \item \uline{Hérédité :} Supposons $L_j \subseteq \mathbb{E}$ pour $j \in \llbracket 0, p-1 \rrbracket$. Soit $x \in L_{j+1}$. Comme, par hypothèse,
       \[ [L_{j+1}:L_j] = 2 \]
       la famille $(1,x,x^2)$ est $L_j$-liée :
-      \[ \exists a, b, c \in L_j \setminus \{ 0 \} \text{ tels que } ax^2 + bx + c = 0 \]
+      \[ \exists a, b, c \in L_j \text{ non tous nuls tels que } ax^2 + bx + c = 0 \]
       \begin{itemize}
         \item \uline{Si $a = 0$}, alors, $x = -\frac{c}{b} \in L_j$. Donc $x \in \mathbb{E}$.
-        \item \uline{Si $a =\neq 0$}, alors, $x = \frac{1}{2}(-b \pm \sqrt{b^2 - 4ac})$. Donc, comme $\mathbb{E}$ est un sous-corps de $\mathbb{R}$ stable par racine carrée (cf. \cref{theoreme-de-wantzel-2}), $x \in \mathbb{E}$.
+        \item \uline{Si $a \neq 0$}, alors, $x = \frac{1}{2a}(-b \pm \sqrt{b^2 - 4ac})$. Donc, comme $\mathbb{E}$ est un sous-corps de $\mathbb{R}$ stable par racine carrée (cf. \cref{theoreme-de-wantzel-2}), $x \in \mathbb{E}$.
       \end{itemize}
       Ainsi, $L_{j+1} \subseteq \mathbb{E}$. En conclusion, $L_p \subseteq \mathbb{E}$, donc $\alpha$ est constructible.
     \end{itemize}

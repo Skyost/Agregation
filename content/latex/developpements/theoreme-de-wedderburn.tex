@@ -41,18 +41,18 @@
         \[ q^n = |\mathbb{K}| = |\mathbb{K}_x|^k = (q^d)^k = q^{dk} \]
         d'où $d \mid n$.
       \end{itemize}
-      On considère l'action par conjugaison $\cdot$ de $\mathbb{K}$ sur lui-même $x \cdot y = xyx^{-1}$. Si $y \in \mathbb{K}^*$, alors
-      \[ \mathrm{Stab}_y = \{ x \in \mathbb{K}^* \mid x.y = y \} = \mathbb{K}_y^* \]
+      On considère l'action par conjugaison de $\mathbb{K}^*$ sur lui-même $(x, y) \mapsto xyx^{-1}$. Si $y \in \mathbb{K}^*$, alors
+      \[ \stab_{\mathbb{K}^*}(y) = \{ x \in \mathbb{K}^* \mid x.y = y \} = \mathbb{K}_y^* \]
       Soit $\Omega$ un système de représentants associé à la relation d'équivalence ``être dans la même orbite''. L'équation aux classes donne alors
-      \[ |\mathbb{K}^*| = \sum_{\omega \in \Omega} \frac{|\mathbb{K}^*|}{|\mathrm{Stab}_\omega|} \]
+      \[ |\mathbb{K}^*| = \sum_{\omega \in \Omega} \frac{|\mathbb{K}^*|}{|\stab_{\mathbb{K}^*}(\omega)|} \]
       Or,
-      \[ \mathrm{Stab}_\omega = \mathbb{K}^* \iff \forall x \in \mathbb{K}^*, \, \omega x = x \omega \iff \omega \in Z^* \]
+      \[ \stab_{\mathbb{K}^*}(\omega) = \mathbb{K}^* \iff \forall x \in \mathbb{K}^*, \, \omega x = x \omega \iff \omega \in Z^* \]
       donc en notant $\Omega' = \Omega \setminus Z^*$, on a :
-      \[ |\mathbb{K}^*| = \sum_{\omega \in Z^*} \frac{|\mathbb{K}^*|}{|\mathrm{Stab}_\omega|} + \sum_{\omega \in \Omega'} \frac{|\mathbb{K}^*|}{|\mathrm{Stab}_\omega|} = |Z^*| + \sum_{\omega \in \Omega} \frac{|\mathbb{K}^*|}{|\mathbb{K}^*_\omega|} \tag{$**$} \]
+      \[ |\mathbb{K}^*| = \sum_{\omega \in Z^*} \frac{|\mathbb{K}^*|}{|\stab_{\mathbb{K}^*}(\omega)|} + \sum_{\omega \in \Omega'} \frac{|\mathbb{K}^*|}{|\stab_{\mathbb{K}^*}(\omega)|} = |Z^*| + \sum_{\omega \in \Omega} \frac{|\mathbb{K}^*|}{|\mathbb{K}^*_\omega|} \tag{$**$} \]
       Soit $\omega \in \Omega'$. Par $(*)$,
-      \[ \exists d \mid n \text{ tel que } |\mathrm{Stab}_\omega| = |\mathbb{K}^*_\omega| = q^d - 1 \]
+      \[ \exists d \mid n \text{ tel que } |\stab_{\mathbb{K}^*}(\omega)| = |\mathbb{K}^*_\omega| = q^d - 1 \]
       De plus, $d \neq n$ (car $\omega \notin Z^*$). Si maintenant on pose
-      \[ \forall d \mid n, \, \lambda_d = |\{ \omega \in \Omega' \mid |\mathrm{Stab}_\omega| = q^d - 1 \}| \]
+      \[ \forall d \mid n, \, \lambda_d = |\{ \omega \in \Omega' \mid |\stab_{\mathbb{K}^*}(\omega)| = q^d - 1 \}| \]
       on peut alors écrire en remplaçant dans $(**)$ :
       \[ q^n - 1 = |K^*| = (q - 1) + \sum_{d \mid \mid n} \lambda_d \left( \frac{q^n - 1}{q^d - 1} \right) \tag{$***$} \]
       Si $d \mid \mid n$, on a
@@ -69,7 +69,7 @@
         &> \prod_{i=1}^{\varphi(n)} |q - 1| \\
         &\geq |q-1|
       \end{align*}
-      On peut en effet interpréter $|q - \xi|$ comme la distance du complexe $q$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité mais n'est pas sur l'axe réel :
+      On peut en effet interpréter $|q - \xi|$ comme la distance du complexe $q$ au complexe $\xi$ ; le premier est sur l'axe réel et est supérieur ou égal à $2$, le second est sur le cercle unité mais n'est pas sur l'axe réel :
       \begin{center}
         \begin{tikzpicture}
           \draw[->] (-3, 0) -- (5, 0) node[right] {$x$};

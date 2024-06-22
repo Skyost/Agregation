@@ -24,7 +24,7 @@
       \item Si $m = n$, alors $\overline{a}$ est d'ordre $n$. Donc par le théorème de Lagrange, $n \mid |(\mathbb{Z}/p\mathbb{Z})^*| = p-1$ ie. $p \equiv 1 \mod n$.
       \item Sinon, $m < n$. Comme $m \mid n$,
       \[ X^n-1 = \prod_{d \mid n} \Phi_d = \Phi_n \left ( \prod_{d \mid m} \Phi_d \right ) \left ( \prod_{\substack{d \mid \mid n \\ d \nmid m}} \Phi_d \right ) = \Phi_n (X^m - 1) \left ( \prod_{\substack{d \mid \mid n \\ d \nmid m}} \Phi_d \right ) \]
-      Mais, $\overline{a}$ est racine de $\overline{\Phi_n}$ et $X^m - \overline{1} \in \mathbb{Z}/p\mathbb{Z}[X]$. En particulier, $\overline{a}$ est (au moins) racine double de $X^n - \overline{a}$. On peut donc écrire,
+      Mais, $\overline{a}$ est racine de $\overline{\Phi_n}$ et $X^m - \overline{1} \in \mathbb{Z}/p\mathbb{Z}[X]$. En particulier, $\overline{a}$ est (au moins) racine double de $X^n - \overline{1}$. On peut donc écrire,
       \[ X^n - 1 \equiv (X-a)^2 G(X) \mod p \]
       Avec $X = Y+a$, cela donne :
       \[ (Y+a)^n - 1 \equiv Y^2 G(Y+a) \mod p \]
@@ -43,7 +43,7 @@
     \newpar
     Or, $X^n - 1 = \prod_{d \mid n} \Phi_d$. En évaluant en $0$, on en tire :
     \[ -1 = \prod_{d \mid n} \Phi_d(0) \implies \pm 1 = a_0 \text{, car } \forall d \mid n, \, \Phi_d \in \mathbb{Z}[X] \]
-    Ainsi, $N \equiv \pm 1 \mod \alpha$. Or $|N| = |\Phi_n(\alpha)| = \prod_{\xi \in \pi_n^*} |\alpha - \xi| \geq 2$. On peut en effet interpréter $|\alpha - \xi|$ comme la distance du complexe $\alpha$ au complexe $\xi$ ; le premier est sur l'axe réel et est $\geq 2$, le second est sur le cercle unité :
+    Ainsi, $N \equiv \pm 1 \mod \alpha$. Or $|N| = |\Phi_n(\alpha)| = \prod_{\xi \in \pi_n^*} |\alpha - \xi| > 1$. On peut en effet interpréter $|\alpha - \xi|$ comme la distance du complexe $\alpha$ au complexe $\xi$ ; le premier est sur l'axe réel et est supérieur ou égal à $2$, le second est sur le cercle unité :
     \begin{center}
       \begin{tikzpicture}
         \draw[->] (-3, 0) -- (5, 0) node[right] {$x$};
@@ -59,7 +59,7 @@
         \draw(45:2) node {$\bullet$} node[above right]{$\xi$};
       \end{tikzpicture}
     \end{center}
-    En particulier, $\exists p$ premier tel que $p \mid N$. Par le \cref{theoreme-de-dirichlet-faible-1} :
+    En particulier, il existe $p$ premier tel que $p \mid N$. Par le \cref{theoreme-de-dirichlet-faible-1} :
     \begin{itemize}
       \item Ou bien $p \mid n$, dans ce cas $p \mid \alpha = n p_1 \dots p_m$.
       \item Ou bien $p \equiv 1 \mod n$, dans ce cas $p = p_k$ pour un certain $k \in \llbracket 1, m \rrbracket$. Et on a encore $p \mid \alpha$.
