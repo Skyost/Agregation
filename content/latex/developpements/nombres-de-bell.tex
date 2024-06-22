@@ -19,11 +19,7 @@
     \newpar
     Comme $E_0, \dots, E_n$ forment une partition de l'ensemble des partitions de $\llbracket 1, n+1 \rrbracket$, on obtient :
     \[ B_{n+1} = \sum_{k=0}^n \binom{n}{k} B_{n-k} = \sum_{k=0}^n \binom{n}{n-k} B_k = \sum_{k=0}^n \binom{n}{k} B_k \tag{$*$} \]
-    À toute partition $P$ de $\llbracket 1, n \rrbracket$, on peut associer une permutation $\sigma_P \in S_n$, qui est le produit des cycles de supports les éléments de $P$. On construit ainsi une application
-    \[
-      P &\mapsto& \sigma_P
-    \]
-    injective. D'où :
+    À toute partition $P$ de $\llbracket 1, n \rrbracket$, on peut associer une permutation $\sigma_P \in S_n$, qui est le produit des cycles de supports les éléments de $P$. On construit ainsi une application $P \mapsto \sigma_P$ injective. D'où :
     \[ B_n \leq |S_n| = n! \]
     On en déduit en particulier que $\frac{B_n}{n!} \leq 1$. En vertu du lemme d'Abel, le rayon de convergence $R$ de la série entière $\sum \frac{B_n}{n!} x^n$ est supérieur ou égal à $1$. On peut donc définir
     \[
