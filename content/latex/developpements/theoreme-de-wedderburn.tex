@@ -11,7 +11,7 @@
 
   \begin{lemma}
     \label{theoreme-de-wedderburn-1}
-    Soient $\mathbb{K}$ et $\mathbb{L}$ deux corps tels que $\mathbb{K}$ est commutatif et $\mathbb{K} \subseteq \mathbb{L}$. Alors $\exists d \in \mathbb{N}^*$ tel que $|\mathbb{L}| = |\mathbb{K}|^d$.
+    Soient $\mathbb{K}$ et $\mathbb{L}$ deux corps finis tels que $\mathbb{K}$ est commutatif et $\mathbb{K} \subseteq \mathbb{L}$. Alors $\exists d \in \mathbb{N}^*$ tel que $|\mathbb{L}| = |\mathbb{K}|^d$.
   \end{lemma}
 
   \begin{proof}
@@ -56,7 +56,7 @@
       on peut alors écrire en remplaçant dans $(**)$ :
       \[ q^n - 1 = |K^*| = (q - 1) + \sum_{d \mid \mid n} \lambda_d \left( \frac{q^n - 1}{q^d - 1} \right) \tag{$***$} \]
       Si $d \mid \mid n$, on a
-      \[ X^n-1 = \prod_{k \mid n} \Phi_k = \Phi_n \left ( \prod_{k \mid d} \Phi_k \right ) \left ( \prod_{\substack{k \mid \mid n \\ k \nmid d}} \Phi_k \right ) = \Phi_n (X^m - 1) \left ( \prod_{\substack{k \mid \mid n \\ k \nmid d}} \Phi_k \right ) \]
+      \[ X^n-1 = \prod_{k \mid n} \Phi_k = \Phi_n \left ( \prod_{k \mid d} \Phi_k \right ) \left ( \prod_{\substack{k \mid \mid n \\ k \nmid d}} \Phi_k \right ) = \Phi_n (X^d - 1) \left ( \prod_{\substack{k \mid \mid n \\ k \nmid d}} \Phi_k \right ) \]
       Donc, $\Phi_n \mid \frac{X^n - 1}{X^d - 1}$ dans $\mathbb{Z}[X]$. Ceci étant vrai quelque soit $d$ divisant strictement $n$, on en déduit
       \[ \Phi_n \mid \sum_{d \mid \mid n} \lambda_d \frac{X^n - 1}{X^d - 1} \text{ dans } \mathbb{Z}[X] \]
       Comme de plus, $\Phi_n \mid X^n - 1$ dans $\mathbb{Z}[X]$, on conclut que
