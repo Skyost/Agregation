@@ -43,7 +43,7 @@
     Commençons par supposer l'intervalle $I$ compact. On va montrer l'existence d'une solution globale. On écrit l'équation sous forme intégrale :
     \[ Y \in \mathcal{C}^1 \text{ vérifie } (C) \iff Y(t) = y_0 + \int_{t_0}^t A(u) Y(u) + B(u) \, \mathrm{d}u \tag{$*$} \]
     et on introduit la suite de fonctions $(Y_n)$ définie par récurrence sur $I$ par $Y_0 = y_0$ et :
-    \[ \forall n \in \mathbb{N}^*, \, Y_{n+1}(t) = y_0 + \int_{t_0}^t A(x) Y_n(u) + B(u) \, \mathrm{d}u \tag{$**$} \]
+    \[ \forall n \in \mathbb{N}^*, \, Y_{n+1}(t) = y_0 + \int_{t_0}^t A(u) Y_n(u) + B(u) \, \mathrm{d}u \tag{$**$} \]
     Notons $\alpha = \sup_{t \in I} \Vert A(t) \Vert$ et $\beta = \sup_{t \in I} \Vert B(t) \Vert$. Montrons par récurrence que pour tout $n \geq 1$ et tout $t \in I$ :
     \[ \Vert Y_n(t) - Y_{n-1}(t) \Vert \leq (\alpha \Vert y_0 \Vert + \beta) \frac{\alpha^{n-1} |t-t_0|^n}{n!} \]
     Le résultat est clairement vrai pour $n = 1$, supposons donc le vrai à rang $n \geq 1$. Pour $t \geq t_0$ :
@@ -75,6 +75,17 @@
     \end{array}
     \]
     (où $Y_n$ est la solution de $(C)$ sur $K_n \ni t$). En particulier, $\theta$ est dérivable sur $I$ tout entier, vérifie $(C)$, et prolonge toute solution.
+    \begin{comment}
+      Supposons maintenant $I$ quelconque. On définit bien l'application
+      \[
+      \theta :
+      \begin{array}{ccc}
+        I &\rightarrow& \mathbb{K}^d \\
+        t &\mapsto& Y(t)
+      \end{array}
+      \]
+      en prenant $Y$ la solution de $(C)$ sur $J_{\alpha,\beta} = [t-\alpha, t+\beta]$ avec $\alpha, \beta \geq 0$ de sorte que $J_{\alpha, \beta} \neq \emptyset$ et $J_{\alpha, \beta} \subseteq I$. En particulier, $\theta$ est dérivable sur $I$ tout entier, vérifie $(C)$, et prolonge toute solution.
+    \end{comment}
   \end{proof}
 
   Selon la leçon, on pourra préférer le théorème suivant (dont la démonstration utilise des arguments semblables).

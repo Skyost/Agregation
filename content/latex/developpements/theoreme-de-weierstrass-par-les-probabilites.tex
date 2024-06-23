@@ -18,7 +18,7 @@
 
   \begin{proof}
     Soit $x \in ]0, 1[$. On se place sur un espace probabilité $(\Omega, \mathcal{A}, \mathbb{P})$ et considère $(X_k)$ une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(x)$. On note $\forall n \in \mathbb{N}^*$, $S_n = \sum_{k=1}^n X_k$. Ainsi, $S_n \sim \mathcal{B}(n, x)$ et donc par la formule de transfert,
-    \[ \mathbb{E} \left( \frac{S_n}{n} \right) = \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} = B_n(f)(x) \]
+    \[ \mathbb{E} \left( f \left( \frac{S_n}{n} \right) \right) = \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} = B_n(f)(x) \]
     La fonction $f$ est continue sur $[0,1]$ qui est un compact de $\mathbb{R}$, donc par le théorème de Heine; elle y est uniformément continue. Soit donc $\epsilon > 0$,
     \[ \exists \eta > 0 \text{ tel que } \forall x, y \in [0,1], \, |x-y| < \eta \implies |f(x) - f(y)| < \epsilon \]
     On a,
@@ -58,7 +58,7 @@
       x &\mapsto& a + (b-a) x
     \end{array}
     \]
-    Par le \cref{theoreme-de-weierstrass-par-les-probabilites-1}, la fonction $f \circ \varphi$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine.
+    Par le \cref{theoreme-de-weierstrass-par-les-probabilites-1}, la fonction $f \circ \varphi^{-1}$ est limite uniforme d'une suite de fonctions polynômiales $(p_n)$. Donc $f$ est limite uniforme de la suite $(p_n \circ \varphi)$ où $\forall n \in \mathbb{N}$, $p_n \circ \varphi$ est bien une fonction polynômiale car $\varphi$ est affine.
   \end{proof}
   %</content>
 \end{document}
