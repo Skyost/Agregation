@@ -31,7 +31,15 @@
     Le code correcteur $\mathcal{C}$ est l'ensemble des mots que l'on est en mesure de produire par codage : il ne peut pas occuper l'espace $\mathbb{F}_q^n$ entier, sinon tous les mots seraient valides !
   \end{remark}
 
-  Si l'on reçoit un mot qui n'est pas dans le code, on est donc sûr qu'il y a eu une erreur de transmission. L'opération de codage ``ajoute'' une information pour distinguer les mots valides des autres. C'est uniquement lors du décodage que l'on va pouvoir réparer une ou plusieurs erreurs.
+  Si l'on reçoit un mot qui n'est pas dans le code, on est donc sûr qu'il y a eu une erreur de transmission. L'opération de codage ``ajoute'' une information pour distinguer les mots valides des autres. C'est uniquement lors du décodage que l'on va pouvoir réparer une ou plusieurs erreurs. Le procédé général étant le suivant :
+  
+  \begin{enumerate}
+    \item on transforme un message $m$ en un mot $c$ du code (c'est le processus de \textbf{codage}) ;
+    \item pendant la transmission, $c$ est altéré en $c'$ (c'est le processus de \textbf{transmission}) ;
+    \item on essaye de déterminer si $c'$ est un mot du code (c'est le processus de \textbf{détection d'erreur}) ;
+    \item on essaye de retrouver $c$ à partir de $c'$ (c'est le processus de \textbf{correction d'erreur}) ;
+    \item on retrouve le message $m$ à partir de $c$ (c'est le processus de \textbf{décodage}).
+  \end{enumerate}
 
   \begin{example}[Bit de parité]
     Dans un ordinateur, chaque mot est coupé en ``sous-mots'' de $7$ bits, c'est-à-dire, en vecteurs formés de $7$ éléments de $\mathbb{F}_2$. Lors du codage de chaque vecteur, on ajoute un bit dit ``de parité''.
@@ -185,6 +193,7 @@
       &\iff x \in (\mathcal{C}^\perp)^\perp \\
       &\iff x \in \mathcal{C}
     \end{align*}
+    On aurait aussi pu se contenter de considérer le noyau à gauche de la matrice génératrice (c'est une caractérisation plus commode à implémenter en algorithmique).
   \end{proof}
 
   \begin{definition}

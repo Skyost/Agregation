@@ -84,6 +84,24 @@
       \item Soit $A \in \mathcal{M}_n(\mathbb{K})$. On note $\chi_A = \sum_{k=0}^n a_k X^k$. Alors, $a_0 = \det(A)$ et $a_{n-1} = \trace(A)$ (à un signe près).
     \end{enumerate}
   \end{proposition}
+  
+  \reference{153}
+  
+  \begin{lemma}[Déterminant circulant]
+    \label{suite-de-polygones-1}
+    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
+    où $P = \sum_{k=0}^{n-1} a_k X^k$.
+  \end{lemma}
+  
+  \reference[I-P]{389}
+  \dev{suite-de-polygones}
+  
+  \begin{application}[Suite de polygones]
+    Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
+    \newpar
+    Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
+  \end{application}
 
   \subsubsection{Polynôme minimal}
 
@@ -230,7 +248,7 @@
   \subsubsection{Utilisation du rayon spectral}
   
   \begin{notation}
-    À toute norme $\vert . \vert$ sur $\mathbb{C}^n$, on associe la norme matricielle
+    À toute norme $\Vert . \Vert$ sur $\mathbb{C}^n$, on associe la norme matricielle
     \[ \VERT . \VERT : M \mapsto \sup_{x \in \mathbb{C}^n \setminus \{ 0 \}} \frac{\Vert Mx \Vert}{\Vert x \Vert} \]
   \end{notation}
   
@@ -271,35 +289,15 @@
     \[ \rho(A) = \lim_{k \rightarrow +\infty} \Vert A^k \Vert^{\frac{1}{k}} \]
   \end{corollary}
   
-  \subsubsection{Application à l'étude d'une suite de polygones}
-  
   \begin{proposition}
     Les conditions suivantes sont équivalentes.
     \begin{enumerate}[label=(\roman*)]
-      \item $\lim_{k \rightarrow +\infty} A^k$.
+      \item $\lim_{k \rightarrow +\infty} A^k = 0$.
       \item Pour toute valeur initiale $x_0 \in \mathbb{C}^n$, la suite définie par récurrence pour tout $k \in \mathbb{N}$ par $x_{k+1} = A x_k$, converge vers le vecteur nul.
       \item $\rho(A) < 1$.
       \item Il existe au moins une norme matricielle $\VERT . \VERT$ induite par une norme vectorielle telle que $\VERT A \VERT < 1$.
     \end{enumerate}
   \end{proposition}
-  
-  \reference[GOU21]{153}
-  
-  \begin{lemma}[Déterminant circulant]
-    \label{suite-de-polygones-1}
-    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
-    \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
-    où $P = \sum_{k=0}^{n-1} a_k X^k$.
-  \end{lemma}
-  
-  \reference[I-P]{389}
-  \dev{suite-de-polygones}
-  
-  \begin{application}[Suite de polygones]
-    Soit $P_0$ un polygone dont les sommets sont $\{ z_{0,1}, \dots, z_{0,n} \}$. On définit la suite de polygones $(P_k)$ par récurrence en disant que, pour tout $k \in \mathbb{N}^*$, les sommets de $P_{k+1}$ sont les milieux des arêtes de $P_k$.
-    \newpar
-    Alors la suite $(P_k)$ converge vers l'isobarycentre de $P_0$.
-  \end{application}
   
   \subsection{Approximation}
   
