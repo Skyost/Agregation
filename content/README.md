@@ -8,6 +8,8 @@ Vous trouverez donc sur ce site :
 * Mon choix de [developpements](https://agreg.skyost.eu/developpements).
 * Quelques [fiches](https://agreg.skyost.eu/fiches) de révision.
 * Ma [bibliographie](https://agreg.skyost.eu/bibliographie) personnelle.
+* Une liste personnelle de [conseils généraux](https://agreg.skyost.eu/fiches/conseils-generaux) écrite suite aux
+  oraux de cette année.
 
 En espérant que le contenu de ce site vous aide dans votre préparation à l'oral. Si vous avez une quelconque remarque
 / idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://skyost.eu/fr/#contact) présent sur mon site.
