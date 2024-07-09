@@ -1,4 +1,3 @@
-// @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers'
 import { parseBib } from '~/utils/utils'
 
@@ -8,8 +7,8 @@ import { parseBib } from '~/utils/utils'
 export default defineTransformer({
   name: 'bibtex',
   extensions: ['.bib'],
-  // @ts-ignore
-  parse (_id: string, rawContent: string) {
+  // @ts-expect-error Custom transformer.
+  parse(_id: string, rawContent: string) {
     return { _id, ...parseBib(rawContent) }
-  }
+  },
 })

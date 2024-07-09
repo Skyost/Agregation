@@ -6,7 +6,7 @@ const route = useRoute()
 const { error, pending, data: lesson } = useLazyAsyncData(
   route.path,
   () => queryContent<LessonContent>('latex', 'lecons', route.params.slug.toString())
-    .findOne()
+    .findOne(),
 )
 
 const path = removeTrailingSlashIfPossible(route.path)

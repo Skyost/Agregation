@@ -7,31 +7,42 @@ const props = defineProps<{
 
 const variant = computed(() => {
   switch (props.banner.type) {
-    case BannerType.pdf:
-      return 'dark'
     case BannerType.caveats:
       return 'red'
     case BannerType.wip:
       return 'teal'
+    case BannerType.pdf:
+    default:
+      return 'dark'
   }
 })
 
 const icon = computed(() => {
   switch (props.banner.type) {
-    case BannerType.pdf:
-      return 'info-circle-fill'
     case BannerType.caveats:
       return 'exclamation-circle-fill'
     case BannerType.wip:
       return 'wrench'
+    case BannerType.pdf:
+    default:
+      return 'info-circle-fill'
   }
 })
 </script>
 
 <template>
-  <div class="banner" :class="variant">
-    <ski-icon class="icon" :icon="icon" />
-    <p class="mb-0" v-html="banner.message" />
+  <div
+    class="banner"
+    :class="variant"
+  >
+    <ski-icon
+      class="icon"
+      :icon="icon"
+    />
+    <p
+      class="mb-0"
+      v-html="banner.message"
+    />
   </div>
 </template>
 

@@ -12,14 +12,14 @@ export interface Development extends LatexContentObject {
    *
    * @type {string}
    */
-  summary: string;
+  'summary': string
 
   /**
    * The page description of the development.
    *
    * @type {string}
    */
-  'page-description': string;
+  'page-description': string
 }
 
 /**
@@ -34,5 +34,5 @@ export interface DevelopmentContent extends Development {
    *
    * @type {string}
    */
-  body: string;
+  body: string
 }

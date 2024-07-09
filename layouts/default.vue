@@ -8,7 +8,11 @@ const banners = useBanners()
     <page-header />
     <page-navbar />
     <client-only>
-      <banner v-for="(banner, index) in banners" :key="`banner-${index}`" :banner="banner" />
+      <banner
+        v-for="(banner, index) in banners"
+        :key="`banner-${index}`"
+        :banner="banner"
+      />
     </client-only>
     <page-content id="page-content">
       <slot />

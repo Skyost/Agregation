@@ -4,7 +4,7 @@ import { siteMeta } from '~/site/meta'
 const { data: commitSha } = useLazyAsyncData(
   'current-commit-sha',
   () => queryContent('latest-commit')
-    .findOne()
+    .findOne(),
 )
 const githubRepo = `https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`
 </script>

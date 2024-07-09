@@ -6,7 +6,11 @@ defineProps<{ sheet: Sheet }>()
 </script>
 
 <template>
-  <latex-content-card btn-check="Consulter la fiche" link-prefix="fiches" :object="sheet">
+  <latex-content-card
+    btn-check="Consulter la fiche"
+    link-prefix="fiches"
+    :object="sheet"
+  >
     <p v-html="sheet.summary" />
   </latex-content-card>
 </template>

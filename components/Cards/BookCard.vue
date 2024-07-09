@@ -20,11 +20,28 @@ const date = computed(() => {
 </script>
 
 <template>
-  <ski-columns :id="book.short" class="book">
-    <ski-column cols="12" md="4" lg="3" class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0">
-      <img class="preview" :src="image" :alt="alt">
+  <ski-columns
+    :id="book.short"
+    class="book"
+  >
+    <ski-column
+      cols="12"
+      md="4"
+      lg="3"
+      class="d-flex align-items-center justify-content-center pt-3 pb-4 pt-md-0 pb-md-0"
+    >
+      <img
+        class="preview"
+        :src="image"
+        :alt="alt"
+      >
     </ski-column>
-    <ski-column class="info" cols="12" md="8" lg="9">
+    <ski-column
+      class="info"
+      cols="12"
+      md="8"
+      lg="9"
+    >
       <h2 class="title">
         <strong v-text="book.title" /> {{ book.subtitle }}
       </h2>
@@ -36,7 +53,10 @@ const date = computed(() => {
         Éditions {{ book.publisher }}
         <span v-if="book.edition">&bull; {{ book.edition }}<sup>ème</sup> édition</span>
       </span>
-      <p class="mt-2 comment" v-text="book.comment" />
+      <p
+        class="mt-2 comment"
+        v-text="book.comment"
+      />
       <small class="text-muted d-block mb-2">
         <u>Référence :</u> <strong v-text="short" />.
       </small>
@@ -44,7 +64,10 @@ const date = computed(() => {
         <ski-button :href="`${book.buy}`">
           <ski-icon icon="cart" /> Acheter le livre
         </ski-button>
-        <ski-button :href="`${book.website}`" variant="secondary">
+        <ski-button
+          :href="`${book.website}`"
+          variant="secondary"
+        >
           <ski-icon icon="info-circle" /> Plus d'informations
         </ski-button>
       </ski-button-group>

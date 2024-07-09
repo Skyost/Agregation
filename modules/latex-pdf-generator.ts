@@ -17,7 +17,7 @@ import { debug } from '../site/debug'
  * @interface
  */
 export interface ModuleOptions extends LatexGenerateOptions {
-  github: GithubRepository,
+  github: GithubRepository
   moveFiles: boolean
 }
 
@@ -39,12 +39,12 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version: '0.0.1',
     compatibility: { nuxt: '^3.0.0' },
-    configKey: 'latexPdfGenerator'
+    configKey: 'latexPdfGenerator',
   },
   defaults: {
     github: siteMeta.github,
     ...latexOptions.generate,
-    moveFiles: !debug
+    moveFiles: !debug,
   },
   setup: async (options, nuxt) => {
     const resolver = createResolver(import.meta.url)
@@ -70,7 +70,7 @@ export default defineNuxtModule<ModuleOptions>({
       destinationDirectoryPath,
       ignore,
       downloadResult ? previousBuildDirectoryPath : null,
-      options
+      options,
     )
 
     // Remove all Latex gathering files.
@@ -83,9 +83,9 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: `/${options.destinationDirectory}/`,
-      dir: destinationDirectoryPath
+      dir: destinationDirectoryPath,
     })
-  }
+  },
 })
 
 /**
@@ -107,7 +107,7 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
     const response = await octokit.request('GET /repos/{owner}/{repo}/zipball/{ref}', {
       owner: options.github.username,
       repo: options.github.repository,
-      ref: 'gh-pages'
+      ref: 'gh-pages',
     })
 
     // We read the response using AdmZip.
@@ -127,7 +127,8 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
     fs.renameSync(resolver.resolve(parentPath, zipRootDir), resolver.resolve(parentPath, path.basename(directoryPath)))
     logger.success('Done.')
     return true
-  } catch (exception) {
+  }
+  catch (exception) {
     logger.warn(exception)
   }
   return false
@@ -186,7 +187,7 @@ const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, opti
       template
         .replace('%s', gathering.data.map(data => data.title).join(' \\& '))
         .replace('%s', gathering.header ?? '')
-        .replace('%s', content)
+        .replace('%s', content),
     )
 
     logger.success('Done.')
@@ -213,7 +214,7 @@ const generatePdf = (
   destinationDirectoryPath: string,
   ignore: string[],
   previousBuildDirectory: string | null,
-  options: ModuleOptions
+  options: ModuleOptions,
 ) => {
   // Get a list of files in the current directory.
   const files = fs.readdirSync(directoryPath)
@@ -237,7 +238,7 @@ const generatePdf = (
         resolver.resolve(destinationDirectoryPath, file),
         ignore,
         previousBuildDirectory == null ? null : resolver.resolve(previousBuildDirectory, file),
-        options
+        options,
       )
       continue
     }
@@ -267,7 +268,7 @@ const generatePdf = (
                 extensions: ['.tex'],
                 excludes: [],
                 hasIncludes: true,
-                targetIsDirectory: false
+                targetIsDirectory: false,
               },
               // inputcontent* command for other LaTeX files.
               {
@@ -276,7 +277,7 @@ const generatePdf = (
                 extensions: ['.tex'],
                 excludes: [],
                 hasIncludes: true,
-                targetIsDirectory: false
+                targetIsDirectory: false,
               },
               // setbibliographypath command for bibliography files.
               {
@@ -285,7 +286,7 @@ const generatePdf = (
                 extensions: ['.bib'],
                 excludes: [],
                 hasIncludes: false,
-                targetIsDirectory: true
+                targetIsDirectory: true,
               },
               // inputalgorithm command for bibliography files.
               {
@@ -294,11 +295,11 @@ const generatePdf = (
                 extensions: ['.py'],
                 excludes: [],
                 hasIncludes: false,
-                targetIsDirectory: false
-              }
-            ]
-          )
-        }
+                targetIsDirectory: false,
+              },
+            ],
+          ),
+        },
       )
 
       // If PDF generation is successful, copy files to the destination directory.
@@ -323,10 +324,12 @@ const generatePdf = (
 
         if (wasCached) {
           logger.success(`Fully cached PDF found in ${previousBuildDirectory}.`)
-        } else {
+        }
+        else {
           logger.success(previousBuildDirectory ? `File was not cached in ${previousBuildDirectory} but has been generated with success.` : 'Done.')
         }
-      } else {
+      }
+      else {
         logger.warn('Error.')
       }
     }

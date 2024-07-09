@@ -21,7 +21,10 @@ usePdfBanner(`/pdf${path}.pdf`)
   <div v-else-if="lessons">
     <page-head title="Liste des leçons" />
     <h1>Liste des leçons</h1>
-    <cards :items="lessons" :search-fields="['slug', 'name']">
+    <cards
+      :items="lessons"
+      :search-fields="['slug', 'name']"
+    >
       <template #default="slotProps">
         <lesson-card :lesson="slotProps.item" />
       </template>

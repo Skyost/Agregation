@@ -6,5 +6,9 @@ defineProps<{ lesson: Lesson }>()
 </script>
 
 <template>
-  <latex-content-card btn-check="Consulter le plan" link-prefix="lecons" :object="lesson" />
+  <latex-content-card
+    btn-check="Consulter le plan"
+    link-prefix="lecons"
+    :object="lesson"
+  />
 </template>

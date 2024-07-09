@@ -19,10 +19,10 @@ export default defineNuxtModule<LatexTransformOptions>({
     name,
     version: '0.0.1',
     configKey: 'nuxtContentLatex',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^3.0.0' },
   },
   defaults: latexOptions.transform,
-  setup (options, nuxt) {
+  setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Set up Nitro externals for .tex content transformation.
@@ -31,7 +31,6 @@ export default defineNuxtModule<LatexTransformOptions>({
     nuxt.options.nitro.externals.inline.push(resolver.resolve('.'))
 
     // Register a hook to modify content context and add a transformer for .tex files.
-    // @ts-ignore
     nuxt.hook('content:context', (contentContext) => {
       contentContext.transformers.push(resolver.resolve('transformer.ts'))
     })
@@ -45,9 +44,9 @@ export default defineNuxtModule<LatexTransformOptions>({
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: '/',
-      dir: assetsDestinationPath
+      dir: assetsDestinationPath,
     })
-  }
+  },
 })
 
 /**
@@ -64,7 +63,7 @@ const processAssets = (
   directoryPath: string,
   assetsDestinationPath: string,
   options: LatexTransformOptions,
-  contentDirectoryPath: string = directoryPath
+  contentDirectoryPath: string = directoryPath,
 ) => {
   // Get the list of files in the directory.
   const files = fs.readdirSync(directoryPath)

@@ -12,26 +12,26 @@ export interface LatexContentObject extends HasCategories {
    *
    * @type {string}
    */
-  name: string;
+  'name': string
 
   /**
    * The slug associated with the LaTeX content object.
    *
    * @type {string}
    */
-  slug: string;
+  'slug': string
 
   /**
    * The page title of the LaTeX content object.
    *
    * @type {string}
    */
-  'page-title': string;
+  'page-title': string
 
   /**
    * The search-friendly page name of the LaTeX content object.
    *
    * @type {string}
    */
-  'page-name-search': string;
+  'page-name-search': string
 }

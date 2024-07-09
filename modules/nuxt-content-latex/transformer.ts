@@ -1,9 +1,8 @@
 import path from 'path'
 import fs from 'fs'
-// @ts-ignore
 import { defineTransformer } from '@nuxt/content/transformers'
 import { consola } from 'consola'
-import { HTMLElement } from 'node-html-parser'
+import type { HTMLElement } from 'node-html-parser'
 import * as latex from 'that-latex-lib'
 import { name } from './common'
 import { normalizeString, getFileName } from '~/utils/utils'
@@ -21,8 +20,8 @@ const logger = consola.withTag(name)
 export default defineTransformer({
   name: 'latex',
   extensions: ['.tex'],
-  // @ts-ignore
-  parse (_id: string, rawContent: string) {
+  // @ts-expect-error Custom transformer.
+  parse(_id: string, rawContent: string) {
     // Latex transformation options.
     const options = latexOptions.transform
 
@@ -45,12 +44,12 @@ export default defineTransformer({
 
     // Parse the Pandoc HTML output.
     const assetsRootDirectoryPath = path.resolve(sourceDirectoryPath, options.assetsDestinationDirectory)
-    const templates: {[key: string]: string} = {}
+    const templates: { [key: string]: string } = {}
     for (const image in options.picturesTemplate) {
       templates[image] = fs.readFileSync(path.resolve(sourceDirectoryPath, options.picturesTemplate.tikzpicture), { encoding: 'utf8' })
     }
-    const { htmlResult: root } = // Transforms the raw content into HTML.
-      latex.transformToHtml(
+    const { htmlResult: root } // Transforms the raw content into HTML.
+      = latex.transformToHtml(
         filePath,
         {
           pandocHeader,
@@ -61,10 +60,10 @@ export default defineTransformer({
           imagePathToSrc: resolvedImageFilePath => '/' + path.relative(assetsRootDirectoryPath, resolvedImageFilePath).replace(/\\/g, '/'),
           renderMathElement,
           imagesTemplate: templates,
-          generateIfExists: !debug
+          generateIfExists: !debug,
         },
         true,
-        rawContent
+        rawContent,
       )
 
     // Remove empty titles from the HTML content.
@@ -85,9 +84,9 @@ export default defineTransformer({
     return {
       _id,
       body: root.outerHTML,
-      ...getHeader(path.parse(filePath).name, root)
+      ...getHeader(path.parse(filePath).name, root),
     }
-  }
+  },
 })
 
 /**
@@ -242,11 +241,11 @@ const renderMathElement = (element: HTMLElement): string => latex.renderMathElem
   element,
   {
     '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
-    '\\ensuremath': '#1'
+    '\\ensuremath': '#1',
   },
   math => math
     .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
-    .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}')
+    .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}'),
 )
 
 /**

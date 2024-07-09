@@ -26,7 +26,7 @@ export const parseBib = (bibContent: string): Book => {
     buy: fields.buy,
     website: fields.url,
     comment: fields.comment,
-    altcover: 'altcover' in fields ? fields.altcover : undefined
+    altcover: 'altcover' in fields ? fields.altcover : undefined,
   }
 }
 
@@ -60,11 +60,11 @@ export const normalizeString = (string: string): string => string
 /**
  * Retrieves a nested property from an object using a variable number of keys.
  *
- * @param {Object} obj - Input object.
+ * @param {object} obj - Input object.
  * @param {...any} args - Keys to access the nested property.
  * @returns {any} - The nested property value or undefined if not found.
  */
-export const getNested = (obj: Object, ...args: any[]): any => args.reduce((obj, level) => obj && obj[level], obj)
+export const getNested = (obj: object, ...args: any[]): any => args.reduce((obj, level) => obj && obj[level], obj)
 
 /**
  * Generates an MD5 checksum for a given string.

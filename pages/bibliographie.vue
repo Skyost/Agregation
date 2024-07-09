@@ -7,7 +7,7 @@ const { error, pending, data: books } = useLazyAsyncData(
   route.path,
   () => queryContent<Book>('latex', 'bibliographie')
     .sort({ title: 1 })
-    .find()
+    .find(),
 )
 </script>
 
@@ -19,7 +19,10 @@ const { error, pending, data: books } = useLazyAsyncData(
     </div>
     <div v-else-if="books">
       <h1>Bibliographie</h1>
-      <cards :items="books" :search-fields="['title', 'subtitle', 'short', 'authors', 'publisher']">
+      <cards
+        :items="books"
+        :search-fields="['title', 'subtitle', 'short', 'authors', 'publisher']"
+      >
         <template #default="slotProps">
           <book-card :book="slotProps.item" />
         </template>

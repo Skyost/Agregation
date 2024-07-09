@@ -15,31 +15,32 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: `%s | ${siteMeta.title}`,
       htmlAttrs: {
-        lang: 'fr'
+        lang: 'fr',
       },
       meta: [
         { name: 'description', content: siteMeta.description },
-        { name: 'theme-color', content: '#343a40' }
+        { name: 'theme-color', content: '#343a40' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      ]
-    }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    },
   },
 
   css: [
     '~/assets/app.scss',
-    '~/node_modules/katex/dist/katex.min.css'
+    '~/node_modules/katex/dist/katex.min.css',
   ],
 
   vite: {
     plugins: [
       StylelintPlugin(),
-      eslintPlugin()
-    ]
+      eslintPlugin(),
+    ],
   },
 
   modules: [
+    '@nuxt/eslint',
     '~/modules/books-cover-fetcher',
     'nuxt-cname-generator',
     '~/modules/commit-sha-file-generator',
@@ -52,13 +53,19 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-link-checker',
     '@nuxtjs/sitemap',
-    'nuxt-simple-robots'
+    'nuxt-simple-robots',
   ],
+
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
 
   content: {
     watch: false,
     markdown: {
-      anchorLinks: false
+      anchorLinks: false,
     },
     ignores: [
       ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums,py'
@@ -72,54 +79,54 @@ export default defineNuxtConfig({
       '/latex/lecons.tex',
       '/latex/lecons-developpements.tex',
       '/latex/templates/gathering.tex',
-      '/latex/templates/tikzpicture.tex'
-    ]
+      '/latex/templates/tikzpicture.tex',
+    ],
   },
 
   googleFonts: {
     display: 'swap',
     families: {
-      Raleway: true,
-      'Noto Sans JP': true
-    }
+      'Raleway': true,
+      'Noto Sans JP': true,
+    },
   },
 
   skimpleComponents: {
     bootstrapCss: false,
-    bootstrapJs: false
+    bootstrapJs: false,
   },
 
   site: {
     url,
     name: siteMeta.title,
-    trailingSlash: true
+    trailingSlash: true,
   },
 
   linkChecker: {
     failOnError: false,
     excludeLinks: [
-      '/pdf/**'
+      '/pdf/**',
     ],
     skipInspections: [
-      'link-text'
-    ]
+      'link-text',
+    ],
   },
 
   cname: {
-    host: url
+    host: url,
   },
 
   runtimeConfig: {
     public: {
-      url
-    }
+      url,
+    },
   },
 
   experimental: {
     defaults: {
       nuxtLink: {
-        trailingSlash: 'append'
-      }
-    }
-  }
+        trailingSlash: 'append',
+      },
+    },
+  },
 })

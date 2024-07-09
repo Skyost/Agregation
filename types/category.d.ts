@@ -3,7 +3,7 @@
  *
  * @type {Category}
  */
-export type Category = 'algebra' | 'analysis';
+export type Category = 'algebra' | 'analysis'
 
 /**
  * Interface for objects that have categories.
@@ -16,5 +16,5 @@ export interface HasCategories {
    *
    * @type {Category[]}
    */
-  categories: Category[];
+  categories: Category[]
 }

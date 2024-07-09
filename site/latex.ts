@@ -15,35 +15,35 @@ export interface LatexTransformOptions {
   /**
    * List of allowed asset extensions.
    */
-  assetsExtension: string[];
+  assetsExtension: string[]
   /**
    * Directory for caching LaTeX files.
    */
-  cacheDirectory: string;
+  cacheDirectory: string
   /**
    * Get the destination for assets based on the file's relative path and extension.
    */
-  getAssetDestination: (relativePath: string) => string;
+  getAssetDestination: (relativePath: string) => string
   /**
    * Get the destination for extracted images based on the LaTeX file's relative path.
    */
-  getExtractedImagesDestination: (texFileRelativePath: string) => string;
+  getExtractedImagesDestination: (texFileRelativePath: string) => string
   /**
    * Function to get include graphics directories based on the LaTeX file's relative path.
    */
-  getIncludeGraphicsDirectories: (texFileRelativePath: string) => string[];
+  getIncludeGraphicsDirectories: (texFileRelativePath: string) => string[]
   /**
    * Directory for storing transformed assets.
    */
-  assetsDestinationDirectory: string;
+  assetsDestinationDirectory: string
   /**
    * Path to the Pandoc redefinitions file.
    */
-  pandocRedefinitions: string;
+  pandocRedefinitions: string
   /**
    * Template for pictures.
    */
-  picturesTemplate: { [key: string]: string };
+  picturesTemplate: { [key: string]: string }
 }
 
 /**
@@ -75,9 +75,9 @@ const latexTransformOptions: LatexTransformOptions = {
   getIncludeGraphicsDirectories,
   assetsDestinationDirectory: 'node_modules/.nuxt-content-latex-assets/',
   picturesTemplate: {
-    tikzpicture: 'content/latex/templates/tikzpicture.tex'
+    tikzpicture: 'content/latex/templates/tikzpicture.tex',
   },
-  pandocRedefinitions: 'content/latex/pandoc.tex'
+  pandocRedefinitions: 'content/latex/pandoc.tex',
 }
 
 /**
@@ -89,11 +89,11 @@ interface GatheringData {
   /**
    * The directory containing gathering data.
    */
-  directory: string;
+  directory: string
   /**
    * The title of the gathering.
    */
-  title: string;
+  title: string
 }
 
 /**
@@ -105,11 +105,11 @@ interface Gathering {
   /**
    * The data entries for the gathering.
    */
-  data: GatheringData[];
+  data: GatheringData[]
   /**
    * Optional header for the gathering.
    */
-  header?: string;
+  header?: string
 }
 
 /**
@@ -121,35 +121,35 @@ export interface LatexGenerateOptions {
   /**
    * Path to the directory containing the previous build.
    */
-  previousBuildDirectoryPath: string;
+  previousBuildDirectoryPath: string
   /**
    * Directories in the previous build to cache.
    */
-  previousBuildCacheDirectories: string[];
+  previousBuildCacheDirectories: string[]
   /**
    * Source directory containing LaTeX files.
    */
-  sourceDirectory: string;
+  sourceDirectory: string
   /**
    * Destination directory for generated PDF files.
    */
-  destinationDirectory: string;
+  destinationDirectory: string
   /**
    * List of files to ignore during the generation process.
    */
-  ignore: string[];
+  ignore: string[]
   /**
    * List of gatherings to include in the generation process.
    */
-  gatherings: Gathering[];
+  gatherings: Gathering[]
   /**
    * Template for generating gatherings.
    */
-  gatheringTemplate: string;
+  gatheringTemplate: string
   /**
    * Function to get include graphics directories based on the LaTeX file's relative path.
    */
-  getIncludeGraphicsDirectories: (texFileRelativePath: string) => string[];
+  getIncludeGraphicsDirectories: (texFileRelativePath: string) => string[]
 }
 
 /**
@@ -166,43 +166,43 @@ export const latexGenerateOptions: LatexGenerateOptions = {
     'content/latex/gathering.tex',
     'content/latex/pandoc.tex',
     'content/latex/templates/gathering.tex',
-    'content/latex/templates/tikzpicture.tex'
+    'content/latex/templates/tikzpicture.tex',
   ],
   gatherings: [
     {
       data: [
         {
           directory: 'fiches',
-          title: 'Fiches'
-        }
-      ]
+          title: 'Fiches',
+        },
+      ],
     },
     {
       data: [
         {
           directory: 'lecons',
-          title: 'Plans de leçons'
-        }
-      ]
+          title: 'Plans de leçons',
+        },
+      ],
     },
     {
       data: [
         {
           directory: 'developpements',
-          title: 'Développements'
-        }
-      ]
+          title: 'Développements',
+        },
+      ],
     },
     {
       data: [
         {
           directory: 'lecons',
-          title: 'Plans de leçons'
+          title: 'Plans de leçons',
         },
         {
           directory: 'developpements',
-          title: 'Développements'
-        }
+          title: 'Développements',
+        },
       ],
       header: `\\renewcommand{\\dev}[1]{%
 \t\\reversemarginpar%
@@ -212,11 +212,11 @@ export const latexGenerateOptions: LatexGenerateOptions = {
 \t\t\\scriptsize\\bfseries\\color{devcolor}\\hyperref[#1]{[DEV]}{}%
 }%
 \t\\normalmarginpar%
-}`
-    }
+}`,
+    },
   ],
   gatheringTemplate: 'templates/gathering.tex',
-  getIncludeGraphicsDirectories
+  getIncludeGraphicsDirectories,
 }
 
 /**
@@ -226,7 +226,7 @@ export interface LatexOptions {
   /**
    * The transform options.
    */
-  transform: LatexTransformOptions,
+  transform: LatexTransformOptions
   /**
    * The generate options.
    */
@@ -238,5 +238,5 @@ export interface LatexOptions {
  */
 export const latexOptions: LatexOptions = {
   transform: latexTransformOptions,
-  generate: latexGenerateOptions
+  generate: latexGenerateOptions,
 }

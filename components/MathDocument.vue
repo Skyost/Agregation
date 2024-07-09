@@ -85,7 +85,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="root" class="math-document" v-html="body" />
+  <div
+    ref="root"
+    class="math-document"
+    v-html="body"
+  />
 </template>
 
 <style lang="scss" scoped>

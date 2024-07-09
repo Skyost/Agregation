@@ -3,10 +3,17 @@ import { siteMeta } from '~/site/meta'
 </script>
 
 <template>
-  <footer id="page-footer" class="bg-dark">
+  <footer
+    id="page-footer"
+    class="bg-dark"
+  >
     <ski-container class="pt-4 pb-4">
       <ski-columns>
-        <ski-column cols="12" md="6" class="mb-4 mb-md-0">
+        <ski-column
+          cols="12"
+          md="6"
+          class="mb-4 mb-md-0"
+        >
           <h2>Copyright</h2>
           <p>
             Copyright &copy; 2021 - <a href="https://skyost.eu">Hugo Delaunay</a>. Tous droits réservés.
@@ -21,27 +28,46 @@ import { siteMeta } from '~/site/meta'
           <ul class="logos">
             <li>
               <a href="https://www.latex-project.org/">
-                <img src="/images/technologies/latex.svg" alt="LaTeX" title="LaTeX">
+                <img
+                  src="/images/technologies/latex.svg"
+                  alt="LaTeX"
+                  title="LaTeX"
+                >
               </a>
             </li>
             <li>
               <a href="https://vuejs.org/">
-                <img src="/images/technologies/vue.svg" alt="Vue" title="Vue">
+                <img
+                  src="/images/technologies/vue.svg"
+                  alt="Vue"
+                  title="Vue"
+                >
               </a>
             </li>
             <li>
               <a href="https://nuxtjs.org/">
-                <img src="/images/technologies/nuxt.svg" alt="Nuxt" title="Nuxt">
+                <img
+                  src="/images/technologies/nuxt.svg"
+                  alt="Nuxt"
+                  title="Nuxt"
+                >
               </a>
             </li>
             <li>
               <a href="https://github.com">
-                <img src="/images/technologies/github.svg" alt="Github" title="Github">
+                <img
+                  src="/images/technologies/github.svg"
+                  alt="Github"
+                  title="Github"
+                >
               </a>
             </li>
           </ul>
         </ski-column>
-        <ski-column cols="12" md="6">
+        <ski-column
+          cols="12"
+          md="6"
+        >
           <h2>PDFs</h2>
           <p>
             Les contenus du site ont été écrits en <a href="https://fr.wikipedia.org/wiki/LaTeX">LaTeX</a>, et sont

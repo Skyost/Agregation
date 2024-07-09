@@ -2,16 +2,16 @@
 import { siteMeta } from '~/site/meta'
 
 withDefaults(defineProps<{
-  title: string,
-  description?: string,
-  openGraphImage?: string,
-  twitterCard?: string,
+  title: string
+  description?: string
+  openGraphImage?: string
+  twitterCard?: string
   twitterImage?: string
 }>(), {
   description: siteMeta.description,
   openGraphImage: `${siteMeta.url}/images/social/open-graph.png`,
   twitterCard: 'summary',
-  twitterImage: `${siteMeta.url}/images/social/twitter.png`
+  twitterImage: `${siteMeta.url}/images/social/twitter.png`,
 })
 
 const runtimeConfig = useRuntimeConfig()
@@ -22,22 +22,70 @@ const currentAddress = `${runtimeConfig.public.url}${route.path}`
 <template>
   <Head class="page-head">
     <Title>{{ title }}</Title>
-    <Meta name="description" :content="description" />
-    <Meta property="og:title" :content="title" />
-    <Meta property="og:description" :content="description" />
-    <Meta property="og:type" content="website" />
-    <Meta property="og:site_name" :content="siteMeta.title" />
-    <Meta property="og:url" :content="currentAddress" />
-    <Meta property="og:image" :content="openGraphImage" />
-    <Meta property="og:locale" content="fr" />
-    <Meta name="twitter:card" :content="twitterCard" />
-    <Meta name="twitter:title" :content="title" />
-    <Meta name="twitter:description" :content="description" />
-    <Meta name="twitter:site" content="@Skyost" />
-    <Meta name="twitter:creator" content="@Skyost" />
-    <Meta name="twitter:url" :content="currentAddress" />
-    <Meta name="twitter:image" :content="twitterImage" />
-    <Link rel="canonical" :href="currentAddress" />
+    <Meta
+      name="description"
+      :content="description"
+    />
+    <Meta
+      property="og:title"
+      :content="title"
+    />
+    <Meta
+      property="og:description"
+      :content="description"
+    />
+    <Meta
+      property="og:type"
+      content="website"
+    />
+    <Meta
+      property="og:site_name"
+      :content="siteMeta.title"
+    />
+    <Meta
+      property="og:url"
+      :content="currentAddress"
+    />
+    <Meta
+      property="og:image"
+      :content="openGraphImage"
+    />
+    <Meta
+      property="og:locale"
+      content="fr"
+    />
+    <Meta
+      name="twitter:card"
+      :content="twitterCard"
+    />
+    <Meta
+      name="twitter:title"
+      :content="title"
+    />
+    <Meta
+      name="twitter:description"
+      :content="description"
+    />
+    <Meta
+      name="twitter:site"
+      content="@Skyost"
+    />
+    <Meta
+      name="twitter:creator"
+      content="@Skyost"
+    />
+    <Meta
+      name="twitter:url"
+      :content="currentAddress"
+    />
+    <Meta
+      name="twitter:image"
+      :content="twitterImage"
+    />
+    <Link
+      rel="canonical"
+      :href="currentAddress"
+    />
     <slot />
   </Head>
 </template>

@@ -9,14 +9,14 @@ export interface GithubRepository {
    *
    * @type {string}
    */
-  username: string;
+  username: string
 
   /**
    * The GitHub repository name.
    *
    * @type {string}
    */
-  repository: string;
+  repository: string
 }
 
 /**
@@ -30,28 +30,28 @@ interface SiteMeta {
    *
    * @type {string}
    */
-  title: string;
+  title: string
 
   /**
    * The description of the site.
    *
    * @type {string}
    */
-  description: string;
+  description: string
 
   /**
    * The URL of the site.
    *
    * @type {string}
    */
-  url: string;
+  url: string
 
   /**
    * The GitHub repository information.
    *
    * @type {GithubRepository}
    */
-  github: GithubRepository;
+  github: GithubRepository
 }
 
 /**
@@ -65,6 +65,6 @@ export const siteMeta: SiteMeta = {
   url: 'https://agreg.skyost.eu',
   github: {
     username: 'Skyost',
-    repository: 'Agregation'
-  }
+    repository: 'Agregation',
+  },
 }

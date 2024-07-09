@@ -4,7 +4,7 @@ import type { Category, HasCategories } from '~/types'
 type CategoryOrUndefined = Category | undefined
 
 const props = defineProps<{
-  items: T[],
+  items: T[]
   searchFields?: string[]
 }>()
 
@@ -48,7 +48,10 @@ const filter = (item: T) => {
 <template>
   <div class="cards">
     <ski-columns class="header">
-      <ski-column cols="12" :lg="searchFields ? '9' : undefined">
+      <ski-column
+        cols="12"
+        :lg="searchFields ? '9' : undefined"
+      >
         <ski-button-group class="categories mb-3 mb-lg-0">
           <ski-button
             v-for="category in categories"
@@ -58,18 +61,37 @@ const filter = (item: T) => {
             :class="{ active: currentCategory === category }"
             @click="currentCategory = category"
           >
-            <category class="category" :category="category" />
+            <category
+              class="category"
+              :category="category"
+            />
           </ski-button>
         </ski-button-group>
       </ski-column>
-      <ski-column v-if="searchFields" cols="12" lg="3" class="d-flex align-items-center">
-        <ski-form-control v-model="search" placeholder="Chercher dans la liste" class="form-control-sm" />
+      <ski-column
+        v-if="searchFields"
+        cols="12"
+        lg="3"
+        class="d-flex align-items-center"
+      >
+        <ski-form-control
+          v-model="search"
+          placeholder="Chercher dans la liste"
+          class="form-control-sm"
+        />
       </ski-column>
     </ski-columns>
-    <div v-for="(item, position) in itemsToDisplay" :key="`card-${position}`" class="mt-4 item-card p-3">
+    <div
+      v-for="(item, position) in itemsToDisplay"
+      :key="`card-${position}`"
+      class="mt-4 item-card p-3"
+    >
       <slot :item="item" />
     </div>
-    <em v-if="itemsToDisplay.length === 0" class="d-block mt-5 text-muted text-center">
+    <em
+      v-if="itemsToDisplay.length === 0"
+      class="d-block mt-5 text-muted text-center"
+    >
       Aucun contenu à afficher.
     </em>
   </div>

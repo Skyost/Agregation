@@ -47,12 +47,12 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version: '0.0.1',
     configKey: 'booksCover',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^3.0.0' },
   },
   defaults: {
     siteUrl: siteMeta.url,
     booksDirectory: 'content/latex/bibliographie/',
-    booksImagesUrl: '/images/livres/'
+    booksImagesUrl: '/images/livres/',
   },
   setup: async (options, nuxt) => {
     logger.info('Fetching books covers...')
@@ -71,7 +71,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []
     nuxt.options.nitro.publicAssets.push({
       baseURL: options.booksImagesUrl,
-      dir: destinationDirectory
+      dir: destinationDirectory,
     })
 
     const books = fs.readdirSync(booksDirectory)
@@ -80,7 +80,7 @@ export default defineNuxtModule<ModuleOptions>({
       new AltCoverDownloadSource(),
       new GoogleServersDownloadSource(),
       new OpenGraphImageDownloadSource(),
-      new PreviousBuildDownloadSource(options.siteUrl, options.booksImagesUrl)
+      new PreviousBuildDownloadSource(options.siteUrl, options.booksImagesUrl),
     ]
     for (const bookFile of books) {
       const filePath = resolver.resolve(booksDirectory, bookFile)
@@ -92,10 +92,11 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (failed.length === 0) {
       logger.success('Fetched books covers.')
-    } else {
+    }
+    else {
       logger.warn(`Fetched books covers. An error occurred with the following books : ${failed.join(', ')}.`)
     }
-  }
+  },
 })
 
 /**
@@ -107,7 +108,7 @@ export default defineNuxtModule<ModuleOptions>({
  * @param {DownloadSource[]} downloadSources - The download sources.
  * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
  */
-async function fetchBookCover (resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
+async function fetchBookCover(resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
   const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
   if (fs.existsSync(destinationFile)) {
     return true
@@ -130,7 +131,7 @@ abstract class DownloadSource {
    * @param {string} name The download source name.
    * @param {boolean} dontLogNoBookCover Whether not to log if getBookCoverUrl returns null.
    */
-  protected constructor (private readonly name: string, private readonly dontLogNoBookCover: boolean = true) {
+  protected constructor(private readonly name: string, private readonly dontLogNoBookCover: boolean = true) {
     this.name = name
     this.dontLogNoBookCover = dontLogNoBookCover
   }
@@ -142,7 +143,7 @@ abstract class DownloadSource {
    * @param {string} destinationFile The destination file.
    * @returns {Promise<boolean>} Whether the operation is a success.
    */
-  async download (book: Book, destinationFile: string): Promise<boolean> {
+  async download(book: Book, destinationFile: string): Promise<boolean> {
     logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
     const coverUrl = await this.getBookCoverUrl(book)
     if (!coverUrl) {
@@ -168,7 +169,7 @@ abstract class DownloadSource {
    * @param {string} destinationFile - The path to save the downloaded image.
    * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
    */
-  async downloadImage (book: Book, url: string, destinationFile: string): Promise<boolean> {
+  async downloadImage(book: Book, url: string, destinationFile: string): Promise<boolean> {
     try {
       const blob = await ofetch(url, { responseType: 'blob' })
       let description = book.title
@@ -188,13 +189,14 @@ abstract class DownloadSource {
               ImageId: book.isbn13,
               Copyright: `Copyright (c) ${book.date.split('-')[0]}, ${book.publisher}. Tous droits réservés.`,
               ImageDescription: description,
-              UserComment: `Image de "[${book.short}]" téléchargée à partir de "${url}".`
-            }
+              UserComment: `Image de "[${book.short}]" téléchargée à partir de "${url}".`,
+            },
           })
           .toFile(destinationFile)
         return true
       }
-    } catch (ex) {
+    }
+    catch (ex) {
       logger.warn(ex)
     }
     return false
@@ -205,7 +207,7 @@ abstract class DownloadSource {
    * @param {Book} book The book.
    * @returns {Promise<string | null>} The book cover URL.
    */
-  abstract getBookCoverUrl (book: Book): Promise<string | null>
+  abstract getBookCoverUrl(book: Book): Promise<string | null>
 }
 
 /**
@@ -215,11 +217,11 @@ class AltCoverDownloadSource extends DownloadSource {
   /**
    * Creates a new alt cover download source instance.
    */
-  constructor () {
+  constructor() {
     super('Book alt cover', false)
   }
 
-  override getBookCoverUrl (book: Book): Promise<string | null> {
+  override getBookCoverUrl(book: Book): Promise<string | null> {
     return Promise.resolve('altcover' in book && book.altcover ? book.altcover!.toString() : null)
   }
 }
@@ -231,11 +233,11 @@ class GoogleServersDownloadSource extends DownloadSource {
   /**
    * Creates a new Google Servers download source instance.
    */
-  constructor () {
+  constructor() {
     super('Google Servers')
   }
 
-  override async getBookCoverUrl (book: Book): Promise<string | null> {
+  override async getBookCoverUrl(book: Book): Promise<string | null> {
     try {
       const response = await ofetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn13.replace('-', '')}`)
       if (response.items && response.items.length > 0) {
@@ -249,7 +251,8 @@ class GoogleServersDownloadSource extends DownloadSource {
         }
         logger.warn(`[${book.short}] has been found on Google servers, but there is no cover in it.`)
       }
-    } catch (ex) {
+    }
+    catch (ex) {
       logger.warn(ex)
     }
     return null
@@ -263,16 +266,17 @@ class OpenGraphImageDownloadSource extends DownloadSource {
   /**
    * Creates a new OpenGraph download source instance.
    */
-  constructor () {
+  constructor() {
     super('OpenGraph')
   }
 
-  override async getBookCoverUrl (book: Book): Promise<string | null> {
+  override async getBookCoverUrl(book: Book): Promise<string | null> {
     try {
       const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
       const image = root.querySelector('meta[property="og:image"]')?.getAttribute('content')
       return image ?? null
-    } catch (ex) {
+    }
+    catch (ex) {
       logger.warn(ex)
     }
     return null
@@ -286,11 +290,11 @@ class PreviousBuildDownloadSource extends DownloadSource {
   /**
    * Creates a new previous build download source instance.
    */
-  constructor (private siteUrl: string, private booksImagesUrl: string) {
+  constructor(private siteUrl: string, private booksImagesUrl: string) {
     super('agreg.skyost.eu')
   }
 
-  override getBookCoverUrl (book: Book): Promise<string | null> {
+  override getBookCoverUrl(book: Book): Promise<string | null> {
     return Promise.resolve(`${this.siteUrl}${this.booksImagesUrl}${book.isbn10}.jpg`)
   }
 }

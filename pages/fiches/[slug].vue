@@ -6,7 +6,7 @@ const route = useRoute()
 const { error, pending, data: sheet } = useLazyAsyncData(
   route.path,
   () => queryContent<SheetContent>('latex', 'fiches', route.params.slug.toString())
-    .findOne()
+    .findOne(),
 )
 
 const path = removeTrailingSlashIfPossible(route.path)
@@ -22,9 +22,18 @@ useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.gith
     </div>
     <div v-else-if="sheet">
       <Title>{{ sheet['page-title'] }}</Title>
-      <Meta name="description" :content="sheet['page-description']" />
-      <Meta property="og:description" :content="sheet['page-description']" />
-      <Meta name="twitter:description" :content="sheet['page-description']" />
+      <Meta
+        name="description"
+        :content="sheet['page-description']"
+      />
+      <Meta
+        property="og:description"
+        :content="sheet['page-description']"
+      />
+      <Meta
+        name="twitter:description"
+        :content="sheet['page-description']"
+      />
       <main>
         <math-document :body="sheet.body" />
       </main>

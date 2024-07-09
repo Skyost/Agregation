@@ -9,7 +9,7 @@ import { createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
  */
 export interface ModuleOptions {
   /** The name of the file to store the latest commit information. */
-  fileName: string;
+  fileName: string
 }
 
 /**
@@ -30,10 +30,10 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version: '0.0.1',
     configKey: 'commitShaFileGenerator',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^3.0.0' },
   },
   defaults: {
-    fileName: 'latest-commit.json'
+    fileName: 'latest-commit.json',
   },
   setup: (options, nuxt) => {
     const resolver = createResolver(import.meta.url)
@@ -47,5 +47,5 @@ export default defineNuxtModule<ModuleOptions>({
     fs.writeFileSync(resolver.resolve(srcDir, 'content', options.fileName), JSON.stringify({ long, short }))
 
     logger.success(`Wrote latest commit info for ${long}.`)
-  }
+  },
 })

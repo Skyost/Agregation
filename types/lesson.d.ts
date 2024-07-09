@@ -20,5 +20,5 @@ export interface LessonContent extends Lesson {
    *
    * @type {string}
    */
-  body: string;
+  body: string
 }

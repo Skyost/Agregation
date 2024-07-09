@@ -4,7 +4,7 @@ export default defineNuxtModule({
   meta: {
     name: 'nuxt-content-absolute-links',
     version: '0.0.1',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^3.0.0' },
   },
   setup: (_, nuxt) => {
     const resolver = createResolver(import.meta.url)
@@ -14,5 +14,5 @@ export default defineNuxtModule({
       config.plugins = config.plugins || []
       config.plugins.push(resolver.resolve('plugin'))
     })
-  }
+  },
 })
