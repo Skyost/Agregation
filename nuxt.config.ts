@@ -10,6 +10,7 @@ const url = debug ? 'http://localhost:3000' : siteMeta.url
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   ssr: true,
+  compatibilityDate: '2024-07-01',
 
   app: {
     head: {
@@ -54,7 +55,14 @@ export default defineNuxtConfig({
     'nuxt-link-checker',
     '@nuxtjs/sitemap',
     'nuxt-simple-robots',
+    "@nuxt/image"
   ],
+
+  nitro: {
+    prerender: {
+      routes: ['/'],
+    },
+  },
 
   eslint: {
     config: {
