@@ -3,9 +3,6 @@ import StylelintPlugin from 'vite-plugin-stylelint'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
 import { siteMeta } from './site/meta'
-import { debug } from './site/debug'
-
-const url = debug ? 'http://localhost:3000' : siteMeta.url
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -49,14 +46,19 @@ export default defineNuxtConfig({
     '~/modules/latex-pdf-generator',
     '~/modules/nuxt-content-bibtex',
     '~/modules/nuxt-content-latex',
-    'skimple-components/nuxt',
+    '@bootstrap-vue-next/nuxt',
     '@nuxt/content',
     '@nuxtjs/google-fonts',
     'nuxt-link-checker',
     '@nuxtjs/sitemap',
-    'nuxt-simple-robots',
-    "@nuxt/image"
+    '@nuxtjs/robots',
+    '@nuxt/icon',
+    // '@nuxt/image'
   ],
+
+  icon: {
+    class: 'vue-icon',
+  },
 
   nitro: {
     prerender: {
@@ -105,7 +107,7 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url,
+    url: siteMeta.url,
     name: siteMeta.title,
     trailingSlash: true,
   },
@@ -121,13 +123,7 @@ export default defineNuxtConfig({
   },
 
   cname: {
-    host: url,
-  },
-
-  runtimeConfig: {
-    public: {
-      url,
-    },
+    host: siteMeta.url,
   },
 
   experimental: {

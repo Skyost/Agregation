@@ -23,6 +23,7 @@ usePdfBanner(`/pdf${path}.pdf`)
     <div v-else-if="sheets">
       <h1>Liste des fiches</h1>
       <cards
+        input-id="sheet-search-field"
         :items="sheets"
         :search-fields="['name', 'summary']"
       >

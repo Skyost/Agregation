@@ -1,9 +1,13 @@
 import path from 'path'
 
-// Cache directory for LaTeX
+/**
+ * Cache directory for LaTeX.
+ */
 const cacheDirectory = 'node_modules/.cache/latex'
 
-// Helper function to get include graphics directories based on the relative path of the LaTeX file
+/**
+ * Helper function to get include graphics directories based on the relative path of the LaTeX file.
+ */
 const getIncludeGraphicsDirectories = (texFileRelativePath: string) => [path.dirname(texFileRelativePath)]
 
 /**

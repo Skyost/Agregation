@@ -4,6 +4,7 @@ import type { Category, HasCategories } from '~/types'
 type CategoryOrUndefined = Category | undefined
 
 const props = defineProps<{
+  inputId: string
   items: T[]
   searchFields?: string[]
 }>()
@@ -47,13 +48,13 @@ const filter = (item: T) => {
 
 <template>
   <div class="cards">
-    <ski-columns class="header">
-      <ski-column
+    <b-row class="header">
+      <b-col
         cols="12"
         :lg="searchFields ? '9' : undefined"
       >
-        <ski-button-group class="categories mb-3 mb-lg-0">
-          <ski-button
+        <b-button-group class="categories mb-3 mb-lg-0">
+          <b-button
             v-for="category in categories"
             :key="category"
             variant="link"
@@ -65,22 +66,23 @@ const filter = (item: T) => {
               class="category"
               :category="category"
             />
-          </ski-button>
-        </ski-button-group>
-      </ski-column>
-      <ski-column
+          </b-button>
+        </b-button-group>
+      </b-col>
+      <b-col
         v-if="searchFields"
         cols="12"
         lg="3"
         class="d-flex align-items-center"
       >
-        <ski-form-control
+        <b-form-input
+          :id="inputId"
           v-model="search"
           placeholder="Chercher dans la liste"
           class="form-control-sm"
         />
-      </ski-column>
-    </ski-columns>
+      </b-col>
+    </b-row>
     <div
       v-for="(item, position) in itemsToDisplay"
       :key="`card-${position}`"

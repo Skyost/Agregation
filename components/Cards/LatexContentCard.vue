@@ -15,17 +15,20 @@ defineProps<{
       v-html="object.name"
     />
     <slot />
-    <ski-button-group>
-      <ski-button :to="`/${linkPrefix}/${object.slug}/`">
-        <ski-icon icon="box-arrow-in-right" /> {{ btnCheck }}
-      </ski-button>
-      <ski-button
+    <b-button-group>
+      <b-button
+        :to="`/${linkPrefix}/${object.slug}/`"
+        variant="dark"
+      >
+        <icon name="bi:box-arrow-in-right" /> {{ btnCheck }}
+      </b-button>
+      <b-button
         :href="`/pdf/${linkPrefix}/${object.slug}.pdf`"
         variant="secondary"
       >
-        <ski-icon icon="file-text" /> Télécharger le PDF
-      </ski-button>
-    </ski-button-group>
+        <icon name="bi:file-text" /> Télécharger le PDF
+      </b-button>
+    </b-button-group>
   </div>
 </template>
 

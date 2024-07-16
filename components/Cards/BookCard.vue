@@ -20,11 +20,11 @@ const date = computed(() => {
 </script>
 
 <template>
-  <ski-columns
+  <b-row
     :id="book.short"
     class="book"
   >
-    <ski-column
+    <b-col
       cols="12"
       md="4"
       lg="3"
@@ -35,8 +35,8 @@ const date = computed(() => {
         :src="image"
         :alt="alt"
       >
-    </ski-column>
-    <ski-column
+    </b-col>
+    <b-col
       class="info"
       cols="12"
       md="8"
@@ -60,19 +60,22 @@ const date = computed(() => {
       <small class="text-muted d-block mb-2">
         <u>Référence :</u> <strong v-text="short" />.
       </small>
-      <ski-button-group class="mt-2 align-self-start">
-        <ski-button :href="`${book.buy}`">
-          <ski-icon icon="cart" /> Acheter le livre
-        </ski-button>
-        <ski-button
+      <b-button-group class="mt-2 align-self-start">
+        <b-button
+          :href="`${book.buy}`"
+          variant="dark"
+        >
+          <icon name="bi:cart" /> Acheter le livre
+        </b-button>
+        <b-button
           :href="`${book.website}`"
           variant="secondary"
         >
-          <ski-icon icon="info-circle" /> Plus d'informations
-        </ski-button>
-      </ski-button-group>
-    </ski-column>
-  </ski-columns>
+          <icon name="bi:info-circle" /> Plus d'informations
+        </b-button>
+      </b-button-group>
+    </b-col>
+  </b-row>
 </template>
 
 <style lang="scss" scoped>

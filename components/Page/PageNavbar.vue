@@ -1,76 +1,96 @@
+<script setup lang="ts">
+const formRef = ref()
+const doSearch = () => {
+  const form = formRef.value.$el.querySelector('form')
+  if (form) {
+    form.submit()
+  }
+}
+
+const route = useRoute()
+const searchValue = ref(route.query.requete?.toString())
+</script>
+
 <template>
-  <ski-navbar
-    color="dark"
-    theme="dark"
+  <b-navbar
+    v-b-color-mode="'dark'"
+    variant="dark"
+    toggleable="lg"
   >
-    <ski-navbar-collapse id="page-navbar-collapse">
-      <ski-navbar-items class="me-auto">
-        <ski-navbar-item
+    <b-navbar-toggle target="page-navbar-collapse" />
+    <b-collapse
+      id="page-navbar-collapse"
+      is-nav
+    >
+      <b-navbar-nav class="me-auto">
+        <b-nav-item
           to="/"
           :active="$route.path === '/'"
         >
-          <ski-icon icon="house-door-fill" /> Accueil
-        </ski-navbar-item>
-        <ski-navbar-item
+          <icon name="bi:house-door-fill" /> Accueil
+        </b-nav-item>
+        <b-nav-item
           to="/lecons/"
           :active="$route.path.startsWith('/lecons/')"
         >
-          <ski-icon icon="file-text-fill" /> Leçons
-        </ski-navbar-item>
-        <ski-navbar-item
+          <icon name="bi:file-text-fill" /> Leçons
+        </b-nav-item>
+        <b-nav-item
           to="/developpements/"
           :active="$route.path.startsWith('/developpements/')"
         >
-          <ski-icon icon="pencil-fill" /> Développements
-        </ski-navbar-item>
-        <ski-navbar-item
+          <icon name="bi:pencil-fill" /> Développements
+        </b-nav-item>
+        <b-nav-item
           to="/fiches/"
           :active="$route.path.startsWith('/fiches/')"
         >
-          <ski-icon icon="backpack-fill" /> Fiches
-        </ski-navbar-item>
-        <ski-navbar-item
+          <icon name="bi:backpack-fill" /> Fiches
+        </b-nav-item>
+        <b-nav-item
           to="/bibliographie/"
           :active="$route.path === '/bibliographie/'"
         >
-          <ski-icon icon="book-fill" /> Bibliographie
-        </ski-navbar-item>
-        <ski-navbar-item
+          <icon name="bi:book-fill" /> Bibliographie
+        </b-nav-item>
+        <b-nav-item
           class="d-none"
           to="/recherche/"
           :active="$route.path === '/recherche/'"
         >
-          <ski-icon icon="search" /> Recherche
-        </ski-navbar-item>
-      </ski-navbar-items>
-      <ski-navbar-items>
-        <form
+          <icon name="bi:search" /> Recherche
+        </b-nav-item>
+      </b-navbar-nav>
+      <b-navbar-nav>
+        <b-nav-form
+          ref="formRef"
           action="/recherche/"
           method="get"
+          class="mt-2 mt-lg-0 w-100"
         >
-          <ski-input-group
+          <b-input-group
             size="sm"
             data-bs-theme="light"
           >
-            <ski-form-control
+            <b-form-input
+              id="page-search-input"
+              v-model="searchValue"
               placeholder="Rechercher"
               name="requete"
             />
-            <ski-button
+            <b-button
               type="submit"
               variant="secondary"
+              @click="doSearch"
             >
-              <ski-icon icon="search" />
-            </ski-button>
-          </ski-input-group>
-        </form>
-      </ski-navbar-items>
-    </ski-navbar-collapse>
-  </ski-navbar>
+              <icon name="bi:search" />
+            </b-button>
+          </b-input-group>
+        </b-nav-form>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
-
-<script setup lang="ts">
-</script>
 
 <style lang="scss" scoped>
 @import 'assets/bootstrap-mixins';

@@ -14,7 +14,7 @@ const name = computed<string>(() => {
       return props.category
   }
 })
-const icon = computed<string>(() => {
+const iconId = computed<string>(() => {
   switch (props.category) {
     case undefined:
       return 'list'
@@ -30,6 +30,6 @@ const icon = computed<string>(() => {
 
 <template>
   <span>
-    <ski-icon :icon="icon" /> {{ name }}
+    <icon :name="`bi:${iconId}`" /> {{ name }}
   </span>
 </template>

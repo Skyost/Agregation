@@ -1,12 +1,12 @@
 <template>
   <header id="page-header">
-    <ski-container>
+    <b-container>
       <h1>Agrégation</h1>
       <hr>
       <p class="mb-0">
         Plans et développements pour l'agrégation de mathématiques 2024.
       </p>
-    </ski-container>
+    </b-container>
   </header>
 </template>
 

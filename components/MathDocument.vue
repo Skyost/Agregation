@@ -30,10 +30,7 @@ const setupDocument = () => {
   const devLinks = root.value!.querySelectorAll<HTMLElement>('.devlink')
   for (const devLink of devLinks) {
     const linkA = document.createElement('a')
-    linkA.classList.add('btn')
-    linkA.classList.add('btn-link')
-    linkA.classList.add('collapsed')
-    linkA.innerHTML = '<i class="bi bi-chevron-down"></i> Développement'
+    linkA.innerText = 'Développement'
     linkA.setAttribute('href', `/developpements/${devLink.textContent!.trim()}/`)
     devLink.replaceChildren(...[linkA])
     if (devLink.nextElementSibling) {
@@ -44,17 +41,16 @@ const setupDocument = () => {
   const proofs = root.value!.querySelectorAll<HTMLElement>('.proof')
   for (let i = 0; i < proofs.length; i++) {
     const proof = proofs[i]
-    proof.id = `proof-${i + 1}`
-    proof.classList.add('collapse')
-    const label = document.createElement('span')
-    label.classList.add('proof-label')
-    label.classList.add('btn')
-    label.classList.add('btn-link')
-    label.setAttribute('data-bs-toggle', 'collapse')
-    label.setAttribute('data-bs-target', `#proof-${i + 1}`)
-    label.innerHTML = '<i class="bi bi-chevron-down"></i> Preuve'
-    label.classList.add('collapsed')
-    proof.parentNode?.insertBefore(label, proof)
+    const id = `proof-${i + 1}`
+    const details = document.createElement('details')
+    details.setAttribute('id', id)
+    details.innerHTML = proof.outerHTML
+    proof.parentNode?.insertBefore(details, proof)
+    proof.remove()
+    const summary = document.createElement('summary')
+    summary.classList.add('proof-label')
+    summary.innerText = 'Preuve'
+    details.insertBefore(summary, details.firstChild)
   }
 
   const refs = root.value!.querySelectorAll<HTMLElement>('[data-reference-type="ref"]')
@@ -199,21 +195,22 @@ onUnmounted(() => {
 
   :deep(.proof-label),
   :deep(.devlink > a) {
+    display: inline-block;
     margin-bottom: 1rem;
     font-size: .8em;
     padding: 0;
     text-decoration: none !important;
     color: rgba(0,0,0,.75);
 
-    .bi-chevron-down::before {
-      transition: transform 200ms;
+    &::before {
+      display: inline-block;
+      margin-right: 0.5em;
+      content: '▶';
     }
+  }
 
-    &.collapsed {
-      .bi-chevron-down::before {
-        transform: rotate(-90deg);
-      }
-    }
+  :deep(details[open]) .proof-label::before {
+    content: '▼';
   }
 
   :deep(ol) {

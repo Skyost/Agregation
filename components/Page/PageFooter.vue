@@ -7,9 +7,9 @@ import { siteMeta } from '~/site/meta'
     id="page-footer"
     class="bg-dark"
   >
-    <ski-container class="pt-4 pb-4">
-      <ski-columns>
-        <ski-column
+    <b-container class="pt-4 pb-4">
+      <b-row>
+        <b-col
           cols="12"
           md="6"
           class="mb-4 mb-md-0"
@@ -63,8 +63,8 @@ import { siteMeta } from '~/site/meta'
               </a>
             </li>
           </ul>
-        </ski-column>
-        <ski-column
+        </b-col>
+        <b-col
           cols="12"
           md="6"
         >
@@ -78,9 +78,9 @@ import { siteMeta } from '~/site/meta'
             <li><a href="/pdf/developpements.pdf">Développements</a></li>
             <li><a href="/pdf/lecons-developpements.pdf">Plans de leçons &amp; développements</a></li>
           </ul>
-        </ski-column>
-      </ski-columns>
-    </ski-container>
+        </b-col>
+      </b-row>
+    </b-container>
   </footer>
 </template>
 

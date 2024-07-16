@@ -20,6 +20,7 @@ const { error, pending, data: books } = useLazyAsyncData(
     <div v-else-if="books">
       <h1>Bibliographie</h1>
       <cards
+        input-id="book-search-field"
         :items="books"
         :search-fields="['title', 'subtitle', 'short', 'authors', 'publisher']"
       >

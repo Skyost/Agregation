@@ -35,9 +35,9 @@ const icon = computed(() => {
     class="banner"
     :class="variant"
   >
-    <ski-icon
+    <icon
       class="icon"
-      :icon="icon"
+      :icon="`bi:${icon}`"
     />
     <p
       class="mb-0"

@@ -20,10 +20,10 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version: '0.0.1',
     configKey: 'nuxtContentBibtex',
-    compatibility: { nuxt: '^3.0.0' }
+    compatibility: { nuxt: '^3.0.0' },
   },
   defaults: {},
-  setup (_options, nuxt) {
+  setup(_options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     // Set up Nitro externals for .bib content transformation.
@@ -35,5 +35,5 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.hook('content:context', (contentContext) => {
       contentContext.transformers.push(resolver.resolve('transformer.ts'))
     })
-  }
+  },
 })

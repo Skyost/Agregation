@@ -22,6 +22,7 @@ usePdfBanner(`/pdf${path}.pdf`)
     <page-head title="Liste des leçons" />
     <h1>Liste des leçons</h1>
     <cards
+      input-id="lesson-search-field"
       :items="lessons"
       :search-fields="['slug', 'name']"
     >

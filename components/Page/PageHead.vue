@@ -14,9 +14,8 @@ withDefaults(defineProps<{
   twitterImage: `${siteMeta.url}/images/social/twitter.png`,
 })
 
-const runtimeConfig = useRuntimeConfig()
 const route = useRoute()
-const currentAddress = `${runtimeConfig.public.url}${route.path}`
+const currentAddress = `${siteMeta.url}${route.path}`
 </script>
 
 <template>

@@ -88,6 +88,7 @@ const isEmpty = computed(() => lessons.value.length === 0 && developments.value.
         </p>
         <cards
           v-if="lessons.length > 0"
+          input-id="lesson-search-field"
           :items="lessons"
         >
           <template #default="slotProps">
@@ -108,6 +109,7 @@ const isEmpty = computed(() => lessons.value.length === 0 && developments.value.
         </p>
         <cards
           v-if="developments.length > 0"
+          input-id="development-search-field"
           :items="developments"
         >
           <template #default="slotProps">
@@ -128,6 +130,7 @@ const isEmpty = computed(() => lessons.value.length === 0 && developments.value.
         </p>
         <cards
           v-if="sheets.length > 0"
+          input-id="sheet-search-field"
           :items="sheets"
         >
           <template #default="slotProps">
