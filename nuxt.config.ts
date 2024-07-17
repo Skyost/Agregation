@@ -57,6 +57,7 @@ export default defineNuxtConfig({
   ],
 
   icon: {
+    provider: 'iconify',
     class: 'vue-icon',
   },
 
@@ -99,11 +100,6 @@ export default defineNuxtConfig({
       'Raleway': true,
       'Noto Sans JP': true,
     },
-  },
-
-  skimpleComponents: {
-    bootstrapCss: false,
-    bootstrapJs: false,
   },
 
   site: {

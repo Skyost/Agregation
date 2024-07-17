@@ -45,6 +45,7 @@ export default defineNuxtModule<LatexTransformOptions>({
     nuxt.options.nitro.publicAssets.push({
       baseURL: '/',
       dir: assetsDestinationPath,
+      fallthrough: true,
     })
   },
 })

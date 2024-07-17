@@ -72,6 +72,7 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.nitro.publicAssets.push({
       baseURL: options.booksImagesUrl,
       dir: destinationDirectory,
+      fallthrough: true,
     })
 
     const books = fs.readdirSync(booksDirectory)

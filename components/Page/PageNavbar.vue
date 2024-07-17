@@ -31,32 +31,32 @@ const searchValue = ref(route.query.requete?.toString())
         </b-nav-item>
         <b-nav-item
           to="/lecons/"
-          :active="$route.path.startsWith('/lecons/')"
+          :active="$route.path.startsWith('/lecons')"
         >
           <icon name="bi:file-text-fill" /> Leçons
         </b-nav-item>
         <b-nav-item
           to="/developpements/"
-          :active="$route.path.startsWith('/developpements/')"
+          :active="$route.path.startsWith('/developpements')"
         >
           <icon name="bi:pencil-fill" /> Développements
         </b-nav-item>
         <b-nav-item
           to="/fiches/"
-          :active="$route.path.startsWith('/fiches/')"
+          :active="$route.path.startsWith('/fiches')"
         >
           <icon name="bi:backpack-fill" /> Fiches
         </b-nav-item>
         <b-nav-item
           to="/bibliographie/"
-          :active="$route.path === '/bibliographie/'"
+          :active="$route.path.startsWith('/bibliographie')"
         >
           <icon name="bi:book-fill" /> Bibliographie
         </b-nav-item>
         <b-nav-item
           class="d-none"
           to="/recherche/"
-          :active="$route.path === '/recherche/'"
+          :active="$route.path.startsWith('/recherche')"
         >
           <icon name="bi:search" /> Recherche
         </b-nav-item>
