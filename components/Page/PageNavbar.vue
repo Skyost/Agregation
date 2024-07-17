@@ -13,6 +13,7 @@ const searchValue = ref(route.query.requete?.toString())
 
 <template>
   <b-navbar
+    data-bs-theme="dark"
     v-b-color-mode="'dark'"
     variant="dark"
     toggleable="lg"
