@@ -173,14 +173,14 @@ abstract class DownloadSource {
   async downloadImage(book: Book, url: string, destinationFile: string): Promise<boolean> {
     try {
       const blob = await ofetch(url, { responseType: 'blob' })
-      let description = book.title
-      if (book.subtitle) {
-        description += ` ${book.subtitle}`
-      }
-      if (book.edition) {
-        description += `, Éd. ${book.edition}`
-      }
       if (blob.type.startsWith('image/') && blob.size > 0) {
+        let description = book.title
+        if (book.subtitle) {
+          description += ` ${book.subtitle}`
+        }
+        if (book.edition) {
+          description += `, Éd. ${book.edition}`
+        }
         const buffer = Buffer.from(await blob.arrayBuffer())
         await sharp(buffer)
           .resize(null, 250)
@@ -273,7 +273,7 @@ class OpenGraphImageDownloadSource extends DownloadSource {
 
   override async getBookCoverUrl(book: Book): Promise<string | null> {
     try {
-      const root: HTMLElement = await ofetch(book.website, { parseResponse: parse })
+      const root: HTMLElement = await ofetch(book.website, { parseResponse: parse, timeout: 10000 })
       const image = root.querySelector('meta[property="og:image"]')?.getAttribute('content')
       return image ?? null
     }
@@ -297,5 +297,21 @@ class PreviousBuildDownloadSource extends DownloadSource {
 
   override getBookCoverUrl(book: Book): Promise<string | null> {
     return Promise.resolve(`${this.siteUrl}${this.booksImagesUrl}${book.isbn10}.jpg`)
+  }
+
+  override async downloadImage(book: Book, url: string, destinationFile: string): Promise<boolean> {
+    try {
+      const blob = await ofetch(url, { responseType: 'blob' })
+      if (blob.type === 'image/jpeg' && blob.size > 0) {
+        const buffer = Buffer.from(await blob.arrayBuffer())
+        fs.writeFileSync(destinationFile, buffer)
+        return true
+      }
+      return false
+    }
+    catch (ex) {
+      logger.warn(ex)
+    }
+    return false
   }
 }
