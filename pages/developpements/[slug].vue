@@ -12,11 +12,12 @@ const { error, pending, data: development } = useLazyAsyncData(
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
 useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/content/latex${path}.tex`)
+
+usePageHead({ title: 'Affichage d\'un développement' })
 </script>
 
 <template>
   <div>
-    <page-head title="Affichage d'un développement" />
     <div v-if="pending">
       <spinner />
     </div>

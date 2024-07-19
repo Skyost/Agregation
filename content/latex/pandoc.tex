@@ -30,6 +30,12 @@
 
 \providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
 
+\providecommand{\ranking}[1]{%
+	\begin{docname}%
+		\section*{Agrégation externe #1}%
+	\end{docname}%
+}
+
 \providecommand{\summary}[1]{%
 	\begin{docsummary}%
 		#1%
@@ -56,3 +62,5 @@
 % Environnements :
 
 \renewenvironment{whitetabularx}[1]{\begin{tabularx}{\textwidth}{#1}}{\end{tabularx}}
+\renewenvironment{xltabular}[2]{\begin{tabularx}{#1}{#2}}{\end{tabularx}}
+\renewenvironment{flushright}{\begin{text-end}}{\end{text-end}}

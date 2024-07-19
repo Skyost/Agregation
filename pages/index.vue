@@ -1,6 +1,9 @@
+<script setup lang="ts">
+usePageHead({ title: 'Accueil' })
+</script>
+
 <template>
   <div>
-    <page-head title="Accueil" />
     <content-doc
       path="/readme"
       :head="false"

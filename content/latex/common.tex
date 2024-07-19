@@ -34,6 +34,7 @@
 %\usepackage{thmtools}
 \usepackage{xcolor}
 \usepackage{tabularx}
+\usepackage{xltabular}
 \usepackage{aligned-overset}
 \usepackage[subpreambles=true]{standalone}
 \usepackage{environ}
@@ -137,6 +138,13 @@
 }
 
 \providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
+
+\providecommand{\ranking}[1]{%
+  \title{Agrégation externe #1}%
+  \hypersetup{pdftitle={Agrégation externe #1}}%
+  \section*{Agrégation externe #1}%
+  \fancyhead[R]{\truncate{0.73\textwidth}{Agrégation externe #1}}%
+}
 
 \providecommand{\summary}[1]{%
   \textit{#1}%

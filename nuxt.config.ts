@@ -89,6 +89,7 @@ export default defineNuxtConfig({
       '/latex/fiches.tex',
       '/latex/lecons.tex',
       '/latex/lecons-developpements.tex',
+      '/latex/historique.tex',
       '/latex/templates/gathering.tex',
       '/latex/templates/tikzpicture.tex',
     ],
@@ -128,5 +129,6 @@ export default defineNuxtConfig({
         trailingSlash: 'append',
       },
     },
+    inlineRouteRules: true,
   },
 })

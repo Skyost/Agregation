@@ -53,11 +53,11 @@ const lessons = computed<Lesson[]>(() => doSearch<Lesson>(allLessons))
 const developments = computed<Development[]>(() => doSearch<Development>(allDevelopments))
 const sheets = computed<Sheet[]>(() => doSearch<Sheet>(allSheets))
 const isEmpty = computed(() => lessons.value.length === 0 && developments.value.length === 0 && sheets.value.length === 0)
+usePageHead({ title: 'Recherche' })
 </script>
 
 <template>
   <div>
-    <page-head title="Recherche" />
     <div v-if="lessonsQueryPending || developmentsQueryPending || sheetsQueryPending">
       <spinner />
     </div>

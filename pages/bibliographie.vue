@@ -9,11 +9,12 @@ const { error, pending, data: books } = useLazyAsyncData(
     .sort({ title: 1 })
     .find(),
 )
+
+usePageHead({ title: 'Bibliographie' })
 </script>
 
 <template>
   <div>
-    <page-head title="Bibliographie" />
     <div v-if="pending">
       <spinner />
     </div>

@@ -1,5 +1,5 @@
-<script setup lang="ts" generic="T extends HasCategories & { [key: string]: any }">
-import type { Category, HasCategories } from '~/types'
+<script setup lang="ts" generic="T extends { [key: string]: any }">
+import type { Category } from '~/types'
 
 type CategoryOrUndefined = Category | undefined
 
@@ -53,7 +53,10 @@ const filter = (item: T) => {
         cols="12"
         :lg="searchFields ? '9' : undefined"
       >
-        <b-button-group class="categories mb-3 mb-lg-0">
+        <b-button-group
+          v-if="categories.length > 1"
+          class="categories mb-3 mb-lg-0"
+        >
           <b-button
             v-for="category in categories"
             :key="category"

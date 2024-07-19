@@ -12,11 +12,11 @@ const title = computed(() => {
 })
 
 // onMounted(() => console.error(props.error))
+usePageHead({ title: title })
 </script>
 
 <template>
   <nuxt-layout>
-    <page-head :title="title" />
     <error-display :error="error" />
   </nuxt-layout>
 </template>

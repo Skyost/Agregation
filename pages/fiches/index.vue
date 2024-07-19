@@ -12,11 +12,12 @@ const { error, pending, data: sheets } = useLazyAsyncData<Sheet[]>(route.path, q
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
+
+usePageHead({ title: 'Liste des fiches' })
 </script>
 
 <template>
   <div>
-    <page-head title="Liste des fiches" />
     <div v-if="pending">
       <spinner />
     </div>

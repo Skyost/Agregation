@@ -12,6 +12,8 @@ const { error, pending, data: lessons } = useLazyAsyncData<Lesson[]>(route.path,
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
+
+usePageHead({ title: 'Liste des leçons' })
 </script>
 
 <template>
@@ -19,7 +21,6 @@ usePdfBanner(`/pdf${path}.pdf`)
     <spinner />
   </div>
   <div v-else-if="lessons">
-    <page-head title="Liste des leçons" />
     <h1>Liste des leçons</h1>
     <cards
       input-id="lesson-search-field"
