@@ -109,6 +109,10 @@ export default defineNuxtConfig({
     trailingSlash: true,
   },
 
+  robots: {
+    disallow: ['/historique/*']
+  },
+
   linkChecker: {
     failOnError: false,
     excludeLinks: [
