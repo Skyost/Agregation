@@ -16,6 +16,12 @@ Vous trouverez donc sur ce site :
 En espérant que le contenu de ce site vous aide dans votre préparation à l'oral. Si vous avez une quelconque remarque
 / idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://skyost.eu/fr/#contact) présent sur mon site.
 
+## Serveur Discord
+
+En vue de la session prochaine, il est possible d'envisager la création d'un serveur Discord (afin de pouvoir
+échanger des ressources, des conseils ou tout simplement discuter autour du concours). Vous pouvez donner votre
+avis sur ce point via ce (petit) [formulaire](https://docs.google.com/forms/d/1qcFbczg9rkkts-IJpwSmHz2aMLe5A8oZa2OKocz33RE).
+
 ## Liens utiles
 
 Je me permets de glisser quelques liens vers des sites que j'utilise régulièrement dans ma préparation :
