@@ -247,9 +247,7 @@
     \end{itemize}
   \end{proof}
 
-  \begin{remark}
-    La réciproque et la conclusion du sens direct du théorème sont mieux rédigées dans \cite{[GOZ]}, à mon avis.
-  \end{remark}
+  La réciproque et la conclusion du sens direct du théorème sont mieux rédigées dans \cite{[GOZ]}, à mon avis.
 
   \reference[GOZ]{52}
 
@@ -265,7 +263,7 @@
       \item $\forall i \in \llbracket 0, p-1 \rrbracket$, $L_{i+1}$ est une extension quadratique (de degré $2$) de $L_i$.
       \item $\alpha \in L_p$.
     \end{enumerate}
-    Par le théorème de la base téléscopique,
+    Par le théorème de la base télescopique,
     \[ [L_p : \mathbb{Q}] = 2^p \]
     et par ce même théorème,
     \[ [L_p : \mathbb{Q}] = [L_p : \mathbb{Q}(\alpha)] [\mathbb{Q}(\alpha) : \mathbb{Q}] \]
@@ -278,7 +276,9 @@
 
   \begin{proof}
     On a $\mathcal{V} = a^3$ et donc $ 2\mathcal{V} = 2a^3$. L'arête d'un cube est la racine cubique de son volume. Il faut donc construire le nombre
-    \[ \alpha = \sqrt[3]{2a^3} = a\sqrt[3]{2} \]
+    \[ \sqrt[3]{2a^3} = a\sqrt[3]{2} \]
+    Comme $a$ est constructible, ceci revient à construire le nombre
+    \[ \alpha = \sqrt[3]{2} \]
     Le polynôme $P = X^3 - 2$ est irréductible sur $\mathbb{Q}$ (par le critère d'Eisenstein) et annule $\alpha$ : c'est son polynôme minimal sur $\mathbb{Q}$. On a ainsi
     \[ [\mathbb{Q}(\alpha) : \mathbb{Q}] = 3 \]
     donc $\alpha$ n'est pas constructible par le \cref{theoreme-de-wantzel-3}.

@@ -6,12 +6,12 @@
   \development{analysis}{theoreme-de-fejer}{Théorème de Fejér}
 
   \summary{Dans ce développement, on montre le théorème de Fejér, qui assure la convergence de la série de Fourier d'une fonction au sens de Cesàro.}
-  
+
   \begin{lemma}
     \label{theoreme-de-fejer-1}
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction continue et $T$-périodique. Alors $f$ est uniformément continue sur $\mathbb{R}$.
   \end{lemma}
-  
+
   \begin{proof}
     Le théorème de Heine implique la continuité uniforme de $f$ sur $[-T, 2T]$, ce qui s'écrit :
     \[ \forall \epsilon > 0, \exists \eta > 0 \text{ tel que } \forall x, y \in [-T, 2T], \, \vert x - y \vert < \eta \implies \vert f(x) - f(y) \vert < \epsilon \tag{$*$} \]
@@ -77,8 +77,6 @@
     D'où le résultat.
   \end{proof}
 
-  \begin{remark}
-    Je préfère la preuve de \cite{[GOU21]}, qui est plus ``clés en main''. Il est possible de passer les calculs des noyaux de Dirichlet et de Fejér dans un premier temps, puis de les montrer à la fin selon le temps restant.
-  \end{remark}
+  Je préfère la preuve de \cite{[GOU21]}, qui est plus ``clés en main''. Il est possible de passer les calculs des noyaux de Dirichlet et de Fejér dans un premier temps, puis de les montrer à la fin selon le temps restant.
   %</content>
 \end{document}
