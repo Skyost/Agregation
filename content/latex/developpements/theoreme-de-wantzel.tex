@@ -27,8 +27,10 @@
         \coordinate (C) at (0,0);
         \coordinate (D) at (0,1);
         \coordinate (E) at (0.75,0);
-        \draw[teal, shorten >=-1cm,shorten <=-1cm] (P) -- (Q);
-        \draw[teal, shorten >=-1cm,shorten <=-1cm] (D) -- (E);
+        \draw (-2.5,0) -- (2.5,0);
+        \draw (0,-1.5) -- (0,2.5);
+        \draw[teal] ($(P)!1.4!(Q)$) -- ($(Q)!1.4!(P)$);
+        \draw[teal] ($(D)!2!(E)$) -- ($(E)!2.4!(D)$);
         \node at (P) [above right] {$P$};
         \node at (P) {$\bullet$};
         \node at (Q) [above right] {$Q$};
@@ -39,8 +41,6 @@
         \node at (D) {$\bullet$};
         \node at (E) [below] {\color{teal}$\left( \frac{p}{q}, 0 \right)$};
         \node at (E) {\color{teal}$\bullet$};
-        \draw (-2.5,0) -- (2.5,0);
-        \draw (0,-1.5) -- (0,2.5);
       \end{tikzpicture}
     \end{center}
     Donc $\frac{p}{q} \in \mathbb{E}$. Comme $0 \in \mathbb{E}$, on a bien $\mathbb{Q} \subseteq \mathbb{E}$.
@@ -57,13 +57,13 @@
       \item Le point $(u, 0)$ est constructible donc son symétrique $(-u, 0)$ l'est aussi. Donc $-u \in \mathbb{E}$.
       \begin{center}
         \begin{tikzpicture}
+          \draw (-2.5,0) -- (2.5,0);
+          \draw (0,-1.5) -- (0,1.5);
           \node (A) at (1,0) {$\bullet$};
           \node at (A) [above right] {$(u,0)$};
           \node (B) at (-1,0) {\color{teal}$\bullet$};
           \node at (B) [above left] {\color{teal}$(-u,0)$};
           \draw[teal] (0,0) circle (1);
-          \draw (-2.5,0) -- (2.5,0);
-          \draw (0,-1.5) -- (0,1.5);
         \end{tikzpicture}
       \end{center}
       \item La droite passant par les points $(0, u)$ et $(-u, 0)$ et la droite passant par les points $(v, 0)$ et $(v, v)$ ont pour point d'intersection $(v, u + v)$ (par le théorème de Thalès). Donc $u + v \in \mathbb{E}$.
@@ -74,9 +74,11 @@
           \coordinate (C) at (1,0);
           \coordinate (D) at (1,1);
           \coordinate (E) at (1,2.5);
-          \draw[teal, shorten >=-1cm,shorten <=-2cm] (A) -- (B);
-          \draw[teal, shorten >=-2cm,shorten <=-1cm] (C) -- (D);
+          \draw[teal] ($(B)!2!(A)$) -- ($(A)!1.5!(B)$);
+          \draw[teal] ($(C)!3!(D)$) -- ($(D)!1.8!(C)$);
           \draw[cyan, dashed] (D) -- (0,0);
+          \draw (-2.5,0) -- (2.5,0);
+          \draw (0,-1.5) -- (0,2.5);
           \node at (A) [above left] {$(0,u)$};
           \node at (A) {$\bullet$};
           \node at (B) [above left] {$(-u,0)$};
@@ -87,8 +89,6 @@
           \node at (D) {$\bullet$};
           \node at (E) [right] {\color{teal}$(v,u+v)$};
           \node at (E) {\color{teal}$\bullet$};
-          \draw (-2.5,0) -- (2.5,0);
-          \draw (0,-1.5) -- (0,2.5);
         \end{tikzpicture}
       \end{center}
       \item D'après ce qui précède, $v + 1$ et $v + 1 - u$ appartiennent à $\mathbb{E}$. La droite passant par les points $(v + 1 - u, v + 1)$ et $(u, v)$ et la droite passant par les points $(0,0)$ et $(1,0)$ ont pour point d'intersection $(uv, 0)$ (par le théorème de Thalès). Donc $uv \in \mathbb{E}$.
@@ -99,8 +99,10 @@
           \coordinate (C) at (0,0);
           \coordinate (D) at (1,0);
           \coordinate (E) at (3,0);
-          \draw[teal, shorten >=-4cm,shorten <=-1cm] (A) -- (B);
-          \draw[teal, shorten >=-4cm,shorten <=-1cm] (C) -- (D);
+          \draw (-1.5,0) -- (2.5,0);
+          \draw (0,-1.5) -- (0,3.5);
+          \draw[teal] ($(A)!3.5!(B)$) -- ($(B)!1.5!(A)$);
+          \draw[teal] ($(C)!3.5!(D)$) -- ($(D)!1.5!(C)$);
           \draw[cyan, dashed] (C) -- (A);
           \draw[cyan, dashed] (D) -- (B);
           \node at (A) [above right] {$(v+1-u,v+1)$};
@@ -113,8 +115,6 @@
           \node at (D) {$\bullet$};
           \node at (E) [below right] {\color{teal}$(uv,0)$};
           \node at (E) {\color{teal}$\bullet$};
-          \draw (-1.5,0) -- (2.5,0);
-          \draw (0,-1.5) -- (0,3.5);
         \end{tikzpicture}
       \end{center}
       \item On suppose $u \neq 0$. La droite passant par les points $(1,0)$ et $(u,-1)$ et la droite passant par les points $(0,0)$ et $(1,1)$ ont pour point d'intersection $(u^{-1}, u^{-1})$ (par le théorème de Thalès). Donc $u^{-1} \in \mathbb{E}$.
@@ -125,8 +125,10 @@
           \coordinate (C) at (0,0);
           \coordinate (D) at (1,1);
           \coordinate (E) at (2,2);
-          \draw[teal, shorten >=-1cm,shorten <=-3cm] (A) -- (B);
-          \draw[teal, shorten >=-3cm,shorten <=-2cm] (C) -- (D);
+          \draw (-1.5,0) -- (2.5,0);
+          \draw (0,-1.5) -- (0,3.5);
+          \draw[teal] ($(A)!1.5!(B)$) -- ($(B)!3.5!(A)$);
+          \draw[teal] ($(C)!2.5!(D)$) -- ($(D)!2.5!(C)$);
           \draw[cyan, dashed] (-1,-1) -- (B);
           \node at (A) [below right] {$(1,0)$};
           \node at (A) {$\bullet$};
@@ -138,8 +140,6 @@
           \node at (D) {$\bullet$};
           \node at (E) [right] {\color{teal}$(u^{-1},u^{-1})$};
           \node at (E) {\color{teal}$\bullet$};
-          \draw (-1.5,0) -- (2.5,0);
-          \draw (0,-1.5) -- (0,3.5);
         \end{tikzpicture}
       \end{center}
     \end{itemize}
@@ -153,7 +153,9 @@
         \coordinate (D) at (1.5,0);
         \coordinate (E) at (2,1.41421356);
         \coordinate (F) at (2,-1.41421356);
-        \draw[teal, shorten >=-0.5cm,shorten <=-2cm] (A) -- (B);
+        \draw (-2.5,0) -- (2.5,0);
+        \draw (0,-2.5) -- (0,2.5);
+        \draw[teal] ($(A)!1.15!(B)$) -- ($(B)!2.15!(A)$);
         \draw[cyan, dashed] (C) -- (E);
         \draw[cyan, dashed] (C) -- (F);
         \draw[red] (A) -- ($(A)+(0,0.3)$) -- ($(A)+(-0.3,0.3)$) -- ($(A)+(-0.3,0)$) -- cycle;
@@ -169,8 +171,6 @@
         \node at (E) [above right] {\color{teal}$(x,\sqrt{x})$};
         \node at (F) {\color{teal}$\bullet$};
         \node at (F) [below right] {\color{teal}$(x,-\sqrt{x})$};
-        \draw (-2.5,0) -- (2.5,0);
-        \draw (0,-2.5) -- (0,2.5);
       \end{tikzpicture}
     \end{center}
   \end{proof}
