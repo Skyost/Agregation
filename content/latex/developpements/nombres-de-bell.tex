@@ -44,7 +44,7 @@
     La série entière définissant l'exponentielle a un rayon de convergence infini. On peut écrire, pour tout $z \in \mathbb{C}$ :
     \[ e^{e^z} = \sum_{n=0}^{+\infty} \frac{e^{nz}}{n!} = \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} \underbrace{\frac{(nz)^k}{n!k!}}_{u_{n,k}(z)} \]
     On va appliquer le théorème de Fubini-Lebesgue à $u_{n,k}(z)$ (où $z \in \mathbb{C}$ est fixé) :
-    \[ \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} |u_{n,k}(z)| = \sum_{n=0}^{+\infty} \frac{e^{n|z|}}{n!} = e^{e^|z|} < +\infty \]
+    \[ \sum_{n=0}^{+\infty} \sum_{k=0}^{+\infty} |u_{n,k}(z)| = \sum_{n=0}^{+\infty} \frac{e^{n|z|}}{n!} = e^{e^{|z|}} < +\infty \]
     Donc on peut intervertir les signes de sommations. Pour tout $x \in ]-R,R[$,
     \begin{align*}
       B(x) &= \frac{1}{e} e^{e^x} \\
