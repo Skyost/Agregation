@@ -93,6 +93,9 @@ export default defineNuxtConfig({
       '/latex/templates/gathering.tex',
       '/latex/templates/tikzpicture.tex',
     ],
+    experimental: {
+      search: true,
+    },
   },
 
   googleFonts: {
@@ -110,7 +113,7 @@ export default defineNuxtConfig({
   },
 
   robots: {
-    disallow: ['/historique/*']
+    disallow: ['/historique/*'],
   },
 
   linkChecker: {
