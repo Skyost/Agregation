@@ -18,9 +18,9 @@ En espérant que le contenu de ce site vous aide dans votre préparation à l'or
 
 ## Serveur Discord
 
-En vue de la session prochaine, il est possible d'envisager la création d'un serveur Discord (afin de pouvoir
-échanger des ressources, des conseils ou tout simplement discuter autour du concours). Vous pouvez donner votre
-avis sur ce point via ce (petit) [formulaire](https://docs.google.com/forms/d/1qcFbczg9rkkts-IJpwSmHz2aMLe5A8oZa2OKocz33RE).
+Venez-nous rejoindre sur Discord pour échanger avec d'autres agrégatifs. Que ce soit pour des plans, des développements,
+des conseils ou pour parler, tout simplement !
+Le lien pour rejoindre le serveur est [le suivant](https://discord.gg/4eKrcDqd).
 
 ## Liens utiles
 

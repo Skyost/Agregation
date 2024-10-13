@@ -80,6 +80,16 @@ import { siteMeta } from '~/site/meta'
           </ul>
         </b-col>
       </b-row>
+      <div class="text-center mt-4">
+        <a href="https://discord.gg/4eKrcDqd">
+          <img
+            class="discord"
+            src="/images/social/discord.svg"
+            alt="Discord"
+            title="Rejoins notre Discord !"
+          >
+        </a>
+      </div>
     </b-container>
   </footer>
 </template>
@@ -121,6 +131,11 @@ import { siteMeta } from '~/site/meta'
   :deep(a) {
     text-decoration: underline;
     color: rgba(white, 0.75);
+  }
+
+  .discord {
+    max-width: 90%;
+    width: 200px;
   }
 }
 </style>
