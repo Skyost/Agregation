@@ -3,10 +3,10 @@ import fs from 'fs'
 import { defineTransformer } from '@nuxt/content/transformers'
 import { consola } from 'consola'
 import type { HTMLElement } from 'node-html-parser'
-import * as latex from 'that-latex-lib'
+import { KatexRenderer, LatexImageExtractor, PandocCommand, PandocTransformer, SvgGenerator } from 'that-latex-lib'
 import { name } from './common'
 import { normalizeString, getFileName } from '~/utils/utils'
-import { latexOptions } from '~/site/latex'
+import { latexOptions, type LatexTransformOptions } from '~/site/latex'
 import { debug } from '~/site/debug'
 
 /**
@@ -44,47 +44,55 @@ export default defineTransformer({
 
     // Parse the Pandoc HTML output.
     const assetsRootDirectoryPath = path.resolve(sourceDirectoryPath, options.assetsDestinationDirectory)
-    const templates: { [key: string]: string } = {}
-    for (const image in options.picturesTemplate) {
-      templates[image] = fs.readFileSync(path.resolve(sourceDirectoryPath, options.picturesTemplate.tikzpicture), { encoding: 'utf8' })
-    }
-    const { htmlResult: root } // Transforms the raw content into HTML.
-      = latex.transformToHtml(
-        filePath,
+    const pandocTransformer = new PandocTransformer({
+      imageSrcResolver: PandocTransformer.resolveFromAssetsRoot(
+        assetsRootDirectoryPath,
         {
-          pandocHeader,
-          getExtractedImageCacheDirectoryPath: (_extractedFrom, extractedImageTexFilePath) => path.resolve(sourceDirectoryPath, options.cacheDirectory, path.relative(assetsRootDirectoryPath, path.dirname(extractedImageTexFilePath))),
-          getExtractedImageTargetDirectory: (_extractedFrom, assetName) => path.dirname(options.getAssetDestination(path.relative(contentDirectoryPath, path.resolve(path.dirname(filePath), assetName)))).replace(/\\/g, '/') + '/' + getFileName(filePath),
-          assetsRootDirectoryPath,
-          getResolvedImageCacheDirectoryPath: resolvedImageTexFilePath => path.resolve(sourceDirectoryPath, options.cacheDirectory, path.relative(assetsRootDirectoryPath, path.dirname(resolvedImageTexFilePath))),
+          getImageCacheDirectoryPath: resolvedImageTexFilePath => path.resolve(sourceDirectoryPath, options.cacheDirectory, path.relative(assetsRootDirectoryPath, path.dirname(resolvedImageTexFilePath))),
           imagePathToSrc: resolvedImageFilePath => '/' + path.relative(assetsRootDirectoryPath, resolvedImageFilePath).replace(/\\/g, '/'),
-          renderMathElement,
-          imagesTemplate: templates,
-          generateIfExists: !debug,
         },
-        true,
-        rawContent,
-      )
+      ),
+      imageExtractors: [
+        new TikzPictureImageExtractor(
+          options,
+          sourceDirectoryPath,
+          contentDirectoryPath,
+        ),
+      ],
+      mathRenderer: new MathRendererWithMacros(),
+      pandoc: new PandocCommand({
+        header: pandocHeader,
+      }),
+    })
+    // Transforms the raw content into HTML.
+    const { htmlResult: root } = pandocTransformer.transform(filePath, rawContent)
 
-    // Remove empty titles from the HTML content.
-    removeEmptyTitles(root)
+    if (root) {
+      // Remove empty titles from the HTML content.
+      removeEmptyTitles(root)
 
-    // Replace vspace elements in the HTML content.
-    replaceVspaceElements(root)
+      // Replace vspace elements in the HTML content.
+      replaceVspaceElements(root)
 
-    // Handle proofs in the HTML content.
-    handleProofs(root)
+      // Handle proofs in the HTML content.
+      handleProofs(root)
 
-    // Handle references in the HTML content.
-    handleReferences(root)
+      // Handle references in the HTML content.
+      handleReferences(root)
 
-    logger.success(`Successfully processed ${texFileRelativePath} !`)
+      logger.success(`Successfully processed ${texFileRelativePath} !`)
 
-    // Return the parsed content object.
+      // Return the parsed content object.
+      return {
+        _id,
+        body: root.outerHTML,
+        ...getHeader(path.parse(filePath).name, root),
+      }
+    }
+    console.error(`Failed to parse ${_id}.`)
     return {
       _id,
-      body: root.outerHTML,
-      ...getHeader(path.parse(filePath).name, root),
+      body: `Unable to parse ${_id}.`,
     }
   },
 })
@@ -233,22 +241,6 @@ const findRefName = (element: HTMLElement | null): string | null => {
 }
 
 /**
- * Renders a given math element.
- * @param {HTMLElement} element The element.
- * @returns {string} The result.
- */
-const renderMathElement = (element: HTMLElement): string => latex.renderMathElement(
-  element,
-  {
-    '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
-    '\\ensuremath': '#1',
-  },
-  math => math
-    .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
-    .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}'),
-)
-
-/**
  * Extract header information from the HTML structure of a LaTeX document.
  *
  * @param {string} slug - The slug of the document.
@@ -289,4 +281,86 @@ const getHeader = (slug: string, root: HTMLElement): { [key: string]: any } => {
   }
 
   return header
+}
+
+/**
+ * Extracts Tikz pictures from a file.
+ */
+class TikzPictureImageExtractor extends LatexImageExtractor {
+  /**
+   * The Latex transform options.
+   */
+  options: LatexTransformOptions
+  /**
+   * The source directory path.
+   */
+  sourceDirectoryPath: string
+  /**
+   * The content directory path.
+   */
+  contentDirectoryPath: string
+
+  /**
+   * Creates a new `TikzPictureImageExtractor` instance.
+   *
+   * @param {LatexTransformOptions} options The Latex transform options.
+   * @param {string} sourceDirectoryPath The source directory path.
+   * @param {string} contentDirectoryPath The content directory path.
+   */
+  constructor(options: LatexTransformOptions, sourceDirectoryPath: string, contentDirectoryPath: string) {
+    super(
+      'tikzpicture',
+      {
+        svgGenerator: new SvgGenerator({
+          generateIfExists: !debug,
+        }),
+      },
+    )
+    this.options = options
+    this.sourceDirectoryPath = sourceDirectoryPath
+    this.contentDirectoryPath = contentDirectoryPath
+  }
+
+  override getExtractedImageDirectoryPath(extractedFrom: string, extractedFileName: string): string | null {
+    return path.resolve(
+      this.sourceDirectoryPath,
+      this.options.assetsDestinationDirectory,
+      path.dirname(
+        this.options.getAssetDestination(
+          path.relative(
+            this.contentDirectoryPath,
+            path.resolve(path.dirname(extractedFrom), extractedFileName),
+          ),
+        ),
+      ).replace(/\\/g, '/') + '/' + getFileName(extractedFrom),
+    )
+  }
+
+  override renderContent(extractedImageTexFilePath: string, latexContent: string): string {
+    const content = fs.readFileSync(path.resolve(this.sourceDirectoryPath, this.options.tikzPictureTemplate), { encoding: 'utf8' })
+    return content
+      .replace('{graphicsPath}', '')
+      // .replace('{grahicsPath}', '\\graphicspath{' + includeGraphicsDirectories
+      //   .map(directory => `{${directory.replaceAll('\\', '\\\\')}}`)
+      //   .join('\n') + '}')
+      .replace('{content}', latexContent)
+  }
+}
+
+/**
+ * A math renderer with some custom macros.
+ */
+class MathRendererWithMacros extends KatexRenderer {
+  override renderMathElement(element: HTMLElement): string {
+    return super.renderMathElement(
+      element,
+      {
+        '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
+        '\\ensuremath': '#1',
+      },
+      math => math
+        .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
+        .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}'),
+    )
+  }
 }

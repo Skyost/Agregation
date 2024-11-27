@@ -5,7 +5,7 @@ import path from 'path'
 import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
-import * as latex from 'that-latex-lib'
+import { LatexChecksumsCalculator, LatexIncludeCommand, PdfGenerator } from 'that-latex-lib'
 import { getFileName } from '../utils/utils'
 import { type GithubRepository, siteMeta } from '../site/meta'
 import { latexOptions, type LatexGenerateOptions } from '../site/latex'
@@ -250,80 +250,58 @@ const generatePdf = (
       logger.info(`Processing "${filePath}"...`)
 
       // Generate PDF and checksums files.
-      const { wasCached, builtFilePath, checksumsFilePath } = latex.generatePdf(
-        filePath,
-        {
-          includeGraphicsDirectories: options.getIncludeGraphicsDirectories(texDirectoryRelativePath),
-          cacheDirectoryPath: previousBuildDirectory == null ? undefined : previousBuildDirectory,
-          generateIfExists: !debug,
-          checksumsCalculator: (texFilePath, includeGraphicsDirectories) => latex.calculateTexFileChecksums(
-            texFilePath,
-            includeGraphicsDirectories,
-            null,
-            [
-              ...latex.defaultLatexIncludeCommands,
-              // inputcontent command for other LaTeX files.
+      const pdfGenerator = new PdfGenerator({
+        generateIfExists: !debug,
+        checksumsCalculator: new LatexChecksumsCalculator({
+          latexIncludeCommands: [
+            LatexIncludeCommand.includeGraphics(options.getIncludeGraphicsDirectories(texDirectoryRelativePath)),
+            ...LatexIncludeCommand.defaultLatexIncludeCommands,
+            // inputcontent command for other LaTeX files.
+            new LatexIncludeCommand('inputcontent'),
+            new LatexIncludeCommand('inputcontent\\*'),
+            new LatexIncludeCommand(
+              'setbibliographypath\\*',
               {
-                command: 'inputcontent',
-                directories: [],
-                extensions: ['.tex'],
-                excludes: [],
-                hasIncludes: true,
-                targetIsDirectory: false,
-              },
-              // inputcontent* command for other LaTeX files.
-              {
-                command: 'inputcontent\\*',
-                directories: [],
-                extensions: ['.tex'],
-                excludes: [],
-                hasIncludes: true,
-                targetIsDirectory: false,
-              },
-              // setbibliographypath command for bibliography files.
-              {
-                command: 'setbibliographypath',
-                directories: [],
                 extensions: ['.bib'],
-                excludes: [],
                 hasIncludes: false,
                 targetIsDirectory: true,
               },
-              // inputalgorithm command for bibliography files.
+            ),
+            new LatexIncludeCommand(
+              'inputalgorithm',
               {
-                command: 'inputalgorithm',
-                directories: [],
                 extensions: ['.py'],
-                excludes: [],
-                hasIncludes: false,
-                targetIsDirectory: false,
               },
-            ],
-          ),
-        },
+            ),
+          ],
+        }),
+      })
+      const result = pdfGenerator.generate(
+        filePath,
+        previousBuildDirectory,
       )
 
       // If PDF generation is successful, copy files to the destination directory.
-      if (builtFilePath) {
+      if (result.builtFilePath) {
         fs.mkdirSync(destinationDirectoryPath, { recursive: true })
-        fs.copyFileSync(builtFilePath, resolver.resolve(destinationDirectoryPath, path.parse(builtFilePath).base))
+        fs.copyFileSync(result.builtFilePath, resolver.resolve(destinationDirectoryPath, path.parse(result.builtFilePath).base))
 
         // Optionally move files instead of copying.
         if (options.moveFiles) {
-          fs.unlinkSync(builtFilePath)
+          fs.unlinkSync(result.builtFilePath)
         }
 
         // Copy checksums file if available.
-        if (checksumsFilePath) {
-          fs.copyFileSync(checksumsFilePath, resolver.resolve(destinationDirectoryPath, path.parse(checksumsFilePath).base))
+        if (result.checksumsFilePath) {
+          fs.copyFileSync(result.checksumsFilePath, resolver.resolve(destinationDirectoryPath, path.parse(result.checksumsFilePath).base))
 
           // Optionally move checksums file instead of copying.
           if (options.moveFiles) {
-            fs.unlinkSync(checksumsFilePath)
+            fs.unlinkSync(result.checksumsFilePath)
           }
         }
 
-        if (wasCached) {
+        if (result.wasCached) {
           logger.success(`Fully cached PDF found in ${previousBuildDirectory}.`)
         }
         else {

@@ -45,9 +45,9 @@ export interface LatexTransformOptions {
    */
   pandocRedefinitions: string
   /**
-   * Template for pictures.
+   * Template file for pictures.
    */
-  picturesTemplate: { [key: string]: string }
+  tikzPictureTemplate: string
 }
 
 /**
@@ -78,9 +78,7 @@ const latexTransformOptions: LatexTransformOptions = {
   },
   getIncludeGraphicsDirectories,
   assetsDestinationDirectory: 'node_modules/.nuxt-content-latex-assets/',
-  picturesTemplate: {
-    tikzpicture: 'content/latex/templates/tikzpicture.tex',
-  },
+  tikzPictureTemplate: 'content/latex/templates/tikzpicture.tex',
   pandocRedefinitions: 'content/latex/pandoc.tex',
 }
 
