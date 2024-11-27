@@ -123,6 +123,7 @@ export default defineNuxtConfig({
     ],
     skipInspections: [
       'link-text',
+      'no-uppercase-chars',
     ],
   },
 
