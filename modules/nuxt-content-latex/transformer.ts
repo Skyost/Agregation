@@ -343,7 +343,7 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
       // .replace('{grahicsPath}', '\\graphicspath{' + includeGraphicsDirectories
       //   .map(directory => `{${directory.replaceAll('\\', '\\\\')}}`)
       //   .join('\n') + '}')
-      .replace('{content}', latexContent)
+      .replace('{extractedContent}', latexContent)
   }
 }
 

@@ -271,11 +271,15 @@ const generatePdf = (
               'inputalgorithm',
               {
                 extensions: ['.py'],
+                hasIncludes: false,
               },
             ),
           ],
         }),
       })
+      if (getFileName(filePath) === 'transformee-de-fourier-discrete') {
+        console.log(pdfGenerator.checksumsCalculator.calculateFileChecksums(filePath))
+      }
       const result = pdfGenerator.generate(
         filePath,
         previousBuildDirectory,
