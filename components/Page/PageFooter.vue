@@ -36,6 +36,15 @@ import { siteMeta } from '~/site/meta'
               </a>
             </li>
             <li>
+              <a href="https://github.com/Skyost/ThatLatexLib">
+                <img
+                  src="/images/technologies/thatlatexlib.svg"
+                  alt="ThatLatexLib"
+                  title="ThatLatexLib"
+                >
+              </a>
+            </li>
+            <li>
               <a href="https://vuejs.org/">
                 <img
                   src="/images/technologies/vue.svg"
