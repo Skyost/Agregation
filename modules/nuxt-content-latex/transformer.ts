@@ -321,7 +321,7 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
     this.contentDirectoryPath = contentDirectoryPath
   }
 
-  override getExtractedImageDirectoryPath(extractedFrom: string, extractedFileName: string): string | null {
+  override getExtractedImageDirectoryPath(extractedFrom: string, extractedFileName: string): string {
     return path.resolve(
       this.sourceDirectoryPath,
       this.options.assetsDestinationDirectory,
@@ -351,16 +351,16 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
  * A math renderer with some custom macros.
  */
 class MathRendererWithMacros extends KatexRenderer {
-  override renderMathElement(element: HTMLElement): string {
-    return super.renderMathElement(
-      element,
-      {
-        '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
-        '\\ensuremath': '#1',
-      },
-      math => math
-        .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
-        .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}'),
-    )
+  override getMacros(): any {
+    return {
+      '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
+      '\\ensuremath': '#1',
+    }
+  }
+
+  override filterUnknownSymbols(math: string): string {
+    return super.filterUnknownSymbols(math)
+      .replace(/(\\left *|\\right *)*\\VERT/g, '$1 | $1 | $1 |')
+      .replace(/\\overset{(.*)}&{(.*)}/g, '&\\overset{$1}{$2}')
   }
 }
