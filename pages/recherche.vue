@@ -9,13 +9,13 @@ const route = useRoute()
 const request = route.query.requete?.toString()
 const regexPattern = computed<string>(() => request ? normalizeString(request) : '.*')
 
-const { status: lessonsQueryStatus, data: allLessons } = await useFetch<Lesson[]>(`/_api/latex/developpements/${route.params.slug}.json`)
+const { status: lessonsQueryStatus, data: allLessons } = await useFetch<Lesson[]>(`/_api/latex/developpements/index.json`)
 
-const { status: developmentsQueryStatus, data: allDevelopments } = await useFetch<Development[]>(`/_api/latex/lecons/${route.params.slug}.json`)
+const { status: developmentsQueryStatus, data: allDevelopments } = await useFetch<Development[]>(`/_api/latex/lecons/index.json`)
 
-const { status: sheetsQueryStatus, data: allSheets } = await useFetch<Sheet[]>(`/_api/latex/fiches/${route.params.slug}.json`)
+const { status: sheetsQueryStatus, data: allSheets } = await useFetch<Sheet[]>(`/_api/latex/fiches/index.json`)
 
-const doSearch = <T extends LatexContentObject>(list: Ref<Omit<T, string>[] | null>): T[] => {
+const doSearch = <T extends LatexContentObject>(list: Ref<T[] | null>): T[] => {
   const result: T[] = []
   if (!list.value) {
     return result
