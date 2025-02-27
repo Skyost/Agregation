@@ -2,14 +2,9 @@
 import type { Sheet } from '~/types'
 import SheetCard from '~/components/Cards/SheetCard.vue'
 
-const querySheets = () => queryContent<Sheet>('latex', 'fiches')
-  .sort({ 'page-name-search': 1 })
-  .without(['body'])
-  .find()
+const { data: sheets, status, error } = await useFetch<Sheet[]>('/_api/latex/fiches/')
 
 const route = useRoute()
-const { error, pending, data: sheets } = useLazyAsyncData<Sheet[]>(route.path, querySheets)
-
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
 
@@ -18,7 +13,7 @@ usePageHead({ title: 'Liste des fiches' })
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="sheets">

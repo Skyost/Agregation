@@ -6,15 +6,13 @@ import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { LatexChecksumsCalculator, LatexIncludeCommand, PdfGenerator } from 'that-latex-lib'
-import { getFileName } from '../utils/utils'
+import { getFilename } from '../utils/utils'
 import { type GithubRepository, siteMeta } from '../site/meta'
 import { latexOptions, type LatexGenerateOptions } from '../site/latex'
 import { debug } from '../site/debug'
 
 /**
  * Options for the PDF generator module.
- *
- * @interface
  */
 export interface ModuleOptions extends LatexGenerateOptions {
   github: GithubRepository
@@ -76,7 +74,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Remove all Latex gathering files.
     for (const generatedGathering of generatedGatherings) {
       fs.unlinkSync(generatedGathering)
-      logger.success(`Deleted gathering ${getFileName(generatedGathering)}.`)
+      logger.success(`Deleted gathering ${getFilename(generatedGathering)}.`)
     }
 
     // Register all generated files in Nitro.
@@ -91,10 +89,10 @@ export default defineNuxtModule<ModuleOptions>({
 
 /**
  * Downloads the previous build from Github pages.
- * @param {Resolver} resolver The resolver instance.
- * @param {string} directoryPath The download destination.
- * @param {ModuleOptions} options The module options.
- * @return {Promise<boolean>} Whether the download is a success.
+ * @param resolver The resolver instance.
+ * @param directoryPath The download destination.
+ * @param options The module options.
+ * @returns Whether the download is a success.
  */
 const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, options: ModuleOptions): Promise<boolean> => {
   try {
@@ -137,10 +135,10 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
 
 /**
  * Generate gatherings of Latex files.
- * @param {Resolver} resolver The resolver instance.
- * @param {string} latexDirectoryPath An absolute path to the Latex content.
- * @param {ModuleOptions} options The module options.
- * @return {string[]} The generated files.
+ * @param resolver The resolver instance.
+ * @param latexDirectoryPath An absolute path to the Latex content.
+ * @param options The module options.
+ * @returns The generated files.
  */
 const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, options: ModuleOptions): string[] => {
   const generatedGatherings = []
@@ -200,13 +198,13 @@ const generateGatherings = (resolver: Resolver, latexDirectoryPath: string, opti
 /**
  * Recursively generates PDF files from Latex files in a directory.
  *
- * @param {Resolver} resolver The resolver instance.
- * @param {string} texDirectoryRelativePath Relative path to the Latex content directory.
- * @param {string} directoryPath Absolute path to the directory containing Latex files.
- * @param {string} destinationDirectoryPath Absolute path to the destination directory for generated PDFs.
- * @param {string[]} ignore List of files to ignore during the generation process.
- * @param {string | null} previousBuildDirectory Absolute path to the directory containing previous build files.
- * @param {ModuleOptions} options Module options.
+ * @param resolver The resolver instance.
+ * @param texDirectoryRelativePath Relative path to the Latex content directory.
+ * @param directoryPath Absolute path to the directory containing Latex files.
+ * @param destinationDirectoryPath Absolute path to the destination directory for generated PDFs.
+ * @param ignore List of files to ignore during the generation process.
+ * @param previousBuildDirectory Absolute path to the directory containing previous build files.
+ * @param options Module options.
  */
 const generatePdf = (
   resolver: Resolver,
@@ -277,9 +275,6 @@ const generatePdf = (
           ],
         }),
       })
-      if (getFileName(filePath) === 'transformee-de-fourier-discrete') {
-        console.log(pdfGenerator.checksumsCalculator.calculateFileChecksums(filePath))
-      }
       const result = pdfGenerator.generate(
         filePath,
         previousBuildDirectory,

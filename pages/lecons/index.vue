@@ -2,14 +2,9 @@
 import type { Lesson } from '~/types'
 import LessonCard from '~/components/Cards/LessonCard.vue'
 
-const queryLessons = () => queryContent<Lesson>('latex', 'lecons')
-  .sort({ slug: 1 })
-  .without(['body'])
-  .find()
+const { data: lessons, status, error } = await useFetch<Lesson[]>('/_api/latex/lecons/')
 
 const route = useRoute()
-const { error, pending, data: lessons } = useLazyAsyncData<Lesson[]>(route.path, queryLessons)
-
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
 
@@ -17,7 +12,7 @@ usePageHead({ title: 'Liste des leçons' })
 </script>
 
 <template>
-  <div v-if="pending">
+  <div v-if="status === 'pending'">
     <spinner />
   </div>
   <div v-else-if="lessons">

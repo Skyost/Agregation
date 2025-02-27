@@ -9,30 +9,11 @@ const route = useRoute()
 const request = route.query.requete?.toString()
 const regexPattern = computed<string>(() => request ? normalizeString(request) : '.*')
 
-const { pending: lessonsQueryPending, data: allLessons } = useLazyAsyncData(
-  route.path + '?lecons',
-  // TODO: Follow this issue : https://github.com/nuxt/content/issues/1758 for implementing a "true" search page.
-  () => queryContent<Lesson>('latex', 'lecons')
-    .sort({ slug: 1 })
-    .without(['body'])
-    .find(),
-)
+const { status: lessonsQueryStatus, data: allLessons } = await useFetch<Lesson[]>(`/_api/latex/developpements/${route.params.slug}.json`)
 
-const { pending: developmentsQueryPending, data: allDevelopments } = useLazyAsyncData(
-  route.path + '?developpements',
-  () => queryContent<Development>('latex', 'developpements')
-    .sort({ slug: 1 })
-    .without(['body'])
-    .find(),
-)
+const { status: developmentsQueryStatus, data: allDevelopments } = await useFetch<Development[]>(`/_api/latex/lecons/${route.params.slug}.json`)
 
-const { pending: sheetsQueryPending, data: allSheets } = useLazyAsyncData(
-  route.path + '?sheets',
-  () => queryContent<Development>('latex', 'fiches')
-    .sort({ slug: 1 })
-    .without(['body'])
-    .find(),
-)
+const { status: sheetsQueryStatus, data: allSheets } = await useFetch<Sheet[]>(`/_api/latex/fiches/${route.params.slug}.json`)
 
 const doSearch = <T extends LatexContentObject>(list: Ref<Omit<T, string>[] | null>): T[] => {
   const result: T[] = []
@@ -58,7 +39,7 @@ usePageHead({ title: 'Recherche' })
 
 <template>
   <div>
-    <div v-if="lessonsQueryPending || developmentsQueryPending || sheetsQueryPending">
+    <div v-if="lessonsQueryStatus === 'pending' || developmentsQueryStatus === 'pending' || sheetsQueryStatus === 'pending'">
       <spinner />
     </div>
     <div v-else-if="lessons && developments && sheets">

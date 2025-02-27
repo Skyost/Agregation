@@ -90,7 +90,7 @@ import { siteMeta } from '~/site/meta'
         </b-col>
       </b-row>
       <div class="text-center mt-4">
-        <a href="https://discord.gg/4eKrcDqd">
+        <a href="https://discord.gg/pcpUC6Jbc3">
           <img
             class="discord"
             src="/images/social/discord.svg"

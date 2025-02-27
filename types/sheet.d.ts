@@ -1,17 +1,11 @@
-import type { Development, DevelopmentContent } from '~/types/development'
+import type { LatexContentObject, LatexContentObjectWithBody } from '~/types/latex.d'
 
 /**
  * Represents a sheet, extending the LatexContentObject interface.
- *
- * @interface
- * @extends {Development}
  */
-export interface Sheet extends Development {}
+export type Sheet = LatexContentObject
 
 /**
  * Represents the content of a sheet, extending the Sheet interface.
- *
- * @interface
- * @extends {DevelopmentContent}
  */
-export interface SheetContent extends DevelopmentContent {}
+export interface SheetContent extends Sheet, LatexContentObjectWithBody {}

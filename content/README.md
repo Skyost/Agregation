@@ -3,15 +3,14 @@
 Bonjour et bienvenue sur ce site où je mettrai tout un tas de ressources concernant l'agrégation de mathématiques.
 Vous trouverez donc sur ce site :
 
-* Mes [plans](https://agreg.skyost.eu/lecons) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence,
+* Mes [plans](https://agreg.skyost.eu/lecons/) de leçons. Par manque de temps, et / ou d'envie, et / ou d'appétence,
   et / ou de maîtrise du sujet, j'ai fait l'impasse sur les leçons _161_, _181_ et _220_.
 * Mon choix de [developpements](https://agreg.skyost.eu/developpements/).
 * Quelques [fiches](https://agreg.skyost.eu/fiches/) de révision.
 * Ma [bibliographie](https://agreg.skyost.eu/bibliographie/) personnelle.
 * Une liste personnelle de [conseils généraux](https://agreg.skyost.eu/fiches/conseils-generaux/) écrite suite aux
   oraux de cette année.
-* En bonus, [un historique](https://agreg.skyost.eu/historique/) de la liste des admis à l'agrégation externe depuis
-  1987.
+* En bonus, [un historique](https://agreg.skyost.eu/historique/) de la liste des admis à l'agrégation externe depuis 1987.
 
 En espérant que le contenu de ce site vous aide dans votre préparation à l'oral. Si vous avez une quelconque remarque
 / idée / correction à me soumettre, vous pouvez me contacter via [le formulaire](https://skyost.eu/fr/#contact) présent sur mon site.
@@ -20,7 +19,7 @@ En espérant que le contenu de ce site vous aide dans votre préparation à l'or
 
 Venez-nous rejoindre sur Discord pour échanger avec d'autres agrégatifs. Que ce soit pour des plans, des développements,
 des conseils ou pour parler, tout simplement !
-Le lien pour rejoindre le serveur est [le suivant](https://discord.gg/4eKrcDqd).
+Le lien pour rejoindre le serveur est [le suivant](https://discord.gg/pcpUC6Jbc3).
 
 ## Liens utiles
 

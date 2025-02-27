@@ -6,8 +6,8 @@ import type { Book, Category } from '../types'
 /**
  * Parses the content of a BibTeX file and extracts relevant information to create a Book object.
  *
- * @param {string} bibContent - Content of the BibTeX file.
- * @returns {Book} - Parsed Book object.
+ * @param bibContent Content of the BibTeX file.
+ * @returns Parsed Book object.
  */
 export const parseBib = (bibContent: string): Book => {
   const data = parse(bibContent)
@@ -33,24 +33,24 @@ export const parseBib = (bibContent: string): Book => {
 /**
  * Removes a trailing slash from a string if it exists.
  *
- * @param {string} string - Input string.
- * @returns {string} - String without the trailing slash.
+ * @param string Input string.
+ * @returns String without the trailing slash.
  */
 export const removeTrailingSlashIfPossible = (string: string): string => string.endsWith('/') ? string.substring(0, string.length - 1) : string
 
 /**
  * Extracts the filename from a given file path.
  *
- * @param {string} file - File path.
- * @returns {string} - Filename.
+ * @param file File path.
+ * @returns Filename.
  */
-export const getFileName = (file: string): string => path.parse(file).name
+export const getFilename = (file: string): string => path.parse(file).name
 
 /**
  * Normalizes a string by removing diacritics and converting to lowercase.
  *
- * @param {string} string - Input string.
- * @returns {string} - Normalized string.
+ * @param string Input string.
+ * @returns Normalized string.
  */
 export const normalizeString = (string: string): string => string
   .normalize('NFD')
@@ -60,17 +60,17 @@ export const normalizeString = (string: string): string => string
 /**
  * Retrieves a nested property from an object using a variable number of keys.
  *
- * @param {object} obj - Input object.
- * @param {...any} args - Keys to access the nested property.
- * @returns {any} - The nested property value or undefined if not found.
+ * @param obj Input object.
+ * @param args Keys to access the nested property.
+ * @returns The nested property value or undefined if not found.
  */
 export const getNested = (obj: object, ...args: any[]): any => args.reduce((obj, level) => obj && obj[level], obj)
 
 /**
  * Generates an MD5 checksum for a given string.
  *
- * @param {string} string - Input string.
- * @returns {string} - MD5 checksum.
+ * @param string Input string.
+ * @returns MD5 checksum.
  */
 export const generateChecksum = (string: string): string => crypto
   .createHash('md5')

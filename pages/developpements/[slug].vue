@@ -3,11 +3,7 @@ import { siteMeta } from '~/site/meta'
 import type { DevelopmentContent } from '~/types'
 
 const route = useRoute()
-const { error, pending, data: development } = useLazyAsyncData(
-  route.path,
-  () => queryContent<DevelopmentContent>('latex', 'developpements', route.params.slug.toString())
-    .findOne(),
-)
+const { data: development, status, error } = await useFetch<DevelopmentContent>(`/_api/latex/developpements/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
@@ -18,7 +14,7 @@ usePageHead({ title: 'Affichage d\'un développement' })
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="development">

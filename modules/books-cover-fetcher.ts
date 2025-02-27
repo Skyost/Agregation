@@ -11,8 +11,6 @@ import { siteMeta } from '../site/meta'
 
 /**
  * Options for the books cover fetcher module.
- *
- * @interface
  */
 export interface ModuleOptions {
   /**
@@ -103,11 +101,11 @@ export default defineNuxtModule<ModuleOptions>({
 /**
  * Fetches a book cover from various sources and saves it to a cache directory.
  *
- * @param {Resolver} resolver - The resolver for resolving paths.
- * @param {Book} book - The book for which to fetch the cover.
- * @param {string} destinationDirectory - The directory to store the fetched covers.
- * @param {DownloadSource[]} downloadSources - The download sources.
- * @returns {Promise<boolean>} - A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
+ * @param resolver The resolver for resolving paths.
+ * @param book The book for which to fetch the cover.
+ * @param destinationDirectory The directory to store the fetched covers.
+ * @param downloadSources The download sources.
+ * @returns A promise resolving to `true` if the cover was fetched successfully, `false` otherwise.
  */
 async function fetchBookCover(resolver: Resolver, book: Book, destinationDirectory: string, downloadSources: DownloadSource[]): Promise<boolean> {
   const destinationFile = resolver.resolve(destinationDirectory, `${book.isbn10}.jpg`)
@@ -129,8 +127,8 @@ abstract class DownloadSource {
   /**
    * Creates a new download source instance.
    *
-   * @param {string} name The download source name.
-   * @param {boolean} dontLogNoBookCover Whether not to log if getBookCoverUrl returns null.
+   * @param name The download source name.
+   * @param dontLogNoBookCover Whether not to log if getBookCoverUrl returns null.
    */
   protected constructor(private readonly name: string, private readonly dontLogNoBookCover: boolean = true) {
     this.name = name
@@ -140,9 +138,9 @@ abstract class DownloadSource {
   /**
    * Downloads the book to the given directory.
    *
-   * @param {Book} book The book.
-   * @param {string} destinationFile The destination file.
-   * @returns {Promise<boolean>} Whether the operation is a success.
+   * @param book The book.
+   * @param destinationFile The destination file.
+   * @returns Whether the operation is a success.
    */
   async download(book: Book, destinationFile: string): Promise<boolean> {
     logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
@@ -165,10 +163,10 @@ abstract class DownloadSource {
   /**
    * Downloads an image from a URL and saves it to a file.
    *
-   * @param {Book} book - The book.
-   * @param {string} url - The URL of the image to download.
-   * @param {string} destinationFile - The path to save the downloaded image.
-   * @returns {Promise<boolean>} - A promise indicating the completion of the download process.
+   * @param book The book.
+   * @param url The URL of the image to download.
+   * @param destinationFile The path to save the downloaded image.
+   * @returns A promise indicating the completion of the download process.
    */
   async downloadImage(book: Book, url: string, destinationFile: string): Promise<boolean> {
     try {
@@ -205,8 +203,8 @@ abstract class DownloadSource {
 
   /**
    * Should return the book cover URL.
-   * @param {Book} book The book.
-   * @returns {Promise<string | null>} The book cover URL.
+   * @param book The book.
+   * @returns The book cover URL.
    */
   abstract getBookCoverUrl(book: Book): Promise<string | null>
 }

@@ -3,11 +3,7 @@ import { siteMeta } from '~/site/meta'
 import type { SheetContent } from '~/types'
 
 const route = useRoute()
-const { error, pending, data: sheet } = useLazyAsyncData(
-  route.path,
-  () => queryContent<SheetContent>('latex', 'fiches', route.params.slug.toString())
-    .findOne(),
-)
+const { data: sheet, status, error } = await useFetch<SheetContent>(`/_api/latex/fiches/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
@@ -18,23 +14,11 @@ usePageHead({ title: 'Affichage d\'une fiche' })
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="sheet">
       <Title>{{ sheet['page-title'] }}</Title>
-      <Meta
-        name="description"
-        :content="sheet['page-description']"
-      />
-      <Meta
-        property="og:description"
-        :content="sheet['page-description']"
-      />
-      <Meta
-        name="twitter:description"
-        :content="sheet['page-description']"
-      />
       <main>
         <math-document :body="sheet.body" />
       </main>

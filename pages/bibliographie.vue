@@ -2,20 +2,14 @@
 import type { Book } from '~/types'
 import BookCard from '~/components/Cards/BookCard.vue'
 
-const route = useRoute()
-const { error, pending, data: books } = useLazyAsyncData(
-  route.path,
-  () => queryContent<Book>('latex', 'bibliographie')
-    .sort({ title: 1 })
-    .find(),
-)
+const { data: books, status, error } = await useFetch<Book[]>('/_api/bibliography/')
 
 usePageHead({ title: 'Bibliographie' })
 </script>
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="books">

@@ -6,16 +6,30 @@ import path from 'path'
 const cacheDirectory = 'node_modules/.cache/latex'
 
 /**
+ * Ignored files.
+ */
+const ignore = [
+  'content/latex/bibliography.tex',
+  'content/latex/common.tex',
+  'content/latex/gathering.tex',
+  'content/latex/pandoc.tex',
+  'content/latex/templates/gathering.tex',
+  'content/latex/templates/tikzpicture.tex',
+]
+
+/**
  * Helper function to get include graphics directories based on the relative path of the LaTeX file.
  */
 const getIncludeGraphicsDirectories = (texFileRelativePath: string) => [path.dirname(texFileRelativePath)]
 
 /**
  * Represents the configuration options for transforming LaTeX files into HTML using Pandoc.
- *
- * @interface
  */
 export interface LatexTransformOptions {
+  /**
+   * Contains files to ignore.
+   */
+  ignore: string[]
   /**
    * List of allowed asset extensions.
    */
@@ -37,9 +51,21 @@ export interface LatexTransformOptions {
    */
   getIncludeGraphicsDirectories: (texFileRelativePath: string) => string[]
   /**
+   * The Latex directory in the content directory.
+   */
+  latexContentDirectory: string
+  /**
    * Directory for storing transformed assets.
    */
   assetsDestinationDirectory: string
+  /**
+   * Directory for storing transformed Latex files.
+   */
+  latexDestinationDirectory: string
+  /**
+   * Directory for storing transformed Latex bib files.
+   */
+  bibDestinationDirectory: string
   /**
    * Path to the Pandoc redefinitions file.
    */
@@ -54,6 +80,7 @@ export interface LatexTransformOptions {
  * Transform options for LaTeX.
  */
 const latexTransformOptions: LatexTransformOptions = {
+  ignore,
   assetsExtension: ['.pdf', '.svg', '.png', '.jpeg', '.jpg', '.gif'],
   cacheDirectory,
   getAssetDestination: (relativePath: string): string => {
@@ -77,15 +104,16 @@ const latexTransformOptions: LatexTransformOptions = {
     return texFileRelativePath.substring(0, texFileRelativePath.length - extension.length)
   },
   getIncludeGraphicsDirectories,
-  assetsDestinationDirectory: 'node_modules/.nuxt-content-latex-assets/',
+  latexContentDirectory: 'latex',
+  assetsDestinationDirectory: 'node_modules/.latex-to-content/assets/',
+  latexDestinationDirectory: 'node_modules/.latex-to-content/latex/',
+  bibDestinationDirectory: 'node_modules/.latex-to-content/bibliography/',
   tikzPictureTemplate: 'content/latex/templates/tikzpicture.tex',
   pandocRedefinitions: 'content/latex/pandoc.tex',
 }
 
 /**
  * Represents the data for a gathering, specifying the directory and title.
- *
- * @interface
  */
 interface GatheringData {
   /**
@@ -100,8 +128,6 @@ interface GatheringData {
 
 /**
  * Represents a gathering, consisting of data entries and an optional header.
- *
- * @interface
  */
 interface Gathering {
   /**
@@ -116,8 +142,6 @@ interface Gathering {
 
 /**
  * Represents the configuration options for generating PDF files from LaTeX files.
- *
- * @interface
  */
 export interface LatexGenerateOptions {
   /**
@@ -162,14 +186,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
   previousBuildCacheDirectories: ['pdf', 'images'],
   sourceDirectory: 'content/latex/',
   destinationDirectory: 'pdf/',
-  ignore: [
-    'content/latex/bibliography.tex',
-    'content/latex/common.tex',
-    'content/latex/gathering.tex',
-    'content/latex/pandoc.tex',
-    'content/latex/templates/gathering.tex',
-    'content/latex/templates/tikzpicture.tex',
-  ],
+  ignore,
   gatherings: [
     {
       data: [

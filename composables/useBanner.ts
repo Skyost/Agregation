@@ -26,7 +26,7 @@ export interface Banner {
 
 /**
  * Custom Vue composable for managing banners.
- * @returns {Ref<Banner[]>} A reactive reference to the list of banners.
+ * @returns A reactive reference to the list of banners.
  */
 export const useBanners = (): Ref<Banner[]> => useState<Banner[]>('banners', () => [])
 
@@ -40,7 +40,7 @@ export const clearBanners = () => {
 
 /**
  * Adds a banner to the list.
- * @param {Banner} banner - The banner to be added.
+ * @param banner - The banner to be added.
  */
 export const useBanner = (banner: Banner) => {
   const banners = useBanners()
@@ -49,7 +49,7 @@ export const useBanner = (banner: Banner) => {
 
 /**
  * Adds a PDF-related banner to the list.
- * @param {string} url - The URL to the PDF.
+ * @param url - The URL to the PDF.
  */
 export const usePdfBanner = (url: string) => useBanner({
   type: BannerType.pdf,
@@ -59,7 +59,7 @@ export const usePdfBanner = (url: string) => useBanner({
 
 /**
  * Adds a caveats-related banner to the list.
- * @param {string} url - The URL for reporting issues or suggesting improvements.
+ * @param url - The URL for reporting issues or suggesting improvements.
  */
 export const useCaveatsBanner = (url: string) => useBanner({
   type: BannerType.caveats,
@@ -69,7 +69,7 @@ export const useCaveatsBanner = (url: string) => useBanner({
 
 /**
  * Adds a work-in-progress (WIP) banner to the list.
- * @param {string} url - The URL for contributing to the content.
+ * @param url - The URL for contributing to the content.
  */
 export const useWipBanner = (url: string) => useBanner({
   type: BannerType.wip,

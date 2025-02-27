@@ -2,23 +2,20 @@
 import type { Ranking } from '~/types'
 import RankingCard from '~/components/Cards/RankingCard.vue'
 
-const queryRankings = () => queryContent<Ranking>('latex', 'historique')
-  .sort({ 'page-name-search': -1 })
-  .without(['body'])
-  .find()
+const { data: rankings, status, error } = await useFetch<Ranking[]>('/_api/latex/historique/')
 
 const route = useRoute()
-const { error, pending, data: rankings } = useLazyAsyncData<Ranking[]>(route.path, queryRankings)
-
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
 
 usePageHead({ title: 'Historique des admissions' })
+
+const sortFunction = (rankings: Ranking[]) => rankings.sort((a, b) => b.slug.localeCompare(a.slug))
 </script>
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="rankings">
@@ -27,6 +24,7 @@ usePageHead({ title: 'Historique des admissions' })
         input-id="rankings-search-field"
         :items="rankings"
         :search-fields="['name', 'summary']"
+        :sort-function="sortFunction"
       >
         <template #default="slotProps">
           <ranking-card :ranking="slotProps.item" />

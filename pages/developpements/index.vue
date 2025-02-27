@@ -2,14 +2,9 @@
 import type { Development } from '~/types'
 import DevelopmentCard from '~/components/Cards/DevelopmentCard.vue'
 
-const queryDevelopments = () => queryContent<Development>('latex', 'developpements')
-  .sort({ 'page-name-search': 1 })
-  .without(['body'])
-  .find()
+const { data: developments, status, error } = await useFetch<Development[]>('/_api/latex/developpements/')
 
 const route = useRoute()
-const { error, pending, data: developments } = useLazyAsyncData<Development[]>(route.path, queryDevelopments)
-
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
 
@@ -18,7 +13,7 @@ usePageHead({ title: 'Liste des développements' })
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="developments">

@@ -3,11 +3,7 @@ import { siteMeta } from '~/site/meta'
 import type { RankingContent } from '~/types'
 
 const route = useRoute()
-const { error, pending, data: ranking } = useLazyAsyncData(
-  route.path,
-  () => queryContent<RankingContent>('latex', 'historique', route.params.slug.toString())
-    .findOne(),
-)
+const { data: ranking, status, error } = await useFetch<RankingContent>(`/_api/latex/historique/${route.params.slug}.json`)
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
@@ -25,7 +21,7 @@ defineRouteRules({
 
 <template>
   <div>
-    <div v-if="pending">
+    <div v-if="status === 'pending'">
       <spinner />
     </div>
     <div v-else-if="ranking">

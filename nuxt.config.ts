@@ -6,8 +6,23 @@ import { siteMeta } from './site/meta'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  modules: [
+    '@nuxt/eslint',
+    '~/modules/books-cover-fetcher',
+    'nuxt-cname-generator',
+    '~/modules/readme-md-to-content',
+    '~/modules/commit-sha-file-generator',
+    '~/modules/latex-pdf-generator',
+    '~/modules/latex-to-content',
+    '@bootstrap-vue-next/nuxt',
+    '@nuxtjs/google-fonts',
+    'nuxt-link-checker',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    '@nuxt/icon',
+  ],
+
   ssr: true,
-  compatibilityDate: '2024-07-01',
 
   app: {
     head: {
@@ -30,6 +45,28 @@ export default defineNuxtConfig({
     '~/node_modules/katex/dist/katex.min.css',
   ],
 
+  site: {
+    url: siteMeta.url,
+    name: siteMeta.title,
+    trailingSlash: true,
+  },
+
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        trailingSlash: 'append',
+      },
+    },
+    inlineRouteRules: true,
+  },
+  compatibilityDate: '2024-07-01',
+
+  nitro: {
+    prerender: {
+      routes: ['/'],
+    },
+  },
+
   vite: {
     plugins: [
       StylelintPlugin(),
@@ -50,64 +87,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-    '@nuxt/eslint',
-    '~/modules/books-cover-fetcher',
-    'nuxt-cname-generator',
-    '~/modules/commit-sha-file-generator',
-    '~/modules/nuxt-content-absolute-links',
-    '~/modules/latex-pdf-generator',
-    '~/modules/nuxt-content-bibtex',
-    '~/modules/nuxt-content-latex',
-    '@bootstrap-vue-next/nuxt',
-    '@nuxt/content',
-    '@nuxtjs/google-fonts',
-    'nuxt-link-checker',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
-    '@nuxt/icon',
-    // '@nuxt/image'
-  ],
-
-  icon: {
-    provider: 'iconify',
-    class: 'vue-icon',
-  },
-
-  nitro: {
-    prerender: {
-      routes: ['/'],
-    },
+  cname: {
+    host: siteMeta.url,
   },
 
   eslint: {
     config: {
       stylistic: true,
-    },
-  },
-
-  content: {
-    watch: false,
-    markdown: {
-      anchorLinks: false,
-    },
-    ignores: [
-      ...'log,aux,dvi,lof,lot,bit,idx,glo,bbl,bcf,ilg,toc,ind,out,blg,fdb_latexmk,fls,run.xml,synctex.gz,snm,nav,sta,pdf,checksums,py'
-        .split(',')
-        .map(extension => `\\.${extension}$`),
-      '/latex/bibliography.tex',
-      '/latex/common.tex',
-      '/latex/pandoc.tex',
-      '/latex/developpements.tex',
-      '/latex/fiches.tex',
-      '/latex/lecons.tex',
-      '/latex/lecons-developpements.tex',
-      '/latex/historique.tex',
-      '/latex/templates/gathering.tex',
-      '/latex/templates/tikzpicture.tex',
-    ],
-    experimental: {
-      search: true,
     },
   },
 
@@ -119,14 +105,9 @@ export default defineNuxtConfig({
     },
   },
 
-  site: {
-    url: siteMeta.url,
-    name: siteMeta.title,
-    trailingSlash: true,
-  },
-
-  robots: {
-    disallow: ['/historique/*'],
+  icon: {
+    provider: 'iconify',
+    class: 'vue-icon',
   },
 
   linkChecker: {
@@ -140,16 +121,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  cname: {
-    host: siteMeta.url,
-  },
-
-  experimental: {
-    defaults: {
-      nuxtLink: {
-        trailingSlash: 'append',
-      },
-    },
-    inlineRouteRules: true,
+  robots: {
+    disallow: ['/historique/*'],
   },
 })

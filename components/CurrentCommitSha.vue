@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { siteMeta } from '~/site/meta'
 
-const { data: commitSha } = useLazyAsyncData(
-  'current-commit-sha',
-  () => queryContent('latest-commit')
-    .findOne(),
-)
+const { data: commitSha } = await useFetch<{ long: string, short: string }>('/_api/latest-commit/')
 const githubRepo = `https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`
 </script>
 

@@ -3,11 +3,17 @@ import type { Category } from '~/types'
 
 type CategoryOrUndefined = Category | undefined
 
-const props = defineProps<{
-  inputId: string
-  items: T[]
-  searchFields?: string[]
-}>()
+const props = withDefaults(
+  defineProps<{
+    inputId: string
+    items: T[]
+    searchFields?: string[]
+    sortFunction?: (items: T[]) => T[]
+  }>(),
+  {
+    sortFunction: (items: any[]) => items.sort(),
+  },
+)
 
 const currentCategory = ref<CategoryOrUndefined>()
 const search = ref<string>('')
@@ -24,7 +30,7 @@ const categories = computed<CategoryOrUndefined[]>(() => {
   return result
 })
 
-const itemsToDisplay = computed<T[]>(() => props.items.filter(filter).sort())
+const itemsToDisplay = computed<T[]>(() => props.sortFunction(props.items.filter(filter)))
 
 const filter = (item: T) => {
   let result = true

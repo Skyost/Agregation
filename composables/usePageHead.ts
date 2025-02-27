@@ -28,7 +28,7 @@ export interface PageHead {
 
 /**
  * Adds the specified tags to the page head.
- * @param {PageHead} pageHead The parameters to use.
+ * @param pageHead The parameters to use.
  */
 export const usePageHead = (pageHead: PageHead) => {
   const head: PageHead = { ...pageHead }
