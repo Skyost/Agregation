@@ -27,11 +27,17 @@ const setupDocument = () => {
     element.style.right = paddingRight
   }
 
+  const router = useRouter()
   const devLinks = root.value!.querySelectorAll<HTMLElement>('.devlink')
   for (const devLink of devLinks) {
     const linkA = document.createElement('a')
+    const href = `/developpements/${devLink.textContent!.trim()}/`
     linkA.innerText = 'Développement'
-    linkA.setAttribute('href', `/developpements/${devLink.textContent!.trim()}/`)
+    linkA.setAttribute('href', href)
+    linkA.onclick = (event) => {
+      event.preventDefault()
+      router.push(href)
+    }
     devLink.replaceChildren(...[linkA])
     if (devLink.nextElementSibling) {
       devLink.parentNode?.insertBefore(devLink.nextElementSibling, devLink)

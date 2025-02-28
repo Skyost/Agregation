@@ -1,6 +1,6 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { addPrerenderRoutes, addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
+import { addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 import { filename, storageKey } from './common'
 
 /**
@@ -54,7 +54,6 @@ export default defineNuxtModule({
       route: `/_api/latest-commit`,
       handler: resolver.resolve(`./handler.ts`),
     })
-    addPrerenderRoutes('/')
     logger.success(`Pointing "/_api/latest-commit/" to "${destinationDirectoryPath}".`)
   },
 })

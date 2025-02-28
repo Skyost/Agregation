@@ -61,12 +61,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-07-01',
 
-  nitro: {
-    prerender: {
-      routes: ['/'],
-    },
-  },
-
   vite: {
     plugins: [
       StylelintPlugin(),

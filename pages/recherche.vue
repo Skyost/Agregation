@@ -9,9 +9,9 @@ const route = useRoute()
 const request = route.query.requete?.toString()
 const regexPattern = computed<string>(() => request ? normalizeString(request) : '.*')
 
-const { status: lessonsQueryStatus, data: allLessons } = await useFetch<Lesson[]>(`/_api/latex/developpements/index.json`)
+const { status: lessonsQueryStatus, data: allLessons } = await useFetch<Lesson[]>(`/_api/latex/lecons/index.json`)
 
-const { status: developmentsQueryStatus, data: allDevelopments } = await useFetch<Development[]>(`/_api/latex/lecons/index.json`)
+const { status: developmentsQueryStatus, data: allDevelopments } = await useFetch<Development[]>(`/_api/latex/developpements/index.json`)
 
 const { status: sheetsQueryStatus, data: allSheets } = await useFetch<Sheet[]>(`/_api/latex/fiches/index.json`)
 

@@ -2,11 +2,13 @@
 const props = defineProps<{ error: any }>()
 
 const errorCode = computed(() => {
-  if (/^-?\d+$/.test(props.error.toString())) {
-    return parseInt(props.error.toString())
-  }
-  if (Object.prototype.hasOwnProperty.call(props.error, 'statusCode')) {
-    return parseInt(props.error.statusCode)
+  if (props.error) {
+    if (/^-?\d+$/.test(props.error.toString())) {
+      return parseInt(props.error.toString())
+    }
+    if (Object.prototype.hasOwnProperty.call(props.error, 'statusCode')) {
+      return parseInt(props.error.statusCode)
+    }
   }
   return null
 })
@@ -20,13 +22,18 @@ const title = computed(() => {
   }
   return 'Erreur'
 })
+
+const goBack = () => window.history.back()
 </script>
 
 <template>
   <div>
     <h1 v-text="title" />
     <p>
-      Vous pouvez continuer votre navigation en allant sur <a href="javascript:history.back()">la page précédente</a> ou
+      Vous pouvez continuer votre navigation en allant sur <a
+        href="/"
+        @click.prevent="goBack"
+      >la page précédente</a> ou
       en allant sur <nuxt-link to="/">la page d'accueil</nuxt-link>.
       <span v-if="errorCode === 404">
         Si quelque chose devait se trouver ici,
