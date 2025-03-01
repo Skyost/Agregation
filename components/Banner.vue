@@ -37,7 +37,7 @@ const icon = computed(() => {
   >
     <icon
       class="icon"
-      :icon="`bi:${icon}`"
+      :name="`bi:${icon}`"
     />
     <p
       class="mb-0"

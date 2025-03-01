@@ -22,7 +22,7 @@ import { siteMeta } from '~/site/meta'
           <p class="mb-0">
             Les contenus de ce site sont disponibles sous licence
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.
-            Le site en lui-même est totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/master/LICENSE`">open-source</a>,
+            Le site en lui-même est totalement <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/blob/main/LICENSE`">open-source</a>,
             vous pouvez aller voir ça sur <a :href="`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}`">Github</a>.
           </p>
           <ul class="logos">

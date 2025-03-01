@@ -7,7 +7,7 @@ const { data: lesson, status, error } = await useFetch<LessonContent>(`/_api/lat
 
 const path = removeTrailingSlashIfPossible(route.path)
 usePdfBanner(`/pdf${path}.pdf`)
-useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/master/content/latex${path}.tex`)
+useCaveatsBanner(`https://github.com/${siteMeta.github.username}/${siteMeta.github.repository}/edit/main/content/latex${path}.tex`)
 
 usePageHead({ title: 'Affichage d\'une leçon' })
 </script>
