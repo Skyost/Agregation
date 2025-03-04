@@ -3,6 +3,28 @@ defineProps<{ body: string }>()
 const root = ref<HTMLElement | null>(null)
 const setupTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
 
+const needMarkerPseudoElementFix = () => {
+  const testElement = document.createElement('li')
+  testElement.style.setProperty('content', '\'(i)\'', 'important')
+  return getComputedStyle(testElement, '::marker').content === 'none'
+}
+
+const romanize = (n: number): string | null => {
+  if (isNaN(n)) {
+    return null
+  }
+  const digits = String(+n).split('')
+  const key = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM',
+    '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC',
+    '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+  let roman = ''
+  let i = 3
+  while (i--) {
+    roman = (key[+digits.pop()! + (i * 10)] || '') + roman
+  }
+  return Array(+digits.join('') + 1).join('M') + roman
+}
+
 const setupDocument = () => {
   const tables = root.value!.querySelectorAll<HTMLElement>('table')
   for (const table of tables) {
@@ -12,6 +34,20 @@ const setupDocument = () => {
     wrapper.classList.add('table-responsive')
     parent!.replaceChild(wrapper, table)
     wrapper.appendChild(table)
+  }
+
+  if (needMarkerPseudoElementFix()) {
+    const lists = root.value!.querySelectorAll<HTMLElement>('ol')
+    for (const list of lists) {
+      list.classList.add('safari-ol-fix')
+      const items = list.querySelectorAll<HTMLElement>('li')
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        item.classList.add('safari-li-fix')
+        const marker = `<span class="safari-marker">(${romanize(i + 1)!.toLowerCase()})</span> `
+        item.insertAdjacentHTML('afterbegin', marker)
+      }
+    }
   }
 
   const references = root.value!.querySelectorAll<HTMLElement>('.bookref')
@@ -229,6 +265,25 @@ onUnmounted(() => {
 
     > li::marker {
       content: "(" counter(ol, lower-roman) ") ";
+    }
+
+    &.safari-ol-fix {
+      padding-left: 0;
+
+      .safari-li-fix {
+        display: flex;
+
+        > *:not(.safari-marker) {
+          flex: 1;
+        }
+
+        .safari-marker {
+          display: inline-block;
+          text-align: right;
+          padding-right: 0.3rem;
+          min-width: 2rem;
+        }
+      }
     }
   }
 
