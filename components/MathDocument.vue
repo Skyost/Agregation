@@ -237,22 +237,12 @@ onUnmounted(() => {
 
   :deep(.proof-label),
   :deep(.devlink > a) {
-    display: inline-block;
+    float: left;
     margin-bottom: 1rem;
     font-size: .8em;
     padding: 0;
     text-decoration: none !important;
-    color: rgba(0,0,0,.75);
-
-    &::before {
-      display: inline-block;
-      margin-right: 0.5em;
-      content: '▶';
-    }
-  }
-
-  :deep(details[open]) .proof-label::before {
-    content: '▼';
+    color: rgba(black, 0.75);
   }
 
   :deep(ol) {
