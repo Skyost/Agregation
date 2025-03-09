@@ -271,10 +271,13 @@ class DeBoeckSuperieurImageDownloadSource extends DownloadSource {
   }
 
   override async getBookCoverUrl(book: Book): Promise<string | null> {
-    if (book.publisher !== 'De Boeck Supérieur') {
+    const prefix = 'https://www.deboecksuperieur.com/ouvrage/'
+    if (!book.website.startsWith(prefix)) {
       return null
     }
-    return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/couverture_grande/public/couvertures/${book.isbn13.replaceAll('-', '')}-g.jpg`)
+    let id = book.website.substring(prefix.length)
+    id = id.substring(0, id.indexOf('/'))
+    return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/couverture_grande/public/couvertures/${id}-g.jpg`)
   }
 }
 
