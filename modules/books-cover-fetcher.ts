@@ -78,6 +78,7 @@ export default defineNuxtModule<ModuleOptions>({
     const downloadSources: DownloadSource[] = [
       new AltCoverDownloadSource(),
       new GoogleServersDownloadSource(),
+      new DeBoeckSuperieurImageDownloadSource(),
       new OpenGraphImageDownloadSource(),
       new PreviousBuildDownloadSource(options.siteUrl, options.booksImagesUrl),
     ]
@@ -255,6 +256,25 @@ class GoogleServersDownloadSource extends DownloadSource {
       logger.warn(ex)
     }
     return null
+  }
+}
+
+/**
+ * Downloads a book cover from De Boeck Supérieur servers.
+ */
+class DeBoeckSuperieurImageDownloadSource extends DownloadSource {
+  /**
+   * Creates a new De Boeck Supérieur download source instance.
+   */
+  constructor() {
+    super('De Boeck Supérieur')
+  }
+
+  override async getBookCoverUrl(book: Book): Promise<string | null> {
+    if (book.publisher !== 'De Boeck Supérieur') {
+      return null
+    }
+    return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/couverture_grande/public/couvertures/${book.isbn13.replaceAll('-', '')}-g.jpg`)
   }
 }
 
