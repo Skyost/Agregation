@@ -276,7 +276,7 @@ class DeBoeckSuperieurImageDownloadSource extends DownloadSource {
       return null
     }
     let id = book.website.substring(prefix.length)
-    id = id.substring(0, id.indexOf('/'))
+    id = id.substring(0, id.indexOf('-'))
     return Promise.resolve(`https://www.deboecksuperieur.com/sites/default/files/styles/couverture_grande/public/couvertures/${id}-g.jpg`)
   }
 }
