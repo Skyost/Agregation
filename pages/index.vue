@@ -13,16 +13,18 @@ const onLinkClick = (event: MouseEvent) => {
 </script>
 
 <template>
-  <div v-if="status === 'pending'">
-    <spinner />
-  </div>
-  <div v-else-if="data">
-    <div
-      @click="onLinkClick"
-      v-html="data.body"
-    />
-  </div>
-  <div v-else>
-    <error-display :error="error" />
+  <div>
+    <div v-if="status === 'pending'">
+      <spinner />
+    </div>
+    <div v-else-if="data">
+      <div
+        @click="onLinkClick"
+        v-html="data.body"
+      />
+    </div>
+    <div v-else>
+      <error-display :error="error" />
+    </div>
   </div>
 </template>

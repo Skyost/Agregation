@@ -129,11 +129,11 @@ abstract class DownloadSource {
    * Creates a new download source instance.
    *
    * @param name The download source name.
-   * @param dontLogNoBookCover Whether not to log if getBookCoverUrl returns null.
+   * @param logNoBookCover Whether to log if `getBookCoverUrl` returns null.
    */
-  protected constructor(private readonly name: string, private readonly dontLogNoBookCover: boolean = true) {
+  protected constructor(private readonly name: string, private readonly logNoBookCover: boolean = false) {
     this.name = name
-    this.dontLogNoBookCover = dontLogNoBookCover
+    this.logNoBookCover = logNoBookCover
   }
 
   /**
@@ -144,14 +144,16 @@ abstract class DownloadSource {
    * @returns Whether the operation is a success.
    */
   async download(book: Book, destinationFile: string): Promise<boolean> {
-    logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
+    const logDownloadStart = () => logger.info(`Trying to download the book cover of [${book.short}] from source "${this.name}"...`)
     const coverUrl = await this.getBookCoverUrl(book)
     if (!coverUrl) {
-      if (!this.dontLogNoBookCover) {
+      if (this.logNoBookCover) {
+        logDownloadStart()
         logger.warn(`Failed to resolve the cover URL of [${book.short}] from source "${this.name}".`)
       }
       return false
     }
+    logDownloadStart()
     const result = await this.downloadImage(book, coverUrl, destinationFile)
     if (!result) {
       logger.warn(`The downloading of the book [${book.short}] cover url "${coverUrl}" from "${this.name}" source failed.`)
