@@ -1,0 +1,1 @@
+import{L as o}from"./DVAJ79Zk.js";import{d as n,a as s,o as r}from"./CJWQKahL.js";const l=n({__name:"LessonCard",props:{lesson:{}},setup(t){return(e,a)=>(r(),s(o,{"btn-check":"Consulter le plan","link-prefix":"lecons",object:e.lesson},null,8,["object"]))}});export{l as _};

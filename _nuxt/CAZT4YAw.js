@@ -1,0 +1,1 @@
+import{L as t}from"./DVAJ79Zk.js";import{d as o,a as s,o as a,w as n,e as r}from"./CJWQKahL.js";const c=["innerHTML"],m=o({__name:"SheetCard",props:{sheet:{}},setup(i){return(e,p)=>(a(),s(t,{"btn-check":"Consulter la fiche","link-prefix":"fiches",object:e.sheet},{default:n(()=>[r("p",{innerHTML:e.sheet.summary},null,8,c)]),_:1},8,["object"]))}});export{m as _};
