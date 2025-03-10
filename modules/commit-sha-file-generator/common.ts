@@ -6,4 +6,4 @@ export const storageKey = `commit-sha-file-generator`
 /**
  * The filename.
  */
-export const filename = `latest-commit.json`
+export const filename = `index.json`

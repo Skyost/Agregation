@@ -1,6 +1,7 @@
 <template>
   <div class="p-5 text-center">
     <b-spinner
+      class="m-auto"
       variant="dark"
       label="Chargement..."
     />
