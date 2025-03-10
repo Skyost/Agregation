@@ -584,18 +584,6 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
   }
 
   override getExtractedImageDirectoryPath(extractedFrom: string, extractedFileName: string): string {
-    logger.warn(path.resolve(
-      this.sourceDirectoryPath,
-      this.options.assetsDestinationDirectory,
-      path.dirname(
-        this.options.getAssetDestination(
-          path.relative(
-            this.contentDirectoryPath,
-            path.resolve(path.dirname(extractedFrom), extractedFileName),
-          ),
-        ),
-      ).replace(/\\/g, '/') + '/' + getFilename(extractedFrom),
-    ))
     return path.resolve(
       this.sourceDirectoryPath,
       this.options.assetsDestinationDirectory,
