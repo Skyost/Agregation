@@ -594,7 +594,8 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
             path.resolve(path.dirname(extractedFrom), extractedFileName),
           ),
         ),
-      ).replace(/\\/g, '/') + '/' + getFilename(extractedFrom),
+      ).replace(/\\/g, '/'),
+      getFilename(extractedFrom),
     )
   }
 
