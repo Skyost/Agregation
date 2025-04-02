@@ -1,0 +1,6 @@
+# START nuxt-robots (indexable)
+User-agent: *
+Disallow: /historique/*
+
+Sitemap: https://agreg.skyost.eu/sitemap.xml
+# END nuxt-robots

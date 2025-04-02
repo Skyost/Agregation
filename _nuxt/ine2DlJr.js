@@ -1,0 +1,1 @@
+import{_ as t}from"./CQVPwd90.js";import{n,c,o,b as _}from"./BjrUhK0A.js";const a={},s={class:"p-5 text-center"};function r(f,m){const e=t;return o(),c("div",s,[_(e,{class:"m-auto",variant:"dark",label:"Chargement..."})])}const i=n(a,[["render",r],["__scopeId","data-v-def7f8ff"]]);export{i as _};
