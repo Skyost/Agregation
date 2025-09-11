@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import { addPrerenderRoutes, addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 import { marked } from 'marked'
 import { storageKey, filename } from './common.ts'
-import { siteMeta } from '~/site/meta.ts'
+import { siteMeta } from '../../app/site/meta.ts'
 
 /**
  * The module name.
@@ -18,13 +18,13 @@ export default defineNuxtModule({
   meta: {
     name: 'readme-md-to-content',
     version: '0.0.1',
-    compatibility: { nuxt: '^3.0.0' },
+    compatibility: { nuxt: '^4.0.0' },
   },
   setup: async (_, nuxt) => {
     const resolver = createResolver(import.meta.url)
 
     // Read README.md file.
-    const readmeFilePath = resolver.resolve(nuxt.options.srcDir, 'README.md')
+    const readmeFilePath = resolver.resolve(nuxt.options.rootDir, 'README.md')
     if (!fs.existsSync(readmeFilePath)) {
       logger.fatal(`${readmeFilePath} not found.`)
       return
@@ -32,7 +32,7 @@ export default defineNuxtModule({
 
     // Render into HTML.
     const renderedMarkdown = await marked.parse(fs.readFileSync(readmeFilePath, { encoding: 'utf8' }))
-    const destinationDirectoryPath = resolver.resolve(nuxt.options.srcDir, 'node_modules', `.${name}`)
+    const destinationDirectoryPath = resolver.resolve(nuxt.options.rootDir, 'node_modules', `.${name}`)
     const destinationFilePath = resolver.resolve(destinationDirectoryPath, filename)
     fs.mkdirSync(destinationDirectoryPath, { recursive: true })
     fs.writeFileSync(destinationFilePath, JSON.stringify({ body: renderedMarkdown.replaceAll(siteMeta.url, '') }))

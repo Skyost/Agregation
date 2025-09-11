@@ -1,13 +1,13 @@
 // noinspection ES6PreferShortImport
 
-import fs from 'fs'
+import * as fs from 'fs'
 import { ofetch } from 'ofetch'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { parse, type HTMLElement } from 'node-html-parser'
 import sharp from 'sharp'
-import { getNested, parseBib } from '../utils/utils'
-import type { Book } from '../types'
-import { siteMeta } from '../site/meta'
+import { getNested, parseBib } from '../app/utils/utils'
+import type { Book } from '../app/types'
+import { siteMeta } from '../app/site/meta'
 
 /**
  * Options for the books cover fetcher module.
@@ -45,7 +45,7 @@ export default defineNuxtModule<ModuleOptions>({
     name,
     version: '0.0.1',
     configKey: 'booksCover',
-    compatibility: { nuxt: '^3.0.0' },
+    compatibility: { nuxt: '^4.0.0' },
   },
   defaults: {
     siteUrl: siteMeta.url,
@@ -56,14 +56,14 @@ export default defineNuxtModule<ModuleOptions>({
     logger.info('Fetching books covers...')
 
     const resolver = createResolver(import.meta.url)
-    const destinationDirectory = resolver.resolve(nuxt.options.srcDir, 'node_modules/.cache/books-covers/')
+    const destinationDirectory = resolver.resolve(nuxt.options.rootDir, 'node_modules/.cache/books-covers/')
 
     // Create directory if it doesn't exist.
     if (!fs.existsSync(destinationDirectory)) {
       fs.mkdirSync(destinationDirectory, { recursive: true })
     }
 
-    const booksDirectory = resolver.resolve(nuxt.options.srcDir, options.booksDirectory)
+    const booksDirectory = resolver.resolve(nuxt.options.rootDir, options.booksDirectory)
 
     // Add public asset configuration.
     nuxt.options.nitro.publicAssets = nuxt.options.nitro.publicAssets || []

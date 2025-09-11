@@ -67,7 +67,8 @@ const searchValue = ref(route.query.requete?.toString())
           ref="formRef"
           action="/recherche/"
           method="get"
-          class="mt-2 mt-lg-0 w-100"
+          class="mt-2 mt-lg-0"
+          form-class="w-100"
         >
           <b-input-group
             size="sm"

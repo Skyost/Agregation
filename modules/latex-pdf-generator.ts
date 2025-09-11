@@ -6,10 +6,10 @@ import AdmZip from 'adm-zip'
 import { Octokit } from '@octokit/core'
 import { createResolver, defineNuxtModule, type Resolver, useLogger } from '@nuxt/kit'
 import { LatexChecksumsCalculator, LatexIncludeCommand, PdfGenerator } from 'that-latex-lib'
-import { getFilename } from '../utils/utils'
-import { type GithubRepository, siteMeta } from '../site/meta'
-import { latexOptions, type LatexGenerateOptions } from '../site/latex'
-import { debug } from '../site/debug'
+import { getFilename } from '../app/utils/utils'
+import { type GithubRepository, siteMeta } from '../app/site/meta'
+import { latexOptions, type LatexGenerateOptions } from '../app/site/latex'
+import { debug } from '../app/site/debug'
 
 /**
  * Options for the PDF generator module.
@@ -36,7 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name,
     version: '0.0.1',
-    compatibility: { nuxt: '^3.0.0' },
+    compatibility: { nuxt: '^4.0.0' },
     configKey: 'latexPdfGenerator',
   },
   defaults: {
@@ -46,12 +46,12 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup: async (options, nuxt) => {
     const resolver = createResolver(import.meta.url)
-    const srcDir = nuxt.options.srcDir
-    const latexDirectoryPath = resolver.resolve(srcDir, options.sourceDirectory)
+    const rootDir = nuxt.options.rootDir
+    const latexDirectoryPath = resolver.resolve(rootDir, options.sourceDirectory)
 
     // Download the previous build.
     // This allows to not compile files if they haven't changed.
-    let previousBuildDirectoryPath = resolver.resolve(srcDir, options.previousBuildDirectoryPath)
+    let previousBuildDirectoryPath = resolver.resolve(rootDir, options.previousBuildDirectoryPath)
     const downloadResult = await downloadPreviousBuild(resolver, previousBuildDirectoryPath, options)
     previousBuildDirectoryPath = resolver.resolve(previousBuildDirectoryPath, options.destinationDirectory)
 
@@ -59,11 +59,11 @@ export default defineNuxtModule<ModuleOptions>({
     const generatedGatherings = generateGatherings(resolver, latexDirectoryPath, options)
 
     // And generate all PDFs !
-    const ignore = options.ignore.map(file => resolver.resolve(srcDir, file))
-    const destinationDirectoryPath = resolver.resolve(srcDir, 'node_modules', `.${name}`, options.destinationDirectory)
+    const ignore = options.ignore.map(file => resolver.resolve(rootDir, file))
+    const destinationDirectoryPath = resolver.resolve(rootDir, 'node_modules', `.${name}`, options.destinationDirectory)
     generatePdf(
       resolver,
-      path.relative(resolver.resolve(srcDir, 'content'), latexDirectoryPath),
+      path.relative(resolver.resolve(rootDir, 'content'), latexDirectoryPath),
       latexDirectoryPath,
       destinationDirectoryPath,
       ignore,

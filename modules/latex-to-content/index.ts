@@ -1,7 +1,7 @@
 // noinspection ES6PreferShortImport
 
-import fs from 'fs'
-import path from 'path'
+import * as fs from 'fs'
+import * as path from 'path'
 import {
   addServerHandler,
   createResolver,
@@ -12,10 +12,10 @@ import {
 import type { HTMLElement } from 'node-html-parser'
 import { KatexRenderer, LatexImageExtractor, PandocCommand, PandocTransformer, SvgGenerator } from 'that-latex-lib'
 import { latexStorageKey, bibStorageKey } from './common'
-import { latexOptions, type LatexTransformOptions } from '~/site/latex'
-import type { Book, LatexContentObjectWithBody } from '~/types'
-import { debug } from '~/site/debug'
-import { getFilename, parseBib, normalizeString } from '~/utils/utils.ts'
+import { latexOptions, type LatexTransformOptions } from '../../app/site/latex'
+import type { Book, LatexContentObjectWithBody } from '../../app/types'
+import { debug } from '../../app/site/debug'
+import { getFilename, parseBib, normalizeString } from '../../app/utils/utils.ts'
 
 /**
  * The name of this module.
@@ -35,12 +35,12 @@ export default defineNuxtModule<LatexTransformOptions>({
     name,
     version: '0.0.1',
     configKey: 'latexToContent',
-    compatibility: { nuxt: '^3.0.0' },
+    compatibility: { nuxt: '^4.0.0' },
   },
   defaults: latexOptions.transform,
   async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
-    const sourceDirectoryPath = nuxt.options.srcDir
+    const rootDirectoryPath = nuxt.options.rootDir
 
     // Set up Nitro externals for .tex content transformation.
     nuxt.options.nitro.externals = nuxt.options.nitro.externals || {}
@@ -48,8 +48,8 @@ export default defineNuxtModule<LatexTransformOptions>({
     nuxt.options.nitro.externals.inline.push(resolver.resolve('.'))
 
     // Process additional assets such as images.
-    const contentDirectory = resolver.resolve(sourceDirectoryPath, 'content')
-    const assetsDestinationPath = resolver.resolve(sourceDirectoryPath, options.assetsDestinationDirectory)
+    const contentDirectory = resolver.resolve(rootDirectoryPath, 'content')
+    const assetsDestinationPath = resolver.resolve(rootDirectoryPath, options.assetsDestinationDirectory)
     processAssets(resolver, contentDirectory, assetsDestinationPath, options)
 
     // Register them in Nitro.
@@ -63,8 +63,8 @@ export default defineNuxtModule<LatexTransformOptions>({
 
     // Transforms .tex files into content for Nuxt.
     const latexDirectoryPath = resolver.resolve(contentDirectory, options.latexContentDirectory)
-    const latexDestinationPath = resolver.resolve(sourceDirectoryPath, options.latexDestinationDirectory)
-    processLatexFiles(resolver, sourceDirectoryPath, latexDirectoryPath, latexDestinationPath, options)
+    const latexDestinationPath = resolver.resolve(rootDirectoryPath, options.latexDestinationDirectory)
+    await processLatexFiles(resolver, rootDirectoryPath, latexDirectoryPath, latexDestinationPath, options)
     nuxt.options.nitro.publicAssets.push({
       baseURL: `/_api/latex/`,
       dir: latexDestinationPath,
@@ -86,8 +86,8 @@ export default defineNuxtModule<LatexTransformOptions>({
     logger.success(`Pointing "/_api/latex/" to "${latexDestinationPath}".`)
 
     // Transforms .bib files into content for Nuxt.
-    const bibDestinationPath = resolver.resolve(sourceDirectoryPath, options.bibDestinationDirectory)
-    processBibFiles(resolver, sourceDirectoryPath, latexDirectoryPath, bibDestinationPath, options)
+    const bibDestinationPath = resolver.resolve(rootDirectoryPath, options.bibDestinationDirectory)
+    processBibFiles(resolver, rootDirectoryPath, latexDirectoryPath, bibDestinationPath, options)
     nuxt.options.nitro.publicAssets.push({
       baseURL: `/_api/bibliography/`,
       dir: bibDestinationPath,
@@ -162,7 +162,7 @@ const processAssets = (
  * @param targetDirectoryPath Where to put the processed files.
  * @param options The module option.
  */
-const processLatexFiles = (
+const processLatexFiles = async (
   resolver: Resolver,
   sourceDirectoryPath: string,
   directoryPath: string,
@@ -191,7 +191,7 @@ const processLatexFiles = (
     }
 
     if (file.endsWith('.tex')) {
-      const result = processLatexFile(resolver, sourceDirectoryPath, filePath, targetDirectoryPath, options)
+      const result = await processLatexFile(resolver, sourceDirectoryPath, filePath, targetDirectoryPath, options)
       if (result) {
         fs.writeFileSync(
           resolver.resolve(targetDirectoryPath, `${result.slug}.json`),
@@ -223,13 +223,13 @@ const processLatexFiles = (
  * @param targetDirectoryPath Where to put the processed files.
  * @param options The module option.
  */
-const processLatexFile = (
+const processLatexFile = async (
   resolver: Resolver,
   sourceDirectoryPath: string,
   filePath: string,
   targetDirectoryPath: string,
   options: LatexTransformOptions,
-): LatexContentObjectWithBody | undefined => {
+): Promise<LatexContentObjectWithBody | undefined> => {
   // Absolute path to the .tex file.
   logger.info(`Processing ${filePath}...`)
   fs.mkdirSync(targetDirectoryPath, { recursive: true })
@@ -263,7 +263,7 @@ const processLatexFile = (
     }),
   })
   // Transforms the raw content into HTML.
-  const { htmlResult: root } = pandocTransformer.transform(filePath, fs.readFileSync(filePath, { encoding: 'utf8' }))
+  const { htmlResult: root } = await pandocTransformer.transform(filePath, fs.readFileSync(filePath, { encoding: 'utf8' }))
 
   if (root) {
     // Remove empty titles from the HTML content.
@@ -614,11 +614,13 @@ class TikzPictureImageExtractor extends LatexImageExtractor {
  * A math renderer with some custom macros.
  */
 class KatexRendererWithMacros extends KatexRenderer {
-  override getMacros(): any {
-    return {
-      '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
-      '\\ensuremath': '#1',
-    }
+  constructor() {
+    super({
+      macros: {
+        '\\parallelslant': '\\mathbin{\\!/\\mkern-5mu/\\!}',
+        '\\ensuremath': '#1',
+      },
+    })
   }
 
   override filterUnknownSymbols(math: string): string {

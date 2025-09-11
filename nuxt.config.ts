@@ -2,18 +2,18 @@ import { defineNuxtConfig } from 'nuxt/config'
 import StylelintPlugin from 'vite-plugin-stylelint'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import 'dotenv/config'
-import { siteMeta } from './site/meta'
+import { siteMeta } from './app/site/meta'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '~/modules/books-cover-fetcher',
+    './modules/books-cover-fetcher',
     'nuxt-cname-generator',
-    '~/modules/readme-md-to-content',
-    '~/modules/commit-sha-file-generator',
-    '~/modules/latex-pdf-generator',
-    '~/modules/latex-to-content',
+    './modules/readme-md-to-content',
+    './modules/commit-sha-file-generator',
+    './modules/latex-pdf-generator',
+    './modules/latex-to-content',
     '@bootstrap-vue-next/nuxt',
     '@nuxtjs/google-fonts',
     'nuxt-link-checker',
@@ -42,7 +42,6 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/app.scss',
-    '~/node_modules/katex/dist/katex.min.css',
   ],
 
   site: {
@@ -71,7 +70,6 @@ export default defineNuxtConfig({
         scss: {
           api: 'modern-compiler',
           silenceDeprecations: [
-            'mixed-decls',
             'color-functions',
             'global-builtin',
             'import',

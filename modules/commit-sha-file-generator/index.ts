@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import fs from 'fs'
+import * as fs from 'fs'
 import { addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 import { filename, storageKey } from './common'
 
@@ -20,19 +20,19 @@ export default defineNuxtModule({
   meta: {
     name,
     version: '0.0.1',
-    compatibility: { nuxt: '^3.0.0' },
+    compatibility: { nuxt: '^4.0.0' },
   },
   defaults: {},
   setup: (options, nuxt) => {
     const resolver = createResolver(import.meta.url)
-    const srcDir = nuxt.options.srcDir
+    const rootDir = nuxt.options.rootDir
 
     // Retrieve commit hash information.
-    const long = execSync('git rev-parse HEAD', { cwd: srcDir }).toString().trim()
-    const short = execSync('git rev-parse --short HEAD', { cwd: srcDir }).toString().trim()
+    const long = execSync('git rev-parse HEAD', { cwd: rootDir }).toString().trim()
+    const short = execSync('git rev-parse --short HEAD', { cwd: rootDir }).toString().trim()
 
     // Write commit information to file.
-    const destinationDirectoryPath = resolver.resolve(nuxt.options.srcDir, 'node_modules', `.${name}`)
+    const destinationDirectoryPath = resolver.resolve(nuxt.options.rootDir, 'node_modules', `.${name}`)
     const filePath = resolver.resolve(destinationDirectoryPath, filename)
     fs.mkdirSync(destinationDirectoryPath, { recursive: true })
     fs.writeFileSync(filePath, JSON.stringify({ long, short }))

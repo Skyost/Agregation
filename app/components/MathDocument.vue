@@ -42,7 +42,7 @@ const setupDocument = () => {
       list.classList.add('safari-ol-fix')
       const items = list.querySelectorAll<HTMLElement>('li')
       for (let i = 0; i < items.length; i++) {
-        const item = items[i]
+        const item = items[i]!
         item.classList.add('safari-li-fix')
         const marker = `<span class="safari-marker">(${romanize(i + 1)!.toLowerCase()})</span> `
         item.insertAdjacentHTML('afterbegin', marker)
@@ -64,8 +64,34 @@ const setupDocument = () => {
   }
 
   const router = useRouter()
+  const adjustPreviousBottomMargin = (environment: Element | null, label: HTMLElement, backward: boolean = true) => {
+    const isEnvironment = (element: Element) => {
+      return element.classList.contains('property')
+        || element.classList.contains('proposition')
+        || element.classList.contains('lemma')
+        || element.classList.contains('theorem')
+        || element.classList.contains('corollary')
+        || element.classList.contains('definition')
+        || element.classList.contains('notation')
+        || element.classList.contains('example')
+        || element.classList.contains('cexample')
+        || element.classList.contains('application')
+        || element.classList.contains('remark')
+        || element.classList.contains('algorithm')
+    }
+    while (environment != null && !isEnvironment(environment!)) {
+      environment = (backward ? environment?.previousElementSibling : environment?.nextElementSibling) ?? null
+    }
+    if (environment?.tagName !== 'DIV') {
+      return
+    }
+    (environment as HTMLDivElement).style.marginBottom = 'calc(1.6em + 1rem)'
+    label.style.marginTop = 'calc(-1.6em - 1rem)'
+  }
+
   const devLinks = root.value!.querySelectorAll<HTMLElement>('.devlink')
   for (const devLink of devLinks) {
+    const environment = devLink.nextElementSibling
     const linkA = document.createElement('a')
     const href = `/developpements/${devLink.textContent!.trim()}/`
     linkA.innerText = 'Développement'
@@ -74,6 +100,7 @@ const setupDocument = () => {
       event.preventDefault()
       router.push(href)
     }
+    adjustPreviousBottomMargin(environment, linkA, false)
     devLink.replaceChildren(...[linkA])
     if (devLink.nextElementSibling) {
       devLink.parentNode?.insertBefore(devLink.nextElementSibling, devLink)
@@ -82,7 +109,8 @@ const setupDocument = () => {
 
   const proofs = root.value!.querySelectorAll<HTMLElement>('.proof')
   for (let i = 0; i < proofs.length; i++) {
-    const proof = proofs[i]
+    const proof = proofs[i]!
+    const environment = proof.previousElementSibling
     const id = `proof-${i + 1}`
     const details = document.createElement('details')
     details.setAttribute('id', id)
@@ -92,6 +120,7 @@ const setupDocument = () => {
     const summary = document.createElement('summary')
     summary.classList.add('proof-label')
     summary.innerText = 'Preuve'
+    adjustPreviousBottomMargin(environment, summary)
     details.insertBefore(summary, details.firstChild)
   }
 
@@ -136,9 +165,7 @@ onUnmounted(() => {
 @mixin bubble($color, $hover, $left: true) {
   @if $left {
     border-left: 10px solid darken($color, 10%);
-  }
-
-  @else {
+  } @else {
     border-right: 10px solid darken($color, 10%);
   }
 
@@ -178,14 +205,14 @@ onUnmounted(() => {
 
   :deep(.docsummary) {
     font-style: italic;
-    color: rgba(black, 0.6);
+    color: rgb(black, 0.6);
   }
 
   :deep(h2:not(.unnumbered)) {
     counter-increment: headline-2;
     counter-reset: headline-3 headline-4;
 
-    &:before {
+    &::before {
       content: counter(headline-2, upper-roman) ' - ';
     }
   }
@@ -223,7 +250,7 @@ onUnmounted(() => {
     text-align: center;
     counter-increment: figure;
 
-    &:before {
+    &::before {
       content: 'Figure ' counter(figure) '. ';
       font-weight: bold;
     }
@@ -238,11 +265,10 @@ onUnmounted(() => {
   :deep(.proof-label),
   :deep(.devlink > a) {
     float: left;
-    margin-bottom: 1rem;
     font-size: .8em;
     padding: 0;
     text-decoration: none !important;
-    color: rgba(black, 0.75);
+    color: rgb(black, 0.75);
   }
 
   :deep(ol) {
@@ -284,6 +310,7 @@ onUnmounted(() => {
       @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
 
       position: absolute;
+
       // right: 0;
       text-align: center;
       padding: 7.5px;
