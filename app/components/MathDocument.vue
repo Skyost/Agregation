@@ -173,7 +173,7 @@ onUnmounted(() => {
   transition: background-color 200ms;
   padding: 10px;
 
-  :hover {
+  &:hover {
     background-color: $hover;
   }
 }
