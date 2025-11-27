@@ -1,0 +1,1 @@
+import{a as n}from"./BnPoB-xQ.js";import{n as t,c as a,o as c,b as _}from"./DS-BMl-Q.js";const o={},s={class:"p-5 text-center"};function r(m,f){const e=n;return c(),a("div",s,[_(e,{class:"m-auto",variant:"dark",label:"Chargement..."})])}const d=Object.assign(t(o,[["render",r],["__scopeId","data-v-def7f8ff"]]),{__name:"Spinner"});export{d as _};

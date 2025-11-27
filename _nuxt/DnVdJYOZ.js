@@ -1,0 +1,1 @@
+import{L as n}from"./CFTZFtJl.js";import{d as s,k as o,o as t}from"./DS-BMl-Q.js";const a=s({__name:"LessonCard",props:{lesson:{}},setup(e){return(r,c)=>(t(),o(n,{"btn-check":"Consulter le plan","link-prefix":"lecons",object:e.lesson},null,8,["object"]))}}),m=Object.assign(a,{__name:"CardsLessonCard"});export{m as L};
