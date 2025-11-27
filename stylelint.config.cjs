@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
     'stylelint-config-standard-scss',
-    'stylelint-config-recommended-vue'
+    'stylelint-config-recommended-vue',
   ],
   rules: {
     'at-rule-no-unknown': null,
@@ -10,9 +10,9 @@ module.exports = {
     'function-no-unknown': [
       true,
       {
-        ignoreFunctions: ['lighten', 'darken']
-      }
+        ignoreFunctions: ['lighten', 'darken'],
+      },
     ],
-    'color-function-notation': null
-  }
+    'color-function-notation': null,
+  },
 }

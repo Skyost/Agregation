@@ -120,19 +120,19 @@ const filter = (item: T) => {
     max-width: 100%;
 
     .category-button {
-      color: rgba(black, 0.5);
-      border-bottom: 1px solid rgba(black, 0.25);
+      color: #{rgb(black, 0.5)};
+      border-bottom: 1px solid #{rgb(black, 0.25)};
       text-decoration: none;
       box-shadow: none;
 
       &:hover:not(.active) {
-        color: rgba(black, 0.75);
-        border-bottom: 1px solid rgba(black, 0.5);
+        color: #{rgb(black, 0.75)};
+        border-bottom: 1px solid #{rgb(black, 0.5)};
       }
 
       &.active {
         color: var(--bs-blue);
-        border-bottom-color: rgba(var(--bs-blue), 0.5);
+        border-bottom-color: rgb(var(--bs-blue), 0.5);
       }
 
       @include media-breakpoint-down(md) {
@@ -149,7 +149,7 @@ const filter = (item: T) => {
   }
 
   :deep(.item-card) {
-    background-color: rgba(black, 0.05);
+    background-color: #{rgb(black, 0.05)};
     transition: background-color 200ms;
 
     h2 {
@@ -158,7 +158,7 @@ const filter = (item: T) => {
     }
 
     &:hover {
-      background-color: rgba(black, 0.1);
+      background-color: #{rgb(black, 0.1)};
     }
   }
 

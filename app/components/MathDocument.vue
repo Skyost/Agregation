@@ -173,7 +173,7 @@ onUnmounted(() => {
   transition: background-color 200ms;
   padding: 10px;
 
-  &:hover {
+  :hover {
     background-color: $hover;
   }
 }
@@ -205,7 +205,7 @@ onUnmounted(() => {
 
   :deep(.docsummary) {
     font-style: italic;
-    color: rgb(black, 0.6);
+    color: #{rgb(black, 0.6)};
   }
 
   :deep(h2:not(.unnumbered)) {
@@ -268,7 +268,30 @@ onUnmounted(() => {
     font-size: .8em;
     padding: 0;
     text-decoration: none !important;
-    color: rgb(black, 0.75);
+    color: #{rgb(black, 0.75)};
+  }
+
+  :deep(.bookref) {
+    // position: relative;
+
+    > *:first-child {
+      @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
+
+      position: absolute;
+
+      // right: 0;
+      text-align: center;
+      padding: 7.5px;
+      margin-left: 10px;
+      font-size: 0.75em;
+      text-decoration: none !important;
+      color: black;
+      transform: translateX(calc(100% + 15px));
+    }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 
   :deep(ol) {
@@ -300,29 +323,6 @@ onUnmounted(() => {
           min-width: 2rem;
         }
       }
-    }
-  }
-
-  :deep(.bookref) {
-    // position: relative;
-
-    > *:first-child {
-      @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
-
-      position: absolute;
-
-      // right: 0;
-      text-align: center;
-      padding: 7.5px;
-      margin-left: 10px;
-      font-size: 0.75em;
-      text-decoration: none !important;
-      color: black;
-      transform: translateX(calc(100% + 15px));
-    }
-
-    p {
-      margin-bottom: 0;
     }
   }
 

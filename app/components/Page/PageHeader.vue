@@ -34,11 +34,8 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(black, 0.65);
+    inset: 0;
+    background-color: #{rgb(black, 0.65)};
   }
 }
 </style>

@@ -106,12 +106,12 @@ import { siteMeta } from '~/site/meta'
 <style lang="scss" scoped>
 #page-footer {
   padding: 0.5rem 1rem;
-  color: rgba(white, 0.5);
+  color: #{rgb(white, 0.5)};
 
   h2 {
     font-size: 1.5em;
-    color: rgba(white, 0.75);
-    border-bottom: 1px solid rgba(white, 0.75);
+    color: #{rgb(white, 0.75)};
+    border-bottom: 1px solid #{rgb(white, 0.75)};
     padding-bottom: 0.15em;
     margin-bottom: 0.5em;
   }
@@ -139,7 +139,7 @@ import { siteMeta } from '~/site/meta'
 
   :deep(a) {
     text-decoration: underline;
-    color: rgba(white, 0.75);
+    color: #{rgb(white, 0.75)};
   }
 
   .discord {

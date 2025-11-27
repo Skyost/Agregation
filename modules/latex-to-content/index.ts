@@ -15,7 +15,7 @@ import { latexStorageKey, bibStorageKey } from './common'
 import { latexOptions, type LatexTransformOptions } from '../../app/site/latex'
 import type { Book, LatexContentObjectWithBody } from '../../app/types'
 import { debug } from '../../app/site/debug'
-import { getFilename, parseBib, normalizeString } from '../../app/utils/utils.ts'
+import { getFilename, parseBib, normalizeString } from '../../app/utils/utils'
 
 /**
  * The name of this module.

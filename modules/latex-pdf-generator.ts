@@ -111,7 +111,7 @@ const downloadPreviousBuild = async (resolver: Resolver, directoryPath: string, 
 
     // We read the response using AdmZip.
     const zip = new AdmZip(Buffer.from(response.data as Buffer))
-    const zipRootDir = zip.getEntries()[0].entryName
+    const zipRootDir = zip.getEntries()[0]!.entryName
 
     // We extract it to the parent folder.
     const parentPath = path.dirname(directoryPath)

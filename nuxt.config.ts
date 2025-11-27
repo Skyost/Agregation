@@ -1,7 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import StylelintPlugin from 'vite-plugin-stylelint'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
-import 'dotenv/config'
 import { siteMeta } from './app/site/meta'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config

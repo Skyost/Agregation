@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import { addPrerenderRoutes, addServerHandler, createResolver, defineNuxtModule, useLogger } from '@nuxt/kit'
 import { marked } from 'marked'
-import { storageKey, filename } from './common.ts'
-import { siteMeta } from '../../app/site/meta.ts'
+import { storageKey, filename } from './common'
+import { siteMeta } from '../../app/site/meta'
 
 /**
  * The module name.

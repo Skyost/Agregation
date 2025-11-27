@@ -47,8 +47,9 @@ const icon = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import 'assets/bootstrap-mixins';
-@import 'assets/colors';
+@import '@/assets/bootstrap-mixins';
+@import '@/assets/colors';
+@use 'sass:map';
 
 .banner {
   display: flex;
@@ -65,23 +66,23 @@ const icon = computed(() => {
 
   &.dark,
   &.teal {
-    color: rgba(white, 0.5);
+    color: #{rgb(white, 0.5)};
 
     :deep(a) {
-      color: rgba(white, 0.75);
+      color: #{rgb(white, 0.75)};
     }
   }
 
   &.dark {
-    background-color: map-get($banner-colors, 'dark');
+    background-color: #{map-get($banner-colors, 'dark')};
   }
 
   &.teal {
-    background-color: map-get($banner-colors, 'teal');
+    background-color: #{map-get($banner-colors, 'teal')};
   }
 
   &.red {
-    background-color: map-get($banner-colors, 'red');
+    background-color: #{map-get($banner-colors, 'red')};
   }
 
   .icon {

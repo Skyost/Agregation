@@ -3,7 +3,12 @@ import type { LatexContentObject, LatexContentObjectWithBody } from '~/types/lat
 /**
  * Represents a sheet, extending the LatexContentObject interface.
  */
-export type Sheet = LatexContentObject
+export interface Sheet extends LatexContentObject {
+  /**
+   * The summary of the sheet.
+   */
+  summary: string
+}
 
 /**
  * Represents the content of a sheet, extending the Sheet interface.

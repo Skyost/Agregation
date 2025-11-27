@@ -1,4 +1,4 @@
-import { storageKey, filename } from './common.ts'
+import { storageKey, filename } from './common'
 
 export default defineEventHandler(async () => {
   const json = await useStorage(`assets:${storageKey}`).getItem(filename)

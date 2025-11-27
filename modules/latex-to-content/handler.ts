@@ -1,4 +1,4 @@
-import { latexStorageKey, bibStorageKey } from './common.ts'
+import { latexStorageKey, bibStorageKey } from './common'
 
 export default defineEventHandler(async (event) => {
   if (event.path.startsWith('/_api/bibliography')) {
