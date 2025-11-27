@@ -49,7 +49,6 @@ const icon = computed(() => {
 <style lang="scss" scoped>
 @import '@/assets/bootstrap-mixins';
 @import '@/assets/colors';
-@use 'sass:map';
 
 .banner {
   display: flex;
