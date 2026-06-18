@@ -15,7 +15,7 @@
   \end{lemma}
 
   \begin{proof}
-    Soit $X$ une partie fermée bornée de $\mathbb{R}^n$. Soit $(x_n)$ une suite de $X$. On note $\forall k \in \mathbb{N}$, $\forall i \in \llbracket 1, n \rrbracket$, $x_k^i$ la $i$-ième composante du vecteur $x_k$. Comme $X$ est bornée, alors $(\Vert x_n \Vert_\infty)$ est une suite réelle bornée. Montrons par récurrence que, pour tout $k \in \llbracket 1, n \rrbracket$, il existe des extractrices $\varphi_1, \dots, \varphi_i$ telle que la suite réelle $(x^i_{\varphi_1 \circ \dots \circ \varphi_i (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$.
+    Soit $X$ une partie fermée bornée de $\mathbb{R}^n$. Soit $(x_n)$ une suite de $X$. On note $\forall k \in \mathbb{N}$, $\forall i \in \llbracket 1, n \rrbracket$, $x_k^i$ la $i$-ième composante du vecteur $x_k$. Comme $X$ est bornée, alors $(\Vert x_n \Vert_\infty)$ est une suite réelle bornée. Montrons par récurrence que, pour tout $k \in \llbracket 1, n \rrbracket$, il existe des extractrices $\varphi_1, \dots, \varphi_k$ telles que la suite réelle $(x^i_{\varphi_1 \circ \dots \circ \varphi_i (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$.
     \begin{itemize}
       \item \uline{Pour $k = 1$}, c'est une réécriture du théorème de Bolzano-Weierstrass.
       \item \uline{Pour $k > 1$}, supposons avoir construit $\varphi_1, \dots, \varphi_k$ telles que $(x^i_{\varphi_1 \circ \dots \circ \varphi_k (n)})$ converge pour tout $i \in \llbracket 1, k \rrbracket$. Comme
@@ -33,7 +33,7 @@
   \end{proposition}
 
   \begin{proof}
-    Soit $(y_n)$ une suite d'éléments de $f(E)$. On pose $\forall n \in \mathbb{N}$, $x_n = f(y_n)$. $E$ est compact, donc il existe une extractrice $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ telle que $x_{\varphi(n)} \longrightarrow_{n \rightarrow +\infty} x$ où $x \in E$. Par continuité,
+    Soit $(y_n)$ une suite d'éléments de $f(E)$. Pour tout $n \in \mathbb{N}$, il existe $x_n \in E$ tel que $y_n = f(x_n)$. $E$ est compact, donc il existe une extractrice $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ telle que $x_{\varphi(n)} \longrightarrow_{n \rightarrow +\infty} x$ où $x \in E$. Par continuité,
     \[ y_{\varphi(n)} = f(x_{\varphi(n)}) \longrightarrow_{n \rightarrow +\infty} f(x) \in f(E) \]
     $f(E)$ est ainsi séquentiellement compact, donc est compact.
   \end{proof}
@@ -77,7 +77,7 @@
   \end{theorem}
 
   \begin{proof}
-    Notons $\overline{B}$ la boule unité fermée de $E$ et supposons $E$ de dimension finie $n \in \mathbb{N}$. Comme dans la démonstration du théorème précédent, $\overline{B}$ est compacte comme image de la boule unité fermée de $(\mathbb{R}^n, \Vert . \Vert_\infty)$ par l'application continue $f$. Réciproquement, supposons $E$ de dimension finie et, par l'absurde, également que $\overline{B}$ est compacte. On a,
+    Notons $\overline{B}$ la boule unité fermée de $E$ et supposons $E$ de dimension finie $n \in \mathbb{N}$. Comme dans la démonstration du théorème précédent, $\overline{B}$ est compacte comme image de la boule unité fermée de $(\mathbb{R}^n, \Vert . \Vert_\infty)$ par l'application continue $f$. Réciproquement, supposons $E$ de dimension infinie et, par l'absurde, également que $\overline{B}$ est compacte. On a,
     \[ \overline{B} \subseteq \bigcup_{x \in E} B(x,1) \]
     où $B(x,1)$ désigne la boule ouverte centrée en $x$ de rayon $1$. Par la propriété de Borel-Lebesgue, il existe $x_1, \dots, x_n \in E$ tels que
     \[ \overline{B} \subseteq \bigcup_{i=1}^n B(x_i,1) \]
@@ -88,7 +88,7 @@
     On a $u$ de norme $1$, donc $u \in \overline{B}$ et il existe $i \in \llbracket 1, n \rrbracket$ tel que $\Vert u - x_i \Vert < 1$. Or,
     \begin{align*}
       \Vert u - x_i \Vert &= \frac{\Vert y - x_0 - \Vert y - x_0 \Vert x_i \Vert}{\Vert y - x_0 \Vert} \\
-      &= \frac{\Vert y - (x_0 - \Vert y + x_0 \Vert x_i) \Vert}{\Vert y - x_0 \Vert} \\
+      &= \frac{\Vert y - (x_0 + \Vert y - x_0 \Vert x_i) \Vert}{\Vert y - x_0 \Vert} \\
       &\geq \frac{d(y, F)}{\Vert y - x_0 \Vert} \\
       &= 1
     \end{align*}

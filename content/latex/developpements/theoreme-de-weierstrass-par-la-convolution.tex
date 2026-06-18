@@ -43,7 +43,7 @@
   \end{proof}
 
   \begin{theorem}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
   \begin{proof}
@@ -62,13 +62,13 @@
       \overset{(i)}&{\leq} 2 \Vert f \Vert_\infty \epsilon + \epsilon \int_{\mathbb{R}} p_n(t) \, \mathrm{d}t \\
       &= (2 \Vert f \Vert_\infty + 1) \epsilon
     \end{align*}
-    d'où la convergence uniforme. Soit maintenant $n \in \mathbb{N}$. Supposons que $f$ est à support dans $I = \left[ -\frac{1}{2}, \frac{1}{2} \right]$ et montrons que pour tout $f * p_n$ est une fonction polynômiale.
+    d'où la convergence uniforme. Soit maintenant $n \in \mathbb{N}$. Supposons que $f$ est à support dans $I = \left[ -\frac{1}{2}, \frac{1}{2} \right]$ et montrons que pour tout $f * p_n$ est une fonction polynomiale.
     \[ \forall x \in I, \, (f*p_n)(x) = (p_n*f)(x) = \int_{-\frac{1}{2}}^{\frac{1}{2}} p_n(x-t) f(t) \, \mathrm{d}t \tag{$*$} \]
     Notons que $\forall x, t \in I$, $|x-t| \leq 1$, donc
     \[ p_n(x-t) = \frac{(1 - (x-t)^2)^n}{a_n} \overset{\text{développement}}{=} \sum_{k=0}^{2n} q_k(t) x^k \]
-    où $\forall k \in \llbracket 0, 2n \rrbracket$, $q_k$ est une fonction polynômiale. En remplaçant dans $(*)$, on obtient :
+    où $\forall k \in \llbracket 0, 2n \rrbracket$, $q_k$ est une fonction polynomiale. En remplaçant dans $(*)$, on obtient :
     \[ \forall x \in I, \, (f*p_n)(x) = \sum_{k=0}^{2n} \left( \int_{-\frac{1}{2}}^{\frac{1}{2}} q_k(t) f(t) \, \mathrm{d}t \right) x^k \]
-    qui est bien une fonction polynômiale sur $I$.
+    qui est bien une fonction polynomiale sur $I$.
     \newpar
     Soient maintenant $[a,b]$ un intervalle fermé de $\mathbb{R}$ et $f : [a, b] \rightarrow \mathbb{R}$. On considère $[c, d]$ un intervalle plus grand avec $c < a$ et $b < d$ et on prolonge $f$ par :
     \begin{itemize}
@@ -82,7 +82,7 @@
       x &\mapsto& (d-c)x + \frac{c+d}{2}
     \end{array}
     \]
-    Comme $\widetilde{f} \circ \varphi$ est continue, à support dans $I$, on peut maintenant affirmer que $\widetilde{f} \circ \varphi$ est limite uniforme d'une suite de polynômes $(\rho_n)$. Donc $\widetilde{f}$ est limite uniforme de la suite $(\rho_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $\rho_n \circ \varphi^{-1}$ est bien une fonction polynômiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine. A fortiori, $f = \widetilde{f}_{|[a,b]}$ est aussi limite de fonctions polynômiales sur $[a,b]$.
+    Comme $\widetilde{f} \circ \varphi$ est continue, à support dans $I$, on peut maintenant affirmer que $\widetilde{f} \circ \varphi$ est limite uniforme d'une suite de polynômes $(\rho_n)$. Donc $\widetilde{f}$ est limite uniforme de la suite $(\rho_n \circ \varphi^{-1})$ où $\forall n \in \mathbb{N}$, $\rho_n \circ \varphi^{-1}$ est bien une fonction polynomiale car $\varphi$ (donc $\varphi^{-1}$ aussi) est affine. A fortiori, $f = \widetilde{f}_{|[a,b]}$ est aussi limite de fonctions polynomiales sur $[a,b]$.
   \end{proof}
 
   La fin de la preuve me semble mieux écrite dans \cite{[I-P]}.

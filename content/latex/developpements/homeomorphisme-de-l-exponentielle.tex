@@ -20,21 +20,21 @@
 
   \begin{lemma}
     \label{homeomorphisme-de-l-exponentielle-2}
-    Une suite bornée d'un espace métrique qui admet une seule valeur d'adhérence converge vers cette valeur d'adhérence.
+    Une suite bornée d'un espace vectoriel normé de dimension finie qui admet une seule valeur d'adhérence converge vers cette valeur d'adhérence.
   \end{lemma}
 
   \begin{proof}
-    Soit $(x_n)$ une suite bornée d'un espace métrique $(E, d)$ qui n'admet qu'une seule valeur d'adhérence $\ell \in E$. On suppose par l'absurde que $(x_n)$ ne converge pas vers $\ell$ :
-    \[ \exists \epsilon > 0 \text{ tel que } \forall N \in \mathbb{N}, \, \exists n \geq N \text{ tel que } d(x_n, \ell) > \epsilon \tag{$*$} \]
+    Soit $(x_n)$ une suite bornée d'un espace vectoriel normé de dimension finie $(E, \Vert . \Vert)$ qui n'admet qu'une seule valeur d'adhérence $\ell \in E$. On suppose par l'absurde que $(x_n)$ ne converge pas vers $\ell$ :
+    \[ \exists \epsilon > 0 \text{ tel que } \forall N \in \mathbb{N}, \, \exists n \geq N \text{ tel que } \Vert x_n - \ell \Vert > \epsilon \tag{$*$} \]
     On va construire une sous-suite qui converge vers une valeur d'adhérence différente de $\ell$.
     \newpar
-    Par $(*)$ appliqué à $N = 0$, $\exists n_0 \geq 0$ tel que $d(x_{n_0}, \ell) > \epsilon$. On définit donc $\varphi(0) = n_0$.
+    Par $(*)$ appliqué à $N = 0$, $\exists n_0 \geq 0$ tel que $\Vert x_{n_0} - \ell \Vert > \epsilon$. On définit donc $\varphi(0) = n_0$.
     \newpar
-    Supposons construite $\varphi(i)$ jusqu'à un rang $k$ telle que $\forall i \leq k$, $\varphi(i+1) > \varphi(i)$ (lorsque cela à un sens) et $d(x_{\varphi(i)}, \ell) > \epsilon$. Il suffit alors d'appliquer $(*)$ à $N = \varphi(n) + 1$ pour obtenir un $n_k \geq \varphi(n) + 1 > \varphi(n)$ tel que $d(x_{n_k}, \ell) > \epsilon$ ; on définit alors $\varphi(k+1) = n_k$.
+    Supposons construite $\varphi(i)$ jusqu'à un rang $k$ telle que $\forall i \leq k$, $\varphi(i+1) > \varphi(i)$ (lorsque cela a un sens) et $\Vert x_{\varphi(i)} - \ell \Vert > \epsilon$. Il suffit alors d'appliquer $(*)$ à $N = \varphi(k) + 1$ pour obtenir un $n_k \geq \varphi(k) + 1 > \varphi(k)$ tel que $\Vert x_{n_k} - \ell \Vert > \epsilon$ ; on définit alors $\varphi(k+1) = n_k$.
     \newpar
-    Nous venons donc de construire par récurrence une application $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante et telle que $\forall n \in \mathbb{N}$, $d(x_{\varphi(n)}, \ell) > \epsilon$. La suite $(x_{\varphi(n)})$ est bornée (par hypothèse) : elle est contenue dans un compact et admet une valeur d'adhérence $\ell'$ (par le théorème de Bolzano-Weierstrass). Soit donc $\phi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $(x_{(\varphi \circ \psi)(n)})$ converge vers $\ell'$.
+    Nous venons donc de construire par récurrence une application $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante et telle que $\forall n \in \mathbb{N}$, $\Vert x_{\varphi(n)} - \ell \Vert > \epsilon$. La suite $(x_{\varphi(n)})$ est bornée (par hypothèse) : comme $E$ est de dimension finie, elle admet une valeur d'adhérence $\ell'$ par le théorème de Bolzano-Weierstrass. Soit donc $\psi : \mathbb{N} \rightarrow \mathbb{N}$ strictement croissante telle que $(x_{(\varphi \circ \psi)(n)})$ converge vers $\ell'$.
     \newpar
-    On a $\forall n \in \mathbb{N}$, $d(x_{(\varphi \circ \psi)(n)}, \ell) > \epsilon$, qui donne $d(\ell', \ell) \geq \epsilon$ après un passage à la limite. Donc $\ell \neq \ell'$.  Et $\ell'$ est clairement valeur d'adhérence de $(x_n)$ : absurde.
+    On a $\forall n \in \mathbb{N}$, $\Vert x_{(\varphi \circ \psi)(n)} - \ell \Vert > \epsilon$, qui donne $\Vert \ell' - \ell \Vert \geq \epsilon$ après un passage à la limite. Donc $\ell \neq \ell'$.  Et $\ell'$ est clairement valeur d'adhérence de $(x_n)$ : absurde.
   \end{proof}
 
   \reference[I-P]{182}

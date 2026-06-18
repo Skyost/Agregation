@@ -38,13 +38,14 @@
     \end{itemize}
     On peut donc appliquer le théorème de convergence dominée pour obtenir
     \[ \mathbb{E}(f(X_n)) \longrightarrow \int_{\mathbb{R}} \mathbb{E} (e^{itX}) \varphi(t) \, \mathrm{d}t = \mathbb{E}(f(X)) \]
-    Ainsi, le résultat est vrai pour toute fonction $L_1(\mathbb{R})$ dans l'image de $L_1(\mathbb{R})$ par la transformée de Fourier. En particulier, il est vrai pour tout $f \in \mathcal{S}(\mathbb{R})$, dense dans $(\mathcal{C}(\mathbb{R}), \Vert . \Vert_\infty)$. Soient maintenant $f \in \mathcal{C}(\mathbb{R})$ et $(f_k)$ une suite de fonctions de $\mathcal{S}(\mathbb{R})$ qui converge uniformément vers $f$. Alors,
+    Ainsi, le résultat est vrai pour toute fonction $L_1(\mathbb{R})$ dans l'image de $L_1(\mathbb{R})$ par la transformée de Fourier. En particulier, il est vrai pour tout $f \in \mathcal{S}(\mathbb{R})$, dense dans $(\mathcal{C}_0(\mathbb{R}), \Vert . \Vert_\infty)$. Soient maintenant $f \in \mathcal{C}_0(\mathbb{R})$ et $(f_k)$ une suite de fonctions de $\mathcal{S}(\mathbb{R})$ qui converge uniformément vers $f$. Alors,
     \begin{align*}
       |\mathbb{E}(f(X_n)) - \mathbb{E}(f(X))| &= |\mathbb{E}(f(X_n)) - \mathbb{E}(f_k(X_n)) + \mathbb{E}(f_k(X_n)) \\
       &- \mathbb{E}(f_k(X)) + \mathbb{E}(f_k(X)) - \mathbb{E}(f(X))| \\
       &\leq 2 \Vert f - f_k \Vert_\infty + |\mathbb{E}(f_k(X_n)) - \mathbb{E}(f_k(X))| \\
       &\longrightarrow 0
     \end{align*}
+    Ce qui caractérise la convergence en loi vers la probabilité image de $X$.
   \end{proof}
 
   \reference[G-K]{307}

@@ -49,11 +49,11 @@
     et on calcule la fonction caractéristique de cette nouvelle variable aléatoire :
     \begin{align*}
       \phi_{S_n'}(t) &= \prod_{k=1}^{N_n} \phi_{P_{n,k}} (t) \text{ par indépendance} \\
-      &= \prod_{k=1}^{N_n} \exp ( p_{n,k}(e^{it} - 1 ))) \\
+      &= \prod_{k=1}^{N_n} \exp(p_{n,k}(e^{it} - 1)) \\
       &= \exp(s_n(e^{it} - 1))
     \end{align*}
     Par différence, on obtient
-    \[ \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert = \left| \prod_{k=1}^{N_n} \left( p_{n,k}(e^{it}-1) + 1 \right) - \prod_{k=1}^{N_n} \exp ( p_{n,k}(e^{it} - 1 ))) \right| \]
+    \[ \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert = \left| \prod_{k=1}^{N_n} \left( p_{n,k}(e^{it}-1) + 1 \right) - \prod_{k=1}^{N_n} \exp(p_{n,k}(e^{it} - 1)) \right| \]
     ce qui, après application du \cref{theoreme-des-evenements-rares-de-poisson-1}, donne l'inégalité
     \[ \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert \leq \sum_{k=1}^{N_n} g(p_{n,k}(e^{it}-1)) \]
     avec $g : z \mapsto \vert e^z - 1 - z \vert$. Mais, par développement en série entière :
