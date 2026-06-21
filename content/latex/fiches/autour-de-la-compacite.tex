@@ -16,7 +16,7 @@
   \end{proposition}
 
   \begin{proof}
-    Soit $(y_n)$ une suite d'éléments de $f(E)$. On pose $\forall n \in \mathbb{N}$, $x_n = f(y_n)$. $E$ est compact, donc il existe une extractrice $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ telle que $x_{\varphi(n)} \longrightarrow_{n \rightarrow +\infty} x$ où $x \in E$. Par continuité,
+    Soit $(y_n)$ une suite d'éléments de $f(E)$. Pour tout $n \in \mathbb{N}$, il existe $x_n \in E$ tel que $y_n = f(x_n)$. $E$ est compact, donc il existe une extractrice $\varphi : \mathbb{N} \rightarrow \mathbb{N}$ telle que $x_{\varphi(n)} \longrightarrow_{n \rightarrow +\infty} x$ où $x \in E$. Par continuité,
     \[ y_{\varphi(n)} = f(x_{\varphi(n)}) \longrightarrow_{n \rightarrow +\infty} f(x) \in f(E) \]
     $f(E)$ est ainsi séquentiellement compact, donc est compact.
   \end{proof}
@@ -39,7 +39,7 @@
 
   \begin{proposition}
     \label{autour-de-la-compacite-3}
-    Soir $E$ un espace vectoriel de dimension finie $n \geq 1$ muni d'une norme infinie $\Vert . \Vert_\infty$. Les compacts de cet espace vectoriel normé sont les parties fermées et bornées.
+    Soit $E$ un espace vectoriel de dimension finie $n \geq 1$ muni d'une norme infinie $\Vert . \Vert_\infty$. Les compacts de cet espace vectoriel normé sont les parties fermées et bornées.
   \end{proposition}
 
   \begin{proof}
@@ -88,7 +88,7 @@
   \begin{corollary}
     \label{autour-de-la-compacite-5}
     \begin{enumerate}[label=(\roman*)]
-      \item \label{autour-de-la-compacite-5-1} Les parties compacts d'un espace vectoriel normé de dimension finie sont les parties fermées bornées.
+      \item \label{autour-de-la-compacite-5-1} Les parties compactes d'un espace vectoriel normé de dimension finie sont les parties fermées et bornées.
       \item \label{autour-de-la-compacite-5-2} Tout espace vectoriel normé de dimension finie est complet.
       \item Tout sous-espace vectoriel de dimension finie d'un espace vectoriel normé est fermé.
       \item Soient $(E, \Vert . \Vert_E)$ et $(E, \Vert . \Vert_F)$ deux espaces vectoriels avec $E$ de dimension finie. Alors,

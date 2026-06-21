@@ -46,7 +46,7 @@
   \subsubsection{Division euclidienne}
   
   \begin{theorem}[Division euclidienne dans $\mathbb{Z}$]
-    Soient $a \in \mathbb{N}$ et $b \in \mathbb{N}^*$. On appelle \textbf{division euclidienne} de $a$ par $b$, l'opération qui à $(a, b)$, associe le couple d'entiers $(q, r)$ tel que $a = bq + r$ où $0 \leq r < b$. Un tel couple existe forcément et est unique.
+    Soient $a \in \mathbb{N}$ et $b \in \mathbb{N}^*$. On appelle \textbf{division euclidienne} de $a$ par $b$, l'opération qui, à $(a, b)$, associe le couple d'entiers $(q, r)$ tel que $a = bq + r$ où $0 \leq r < b$. Un tel couple existe forcément et est unique.
   \end{theorem}
   
   \begin{proof}
@@ -189,7 +189,7 @@
     \[ N = a \times 2a \times \dots \times (p-1)a = 1 \times 2 \times 3 \times \dots \times (p-1) \times a \times a \times \dots \times a = (p-1)!a^{p-1} \tag{$*$} \]
     De plus, $r_k$ est le reste de la division euclidienne de $ka$ par $p$ donc $ka \equiv r_k \mod p$. Par $(*)$, $N = a \times 2a \times \dots \times (p-1)a \equiv r_1 r_2 \dots r_{p-1} \mod p$. $0 \leq k \leq p-1 < p$, donc $k$ ne peut pas être divisible par $p$. Ainsi, par le \cref{chiffrement-rsa-4}, $ka$ n'est pas divisible par $p$ et donc $r_k \neq 0$.
     \newpar
-    Soit $i$ tel que $1 \leq i \leq p-1$ et $r_i = r_k$. Montrons que $(i-k)a$ est divisible par $p$. Comme $r_i$ et $r_k$ sont respectivement le reste de la division euclidienne de $ia$ et $ka$ par $p$, on a $r_i - r_k = 0 \equiv (i-k)a \mod p$ donc $(i-k)a$ est divisible par $p$. Comme $p$ ne divise pas $a$, par le \cref{chiffrement-rsa-4}, on a $i-j$ divise $p$. Et comme $-p < i-j < p$, on en déduit que $i=j$.
+    Soit $i$ tel que $1 \leq i \leq p-1$ et $r_i = r_k$. Montrons que $(i-k)a$ est divisible par $p$. Comme $r_i$ et $r_k$ sont respectivement le reste de la division euclidienne de $ia$ et $ka$ par $p$, on a $r_i - r_k = 0 \equiv (i-k)a \mod p$ donc $(i-k)a$ est divisible par $p$. Comme $p$ ne divise pas $a$, par le \cref{chiffrement-rsa-4}, on a $i-k$ divise $p$. Et comme $-p < i-k < p$, on en déduit que $i=k$.
     \newpar
     Pour tout $k$, on a $1 \leq r_k \leq p-1$. De plus, par ce qui précède, on a $p-1$ $r_k$ qui sont tous différents les uns des autres. Donc $\{r_1, r_2, \dots, r_{p-1} \} = \{1, 2, \dots, p-1 \}$  Ainsi, $r_1 r_2 \dots r_{p-1} = (p-1)!$.
     \newpar
@@ -315,7 +315,7 @@
   \end{proposition}
   
   \begin{proof}
-    On a $C^d \equiv (M^e)^d \equiv M^{ed} \mod n$ et $ed \equiv 1 \mod N$ donc il existe $k$ tel que $ed = Nk + 1$. Comme $p$ et $q$ sont deux nombres premiers, alors par le \cref{chiffrement-rsa-5}, on a $M^{p-1} \equiv 1 \mod p$ et $M^{q-1} \equiv 1 \mod q$. Donc $M^{ed} = M^{Nk + 1} = M(M^{p-1})^{k(q-1)} \equiv M \mod p$. En faisant le même raisonnement, on a $M^{ed} \equiv M \mod q$. Ainsi, $M^{ed}-M$ est un multiple de $p$ et de $q$ (deux premiers distincts), donc aussi de $n$ par le \cref{chiffrement-rsa-2}. On conclue que $M \equiv M^{ed} \equiv C^d \mod n$.
+    On a $C^d \equiv (M^e)^d \equiv M^{ed} \mod n$ et $ed \equiv 1 \mod N$ donc il existe $k$ tel que $ed = Nk + 1$. Comme $p$ et $q$ sont deux nombres premiers, alors par le \cref{chiffrement-rsa-5}, on a $M^{p-1} \equiv 1 \mod p$ et $M^{q-1} \equiv 1 \mod q$. Donc $M^{ed} = M^{Nk + 1} = M(M^{p-1})^{k(q-1)} \equiv M \mod p$. En faisant le même raisonnement, on a $M^{ed} \equiv M \mod q$. Ainsi, $M^{ed}-M$ est un multiple de $p$ et de $q$ (deux premiers distincts), donc aussi de $n$ par le \cref{chiffrement-rsa-2}. On conclut que $M \equiv M^{ed} \equiv C^d \mod n$.
   \end{proof}
   %</content>
 \end{document}
