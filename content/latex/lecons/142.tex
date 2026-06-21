@@ -49,7 +49,7 @@
   \end{definition}
 
   \begin{remark}
-    Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{pgcd}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
+    Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{ppcm}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
   \end{remark}
 
   \reference[GOU21]{60}
@@ -225,8 +225,8 @@
     Si $A$ vérifie la relation $(*)$ de la \cref{142-2}, alors les assertions suivantes sont équivalentes :
     \begin{enumerate}[label=(\roman*)]
       \item $A$ vérifie le lemme d'Euclide : si $p \in A$ est irréductible, alors $p \mid ab \implies p \mid a \text { ou } p \mid b$.
-      \item Pour tout $p \in A$, $p$ est irréductible si et seulement si $(p)$ premier.
-      \item $A$ vérifie le lemme de Gauss : si $p \in A$ est irréductible, alors $a \mid bc \implies a \mid c$ pour tout $a, b, c \in A$ avec $a$ et $b$ premiers entre eux.
+      \item Pour tout $p \in A$ non nul et non inversible, $p$ est irréductible si et seulement si $(p)$ est premier.
+      \item $A$ vérifie le lemme de Gauss : pour tout $a, b, c \in A$ tels que $a$ et $b$ sont premiers entre eux, $a \mid bc \implies a \mid c$.
     \end{enumerate}
   \end{proposition}
 
@@ -325,16 +325,16 @@
     \[ ax \equiv b \mod n \]
     a des solutions si et seulement si $d = \operatorname{pgcd}(a,n) \mid b$. Dans ce cas, l'ensemble des solutions est
     \[ \left\{ \frac{b}{d}x_0 + k\frac{n}{d} \mid k \in \mathbb{Z} \right\} \]
-    où $x_0$ est une solution de l'équation $\frac{a}{n}x \equiv 1 \mod n$.
+    où $x_0$ est une solution de l'équation $\frac{a}{d}x \equiv 1 \mod \frac{n}{d}$.
   \end{corollary}
 
   \reference{285}
   \dev{theoreme-chinois}
 
   \begin{theorem}[Chinois]
-    Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
+    Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/n_k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
     \newpar
-    Les entiers $n_1, \dots, n_r$ sont premiers entre eux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application
+    Les entiers $n_1, \dots, n_r$ sont premiers entre eux deux à deux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application
     \[
     \psi :
     \begin{array}{ccc}

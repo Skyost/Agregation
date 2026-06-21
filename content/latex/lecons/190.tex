@@ -18,9 +18,9 @@
   \begin{proposition}
     Soient $E$ et $F$ deux ensembles.
     \begin{enumerate}[label=(\roman*)]
-      \item Si $E$ est fini et s'il existe une injection de $E$ vers $F$, alors $E$ est fini et $\vert E \vert \leq \vert F \vert$.
+      \item Si $F$ est fini et s'il existe une injection de $E$ vers $F$, alors $E$ est fini et $\vert E \vert \leq \vert F \vert$.
       \item Si $E$ est fini et s'il existe une surjection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert \geq \vert F \vert$.
-      \item Si $E$ et s'il existe une bijection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert = \vert F \vert$.
+      \item Si $E$ est fini et s'il existe une bijection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert = \vert F \vert$.
     \end{enumerate}
   \end{proposition}
 
@@ -112,7 +112,7 @@
     Soient $E$ et $F$ deux ensembles finis.
     \begin{enumerate}[label=(\roman*)]
       \item L'ensemble des applications de $E$ vers $F$, noté $F^E$ est fini, de cardinal $\vert F \vert^{\vert E \vert}$.
-      \item Lorsque $\vert E \vert \leq \vert F \vert$, l'ensemble des applications injectives de $E$ dans $F$ est fini, de cardinal $A_n^p$.
+      \item Lorsque $\vert E \vert \leq \vert F \vert$, l'ensemble des applications injectives de $E$ dans $F$ est fini, de cardinal $A_{\vert F \vert}^{\vert E \vert}$.
       \item L'ensemble des bijections de $E$ vers $E$ appelées permutations de $E$, noté $\mathcal{S}(E)$, est fini et de cardinal $\vert E \vert!$.
     \end{enumerate}
   \end{application}
@@ -212,7 +212,7 @@
 
   \begin{application}
     Deux colorations des faces d'un cube sont les mêmes si on peut passer de l'une à l'autre par une isométrie du dodécaèdre. Alors, le nombre de colorations distinctes d'un cube avec $c$ couleurs est
-    \[ \frac{c^2}{24} (c^4 + 3^2 + 12c + 8) \]
+    \[ \frac{c^2}{24} (c^4 + 3c^2 + 12c + 8) \]
   \end{application}
 
   \subsubsection{\texorpdfstring{$p$}{p}-groupes}
@@ -232,8 +232,8 @@
   \begin{corollary}
     On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
     \begin{align*}
-      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
-      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
     \end{align*}
   \end{corollary}
 
@@ -265,8 +265,8 @@
   \reference[GOZ]{87}
 
   \begin{theorem}
+    Il existe un polynôme irréductible $P \in \mathbb{F}_p[X]$ de degré $n$ tel que
     \[ \mathbb{F}_q = \mathbb{F}_p[X] / (P) \]
-    où $P \in \mathbb{F}_p[X]$ est un polynôme irréductible de degré $n$ sur $\mathbb{F}_p$.
   \end{theorem}
 
   \begin{corollary}
@@ -277,8 +277,8 @@
   \end{corollary}
 
   \begin{theorem}
-    Pour tout $j \in \mathbb{N}^*$, on note $I(p,q)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
-    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,q)} Q \]
+    Pour tout $j \in \mathbb{N}^*$, on note $I(p,j)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
+    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,d)} Q \]
   \end{theorem}
 
   \begin{corollary}
@@ -290,7 +290,7 @@
     \[
     \mu :
     \begin{array}{ccc}
-      \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+      \mathbb{N}^* &\rightarrow& \mathbb{Z} \\
       n &\mapsto& \begin{cases}
         1 &\text{si } n = 1 \\
         (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
@@ -306,7 +306,7 @@
   \end{theorem}
 
   \begin{corollary}
-    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,q) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
+    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,n) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
   \end{corollary}
 
   \subsubsection{Carrés dans les corps finis}
@@ -351,7 +351,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item $|\mathrm{GL}(V)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
       \item $|\mathrm{PGL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{q-1}$.
-      \item $|\mathrm{PSL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
+      \item $|\mathrm{PSL}(V)| = \frac{|\mathrm{SL}(V)|}{\operatorname{pgcd}(n,q-1)} = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
     \end{enumerate}
   \end{proposition}
 
@@ -364,10 +364,10 @@
   Soit $(\Omega, \mathcal{A}, \mathbb{P})$ un espace probabilisé.
 
   \begin{definition}
-    Soit $E \subseteq \Omega$ fini. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
+    Soit $E \subseteq \Omega$ fini et non vide. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
     \[
     \begin{array}{ccc}
-      \mathcal{P}(\Omega) &\rightarrow& \llbracket 0, 1 \rrbracket \\
+      \mathcal{P}(\Omega) &\rightarrow& [0,1] \\
       A &\mapsto& \frac{\vert A \, \cap \, E \vert}{\vert E \vert}
     \end{array}
     \]
@@ -394,7 +394,7 @@
 
   \begin{proposition}
     En reprenant les notations précédentes, $X$ est une loi discrète et on a
-    \[ \forall k \in \mathbb{N}, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+    \[ \forall k \in \llbracket 0,n \rrbracket, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
   \end{proposition}
 
   \begin{remark}

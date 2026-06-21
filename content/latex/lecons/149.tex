@@ -236,7 +236,7 @@
   \reference{153}
 
   \begin{example}[Déterminant circulant]
-    Soient $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    Soient $a_0, \dots, a_{n-1} \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{example}
@@ -251,11 +251,12 @@
 
   \begin{theorem}
     L'aire $\mathcal{A}(v,w)$ du parallélogramme engendré par deux vecteurs $v, w \in \mathbb{R}^n$ est égale à
-    \[ \mathcal{A}(v,w) = \vert \det(v,w) \vert \]
+    \[ \mathcal{A}(v,w) = \sqrt{\Vert v \Vert^2\Vert w \Vert^2 - \langle v,w \rangle^2}. \]
+    En particulier, si $n=2$, $\mathcal{A}(v,w)=\vert\det(v,w)\vert$.
   \end{theorem}
 
   \begin{corollary}
-    Soient $v_1, \dots, v_n \in \mathbb{R}^n$. On note $\mathcal{V}(v_1, \dots, v_n)$ le volume du parallélépipède rectangle engendré par $v_1, \dots, v_n$ (ie. l'ensemble $\{ z \in \mathbb{R}^n \mid z = \sum_{i=1}^n \lambda_i v_i, \, \lambda_i \in [0,1] \}$). On a alors :
+    Soient $v_1, \dots, v_n \in \mathbb{R}^n$. On note $\mathcal{V}(v_1, \dots, v_n)$ le volume du parallélépipède engendré par $v_1, \dots, v_n$ (ie. l'ensemble $\{ z \in \mathbb{R}^n \mid z = \sum_{i=1}^n \lambda_i v_i, \, \lambda_i \in [0,1] \}$). On a alors :
     \[ \mathcal{V}(v_1, \dots, v_n) = \vert \det(v_1, \dots, v_n) \vert \]
   \end{corollary}
 

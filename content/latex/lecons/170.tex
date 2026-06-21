@@ -5,7 +5,7 @@
   %<*content>
   \lesson{algebra}{170}{Formes quadratiques sur un espace vectoriel de dimension finie. Orthogonalité, isotropie. Applications.}
 
-  Soit $E$ un espace vectoriel sur un corps $\mathbb{K}$ et de dimension finie $n$.
+  Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\mathbb{K}$ de caractéristique différente de $2$.
 
   \subsection{Généralités}
 
@@ -149,7 +149,7 @@
   \end{corollary}
 
   \begin{example}
-    Sur $\mathbb{R}^4$, $(x, y) \mapsto x^2 + y^2 + z^2 - t^2$ est non dégénérée (car de déterminant $-1$).
+    Sur $\mathbb{R}^4$, $(x, y, z, t) \mapsto x^2 + y^2 + z^2 - t^2$ est non dégénérée (car de déterminant $-1$).
   \end{example}
 
   \subsubsection{Bases \texorpdfstring{$q$}{q}-orthogonales}
@@ -180,13 +180,13 @@
     \[ q(x_1, \dots, x_n) = \sum_{i=1}^n a_{i,i} x_i^2 + \sum_{1 \leq i<j \leq n} a_{i,j} x_ix_j \]
     et on cherche à écrire $q$ comme combinaison linéaire de carrés de formes linéaires indépendantes. On a deux cas :
     \begin{enumerate}[label=(\roman*)]
-      \item \underline{Il existe $i \in \llbracket 1, n \rrbracket$ tel que $a_{i,i} \neq 0$.} On peut suppose $i = 1$, on pose alors $a = a_{1,1}$. On réécrit $q$ sous la forme :
+      \item \underline{Il existe $i \in \llbracket 1, n \rrbracket$ tel que $a_{i,i} \neq 0$.} On peut supposer $i = 1$, on pose alors $a = a_{1,1}$. On réécrit $q$ sous la forme :
       \begin{align*}
         q(x_1, \dots, x_n) &= ax_1^2 + x_1B(x_2, \dots, x_n) + C(x_2, \dots, x_n) \\
         &= a\left( x_1 + \frac{B(x_2, \dots, x_n)}{2a} \right)^2 + \left( C(x_2, \dots, x_n) - \frac{B(x_2, \dots, x_n)^2}{4a} \right)
       \end{align*}
       où $B$ est une forme linéaire et $C$ une forme quadratique. On itère alors le procédé avec $C - \frac{B^2}{4a}$.
-      \item \underline{Sinon.} Si $q = 0$, c'est terminé. Sinon, il existe un $a_{i,j}$ non nul. On peut suppose $(i,j) = (1,2)$, on pose alors $a = a_{1,2}$. On réécrit $q$ sous la forme :
+      \item \underline{Sinon.} Si $q = 0$, c'est terminé. Sinon, il existe un $a_{i,j}$ non nul. On peut supposer $(i,j) = (1,2)$, on pose alors $a = a_{1,2}$. On réécrit $q$ sous la forme :
       \[ q(x_1, \dots, x_n) = ax_1x_2 + x_1B(x_3, \dots, x_n) + x_2C(x_3, \dots, x_n) + D(x_3, \dots, x_n) \]
       où $B$ et $C$ sont des formes linéaires et $D$ une forme quadratique. En utilisant une identité remarquable :
       \begin{align*}
@@ -278,7 +278,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item $q$ est définie positive si et seulement si $\operatorname{sign}(q) = (n, 0)$ si et seulement s'il existe des bases $q$-orthonormées.
       \item $q$ est définie négative si et seulement si $\operatorname{sign}(q) = (0, n)$.
-      \item $q$ est non dégénérée si et seulement si $\operatorname{sign}(q) = (p, n-p)$.
+      \item $q$ est non dégénérée si et seulement s'il existe $p \in \llbracket 0,n \rrbracket$ tel que $\operatorname{sign}(q) = (p, n-p)$.
     \end{enumerate}
   \end{corollary}
 
@@ -411,7 +411,7 @@
       \item La matrice symétrique $\mathrm{Hess} (f)_0$ est inversible.
       \item La signature de $\mathrm{Hess}(f)_0$ est $(p, n-p)$.
     \end{itemize}
-    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
+    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinages de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
     \[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
   \end{lemma}
 

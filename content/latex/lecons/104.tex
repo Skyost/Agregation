@@ -51,7 +51,7 @@
     Soit $g \in G$. Alors,
     \begin{enumerate}[label=(\roman*)]
       \item $g$ est d'ordre infini si et seulement si $\langle g \rangle$ est isomorphe à $(\mathbb{Z}, +)$. Dans ce cas $g^i \neq g^j$ dès que $i \neq j$ et $\langle g \rangle = \{ \dots, g^{-1}, e_G, g, \dots \}$.
-      \item \label{104-2} $g$ est d'ordre fini si et seulement si $g, \dots, g^{n-1}$ sont tous distincts et si $g^n = e_G$.
+      \item \label{104-2} $g$ est d'ordre fini si et seulement s'il existe $n \in \mathbb{N}^*$ tel que $e_G, g, \dots, g^{n-1}$ sont tous distincts et $g^n = e_G$. Dans ce cas, $g$ est d'ordre $n$.
     \end{enumerate}
   \end{theorem}
 
@@ -358,7 +358,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item $|\mathrm{GL}(V)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
       \item $|\mathrm{PGL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{q-1}$.
-      \item $|\mathrm{PSL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
+      \item $|\mathrm{PSL}(V)| = \frac{|\mathrm{SL}(V)|}{\operatorname{pgcd}(n,q-1)} = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
     \end{enumerate}
   \end{proposition}
 
@@ -430,7 +430,7 @@
 
   \begin{definition}
     \begin{itemize}
-      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace-vectoriel de dimension finie $n$ sur $\mathbb{C}$.
+      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace vectoriel de dimension finie $n$ sur $\mathbb{C}$.
       \item On dit que $n$ est le \textbf{degré} de $\rho$.
       \item On dit que $\rho$ est \textbf{irréductible} si $V \neq \{ 0 \}$ et si aucun sous-espace vectoriel de $V$ n'est stable par $\rho(g)$ pour tout $g \in G$, hormis $\{ 0 \}$ et $V$.
     \end{itemize}

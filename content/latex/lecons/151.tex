@@ -282,7 +282,7 @@
   \end{proposition}
 
   \begin{theorem}[Réduction de Jordan d'un endomorphisme nilpotent]
-    On suppose que $u$ est nilpotent. Alors il existe des entiers $n_1 \geq \dots \geq n_p$ et une base $\mathcal{B}$ de $E$ tels que :
+    On suppose que $u$ est nilpotent. Alors il existe des entiers $n_1 \geq \dots \geq n_p \geq 1$ tels que $\sum_{i=1}^p n_i=n$, et une base $\mathcal{B}$ de $E$ tels que :
     \[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} J_{n_1}(0) & & \\ & \ddots & \\ & & J_{n_p}(0) \end{pmatrix} \]
     De plus, on a unicité dans cette décomposition.
   \end{theorem}
@@ -296,9 +296,9 @@
   \begin{theorem}[Réduction de Jordan d'un endomorphisme]
     On suppose que le polynôme caractéristique de $u$ est scindé sur $\mathbb{K}$ :
     \[ \chi_u = \prod_{i=1}^p (X - \lambda_i)^{\alpha_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
-    Alors il existe des entiers $n_1 \geq \dots \geq n_p$ et une base $\mathcal{B}$ de $E$ tels que :
-    \[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} J_{n_1}(\lambda_1) & & \\ & \ddots & \\ & & J_{n_p}(\lambda_p) \end{pmatrix} \]
-    De plus, on a unicité dans cette décomposition.
+    Alors, pour tout $i \in \llbracket 1,p \rrbracket$, il existe des entiers $r_i \geq 1$ et $n_{i,1} \geq \dots \geq n_{i,r_i} \geq 1$ tels que $\sum_{j=1}^{r_i} n_{i,j} = \alpha_i$, ainsi qu'une base $\mathcal{B}$ de $E$ dans laquelle
+    \[ \operatorname{Mat}(u, \mathcal{B}) = \operatorname{diag}\left(\left(J_{n_{i,j}}(\lambda_i)\right)_{\substack{1 \leq i \leq p \\ 1 \leq j \leq r_i}}\right). \]
+    Les tailles des blocs sont uniques à permutation des blocs près.
   \end{theorem}
 
   \subsubsection{Réduction de Frobenius}
@@ -383,7 +383,7 @@
 
   \begin{definition}
     \begin{itemize}
-      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace-vectoriel de dimension finie $n$ sur $\mathbb{C}$.
+      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace vectoriel de dimension finie $n$ sur $\mathbb{C}$.
       \item On dit que $n$ est le \textbf{degré} de $\rho$.
       \item On dit que $\rho$ est \textbf{irréductible} si $V \neq \{ 0 \}$ et si aucun sous-espace vectoriel de $V$ n'est stable par $\rho(g)$ pour tout $g \in G$, hormis $\{ 0 \}$ et $V$.
     \end{itemize}

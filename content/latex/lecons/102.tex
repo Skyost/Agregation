@@ -31,7 +31,7 @@
   \reference[FGN3]{51}
 
   \begin{proposition}
-    Un sous-groupe additif de $\mathbb{R}$ est soit dense dans $\mathbb{R}$, soit de la forme $n\mathbb{Z}$.
+    Un sous-groupe additif de $\mathbb{R}$ est soit dense dans $\mathbb{R}$, soit de la forme $a\mathbb{Z}$ avec $a \geq 0$.
   \end{proposition}
 
   \begin{corollary}
@@ -203,7 +203,7 @@
 
   \begin{corollary}
     Le polynôme minimal sur $\mathbb{Q}$ de tout élément $\xi$ de $\mu_n^*$ est $\Phi_n$. En particulier,
-    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(m) \]
+    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(n) \]
   \end{corollary}
 
   \begin{application}[Théorème de Wedderburn]
@@ -224,7 +224,7 @@
   \reference{153}
 
   \begin{proposition}[Déterminant circulant]
-    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    Soient $n \in \mathbb{N}^*$ et $a_0, \dots, a_{n-1} \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{proposition}

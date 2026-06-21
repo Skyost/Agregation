@@ -122,7 +122,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item $\sqrt{d} \notin \mathbb{Q}$.
       \item $\sqrt{d} \notin \mathbb{N}$.
-      \item Il existe $p$ premier tel que $v_p(d)$ (la valuation $p$-adique de $d$) est impair.
+      \item Il existe $p$ premier tel que $v_p(d)$ (la valuation $p$-adique de $d$) est impaire.
       \item $\mathbb{Q}[\sqrt{d}]$ est une extension de $\mathbb{Q}$ de degré $2$.
     \end{enumerate}
   \end{proposition}
@@ -148,7 +148,7 @@
     Soit $d$ un entier non nul qui n'est pas un carré dans $\mathbb{Z}$. Pour $z = x+y\sqrt{d} \in \mathbb{Q}[\sqrt{d}]$ avec $x,y \in \mathbb{Q}$. Posons $\widetilde{z} = x-y\sqrt{d} \in \mathbb{Q}[\sqrt{d}]$.
     \begin{enumerate}[label=(\roman*)]
       \item L'application $z \mapsto \widetilde{z}$ est un automorphisme des anneaux $\mathbb{Q}[\sqrt{d}]$ et $\mathbb{Z}[\sqrt{d}]$. Pour tout $z \in \mathbb{Q}[\sqrt{d}]$, nous avons $\widetilde{\widetilde{z}} = z$ et $N(z) = z \widetilde{z}$. Si $z \in \mathbb{Z}[\sqrt{d}]$, alors $N(z) \in \mathbb{Z}$.
-      \item $\mathbb{Q}[\sqrt{d}] = \mathbb{Q}[X]/(X^2 - d)$ est un corps.
+      \item $\mathbb{Q}[\sqrt{d}] \equiv \mathbb{Q}[X]/(X^2 - d)$ est un corps.
       \item Dans $\mathbb{Q}[\sqrt{d}]$ et $\mathbb{Z}[\sqrt{d}]$, nous avons $N(z_1 z_2) = N(z_1) N(z_2)$ et $N(z) = 0 \iff z = 0$.
     \end{enumerate}
   \end{proposition}
@@ -156,8 +156,8 @@
   \begin{proposition}
     Soit $d$ un entier non nul qui n'est pas un carré dans $\mathbb{Z}$.
     \begin{enumerate}[label=(\roman*)]
-      \item Les inversibles de $\mathbb{Z}[\sqrt{d}]$ avec $N(z) = \pm 1$.
-      \item Tout élément non nul, non inversible possède une décomposition en irréductibles dans $\mathbb{Z}(\sqrt{d})$.
+      \item Les inversibles de $\mathbb{Z}[\sqrt{d}]$ sont exactement les éléments $z$ tels que $N(z) = \pm 1$.
+      \item Tout élément non nul et non inversible de $\mathbb{Z}[\sqrt{d}]$ possède une décomposition en produit d'irréductibles.
     \end{enumerate}
   \end{proposition}
 
@@ -289,14 +289,14 @@
   \begin{theorem}
     L'ensemble $\mathbb{E}$ des nombres constructibles est un sous-corps de $\mathbb{R}$ stable par racine carrée.
   \end{theorem}
-  
+
   \dev{theoreme-de-wantzel}
 
   \begin{theorem}[Wantzel]
-    Soit $t \in \mathbb{R}$. $t$ est constructible si et seulement s'il existe une suite fini $(L_0, \dots, L_p)$ de sous-corps de $\mathbb{R}$ vérifiant :
+    Soit $t \in \mathbb{R}$. $t$ est constructible si et seulement s'il existe une suite finie $(L_0, \dots, L_p)$ de sous-corps de $\mathbb{R}$ vérifiant :
     \begin{enumerate}[label=(\roman*)]
       \item $L_0 = \mathbb{Q}$.
-      \item $\forall i \in \llbracket 1, p-1 \rrbracket$, $L_i$ est une extension quadratique de $L_{i-1}$.
+      \item $\forall i \in \llbracket 1, p \rrbracket$, $L_i$ est une extension quadratique de $L_{i-1}$.
       \item $t \in L_p$.
     \end{enumerate}
   \end{theorem}

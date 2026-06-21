@@ -123,7 +123,7 @@
   \reference{283}
 
   \begin{definition}
-    \textbf{L'indicatrice d'Euler} $\varphi$ est la fonction qui à un entier $k$, associe le nombre d'entiers compris entre $1$ et $n$ qui sont premiers avec $k$.
+    \textbf{L'indicatrice d'Euler} $\varphi$ est la fonction qui, à un entier $k$, associe le nombre d'entiers compris entre $1$ et $k$ qui sont premiers avec $k$.
   \end{definition}
 
   \begin{remark}
@@ -143,7 +143,7 @@
     Pour tout $p$ premier et pour tout entier $n$,
     \[ \varphi(p^n) = p^n - p^{n-1} \]
   \end{proposition}
-  
+
   \dev{theoreme-chinois}
 
   \begin{theorem}[Chinois]
@@ -153,7 +153,7 @@
   \end{theorem}
 
   \begin{corollary}
-    $\forall m, n \in \mathbb{Z}$ premiers entre eux,
+    $\forall m, n \in \mathbb{N}^*$ premiers entre eux,
     \[ \varphi(mn) = \varphi(m)\varphi(n) \]
   \end{corollary}
 
@@ -162,7 +162,7 @@
   \end{proposition}
 
   \begin{proposition}[Petit théorème de Fermat]
-    Pour tout entier relatif $a$, pour tout $p$ premier, $a^{p-1} \equiv 1 \mod p$.
+    Pour tout entier relatif $a$ et tout nombre premier $p$ tels que $p \nmid a$, on a $a^{p-1} \equiv 1 \mod p$.
   \end{proposition}
 
   \begin{proposition}
@@ -237,7 +237,7 @@
     \[ ax \equiv b \mod n \]
     a des solutions si et seulement si $d = \operatorname{pgcd}(a,n) \mid b$. Dans ce cas, l'ensemble des solutions est
     \[ \left\{ \frac{b}{d}x_0 + k\frac{n}{d} \mid k \in \mathbb{Z} \right\} \]
-    où $x_0$ est une solution de l'équation $\frac{a}{n}x \equiv 1 \mod n$.
+    où $x_0$ est une solution de l'équation $\frac{a}{d}x \equiv 1 \mod \frac{n}{d}$.
   \end{corollary}
 
   \reference{285}
@@ -245,9 +245,9 @@
   Pour résoudre des systèmes de congruences, on va préciser le \cref{120-4}.
 
   \begin{theorem}[Chinois]
-    Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
+    Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/n_k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
     \newpar
-    Les entiers $n_1, \dots, n_r$ sont premiers entre eux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application
+    Les entiers $n_1, \dots, n_r$ sont premiers entre eux deux à deux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application
     \[
       \psi :
       \begin{array}{ccc}
@@ -355,10 +355,10 @@
   \reference[ULM18]{62}
 
   \begin{definition}
-    Afin de chiffrer un \textbf{message} (tout entier découpé en séquence d'entiers de taille bornée) en utilisant RSA, on doit a besoin de deux clés :
+    Afin de chiffrer un \textbf{message} (tout entier découpé en séquence d'entiers de taille bornée) en utilisant RSA, on choisit deux nombres premiers distincts $p$ et $q$, puis on pose $n=pq$ :
     \begin{itemize}
-      \item Une \textbf{clé privée}, qui est un couple de nombres premiers $(p,q)$.
-      \item La \textbf{clé publique} correspondante, qui est le couple $(n,e)$ où $n = pq$ et $e$ est l'inverse de $d$ modulo $\phi(n)$ où $d$ désigne un nombre premier à $\phi(n)$.
+      \item On choisit $e$ premier avec $\varphi(n)$ et on note $d$ son inverse modulo $\varphi(n)$.
+      \item La \textbf{clé publique} est $(n,e)$ et la \textbf{clé privée} est $(n,d)$ ; les facteurs $p$ et $q$ doivent rester secrets.
     \end{itemize}
   \end{definition}
 
@@ -367,10 +367,10 @@
   \begin{theorem}[Chiffrement RSA]
     Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
     \begin{enumerate}[label=(\roman*)]
-      \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$ :
-      \[ m' = (m_i^e)_{i \in \llbracket 1, r \rrbracket} \]
+      \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$, dont on note $m_1', \dots, m_r$ les coordonnées :
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n. \]
       \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :
-      \[ \forall i \in \llbracket 1, r \rrbracket, \, (m_i^e)^d \equiv d \mod n \]
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, (m_i')^d \equiv m_i \mod n. \]
     \end{enumerate}
   \end{theorem}
 

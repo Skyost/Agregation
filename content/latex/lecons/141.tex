@@ -322,8 +322,8 @@
   Soient $p$ un nombre premier et $n \in \mathbb{N}^*$. On pose $q = p^n$.
 
   \begin{theorem}
+    Il existe un polynôme irréductible $P \in \mathbb{F}_p[X]$ de degré $n$ tel que
     \[ \mathbb{F}_q = \mathbb{F}_p[X] / (P) \]
-    où $P \in \mathbb{F}_p[X]$ est un polynôme irréductible de degré $n$ sur $\mathbb{F}_p$.
   \end{theorem}
 
   \begin{corollary}
@@ -334,8 +334,8 @@
   \end{corollary}
 
   \begin{theorem}
-    Pour tout $j \in \mathbb{N}^*$, on note $I(p,q)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
-    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,q)} Q \]
+    Pour tout $j \in \mathbb{N}^*$, on note $I(p,j)$ l'ensemble des polynômes irréductibles unitaires de degré $j$ sur $\mathbb{F}_p$. Alors,
+    \[ X^q - X = \prod_{d \mid n} \prod_{Q \in I(p,d)} Q \]
   \end{theorem}
 
   \begin{corollary}
@@ -347,7 +347,7 @@
     \[
       \mu :
       \begin{array}{ccc}
-        \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+        \mathbb{N}^* &\rightarrow& \mathbb{Z} \\
         n &\mapsto& \begin{cases}
           1 &\text{si } n = 1 \\
           (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
@@ -363,7 +363,7 @@
   \end{theorem}
 
   \begin{corollary}
-    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,q) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
+    \[ \forall n \in \mathbb{N}^*, \, \vert I(p,n) \vert = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{\frac{n}{d}} = \frac{1}{n} \sum_{d \mid n} \mu \left( \frac{n}{d} \right) p^{d} \]
   \end{corollary}
   %</content>
 \end{document}

@@ -160,7 +160,7 @@
     Soit $H < G$.
     \begin{itemize}
       \item On appelle \textbf{ensemble quotient} de $G$ par la relation d'équivalence $\sim_H$ de la \cref{103-1}, et on note $G/H$, l'ensemble des classes à gauche de $G$ modulo $H$.
-      \item On appelle \textbf{indice} de $G$ dans $H$, et on note $(G:H)$, le cardinal de $G/H$.
+      \item On appelle \textbf{indice} de $H$ dans $G$, et on note $(G:H)$, le cardinal de $G/H$.
     \end{itemize}
   \end{definition}
 
@@ -223,7 +223,7 @@
 
   \begin{example}
     On note $V$ le sous-groupe de $S_4$ d'ordre $4$ isomorphe au groupe de Klein. Alors,
-    \[ V/S_4 \cong S_3 \]
+    \[ S_4/V \cong S_3 \]
   \end{example}
 
   \reference{51}
@@ -263,8 +263,8 @@
   \begin{corollary}
     On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
     \begin{align*}
-      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
-      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
     \end{align*}
   \end{corollary}
 
@@ -335,7 +335,7 @@
   \end{definition}
 
   \begin{proposition}
-    $u \in \mathrm{GL}(E)$ est une transvection de droite $D$ si et seulement si $u_{|D} = \operatorname{id}_D$ et le morphisme induit $\overline{u} : E/D \rightarrow E/D$ est l'identité.
+    $u \in \mathrm{GL}(E)$ est une transvection de droite $D$ si et seulement si $u \neq \operatorname{id}_E$, $u_{|D} = \operatorname{id}_D$ et le morphisme induit $\overline{u} : E/D \rightarrow E/D$ est l'identité.
   \end{proposition}
 
   \begin{proposition}
@@ -390,7 +390,7 @@
 
   \begin{definition}
     \begin{itemize}
-      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace-vectoriel de dimension finie $n$ sur $\mathbb{C}$.
+      \item Une \textbf{représentation linéaire} $\rho$ est un morphisme de $G$ dans $\mathrm{GL}(V)$ où $V$ désigne un espace vectoriel de dimension finie $n$ sur $\mathbb{C}$.
       \item On dit que $n$ est le \textbf{degré} de $\rho$.
       \item On dit que $\rho$ est \textbf{irréductible} si $V \neq \{ 0 \}$ et si aucun sous-espace vectoriel de $V$ n'est stable par $\rho(g)$ pour tout $g \in G$, hormis $\{ 0 \}$ et $V$.
     \end{itemize}

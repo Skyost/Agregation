@@ -101,14 +101,14 @@
 
   \begin{definition}
     On suppose $A$ commutatif. Un élément $a$ de $A$ est dit \textbf{irréductible} si
-    \[ a \notin A^\times, a \neq 0 \text{ et } a = bc \implies b \in A^\times \text{ ou } b \in A^\times \]
+    \[ a \notin A^\times, a \neq 0 \text{ et } a = bc \implies b \in A^\times \text{ ou } c \in A^\times \]
     où $A^\times$ désigne le groupe des inversibles de $A$.
   \end{definition}
 
   \begin{theorem}
     On suppose $A$ principal. Soit $a \in A$.
     \begin{enumerate}[label=(\roman*)]
-      \item $(a)$ est premier si et seulement si $a$ est irréductible.
+      \item Si $a$ est non nul et non inversible, $(a)$ est premier si et seulement si $a$ est irréductible.
       \item En supposant $a \neq 0$, $(a)$ est premier si et seulement si $(a)$ est maximal.
     \end{enumerate}
   \end{theorem}
@@ -156,7 +156,7 @@
   \end{corollary}
 
   \begin{corollary}
-    Soient $\mathbb{K}$ un corps commutatif et $f \in \mathbb{K}[X]$. Alors $\mathbb{K}[X]/(f)$ est un corps si et seulement si $P$ est irréductible dans $\mathbb{K}[X]$.
+    Soient $\mathbb{K}$ un corps commutatif et $f \in \mathbb{K}[X]$. Alors $\mathbb{K}[X]/(f)$ est un corps si et seulement si $f$ est irréductible dans $\mathbb{K}[X]$.
   \end{corollary}
 
   \subsection{Arithmétique dans les anneaux}
@@ -205,7 +205,7 @@
   \end{definition}
 
   \begin{remark}
-    Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{pgcd}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
+    Un PGCD (resp. un PPCM), lorsqu'il existe, n'est pas toujours unique. Dans un anneau intègre, deux PGCD (resp. PPCM) sont toujours associés puisqu'ils se divisent l'un l'autre. Dans un anneau intègre, on peut donc noter $d \sim \operatorname{pgcd}(a, b)$ (resp. $m \sim \operatorname{ppcm}(a, b)$) lorsque $d$ est un pgcd (resp. $m$ est un ppcm) de $a$ et de $b$.
   \end{remark}
 
   \reference[GOU21]{60}
@@ -288,8 +288,8 @@
     \begin{enumerate}[label=(\roman*)]
       \item $A$ vérifie le \cref{122-3}.
       \item $A$ vérifie le lemme d'Euclide : si $p \in A$ est irréductible, alors $p \mid ab \implies p \mid a \text { ou } p \mid b$.
-      \item Pour tout $p \in A$, $p$ est irréductible si et seulement si $(p)$ premier.
-      \item $A$ vérifie le lemme de Gauss : si $p \in A$ est irréductible, alors $a \mid bc \implies a \mid c$ pour tout $a, b, c \in A$ avec $a$ et $b$ premiers entre eux.
+      \item Pour tout $p \in A$ non nul et non inversible, $p$ est irréductible si et seulement si $(p)$ est premier.
+      \item $A$ vérifie le lemme de Gauss : pour tout $a, b, c \in A$ tels que $a$ et $b$ sont premiers entre eux, $a \mid bc \implies a \mid c$.
     \end{enumerate}
   \end{proposition}
 
@@ -391,7 +391,7 @@
   \end{example}
 
   \begin{application}[Polynômes d'interpolation de Lagrange]
-    Soit $\mathbb{K}$ un corps commutatif, $\alpha_1, \dots, \alpha_n$ des éléments distincts de $\mathbb{K}$ et $\beta_1, \dots, \beta_n$ des éléments de $\mathbb{K}$. Alors, il existe un unique polynôme $g \in \mathbb{K}[X]$ de degré inférieur ou égal à $n$ tel que $g(\alpha_i) = \beta_i$ pour tout $i \in \llbracket 1, n \rrbracket$.
+    Soit $\mathbb{K}$ un corps commutatif, $\alpha_1, \dots, \alpha_n$ des éléments distincts de $\mathbb{K}$ et $\beta_1, \dots, \beta_n$ des éléments de $\mathbb{K}$. Alors, il existe un unique polynôme $g \in \mathbb{K}[X]$ de degré inférieur ou égal à $n-1$ tel que $g(\alpha_i) = \beta_i$ pour tout $i \in \llbracket 1, n \rrbracket$.
   \end{application}
 
   \subsection{Applications}

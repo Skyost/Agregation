@@ -25,7 +25,7 @@
 
   \begin{remark}
     \begin{itemize}
-      \item $0$ est valeur propre de $u$ si et seulement si $\ker(f) \neq \{ 0 \}$.
+      \item $0$ est valeur propre de $u$ si et seulement si $\ker(u) \neq \{ 0 \}$.
       \item On peut définir de la même manière les mêmes notions pour une matrice de $\mathcal{M}_n(\mathbb{K})$ (une valeur est propre pour une matrice si et seulement si elle l'est pour l'endomorphisme associé). On reprendra les mêmes notations.
       \item Les sous-espaces $E_\lambda$ sont stables par $u$ pour toute valeur propre $\lambda$.
     \end{itemize}
@@ -89,7 +89,7 @@
   
   \begin{lemma}[Déterminant circulant]
     \label{suite-de-polygones-1}
-    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    Soient $n \in \mathbb{N}^*$ et $a_0, \dots, a_{n-1} \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{lemma}
@@ -109,8 +109,8 @@
 
   \begin{lemma}
     \begin{enumerate}[label=(\roman*)]
-      \item $\mathrm{Ann}(u) = \{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$ est un sous-ensemble de $\mathbb{K}[u]$ non réduit au polynôme nul.
-      \item $\mathrm{Ann}(u)$ est le noyau de $P \mapsto P(u)$ : c'est un idéal de $\mathbb{K}[u]$.
+      \item $\mathrm{Ann}(u) = \{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$ est un sous-ensemble de $\mathbb{K}[X]$ non réduit au polynôme nul.
+      \item $\mathrm{Ann}(u)$ est le noyau de $P \mapsto P(u)$ : c'est un idéal de $\mathbb{K}[X]$.
       \item Il existe un unique polynôme unitaire engendrant cet idéal.
     \end{enumerate}
   \end{lemma}

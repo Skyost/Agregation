@@ -25,7 +25,7 @@
   \begin{remark}
     Soit $u \in \mathcal{L}(E)$.
     \begin{itemize}
-      \item $0$ est valeur propre de $u$ si et seulement si $\ker(f) \neq \{ 0 \}$.
+      \item $0$ est valeur propre de $u$ si et seulement si $\ker(u) \neq \{ 0 \}$.
       \item On peut définir de la même manière les mêmes notions pour une matrice de $\mathcal{M}_n(\mathbb{K})$ (une valeur est propre pour une matrice si et seulement si elle l'est pour l'endomorphisme associé). On reprendra les mêmes notations.
     \end{itemize}
   \end{remark}
@@ -58,8 +58,8 @@
   \begin{lemma}
     Soit $u \in \mathcal{L}(E)$.
     \begin{enumerate}[label=(\roman*)]
-      \item $\mathrm{Ann}(u) = \{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$ est un sous-ensemble de $\mathbb{K}[u]$ non réduit au polynôme nul.
-      \item $\mathrm{Ann}(u)$ est le noyau de $P \mapsto P(u)$ : c'est un idéal de $\mathbb{K}[u]$.
+      \item $\mathrm{Ann}(u) = \{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$ est un sous-ensemble de $\mathbb{K}[X]$ non réduit au polynôme nul.
+      \item $\mathrm{Ann}(u)$ est le noyau de $P \mapsto P(u)$ : c'est un idéal de $\mathbb{K}[X]$.
       \item Il existe un unique polynôme unitaire engendrant cet idéal.
     \end{enumerate}
   \end{lemma}
@@ -137,7 +137,7 @@
   \end{theorem}
 
   \begin{corollary}
-    Si $\mathbb{K}$ est algébriquement clos, tout endomorphisme de $u$ est trigonalisable sur $\mathbb{K}$.
+    Si $\mathbb{K}$ est algébriquement clos, tout endomorphisme de $E$ est trigonalisable sur $\mathbb{K}$.
   \end{corollary}
 
   \begin{proposition}
@@ -182,7 +182,7 @@
     Soit $u \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
     \begin{enumerate}[label=(\roman*)]
       \item $u \in \mathcal{N}(E)$.
-      \item $\chi_u = (-1)^n X^n$.
+      \item $\chi_u = X^n$.
       \item Il existe $p \in \mathbb{N}$ tel que $\pi_u = X^p$. Dans ce cas, $p$ est l'indice de nilpotence de $u$.
       \item $u$ est trigonalisable avec zéros sur la diagonale.
       \item $u$ est trigonalisable et sa seule valeur propre est $0$.
@@ -200,7 +200,7 @@
         0 & 1 & 0
       \end{pmatrix}
     \]
-    n'est pas nilpotente, alors que $\chi_A = -X(X^2 + 1)$ n'admet que $0$ comme valeur propre réelle.
+    n'est pas nilpotente, alors que $\chi_A = X(X^2 + 1)$ n'admet que $0$ comme valeur propre réelle.
   \end{cexample}
 
   \begin{proposition}
@@ -267,7 +267,7 @@
   \end{definition}
 
   \begin{remark}
-    On dispose de caractérisations analogues au \cref{156-1} pour les endomorphismes unipotents. Par exemple, un endomorphisme $u$ de $E$ est unipotent si et seulement si $\chi_u = (1-X)^n$.
+    On dispose de caractérisations analogues au \cref{156-1} pour les endomorphismes unipotents. Par exemple, un endomorphisme $u$ de $E$ est unipotent si et seulement si $\chi_u = (X-1)^n$.
   \end{remark}
 
   On se place dans le cas où $\mathbb{K} = \mathbb{R}$ ou $\mathbb{C}$ pour la fin de cette sous-section.

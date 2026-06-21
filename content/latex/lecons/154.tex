@@ -128,7 +128,7 @@
   \end{proposition}
   
   \begin{theorem}[Réduction de Jordan d'un endomorphisme nilpotent]
-    On suppose que $A$ est nilpotente. Alors il existe des entiers $n_1 \geq \dots \geq n_p$ tels que $A$ est semblable à la matrice
+    On suppose que $A$ est nilpotente. Alors il existe des entiers $n_1 \geq \dots \geq n_p \geq 1$ tels que $\sum_{i=1}^p n_i=n$ et $A$ est semblable à la matrice
     \[ \begin{pmatrix} J_{n_1}(0) & & \\ & \ddots & \\ & & J_{n_p}(0) \end{pmatrix} \]
     De plus, on a unicité dans cette décomposition.
   \end{theorem}
@@ -142,9 +142,9 @@
   \begin{theorem}[Réduction de Jordan d'un endomorphisme]
     Soit $A \in \mathcal{M}_n(\mathbb{K})$. On suppose que le polynôme caractéristique de $A$ est scindé sur $\mathbb{K}$ :
     \[ \chi_A = \prod_{i=1}^p (X - \lambda_i)^{\alpha_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
-    Alors il existe des entiers $n_1 \geq \dots \geq n_p$ tels que $A$ est semblable à la matrice
-    \[ \begin{pmatrix} J_{n_1}(\lambda_1) & & \\ & \ddots & \\ & & J_{n_p}(\lambda_p) \end{pmatrix} \]
-    De plus, on a unicité dans cette décomposition.
+    Alors, pour tout $i \in \llbracket 1,p \rrbracket$, il existe des entiers $r_i \geq 1$ et $n_{i,1} \geq \dots \geq n_{i,r_i} \geq 1$ tels que $\sum_{j=1}^{r_i} n_{i,j} = \alpha_i$, et $A$ est semblable à
+    \[ \operatorname{diag}\left(\left(J_{n_{i,j}}(\lambda_i)\right)_{\substack{1 \leq i \leq p \\ 1 \leq j \leq r_i}}\right). \]
+    Les tailles des blocs sont uniques à permutation des blocs près.
   \end{theorem}
   
   \begin{application}

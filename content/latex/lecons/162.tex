@@ -21,7 +21,7 @@
       \begin{cases}
         a_{1,1} x_1 + \dots + a_{1,n} x_n = b_1 \\
         \vdots \\
-        a_{p,1} x_1 + \dots + a_{1,n} x_n = b_p \\
+        a_{p,1} x_1 + \dots + a_{p,n} x_n = b_p \\
       \end{cases}
       \tag{$S$}
       \]
@@ -70,7 +70,7 @@
   \subsubsection{Systèmes de Cramer}
 
   \begin{definition}
-    On appelle \textbf{système de Cramer}, un système linéaire à $n$ équations et $n$ inconnues $AX = B$.
+    On appelle \textbf{système de Cramer} un système linéaire à $n$ équations et $n$ inconnues $AX = B$ tel que $A$ est inversible.
   \end{definition}
 
   \begin{theorem}[Formules de Cramer]
@@ -96,7 +96,7 @@
   \reference[I-P]{177}
 
   \begin{lemma}
-    Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
+    Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynomiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
   \end{lemma}
 
   \dev{equation-de-sylvester}
@@ -134,7 +134,7 @@
   \begin{theorem}[Rouché-Fontené]
     Un système de rang $r$
     \[ AX = B \]
-    avec $A \in \mathcal{M}_{p,n}(\mathbb{K})$, $X \in \mathcal{M}_{n,1}(\mathbb{K})$ et $B \in \mathcal{M}_{1,p}(\mathbb{K})$ admet des solutions si et seulement si $p = r$ ou les $p-r$ déterminants caractéristiques sont nuls. Le système est alors équivalent au système des équations principales. Les inconnues principales étant déterminées par un système de Cramer à l'aide des inconnues non principales.
+    avec $A \in \mathcal{M}_{p,n}(\mathbb{K})$, $X \in \mathcal{M}_{n,1}(\mathbb{K})$ et $B \in \mathcal{M}_{p,1}(\mathbb{K})$ admet des solutions si et seulement si $p = r$ ou les $p-r$ déterminants caractéristiques sont nuls. Le système est alors équivalent au système des équations principales. Les inconnues principales étant déterminées par un système de Cramer à l'aide des inconnues non principales.
   \end{theorem}
 
   \begin{example}
@@ -220,22 +220,22 @@
   \begin{cases}
     a_{1,1} x_1 + \dots + a_{1,m} x_m = b_1 \\
     \vdots \\
-    a_{n,1} x_1 + \dots + a_{1,n} x_m = b_n \\
+    a_{n,1} x_1 + \dots + a_{n,m} x_m = b_n \\
   \end{cases}
   \tag{$S$}
   \]
 
-  mis sous forme matricielle $AX = B$. On suppose $A \neq 0$ (sinon l'ensemble des solutions de $(S)$ est $\mathbb{K}^n$). On note $L_i$ la ligne numéro $i$ de $A$ pour tout $i \in \llbracket 1, m \rrbracket$.
+  mis sous forme matricielle $AX = B$. On suppose $A \neq 0$ (sinon l'ensemble des solutions de $(S)$ est vide si $B \neq 0$ et $\mathbb{K}^m$ si $B = 0$). On note $L_i$ la ligne numéro $i$ de $A$ pour tout $i \in \llbracket 1, n \rrbracket$.
 
   \begin{theorem}[Échelonnement par pivot]
     \begin{enumerate}[label=(\roman*)]
-      \item Si les premières colonnes $C_1, \dots, C_{d_1}$ de la matrice $A$ sont nulles, les variables $x_1, \dots, x_d$ peuvent être quelconques et on passe à la colonne $d_1 + 1$, ce qui nous donne un système de $n$ équations à $m-d$ inconnues. On suppose donc que la première colonne de la matrice $A$ n'est pas nulle et en permutant la ligne $1$ avec une des lignes suivantes on se ramène à un système $A^{(1)}X = B^{(1)}$ avec $a_{1,1}^{(1)} \neq 0$. On élimine alors $x_1$ des lignes $2$ à $n$ en effectuant les opérations élémentaires $L_i \leftarrow L_i - \frac{a_{1,1}^{(1)}}{a_{1,1}^{(1)}} L_i$ pour $i \in \llbracket 2, n \rrbracket$, ce qui donne le système :
+      \item Si les premières colonnes $C_1, \dots, C_{d_1}$ de la matrice $A$ sont nulles, les variables $x_1, \dots, x_{d_1}$ peuvent être quelconques et on passe à la colonne $d_1 + 1$, ce qui nous donne un système de $n$ équations à $m-d_1$ inconnues. On suppose donc que la première colonne de la matrice $A$ n'est pas nulle et en permutant la ligne $1$ avec une des lignes suivantes on se ramène à un système $A^{(1)}X = B^{(1)}$ avec $a_{1,1}^{(1)} \neq 0$. On élimine alors $x_1$ des lignes $2$ à $n$ en effectuant les opérations élémentaires $L_i \leftarrow L_i - \frac{a_{i,1}^{(1)}}{a_{1,1}^{(1)}} L_1$ pour $i \in \llbracket 2, n \rrbracket$, ce qui donne le système :
       \[
       \begin{cases}
         a_{1,1}^{(1)} x_1 + a_{1,2}^{(1)} x_2 + \dots + a_{1,m}^{(1)} x_m = b_1^{(1)} \\
         a_{2,2}^{(2)} x_2 + \dots + a_{2,m}^{(2)} x_m = b_2^{(2)} \\
         \vdots \\
-        a_{n,2}^{(2)} x_1 + \dots + a_{1,n}^{(2)} x_m = b_n^{(2)} \\
+        a_{n,2}^{(2)} x_2 + \dots + a_{n,m}^{(2)} x_m = b_n^{(2)} \\
       \end{cases}
       \]
       \item \begin{itemize}
@@ -252,14 +252,14 @@
     Trois cas de figure sont possibles.
     \begin{enumerate}[label=(\roman*)]
       \item Soit on a obtenu un système de Cramer triangulaire supérieur d'ordre $n = m = r$. Un tel système a une unique solution et se résout alors ``en remontée''. Dans ce cas, $A$ est de rang $n = m$.
-      \item Soit on a obtenu un système de $r \leq n$ équations à $m > r$ inconnues. Les $r$ premières inconnues sont les inconnues principales et les autres inconnues non principales. Ces dernières sont alors utilisées comme paramètres en second membre et on résout le système d'inconnues principales $x_1, \dots, x_r$. L'ensemble des solutions est un espace affine de dimension $n-r$ et le rang de la matrice est $r$.
+      \item Soit on a obtenu un système de $r \leq n$ équations à $m > r$ inconnues. Les $r$ premières inconnues sont les inconnues principales et les autres inconnues non principales. Ces dernières sont alors utilisées comme paramètres en second membre et on résout le système d'inconnues principales $x_1, \dots, x_r$. L'ensemble des solutions est un espace affine de dimension $m-r$ et le rang de la matrice est $r$.
       \item Soit on a obtenu un système de $n$ équations à $r = m < n$ inconnues, de la forme :
       \[
       \begin{cases}
         \alpha_{1,1} x_1 + \alpha_{1,2} x_2 + \dots + \alpha_{1,m} x_m = \beta_1 \\
         \alpha_{2,2} x_2 + \dots + \alpha_{2,m} x_m = \beta_2 \\
         \vdots \\
-        \alpha_{n,2} x_1 + \dots + \alpha_{1,n} x_m = \beta_m \\
+        \alpha_{m,m} x_m = \beta_m \\
         0 = \beta_{m+1} \\
         \vdots \\
         0 = \beta_n

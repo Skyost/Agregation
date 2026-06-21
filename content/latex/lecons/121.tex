@@ -87,12 +87,12 @@
   \begin{definition}
     On définit :
     \begin{itemize}
-      \item L'\textbf{indicatrice d'Euler} $\varphi$ est la fonction qui à un entier $k$, associe le nombre d'entiers compris entre $1$ et $n$ qui sont premiers avec $k$.
+      \item L'\textbf{indicatrice d'Euler} $\varphi$ est la fonction qui, à un entier $k$, associe le nombre d'entiers compris entre $1$ et $k$ qui sont premiers avec $k$.
       \item La \textbf{fonction de Möbius}, notée $\mu$, par
       \[
       \mu :
       \begin{array}{ccc}
-        \mathbb{Z} &\rightarrow& \mathbb{Z} \\
+        \mathbb{N}^* &\rightarrow& \mathbb{Z} \\
         n &\mapsto& \begin{cases}
           1 &\text{si } n = 1 \\
           (-1)^k &\text{si } n = p_1 \dots p_k \text{ avec } p_1, \dots, p_k \text{ premiers distincts} \\
@@ -105,7 +105,7 @@
 
   \begin{proposition}
     \begin{enumerate}[label=(\roman*)]
-      \item $\forall m, n \in \mathbb{Z}$ premiers entre eux, $\varphi(mn) = \varphi(m)\varphi(n)$.
+      \item $\forall m, n \in \mathbb{N}^*$ premiers entre eux, $\varphi(mn) = \varphi(m)\varphi(n)$.
       \item Pour tout entier relatif $a$ premier avec $n$, $a^{\varphi(n)} \equiv 1 \mod n$.
       \item Pour tout entier naturel $n$, $\sum_{d \mid n} \varphi(d) = n$.
     \end{enumerate}
@@ -152,7 +152,7 @@
 
   \begin{corollary}
     Le polynôme minimal sur $\mathbb{Q}$ de tout élément $\xi$ de $\mu_n^*$ est $\Phi_n$. En particulier,
-    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(m) \]
+    \[ [\mathbb{Q}(\xi):\mathbb{Q}]=\varphi(n) \]
   \end{corollary}
 
   \reference[GOU21]{99}
@@ -413,8 +413,8 @@
   \begin{corollary}
     On note $G \cdot h_1, \dots, G \cdot h_r$ les classes de conjugaison de $G$. Alors,
     \begin{align*}
-      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \vert G \cdot h_i \vert \\
-      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert = 2}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
+      \vert G \vert &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \vert G \cdot h_i \vert \\
+      &= \vert Z(G) \vert + \sum_{\substack{i=1 \\ \vert G \cdot h_i \vert > 1}}^{r} \frac{\vert G \vert}{\vert \stab_G(h_i) \vert}
     \end{align*}
   \end{corollary}
 
@@ -441,10 +441,10 @@
   \reference[ULM18]{62}
 
   \begin{definition}
-    Afin de chiffrer un \textbf{message} (tout entier découpé en séquence d'entiers de taille bornée) en utilisant RSA, on doit a besoin de deux clés :
+    Afin de chiffrer un \textbf{message} (tout entier découpé en séquence d'entiers de taille bornée) en utilisant RSA, on choisit deux nombres premiers distincts $p$ et $q$, puis on pose $n=pq$ :
     \begin{itemize}
-      \item Une \textbf{clé privée}, qui est un couple de nombres premiers $(p,q)$.
-      \item La \textbf{clé publique} correspondante, qui est le couple $(n,e)$ où $n = pq$ et $e$ est l'inverse de $d$ modulo $\phi(n)$ où $d$ désigne un nombre premier à $\phi(n)$.
+      \item On choisit $e$ premier avec $\varphi(n)$ et on note $d$ son inverse modulo $\varphi(n)$.
+      \item La \textbf{clé publique} est $(n,e)$ et la \textbf{clé privée} est $(n,d)$ ; les facteurs $p$ et $q$ doivent rester secrets.
     \end{itemize}
   \end{definition}
 
@@ -453,10 +453,10 @@
   \begin{theorem}[Chiffrement RSA]
     Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
     \begin{enumerate}[label=(\roman*)]
-      \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$ :
-      \[ m' = (m_i^e)_{i \in \llbracket 1, r \rrbracket} \]
+      \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$, dont on note $m_1', \dots, m_r$ les coordonnées :
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n. \]
       \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :
-      \[ \forall i \in \llbracket 1, r \rrbracket, \, (m_i^e)^d \equiv d \mod n \]
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, (m_i')^d \equiv m_i \mod n. \]
     \end{enumerate}
   \end{theorem}
 
