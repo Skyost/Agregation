@@ -28,12 +28,12 @@
   \begin{theorem}[Caractérisations séquentielle et topologique de la continuité]
     \begin{enumerate}[label=(\roman*)]
       \item $f$ est continue en $a \in I$ si et seulement si toute suite de points de $I$ qui converge vers $a$ est transformée par $f$ en une suite convergente vers $f(a)$.
-      \item $f$ est continue en $a \in I$ si et seulement si l'image réciproque par $f$ de tout ouvert (resp. fermé) de $\mathbb{R}$ est un ouvert (resp. fermé) de $I$.
+      \item $f$ est continue sur $I$ si et seulement si l'image réciproque par $f$ de tout ouvert (resp. fermé) de $\mathbb{R}$ est un ouvert (resp. fermé) de $I$.
     \end{enumerate}
   \end{theorem}
 
   \begin{example}
-    La fonction $x \mapsto \cos \left( \frac{1}{x} \right)$ définie sur $\mathbb{R}_*$ n'est pas continue en $0$.
+    La fonction $x \mapsto \cos \left( \frac{1}{x} \right)$ définie sur $\mathbb{R}_*$ n'admet pas de prolongement continu en $0$.
   \end{example}
 
   \begin{proposition}
@@ -88,7 +88,7 @@
   \begin{remark}
     \begin{itemize}
       \item De même, $f$ est \textbf{dérivable à gauche (resp. à droite) en $a \in I$} si $\lim_{\substack{t \rightarrow a \\ t < a \\ t \in I}} \frac{f(t) - f(a)}{t-a}$ existe (resp. $\lim_{\substack{t \rightarrow a \\ t > a \\ t \in I}} \frac{f(t) - f(a)}{t-a}$ existe). On la note alors $f'_g(a)$ (resp. $f'_d(a)$).
-      \item $f$ est dérivable en $a \in I$ si et seulement si $f$ est dérivable à gauche, à droite et $f'_g(a) = f'_d(a)$.
+      \item Pour $a \in \mathring I$, $f$ est dérivable en $a$ si et seulement si $f$ est dérivable à gauche et à droite en $a$, avec $f'_g(a) = f'_d(a)$.
       \item $f$ est dérivable en $a \in I$ si et seulement si, quand $x$ tend vers $a$,
       \[ \exists \ell \in \mathbb{R}, \, f(x) = f(a) + (x-a)\ell + o(x-a) \]
     \end{itemize}
@@ -141,12 +141,12 @@
   \end{proposition}
 
   \begin{proposition}
-    Soit $J$ un intervalle de $\mathbb{R}$. Si $f : I \rightarrow \mathbb{R}$ et $g : J \rightarrow I$ sont deux fonctions, alors, en supposant $f$ dérivable en $a$ et $g$ dérivable en $f(a)$, $(f \circ g)$ est dérivable en $a$ et,
-    \[ (f \circ g)'(a) = g'(a) (f' \circ g)(a) \]
+    Soit $J$ un intervalle de $\mathbb{R}$. Si $g : I \rightarrow J$ est dérivable en $a$ et si $f : J \rightarrow \mathbb{R}$ est dérivable en $g(a)$, alors $f \circ g$ est dérivable en $a$ et
+    \[ (f \circ g)'(a) = g'(a) f'(g(a)). \]
   \end{proposition}
 
   \begin{corollary}
-    Soient $J$ un intervalle de $\mathbb{R}$ et $h : I \rightarrow J$ une bijection dérivable en $a \in I$. Alors, $h^{-1}$ est dérivable en $b = h(a)$ si et seulement si $h'(a) \neq 0$, et on a,
+    Soient $J$ un intervalle de $\mathbb{R}$ et $h : I \rightarrow J$ une bijection continue sur $I$ et dérivable en $a \in I$. Alors, $h^{-1}$ est dérivable en $b = h(a)$ si et seulement si $h'(a) \neq 0$, et on a
     \[ (h^{-1})'(b) = \frac{1}{h'(a)} = \frac{1}{h'(h^{-1}(b))} \]
   \end{corollary}
 
@@ -304,7 +304,7 @@
   \end{theorem}
 
   \begin{corollary}
-    On suppose $f$ continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors, $f$ est croissante si et seulement si $f'(x) \geq 0$ pour tout $x \in ]a,b[$, avec égalité si et seulement si $f$ est constante.
+    On suppose $f$ continue sur $[a,b]$ et dérivable sur $]a,b[$. Alors, $f$ est croissante si et seulement si $f'(x) \geq 0$ pour tout $x \in ]a,b[$. De plus, $f$ est constante si et seulement si $f'$ est identiquement nulle sur $]a,b[$.
   \end{corollary}
 
   \begin{corollary}
@@ -361,7 +361,7 @@
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
   \begin{theorem}[Weierstrass]
-    Toute fonction continue sur un compact est limite uniforme de fonctions polynômiales.
+    Toute fonction continue sur un compact est limite uniforme de fonctions polynomiales.
   \end{theorem}
 
   \subsection{Régularité des fonctions limites}

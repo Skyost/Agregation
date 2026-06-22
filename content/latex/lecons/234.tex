@@ -278,7 +278,7 @@
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
       \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
-      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{pp. en } x \]
+      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est continue sur $E$.
   \end{corollary}
@@ -291,7 +291,7 @@
     \[ \Gamma :
     \begin{array}{ccc}
       \mathbb{R}^+_* &\rightarrow& \mathbb{R}^+_* \\
-      t &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
+      x &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
     \end{array}
     \]
     est bien définie et continue sur $\mathbb{R}^+_*$.
@@ -318,15 +318,15 @@
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+      \[ \left| \frac{\partial f}{\partial t}(t,x) \right| \leq g_K(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
-    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
-    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(t, x) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(t, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \begin{remark}
     \begin{itemize}
-      \item Si dans le \cref{234-4}, hypothèse (i), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
+      \item Si dans le \cref{234-4}, hypothèse (ii), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
       \item On a un résultat analogue pour les dérivées d'ordre supérieur.
     \end{itemize}
   \end{remark}
@@ -337,10 +337,10 @@
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
       \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
-      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
+      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(t,x) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
-    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
-    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
+    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(t,x) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
+    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(t, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{318}
@@ -353,7 +353,7 @@
 
   \begin{example}
     On se place dans l'espace mesuré $(\mathbb{N}, \mathcal{P}(\mathbb{N}), \operatorname{card})$ et on considère $(f_n)$ une suite de fonctions dérivables sur $I$ telle que
-    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{x \in I} |f'_n(t)| < +\infty \]
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{t \in I} |f'_n(t)| < +\infty \]
     Alors $x \mapsto \sum_{n \in \mathbb{N}} f_n(x)$ est dérivable sur $I$ de dérivée $x \mapsto \sum_{n \in \mathbb{N}} f'_n(x)$.
   \end{example}
 
@@ -361,7 +361,7 @@
 
   \begin{application}[Transformée de Fourier d'une Gaussienne]
     En résolvant une équation différentielle linéaire, on a
-    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{4 \alpha}} \]
   \end{application}
 
   \reference[G-K]{107}
@@ -389,10 +389,10 @@
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+      \[ \left| f(z,x) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est holomorphe dans $\Omega$ avec
-    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{318}
@@ -432,7 +432,7 @@
 
   \begin{example}
     Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
-    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+    \[ \iint_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
   \end{example}
 
   \subsection{L'espace \texorpdfstring{$L_2$}{L₂}}
@@ -492,7 +492,7 @@
   Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
 
   \begin{definition}
-    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, strictement positive presque partout et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
   \end{definition}
 
   Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
@@ -512,7 +512,7 @@
   \end{theorem}
 
   \begin{example}[Polynômes de Hermite]
-    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    Si $I = \mathbb{R}$ et si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
     \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
   \end{example}
 
@@ -565,7 +565,7 @@
 
   \begin{example}
     On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
-    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \reference[BMP]{124}

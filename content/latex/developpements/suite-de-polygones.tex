@@ -11,7 +11,7 @@
 
   \begin{lemma}[Déterminant circulant]
     \label{suite-de-polygones-1}
-    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    Soient $n \in \mathbb{N}^*$ et $a_0, \dots, a_{n-1} \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{lemma}

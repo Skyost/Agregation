@@ -64,8 +64,21 @@
   \reference[BMP]{9}
 
   \begin{application}
-    On suppose $E = \mathbb{R}^n$. Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et toute fonction $f$ appartient à $L_1(V)$ si et seulement si $y \mapsto \vert \det \operatorname{Jac}(\varphi)_y \vert f (\varphi(y))$ appartient à $L_1(U)$. Dans ce cas,
-    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_y \vert f (\varphi(y)) \, \mathrm{d}y \]
+    On suppose $E = \mathbb{R}^n$. Soit $\varphi : U \to \mathbb{R}^n$ un $\mathcal{C}^1$-difféomorphisme. On pose $V = \varphi(U)$. Alors $V$ est un ouvert de $\mathbb{R}^n$. De plus, pour toute fonction mesurable $f : V \to \mathbb{R}$, on a
+    \[
+      f \in L^1(V)
+      \iff
+      \left(y \mapsto
+      f(\varphi(y)) \left| \det \operatorname{Jac}\varphi(y) \right|\right)
+      \in L^1(U).
+    \]
+    Dans ce cas,
+    \[
+      \int_V f(x) \, \mathrm{d}x
+      =
+      \int_U f(\varphi(y))
+      \left| \det \operatorname{Jac}\varphi(y) \right| \, \mathrm{d}y.
+    \]
   \end{application}
 
   \reference[GOU20]{355}

@@ -55,7 +55,7 @@
   \end{theorem}
 
   \begin{cexample}
-    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
+    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}^*$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
   \end{cexample}
 
   \begin{theorem}
@@ -92,7 +92,7 @@
   \end{theorem}
 
   \begin{example}
-    La fonction $x \mapsto \sum_{n=0}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
+    La fonction $x \mapsto \sum_{n=1}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
   \end{example}
 
   \begin{theorem}
@@ -108,7 +108,7 @@
 
   \begin{example}
     La fonction $\zeta : s \mapsto \sum_{n=1}^{+\infty} \frac{1}{n^s}$ est $\mathcal{C}^\infty$ sur $]1, +\infty[$ et,
-    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(s))^k}{n^s} \]
+    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(n))^k}{n^s} \]
   \end{example}
 
   \subsubsection{Le cas des séries entières}
@@ -146,7 +146,7 @@
 
   \begin{proposition}
     Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{H}(D(0, r))$ et,
-    \[ S'(z) = \sum_{n=0}^{+\infty} n a_n z^{n-1} \]
+    \[ S'(z) = \sum_{n=1}^{+\infty} n a_n z^{n-1} \]
     pour tout $z \in D(0, r)$.
     \newpar
     Plus précisément, pour tout $k \in \mathbb{N}$, $S$ est $k$ fois dérivable avec
@@ -168,12 +168,13 @@
   \end{application}
 
   \begin{application}
-    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+    \[ \sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
   \end{application}
 
   \begin{cexample}
     La réciproque est fausse :
-    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \sum_{n=0}^{+\infty} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2}, \]
+    alors que la série $\sum_{n=0}^{+\infty} (-1)^n$ diverge.
   \end{cexample}
 
   \begin{theorem}[Taubérien faible]
@@ -279,7 +280,7 @@
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
       \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
-      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in E, \text{pp. en } x \]
+      \[ |f(t,x)| \leq g_K(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est continue sur $E$.
   \end{corollary}
@@ -292,7 +293,7 @@
     \[ \Gamma :
     \begin{array}{ccc}
       \mathbb{R}^+_* &\rightarrow& \mathbb{R}^+_* \\
-      t &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
+      x &\mapsto& \int_{0}^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t
     \end{array}
     \]
     est bien définie et continue sur $\mathbb{R}^+_*$.
@@ -319,15 +320,15 @@
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+      \[ \left| \frac{\partial f}{\partial t}(t,x) \right| \leq g_K(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
-    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
-    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(t, x) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(t, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \begin{remark}
     \begin{itemize}
-      \item Si dans le \cref{235-4}, hypothèse (i), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
+      \item Si dans le \cref{235-4}, hypothèse (ii), on remplace ``dérivable'' par ``$\mathcal{C}^1$'', alors la fonction $F$ est de classe $\mathcal{C}^1$.
       \item On a un résultat analogue pour les dérivées d'ordre supérieur.
     \end{itemize}
   \end{remark}
@@ -338,10 +339,10 @@
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
       \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
-      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(x,t) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
+      \[ \left| \left(\frac{\partial}{\partial t}\right)^j f(t,x) \right| \leq g_{j,K}(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
-    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(x,t) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
-    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(x, t) \, \mathrm{d}\mu(x) \]
+    Alors $\forall j \in \llbracket 0, k \rrbracket$, $\forall t \in I$, $x \mapsto \left(\frac{\partial}{\partial t}\right)^j f(t,x) \in L_1(X)$ et $F \in \mathcal{C}^k(I)$ avec
+    \[ \forall j \in \llbracket 0, k \rrbracket, \, \forall t \in I, \, F^{(j)}(t) = \int_X \left(\frac{\partial}{\partial t}\right)^j f(t, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{318}
@@ -354,7 +355,7 @@
 
   \begin{example}
     On se place dans l'espace mesuré $(\mathbb{N}, \mathcal{P}(\mathbb{N}), \operatorname{card})$ et on considère $(f_n)$ une suite de fonctions dérivables sur $I$ telle que
-    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{x \in I} |f'_n(t)| < +\infty \]
+    \[ \forall x \in \mathbb{R}, \, \sum_{n \in \mathbb{N}} |f_n(x)| + \sup_{t \in I} |f'_n(t)| < +\infty \]
     Alors $x \mapsto \sum_{n \in \mathbb{N}} f_n(x)$ est dérivable sur $I$ de dérivée $x \mapsto \sum_{n \in \mathbb{N}} f'_n(x)$.
   \end{example}
 
@@ -362,7 +363,7 @@
 
   \begin{application}[Transformée de Fourier d'une Gaussienne]
     En résolvant une équation différentielle linéaire, on a
-    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{4 \alpha}} \]
   \end{application}
 
   \reference[G-K]{107}
@@ -391,10 +392,10 @@
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+      \[ \left| f(z,x) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est holomorphe dans $\Omega$ avec
-    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{318}
@@ -434,7 +435,7 @@
 
   \begin{example}
     Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
-    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+    \[ \iint_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
   \end{example}
 
   \subsection{Problèmes d'interversion en analyse de Fourier}
@@ -445,18 +446,19 @@
 
   \begin{definition}
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. On appelle \textbf{coefficients de Fourier} de $f$ les nombres complexes définis par
-    \[ \forall n \in \mathbb{Z}, \, c_n(f) = \int_{0}^{2\pi} f(t) e^{-int} \, \mathrm{d}t \]
+    \[ \forall n \in \mathbb{Z}, \, c_n(f) = \frac{1}{2\pi} \int_{0}^{2\pi} f(t) e^{-int} \, \mathrm{d}t \]
     La \textbf{série de Fourier} associée à $f$ est
     \[ \sum_{n \in \mathbb{Z}} c_n(f)e^{inx} \]
   \end{definition}
 
   \begin{theorem}[Parseval]
-    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. Alors la série de Fourier de $f$ est convergente et,
-    \[ \sum_{n=-\infty}^{+\infty} |c_n(f)|^2 = \frac{1}{2\pi} \int_0^{2\pi} |f(t)| \, \mathrm{d}t \]
+    Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. Alors,
+    \[ \sum_{n=-\infty}^{+\infty} |c_n(f)|^2 = \frac{1}{2\pi} \int_0^{2\pi} |f(t)|^2 \, \mathrm{d}t \]
   \end{theorem}
 
   \begin{example}
-    Avec $f : x \mapsto 1 - \frac{x^2}{\pi^2}$, on obtient $\sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90}$.
+    On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \begin{theorem}[Jordan-Dirichlet]
@@ -489,7 +491,7 @@
 
   \begin{lemma}[Riemann-Lebesgue]
     Soit $f \in L_1(\mathbb{R}^d)$, $\widehat{f}$ existe et
-    \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) \]
+    \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) = 0 \]
   \end{lemma}
 
   \begin{theorem}
@@ -529,7 +531,7 @@
 
   \begin{theorem}[Formule d'inversion de Fourier]
     Si $f \in L_1(\mathbb{R}^d)$ est telle que $\widehat{f} \in L_1(\mathbb{R}^d)$, alors
-    \[ \widehat{\widehat{f}}(x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
+    \[ \widehat{\widehat{f}}(-x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
   \end{theorem}
 
   \reference[GOU20]{284}

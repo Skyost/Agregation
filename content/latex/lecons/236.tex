@@ -145,7 +145,7 @@
 
   \begin{example}
     Soient $f : (x,y) \mapsto xy$ et $D = \{ (x,y) \in \mathbb{R}^2 \mid x, y \geq 0 \text{ et } x + y \leq 1 \}$. Alors,
-    \[ \int \int_D = f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
+    \[ \iint_D f(x,y) \, \mathrm{d}x \mathrm{d}y = \int_0^1 x \frac{(1-x)^2}{2} \, \mathrm{d}x = \frac{1}{24} \]
   \end{example}
 
   \subsubsection{Changement de variable généralisé}
@@ -153,9 +153,21 @@
   \reference[BMP]{9}
 
   \begin{theorem}
-    Soient $E$ et $F$ deux espaces de Banach et $U \subseteq E$ un ouvert.
-    Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et tout fonction $f$ appartient à $L_1$ si et seulement si $\vert \det \operatorname{Jac}(\varphi)_a \vert f \circ \varphi$ appartient à $L_1$. Dans ce cas,
-    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_a \vert f (\varphi(y)) \, \mathrm{d}y \]
+    Soient $U$ un ouvert de $\mathbb{R}^n$ et $\varphi : U \to \mathbb{R}^n$ un $\mathcal{C}^1$-difféomorphisme. On pose $V = \varphi(U)$. Alors $V$ est un ouvert de $\mathbb{R}^n$. De plus, pour toute fonction mesurable $f : V \to \mathbb{R}$, on a
+    \[
+      f \in L^1(V)
+      \iff
+      \left(y \mapsto
+      f(\varphi(y)) \left| \det \operatorname{Jac}\varphi(y) \right|\right)
+      \in L^1(U).
+    \]
+    Dans ce cas,
+    \[
+      \int_V f(x) \, \mathrm{d}x
+      =
+      \int_U f(\varphi(y))
+      \left| \det \operatorname{Jac}\varphi(y) \right| \, \mathrm{d}y.
+    \]
   \end{theorem}
 
   \reference[GOU20]{355}
@@ -220,7 +232,7 @@
   \reference[G-K]{104}
 
   \begin{example}
-    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{3n+1} = \int_0^1 \frac{\mathrm{d}x}{x^3 + 1} \, \mathrm{d}x = \frac{3\ln(2) + \sqrt{3}\pi}{9} \]
+    \[ \sum_{n=0}^{+\infty} \frac{(-1)^n}{3n+1} = \int_0^1 \frac{\mathrm{d}x}{x^3 + 1} = \frac{3\ln(2) + \sqrt{3}\pi}{9} \]
   \end{example}
 
   \subsubsection{Régularité sous l'intégrale}
@@ -256,17 +268,17 @@
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| \frac{\partial f}{\partial t}(x,t) \right| \leq g_K(x) \quad \forall t \in I, \text{pp. en } x \]
+      \[ \left| \frac{\partial f}{\partial t}(t,x) \right| \leq g_K(x) \quad \forall t \in K, \text{pp. en } x \]
     \end{enumerate}
-    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(x, t) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
-    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(x, t) \, \mathrm{d}\mu(x) \]
+    Alors $\forall t \in I$, $x \mapsto \frac{\partial f}{\partial t}(t, x) \in L_1(X)$ et $F$ est dérivable sur $I$ avec
+    \[ \forall t \in I, \, F'(t) = \int_X \frac{\partial f}{\partial t}(t, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference[GOU20]{169}
 
   \begin{application}[Transformée de Fourier d'une Gaussienne]
     En résolvant une équation différentielle linéaire, on a
-    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{\pi \alpha}} \]
+    \[ \forall \alpha > 0, \, \forall x \in \mathbb{R}, \, \int_{\mathbb{R}} e^{-\alpha t^2} e^{-itx} \, \mathrm{d}t = \sqrt{\frac{\pi}{\alpha}} e^{-\frac{x^2}{4 \alpha}} \]
   \end{application}
 
   \reference[G-K]{107}
@@ -292,21 +304,21 @@
   Soit $\Omega$ un ouvert de $\mathbb{C}$. Soit $f : \Omega \rightarrow \mathbb{C}$.
 
   \begin{theorem}[Cauchy homologique]
-    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$ (ie. tel que $z \notin \Omega \implies I(a, \Gamma) = 0$). On suppose $f \in \mathcal{H}(\Omega)$. Alors,
+    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$ (ie. tel que $a \notin \Omega \implies I(a, \Gamma) = 0$). On suppose $f \in \mathcal{H}(\Omega)$. Alors,
     \[ \int_\Gamma f(z) \, \mathrm{d}z = 0 \]
   \end{theorem}
 
   \begin{corollary}[Formule intégrale de Cauchy]
     Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$. On suppose $f \in \mathcal{H}(\Omega)$. Alors,
-    \[ z_0 \in \Omega \setminus \Gamma^* \implies \frac{1}{2i\pi} \int_\Gamma \frac{f(z)}{z-z_0} \, \mathrm{d}z = I(z_0, \gamma) f(z_0) \]
+    \[ z_0 \in \Omega \setminus \Gamma^* \implies \frac{1}{2i\pi} \int_\Gamma \frac{f(z)}{z-z_0} \, \mathrm{d}z = I(z_0, \Gamma) f(z_0) \]
   \end{corollary}
 
   \reference{85}
   \reference[BMP]{64}
 
   \begin{corollary}
-    On a $\mathcal{H}(\Omega) \subseteq \mathcal{A}(\Omega)$. De plus, si $a \in \Omega$ et que l'on pose $d = d(a, \mathbb{C} \setminus \Omega)$, on a
-    \[ f(a + h) = \sum_{n=0}^{+\infty} a_n h^n \text{ pour } \vert h \vert < d \text{ avec } a_n = \frac{f^{(n)}(a)}{n!} = \frac{1}{2i\pi} \int_{C^+(a,d)} \frac{f(z)}{(z-a)^{n+1}} \, \mathrm{d}z \]
+    On a $\mathcal{H}(\Omega) \subseteq \mathcal{A}(\Omega)$. De plus, si $a \in \Omega$ et si $r \in ]0, d(a,\mathbb{C}\setminus\Omega)[$, on a
+    \[ f(a + h) = \sum_{n=0}^{+\infty} a_n h^n \text{ pour } \vert h \vert < r \text{ avec } a_n = \frac{f^{(n)}(a)}{n!} = \frac{1}{2i\pi} \int_{C^+(a,r)} \frac{f(z)}{(z-a)^{n+1}} \, \mathrm{d}z \]
   \end{corollary}
 
   \reference[AMR08]{156}
@@ -350,17 +362,17 @@
   Soit $f$ une fonction réelle continue sur un intervalle $[a,b]$. On se donne $n+1$ points $x_0, \dots, x_n \in [a,b]$ distincts deux-à-deux.
 
   \begin{definition}
-    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_1, \dots, x_n$ par
+    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_0, \dots, x_n$ par
     \[ \ell_i : x \mapsto \prod_{\substack{j=0\\j \neq i}}^n \frac{x-x_j}{x_i-x_j} \]
   \end{definition}
 
   \begin{theorem}
-    Il existe une unique fonction polynômiale $p_n$ de degré $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
+    Il existe une unique fonction polynomiale $p_n$ de degré inférieur ou égal à $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
     \[ p_n = \sum_{i=0}^n f(x_i) \ell_i \]
   \end{theorem}
 
   \begin{theorem}
-    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_i),\max(x,x_i)[$ tel que
+    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_0,\dots,x_n),\max(x,x_0,\dots,x_n)[$ tel que
     \[ f(x)-p_n(x) = \frac{\pi_{n+1}(x)}{(n+1)!} f^{(n+1)}(\xi_x) \]
   \end{theorem}
 

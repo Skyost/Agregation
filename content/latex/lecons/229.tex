@@ -39,7 +39,7 @@
   \reference[ROM19-1]{205}
 
   \begin{proposition}
-    Soient $I \subseteq \mathbb{R}$ un intervalle non réduit à un point et $f : I \rightarrow \mathbb{R}$. On suppose $f$ dérivable sur $\mathring{I}$. Alors $f$ est croissante si et seulement si $f'(x) \geq 0$ pour tout $x \in I$.
+    Soient $I \subseteq \mathbb{R}$ un intervalle non réduit à un point et $f : I \rightarrow \mathbb{R}$. On suppose $f$ continue sur $I$ et dérivable sur $\mathring{I}$. Alors $f$ est croissante si et seulement si $f'(x) \geq 0$ pour tout $x \in \mathring{I}$.
   \end{proposition}
 
   \subsubsection{Régularité}
@@ -95,7 +95,7 @@
   \end{example}
 
   \begin{proposition}
-    Soit $f : I \rightarrow \mathbb{R}$. Cette fonction $f$ est injective si et seulement si elle est strictement monotone.
+    Soit $f : I \rightarrow \mathbb{R}$ continue. Cette fonction $f$ est injective si et seulement si elle est strictement monotone.
   \end{proposition}
 
   \reference[D-L]{405}
@@ -171,7 +171,7 @@
   \begin{proposition}
     \begin{itemize}
       \item Une combinaison linéaire à coefficients positifs de fonctions convexes est convexe.
-      \item La composée $\varphi \circ g$ d'une fonction convexe croissante $\varphi : J \rightarrow \mathbb{R}$ avec une fonction fonction convexe $g : I \rightarrow J$ est croissante.
+      \item La composée $\varphi \circ g$ d'une fonction convexe croissante $\varphi : J \rightarrow \mathbb{R}$ avec une fonction convexe $g : I \rightarrow J$ est convexe.
       \item Une limite simple d'une suite de fonctions convexes est convexe.
     \end{itemize}
   \end{proposition}
