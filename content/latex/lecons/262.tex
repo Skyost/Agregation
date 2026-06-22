@@ -26,7 +26,7 @@
   \reference{285}
 
   \begin{example}
-    Si $(X_n)$ est telle que $\forall n \geq 1, \, \mathbb{P}(X_n = \pm \sqrt{n}) = \frac{1}{2}$, alors $\frac{1}{n^2} \sum_{k=1}^n X_k^2 \overset{(ps.)}{\longrightarrow} 0$.
+    Si $(X_n)$ est telle que $\forall n \geq 1, \, \mathbb{P}(X_n = \sqrt{n})=\mathbb{P}(X_n=-\sqrt{n}) = \frac{1}{2}$, alors $\frac{1}{n^2} \sum_{k=1}^n X_k^2 \overset{(ps.)}{\longrightarrow} \frac{1}{2}$.
   \end{example}
 
   \reference{265}
@@ -59,7 +59,7 @@
   \reference{285}
 
   \begin{example}
-    Si $(X_n)$ est telle que $\forall n \geq 1$, $\mathbb{P}(X_n = n) = \mathbb{P}(X_n = \pm n) = \frac{1}{2n^2}$ et $\mathbb{P}(X_n = 0) = 1 - \frac{1}{2n^2}$, alors la suite $(S_n)$ définie pour tout $n \geq 1$ par $S_n = \sum_{k=1}^n X_k$ est constante à partir d'un certain rang.
+    Si $(X_n)$ est telle que $\forall n \geq 1$, $\mathbb{P}(X_n = n) = \mathbb{P}(X_n = -n) = \frac{1}{2n^2}$ et $\mathbb{P}(X_n = 0) = 1 - \frac{1}{n^2}$, alors la suite $(S_n)$ définie pour tout $n \geq 1$ par $S_n = \sum_{k=1}^n X_k$ est constante à partir d'un certain rang.
   \end{example}
 
   \reference{273}
@@ -91,7 +91,7 @@
 
   \begin{definition}
     On dit que $(X_n)$ \textbf{converge en probabilité} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
-    \[ \forall \epsilon, \, \mathbb{P}(\vert X_n - X \vert \geq \epsilon) = 0 \]
+    \[ \forall \epsilon>0, \, \mathbb{P}(\Vert X_n - X \Vert \geq \epsilon) \longrightarrow_{n\rightarrow+\infty} 0 \]
     On note cela $X_n \overset{(p)}{\longrightarrow} X$.
   \end{definition}
 
@@ -102,11 +102,11 @@
     On suppose que $(X_n)$ est une suite de variables aléatoires indépendantes identiquement distribuées telle que $\mathbb{P}(X_1 = 1) = p$ et $\mathbb{P}(X_1 = 0) = 1-p$. On définit la suite $(Y_n)$ par
     \[
     \forall n \geq 1, \, Y_n = \begin{cases}
-      0 \text{ si } X_k = X_{k+1} \\
+      0 \text{ si } X_n = X_{n+1} \\
       1 \text{ sinon}
     \end{cases}
     \]
-    et la suite $(S_n)$ par $\forall n \geq 1, \, M_n = \frac{Y_1 + \dots + Y_n}{n}$. On a $M_n - 2p(1-p) \overset{(p)}{\longrightarrow} 0$.
+    et la suite $(M_n)$ par $\forall n \geq 1, \, M_n = \frac{Y_1 + \dots + Y_n}{n}$. On a $M_n - 2p(1-p) \overset{(p)}{\longrightarrow} 0$.
   \end{example}
 
   \reference{268}
@@ -144,7 +144,7 @@
   \reference{270}
 
   \begin{theorem}[Loi faible des grands nombres]
-    Soit $(X_n)$ une suite de variables aléatoires deux à deux indépendantes de même loi et $\mathcal{L}_1$. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
+    Soit $(X_n)$ une suite de variables aléatoires deux à deux indépendantes, de même loi et intégrables. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
     \[ M_n \overset{(p)}{\longrightarrow} \mathbb{E}(X_1) \]
   \end{theorem}
 
@@ -161,11 +161,11 @@
   \begin{application}[Théorème de Bernstein]
     Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
     \[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
-    le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
+    le $n$-ième polynôme de Bernstein associé à $f$. Alors la suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
   \end{application}
 
   \begin{corollary}[Théorème de Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{corollary}
 
   \subsection{Convergence \texorpdfstring{$L_p$}{Lp}}
@@ -174,7 +174,7 @@
 
   \begin{definition}
     On dit que $(X_n)$ \textbf{converge dans $L_p$} vers $X : \Omega \rightarrow \mathbb{R}^d$ si
-    \[ \forall n \in \mathbb{N}, X_n \in L_p, \, X \in L_p \text{ et } \mathbb{E}(\vert X_n - X \vert^p) \]
+    \[ \forall n \in \mathbb{N}, X_n \in L_p, \, X \in L_p \text{ et } \mathbb{E}(\Vert X_n - X \Vert^p) \longrightarrow_{n\rightarrow+\infty}0 \]
     On note cela $X_n \overset{(L_p)}{\longrightarrow} X$.
   \end{definition}
 
@@ -202,7 +202,7 @@
   \reference[G-K]{65}
 
   \begin{theorem}[Convergence dominée]
-    Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $\exists g \in L_1$ telle que $\Vert X_n \Vert_1 \leq g$, alors $X_n \overset{(L_1)}{\longrightarrow} X$.
+    Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $\exists g \in L_1$ telle que $\Vert X_n \Vert_1 \leq g$ pp. pour tout $n \in \mathbb{N}$, alors $X_n \overset{(L_1)}{\longrightarrow} X$.
   \end{theorem}
 
   \reference[HAU]{365}
@@ -246,7 +246,7 @@
   \reference{313}
 
   \begin{example}
-    Si $\forall n \geq 1$, $X_n$ suit une loi uniforme sur $\llbracket 1, n-1 \rrbracket$, alors $\frac{X_n}{n}$ converge en loi vers la loi uniforme sur $[0,1]$.
+    Si, pour tout $n \geq 1$, $X_n$ suit une loi uniforme sur $\llbracket 1, n \rrbracket$, alors $\frac{X_n}{n}$ converge en loi vers la loi uniforme sur $[0,1]$.
   \end{example}
 
   \reference{295}
@@ -281,7 +281,7 @@
 
   \begin{corollary}
     Si $X$ et $X_n$ sont des variables aléatoires à valeurs dans un ensemble dénombrable $D$ pour tout $n \in \mathbb{N}$, en supposant
-    \[ \forall k \in D, \, \mathbb{P}(X_n = k) = \mathbb{P}(X = k) \]
+    \[ \forall k \in D, \, \mathbb{P}(X_n = k) \longrightarrow_{n\rightarrow+\infty} \mathbb{P}(X = k) \]
     alors $X_n \overset{(d)}{\longrightarrow} X$.
   \end{corollary}
 
@@ -366,13 +366,13 @@
   \dev{theoreme-des-evenements-rares-de-poisson}
 
   \begin{application}[Théorème des événements rares de Poisson]
-    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
     \begin{enumerate}[label=(\roman*)]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}
     Alors, la suite de variables aléatoires $(S_n)$ définie par
-    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^n \mathbb{1}_{A_{n,k}} \]
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^{N_n} \mathbb{1}_{A_{n,k}} \]
     converge en loi vers la loi de Poisson de paramètre $\lambda$.
   \end{application}
 

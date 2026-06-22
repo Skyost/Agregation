@@ -22,7 +22,7 @@
   \reference{390}
 
   \begin{theorem}[des événements rares de Poisson]
-    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
     \begin{enumerate}[label=(\roman*)]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
@@ -43,7 +43,7 @@
       &= \prod_{k=1}^{N_n} \left( p_{n,k}(e^{it}-1) + 1 \right)
     \end{align*}
     l'avant-dernière égalité étant justifiée par le fait que
-    \[ \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = e^{it}) = \mathbb{P}(A_{n,k} = 1) = p_{n,k} \text{ et } \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = 1) = \mathbb{P}(A_{n,k} = 0) = 1 - p_{n,k} \]
+    \[ \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = e^{it}) = \mathbb{P}(\mathbb{1}_{A_{n,k}} = 1) = p_{n,k} \text{ et } \mathbb{P}(e^{it \mathbb{1}_{A_{n,k}}} = 1) = \mathbb{P}(\mathbb{1}_{A_{n,k}} = 0) = 1 - p_{n,k} \]
     Soient $P_{n,k}$ des variables aléatoires indépendantes suivant les lois de Poisson de paramètres respectifs $p_{n,k}$. On pose
     \[ S_n' = \sum_{k=1}^{N_n} P_{n,k} \]
     et on calcule la fonction caractéristique de cette nouvelle variable aléatoire :
@@ -67,7 +67,7 @@
     Mais, comme $\vert p_{n,k}(e^{it} - 1) \vert \leq 2 p_{n,k} \leq 2$, on a :
     \begin{align*}
       \vert \phi_{S_n}(t) - \phi_{S_n'}(t) \vert &\leq \sum_{k=1}^{N_n} (2p_{n,k})^2 \frac{e^2}{2} \\
-      &= 2e^2 \sum_{k=1}^{N_n} 2p_{n,k}^2 \\
+      &= 2e^2 \sum_{k=1}^{N_n} p_{n,k}^2 \\
       &\leq 2e^2 \underbrace{s_n}_{\longrightarrow \lambda} \underbrace{m_n}_{\longrightarrow 0} \\
       &\longrightarrow 0
     \end{align*}

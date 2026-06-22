@@ -27,7 +27,7 @@
 
   \begin{proposition}
     Soient $A, B$ deux événements. Alors,
-    \[ A \text{ et } B \text{ sont indépendants} \iff \mathbb{P}(A \setminus B) = \mathbb{P}(A) \iff \mathbb{P}(B \setminus A) = \mathbb{P}(B) \]
+    \[ A \text{ et } B \text{ sont indépendants} \iff \mathbb{P}_B(A) = \mathbb{P}(A) \iff \mathbb{P}_A(B) = \mathbb{P}(B) \]
   \end{proposition}
 
   \begin{proposition}
@@ -35,11 +35,11 @@
   \end{proposition}
 
   \begin{example}
-    On considère deux gênes $a$ et $b$ tels que la redondance de l'un d'entre eux entraîne l'acquisition d'un caractère d'un caractère $\mathcal{C}$. Anselme et Colette possèdent chacun la combinaison $ab$ et attendant un enfant : elles lui transmettront chacun et indépendamment soit le gêne $a$, soit le gêne $b$ avec la même probabilité de $\frac{1}{2}$. On considère les événements :
+    On considère deux gènes $a$ et $b$ tels que la redondance de l'un d'entre eux entraîne l'acquisition d'un caractère $\mathcal{C}$. Anselme et Colette possèdent chacun la combinaison $ab$ et attendent un enfant : ils lui transmettront chacun, indépendamment, soit le gène $a$, soit le gène $b$, avec la même probabilité $\frac{1}{2}$. On considère les événements :
     \begin{itemize}
-      \item $A$ : Colette transmet le gêne $a$.
-      \item $B$ : Anselme transmet le gêne $b$.
-      \item $C$ : l'enfant présent le caractère $\mathcal{C}$.
+      \item $A$ : Colette transmet le gène $a$.
+      \item $B$ : Anselme transmet le gène $b$.
+      \item $C$ : l'enfant présente le caractère $\mathcal{C}$.
     \end{itemize}
     $A$, $B$ et $C$ sont indépendants deux à deux, mais non mutuellement indépendants.
   \end{example}
@@ -59,14 +59,14 @@
   \end{definition}
 
   \begin{definition}
-    On dit qu'une famille de sous-tribus $(\mathcal{A}_i)_{i \in I}$ de $\mathcal{A}$ sont \textbf{indépendantes} (sous $\mathbb{P}$) si
+    On dit qu'une famille de sous-tribus $(\mathcal{A}_i)_{i \in I}$ de $\mathcal{A}$ est \textbf{indépendante} (sous $\mathbb{P}$) si
     \[ \forall J \subseteq I, \, J \text{ fini}, \, \forall (A_j)_{j \in J} \in \prod_{j \in J} \mathcal{A}_j, \, \mathbb{P}\left( \bigcap_{j \in J} A_j \right) = \prod_{j \in J} \mathbb{P}(A_j) \]
   \end{definition}
 
   \begin{remark}
     \begin{itemize}
       \item Pour tout $A, B \in \mathcal{A}$, $A$ est indépendante de $B$ si et seulement si $\sigma(A)$ est indépendante de $\sigma(B)$.
-      \item Si deux tribus $\mathcal{A}$ et $\mathcal{B}$ sont indépendantes, toute sous tribu de $\mathcal{A}$ est indépendante de toute sous tribu de $\mathcal{B}$.
+      \item Si deux tribus $\mathcal{A}$ et $\mathcal{B}$ sont indépendantes, toute sous-tribu de $\mathcal{A}$ est indépendante de toute sous-tribu de $\mathcal{B}$.
     \end{itemize}
   \end{remark}
 
@@ -104,7 +104,7 @@
   \reference{175}
 
   \begin{proposition}
-    Soient $X$ et $Y$ deux vecteurs aléatoires indépendants intégrables. Alors,
+    Soient $X$ et $Y$ deux variables aléatoires réelles indépendantes et intégrables. Alors,
     \[ \mathbb{E}(XY) = \mathbb{E}(X) \mathbb{E}(Y) \]
   \end{proposition}
 
@@ -114,7 +114,7 @@
 
   \begin{definition}
     On dit que deux variables aléatoires $X$ et $Y$ sont \textbf{non corrélées} si
-    \[ \operatorname{Covar}(X,Y) = \mathbb{E}(X - \mathbb{E}(X))\mathbb{E}(Y - \mathbb{E}(Y)) = 0 \]
+    \[ \operatorname{Covar}(X,Y) = \mathbb{E}\left((X - \mathbb{E}(X))(Y - \mathbb{E}(Y))\right) = 0 \]
   \end{definition}
 
   \begin{proposition}
@@ -189,7 +189,7 @@
   \end{proposition}
 
   \begin{theorem}
-    Sur $[0,1]$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec
+    Sur $[0,1[$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec
     \[ G_X^{(n)}(s) = \mathbb{E}(X(X-1) \dots (X-n+1)s^{X-n}) \]
     En particulier,
     \[ \mathbb{P}(X=n) = \frac{G_X^{(n)}(0)}{n!} \]
@@ -243,7 +243,7 @@
   \reference{285}
 
   \begin{example}
-    Si $(X_n)$ est telle que $\forall n \geq 1$, $\mathbb{P}(X_n = n) = \mathbb{P}(X_n = \pm n) = \frac{1}{2n^2}$ et $\mathbb{P}(X_n = 0) = 1 - \frac{1}{2n^2}$, alors la suite $(S_n)$ définie pour tout $n \geq 1$ par $S_n = \sum_{k=1}^n X_k$ est constante à partir d'un certain rang.
+    Si $(X_n)$ est telle que $\forall n \geq 1$, $\mathbb{P}(X_n = n) = \mathbb{P}(X_n = -n) = \frac{1}{2n^2}$ et $\mathbb{P}(X_n = 0) = 1 - \frac{1}{n^2}$, alors la suite $(S_n)$ définie pour tout $n \geq 1$ par $S_n = \sum_{k=1}^n X_k$ est constante à partir d'un certain rang.
   \end{example}
 
   \reference{273}
@@ -274,7 +274,7 @@
   \reference{270}
 
   \begin{theorem}[Loi faible des grands nombres]
-    Soit $(X_n)$ une suite de variables aléatoires deux à deux indépendantes de même loi et $\mathcal{L}_1$. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
+    Soit $(X_n)$ une suite de variables aléatoires deux à deux indépendantes, de même loi et intégrables. On pose $M_n = \frac{X_1 + \dots + X_n}{n}$. Alors,
     \[ M_n \overset{(p)}{\longrightarrow} \mathbb{E}(X_1) \]
   \end{theorem}
 
@@ -297,7 +297,7 @@
   \dev{theoreme-de-weierstrass-par-les-probabilites}
 
   \begin{corollary}[Théorème de Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{corollary}
 
   \subsubsection{Théorème central limite}
@@ -332,13 +332,13 @@
   \dev{theoreme-des-evenements-rares-de-poisson}
 
   \begin{application}[Théorème des événements rares de Poisson]
-    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
     \begin{enumerate}[label=(\roman*)]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}
     Alors, la suite de variables aléatoires $(S_n)$ définie par
-    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^n \mathbb{1}_{A_{n,k}} \]
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^{N_n} \mathbb{1}_{A_{n,k}} \]
     converge en loi vers la loi de Poisson de paramètre $\lambda$.
   \end{application}
 

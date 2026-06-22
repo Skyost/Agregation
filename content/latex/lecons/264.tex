@@ -15,7 +15,7 @@
 
   \begin{definition}
     \begin{itemize}
-      \item On dit qu'une loi $\mu$ est \textbf{discrète} s'il existe un ensemble $D$ fini tel que $\mu(D) = 1$.
+      \item On dit qu'une loi $\mu$ est \textbf{discrète} s'il existe un ensemble $D$ fini ou dénombrable tel que $\mu(D) = 1$.
       \item On dit que la variable aléatoire $X$ est discrète si sa loi $\mathbb{P}_X$ est discrète.
     \end{itemize}
   \end{definition}
@@ -27,7 +27,9 @@
   \end{remark}
 
   \begin{example}
-    On pose $\Omega = \{ (\omega_n) \in \mathbb{R}^n \mid \omega_n \in \{ 0,1 \} \, \forall n \in \mathbb{N} \}$ et $X : (\omega_n) \mapsto \inf \{ n \in \mathbb{N} \mid \omega_n = 0 \}$. Alors $X$ est une variable aléatoire discrète, à valeurs dans $\mathbb{N} \cup \{ +\infty \}$.
+    On pose $\Omega=\{0,1\}^{\mathbb{N}}$ et, pour $\omega=(\omega_n)_{n\in\mathbb{N}}\in\Omega$,
+    \[ X(\omega)=\inf\{n\in\mathbb{N}\mid \omega_n=0\} \]
+    (avec la convention $\inf\varnothing=+\infty$). Alors $X$ est une variable aléatoire discrète, à valeurs dans $\mathbb{N}\cup\{+\infty\}$.
   \end{example}
 
   \reference[G-K]{131}
@@ -41,7 +43,7 @@
   \end{proposition}
 
   \begin{remark}
-    Si $D$ est un ensemble fini ou dénombrable et $(p_i)_{i \in D}$ est une famille de réels positifs de somme égale à $1$, alors en posant $\Omega = D$, $\mathcal{A} = \mathcal{P}(D)$, $X : \omega \mapsto \omega$ et $\mathbb{P} = \sum_{i \in D} \mathbb{P}(X = i) \delta_i$, on a construit une variable aléatoire discrète $X$ sur $(\Omega, \mathcal{A}, \mathbb{P})$.
+    Si $D$ est un ensemble fini ou dénombrable et $(p_i)_{i \in D}$ est une famille de réels positifs de somme égale à $1$, alors en posant $\Omega = D$, $\mathcal{A} = \mathcal{P}(D)$, $X : \omega \mapsto \omega$ et $\mathbb{P} = \sum_{i \in D} p_i \delta_i$, on a construit une variable aléatoire discrète $X$ sur $(\Omega, \mathcal{A}, \mathbb{P})$.
   \end{remark}
 
   \subsubsection{Lois discrètes usuelles}
@@ -71,7 +73,7 @@
     Soit $E \subseteq \Omega$ fini. On appelle loi uniforme sur $E$ la loi discrète définie sur $\mathcal{P}(\Omega)$ par
     \[
     \begin{array}{ccc}
-      \mathcal{P}(\Omega) &\rightarrow& \llbracket 0, 1 \rrbracket \\
+      \mathcal{P}(\Omega) &\rightarrow& [0,1] \\
       A &\mapsto& \frac{\vert A \, \cap \, E \vert}{\vert E \vert}
     \end{array}
     \]
@@ -90,7 +92,7 @@
 
   \begin{example}[Loi binomiale]
     $X$ suit une loi de binomiale de paramètres $n \in \mathbb{N}$ et $p \in [0,1]$, notée $\mathcal{B}(n, p)$, si $X$ est la somme de $n$ variables aléatoires indépendantes qui suivent des lois de Bernoulli de paramètre $p$. Dans ce cas, $X$ est bien une loi discrète et on a
-    \[ \forall k \in \mathbb{N}, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
+    \[ \forall k \in \llbracket 0,n \rrbracket, \, \mathbb{P}(X = k) = \binom{n}{k} p^k (1-p)^{n-k} \]
   \end{example}
 
   \begin{remark}
@@ -112,7 +114,7 @@
 
   \begin{example}[Loi de Poisson]
     $X$ suit une loi de Poisson de paramètre $\lambda > 0$, notée $\mathcal{P}(\lambda)$, si l'on a
-    \[ \forall k \in \mathbb{N}^{*}, \, \mathbb{P}(X = k) = e^{-\lambda} \frac{\lambda^k}{k!} \]
+    \[ \forall k \in \mathbb{N}, \, \mathbb{P}(X = k) = e^{-\lambda} \frac{\lambda^k}{k!} \]
   \end{example}
 
   \reference{298}
@@ -148,7 +150,7 @@
 
   \begin{proposition}
     Des variables aléatoires discrètes $X_1, \dots, X_n$ sont indépendantes si et seulement si
-    \[ \forall j \in \llbracket, 1, n \rrbracket, \, \forall x_j \in X_j(\Omega), \, \mathbb{P}(X_1 = x_1, \dots, X_n = x_n) = \prod_{j = 1}^n \mathbb{P}(X = x_i) \]
+    \[ \forall (x_1,\dots,x_n) \in \prod_{j=1}^n X_j(\Omega), \, \mathbb{P}(X_1 = x_1, \dots, X_n = x_n) = \prod_{j = 1}^n \mathbb{P}(X_j = x_j) \]
   \end{proposition}
 
   \begin{proposition}
@@ -234,17 +236,17 @@
   \end{example}
 
   \begin{theorem}
-    Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et $\mathcal{L}_1$. Alors,
+    Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et intégrables. Alors,
     \[ \mathbb{E}(X_1 X_2) = \mathbb{E}(X_1) \mathbb{E}(X_2) \]
   \end{theorem}
 
   \begin{corollary}
     Soient $X_1$ et $X_2$ deux variables aléatoires indépendantes et à valeurs dans $\mathbb{N}$. Alors,
-    \[ G_{X_1 X_2} = G_{X_1} + G_{X_2} \]
+    \[ G_{X_1+X_2} = G_{X_1} G_{X_2} \]
   \end{corollary}
 
   \begin{theorem}
-    Sur $[0,1]$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec
+    Sur $[0,1[$, la fonction $G_X$ est infiniment dérivable et ses dérivées sont toutes positives, avec
     \[ G_X^{(n)}(s) = \mathbb{E}(X(X-1) \dots (X-n+1)s^{X-n}) \]
     En particulier,
     \[ \mathbb{P}(X=n) = \frac{G_X^{(n)}(0)}{n!} \]
@@ -268,7 +270,7 @@
   \reference{171}
 
   \begin{definition}
-    On dit que $X$ \textbf{admet un moment d'ordre $2$} si elle est de carré intégrable, ie. $X^2 \in \mathcal{L}_1$. On note $\mathcal{L}_1(\Omega, \mathcal{A}, \mathbb{P})$ (ou simplement $\mathcal{L}_1(\Omega)$ voire $\mathcal{L}_1$ s'il n'y a pas d'ambiguïté) l'espace des variables aléatoires de carré intégrable.
+    On dit que $X$ \textbf{admet un moment d'ordre $2$} si elle est de carré intégrable, ie. $X^2 \in \mathcal{L}_1$. On note $\mathcal{L}_2(\Omega, \mathcal{A}, \mathbb{P})$ (ou simplement $\mathcal{L}_2(\Omega)$ voire $\mathcal{L}_2$ s'il n'y a pas d'ambiguïté) l'espace des variables aléatoires de carré intégrable.
   \end{definition}
 
   \begin{proposition}
@@ -282,7 +284,7 @@
       \item On appelle \textbf{covariance} du couple $(X_1, X_2)$ le réel
       \[ \operatorname{Covar}(X_1, X_2) = \mathbb{E}((X_1 - \mathbb{E}(X_1))(X_2 - \mathbb{E}(X_2))) \]
       \item On appelle \textbf{variance} de $X_1$ le réel positif
-      \[ \operatorname{Var}(X_1) = \operatorname{Covar}(X_1, X_1) = \mathbb{E}(X_1 - \mathbb{E}(X_1))^2 = \mathbb{E}(X_1^2) - (\mathbb{E}(X_1))^2  \]
+      \[ \operatorname{Var}(X_1) = \operatorname{Covar}(X_1, X_1) = \mathbb{E}\left((X_1 - \mathbb{E}(X_1))^2\right) = \mathbb{E}(X_1^2) - (\mathbb{E}(X_1))^2  \]
     \end{itemize}
   \end{definition}
 
@@ -297,7 +299,7 @@
 
   \begin{example}
     \begin{itemize}
-      \item $\operatorname{Var}(\mathbb{1}_A) = \mathbb{P}(A)$.
+      \item $\operatorname{Var}(\mathbb{1}_A) = \mathbb{P}(A)(1-\mathbb{P}(A))$.
       \item $X \sim \mathcal{B}(n, p) \implies \operatorname{Var}(X) = np (1-p)$.
       \item $X \sim \mathcal{G}(p) \implies \operatorname{Var}(X) = \frac{1-p}{p^2}$.
       \item $X \sim \mathcal{P}(\lambda) \implies \operatorname{Var}(X) = \lambda$.
@@ -317,11 +319,11 @@
   \begin{theorem}[Bernstein]
     Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
     \[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
-    le $n$-ième polynôme de Bernstein associé à $f$. Alors le suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
+    le $n$-ième polynôme de Bernstein associé à $f$. Alors la suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
   \end{theorem}
 
   \begin{theorem}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
   \subsection{Théorèmes limites et d'approximations}
@@ -347,13 +349,13 @@
   \dev{theoreme-des-evenements-rares-de-poisson}
 
   \begin{application}[Théorème des événements rares de Poisson]
-    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On suppose que pour tout $n$, $A_{n,N_1}, \dots , A_{n,N_n}$ sont des événements indépendants avec $\mathbb{P}(A_{n,N_k}) = p_{n,k}$. On suppose également que :
+    Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
     \begin{enumerate}[label=(\roman*)]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}
     Alors, la suite de variables aléatoires $(S_n)$ définie par
-    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^n \mathbb{1}_{A_{n,k}} \]
+    \[ \forall n \in \mathbb{N}^*, \, S_n = \sum_{k=1}^{N_n} \mathbb{1}_{A_{n,k}} \]
     converge en loi vers la loi de Poisson de paramètre $\lambda$.
   \end{application}
 
@@ -398,7 +400,7 @@
   \reference[GOU21]{343}
 
   \begin{example}
-    Si chaque seconde, il y a une probabilité $p = \frac{1}{600}$ qu'un client entre dans un magasin, le nombre de clients qui entrent sut un intervalle d'une heure suit approximativement une loi de Poisson de paramètre $\lambda = 3600p = 6$.
+    Si chaque seconde, il y a une probabilité $p = \frac{1}{600}$ qu'un client entre dans un magasin, le nombre de clients qui entrent sur un intervalle d'une heure suit approximativement une loi de Poisson de paramètre $\lambda = 3600p = 6$.
     \newpar
     Pour cette raison, on appelle parfois cette loi la \textit{loi des événements rares}.
   \end{example}
