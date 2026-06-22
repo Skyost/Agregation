@@ -19,7 +19,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item Il n'existe pas de partition de $E$ en deux ouverts disjoints non vides.
       \item Il n'existe pas de partition de $E$ en deux fermés disjoints non vides.
-      \item Les seules parties ouvertes de $E$ sont $\emptyset$ et $E$.
+      \item Les seules parties à la fois ouvertes et fermées de $E$ sont $\emptyset$ et $E$.
     \end{enumerate}
   \end{proposition}
 
@@ -35,9 +35,9 @@
     Soit $A \subseteq E$. Les assertions suivantes sont équivalentes.
     \begin{enumerate}[label=(\roman*)]
       \item $A$ est connexe.
-      \item Si $A \subseteq O_1 \, \cap \, O_2$ avec $O_1$, $O_2$ ouverts de $E$ tels que $A \, \cap \, O_1 \, \cap \, O_2 = \emptyset$, alors
+      \item Si $A \subseteq O_1 \, \cup \, O_2$ avec $O_1$, $O_2$ ouverts de $E$ tels que $A \, \cap \, O_1 \, \cap \, O_2 = \emptyset$, alors
       \[ (A \, \cap \, O_1 = \emptyset \text{ et } A \subseteq O_2) \text{ ou } (A \, \cap \, O_2 = \emptyset \text{ et } A \subseteq O_1) \]
-      \item Si $A \subseteq F_1 \, \cap \, F_2$ avec $F_1$, $F_2$ fermés de $E$ tels que $A \, \cap \, F_1 \, \cap \, F_2 = \emptyset$, alors
+      \item Si $A \subseteq F_1 \, \cup \, F_2$ avec $F_1$, $F_2$ fermés de $E$ tels que $A \, \cap \, F_1 \, \cap \, F_2 = \emptyset$, alors
       \[ (A \, \cap \, F_1 = \emptyset \text{ et } A \subseteq F_2) \text{ ou } (A \, \cap \, F_2 = \emptyset \text{ et } A \subseteq F_1) \]
     \end{enumerate}
   \end{proposition}
@@ -137,7 +137,7 @@
 
   \begin{definition}
     On définit la relation $\mathcal{R}$ suivante sur $E$ :
-    \[ x \mathcal{R} y \iff \exists C \subseteq E \text{ connexe tel que } x, y \in E \]
+    \[ x \mathcal{R} y \iff \exists C \subseteq E \text{ connexe tel que } x, y \in C \]
   \end{definition}
 
   \begin{proposition}
@@ -196,7 +196,7 @@
   \reference{328}
 
   \begin{proposition}
-    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow F$ où $F$ est un espace vectoriel normé. Si $f$ est différentiable telle que $\forall x \in U, \, \mathrm{d}f_x = 0$, alors $f$ est constante sur $U$.
+    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow F$ où $F$ est un espace vectoriel normé. Si $f$ est différentiable et telle que $\forall x \in U, \, \mathrm{d}f_x = 0$, alors $f$ est constante sur $U$.
   \end{proposition}
 
   \reference[BMP]{80}
@@ -208,7 +208,7 @@
   \reference[GOU20]{349}
 
   \begin{proposition}
-    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow E$. Si $f$ est de classe $\mathcal{C}^1$ telle que $\forall x \in U, \, \mathrm{d}f_x$ est une isométrie, alors $f$ est une isométrie affine.
+    Soit $U$ un ouvert connexe d'un espace vectoriel normé $E$. Soit $f : U \rightarrow E$. Si $f$ est de classe $\mathcal{C}^1$ et telle que $\forall x \in U, \, \mathrm{d}f_x$ est une isométrie, alors $f$ est une isométrie affine.
   \end{proposition}
 
   \subsubsection{En analyse complexe}
@@ -253,10 +253,10 @@
   \reference{72}
 
   \begin{theorem}[Principe du maximum]
-    On suppose $\Omega$ borné et $f$ holomorphe sur $\Omega$ et continue sur $\overline{\Omega}$. On note $M$ le maximum de $f$ sur la frontière de $\Omega$. Alors,
+    On suppose $\Omega$ borné et $f$ holomorphe sur $\Omega$ et continue sur $\overline{\Omega}$. On note $M$ le maximum de $\vert f \vert$ sur la frontière de $\Omega$. Alors,
     \begin{enumerate}[label=(\roman*)]
       \item Pour tout $z \in \Omega$, $\vert f(z) \vert \leq M$.
-      \item S'il existe $z_0 \in \Omega$ tel que $\vert f(z) \vert = M$, alors $f$ est constant sur $\Omega$.
+      \item S'il existe $z_0 \in \Omega$ tel que $\vert f(z_0) \vert = M$, alors $f$ est constante sur $\Omega$.
     \end{enumerate}
   \end{theorem}
 
@@ -267,7 +267,7 @@
   \end{application}
 
   \begin{application}
-    On suppose que $D(0,1) \subseteq \Omega$ et $f$ holomorphe sur $\Omega$. On suppose de plus que $f(0) = 1$ et $\vert f(z) \vert \geq 2$ sur le cercle unité. Alors $f$ s'annule sur le cercle unité.
+    On suppose que $\overline{D}(0,1) \subseteq \Omega$ et $f$ holomorphe sur $\Omega$. On suppose de plus que $f(0) = 1$ et $\vert f(z) \vert \geq 2$ sur le cercle unité. Alors $f$ s'annule sur le cercle unité.
   \end{application}
 
   \subsection{Exemple d'application en algèbre}

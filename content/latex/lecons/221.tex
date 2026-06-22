@@ -14,7 +14,7 @@
   \reference[GOU20]{373}
 
   \begin{definition}
-    Soient $n \in \mathbb{N}^*$, $E$ un espace de Banach et $\Omega \subseteq \mathbb{R} \times E^n$ un ouvert. Soit $F : \Omega \times \mathbb{R}^n \rightarrow E$ une fonction.
+    Soient $n \in \mathbb{N}^*$, $E$ un espace de Banach et $\Omega \subseteq \mathbb{R} \times E^n$ un ouvert. Soit $F : \Omega \rightarrow E$ une fonction.
     \begin{itemize}
       \item On appelle \textbf{équation différentielle} une équation de la forme
       \[ y^{(n)} = F(t, y, y', \dots, y^{(n-1)}) \tag{$*$} \]
@@ -25,9 +25,9 @@
         \item $\forall t \in I, \, F(t, \varphi(t), \dots, \varphi^{(n-1)}(t)) = \varphi^{(n)}(t)$ ;
       \end{enumerate}
       est une \textbf{solution} de $(*)$. On note $\mathcal{S}_*$ l'ensemble des solutions de $(*)$.
-      \item Une solution $\varphi : I \rightarrow E$ de $(*)$ est dite \textbf{maximale} s'il n'existe pas d'autre solution $\psi : J \rightarrow E$ (où $J$ est un intervalle de $\mathbb{R}$) de $(*)$ telle que $I \subseteq J$, $I \neq J$ et $\psi = \varphi$ sir $I$.
+      \item Une solution $\varphi : I \rightarrow E$ de $(*)$ est dite \textbf{maximale} s'il n'existe pas d'autre solution $\psi : J \rightarrow E$ (où $J$ est un intervalle de $\mathbb{R}$) de $(*)$ telle que $I \subseteq J$, $I \neq J$ et $\psi = \varphi$ sur $I$.
       \item On appelle \textbf{problème de Cauchy} de $(*)$ en $(t_0, x_0, \dots, x_{n-1})$ la recherche d'une solution $\varphi : I \rightarrow E$ de $(*)$ vérifiant
-      \[ \forall t_0 \in I, \, \varphi(t_0) = x_0, \dots, \varphi^{(n-1)}(t_0) = x_{n-1} \]
+      \[ \varphi(t_0) = x_0, \dots, \varphi^{(n-1)}(t_0) = x_{n-1} \]
     \end{itemize}
   \end{definition}
 
@@ -57,7 +57,7 @@
   \dev{theoreme-de-cauchy-lipschitz-lineaire}
 
   \begin{theorem}[Cauchy-Lipschitz linéaire]
-    Soient $A : I \rightarrow \mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^d$ deux fonctions continues. Alors $\forall t_0 \in I$, le problème de Cauchy
+    Soient $A : I \rightarrow \mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^n$ deux fonctions continues. Alors, pour tout $t_0 \in I$ et $y_0 \in \mathbb{K}^n$, le problème de Cauchy
     \[ \begin{cases} Y' = A(t)Y + B(t) \\ Y(t_0) = y_0 \end{cases} \]
     admet une unique solution définie sur $I$ tout entier.
   \end{theorem}
@@ -66,7 +66,7 @@
 
   \begin{remark}[Version linéaire d'ordre $p$]
     Soient $A_{p-1}, \dots, A_0$ des fonctions continues d'un intervalle $I$ de $\mathbb{R}$ non réduit à un point dans $\mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^n$ une fonction continue. Soient $X_0, \dots, X_{p-1} \in \mathbb{K}^n$. Alors, $\forall t_0 \in I$, le problème de Cauchy
-    \[ \begin{cases} Y^{(p)} = A_{p-1}(t) Y^{(p-1)} + \dots + A_0(t) Y + B(t) & \\ Y^{(k)}(t_0) = X_k & \forall k \in \llbracket 1, p-1 \rrbracket \end{cases} \]
+    \[ \begin{cases} Y^{(p)} = A_{p-1}(t) Y^{(p-1)} + \dots + A_0(t) Y + B(t) & \\ Y^{(k)}(t_0) = X_k & \forall k \in \llbracket 0, p-1 \rrbracket \end{cases} \]
     admet une unique solution définie sur $I$ tout entier.
   \end{remark}
 
@@ -79,7 +79,7 @@
   \reference[GOU20]{278}
 
   \begin{corollary}
-    L'ensemble des solutions d'une équation différentielle linéaire homogène d'ordre $p$ défini sur un intervalle $I$ est un sous-espace vectoriel de $\mathcal{C}^1 (I, \mathbb{K}^n)$ de dimension $np$.
+    L'ensemble des solutions d'une équation différentielle linéaire homogène d'ordre $p$ définie sur un intervalle $I$ est un sous-espace vectoriel de $\mathcal{C}^p(I, \mathbb{K}^n)$ de dimension $np$.
   \end{corollary}
 
   \begin{corollary}
@@ -199,7 +199,7 @@
     On considère l'équation différentielle $(H) : y'' + ay' + by = 0$. Soient $r_1$ et $r_2$ les deux racines de $P_H$ dans $\mathbb{C}$.
     \begin{itemize}
       \item Si $r_1 \neq r_2$, $\mathcal{S}_H = \{t \mapsto \lambda e^{r_1 t} + \mu e^{r_2 t} \mid \lambda, \mu \in \mathbb{C}\}$.
-      \item Si $r_1 = r_2$, $\mathcal{S}_H = \{t \mapsto (\lambda t + \mu) e^{r t} \mid \lambda, \mu \in K\}$.
+      \item Si $r_1 = r_2$, $\mathcal{S}_H = \{t \mapsto (\lambda t + \mu) e^{r_1 t} \mid \lambda, \mu \in \mathbb{C}\}$.
     \end{itemize}
   \end{example}
 
@@ -209,7 +209,7 @@
 
   \begin{proposition}
     On considère une équation différentielle linéaire homogène $(H) : y^{(n)} = a_{n-1}(t) y^{(n-1)} + \dots + a_0(t) y$. Soit $\varphi \in \mathcal{S}_H$, alors $f = g \varphi$ est solution de $(H)$ si et seulement si
-    \[ \sum_{k=1}^n \binom{n}{k} g^{k} \varphi^{(n-k)} = a_{n-1}(t) \sum_{k=1}^{n-1} \binom{n-1}{k} g^{k} \varphi^{(n-1-k)} + \dots + a_1(t) (g' \varphi) \]
+    \[ \sum_{k=1}^n \binom{n}{k} g^{(k)} \varphi^{(n-k)} = a_{n-1}(t) \sum_{k=1}^{n-1} \binom{n-1}{k} g^{(k)} \varphi^{(n-1-k)} + \dots + a_1(t) (g' \varphi) \]
     ie. $g'$ est solution d'une équation différentielle d'ordre $n-1$.
   \end{proposition}
 
@@ -228,8 +228,8 @@
   \end{proposition}
 
   \begin{example}
-    La fonction $\sin : \mathbb{R} \rightarrow [1,1]$ est l'unique solution du problème de Cauchy
-    \[ \begin{cases} y'' = y \\ y(0) = 0 \\ y'(0) = 1 \end{cases} \]
+    La fonction $\sin : \mathbb{R} \rightarrow [-1,1]$ est l'unique solution du problème de Cauchy
+    \[ \begin{cases} y'' = -y \\ y(0) = 0 \\ y'(0) = 1 \end{cases} \]
   \end{example}
 
   \reference{412}
@@ -283,7 +283,7 @@
 
   \begin{corollary}[Équations de Ricatti]
     Soit $(R) : y' = a(t) y^2 + b(t) y + c(t)$ qui admet pour solution particulière $\varphi_0$. On pose $y = \varphi_0 + z$ et on a
-    \[ (R) \iff (2a(t) \varphi_0(t) + b(t))z + a(t)z^2 \]
+    \[ (R) \iff z' = (2a(t) \varphi_0(t) + b(t))z + a(t)z^2 \]
     qui est une équation de Bernoulli.
   \end{corollary}
 
@@ -312,7 +312,7 @@
   \reference[I-P]{177}
 
   \begin{lemma}
-    Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynômiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
+    Soit $\Vert . \Vert$ une norme d'algèbre sur $\mathcal{M}_n(\mathbb{C})$, et soit $A \in \mathcal{M}_n(\mathbb{C})$ une matrice dont les valeurs propres sont de partie réelle strictement négative. Alors il existe une fonction polynomiale $P : \mathbb{R} \rightarrow \mathbb{R}$ et $\lambda > 0$ tels que $\Vert e^{tA} \Vert \leq e^{- \lambda t} P(t)$.
   \end{lemma}
 
   \dev{equation-de-sylvester}

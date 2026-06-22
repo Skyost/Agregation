@@ -133,7 +133,7 @@
   \reference{107}
 
   \begin{theorem}[Principe du maximum]
-    On suppose $\Omega$ borné et $f$ holomorphe dans $\Omega$ et continue dans $\overline{\Omega}$. On note $M$ le $\sup$ de $f$ sur la frontière (compacte) de $\Omega$. Alors,
+    On suppose $\Omega$ borné et $f$ holomorphe dans $\Omega$ et continue dans $\overline{\Omega}$. On note $M$ le $\sup$ de $\vert f \vert$ sur la frontière (compacte) de $\Omega$. Alors,
     \[ \forall z \in \Omega, \, \vert f(z) \vert \leq M \]
   \end{theorem}
 
@@ -158,7 +158,7 @@
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
+    Si $F$ est un sous-espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
   \end{theorem}
 
   \begin{application}
@@ -258,7 +258,7 @@
 
   \begin{theorem}[Extrema liés]
     \label{219-1}
-    Soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe des uniques $\lambda_1, \dots, \lambda_r$ tels que
+    Soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe un unique $r$-uplet $(\lambda_1, \dots, \lambda_r)$ tel que
     \[ \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
   \end{theorem}
 
@@ -300,8 +300,8 @@
   \reference[ROU]{409}
 
   \begin{application}[Inégalité d'Hadamard]
-    \[ \forall (x_1, \dots, x_n) \in \mathbb{R}^n, \, \det(x_1, \dots, x_n) \leq \Vert x_1 \Vert \dots \Vert x_n \Vert \]
-    avec égalité si et seulement si $(x_1, \dots, x_n)$ est une base orthogonale de $\mathbb{R}^n$.
+    \[ \forall (x_1, \dots, x_n) \in (\mathbb{R}^n)^n, \, \vert \det(x_1, \dots, x_n) \vert \leq \Vert x_1 \Vert \dots \Vert x_n \Vert \]
+    avec égalité si et seulement si l'un des $x_i$ est nul ou si $(x_1, \dots, x_n)$ est une famille orthogonale de $\mathbb{R}^n$.
   \end{application}
 
   \subsection{Algorithmes d'optimisation numérique}

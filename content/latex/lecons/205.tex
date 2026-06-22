@@ -35,7 +35,7 @@
   \reference[GOU20]{20}
 
   \begin{remark}
-    La notion de suite de Cauchy n'est pas topologique : elle ne peut pas être définie à partir des ouverts de $E$. Cependant, si une suite est de Cauchy pour une certaine distance, alors elle l'est pour toute autre distance équivalente.
+    La notion de suite de Cauchy n'est pas topologique : elle ne peut pas être définie à partir des ouverts de $E$. Cependant, si une suite est de Cauchy pour une certaine distance, alors elle l'est pour toute autre distance uniformément équivalente.
   \end{remark}
 
   \begin{definition}
@@ -58,7 +58,7 @@
   \end{proposition}
 
   \begin{proposition}[Fermés emboîtés]
-    $E$ est complet si et seulement si toute suite décroissante de fermés non-vides de $E$ dont le diamètre converge vers $0$ converge vers un singleton.
+    $E$ est complet si et seulement si l'intersection de toute suite décroissante de fermés non vides de $E$ dont le diamètre converge vers $0$ est un singleton.
   \end{proposition}
 
   \begin{proposition}[Critère de Cauchy pour les fonctions]
@@ -105,7 +105,7 @@
   \reference[DAN]{45}
 
   \begin{cexample}
-    L'espace des fonctions polynômiales définies sur $[-1,1]$ et muni de la norme $\Vert . \Vert_{\infty}$ n'est pas complet.
+    L'espace des fonctions polynomiales définies sur $[-1,1]$ et muni de la norme $\Vert . \Vert_{\infty}$ n'est pas complet.
   \end{cexample}
 
   \reference[GOU20]{21}
@@ -184,11 +184,11 @@
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
+    Si $F$ est un sous-espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$, alors
+    Si $F$ est un sous-espace vectoriel fermé dans $H$, alors
     \[ H = F \oplus F^\perp \]
     et $P_F$ est la projection sur $F$ parallèlement à $F^\perp$ : c'est la \textbf{projection orthogonale} sur $F$.
   \end{theorem}
@@ -277,7 +277,7 @@
   \reference{21}
 
   \begin{theorem}[Point fixe de Banach]
-    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractant (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
+    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractante (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
     \[ \exists! x \in E \text{ tel que } f(x) = x \]
     De plus la suite des itérés définie par $x_0 \in E$ et $\forall n \in \mathbb{N}, x_{n+1} = f(x_n)$ converge vers $x$.
   \end{theorem}
@@ -323,13 +323,13 @@
   \reference[LI]{111}
 
   \begin{theorem}[Baire]
-    On suppose $E$ complet. Alors toute intersection d'ouvert denses est encore dense dans $E$.
+    On suppose $E$ complet. Alors toute intersection dénombrable d'ouverts denses est encore dense dans $E$.
   \end{theorem}
 
   \reference[GOU20]{419}
 
   \begin{application}
-    Un espace vectoriel normé à base dénombrable n'est pas complet.
+    Un espace vectoriel normé à base algébrique dénombrable infinie n'est pas complet.
   \end{application}
 
   \reference[LI]{112}

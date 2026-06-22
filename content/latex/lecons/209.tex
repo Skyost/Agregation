@@ -57,7 +57,7 @@
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
   \begin{corollary}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{corollary}
 
   On a une version plus générale de ce théorème.
@@ -90,17 +90,17 @@
   Soit $f$ une fonction réelle continue sur un intervalle $[a,b]$. On se donne $n+1$ points $x_0, \dots, x_n \in [a,b]$ distincts deux-à-deux.
 
   \begin{definition}
-    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_1, \dots, x_n$ par
+    Pour $i \in \llbracket 0, n \rrbracket$, on définit le $i$-ième \textbf{polynôme de Lagrange} associé à $x_0, \dots, x_n$ par
     \[ \ell_i : x \mapsto \prod_{\substack{j=0\\j \neq i}}^n \frac{x-x_j}{x_i-x_j} \]
   \end{definition}
 
   \begin{theorem}
-    Il existe une unique fonction polynômiale $p_n$ de degré $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
+    Il existe une unique fonction polynomiale $p_n$ de degré inférieur ou égal à $n$ telle que $\forall i \in \llbracket 0, n \rrbracket, \, p_n(x_i) = f(x_i)$ :
     \[ p_n = \sum_{i=0}^n f(x_i) \ell_i \]
   \end{theorem}
 
   \begin{theorem}
-    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_i),\max(x,x_i)[$ tel que
+    On note $\pi_{n+1} : x \mapsto \prod_{j=0}^{n} (x-x_j)$ et on suppose $f$ $n+1$ fois dérivable $[a,b]$. Alors, pour tout $x \in [a,b]$, il existe un réel $\xi_x \in ]\min(x,x_0,\dots,x_n),\max(x,x_0,\dots,x_n)[$ tel que
     \[ f(x)-p_n(x) = \frac{\pi_{n+1}(x)}{(n+1)!} f^{(n+1)}(\xi_x) \]
   \end{theorem}
 
@@ -145,10 +145,10 @@
   \begin{theorem}
     Soient $p, q > 0$ et $f \in L_p(\mathbb{R}^d)$ et $g \in L_q(\mathbb{R}^d)$.
     \begin{enumerate}[label=(\roman*)]
-      \item Si $p, q \in [1, +\infty]$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, alors $(f * g)(x)$ existe \uline{pour tout} $x \in \mathbb{R}^d$ et est uniformément continue. On a, $\Vert f * g \Vert_\infty \leq \Vert f \Vert_p \Vert g \Vert_q$ et, si $p \neq 1, +\infty$, $f * g \in \mathcal{C}_0(\mathbb{R})$.
+      \item Si $p, q \in [1, +\infty]$ tels que $\frac{1}{p} + \frac{1}{q} = 1$, alors $(f * g)(x)$ existe \uline{pour tout} $x \in \mathbb{R}^d$ et est uniformément continue. On a, $\Vert f * g \Vert_\infty \leq \Vert f \Vert_p \Vert g \Vert_q$ et, si $p \neq 1, +\infty$, $f * g \in \mathcal{C}_0(\mathbb{R}^d)$.
       \item Si $p = 1$ et $q = +\infty$, alors $(f * g)(x)$ existe \uline{pour tout} $x \in \mathbb{R}^d$ et $f * g \in \mathcal{C}_b(\mathbb{R})$.
-      \item Si $p = 1$ et $q \in [1, +\infty[$, alors $(f * g)(x)$ existe \uline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_q(\mathbb{R})$ telle que $\Vert f * g \Vert_q \leq \Vert f \Vert_1 \Vert g \Vert_q$.
-      \item Si $p = 1$ et $q = 1$, alors $(f * g)(x)$ existe \uline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_1(\mathbb{R})$ telle que $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
+      \item Si $p = 1$ et $q \in [1, +\infty[$, alors $(f * g)(x)$ existe \uline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_q(\mathbb{R}^d)$ telle que $\Vert f * g \Vert_q \leq \Vert f \Vert_1 \Vert g \Vert_q$.
+      \item Si $p = 1$ et $q = 1$, alors $(f * g)(x)$ existe \uline{pp.} en $x \in \mathbb{R}^d$ et $f * g \in L_1(\mathbb{R}^d)$ telle que $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
     \end{enumerate}
   \end{theorem}
 
@@ -181,13 +181,13 @@
     On appelle \textbf{approximation de l'identité} toute suite $(\rho_n)$ de fonctions mesurables de $L_1(\mathbb{R}^d)$ telles que
     \begin{enumerate}[label=(\roman*)]
       \item $\forall n \in \mathbb{N}, \, \int_{\mathbb{R}^d} \rho_n \, \mathrm{d}\lambda_d = 1$.
-      \item $\sup_{n \geq 1} \Vert \rho_n \Vert < +\infty$.
-      \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R} \setminus B(0, \epsilon)} \rho_n(x) \, \mathrm{d}x = 0$.
+      \item $\sup_{n \geq 1} \Vert \rho_n \Vert_1 < +\infty$.
+      \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R}^d \setminus B(0, \epsilon)} |\rho_n(x)| \, \mathrm{d}x = 0$.
     \end{enumerate}
   \end{definition}
 
   \begin{remark}
-    Dans la définition précédente, (ii) implique (i) lorsque les fonctions $\rho_n$ sont positives. Plutôt que des suites, on pourra considérer les familles indexées par $\mathbb{R}_*^+$.
+    Dans la définition précédente, (i) implique (ii) lorsque les fonctions $\rho_n$ sont positives, puisque $\Vert\rho_n\Vert_1=1$. Plutôt que des suites, on pourra considérer les familles indexées par $\mathbb{R}_*^+$.
   \end{remark}
 
   \begin{example}
@@ -213,7 +213,7 @@
     \begin{itemize}
       \item Si $f$ est continue en $x_0 \in \mathbb{R}^d$, alors $(f * \rho_n)(x_0) \longrightarrow_{n \rightarrow +\infty} f(x_0)$.
       \item Si $f$ est uniformément continue sur $\mathbb{R}^d$, alors $\Vert f * \rho_n - f \Vert_\infty \longrightarrow_{n \rightarrow +\infty} 0$.
-      \item Si $f$ est continue sur un compact $K$, alors $\sup_{x \in K} |(f * \rho_n)(x) - f(x)| \longrightarrow_{n \rightarrow +\infty} 0$.
+      \item Si $f$ est continue en tout point d'un compact $K$, alors $\sup_{x \in K} |(f * \rho_n)(x) - f(x)| \longrightarrow_{n \rightarrow +\infty} 0$.
     \end{itemize}
   \end{theorem}
 
@@ -221,10 +221,8 @@
     On qualifie de \textbf{régularisante} toute suite $(\alpha_n)$ d'approximations de l'identité telle que $\forall n \in \mathbb{N}, \, \alpha_n \in \mathcal{C}^\infty_K(\mathbb{R}^d)$.
   \end{definition}
 
-  \reference{274}
-
   \begin{example}
-    Soit $\alpha \in \mathcal{C}^\infty_K(\mathbb{R}^d)$ une densité de probabilité. Alors la suite $(\alpha_n)$ définie pour tout $n \in \mathbb{N}$ par $\alpha_n : x \mapsto n \alpha(nx)$ est régularisante.
+    Soit $\alpha \in \mathcal{C}^\infty_K(\mathbb{R}^d)$ une densité de probabilité. Alors la suite $(\alpha_n)$ définie pour tout $n \in \mathbb{N}^*$ par $\alpha_n : x \mapsto n^d \alpha(nx)$ est régularisante.
   \end{example}
 
   \reference[AMR08]{96}
@@ -268,7 +266,7 @@
 
   \subsubsection{Approximation hilbertienne}
 
-  \reference{109}
+  \reference[BMP]{109}
 
   \begin{theorem}
     \label{209-2}
@@ -276,12 +274,12 @@
     \begin{enumerate}[label=(\roman*)]
       \item La famille orthonormée $(\epsilon_n)_{n \in I}$ est une base hilbertienne de $H$.
       \item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, \epsilon_n \rangle \epsilon_n$.
-      \item \label{209-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
+      \item \label{209-3} $\forall x \in H, \, \Vert x \Vert^2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
     \end{enumerate}
   \end{theorem}
 
   \begin{remark}
-    L'égalité du \cref{209-1} \cref{209-2} est appelée \textbf{égalité de Parseval}.
+    L'égalité du \cref{209-2} \cref{209-3} est appelée \textbf{égalité de Parseval}.
   \end{remark}
 
   \reference{123}
@@ -299,7 +297,7 @@
 
   \begin{example}
     On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
-    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \reference[BMP]{124}
@@ -326,24 +324,24 @@
   \reference[AMR08]{184}
 
   \begin{definition}
-    Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_N$ est appelée \textbf{noyau de Dirichlet} d'ordre $N$.
+    Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_n$ est appelée \textbf{noyau de Dirichlet} d'ordre $N$.
   \end{definition}
 
   \begin{proposition}
     Soit $N \in \mathbb{N}$.
     \begin{enumerate}[label=(\roman*)]
-      \item $D_N$ est une fonction paire, $2\pi$-périodique, et de norme $1$.
+      \item $D_N$ est une fonction paire, $2\pi$-périodique, et vérifie $c_0(D_N) = 1$.
       \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, D_N(x) = \frac{\sin \left(\left( N + \frac{1}{2} \right) x \right)}{\sin \left( \frac{x}{2} \right)} \]
       \item Pour tout $f \in L_1^{2 \pi}, \, S_N(f) = f * D_N$.
     \end{enumerate}
   \end{proposition}
 
   \begin{definition}
-    Pour tout $N \in \mathbb{N}$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
+    Pour tout $N \in \mathbb{N}^*$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
   \end{definition}
 
   \begin{notation}
-    Pour tout $N \in \mathbb{N}^*$, on note $\sigma_N = \frac{1}{N} \sum_{k=0}^{N-1} S_n(f)$ la somme de Cesàro d'ordre $N$ de la série de Fourier d'une fonction $f \in L_1^{2 \pi}$.
+    Pour tout $N \in \mathbb{N}^*$, on note $\sigma_N = \frac{1}{N} \sum_{k=0}^{N-1} S_k(f)$ la somme de Cesàro d'ordre $N$ de la série de Fourier d'une fonction $f \in L_1^{2 \pi}$.
   \end{notation}
 
   \begin{proposition}
@@ -368,7 +366,7 @@
   \end{theorem}
 
   \begin{corollary}
-    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonction continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
+    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonctions continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
   \end{corollary}
   %</content>
 \end{document}

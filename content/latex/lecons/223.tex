@@ -173,7 +173,7 @@
     \begin{itemize}
       \item On dit que $(u_n)$ est \textbf{négligeable} devant une suite réelle positive $(\alpha_n)$ et on note $u_n = o(\alpha_n)$ si,
       \[ \forall \epsilon > 0, \, \exists N \in \mathbb{N}, \, \text{ tel que } \forall n \geq N, \vert u_n \vert \leq \epsilon \alpha_n  \]
-      \item On dit que $(u_n)$ est \textbf{équivalente} à une suite numérique $(v_n)$ et on note $u_n \sim v_n$, si $(u_n - v_n)$ est négligeable devant $(\vert u_n \vert)$.
+      \item On dit que $(u_n)$ est \textbf{équivalente} à une suite numérique $(v_n)$ et on note $u_n \sim v_n$, si $(u_n - v_n)$ est négligeable devant $(\vert v_n \vert)$.
     \end{itemize}
   \end{definition}
 
@@ -181,8 +181,8 @@
     En reprenant les notations précédentes,
     \begin{enumerate}[label=(\roman*)]
       \item On suppose $(\alpha_n)$ non nulle à partir d'un certain rang. $(u_n)$ est négligeable devant $\alpha_n$ si et seulement si $\frac{u_n}{\alpha_n} \longrightarrow_{n \rightarrow +\infty} 0$.
-      \item On suppose $(v_n)$ non nulle à partir d'un certain rang. $(u_n)$ est équivalente à $v_n$ si et seulement si $\frac{u_n}{\alpha_n} \longrightarrow_{n \rightarrow +\infty} 1$.
-      \item $\sim$ est une relation d'équivalence sur l'ensemble des suites de $\mathbb{K}$.
+      \item On suppose $(v_n)$ non nulle à partir d'un certain rang. $(u_n)$ est équivalente à $v_n$ si et seulement si $\frac{u_n}{v_n} \longrightarrow_{n \rightarrow +\infty} 1$.
+      \item $\sim$ est une relation d'équivalence sur l'ensemble des suites de $\mathbb{K}$ non nulles à partir d'un certain rang.
     \end{enumerate}
   \end{proposition}
 
@@ -229,8 +229,8 @@
   \reference[AMR11]{53}
 
   \begin{definition}
-    À toute suite numérique $(u_n)$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
-    \[ \forall n \in \mathbb{N}, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
+    À toute suite numérique $(u_n)$ définie à partir du rang $1$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
+    \[ \forall n \in \mathbb{N}^*, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
   \end{definition}
 
   \begin{theorem}
@@ -241,8 +241,7 @@
   \begin{example}
     \begin{itemize}
       \item Soit $(v_n)$ une suite numérique dont aucun terme n'est nul, qui converge vers $\ell \neq 0$. Alors,
-      \[ \frac{1}{n} \frac{1}{\sum_{k=1}^n \frac{1}{v_k}} \longrightarrow_{n \rightarrow +\infty} \frac{1}{\ell} \]
-      converge vers $\frac{1}{\ell}$.
+      \[ \frac{1}{n} \sum_{k=1}^n \frac{1}{v_k} \longrightarrow_{n \rightarrow +\infty} \frac{1}{\ell} \]
       \item Soit $(w_n)$ une suite numérique telle que $(w_{n+1} - w_n)$ converge vers $\ell \in \mathbb{K}$. Alors,
       \[ \frac{w_n}{n} \longrightarrow_{n \rightarrow +\infty} \ell \]
     \end{itemize}
@@ -320,7 +319,7 @@
   \end{lemma}
 
   \begin{definition}
-    On appelle \textbf{limite inférieure} (resp. \textbf{limite supérieure}) de $(u_n)$, notée $\limsup_{n \rightarrow +\infty} u_n$ (resp. $\liminf_{n \rightarrow +\infty} u_n$) la plus grande (resp. plus petite) de ses valeurs d'adhérence.
+    On appelle \textbf{limite inférieure} (resp. \textbf{limite supérieure}) de $(u_n)$, notée $\liminf_{n \rightarrow +\infty} u_n$ (resp. $\limsup_{n \rightarrow +\infty} u_n$) la plus petite (resp. plus grande) de ses valeurs d'adhérence.
   \end{definition}
 
   \reference[DAN]{77}
@@ -337,14 +336,14 @@
 
   \begin{definition}
     Soit $E \subseteq \mathbb{K}$. On dit que $(u_n)$ est \textbf{récurrente} d'ordre $h \in \mathbb{N}^*$ si on peut écrire
-    \[ \forall n \geq h, \, u_{n+h} = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
-    où $f : E^h \rightarrow E$ et les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant donnés.
+    \[ \forall n \geq h, \, u_n = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
+    où $f : E^h \rightarrow E$, les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant données.
   \end{definition}
 
   \reference[AMR11]{38}
 
   \begin{theorem}[Caractérisation séquentielle de la continuité]
-    En reprenant les notations précédentes, une fonction $g : E \rightarrow \mathbb{K}$ est continue si et seulement si pour toute suite numérique convergente $(v_n) \in E^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} \ell$.
+    En reprenant les notations précédentes, une fonction $g : E \rightarrow \mathbb{K}$ est continue si et seulement si pour toute suite numérique convergente $(v_n) \in E^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} g(\ell)$.
   \end{theorem}
 
   \begin{corollary}
@@ -416,7 +415,7 @@
   \end{proposition}
 
   \begin{cexample}
-    La réciproque est fausse, par exemple en considérant la suite $(u_n)$ définie pour tout $n \in \mathbb{N}$ par $u_n = \ln(1 + \frac{1}{n})$, on a $\sum_{k=1}^{n} u_k = \ln(n+1) \longrightarrow_{n \rightarrow +\infty} +\infty$.
+    La réciproque est fausse, par exemple en considérant la suite $(u_n)$ définie pour tout $n \in \mathbb{N}^*$ par $u_n = \ln(1 + \frac{1}{n})$, on a $\sum_{k=1}^{n} u_k = \ln(n+1) \longrightarrow_{n \rightarrow +\infty} +\infty$.
   \end{cexample}
 
   \begin{proposition}

@@ -16,7 +16,7 @@
   \end{proposition}
 
   \begin{cexample}
-    Cela ne marche pas si $f$ n'est pas continue. Par exemple, $\arcsin([-1, 1]) = \mathbb{R}$.
+    Cela ne marche pas si $f$ n'est pas continue. Par exemple, la fonction $f : [0,1] \rightarrow \mathbb{R}$ définie par $f(0)=0$ et $f(x)=\frac{1}{x}$ si $x>0$ vérifie $f([0,1]) = \{0\} \, \cup \, [1,+\infty[$, qui n'est pas compact.
   \end{cexample}
 
   \begin{proposition}
@@ -65,7 +65,7 @@
   \reference{237}
 
   \begin{corollary}
-    Une limite uniforme sur $\mathbb{R}$ de fonctions polynômiales est une fonction polynômiale.
+    Une limite uniforme sur $\mathbb{R}$ de fonctions polynomiales est une fonction polynomiale.
   \end{corollary}
 
   \reference{232}
@@ -101,7 +101,7 @@
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
   \begin{theorem}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
   On a une version plus générale de ce théorème.
@@ -260,8 +260,8 @@
     On appelle \textbf{approximation de l'identité} toute suite $(\rho_n)$ de fonctions mesurables de $L_1(\mathbb{R}^d)$ telles que
     \begin{enumerate}[label=(\roman*)]
       \item $\forall n \in \mathbb{N}, \, \int_{\mathbb{R}^d} \rho_n \, \mathrm{d}\lambda_d = 1$.
-      \item $\sup_{n \geq 1} \Vert \rho_n \Vert < +\infty$.
-      \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R} \setminus B(0, \epsilon)} \rho_n(x) \, \mathrm{d}x = 0$.
+      \item $\sup_{n \geq 1} \Vert \rho_n \Vert_1 < +\infty$.
+      \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R}^d \setminus B(0, \epsilon)} |\rho_n(x)| \, \mathrm{d}x = 0$.
     \end{enumerate}
   \end{definition}
 
@@ -310,9 +310,9 @@
   \begin{theorem}
     Soit $(e_n)_{n \in I}$ une famille orthonormée dénombrable de $L_2$. Les propriétés suivantes sont équivalentes :
     \begin{enumerate}[label=(\roman*)]
-      \item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $H$.
+      \item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $L_2$.
       \item $\forall f \in L_2, \, f = \sum_{n=0}^{+\infty} \langle f, e_n \rangle e_n$.
-      \item $\forall f \in L_2, \, \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle f, e_n \rangle \vert^2$.
+      \item $\forall f \in L_2, \, \Vert f \Vert_2^2 = \sum_{n=0}^{+\infty} \vert \langle f, e_n \rangle \vert^2$.
     \end{enumerate}
   \end{theorem}
 
@@ -323,7 +323,7 @@
   Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
 
   \begin{definition}
-    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, strictement positive presque partout et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
   \end{definition}
 
   Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
@@ -343,7 +343,7 @@
   \end{theorem}
 
   \begin{example}[Polynômes de Hermite]
-    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    Si $I = \mathbb{R}$ et si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
     \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
   \end{example}
 

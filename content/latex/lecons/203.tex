@@ -14,7 +14,7 @@
   \begin{definition}
     Un espace métrique $(E, d)$ est \textbf{compact} s'il vérifie la propriété de Borel-Lebesgue :
     \begin{center}
-      \textit{De toute recouvrement de $E$ par des ouverts de $E$, on peut en extraire un sous-recouvrement fini.}
+      \textit{De tout recouvrement de $E$ par des ouverts de $E$, on peut extraire un sous-recouvrement fini.}
     \end{center}
   \end{definition}
 
@@ -23,7 +23,7 @@
   \end{example}
 
   \begin{proposition}
-    Un espace métrique $(E, d)$ est compact si de toute famille de fermés de $E$ d'intersection vide, on peut extraire une sous-famille d'intersection vide.
+    Un espace métrique $(E, d)$ est compact si et seulement si, de toute famille de fermés de $E$ d'intersection vide, on peut extraire une sous-famille finie d'intersection vide.
   \end{proposition}
 
   \begin{proposition}
@@ -40,7 +40,7 @@
   Soit $(E,d)$ un espace métrique.
 
   \begin{theorem}[Bolzano-Weierstrass]
-    $(E,d)$ est compact si toute suite de $E$ admet une sous-suite convergente dans $E$.
+    $(E,d)$ est compact si et seulement si toute suite de $E$ admet une sous-suite convergente dans $E$.
   \end{theorem}
 
   \begin{example}
@@ -94,8 +94,8 @@
   \begin{corollary}
     \begin{enumerate}[label=(\roman*)]
       \item Tout espace vectoriel de dimension finie est complet.
-      \item Tout espace vectoriel de dimension finie dans un espace vectoriel normé est fermé dans cet espace.
-      \item Si $E$ est un espace vectoriel normé, alors toute application linéaire $T : E \rightarrow F$ (où $F$ désigne un espace vectoriel normé arbitraire) est continue.
+      \item Tout sous-espace vectoriel de dimension finie d'un espace vectoriel normé est fermé dans cet espace.
+      \item Si $E$ est un espace vectoriel normé de dimension finie, alors toute application linéaire $T : E \rightarrow F$ (où $F$ désigne un espace vectoriel normé arbitraire) est continue.
     \end{enumerate}
   \end{corollary}
 
@@ -108,7 +108,7 @@
   \reference[LI]{17}
 
   \begin{theorem}[Riesz]
-    La boule unité fermée d'un espace vectoriel normé est compacte si et seulement s'il est dimension finie.
+    La boule unité fermée d'un espace vectoriel normé est compacte si et seulement s'il est de dimension finie.
   \end{theorem}
 
   \subsection{Utilisation en analyse}
@@ -184,7 +184,7 @@
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
   \begin{theorem}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
   On a une version plus générale de ce théorème.
@@ -258,7 +258,7 @@
 
   \begin{corollary}[Inégalité de Hadamard]
     \[ \forall v_1, \dots, v_n \in \mathbb{R}^n, \, \vert \det(v_1, \dots, v_n) \vert \leq \Vert v_1 \Vert \dots \Vert v_n \Vert \]
-    où $\Vert . \Vert$ désigne la norme associée au produit scalaire usuel sur $\mathbb{R}^n$. On a égalité si et seulement si un des $v_i$ est nul.
+    où $\Vert . \Vert$ désigne la norme associée au produit scalaire usuel sur $\mathbb{R}^n$. On a égalité si et seulement si $(v_1, \dots, v_n)$ est une famille orthogonale.
   \end{corollary}
 
   \begin{remark}
@@ -271,7 +271,7 @@
 
   \begin{theorem}[Hahn-Banach géométrique]
     Soit $E$ un espace vectoriel normé. Soient $C$ et $K$ deux parties non vides de $E$ disjointes et telles que $C$ soit convexe et fermée, et $K$ soit convexe et compacte.
-    Alors, il existe une forme linéaire continue $\varphi in E'$ telle que :
+    Alors, il existe une forme linéaire continue $\varphi \in E'$ telle que :
     \[ \sup_{x \in C} \operatorname{Re}(\varphi(x)) < \inf_{x \in K} \operatorname{Re}(\varphi(x)) \]
   \end{theorem}
 

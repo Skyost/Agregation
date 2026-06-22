@@ -13,8 +13,8 @@
 
   \begin{definition}
     Soit $E$ un ensemble. On dit qu'une suite $(u_n)$ d'éléments de $E$ est \textbf{récurrente} d'ordre $h \in \mathbb{N}^*$ si on peut écrire
-    \[ \forall n \geq h, \, u_{n+h} = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
-    où $f : E^h \rightarrow E$ et les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant donnés.
+    \[ \forall n \geq h, \, u_n = f(u_{n-1}, \dots, u_{n-h}) \tag{$*$} \]
+    où $f : E^h \rightarrow E$, les premières valeurs $u_0, \dots, u_{h-1} \in E$ étant données.
   \end{definition}
 
   \begin{example}
@@ -36,13 +36,13 @@
     On considère les suite numérique $(u_n)$ et $(v_n)$ définies par
     \[
       \begin{cases}
-        u_0 \geq 0 \\
+        u_0 \in [0;1[ \\
         \forall n \in \mathbb{N}, \, u_{n+1} = \sqrt{\frac{1+u_n}{2}}
       \end{cases}
       \text{ et }
-      \forall n \in \mathbb{N}, \, v_n = \prod_{k=0}^{n} u_k
+      \forall n \in \mathbb{N}, \, v_n = \prod_{k=1}^{n} u_k
     \]
-    Alors, pour $u_0 = \cos(\theta)$, on a
+    Alors, pour $u_0 = \cos(\theta)$ avec $\theta \in ]0,\frac{\pi}{2}]$, on a
     \[ \forall n \in \mathbb{N}, \, v_n = \prod_{k=1}^n \cos \left( \frac{\theta}{2^k} \right) = \frac{\sin(\theta)}{2^n \sin \left( \frac{\theta}{2^n} \right)} \]
     donc
     \[ \lim_{n \rightarrow +\infty} v_n = \frac{\sin(\theta)}{\theta} \]
@@ -55,9 +55,9 @@
   \reference[FGN3]{160}
 
   \begin{example}
-    La suite de fonctions polynômiales $(P_n)$ définie par récurrence par :
-    \[ P_0 : z \mapsto 1, \, P_1 : z \mapsto z, \text{ et } \forall n \geq 1, \, zP_n : z \mapsto P_{n-1}(z)-P_{n+1}(z) \]
-    est une suite bornée si et seulement si $z = \pm 1$.
+    On définit une suite de polynômes $(P_n)$ définie par récurrence en posant :
+    \[ P_0 = 1, \, P_1 : X, \text{ et } \forall n \geq 1, \, P_{n+1} = 2XP_n - P_{n-1} \]
+    Alors, $(P_n(z))$ est bornée si $\vert z \vert \leq 1$.
   \end{example}
 
   \reference[I-P]{116}
@@ -119,7 +119,7 @@
   \reference[GOU21]{153}
 
   \begin{proposition}[Déterminant circulant]
-    Soient $n \in \mathbb{N}^*$ et $a_1, \dots, a_n \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
+    Soient $n \in \mathbb{N}^*$ et $a_0, \dots, a_{n-1} \in \mathbb{C}$. On pose $\omega = e^{\frac{2i\pi}{n}}$. Alors
     \[ \begin{vmatrix} a_0 & a_1 & \dots & a_{n-1} \\ a_{n-1} & a_0 & \dots & a_{n-2}\\ \vdots & \vdots & \ddots & \vdots \\ a_1 & a_2 & \dots & a_0 \end{vmatrix} = \prod_{j=0}^{n-1} P(\omega^j) \]
     où $P = \sum_{k=0}^{n-1} a_k X^k$.
   \end{proposition}
@@ -142,7 +142,7 @@
   Soient $I \subseteq \mathbb{R}$ un intervalle de $\mathbb{R}$. On fixe $(u_n)$ une suite récurrente d'ordre $1$ définie par $u_{n+1} = f(u_n)$ où $f : I \rightarrow \mathbb{R}$.
 
   \begin{theorem}[Caractérisation séquentielle de la continuité]
-    En reprenant les notations précédentes, une fonction $g : I \rightarrow \mathbb{R}$ est continue si et seulement si pour toute suite réelle convergente $(v_n) \in I^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} \ell$.
+    En reprenant les notations précédentes, une fonction $g : I \rightarrow \mathbb{R}$ est continue si et seulement si pour toute suite réelle convergente $(v_n) \in I^{\mathbb{N}}$ dont on note $\ell$ la limite, $g(v_n) \longrightarrow_{n \rightarrow +\infty} g(\ell)$.
   \end{theorem}
 
   \begin{corollary}
@@ -198,7 +198,7 @@
   \end{example}
 
   \begin{example}
-    La suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+2} = u_n - u_{n+1}$ est à termes positifs si et seulement si $u_1 = \frac{1 - \sqrt{5}}{2}$.
+    La suite $(u_n)$ définie par $u_0 = 1$ et $u_{n+2} = u_n - u_{n+1}$ converge si et seulement si $u_1 = \frac{\sqrt{5}-1}{2}$.
   \end{example}
 
   \subsubsection{Développement asymptotique}
@@ -206,8 +206,8 @@
   \reference{53}
 
   \begin{definition}
-    À toute suite numérique $(u_n)$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
-    \[ \forall n \in \mathbb{N}, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
+    À toute suite numérique $(u_n)$ définie à partir du rang $1$ on y associe sa suite $(v_n)$ des \textbf{moyennes de Cesàro} où
+    \[ \forall n \in \mathbb{N}^*, v_n = \frac{1}{n} \sum_{k=1}^{n} u_k \]
   \end{definition}
 
   \begin{theorem}
@@ -223,7 +223,7 @@
   \end{proposition}
 
   \begin{example}
-    Si $f = \sin$ et $(u_n)$ est définie par $u_0 \in [0, 2\pi]$ et $\forall n \in \mathbb{N}, \, u_{n+1} = f(u_n)$, on a l'équivalent en $+\infty$ :
+    Si $f = \sin$ et $(u_n)$ est définie par $u_0 \in ]0, \pi[$ et $\forall n \in \mathbb{N}, \, u_{n+1} = f(u_n)$, on a l'équivalent en $+\infty$ :
     \[ u_n \sim \sqrt{\frac{3}{n}} \]
   \end{example}
 
@@ -248,7 +248,7 @@
   \reference[DAN]{146}
 
   \begin{theorem}[Point fixe de Banach]
-    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractant (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
+    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractante (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
     \[ \exists! x \in E \text{ tel que } f(x) = x \]
     De plus la suite des itérés définie par $x_0 \in E$ et $\forall n \in \mathbb{N}, x_{n+1} = f(x_n)$ converge vers $x$.
   \end{theorem}

@@ -35,11 +35,11 @@
   \end{proposition}
 
   \begin{cexample}
-    L'espace des fonctions polynômiales définies sur $[-1,1]$ et muni de la norme $\Vert . \Vert_{\infty}$ n'est pas complet.
+    L'espace des fonctions polynomiales définies sur $[-1,1]$ et muni de la norme $\Vert . \Vert_{\infty}$ n'est pas complet.
   \end{cexample}
 
   \begin{application}[Théorème du point fixe de Banach]
-    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractant (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq d(x, y)$). Alors,
+    Soient $(E,d)$ un espace métrique complet et $f : E \rightarrow E$ une application contractante (ie. $\exists k \in ]0,1[ \text{ tel que } \forall x, y \in E, \, d(f(x), f(y)) \leq k d(x, y)$). Alors,
     \[ \exists! x \in E \text{ tel que } f(x) = x \]
     De plus la suite des itérés définie par $x_0 \in E$ et $\forall n \in \mathbb{N}, x_{n+1} = f(x_n)$ converge vers $x$.
   \end{application}
@@ -126,8 +126,8 @@
   \begin{corollary}
     \begin{enumerate}[label=(\roman*)]
       \item Tout espace vectoriel de dimension finie est complet.
-      \item Tout espace vectoriel de dimension finie dans un espace vectoriel normé est fermé dans cet espace.
-      \item Si $E$ est un espace vectoriel normé, alors toute application linéaire $T : E \rightarrow F$ (où $F$ désigne un espace vectoriel normé arbitraire) est continue.
+      \item Tout sous-espace vectoriel de dimension finie d'un espace vectoriel normé est fermé dans cet espace.
+      \item Si $E$ est un espace vectoriel normé de dimension finie, alors toute application linéaire $T : E \rightarrow F$ (où $F$ désigne un espace vectoriel normé arbitraire) est continue.
     \end{enumerate}
   \end{corollary}
 
@@ -146,7 +146,7 @@
   \reference[LI]{17}
 
   \begin{theorem}[Riesz]
-    La boule unité fermée d'un espace vectoriel normé est compacte si et seulement s'il est dimension finie.
+    La boule unité fermée d'un espace vectoriel normé est compacte si et seulement s'il est de dimension finie.
   \end{theorem}
 
   \subsubsection{Applications linéaires}
@@ -204,11 +204,11 @@
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$ (par exemple, si $F$ est de dimension finie), alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
+    Si $F$ est un sous-espace vectoriel fermé dans $H$ (par exemple, si $F$ est de dimension finie), alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$ (par exemple, si $F$ est de dimension finie), alors
+    Si $F$ est un sous-espace vectoriel fermé dans $H$ (par exemple, si $F$ est de dimension finie), alors
     \[ H = F \oplus F^\perp \]
     et $P_F$ est la projection sur $F$ parallèlement à $F^\perp$ : c'est la \textbf{projection orthogonale} sur $F$.
   \end{theorem}
@@ -249,7 +249,7 @@
   \reference[GOU21]{270}
 
   \begin{corollary}
-    Soit $n \geq 1$. On note \[ \mathcal{P}_n = \operatorname{Vect}(e_k)_{k \in \llbracket 1, n \rrbracket} \]
+    Soit $n \geq 1$. On note \[ \mathcal{P}_n = \operatorname{Vect}(e_k)_{k \in \llbracket -n, n \rrbracket} \]
     le sous-espace vectoriel des polynômes trigonométriques de degré $n$. Alors :
     \begin{enumerate}[label=(\roman*)]
       \item $L_2^{2\pi} = \mathcal{P}_n \oplus \mathcal{P}_n^\perp$.
@@ -270,7 +270,7 @@
 
   \begin{example}
     On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
-    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \subsection{Calcul différentiel}
@@ -289,7 +289,7 @@
 
   \begin{remark}
     \begin{itemize}
-      \item En dimension quelconque $\mathrm{d}f_a$ dépend a priori des normes $\Vert . \Vert_E$ et $\Vert . \Vert_F$. Cependant, en dimension finie, l'équivalence des normes implique que l'existence et la valeur de $\mathrm{d}f_a$ ne dépend pas des normes choisies.
+      \item En dimension quelconque $\mathrm{d}f_a$ dépend a priori des normes $\Vert . \Vert_E$ et $\Vert . \Vert_F$. Cependant, en dimension finie, l'équivalence des normes implique que l'existence et la valeur de $\mathrm{d}f_a$ ne dépendent pas des normes choisies.
       \item La définition demande à $\ell_a$ d'être continue. En dimension finie, le problème ne se pose donc pas.
     \end{itemize}
   \end{remark}
@@ -336,7 +336,7 @@
 
   \begin{application}
     Soit $a \in U$. Si $F = \mathbb{R}^m$, la matrice de $\mathrm{d}f_a$ dans les bases canoniques de $\mathbb{R}^n$ et $\mathbb{R}^m$ est
-    \[ \left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{i \in \llbracket 1, n \rrbracket \\ j \in \llbracket 1, m \rrbracket}} \]
+    \[ \left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{i \in \llbracket 1, m \rrbracket \\ j \in \llbracket 1, n \rrbracket}} \]
     (où l'on a noté $f = (f_1, \dots, f_m))$) : c'est la \textbf{matrice jacobienne} de $f$ en $a$.
   \end{application}
 
@@ -345,7 +345,7 @@
   \reference{373}
 
   \begin{definition}
-    Soient $n \in \mathbb{N}^*$, $E$ un espace de Banach et $\Omega \subseteq \mathbb{R} \times E^n$ un ouvert. Soit $F : \Omega \times \mathbb{R}^n \rightarrow E$ une fonction.
+    Soient $n \in \mathbb{N}^*$, $E$ un espace de Banach et $\Omega \subseteq \mathbb{R} \times E^n$ un ouvert. Soit $F : \Omega \rightarrow E$ une fonction.
     \begin{itemize}
       \item On appelle \textbf{équation différentielle} une équation de la forme
       \[ y^{(n)} = F(t, y, y', \dots, y^{(n-1)}) \tag{$*$} \]
@@ -356,9 +356,9 @@
         \item $\forall t \in I, \, F(t, \varphi(t), \dots, \varphi^{(n-1)}(t)) = \varphi^{(n)}(t)$ ;
       \end{enumerate}
       est une \textbf{solution} de $(*)$. On note $\mathcal{S}_*$ l'ensemble des solutions de $(*)$.
-      \item Une solution $\varphi : I \rightarrow E$ de $(*)$ est dite \textbf{maximale} s'il n'existe pas d'autre solution $\psi : J \rightarrow E$ (où $J$ est un intervalle de $\mathbb{R}$) de $(*)$ telle que $I \subseteq J$, $I \neq J$ et $\psi = \varphi$ sir $I$.
+      \item Une solution $\varphi : I \rightarrow E$ de $(*)$ est dite \textbf{maximale} s'il n'existe pas d'autre solution $\psi : J \rightarrow E$ (où $J$ est un intervalle de $\mathbb{R}$) de $(*)$ telle que $I \subseteq J$, $I \neq J$ et $\psi = \varphi$ sur $I$.
       \item On appelle \textbf{problème de Cauchy} de $(*)$ en $(t_0, x_0, \dots, x_{n-1})$ la recherche d'une solution $\varphi : I \rightarrow E$ de $(*)$ vérifiant
-      \[ \forall t_0 \in I, \, \varphi(t_0) = x_0, \dots, \varphi^{(n-1)}(t_0) = x_{n-1} \]
+      \[ \varphi(t_0) = x_0, \dots, \varphi^{(n-1)}(t_0) = x_{n-1} \]
     \end{itemize}
   \end{definition}
 
@@ -376,7 +376,7 @@
   \dev{theoreme-de-cauchy-lipschitz-lineaire}
 
   \begin{theorem}[Cauchy-Lipschitz linéaire]
-    Soient $A : I \rightarrow \mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^d$ deux fonctions continues. Alors $\forall t_0 \in I$, le problème de Cauchy
+    Soient $A : I \rightarrow \mathcal{M}_n(\mathbb{K})$ et $B : I \rightarrow \mathbb{K}^n$ deux fonctions continues. Alors, pour tout $t_0 \in I$ et $y_0 \in \mathbb{K}^n$, le problème de Cauchy
     \[ \begin{cases} Y' = A(t)Y + B(t) \\ Y(t_0) = y_0 \end{cases} \]
     admet une unique solution définie sur $I$ tout entier.
   \end{theorem}

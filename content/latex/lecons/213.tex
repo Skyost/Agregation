@@ -242,7 +242,7 @@
 
   \begin{proposition}[Inégalité de Bessel]
     Soient $x \in H$ et $(e_i)_{i \in I}$ une famille orthonormée de $H$. Alors,
-    \[ \sum_{i \in I} \vert \langle x, e_i \rangle \vert \leq \Vert x \Vert \]
+    \[ \sum_{i \in I} \vert \langle x, e_i \rangle \vert^2 \leq \Vert x \Vert^2 \]
   \end{proposition}
 
   \begin{definition}
@@ -268,13 +268,13 @@
     \begin{enumerate}[label=(\roman*)]
       \item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $H$.
       \item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, e_n \rangle e_n$.
-      \item \label{213-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, e_n \rangle \vert^2$.
+      \item \label{213-3} $\forall x \in H, \, \Vert x \Vert^2 = \sum_{n=0}^{+\infty} \vert \langle x, e_n \rangle \vert^2$.
       \item L'application
       \[
       \Delta :
       \begin{array}{ccc}
         H &\rightarrow& \ell_2(\mathbb{N}) \\
-        x &\mapsto& (\langle x, e_n)_{n \in \mathbb{N}}
+        x &\mapsto& (\langle x, e_n \rangle)_{n \in \mathbb{N}}
       \end{array}
       \]
       est une isométrie linéaire bijective.
@@ -332,7 +332,7 @@
   Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
 
   \begin{definition}
-    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, strictement positive presque partout et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
   \end{definition}
 
   Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
@@ -352,7 +352,7 @@
   \end{theorem}
 
   \begin{example}[Polynômes de Hermite]
-    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    Si $I = \mathbb{R}$ et si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
     \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
   \end{example}
 
@@ -403,7 +403,7 @@
 
   \begin{example}
     On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
-    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \reference[BMP]{124}

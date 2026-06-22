@@ -13,8 +13,8 @@
 
   \reference[GOU20]{341}
 
-  Pour une fonction réelle $f : \mathbb{R} \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$, on sait que si $f'(x) \neq 0$ pour tout $x \in \mathbb{R}$, alors $f$ admet un inverse global $f^{-1}$ qui vérifie
-  \[ \forall x \in \mathbb{R}, \, f'(f(x)) = \frac{1}{f'(x)} \]
+  Pour une fonction réelle $f : \mathbb{R} \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$, on sait que si $f'(x) \neq 0$ pour tout $x \in \mathbb{R}$, alors $f$ est un difféomorphisme de $\mathbb{R}$ sur $f(\mathbb{R})$ et
+  \[ \forall x \in \mathbb{R}, \, (f^{-1})'(f(x)) = \frac{1}{f'(x)}. \]
   L'objectif ici va être de généraliser ce résultat.
 
   \reference[ROU]{54}
@@ -58,14 +58,14 @@
 
   \begin{example}
     \label{214-1}
-    L'application de $\mathbb{R}^2$ dans $\mathbb{R}^2$ définie par $(x, y) \mapsto (x^2-y^2, xy)$ est un difféomorphisme de classe $\mathcal{C}^\infty$ en tout point de $\mathbb{R}^2 \setminus (0,0)$.
+    L'application de $\mathbb{R}^2$ dans $\mathbb{R}^2$ définie par $(x, y) \mapsto (x^2-y^2, xy)$ est un difféomorphisme local de classe $\mathcal{C}^\infty$ en tout point de $\mathbb{R}^2 \setminus \{(0,0)\}$.
   \end{example}
 
   \reference[BMP]{9}
 
   \begin{application}
-    Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et tout fonction $f$ appartient à $L_1$ si et seulement si $\vert \det \operatorname{Jac}(\varphi)_a \vert f \circ \varphi$ appartient à $L_1$. Dans ce cas,
-    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_a \vert f (\varphi(y)) \, \mathrm{d}y \]
+    On suppose $E = \mathbb{R}^n$. Soit $\varphi : U \rightarrow \mathbb{R}^n$ un difféomorphisme de classe $\mathcal{C}^1$. Alors, $V = \varphi(U)$ est mesurable et toute fonction $f$ appartient à $L_1(V)$ si et seulement si $y \mapsto \vert \det \operatorname{Jac}(\varphi)_y \vert f (\varphi(y))$ appartient à $L_1(U)$. Dans ce cas,
+    \[ \int_V f(x) \, \mathrm{d}x = \int_U \vert \det \operatorname{Jac}(\varphi)_y \vert f (\varphi(y)) \, \mathrm{d}y \]
   \end{application}
 
   \reference[GOU20]{355}
@@ -210,7 +210,7 @@
       \item La matrice symétrique $\mathrm{Hess} (f)_0$ est inversible.
       \item La signature de $\mathrm{Hess}(f)_0$ est $(p, n-p)$.
     \end{itemize}
-    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinage de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
+    Alors il existe un difféomorphisme $\phi = (\phi_1, \dots, \phi_n)$ de classe $\mathcal{C}^1$ entre deux voisinages de l'origine de $\mathbb{R}^n$ $V \subseteq U$ et $W$ tel que $\varphi(0) = 0$ et
     \[ \forall x \in U, \, f(x) - f(0) = \sum_{k=1}^p \phi_k^2(x) - \sum_{k=p+1}^n \phi_k^2(x) \]
   \end{lemma}
 
@@ -247,7 +247,7 @@
 
   \begin{theorem}[Extrema liés]
     \label{214-2}
-    Soit $U$ un ouvert de $\mathbb{R}^n$ et soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe des uniques $\lambda_1, \dots, \lambda_r$ tels que
+    Soit $U$ un ouvert de $\mathbb{R}^n$ et soient $f, g_1, \dots, g_r : U \rightarrow \mathbb{R}$ des fonctions de classe $\mathcal{C}^1$. On note $\Gamma = \{ x \in U \mid g_1(x) = \dots = g_r(x) = 0 \}$. Si $f_{|\Gamma}$ admet un extremum relatif en $a \in \Gamma$ et si les formes linéaires $\mathrm{d}(g_1)_a, \dots, \mathrm{d}(g_r)_a$ sont linéairement indépendantes, alors il existe un unique $r$-uplet $(\lambda_1, \dots, \lambda_r)$ tel que
     \[ \mathrm{d}f_a = \lambda_1 \mathrm{d}(g_1)_a + \dots + \lambda_r \mathrm{d}(g_r)_a \]
   \end{theorem}
 
@@ -289,8 +289,8 @@
   \reference[ROU]{409}
 
   \begin{application}[Inégalité d'Hadamard]
-    \[ \forall (x_1, \dots, x_n) \in \mathbb{R}^n, \, \det(x_1, \dots, x_n) \leq \Vert x_1 \Vert \dots \Vert x_n \Vert \]
-    avec égalité si et seulement si $(x_1, \dots, x_n)$ est une base orthogonale de $\mathbb{R}^n$.
+    \[ \forall (x_1, \dots, x_n) \in (\mathbb{R}^n)^n, \, \vert \det(x_1, \dots, x_n) \vert \leq \Vert x_1 \Vert \dots \Vert x_n \Vert \]
+    avec égalité si et seulement si l'un des $x_i$ est nul ou si $(x_1, \dots, x_n)$ est une famille orthogonale de $\mathbb{R}^n$.
   \end{application}
 
   \subsubsection{Régularité des racines d'un polynôme}
