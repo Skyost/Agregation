@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     },
     inlineRouteRules: true,
   },
-  compatibilityDate: '2024-07-01',
+  compatibilityDate: '2026-06-01',
 
   vite: {
     plugins: [
@@ -67,11 +67,11 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
           silenceDeprecations: [
             'color-functions',
             'global-builtin',
             'import',
+            'if-function',
           ],
         },
       },

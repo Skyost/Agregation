@@ -40,5 +40,8 @@ const goBack = () => window.history.back()
         n'hésitez pas à <a href="https://skyost.eu/fr/#contact">me contacter</a> pour me le signaler.
       </span>
     </p>
+    <details v-if="errorCode !== 404">
+      <pre>{{ error }}</pre>
+    </details>
   </div>
 </template>
