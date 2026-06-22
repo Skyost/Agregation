@@ -60,7 +60,7 @@
   \begin{definition}
     On a plusieurs définitions (équivalentes) de la fonction exponentielle réelle.
     \begin{itemize}
-      \item \textbf{Vision ``moderne'' :} Soit $x \in \mathbb{R}$. $\exp(x) = \sum_{n=0}^{+\infty} \frac{x^k}{k!}$ (restriction de la série entière de la \cref{244-1}).
+      \item \textbf{Vision ``moderne'' :} Soit $x \in \mathbb{R}$. $\exp(x) = \sum_{n=0}^{+\infty} \frac{x^n}{n!}$ (restriction de la série entière de la \cref{244-1}).
       \item \textbf{Vision ``pédagogique'' :} $\exp$ est l'unique solution au problème de Cauchy
       \[
         \begin{cases}
@@ -86,7 +86,7 @@
 
   \begin{definition}
     On définit les fonctions $\sin$ et $\cos$ sur $\mathbb{R}$ par
-    \[ \forall t \in \mathbb{R}, \, \sin(t) = \operatorname{Im}(\exp(it)) \text{ et } \sin(t) = \operatorname{Re}(\exp(it)) \]
+    \[ \forall t \in \mathbb{R}, \, \sin(t) = \operatorname{Im}(\exp(it)) \text{ et } \cos(t) = \operatorname{Re}(\exp(it)) \]
   \end{definition}
 
   \reference[DAN]{352}
@@ -94,8 +94,8 @@
   \begin{proposition}
     Soit $t \in \mathbb{R}$.
     \begin{enumerate}[label=(\roman*)]
-      \item $\sin(t) = \frac{e^{it} - e^{-it}}{2i} = \sum_{n=0}^{+\infty} \frac{t^{2n+1}}{(2n+1)!}$.
-      \item $\cos(t) = \frac{e^{it} + e^{-it}}{2} = \sum_{n=0}^{+\infty} \frac{t^{2n}}{(2n)!}$.
+      \item $\sin(t) = \frac{e^{it} - e^{-it}}{2i} = \sum_{n=0}^{+\infty} (-1)^n\frac{t^{2n+1}}{(2n+1)!}$.
+      \item $\cos(t) = \frac{e^{it} + e^{-it}}{2} = \sum_{n=0}^{+\infty} (-1)^n\frac{t^{2n}}{(2n)!}$.
       \item Ces fonctions sont réelles, $2\pi$-périodiques et admettent un développement en série entière de rayon de convergence infini. Ceci permet de les prolonger de manière unique sur tout le plan complexe.
       \item $\sin$ et $\cos$ sont dérivables avec $\cos' = -\sin$ et $\sin' = \cos$.
       \item $\cos$ est paire, $\sin$ est impaire.
@@ -130,8 +130,8 @@
 
   \begin{example}
     \begin{itemize}
-      \item Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_N$ est appelée \textbf{noyau de Dirichlet} d'ordre $N$.
-      \item Pour tout $N \in \mathbb{N}$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
+      \item Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_n$ est appelée \textbf{noyau de Dirichlet} d'ordre $N$.
+      \item Pour tout $N \in \mathbb{N}^*$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
     \end{itemize}
   \end{example}
 
@@ -146,7 +146,7 @@
   \end{theorem}
 
   \begin{corollary}
-    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonction continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
+    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonctions continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
   \end{corollary}
 
   \reference[GOU20]{271}
@@ -307,10 +307,10 @@
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+      \[ \left| f(z,x) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est holomorphe dans $\Omega$ avec
-    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{318}
@@ -326,7 +326,7 @@
   \reference[QUE]{255}
 
   \begin{theorem}[Formule des compléments]
-    \[ \forall \mathbb{C} \setminus \mathbb{Z}, \, \Gamma(z) \Gamma(1-z) = \frac{\pi}{\sin(\pi z)} \]
+    \[ \forall z \in \mathbb{C} \setminus \mathbb{Z}, \, \Gamma(z) \Gamma(1-z) = \frac{\pi}{\sin(\pi z)} \]
   \end{theorem}
 
   \subsection{La fonction \texorpdfstring{$\zeta$}{Zeta} de Riemann}
@@ -343,11 +343,11 @@
 
   \begin{proposition}
     $\zeta$ définit une fonction de classe $\mathcal{C}^\infty$ sur $]1, +\infty[$ et,
-    \[ \forall p \in \mathbb{N}^*, \, \forall s \in ]1, +\infty[, \, \zeta^{(p)}(s) = \sum_{n=1}^{+\infty} \frac{\ln(n)^p}{n^s} \]
+    \[ \forall p \in \mathbb{N}^*, \, \forall s \in ]1, +\infty[, \, \zeta^{(p)}(s) = (-1)^p\sum_{n=1}^{+\infty} \frac{\ln(n)^p}{n^s} \]
   \end{proposition}
 
   \begin{proposition}
-    \[ \lim_{s \rightarrow +\infty} \zeta(s) = 1 \text{ et } \zeta(s) \sim_{1^+} \frac{1}{s-1} + \gamma + o(1) \]
+    \[ \lim_{s \rightarrow +\infty} \zeta(s) = 1 \text{ et, quand } s \longrightarrow 1^+, \, \zeta(s) = \frac{1}{s-1} + \gamma + o(1) \]
     où $\gamma$ désigne la constante d'Euler.
   \end{proposition}
 
@@ -366,7 +366,7 @@
     \[
       \zeta :
       \begin{array}{ccc}
-        \{ s \in \mathbb{C} \mid \operatorname{Re}(s) > 0 \} &\mapsto& \mathbb{C} \\
+        \{ s \in \mathbb{C} \mid \operatorname{Re}(s) > 0 \} &\rightarrow& \mathbb{C} \\
         s &\mapsto& \sum_{n=1}^{+\infty} \frac{1}{n^s}
       \end{array}
     \]
@@ -383,7 +383,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item Pour tout $s \in \mathbb{C} \setminus \{ 1 \}$, $\widetilde{\zeta}(s) = \frac{1}{s-1} + \eta(s)$ avec $\eta$ holomorphe dans $\mathbb{C}$.
       \item Pour tout $s \in \mathbb{C}$ tel que $\operatorname{Re}(s) > 1$, $\widetilde{\zeta}(s) = \zeta(s)$.
-      \item En posant $I(s) = \pi^{\frac{s}{2}} \Gamma \left( \frac{s}{2} \right) \zeta(s)$, on a $I(s) = I(1-s)$.
+      \item En posant $I(s) = \pi^{-\frac{s}{2}} \Gamma \left( \frac{s}{2} \right) \zeta(s)$, on a $I(s) = I(1-s)$ par prolongement méromorphe.
     \end{enumerate}
   \end{theorem}
   %</content>

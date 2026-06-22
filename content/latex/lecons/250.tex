@@ -46,7 +46,7 @@
 
   \begin{lemma}[Riemann-Lebesgue]
     Soit $f \in L_1(\mathbb{R}^d)$, $\widehat{f}$ existe et
-    \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) \]
+    \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) = 0 \]
   \end{lemma}
 
   \begin{remark}
@@ -76,20 +76,20 @@
       \item $\mathcal{F}(\overline{f}) = \xi \mapsto \overline{\mathcal{F}(f)(-\xi)}$.
       \item Pour tout $\lambda \in \mathbb{R}_*$, et $\xi \in \mathbb{R}^d$,
       \[ \mathcal{F}(x \mapsto f(\lambda x)) = \frac{1}{\vert \lambda \vert^d} \mathcal{F}(f) \left( \frac{\xi}{\lambda} \right) \]
-      \item Pour tout $a \in \mathbb{R}^d$,
-      \[ \mathcal{F}(x \mapsto f(x - a)) = e^{-i \langle a, \xi \rangle} \mathcal{F}(f) \text{ et } \mathcal{F}(x \mapsto e^{-i \langle a, \xi \rangle} f(x)) = \xi \mapsto \mathcal{F}(f)(\xi - a) \]
+      \item Pour tout $a \in \mathbb{R}^d$, et $\xi \in \mathbb{R}^d$,
+      \[ \mathcal{F}(x \mapsto f(x-a))(\xi) = e^{-i\langle a,\xi\rangle} \widehat{f}(\xi) \text{ et } \mathcal{F}(x \mapsto e^{i\langle a,x\rangle}f(x))(\xi)=\widehat{f}(\xi-a) \]
     \end{enumerate}
   \end{proposition}
 
   \reference{120}
 
   \begin{proposition}
-    Soit $f \in L_1(\mathbb{R}^d)$.
+    Soit $f \in L_1(\mathbb{R}^d)$ et soit $j \in \llbracket 1, d \rrbracket$.
     \begin{enumerate}[label=(\roman*)]
       \item On suppose $f \in \mathcal{C}^1(\mathbb{R}^d)$ et $\frac{\partial f}{\partial x_j} \in L_1(\mathbb{R}^d)$. Alors,
       \[ \forall \xi = (\xi_1, \dots, \xi_d) \in \mathbb{R}^d, \, \widehat{\frac{\partial f}{\partial x_j}}(\xi) = i \xi_j \widehat{f}(\xi) \]
-      \item On suppose $y_j f \in L_1(\mathbb{R}^d)$. Alors, la $j$-ième dérivée partielle de $\widehat{f}$ existe, et,
-      \[ \forall \xi \in \mathbb{R}^d, \, \frac{\partial \widehat{f}}{\partial x_j}(\xi) = -i \widehat{(y_j f)}(\xi) \]
+      \item On suppose $(\xi_1, \dots, \xi_d) \mapsto y_j f(\xi_1, \dots, \xi_d) \in L_1(\mathbb{R}^d)$. Alors, la $j$-ième dérivée partielle de $\widehat{f}$ existe, et
+      \[ \forall \xi = (\xi_1, \dots, \xi_d) \in \mathbb{R}^d, \, \frac{\partial \widehat{f}}{\partial \x_j}(\xi) = -i \widehat{(\xi_j f)}(\xi) \]
     \end{enumerate}
   \end{proposition}
 
@@ -97,7 +97,7 @@
 
   \begin{application}
     On considère $f : x \mapsto e^{- \alpha x^2}$ pour $\alpha > 0$. Alors, $f$ vérifie
-    \[ \forall x \in \mathbb{R}, \, \widehat{f}(\xi) = \frac{1}{i \xi} f(\xi) \]
+    \[ \forall \xi \in \mathbb{R}, \, \widehat{f}'(\xi) = -\frac{\xi}{2\alpha}\widehat{f}(\xi) \]
     ce qui permet de retrouver l'\cref{250-1}.
   \end{application}
 
@@ -106,10 +106,10 @@
   \reference[AMR08]{75}
 
   \begin{definition}
-    Soient $f$ et $g$ deux fonctions de $\mathbb{R}^d$ dans $\mathbb{R}$. On dit que \textbf{la convolée} (ou \textbf{le produit de convolution}) de $f$ et $g$ en $x \in \mathbb{R}$ \textbf{existe} si la fonction
+    Soient $f$ et $g$ deux fonctions de $\mathbb{R}^d$ dans $\mathbb{C}$. On dit que \textbf{la convolée} (ou \textbf{le produit de convolution}) de $f$ et $g$ en $x \in \mathbb{R}^d$ \textbf{existe} si la fonction
     \[
     \begin{array}{ccc}
-      \mathbb{R} &\rightarrow& \mathbb{C} \\
+      \mathbb{R}^d &\rightarrow& \mathbb{C} \\
       t &\mapsto& f(x-t)g(t)
     \end{array}
     \]
@@ -165,12 +165,12 @@
 
   \begin{theorem}[Formule d'inversion de Fourier]
     Si $f \in L_1(\mathbb{R}^d)$ est telle que $\widehat{f} \in L_1(\mathbb{R}^d)$, alors
-    \[ \widehat{\widehat{f}}(x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
+    \[ \widehat{\widehat{f}}(-x) = (2\pi)^d f(x) \text{ pp. en } x \in \mathbb{R}^d \]
   \end{theorem}
 
   \begin{example}
     Une solution de l'équation intégrale d'inconnue $y$ :
-    \[ \int_{\mathbb{R}} \frac{y(t)}{(x-t)^2 + a^2} = \frac{1}{x^2 + b^2} \]
+    \[ \int_{\mathbb{R}} \frac{y(t)}{(x-t)^2 + a^2} \, \mathrm{d}t = \frac{1}{x^2 + b^2} \]
     est $x \mapsto \frac{a(b-a)}{b \pi (x^2 + (b-a)^2)}$ pour $0 < a < b$.
   \end{example}
 
@@ -220,14 +220,14 @@
 
   \begin{proposition}
     Soit $f \in L_2(\mathbb{R})$. On a les relations suivantes :
-    \[ \lim_{A \rightarrow +\infty} \Vert \varphi_A - f \Vert_2 = 0 \text{ et } \lim_{A \rightarrow +\infty} \Vert \psi_A - f \Vert_2 = 0 \]
+    \[ \lim_{A \rightarrow +\infty} \Vert \varphi_A - \widehat{f} \Vert_2 = 0 \text{ et } \lim_{A \rightarrow +\infty} \Vert \psi_A - f \Vert_2 = 0 \]
     où
-    \[ \varphi_A(\xi) = \int_{-A}^{A} f(x) e^{-ix\xi} \, \mathrm{d}x \text{ et } \psi_A(\xi) = \frac{1}{2 \pi} \int_{-A}^{A} \widehat{f}(\xi) e^{-ix\xi} \, \mathrm{d}\xi \]
+    \[ \varphi_A(\xi) = \int_{-A}^{A} f(x) e^{-ix\xi} \, \mathrm{d}x \text{ et } \psi_A(x) = \frac{1}{2 \pi} \int_{-A}^{A} \widehat{f}(\xi) e^{ix\xi} \, \mathrm{d}\xi \]
   \end{proposition}
 
   \begin{corollary}
     Lorsque $f \in L_2(\mathbb{R})$ et $\widehat{f} \in L_1(\mathbb{R})$, on a
-    \[ \text{pp. en } x \in \mathbb{R}, \, f(x) = \frac{1}{2 \pi} \int_{-\infty}^{+\infty} \widehat{f}(\xi) e^{-ix\xi} \, \mathrm{d}\xi \]
+    \[ \text{pp. en } x \in \mathbb{R}, \, f(x) = \frac{1}{2 \pi} \int_{-\infty}^{+\infty} \widehat{f}(\xi) e^{ix\xi} \, \mathrm{d}\xi \]
   \end{corollary}
 
   \begin{theorem}[Formule d'inversion de Fourier-Plancherel]
@@ -246,7 +246,7 @@
 
   \begin{example}
     On pose $f = \mathbb{1}_{[-a, a]}$ et on a $\forall \xi \neq 0, \, \widehat{f}(\xi) = \frac{2 \sin(a\xi)}{\xi}$. Or, $\widehat{f} \in L_2(\mathbb{R}) \setminus L_1(\mathbb{R})$. On peut calculer sa transformée de Fourier dans $L_2(\mathbb{R})$ :
-    \[ \forall x \in \mathbb{R}, \, \widehat{\widehat{f}}(x) = \widehat{(\widehat{f})}(x) = f(-x) = \mathbb{1}_{[-a, a]}(x) \]
+    \[ \text{pp. en } x \in \mathbb{R}, \, \widehat{\widehat{f}}(x) = 2\pi f(-x) = 2\pi\mathbb{1}_{[-a,a]}(x) \]
   \end{example}
 
   \subsubsection{Dans \texorpdfstring{$\mathcal{S}(\mathbb{R}^d)$}{S(Rᵈ)}}
@@ -264,7 +264,7 @@
   \end{example}
 
   \begin{definition}
-    On appelle \textbf{classe de Schwartz}, noté $\mathcal{S}(\mathbb{R}^d)$, l'espaces des fonctions de $f : \mathbb{R}^d \rightarrow \mathbb{C}$ telles que :
+    On appelle \textbf{classe de Schwartz}, notée $\mathcal{S}(\mathbb{R}^d)$, l'espace des fonctions $f : \mathbb{R}^d \rightarrow \mathbb{C}$ telles que :
     \begin{itemize}
       \item $f \in \mathcal{C}^\infty(\mathbb{R}^d)$.
       \item $f$ est à décroissance rapide ainsi que toutes ses dérivées.
@@ -309,7 +309,7 @@
   Soit $I$ un intervalle de $\mathbb{R}$. On pose $\forall n \in \mathbb{N}$, $g_n : x \mapsto x^n$.
 
   \begin{definition}
-    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, positive et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
+    On appelle \textbf{fonction poids} une fonction $\rho : I \rightarrow \mathbb{R}$ mesurable, strictement positive presque partout et telle que $\forall n \in \mathbb{N}, \rho g_n \in L_1(I)$.
   \end{definition}
 
   Soit $\rho : I \rightarrow \mathbb{R}$ une fonction poids.
@@ -329,7 +329,7 @@
   \end{theorem}
 
   \begin{example}[Polynômes de Hermite]
-    Si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
+    Si $I = \mathbb{R}$ et si $\forall x \in I, \, \rho(x) = e^{-x^2}$, alors
     \[ \forall n \in \mathbb{N}, \, \forall x \in I, \, P_n(x) = \frac{(-1)^n}{2^n} e^{x^2} \frac{\partial}{\partial x^n} \left( e^{-x^2} \right) \]
   \end{example}
 
@@ -359,14 +359,14 @@
 
   \begin{definition}
     On appelle \textbf{fonction caractéristique} de $X$, notée $\phi_X$, la transformée de Fourier de la loi $\mathbb{P}_X$ (définie à un signe près) :
-    \[ \phi_X : t \mapsto \mathbb{E}(e^{i \langle t, x \rangle}) \]
+    \[ \phi_X : t \mapsto \mathbb{E}(e^{i \langle t, X \rangle}) \]
   \end{definition}
 
   \reference{165}
 
   \begin{remark}
     Si $X$ est un vecteur aléatoire réel admettant $f$ pour densité, alors
-    \[ \forall t \in \mathbb{R}^d, \, \phi_X(t) = \int_{\mathbb{R}^d} e^{i \langle t, x \rangle} f(x) \, \mathrm{d}\mathbb{P}(x) \]
+    \[ \forall t \in \mathbb{R}^d, \, \phi_X(t) = \int_{\mathbb{R}^d} e^{i \langle t, x \rangle} f(x) \, \mathrm{d}x \]
   \end{remark}
 
   \reference{239}
@@ -382,7 +382,7 @@
         \frac{\sin(t)}{t} \text{ si } t \neq 0 \\
         1 \text{ sinon}
       \end{cases}$
-      \item $X \sim \mathcal{E}(\lambda) \iff \forall t \in \mathbb{R}, \, \phi_X(t) = \frac{1}{1-it}$.
+      \item $X \sim \mathcal{E}(\lambda) \iff \forall t \in \mathbb{R}, \, \phi_X(t) = \frac{\lambda}{\lambda-it}$.
       \item $X(\Omega) \subseteq \mathbb{N} \implies \forall t \in \mathbb{R}, \, \phi_X(t) = G_X(e^{it})$ où $G_X$ est la fonction génératrice de $X$.
     \end{itemize}
   \end{example}

@@ -37,7 +37,7 @@
   \reference{237}
 
   \begin{corollary}
-    Une limite uniforme sur $\mathbb{R}$ de fonctions polynômiales est une fonction polynômiale.
+    Une limite uniforme sur $\mathbb{R}$ de fonctions polynomiales est une fonction polynomiale.
   \end{corollary}
 
   \reference{232}
@@ -116,7 +116,7 @@
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
   \begin{corollary}[Weierstrass]
-    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynômiales sur $[a, b]$.
+    Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{corollary}
 
   On a une version plus générale de ce théorème.
@@ -204,7 +204,7 @@
   \end{theorem}
 
   \begin{example}
-    La fonction $x \mapsto \sum_{n=0}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
+    La fonction $x \mapsto \sum_{n=1}^{+\infty} \frac{e^{-n\vert x \vert}}{n^2}$ est continue sur $\mathbb{R}$.
   \end{example}
 
   \subsubsection{Dérivabilité}
@@ -222,7 +222,7 @@
   \end{theorem}
 
   \begin{cexample}
-    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
+    La suite $(f_n)$ définie sur $\mathbb{R}$ pour tout $n \in \mathbb{N}^*$ par $f_n : x \mapsto \left( x^2 + \frac{1}{n^2} \right)^{\frac{1}{2}}$ converge vers $x \mapsto \vert x \vert$, qui n'est pas dérivable à l'origine bien que les $f_n$ le soient.
   \end{cexample}
 
   \reference{198}
@@ -250,7 +250,7 @@
 
   \begin{example}
     La fonction $\zeta : s \mapsto \sum_{n=1}^{+\infty} \frac{1}{n^s}$ est $\mathcal{C}^\infty$ sur $]1, +\infty[$ et,
-    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(s))^k}{n^s} \]
+    \[ \forall k \in \mathbb{N}, \, \forall s \in ]1, +\infty[, \zeta^{(k)}(s) = (-1)^k \sum_{n=1}^{+\infty} \frac{(\ln(n))^k}{n^s} \]
   \end{example}
 
   \subsubsection{Mesurabilité, intégrabilité}
@@ -352,12 +352,12 @@
   \reference[QUE]{57}
 
   \begin{proposition}
-    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{H}(D(0, r))$ et,
-    \[ S'(z) = \sum_{n=0}^{+\infty} n a_n z^{n-1} \]
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. On note $f$ la somme de cette série sur $D(0,r)$. Alors $f \in \mathcal{H}(D(0, r))$ et,
+    \[ f'(z) = \sum_{n=1}^{+\infty} n a_n z^{n-1} \]
     pour tout $z \in D(0, r)$.
     \newpar
-    Plus précisément, pour tout $k \in \mathbb{N}$, $S$ est $k$ fois dérivable avec
-    \[ S^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
+    Plus précisément, pour tout $k \in \mathbb{N}$, $f$ est $k$ fois dérivable avec
+    \[ f^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
   \end{proposition}
 
   \reference[GOU20]{263}
@@ -375,12 +375,13 @@
   \end{application}
 
   \begin{application}
-    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+    \[ \sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
   \end{application}
 
   \begin{cexample}
     La réciproque est fausse :
-    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \sum_{n=0}^{+\infty} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2}, \]
+    alors que la série $\sum_{n=0}^{+\infty} (-1)^n$ diverge.
   \end{cexample}
 
   \begin{theorem}[Taubérien faible]

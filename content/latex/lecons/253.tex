@@ -79,7 +79,7 @@
 
   \begin{corollary}
     On se place dans le cas où $E$ est un espace de Hilbert sur $\mathbb{R}$. Soit $A \subseteq E$. Alors,
-    \[ x \in \overline{\operatorname{Conv}(A)} \iff \forall f \in H', \, f(x) \leq \sup_{y \in A} f(y) \]
+    \[ x \in \overline{\operatorname{Conv}(A)} \iff \forall f \in E', \, f(x) \leq \sup_{y \in A} f(y) \]
   \end{corollary}
 
   \subsubsection{Fonctions convexes}
@@ -120,7 +120,7 @@
   \begin{proposition}
     \begin{itemize}
       \item Une combinaison linéaire à coefficients positifs de fonctions convexes est convexe.
-      \item La composée $\varphi \circ g$ d'une fonction convexe croissante $\varphi : J \rightarrow \mathbb{R}$ avec une fonction fonction convexe $g : I \rightarrow J$ est croissante.
+      \item La composée $\varphi \circ g$ d'une fonction convexe croissante $\varphi : J \rightarrow \mathbb{R}$ avec une fonction convexe $g : I \rightarrow J$ est convexe.
       \item Une limite simple d'une suite de fonctions convexes est convexe.
     \end{itemize}
   \end{proposition}
@@ -270,11 +270,11 @@
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
+    Si $F$ est un sous-espace vectoriel fermé dans $H$, alors $P_F$ est une application linéaire continue. De plus, pour tout $x \in H$, $P_F(x)$ est l'unique point $y \in F$ tel que $x-y \in F^\perp$.
   \end{theorem}
 
   \begin{theorem}
-    Si $F$ est un sous espace vectoriel fermé dans $H$, alors
+    Si $F$ est un sous-espace vectoriel fermé dans $H$, alors
     \[ H = F \oplus F^\perp \]
     et $P_F$ est la projection sur $F$ parallèlement à $F^\perp$ : c'est la \textbf{projection orthogonale} sur $F$.
   \end{theorem}

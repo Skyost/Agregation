@@ -44,7 +44,7 @@
     \begin{itemize}
       \item On utilise en général les coefficients réels lorsque $f$ est à valeurs réelles.
       \item Si $f$ est paire (resp. impaire), les coefficients $b_n(f)$ (resp. $a_n(f)$) sont nuls.
-      \item $\forall n \in \mathbb{N}, a_n(f) = c_n(f) + c_{-n}(f)$ et $\forall n \in \mathbb{N}^*, b_n(f) = i(c_n(f) + c_{-n}(f))$.
+      \item $\forall n \in \mathbb{N}, a_n(f) = c_n(f) + c_{-n}(f)$ et $\forall n \in \mathbb{N}^*, b_n(f) = i(c_n(f) - c_{-n}(f))$.
       \item On pourrait plus généralement définir les coefficients de Fourier d'une fonction $T$-périodique pour toute période $T > 0$.
     \end{itemize}
   \end{remark}
@@ -52,7 +52,7 @@
   \reference{273}
 
   \begin{example}
-    On définit $\forall \alpha \in \mathbb{R} \setminus \mathbb{Z}, \, f_\alpha : t \mapsto \cos(\alpha t)$. Alors,
+    On définit, pour tout $\alpha \in \mathbb{R} \setminus \mathbb{Z}$, $f_\alpha$ comme le prolongement $2\pi$-périodique de $t\mapsto\cos(\alpha t)$ sur $[-\pi,\pi[$. Alors,
     \[ \forall n \in \mathbb{N}, \, a_n(f_\alpha) = (-1)^n \frac{2 \alpha \sin(\alpha \pi)}{\pi (\alpha^2 - n^2)} \text{ et } \forall n \in \mathbb{N}^*, \, b_n(f_\alpha) = 0 \]
   \end{example}
 
@@ -77,7 +77,7 @@
       \item $\vert c_n(f) \vert \leq \Vert f \Vert_1$.
       \item $c_{-n}(f) = c_n(x \mapsto f(-x))$.
       \item $c_n(\overline{f}) = \overline{c_{-n}(f)}$.
-      \item $c_n(x \mapsto f(x-a)) = e_n(a) c_n(f)$.
+      \item $c_n(x \mapsto f(x-a)) = e_n(-a) c_n(f)$.
       \item $c_n(e_k f) = c_{n-k}(f) e_n$.
       \item $c_n(f') = in c_n(f)$ si $f$ est continue et $\mathcal{C}^1$ par morceaux.
     \end{enumerate}
@@ -112,7 +112,7 @@
     \begin{enumerate}[label=(\roman*)]
       \item La famille orthonormée $(\epsilon_n)_{n \in I}$ est une base hilbertienne de $H$.
       \item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, \epsilon_n \rangle \epsilon_n$.
-      \item \label{246-3} $\forall x \in H, \, \Vert x \Vert_2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
+      \item \label{246-3} $\forall x \in H, \, \Vert x \Vert^2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
     \end{enumerate}
   \end{theorem}
 
@@ -136,7 +136,7 @@
   \begin{example}
     \label{246-5}
     On considère $f : x \mapsto 1 - \frac{x^2}{\pi^2}$ sur $[-\pi, \pi]$. Alors,
-    \[ \frac{\pi^4}{90} = \Vert f \Vert_2 = \sum_{n=0}^{+\infty} \frac{1}{n^4} \]
+    \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
   \reference[BMP]{124}
@@ -177,24 +177,24 @@
   \reference{184}
 
   \begin{definition}
-    Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_N$ est appelé \textbf{noyau de Dirichlet} d'ordre $N$.
+    Pour tout $N \in \mathbb{N}$, la fonction $D_N = \sum_{n=-N}^{N} e_n$ est appelé \textbf{noyau de Dirichlet} d'ordre $N$.
   \end{definition}
 
   \begin{proposition}
     Soit $N \in \mathbb{N}$.
     \begin{enumerate}[label=(\roman*)]
-      \item $D_N$ est une fonction paire, $2\pi$-périodique, et de norme $1$.
+      \item $D_N$ est une fonction paire, $2\pi$-périodique, et vérifie $\frac{1}{2\pi} \int_{-\pi}{\pi} D_N(x) \, \mathrm{d}x = 1$.
       \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, D_N(x) = \frac{\sin \left(\left( N + \frac{1}{2} \right) x \right)}{\sin \left( \frac{x}{2} \right)} \]
       \item Pour tout $f \in L_1^{2 \pi}, \, S_N(f) = f * D_N$.
     \end{enumerate}
   \end{proposition}
 
   \begin{definition}
-    Pour tout $N \in \mathbb{N}$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
+    Pour tout $N \in \mathbb{N}^*$, la fonction $K_N = \frac{1}{N} \sum_{j=0}^{N-1} D_j$ est appelé \textbf{noyau de Fejér} d'ordre $N$.
   \end{definition}
 
   \begin{notation}
-    Pour tout $N \in \mathbb{N}^*$, on note $\sigma_N = \frac{1}{N} \sum_{k=0}^{N-1} S_n(f)$ la somme de Cesàro d'ordre $N$ de la série de Fourier d'une fonction $f \in L_1^{2 \pi}$.
+    Pour tout $N \in \mathbb{N}^*$, on note $\sigma_N = \frac{1}{N} \sum_{k=0}^{N-1} S_k(f)$ la somme de Cesàro d'ordre $N$ de la série de Fourier d'une fonction $f \in L_1^{2 \pi}$.
   \end{notation}
 
   \begin{proposition}
@@ -219,7 +219,7 @@
   \end{theorem}
 
   \begin{corollary}
-    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid (c_n) \in \mathbb{C}^{\mathbb{N}}, \, N \in \mathbb{N} \}$ est dense dans l'espace des fonction continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
+    L'espace des polynômes trigonométriques $\{ \sum_{n=-N}^N c_n e_n \mid N \in \mathbb{N}, \, (c_{-N},\dots,c_N) \in \mathbb{C}^{2N+1} \}$ est dense dans l'espace des fonctions continues $2\pi$-périodiques pour $\Vert . \Vert_\infty$ et est dense dans $L_p^{2\pi}$ pour $\Vert . \Vert_p$ avec $p \in [1,+\infty[$.
   \end{corollary}
 
   \reference[BMP]{128}
@@ -300,7 +300,7 @@
   \reference[AMR08]{221}
 
   \begin{application}[Sommes de Gauss]
-    \[ \forall m \in \mathbb{N}^*, \, \sum_{n=0}^{m-1} e^{\frac{2i\pi n^2}{m}} = \frac{1+i^{-m}}{1+i^{-1}} \]
+    \[ \forall m \in \mathbb{N}^*, \, \sum_{n=0}^{m-1} e^{\frac{2i\pi n^2}{m}} = \sqrt{m} \frac{1+i^{-m}}{1+i^{-1}} \]
   \end{application}
 
   \begin{application}[Intégrales de Fresnel]
@@ -341,8 +341,8 @@
 
   \begin{application}[Inégalité de Wirtinger]
     Soit $f : [a,b] \rightarrow \mathbb{C}$ de classe $\mathcal{C}^1$ telle que $f(a) = f(b) = 0$. Alors,
-    \[ \int_a^b \vert f(x) \vert^2 \, \mathrm{d}x \leq \frac{(b-a)^2}{\pi}^2 \int_a^b \vert f'(x) \vert^2 \, \mathrm{d}x \]
-    De plus, la constante $\frac{(b-a)^2}{\pi}^2$ est optimale.
+    \[ \int_a^b \vert f(x) \vert^2 \, \mathrm{d}x \leq \frac{(b-a)^2}{\pi^2} \int_a^b \vert f'(x) \vert^2 \, \mathrm{d}x \]
+    De plus, la constante $\frac{(b-a)^2}{\pi^2}$ est optimale.
   \end{application}
 
   \reference[Z-Q]{106}
@@ -366,7 +366,7 @@
         \hline
         $f$ continue & Convergence uniforme au sens de Cesàro. \\
         \hline
-        $f \in L_p^{2\pi}$ ($p \in L_p[1,+\infty[$) & Convergence pour $\Vert . \Vert_p$ au sens de Cesàro. \\
+        $f \in L_p^{2\pi}$ ($p \in [1,+\infty[$) & Convergence pour $\Vert . \Vert_p$ au sens de Cesàro. \\
         \hline
         $f$ $\mathcal{C}^1$ par morceaux & Convergence ponctuelle vers une valeur moyenne. \\
         \hline

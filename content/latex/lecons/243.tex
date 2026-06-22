@@ -62,7 +62,7 @@
   \reference{233}
 
   \begin{proposition}[Règle de d'Alembert]
-    Soit $\sum a_n z^n$ une série entière. Si $\lim_{n \rightarrow +\infty} \left| \frac{a_{n+1}}{a_n} \right| = \lambda$ avec $\lambda \in [0, +\infty]$, alors le rayon de convergence de $\sum a_n z^n$ est égal à $\frac{1}{\lambda}$.
+    Soit $\sum a_n z^n$ une série entière telle que $a_n \neq 0$ à partir d'un certain rang. Si $\lim_{n \rightarrow +\infty} \left| \frac{a_{n+1}}{a_n} \right| = \lambda$ avec $\lambda \in [0, +\infty]$, alors le rayon de convergence de $\sum a_n z^n$ est égal à $\frac{1}{\lambda}$.
   \end{proposition}
 
   \begin{example}
@@ -95,7 +95,7 @@
     \begin{itemize}
       \item $\sum z^n$ dont le rayon de convergence est égal à $1$ diverge en tout point de $C(0,1)$.
       \item $\sum \frac{1}{n^2} z^n$ dont le rayon de convergence est égal à $1$ converge en tout point de $C(0,1)$.
-      \item $\sum \frac{z^n}{n} z^n$ dont le rayon de convergence est égal à $1$ converge en $1$ mais diverge en tout autre point de $C(0,1)$.
+      \item $\sum \frac{1}{n} z^n$ dont le rayon de convergence est égal à $1$ diverge en $1$ mais converge en tout autre point de $C(0,1)$.
     \end{itemize}
   \end{example}
 
@@ -114,12 +114,13 @@
   \end{application}
 
   \begin{application}
-    \[ \sum_{n=0}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
+    \[ \sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{n} = \ln(2) \]
   \end{application}
 
   \begin{cexample}
     La réciproque est fausse :
-    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2} \]
+    \[ \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \sum_{n=0}^{+\infty} (-1)^n z^n = \lim_{\substack{z \rightarrow 1 \\ \vert z \vert < 1}} \frac{1}{1+z} = \frac{1}{2}, \]
+    alors que la série $\sum_{n=0}^{+\infty} (-1)^n$ diverge.
   \end{cexample}
 
   \begin{theorem}[Taubérien faible]
@@ -141,7 +142,7 @@
   Soient $\sum a_n z^n$ et $\sum b_n z^n$ deux séries entières dont on note $R_a$ et $R_b$ les rayons de convergence respectifs.
 
   \begin{proposition}
-    En multipliant $\sum a_n z^n$ par un scalaire, on ne change pas le rayon de convergence de la série initiale.
+    En multipliant $\sum a_n z^n$ par un scalaire non nul, on ne change pas le rayon de convergence de la série initiale.
   \end{proposition}
 
   \begin{definition}
@@ -286,11 +287,11 @@
   \end{theorem}
 
   \begin{theorem}[Zéros isolés]
-    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$. Si $f$ est une fonction analytique si $f$ n'est pas identiquement nulle, alors l'ensemble des zéros de $f$ n'admet pas de point d'accumulation dans $U$.
+    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$. Si $f$ est une fonction analytique non identiquement nulle, alors l'ensemble des zéros de $f$ n'admet pas de point d'accumulation dans $U$.
   \end{theorem}
 
   \begin{corollary}
-    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$. Alors $f$ admet un nombre fini de zéros dans tout compact de $U$.
+    Soient $U \subseteq \mathbb{C}$ un ouvert connexe et $f : U \rightarrow \mathbb{C}$ une fonction analytique non identiquement nulle. Alors $f$ admet un nombre fini de zéros dans tout compact de $U$.
   \end{corollary}
 
   \reference[GOU20]{250}

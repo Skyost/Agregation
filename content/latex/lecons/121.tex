@@ -454,9 +454,9 @@
     Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
     \begin{enumerate}[label=(\roman*)]
       \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$, dont on note $m_1', \dots, m_r$ les coordonnées :
-      \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n. \]
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n \]
       \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :
-      \[ \forall i \in \llbracket 1,r \rrbracket, \, (m_i')^d \equiv m_i \mod n. \]
+      \[ \forall i \in \llbracket 1,r \rrbracket, \, (m_i')^d \equiv m_i \mod n \]
     \end{enumerate}
   \end{theorem}
 

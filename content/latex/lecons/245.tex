@@ -31,7 +31,7 @@
         \item $(g+h)' = g'+h'$.
         \item $(\lambda g)' = \lambda g'$.
         \item $(gh)' = g'h + gh'$.
-        \item $\left( \frac{g}{h} \right)' = \frac{g'h - gh'}{g^2}$ quand $g$ ne s'annule pas sur $\Omega$.
+        \item $\left( \frac{g}{h} \right)' = \frac{g'h - gh'}{h^2}$ quand $h$ ne s'annule pas sur $\Omega$.
       \end{itemize}
       \item Pour tout $g \in \mathcal{H}(\Omega)$, $h \in \mathcal{H}(\Omega_1)$ où $g(\Omega) \subseteq \Omega_1$
       \[ h \circ g \in \mathcal{H}(\Omega) \text{ et } (h \circ g)' = (h' \circ g) g' \]
@@ -100,12 +100,12 @@
   \reference[QUE]{57}
 
   \begin{proposition}
-    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{H}(D(0, r))$ et,
-    \[ S'(z) = \sum_{n=0}^{+\infty} n a_n z^{n-1} \]
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. On note $f$ la somme de cette série sur $D(0,r)$. Alors $f \in \mathcal{H}(D(0, r))$ et,
+    \[ f'(z) = \sum_{n=1}^{+\infty} n a_n z^{n-1} \]
     pour tout $z \in D(0, r)$.
     \newpar
-    Plus précisément, pour tout $k \in \mathbb{N}$, $S$ est $k$ fois dérivable avec
-    \[ S^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
+    Plus précisément, pour tout $k \in \mathbb{N}$, $f$ est $k$ fois dérivable avec
+    \[ f^{(k)}(z) = \sum_{n=k}^{+\infty} n (n-1) \dots (n-k+1) a_n z^{n-k} \]
   \end{proposition}
 
   \subsubsection{Analycité}
@@ -114,14 +114,14 @@
 
   \begin{definition}
     On dit que $f$ est \textbf{analytique} sur $\Omega$ si, pour tout $a \in \Omega$, il existe $r > 0$ et une série entière $\sum a_n z^n$ de rayon de convergence $\geq r$, tels que
-    \[ D(a, r) \subseteq \Omega \text{ et } \forall z \in D(a, r), \, f(z) = \sum_{n=0}^{+\infty} a_n z^n \]
+    \[ D(a, r) \subseteq \Omega \text{ et } \forall z \in D(a, r), \, f(z) = \sum_{n=0}^{+\infty} a_n (z-a)^n \]
     ie. $f$ est développable en série entière en tout point de $\Omega$. On note $\mathcal{A}(\Omega)$ l'ensemble des fonctions analytiques sur $\Omega$.
   \end{definition}
 
   \begin{proposition}
-    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. Alors $S \in \mathcal{A}(D(0, r))$ et, si $\vert z - a \vert \leq r - \vert a \vert$ :
+    Soit $\sum a_n z^n$ une série entière de rayon de convergence $r \neq 0$. On note $f$ la somme de cette série sur $D(0,r)$. Alors $f \in \mathcal{A}(D(0, r))$ et, si $\vert z - a \vert < r - \vert a \vert$ :
     \[ f(z) = \sum_{k=0}^{+\infty} \frac{S^{(k)}(a)}{k!} (z-a)^k \]
-    (où $S^{(k)}$ désigne la $k$-ième dérivée complexe de $S$).
+    (où $f^{(k)}$ désigne la $k$-ième dérivée complexe de $f$).
   \end{proposition}
 
   \reference{85}
@@ -146,13 +146,13 @@
   \reference{73}
 
   \begin{corollary}
-    $\mathcal{A}(\Omega)$ est une algèbre intègre.
+    Si $\Omega$ est connexe, $\mathcal{A}(\Omega)$ est une algèbre intègre.
   \end{corollary}
 
   \reference{53}
 
   \begin{remark}[Prolongement analytique]
-    Reformulé de manière équivalente au \cref{245-1}, si deux fonctions analytiques coïncident sur un sous-ensemble de $\Omega$ qui possède un point d'accumulation dans $\Omega$, alors elles sont égales sur $\Omega$.
+    Reformulé de manière équivalente au \cref{245-1}, si $\Omega$ est connexe et si deux fonctions analytiques coïncident sur un sous-ensemble de $\Omega$ qui possède un point d'accumulation dans $\Omega$, alors elles sont égales sur $\Omega$.
   \end{remark}
 
   \reference{77}
@@ -197,7 +197,7 @@
 
   \begin{definition}
     Soit $\gamma : [a,b] \rightarrow \Omega$ une courbe. L'\textbf{intégrale curviligne} le long de $\gamma$ est
-    \[ \int_\gamma f(z) \, \mathrm{d}z = \int_b^a f(\gamma(t)) \gamma'(t) \, \mathrm{d}t \]
+    \[ \int_\gamma f(z) \, \mathrm{d}z = \int_a^b f(\gamma(t)) \gamma'(t) \, \mathrm{d}t \]
   \end{definition}
 
   \begin{proposition}
@@ -213,8 +213,8 @@
   \subsubsection{Théorie de Cauchy et lien avec l'analycité}
 
   \begin{definition}
-    Soit $\gamma : [a,b] \rightarrow \Omega$ une courbe telle que $\omega \notin \gamma^*$. \textbf{L'indice} de $\omega$ par rapport à $\gamma$, noté $I(\omega, \gamma)$, est défini par
-    \[ I(\omega, \gamma) = \frac{1}{2i\pi} \int_\gamma \frac{1}{z-a} \, \mathrm{d}z = \frac{1}{2i\pi} \int_b^a \frac{1}{\gamma(t)-a} \gamma'(t) \, \mathrm{d}t \]
+    Soit $\gamma : [a,b] \rightarrow \Omega$ une courbe fermée telle que $\omega \notin \gamma^*$. \textbf{L'indice} de $\omega$ par rapport à $\gamma$, noté $I(\omega, \gamma)$, est défini par
+    \[ I(\omega, \gamma) = \frac{1}{2i\pi} \int_\gamma \frac{1}{z-\omega} \, \mathrm{d}z = \frac{1}{2i\pi} \int_a^b \frac{\gamma'(t)}{\gamma(t)-\omega} \, \mathrm{d}t \]
   \end{definition}
 
   \begin{remark}
@@ -228,21 +228,21 @@
   \reference{134}
 
   \begin{theorem}[Cauchy homologique]
-    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$ (ie. tel que $z \notin \Omega \implies I(a, \Gamma) = 0$). On suppose $f \in \mathcal{H}(\Omega)$. Alors,
+    Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$ (ie. tel que $a \notin \Omega \implies I(a, \Gamma) = 0$). On suppose $f \in \mathcal{H}(\Omega)$. Alors,
     \[ \int_\Gamma f(z) \, \mathrm{d}z = 0 \]
   \end{theorem}
 
   \begin{corollary}[Formule intégrale de Cauchy]
     Soit $\Gamma$ un cycle homologue à zéro dans $\Omega$. On suppose $f \in \mathcal{H}(\Omega)$. Alors,
-    \[ z_0 \in \Omega \setminus \Gamma^* \implies \frac{1}{2i\pi} \int_\Gamma \frac{f(z)}{z-z_0} \, \mathrm{d}z = I(z_0, \gamma) f(z_0) \]
+    \[ z_0 \in \Omega \setminus \Gamma^* \implies \frac{1}{2i\pi} \int_\Gamma \frac{f(z)}{z-z_0} \, \mathrm{d}z = I(z_0, \Gamma) f(z_0) \]
   \end{corollary}
 
   \reference{85}
   \reference[BMP]{64}
 
   \begin{corollary}
-    On a $\mathcal{H}(\Omega) \subseteq \mathcal{A}(\Omega)$. De plus, si $a \in \Omega$ et que l'on pose $d = d(a, \mathbb{C} \setminus \Omega)$, on a
-    \[ f(a + h) = \sum_{n=0}^{+\infty} a_n h^n \text{ pour } \vert h \vert < d \text{ avec } a_n = \frac{f^{(n)}(a)}{n!} = \frac{1}{2i\pi} \int_{C^+(a,d)} \frac{f(z)}{(z-a)^{n+1}} \, \mathrm{d}z \]
+    On a $\mathcal{H}(\Omega) \subseteq \mathcal{A}(\Omega)$. De plus, si $a \in \Omega$ et si $r \in ]0, d(a,\mathbb{C}\setminus\Omega)[$, on a
+    \[ f(a + h) = \sum_{n=0}^{+\infty} a_n h^n \text{ pour } \vert h \vert < r \text{ avec } a_n = \frac{f^{(n)}(a)}{n!} = \frac{1}{2i\pi} \int_{C^+(a,r)} \frac{f(z)}{(z-a)^{n+1}} \, \mathrm{d}z \]
   \end{corollary}
 
   \subsubsection{Conséquences}
@@ -251,7 +251,7 @@
 
   \begin{proposition}[Inégalités de Cauchy]
     On suppose $f$ holomorphe au voisinage du disque $\overline{D}(a,R)$. On note $c_n$ les coefficients du développement en série entière de $f$ en $a$. Alors,
-    \[ \forall n \in \mathbb{N}, \, \forall r \in [0,R], \, \vert c_n \vert \leq \frac{M(r)}{r^n} \]
+    \[ \forall n \in \mathbb{N}, \, \forall r \in ]0,R], \, \vert c_n \vert \leq \frac{M(r)}{r^n} \]
     où $M(r) = \sup_{\vert z-a \vert = r} \vert f(z) \vert$.
   \end{proposition}
 
@@ -262,7 +262,7 @@
   \reference{107}
 
   \begin{theorem}[Principe du maximum]
-    On suppose $\Omega$ borné et $f$ holomorphe dans $\Omega$ et continue dans $\overline{\Omega}$. On note $M$ le $\sup$ de $f$ sur la frontière (compacte) de $\Omega$. Alors,
+    On suppose $\Omega$ borné et $f$ holomorphe dans $\Omega$ et continue dans $\overline{\Omega}$. On note $M$ le $\sup$ de $\vert f \vert$ sur la frontière (compacte) de $\Omega$. Alors,
     \[ \forall z \in \Omega, \, \vert f(z) \vert \leq M \]
   \end{theorem}
 
@@ -276,16 +276,16 @@
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
-      \[ \left| f(x,z) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
+      \[ \left| f(z,x) \right| \leq g_K(x) \quad \forall z \in K, \text{pp. en } x \]
     \end{enumerate}
     Alors $F$ est holomorphe dans $\Omega$ avec
-    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, t) \, \mathrm{d}\mu(z) \]
+    \[ \forall z \in \Omega, \, F'(z) = \int_X \frac{\partial f}{\partial z}(z, x) \, \mathrm{d}\mu(x) \]
   \end{theorem}
 
   \reference{115}
 
   \begin{application}
-    Soit $f \in L_1(\mathbb{R})$ ainsi que sa transformée de Fourier $\widehat{f} : x \mapsto \int_{\mathbb{R}} f(t) e^{-ixt} \, \mathrm{d}t$. Alors $f = 0$.
+    Soit $f \in L_1(\mathbb{R})$. Si sa transformée de Fourier $\widehat{f} : x \mapsto \int_{\mathbb{R}} f(t) e^{-ixt} \, \mathrm{d}t$ est nulle, alors $f = 0$.
   \end{application}
 
   \reference[BMP]{83}
@@ -349,7 +349,7 @@
     \begin{itemize}
       \item $A$ n'a que des points isolés dans $\Omega$ (en particulier, $A$ est au plus dénombrable et $\Omega \setminus A$ est ouvert).
       \item $f \in \mathcal{H}(\Omega \setminus A)$.
-      \item $f$ a un pôle en chaque point de $a$.
+      \item $f$ a un pôle en chaque point de $A$.
     \end{itemize}
   \end{definition}
 
@@ -368,7 +368,7 @@
         z &\mapsto& \int_{0}^{+\infty} e^{-t} t^{z-1} \, \mathrm{d}t
       \end{array}
     \]
-    se prolonge en une fonction méromorphe sur $\mathbb{C} \setminus \mathbb{N}$.
+    se prolonge en une fonction méromorphe sur $\mathbb{C}$, dont les pôles sont les entiers négatifs.
   \end{example}
 
   \reference[QUE]{168}
@@ -417,13 +417,13 @@
   \reference[QUE]{171}
 
   \begin{application}[Théorème de Kronecker]
-    On suppose $f$ holomorphe sur $\Omega$ et non identiquement nulle dans $\Omega$. Soit $\gamma$ une courbe homologue à zéro dans $\Omega$ et qui ne rencontre pas l'ensemble des zéros de $f$. Alors, le nombre $Z = Z(f)$ des zéros de $f$ à l'intérieur de $\gamma$ comptés avec multiplicités vérifie
+    On suppose $f$ holomorphe sur $\Omega$ et non identiquement nulle dans $\Omega$. Soit $\gamma$ une courbe homologue à zéro dans $\Omega$, et qui ne rencontre pas l'ensemble des zéros de $f$. Alors, le nombre $Z = Z(f)$ des zéros de $f$ à l'intérieur de $\gamma$ comptés avec multiplicités vérifie
     \[ Z = \frac{1}{2i\pi} \int_\gamma \frac{f'(z)}{f(z)} \, \mathrm{d}z \]
   \end{application}
 
   \begin{application}[Théorème de Rouché]
     Soient $\gamma$ un cycle homologue à zéro dans $\Omega$ et $g, h \in \mathcal{H}(\Omega)$. On suppose
-    \[ z \in \gamma^* \implies \vert g(z) \vert \leq \vert f(z) \vert \]
+    \[ z \in \gamma^* \implies \vert h(z) \vert < \vert g(z) \vert \]
     Alors,
     \[ Z(g) = Z(g + h) \]
   \end{application}
