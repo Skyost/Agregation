@@ -32,7 +32,7 @@
   \end{remark}
 
   Si l'on reçoit un mot qui n'est pas dans le code, on est donc sûr qu'il y a eu une erreur de transmission. L'opération de codage ``ajoute'' une information pour distinguer les mots valides des autres. C'est uniquement lors du décodage que l'on va pouvoir réparer une ou plusieurs erreurs. Le procédé général étant le suivant :
-  
+
   \begin{enumerate}
     \item on transforme un message $m$ en un mot $c$ du code (c'est le processus de \textbf{codage}) ;
     \item pendant la transmission, $c$ est altéré en $c'$ (c'est le processus de \textbf{transmission}) ;
@@ -94,14 +94,14 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $d_H$ correspond aux nombres de coefficients qui diffèrent entre $x$ et $y$.
       \item $d_H$ est une distance sur $\mathbb{F}_q^n$.
     \end{enumerate}
   \end{proposition}
 
   \begin{proof}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soient $x, y \in \mathbb{F}_q^n$. Par définition, $\omega(x-y)$ est égal au nombre de coefficients non nuls de $x-y$, soit au nombre de coefficients qui diffèrent entre $x$ et $y$.
       \item Soient $x, y, z \in \mathbb{F}_q^n$.
       \begin{enumerate}
@@ -322,7 +322,7 @@
 
   \begin{theorem}[Structure des codes cycliques]
     Soit $m \in \llbracket 0, n \rrbracket$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soit $P = \sum_{i=0}^{n-m} a_i X^i$ un diviseur unitaire de $X^n - 1$ dans $\mathbb{F}_q[X]$. Soit $a = \varphi^{-1}(\overline{P})$ le mot correspondant à $P$. Alors, en notant $\sigma : \mathbb{F}_q^n \rightarrow \mathbb{F}_q^n$ l'application de ``permutation circulaire'',
       \[ \mathcal{C} = \operatorname{Vect}(\sigma^{i}(a))_{i \in \llbracket 0, m-1 \rrbracket} \tag{$*$} \]
       forme un code cyclique de dimension $m$.
@@ -331,7 +331,7 @@
   \end{theorem}
 
   \begin{proof}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Clairement, $\mathcal{C} = \operatorname{Vect}(\sigma^{i}(x))_{i \in \llbracket 0, m-1 \rrbracket}$ est un sous-espace vectoriel de $\mathbb{F}_q^n[X]$ de dimension $m$ : c'est un code linéaire. Reste à montrer qu'il est cyclique. Soit $b = \sum_{i=0}^{m-1} b_i \sigma^i(a)$ un mot de $\mathcal{C}$. Il s'agit de montrer que $\sigma(b) \in \mathcal{C}$. Or,
       \[ \sigma(b) = \sum_{i=0}^{m-1} b_i \sigma^{i+1}(a) = b_{m-1} \sigma^m(a) + \sum_{i=1}^{m-1} b_{i-1} \sigma^i(m) \]
       et, d'après la base choisie pour $\mathcal{C}$, $\sum_{i=1}^{m-1} b_{i-1} \sigma^i(m) \in \mathcal{C}$. Reste à montrer que $b_{m-1} \sigma^m(a) \in \mathcal{C}$. On a,
@@ -430,7 +430,7 @@
   \end{center}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathcal{C}_H$ a une distance minimale de $3$.
       \item $\mathcal{C}_H$ est $1$-correcteur.
       \item $H = \begin{pmatrix}
@@ -442,7 +442,7 @@
   \end{proposition}
 
   \begin{proof}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Le minimum des poids est bien $3$ d'après le tableau précédent.
       \item D'après la \cref{codes-correcteurs-1}, la capacité de correction du code est égale à
       \[ \left\lfloor \frac{3-1}{2} \right\rfloor = 1 \]

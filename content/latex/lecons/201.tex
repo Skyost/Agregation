@@ -27,7 +27,7 @@
     Une application continue sur un compact est bornée et atteint ses bornes.
   \end{theorem}
 
-  \begin{theorem}[Heine]
+  \begin{theorem}[Théorème de Heine]
     Une application continue sur un compact y est uniformément continue.
   \end{theorem}
 
@@ -89,7 +89,7 @@
   \reference{238}
 
   \begin{theorem}[Théorèmes de Dini]
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soit $(f_n)$ une suite \textit{croissante} de fonctions réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
       \item Soit $(f_n)$ une suite de \textit{fonctions croissantes} réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
     \end{enumerate}
@@ -100,7 +100,7 @@
   \reference{304}
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
-  \begin{theorem}[Weierstrass]
+  \begin{theorem}[Théorème de Weierstrass]
     Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
@@ -108,9 +108,9 @@
 
   \reference[LI]{46}
 
-  \begin{theorem}[Stone-Weierstrass]
+  \begin{theorem}[Théorème de Stone-Weierstrass]
     Soit $K$ un espace compact et $\mathcal{A}$ une sous-algèbre de l'algèbre de Banach réelle $\mathcal{C}(K, \mathbb{R})$. On suppose de plus que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathcal{A}$ sépare les points de $K$ (ie. $\forall x \in K, \exists f \in A \text{ telle que } f(x) \neq f(y)$).
       \item $\mathcal{A}$ contient les constantes.
     \end{enumerate}
@@ -199,7 +199,7 @@
     Pour tout $p \in [1, +\infty]$, $(L_p), \Vert . \Vert_p$ est un espace vectoriel normé.
   \end{theorem}
 
-  \begin{theorem}[Riesz-Fischer]
+  \begin{theorem}[Théorème de Riesz-Fischer]
     Pour tout $p \in [1, +\infty]$, $L_p$ est complet pour la norme $\Vert . \Vert_p$.
   \end{theorem}
 
@@ -236,7 +236,7 @@
 
   \begin{theorem}[Convolution dans $L_1(\mathbb{R}^d)$]
     Soient $f, g \in L_1(\mathbb{R}^d)$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item pp. en $x \in \mathbb{R}^d$, $t \mapsto f(x-t)g(t)$ est intégrable sur $\mathbb{R}^d$.
       \item $f * g$ est intégrable sur $\mathbb{R}^d$.
       \item $\Vert f * g \Vert_1 \leq \Vert f \Vert_1 \Vert g \Vert_1$.
@@ -258,7 +258,7 @@
 
   \begin{definition}
     On appelle \textbf{approximation de l'identité} toute suite $(\rho_n)$ de fonctions mesurables de $L_1(\mathbb{R}^d)$ telles que
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, \int_{\mathbb{R}^d} \rho_n \, \mathrm{d}\lambda_d = 1$.
       \item $\sup_{n \geq 1} \Vert \rho_n \Vert_1 < +\infty$.
       \item $\forall \epsilon > 0, \, \lim_{n \rightarrow +\infty} \int_{\mathbb{R}^d \setminus B(0, \epsilon)} |\rho_n(x)| \, \mathrm{d}x = 0$.
@@ -276,7 +276,7 @@
   \reference[AMR08]{96}
 
   \begin{application}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $\mathcal{C}_K(\mathbb{R}^d)$ pour $\Vert . \Vert_\infty$.
       \item $\mathcal{C}^\infty_K(\mathbb{R}^d)$ est dense dans $L_p(\mathbb{R}^d)$ pour $\Vert . \Vert_p$ avec $p \in [1, +\infty[$.
     \end{enumerate}
@@ -309,7 +309,7 @@
 
   \begin{theorem}
     Soit $(e_n)_{n \in I}$ une famille orthonormée dénombrable de $L_2$. Les propriétés suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item La famille orthonormée $(e_n)_{n \in I}$ est une base hilbertienne de $L_2$.
       \item $\forall f \in L_2, \, f = \sum_{n=0}^{+\infty} \langle f, e_n \rangle e_n$.
       \item $\forall f \in L_2, \, \Vert f \Vert_2^2 = \sum_{n=0}^{+\infty} \vert \langle f, e_n \rangle \vert^2$.

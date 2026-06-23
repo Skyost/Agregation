@@ -43,7 +43,7 @@
 
   \begin{proposition}
     On considère deux applications $f, g : D \rightarrow \mathbb{R}$ où $D \subseteq \mathbb{R}$. Soit $x_0 \in \overline{\mathbb{R}}$. On suppose qu'il existe un voisinage $V_0$ de $x_0$ tel que $g$ ne s'annule pas. Alors, quand $x \rightarrow x_0$ :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f(x) = o(g(x))$ si et seulement si $\frac{f(x)}{g(x)} \longrightarrow_{x \rightarrow x_0} 0$.
       \item $f(x) \sim g(x)$ si et seulement si $\frac{f(x)}{g(x)} \longrightarrow_{x \rightarrow x_0} 1$.
     \end{enumerate}
@@ -80,7 +80,7 @@
   \end{remark}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Un développement limité, s'il existe, est unique.
       \item Si $f$ admet un développement limité en $0$ à l'ordre $n \geq 1$, $f$ est dérivable en $0$ et sa dérivée en $0$ vaut $a_1$.
       \item Si $f$ est paire (resp. impaire), les coefficients du développement limité d'indice impair (resp. pair) sont nuls.
@@ -130,7 +130,7 @@
     Soit $X$ un espace métrique. On considère deux applications $f, g : D \rightarrow E$ où $D \subseteq X$. Soient $x_0$ un point d'accumulation de $D$ et $k \in \mathbb{N}^*$. On appelle \textbf{développement asymptotique} à $k$ termes de $f$ par rapport à une échelle de comparaison $\mathcal{E}$ au voisinage de $x_0$ toute expression de la forme
     \[ \sum_{i=1}^{k} c_i f_i \]
     vérifiant
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $c_1, \dots, c_k \in E$ sont des constantes multiplicatives.
       \item $f_1, \dots, f_k \in \mathcal{E}$ avec pour tout $i \in \llbracket 1, k \rrbracket$, $f_{i+1}(x) = o(f_i(x))$.
       \item $f(x) = \sum_{i=1}^{k} c_i f_i + o(f_k(x))$ quand $x \rightarrow x_0$.
@@ -230,7 +230,7 @@
     \end{array}
     \]
     (qui est bien définie car $f' > 0$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
       \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
       \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
@@ -239,7 +239,7 @@
 
   \begin{corollary}
     En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(x_n)$ est strictement décroissante (ou constante).
       \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
     \end{enumerate}
@@ -317,7 +317,7 @@
 
   \begin{theorem}
     Soient $[a,b[$ un intervalle semi-ouvert de $\mathbb{R}$ (avec $-\infty < a < b \leq +\infty$), $E$ un espace de Banach sur $\mathbb{R}$, $f : [a,b[ \rightarrow E$ et $g : [a,b[ \rightarrow \mathbb{R}^+_*$ deux applications continues par morceaux sur $[a,b[$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\int_a^b g(t) \, \mathrm{d}t$ diverge, alors quand $x \rightarrow b^-$,
       \begin{itemize}
         \item Si $f(t) = O(g(t))$, alors $\int_a^x f(t) \, \mathrm{d}t = O\left( \int_a^x g(t) \, \mathrm{d}t \right)$.
@@ -343,7 +343,7 @@
     Soient $a \in \mathbb{R}$ et $g : [a, +\infty[ \rightarrow \mathbb{R}$ une application de classe $\mathcal{C}^1$. On suppose que $g$ ne s'annule pas au voisinage de $+\infty$ et que lorsque $x \rightarrow +\infty$, on a
     \[ \frac{g'(x)}{g(x)} \sim \frac{\mu}{x} \]
     pour $\mu \notin \{ -1, 0 \}$. Alors,
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\mu > -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ diverge et $\int_a^x g(t) \, \mathrm{d}t \sim \frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
       \item Si $\mu < -1$, $\int_a^{+\infty} g(t) \, \mathrm{d}t$ converge et $\int_x^{+\infty} g(t) \, \mathrm{d}t \sim -\frac{xg(x)}{\mu + 1}$ quand $x \rightarrow +\infty$.
     \end{enumerate}
@@ -360,7 +360,7 @@
 
   \begin{proposition}
     La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
       \item $\Gamma(1) = 1$.
       \item $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.

@@ -12,7 +12,7 @@
 
   \begin{theorem}[de la double limite]
     Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(f_n)$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite quand $x$ tend vers $a$.
     \end{enumerate}
@@ -22,7 +22,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(f_n)$ converge uniformément sur $X$ vers $f$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ est continue en $a$.
     \end{enumerate}
@@ -46,7 +46,7 @@
 
   \begin{theorem}
     Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace vectoriel normé et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
       \item $(f_n)$ converge simplement sur $I$ vers $f$.
       \item $(f_n')$ converge uniformément sur $I$.
@@ -60,7 +60,7 @@
 
   \begin{theorem}
     Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est de classe $\mathcal{C}^1$ sur $I$.
       \item Il existe $x_0 \in I$ tel que $(f_n(x_0))$ converge.
       \item $(f_n')$ converge uniformément sur $I$ vers $g$.
@@ -74,7 +74,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sum f_n$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite $\ell_n$ quand $x$ tend vers $a$.
     \end{enumerate}
@@ -84,7 +84,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sum f_n$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n$ est continue en $a$.
     \end{enumerate}
@@ -97,7 +97,7 @@
 
   \begin{theorem}
     Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace de Banach et $\sum f_n$ une série de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
       \item Il existe $x_0 \in I$ tel que $\sum f_n(x_0)$ converge.
       \item $\sum f_n'$ converge uniformément sur $I$.
@@ -119,9 +119,9 @@
     On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
   \end{definition}
 
-  \begin{lemma}[Abel]
+  \begin{lemma}[Lemme d'Abel]
     Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
       \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
     \end{enumerate}
@@ -202,7 +202,7 @@
 
   \begin{application}
     Soient $f$, $g$ deux fonctions mesurables positives.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f \leq g \implies \int_X f \, \mathrm{d}\mu \leq \int_X g \, \mathrm{d}\mu$ (l'intégrale est croissante).
       \item $\int_X (f+g) \, \mathrm{d}\mu = \int_X f \, \mathrm{d}\mu + \int_X g \, \mathrm{d}\mu$ (l'intégrale est additive).
       \item $\forall \lambda \geq 0, \, \int_X \lambda f \, \mathrm{d}\mu = \lambda \int_X f \, \mathrm{d}\mu$ (l'intégrale est positivement homogène).
@@ -225,7 +225,7 @@
 
   \begin{theorem}[Convergence dominée]
     Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
       \item $\exists g \in \mathcal{L}_1$ positive telle que
       \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
@@ -265,7 +265,7 @@
 
   \begin{theorem}[Continuité sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
       \item $\exists g \in L_1(X)$ positive telle que
@@ -276,7 +276,7 @@
 
   \begin{corollary}
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
       \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
@@ -316,7 +316,7 @@
   \begin{theorem}[Dérivation sous le signe intégral]
     \label{235-4}
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -335,7 +335,7 @@
 
   \begin{theorem}[$k$-ième dérivée sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
       \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
@@ -373,7 +373,7 @@
     On pose $\forall x \geq 0$,
     \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
     alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
       \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
       \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
@@ -388,7 +388,7 @@
 
   \begin{theorem}[Holomorphie sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -408,18 +408,18 @@
 
   \reference[B-P]{237}
 
-  \begin{theorem}[Fubini-Tonelli]
+  \begin{theorem}[Théorème de Fubini-Tonelli]
     Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
       \item Dans $\overline{\mathbb{R}^+}$,
       \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
     \end{enumerate}
   \end{theorem}
 
-  \begin{theorem}[Fubini-Lebesgue]
+  \begin{theorem}[Théorème de Fubini-Lebesgue]
     Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
       \item On a :
@@ -451,7 +451,7 @@
     \[ \sum_{n \in \mathbb{Z}} c_n(f)e^{inx} \]
   \end{definition}
 
-  \begin{theorem}[Parseval]
+  \begin{theorem}[Égalité de Parseval]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. Alors,
     \[ \sum_{n=-\infty}^{+\infty} |c_n(f)|^2 = \frac{1}{2\pi} \int_0^{2\pi} |f(t)|^2 \, \mathrm{d}t \]
   \end{theorem}
@@ -461,7 +461,7 @@
     \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
-  \begin{theorem}[Jordan-Dirichlet]
+  \begin{theorem}[Théorème de Jordan-Dirichlet]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors la série de Fourier de $f$ est convergente en tout point $x \in \mathbb{R}$ et sa somme en ce point vaut
     \[ \frac{f(x^+) + f(x^-)}{2} \]
   \end{theorem}
@@ -489,7 +489,7 @@
     On pose $\forall x \in \mathbb{R}$, $p(x) = \frac{1}{2} e^{-|x|}$. Alors $p \in L_1(\mathbb{R})$ et, $\forall \xi \in \mathbb{R}$, $\widehat{p}(\xi) = \frac{1}{1+\xi^2}$.
   \end{example}
 
-  \begin{lemma}[Riemann-Lebesgue]
+  \begin{lemma}[Lemme de Riemann-Lebesgue]
     Soit $f \in L_1(\mathbb{R}^d)$, $\widehat{f}$ existe et
     \[ \lim_{\Vert \xi \Vert \rightarrow +\infty} \widehat{f}(\xi) = 0 \]
   \end{lemma}

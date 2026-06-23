@@ -36,12 +36,12 @@
     Soient $a_1, \dots, a_n \in A^*$.
     \begin{itemize}
       \item $d \in A$ est un \textbf{plus grand commun diviseur} ``PGCD'' de $a_1, \dots, a_m$ si $d$ satisfait les deux propriétés suivantes :
-      \begin{enumerate}[label=(\roman*)]
+      \begin{enumerate}[label={\bfseries(\roman*)}]
         \item $d \mid a_i, \forall i \in \llbracket 1, n \rrbracket$.
         \item Si $\exists d' \in A$ tel que $d' \mid a_i, \forall i \in \llbracket 1, n \rrbracket$, alors $d' \mid d$.
       \end{enumerate}
       \item $m \in A$ est un \textbf{plus petit commun multiple} ``PPCM'' de $a_1, \dots, a_n$ si $m$ satisfait les deux propriétés suivantes :
-      \begin{enumerate}[label=(\roman*)]
+      \begin{enumerate}[label={\bfseries(\roman*)}]
         \item $a_i \mid m, \forall i \in \llbracket 1, n \rrbracket$.
         \item Si $\exists m' \in A$ tel que $a_i \mid m', \forall i \in \llbracket 1, n \rrbracket$, alors $m \mid m'$.
       \end{enumerate}
@@ -66,7 +66,7 @@
 
   \begin{proposition}
     Soient $a, b \in A^*$. Soit $d \in A$. Les assertions suivantes sont équivalentes.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $d \mid a$, $d \mid b$ et il existe $u, v \in A$ tels que $d = au + bv$.
       \item $d \sim \operatorname{pgcd}(a, b)$ et il existe $u, v \in A$ tels que $d = au + bv$.
       \item $(d) = (a,b)$.
@@ -89,7 +89,7 @@
 
   \begin{theorem}[Décomposition de Bézout]
     Soient $a_1, \dots, a_n \in A^*$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe $d$ un $\operatorname{pgcd}$ de $a_1, \dots, a_n$. $d$ est tel que $(d) = (a_1, \dots, a_n)$. En particulier, $d$ est de la forme $d = b_1 a_1 + \dots + b_n a_n$ avec $\forall i \in \llbracket 1, n \rrbracket, \, b_i \in A$.
       \item Il existe $m$ un $\operatorname{ppcm}$ de $a_1, \dots, a_n$. $m$ est tel que $(m) = (a_1) \cap \dots \cap (a_n)$.
     \end{enumerate}
@@ -108,7 +108,7 @@
 
   \reference{42}
 
-  \begin{lemma}[Gauss]
+  \begin{lemma}[Lemme de Gauss]
     Soient $a, b, c \in A$ avec $a$ et $b$ premiers entre eux. Alors,
     \[ a \mid bc \implies a \mid c \]
     et
@@ -133,7 +133,7 @@
 
   \begin{corollary}
     Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $A$ est un corps commutatif.
       \item $A[X]$ est un anneau euclidien.
       \item $A[X]$ est un anneau principal.
@@ -223,7 +223,7 @@
 
   \begin{proposition}
     Si $A$ vérifie la relation $(*)$ de la \cref{142-2}, alors les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $A$ vérifie le lemme d'Euclide : si $p \in A$ est irréductible, alors $p \mid ab \implies p \mid a \text { ou } p \mid b$.
       \item Pour tout $p \in A$ non nul et non inversible, $p$ est irréductible si et seulement si $(p)$ est premier.
       \item $A$ vérifie le lemme de Gauss : pour tout $a, b, c \in A$ tels que $a$ et $b$ sont premiers entre eux, $a \mid bc \implies a \mid c$.
@@ -245,7 +245,7 @@
 
   \begin{proposition}
     On suppose $A$ factoriel. Soient $a, b \in A^*$. Alors, en reprenant les notations précédentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $a \mid b \iff v_p(a) \leq v_p(b)$ pour tout $p \in \mathcal{S}$.
       \item $\prod_{p \in \mathcal{S}} p^{\min(v_p(a), v_p(b))}$ est un PGCD de $a$ et de $b$.
       \item $\prod_{p \in \mathcal{S}} p^{\max(v_p(a), v_p(b))}$ est un PPCM de $a$ et de $b$.
@@ -263,9 +263,9 @@
 
   \reference[GOZ]{10}
 
-  \begin{lemma}[Gauss]
+  \begin{lemma}[Lemme de Gauss]
     On suppose $A$ factoriel. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est associé à $1$).
       \item $\forall P, Q \in A[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
     \end{enumerate}
@@ -275,7 +275,7 @@
 
   \begin{theorem}[Critère d'Eisenstein]
     Soient $\mathbb{K}$ le corps des fractions de $A$ et $P = \sum_{i=0}^n a_i X^i \in A[X]$ de degré $n \geq 1$. On suppose que $A$ est factoriel et qu'il existe $p \in A$ irréductible tel que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
       \item $p \nmid a_n$.
       \item $p^2 \nmid a_0$.
@@ -331,7 +331,7 @@
   \reference{285}
   \dev{theoreme-chinois}
 
-  \begin{theorem}[Chinois]
+  \begin{theorem}[Théorème chinois]
     Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/n_k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
     \newpar
     Les entiers $n_1, \dots, n_r$ sont premiers entre eux deux à deux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application

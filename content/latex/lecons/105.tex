@@ -36,7 +36,7 @@
   Le théorème suivant justifie que, pour un ensemble à $n$ éléments, on peut se contenter d'étudier $S_n$ en lieu et place de $S(E)$.
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soient $E$ et $F$ deux ensembles en bijection. Alors $S(E)$ et $S(F)$ sont isomorphes.
       \item \[ |S_n| = n! \]
     \end{enumerate}
@@ -44,7 +44,7 @@
 
   \reference{53}
 
-  \begin{theorem}[Cayley]
+  \begin{theorem}[Théorème de Cayley]
     Tout groupe $G$ est isomorphe à un sous-groupe de $S(G)$.
   \end{theorem}
 
@@ -103,7 +103,7 @@
 
   \begin{proposition}
     Soient $\sigma$ et $\tau$ deux cycles de $S_n$ dont on note respectivement $\operatorname{Supp}(\sigma)$ et $\operatorname{Supp}(\tau)$ les supports. Si $\operatorname{Supp}(\sigma) \, \cap \, \operatorname{Supp}(\tau) = \emptyset$, alors $\operatorname{Supp}(\sigma\tau) = \operatorname{Supp}(\sigma) \, \cup \, \operatorname{Supp}(\tau)$ et dans ce cas :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sigma\tau = \tau\sigma$.
       \item $\sigma\tau = \operatorname{id} \implies \sigma = \tau = \operatorname{id}$.
     \end{enumerate}
@@ -150,7 +150,7 @@
 
   \begin{proposition}
     $\epsilon : S_n \rightarrow \mathbb{Q}^*$ est un morphisme de groupes. Pour une permutation $\sigma \in S_n$, on a les propriétés suivantes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\sigma$ est un transposition, $\epsilon(\sigma) = -1$.
       \item Si $l$ est le nombre de transpositions qui apparaît dans une décomposition de $\sigma$ en produit de transpositions, alors $\epsilon(\sigma) = (-1)^l$.
       \item Si $\sigma$ est de type $[l_1, \dots, l_m]$, alors $\epsilon(\sigma) = (-1)^{l_1 + \dots + l_m - m}$.
@@ -210,7 +210,7 @@
   \reference[ROM21]{44}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $S_n$ est engendré par les transpositions. On peut même se limiter aux transpositions de la forme $\begin{pmatrix} 1 & k \end{pmatrix}$ ou encore  $\begin{pmatrix} k & k+1 \end{pmatrix}$ (pour $k \leq n$).
       \item $S_n$ est engendré par $\begin{pmatrix} 1 & 2 \end{pmatrix}$ et $\begin{pmatrix} 1 & \dots & n \end{pmatrix}$.
     \end{enumerate}
@@ -296,7 +296,7 @@
 
   \begin{corollary}
     Soit $\mathcal{B}$ une base de $E$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\mathcal{B}'$ est une autre base de $E$, alors $\det_{\mathcal{B}'} = \det_{\mathcal{B}'}(\mathcal{B}) \det_{\mathcal{B}}$.
       \item Une famille de vecteurs est liée si et seulement si son déterminant est nul dans une base quelconque de $E$.
       \item Soient $A, B \in \mathcal{M}_n(\mathbb{K})$, alors $\det_{\mathcal{B}}(AB) = \det_{\mathcal{B}}(A) \det_{\mathcal{B}}(B)$.
@@ -317,7 +317,7 @@
 
   \dev{theoreme-de-frobenius-zolotarev}
 
-  \begin{theorem}[Frobenius-Zolotarev]
+  \begin{theorem}[Théorème de Frobenius-Zolotarev]
     Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
     \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
     où $u$ est vu comme une permutation des éléments de $V$.

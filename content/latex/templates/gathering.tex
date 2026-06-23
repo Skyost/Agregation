@@ -28,13 +28,14 @@
 \newcommand{\resetsectioncount}{\setcounter{section}{0}}
 
 % Redéfinition des commandes :
+\makeatletter
 
 \renewcommand{\lesson}[3]{%
   \renewcommand{\codedirectory}{lecons/}%
   \setcounter{section}{\numexpr #2 - 1}%
   \section{#3}%
   \label{#2}
-  \fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+  \fancyhead[R]{\@headerlesson{#2}{#3}}%
 }
 
 \renewcommand{\development}[3]{%
@@ -43,7 +44,7 @@
   \renewcommand{\resetsectioncount}{}
   \section{#3}%
   \label{#2}
-  \fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+  \fancyhead[R]{\@headertitle{#3}}%
 }
 
 \renewcommand{\sheet}[3]{%
@@ -54,8 +55,9 @@
 \renewcommand{\ranking}[1]{%
   \renewcommand{\codedirectory}{historique/}%
   \section{Agrégation externe #1}%
-  \fancyhead[R]{\truncate{0.73\textwidth}{Agrégation externe #1}}%
+  \fancyhead[R]{\@headertitle{Agrégation externe #1}}%
 }
+\makeatother
 
 % Premières pages :
 

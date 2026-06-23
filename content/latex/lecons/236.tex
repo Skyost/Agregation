@@ -12,7 +12,7 @@
 
   \begin{theorem}[Fondamental de l'analyse]
     Soit $f : [a,b] \rightarrow E$ (où $[a,b] \subseteq \mathbb{R}$ est un segment et $E$ un espace de Banach sur $\mathbb{R}$ ou $\mathbb{C}$).
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item L'application
       \[
       F :
@@ -68,7 +68,7 @@
 
   \begin{proposition}[Règle de Bioche]
     Soit $R \in \mathbb{R}(X, Y)$. Pour calculer une primitive d'une fonction de la forme $f : x \mapsto R(\sin(x), \cos(x))$, on peut utiliser la règle de Bioche :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $\pi - x$, on pose $t = \sin(x)$.
       \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $- x$, on pose $t = \cos(x)$.
       \item Si $f(x) \, \mathrm{d}x$ reste inchangé en changeant $x$ en $\pi + x$, on pose $t = \tan(x)$.
@@ -118,18 +118,18 @@
 
   \reference[B-P]{237}
 
-  \begin{theorem}[Fubini-Tonelli]
+  \begin{theorem}[Théorème de Fubini-Tonelli]
     Soient $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ deux espaces mesurés et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
       \item Dans $\overline{\mathbb{R}^+}$,
       \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
     \end{enumerate}
   \end{theorem}
 
-  \begin{theorem}[Fubini-Lebesgue]
+  \begin{theorem}[Théorème de Fubini-Lebesgue]
     Soient $(X, \mathcal{A}, \mu)$ et $(Y, \mathcal{B}, \nu)$ deux espaces mesurés et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
       \item On a :
@@ -209,7 +209,7 @@
 
   \begin{theorem}[Convergence dominée]
     Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
       \item $\exists g \in \mathcal{L}_1$ positive telle que
       \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
@@ -243,7 +243,7 @@
 
   \begin{theorem}[Continuité sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
       \item $\exists g \in L_1(X)$ positive telle que
@@ -264,7 +264,7 @@
 
   \begin{theorem}[Dérivation sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -288,7 +288,7 @@
     On pose $\forall x \geq 0$,
     \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
     alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
       \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
       \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
@@ -384,7 +384,7 @@
 
   \begin{application}[Calculs approchés d'intégrales]
     On note $I(f) = \int_a^b f(t) \, \mathrm{d}t$. L'objectif est d'approximer $I(f)$ par une expression $P(f)$ et de majorer l'erreur d'approximation $E(f) = \vert I(f) - P(f) \vert$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \uline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
       \item \uline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
       \item \uline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.

@@ -17,7 +17,7 @@
 
   \begin{proposition}
     Soient $E$ et $F$ deux ensembles.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $F$ est fini et s'il existe une injection de $E$ vers $F$, alors $E$ est fini et $\vert E \vert \leq \vert F \vert$.
       \item Si $E$ est fini et s'il existe une surjection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert \geq \vert F \vert$.
       \item Si $E$ est fini et s'il existe une bijection de $E$ vers $F$, alors $F$ est fini et $\vert E \vert = \vert F \vert$.
@@ -38,7 +38,7 @@
 
   \begin{proposition}
     Soient $A$ et $B$ deux ensembles finis. Alors,
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\vert A \, \cup \, B \vert = \vert A \vert + \vert B \vert - \vert A \, \cap \, B \vert$.
       \item $\vert A \setminus B \vert = \vert A \vert - \vert A \, \cap \, B \vert$.
     \end{enumerate}
@@ -110,7 +110,7 @@
 
   \begin{application}[Nombre d'applications entre deux ensembles finis]
     Soient $E$ et $F$ deux ensembles finis.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item L'ensemble des applications de $E$ vers $F$, noté $F^E$ est fini, de cardinal $\vert F \vert^{\vert E \vert}$.
       \item Lorsque $\vert E \vert \leq \vert F \vert$, l'ensemble des applications injectives de $E$ dans $F$ est fini, de cardinal $A_{\vert F \vert}^{\vert E \vert}$.
       \item L'ensemble des bijections de $E$ vers $E$ appelées permutations de $E$, noté $\mathcal{S}(E)$, est fini et de cardinal $\vert E \vert!$.
@@ -156,7 +156,7 @@
 
   \begin{proposition}
     Soit $n \in \mathbb{N}$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item On a :
       \[ \sum_{k = 0}^n \binom{n}{k} = 2^n \]
       \item Soient $a$ et $b$ deux éléments d'une algèbre qui commutent. Alors,
@@ -270,7 +270,7 @@
   \end{theorem}
 
   \begin{corollary}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe des polynômes irréductibles de tout degré dans $\mathbb{F}_p[X]$.
       \item Si $P \in \mathbb{F}_p[X]$ est un polynôme irréductible sur $\mathbb{F}_p$ de degré $n$, alors $P$ divise $X^q - X$. En particulier, il est scindé sur $\mathbb{F}_q$. Donc son corps de rupture $\mathbb{F}_q = \mathbb{F}_p[X] / (P)$ est aussi son corps de décomposition.
     \end{enumerate}
@@ -318,7 +318,7 @@
   \end{proposition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $p = 2$, $\mathbb{F}_q^2 = \mathbb{F}_q$, donc $\mathbb{F}_q^{*2} = \mathbb{F}_q^*$.
       \item Si $p > 2$, alors :
       \begin{itemize}
@@ -348,7 +348,7 @@
 
   \begin{proposition}
     On se place dans le cas où $\mathbb{K} = \mathbb{F}_q$. Alors, les groupes précédents sont finis, et :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $|\mathrm{GL}(V)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
       \item $|\mathrm{PGL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{q-1}$.
       \item $|\mathrm{PSL}(V)| = \frac{|\mathrm{SL}(V)|}{\operatorname{pgcd}(n,q-1)} = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
@@ -407,7 +407,7 @@
 
   \reference[GOU21]{312}
 
-  \begin{theorem}[Dérangements]
+  \begin{theorem}[Formule des dérangements]
     Soit $n \in \mathbb{N}^*$. On note $\mathcal{D}_n$ l'ensemble des permutations de $\llbracket 1, n \rrbracket$ sans point fixe. Alors,
     \[ \vert \mathcal{D}_n \vert = n! \sum_{k=0}^{n} \frac{(-1)^k}{k!} = \left\lfloor \frac{n!}{e} + \frac{1}{2} \right\rfloor \]
   \end{theorem}

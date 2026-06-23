@@ -30,7 +30,7 @@
   \end{example}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \label{123-1} Soit $A$ un anneau intègre. Alors, $\operatorname{car}(A) = 0 \text{ ou } p$ avec $p$ premier.
       \item Soit $A$ un anneau fini. Alors, $\operatorname{car}(A) \neq 0$ et $\operatorname{car}(A) \mid |A|$.
       \item Un anneau et un quelconque de ses sous-anneaux ont la même caractéristique.
@@ -66,7 +66,7 @@
 
   \begin{proposition}
     Les conditions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $n$ est un nombre premier.
       \item $\mathbb{Z}/n\mathbb{Z}$ est un anneau intègre.
       \item $\mathbb{Z}/n\mathbb{Z}$ est un corps.
@@ -81,7 +81,7 @@
 
   \begin{proposition}
     Soit $\mathbb{K}$ un corps fini.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\operatorname{car}(\mathbb{K})$ est un nombre premier $p$.
       \item Le sous-corps premier de $\mathbb{K}$ est isomorphe à $\mathbb{F}_p$.
       \item $\vert \mathbb{K} \vert = p^m$ pour $m \geq 2$.
@@ -115,7 +115,7 @@
     \end{array}
     \]
     est un morphisme de corps.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\mathbb{K}$ est fini, c'est un automorphisme.
       \item Si $\mathbb{K} = \mathbb{F}_p$, c'est l'identité.
     \end{enumerate}
@@ -130,7 +130,7 @@
   \end{application}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe un corps $\mathbb{K}$ à $q$ éléments : c'est le corps de décomposition de $X^q - X$ sur $\mathbb{F}_p$.
       \item $\mathbb{K}$ est unique à isomorphisme près : on le note $\mathbb{F}_q$.
     \end{enumerate}
@@ -156,7 +156,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mu_n^* = \{ e^{\frac{2ik\pi}{n}} \mid k \in \llbracket 0, n-1 \rrbracket, \, \operatorname{pgcd}(k, m) = 1 \}$.
       \item $\vert \mu_n^* \vert = \varphi(n)$, où $\varphi$ désigne l'indicatrice d'Euler.
     \end{enumerate}
@@ -168,7 +168,7 @@
   \end{definition}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $X^n - 1 = \prod_{d \mid n} \Phi_d$.
       \item $\Phi_n \in \mathbb{Z}[X]$.
       \item $\Phi_n$ est irréductible sur $\mathbb{Q}$.
@@ -179,7 +179,7 @@
 
   \reference[GOU21]{100}
 
-  \begin{theorem}[Wedderburn]
+  \begin{theorem}[Théorème de Wedderburn]
     Tout corps fini est commutatif.
   \end{theorem}
 
@@ -248,7 +248,7 @@
   \end{proposition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $p = 2$, $\mathbb{F}_q^2 = \mathbb{F}_q$, donc $\mathbb{F}_q^{*2} = \mathbb{F}_q^*$.
       \item Si $p > 2$, alors :
       \begin{itemize}
@@ -308,8 +308,8 @@
 
   \reference{10}
 
-  \begin{lemma}[Gauss]
-    \begin{enumerate}[label=(\roman*)]
+  \begin{lemma}[Lemme de Gauss]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est égal à $1$).
       \item $\forall P, Q \in \mathbb{Z}[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
     \end{enumerate}
@@ -317,7 +317,7 @@
 
   \begin{theorem}[Critère d'Eisenstein]
     Soit $P = \sum_{i=0}^n a_i X^i \in \mathbb{Z}[X]$ de degré $n \geq 1$. On suppose qu'il existe $p$ premier tel que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
       \item $p \nmid a_n$.
       \item $p^2 \nmid a_0$.
@@ -374,7 +374,7 @@
 
   \dev{theoreme-de-frobenius-zolotarev}
 
-  \begin{theorem}[Frobenius-Zolotarev]
+  \begin{theorem}[Théorème de Frobenius-Zolotarev]
     Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
     \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
     où $u$ est vu comme une permutation des éléments de $V$.
@@ -386,7 +386,7 @@
 
   \begin{proposition}
     Les groupes précédents sont finis, et :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $|\mathrm{GL}(E)| = q^{\frac{m(m-1)}{2}}((q^m-1) \dots (q-1))$.
       \item $|\mathrm{PGL}(E)| = |\mathrm{SL}(E)| = \frac{|\mathrm{GL}(E)|}{q-1}$.
       \item $|\mathrm{PSL}(E)| = \frac{|\mathrm{SL}(E)|}{\operatorname{pgcd}(m,q-1)} = \frac{|\mathrm{GL}(E)|}{(q-1)\operatorname{pgcd}(m,q-1)}$.

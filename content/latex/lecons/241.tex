@@ -97,7 +97,7 @@
   \reference{238}
 
   \begin{theorem}[Théorèmes de Dini]
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soit $(f_n)$ une suite \textit{croissante} de fonctions réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
       \item Soit $(f_n)$ une suite de \textit{fonctions croissantes} réelles \textit{continues} définies sur un segment $I$ de $\mathbb{R}$. Si $(f_n)$ converge simplement vers une fonction \textit{continue} sur $I$, alors la convergence est uniforme.
     \end{enumerate}
@@ -105,7 +105,7 @@
 
   \reference{242}
 
-  \begin{theorem}[Bernstein]
+  \begin{theorem}[Théorème de Bernstein]
     Soit $f : [0,1] \rightarrow \mathbb{C}$ continue. On note
     \[ B_n(f) : x \mapsto \sum_{k=0}^{n} f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k} \]
     Alors,
@@ -115,7 +115,7 @@
   \reference{304}
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
-  \begin{corollary}[Weierstrass]
+  \begin{corollary}[Théorème de Weierstrass]
     Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{corollary}
 
@@ -123,9 +123,9 @@
 
   \reference[LI]{46}
 
-  \begin{theorem}[Stone-Weierstrass]
+  \begin{theorem}[Théorème de Stone-Weierstrass]
     Soit $K$ un espace compact et $\mathcal{A}$ une sous-algèbre de l'algèbre de Banach réelle $\mathcal{C}(K, \mathbb{R})$. On suppose de plus que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathcal{A}$ sépare les points de $K$ (ie. $\forall x \in K, \exists f \in A \text{ telle que } f(x) \neq f(y)$).
       \item $\mathcal{A}$ contient les constantes.
     \end{enumerate}
@@ -150,7 +150,7 @@
 
   \begin{theorem}[de la double limite]
     Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(f_n)$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite quand $x$ tend vers $a$.
     \end{enumerate}
@@ -160,7 +160,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé de dimension finie, $E$ un espace de Banach, $(f_n)$ une suite de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(f_n)$ converge uniformément sur $X$ vers $f$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ est continue en $a$.
     \end{enumerate}
@@ -186,7 +186,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in \overline{X}$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sum f_n$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n(x)$ admet une limite $\ell_n$ quand $x$ tend vers $a$.
     \end{enumerate}
@@ -196,7 +196,7 @@
 
   \begin{theorem}
     Soient $X$ une partie non vide d'un espace vectoriel normé, $E$ un espace de Banach, $\sum f_n$ une série de fonctions de $X$ dans $E$ et $a \in X$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sum f_n$ converge uniformément sur $X$.
       \item $\forall n \in \mathbb{N}, \, f_n$ est continue en $a$.
     \end{enumerate}
@@ -213,7 +213,7 @@
 
   \begin{theorem}
     Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace vectoriel normé et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
       \item $(f_n)$ converge simplement sur $I$ vers $f$.
       \item $(f_n')$ converge uniformément sur $I$.
@@ -229,7 +229,7 @@
 
   \begin{theorem}
     Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est de classe $\mathcal{C}^1$ sur $I$.
       \item Il existe $x_0 \in I$ tel que $(f_n(x_0))$ converge.
       \item $(f_n')$ converge uniformément sur $I$ vers $g$.
@@ -239,7 +239,7 @@
 
   \begin{theorem}
     Soient $I$ un intervalle non vide de $\mathbb{R}$, $E$ un espace de Banach et $\sum f_n$ une série de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est dérivable sur $I$.
       \item Il existe $x_0 \in I$ tel que $\sum f_n(x_0)$ converge.
       \item $\sum f_n'$ converge uniformément sur $I$.
@@ -259,7 +259,7 @@
 
   \begin{theorem}
     Soient $I = [a,b]$ un segment non vide de $\mathbb{R}$, $E$ un espace de Banach et $(f_n)$ une suite de fonctions de $I$ dans $E$. On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall n \in \mathbb{N}, \, f_n$ est continue sur $I$.
       \item $(f_n)$ converge uniformément sur $I$ vers $f$.
     \end{enumerate}
@@ -293,7 +293,7 @@
 
   \begin{theorem}[Convergence dominée]
     Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
       \item $\exists g \in \mathcal{L}_1$ positive telle que
       \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
@@ -326,9 +326,9 @@
     On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
   \end{definition}
 
-  \begin{lemma}[Abel]
+  \begin{lemma}[Lemme d'Abel]
     Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
       \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
     \end{enumerate}
@@ -419,7 +419,7 @@
 
   \reference{271}
 
-  \begin{theorem}[Dirichlet]
+  \begin{theorem}[Théorème de Dirichlet]
     Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, continue par morceaux sur $\mathbb{R}$ et $t_0 \in \mathbb{R}$ tels que la fonction
     \[ h \mapsto \frac{f(t_0 + h) + f(t_0 - h) - f(t_0^+) - f(t_0^-)}{h} \]
     est bornée au voisinage de $0$. Alors,

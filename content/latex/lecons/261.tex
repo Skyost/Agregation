@@ -69,7 +69,7 @@
 
   \begin{proposition}
     Si $X$ est une variable aléatoire discrète à valeurs dans un ensemble dénombrable $D$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall A \in \mathcal{B}(\mathbb{R}), \mathbb{P}_X(A) = \sum_{i \in D \cap A} \mathbb{P}(X=i)$.
       \item $\mathbb{P}_X = \sum_{i \in D} \mathbb{P}(X=i) \delta_i$ où les $\delta_i$ sont des masses de Dirac (voir \cref{261-1} \cref{261-2}).
     \end{enumerate}
@@ -111,7 +111,7 @@
 
   \begin{proposition}
     Soit $X$ une variable aléatoire de densité $f$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Pour tout $a, b \in \mathbb{R}$ tels que $a \leq b$,
       \begin{align*}
         \mathbb{P}(a \leq X \leq b) &= \mathbb{P}(a \leq X < b) \\
@@ -165,7 +165,7 @@
 
   \reference{164}
 
-  \begin{theorem}[Transfert]
+  \begin{theorem}[Théorème de transfert]
     Si $X$ est une variable aléatoire dont la loi $\mathbb{P}_X$ admet une densité $f$ par rapport à $\mathbb{P}$ et si $g$ est une fonction mesurable, alors
     \[ g(X) \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert g(x) \vert f(x) \, \mathrm{d}\mathbb{P}(x) < +\infty \]
     et dans ce cas,
@@ -261,7 +261,7 @@
   \end{theorem}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $F_X$ est à valeurs dans $[0,1]$.
       \item $F_X$ est croissante sur $\mathbb{R}$.
       \item $\lim_{t \rightarrow -\infty} F_X(t) = 0$ et $\lim_{t \rightarrow +\infty} F_X(t) = 1$.
@@ -297,7 +297,7 @@
   \end{theorem}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\phi_X(0) = 1$.
       \item $\vert \phi_X \vert \leq 1$.
       \item $\phi_X$ est uniformément continue sur $\mathbb{R}^d$.
@@ -408,7 +408,7 @@
 
   \begin{proposition}
     Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} Y$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item La limite $X$ est unique.
       \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, Y \rangle$.
     \end{enumerate}
@@ -457,7 +457,7 @@
 
   \begin{theorem}
     Soit $X : \Omega \rightarrow \mathbb{R}^d$ une variable aléatoire.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge en loi vers $X$.
       \item Si $(X_n)$ converge en loi vers une constante $a$ (ou de manière équivalente, vers une masse de Dirac $\delta_a$), alors $(X_n)$ converge en probabilité vers $a$.
     \end{enumerate}
@@ -473,9 +473,9 @@
 
   \reference[G-K]{305}
 
-  \begin{theorem}[Slutsky]
+  \begin{theorem}[Théorème de Slutsky]
     Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} c$ où $c$ est un vecteur constant, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $X_n + Y_n \overset{(d)}{\longrightarrow} X + c$.
       \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, c \rangle$.
     \end{enumerate}
@@ -483,7 +483,7 @@
 
   \reference[Z-Q]{544}
 
-  \begin{theorem}[Lévy]
+  \begin{theorem}[Théorème de Lévy]
     On suppose que $(X_n)$ est une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
     \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
   \end{theorem}
@@ -518,7 +518,7 @@
 
   \begin{application}[Théorème des événements rares de Poisson]
     Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}

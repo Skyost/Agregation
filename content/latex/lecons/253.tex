@@ -35,7 +35,7 @@
   \reference[BMP]{26}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Dans $\mathbb{R}$, les intervalles sont à la fois les parties connexes et convexes.
       \item Une intersection de parties convexes est convexe.
     \end{enumerate}
@@ -56,7 +56,7 @@
 
   \reference{54}
 
-  \begin{theorem}[Carathéodory]
+  \begin{theorem}[Théorème de Carathéodory]
     Soit $A \subseteq E$. On suppose que $E$ est un espace vectoriel normé de dimension finie $n$. Alors, tout élément de $\operatorname{Conv}(A)$ est combinaison convexe de $n+1$ éléments de $A$.
   \end{theorem}
 
@@ -143,7 +143,7 @@
 
   \begin{theorem}
     Pour une fonction $f : I \rightarrow \mathbb{R}^+_*$, les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f$ est log-convexe.
       \item $\forall \alpha > 0, \, x \mapsto \alpha^x f(x)$ est convexe.
       \item $\forall x, y \in I, \, \forall t \in [0,1], \, f((1-t)x + ty) \leq (f(x))^{1-t} (f(y))^t$.
@@ -156,7 +156,7 @@
   \begin{lemma}
     \label{253-1}
     La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \label{253-2} $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
       \item \label{253-3} $\Gamma(1) = 1$.
       \item \label{253-4} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
@@ -165,7 +165,7 @@
 
   \dev{caracterisation-reelle-de-gamma}
 
-  \begin{theorem}[Bohr-Mollerup]
+  \begin{theorem}[Théorème de Bohr-Mollerup]
     Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{253-2}, \cref{253-3} et \cref{253-4} du \cref{253-1}. Alors $f = \Gamma$.
   \end{theorem}
 

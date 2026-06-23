@@ -47,7 +47,7 @@
 
   \begin{corollary}
     Soient $f$, $g$ deux fonctions mesurables positives.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f \leq g \implies \int_X f \, \mathrm{d}\mu \leq \int_X g \, \mathrm{d}\mu$ (l'intégrale est croissante).
       \item $\int_X (f+g) \, \mathrm{d}\mu = \int_X f \, \mathrm{d}\mu + \int_X g \, \mathrm{d}\mu$ (l'intégrale est additive).
       \item $\forall \lambda \geq 0, \, \int_X \lambda f \, \mathrm{d}\mu = \lambda \int_X f \, \mathrm{d}\mu$ (l'intégrale est positivement homogène).
@@ -84,7 +84,7 @@
 
   \begin{proposition}
     Soit $[a,b]$ un intervalle de $\mathbb{R}$. Soit $f$ une fonction intégrable au sens de Riemann sur $[a,b]$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe une fonction $g$ $\lambda$-intégrable sur $[a,b]$ telle que $f = g$ pp. De plus,
       \[ \int_a^b f = \int_{[a,b]} g \, \mathrm{d}\lambda \]
       \item En particulier, si $f$ est borélienne,
@@ -113,7 +113,7 @@
   \end{example}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f \mapsto \int_X f \, \mathrm{d}\mu$ est une forme linéaire positive (au sens où $f \geq 0 \implies \int_X f \, \mathrm{d}\mu \geq 0$) et croissante sur $\mathcal{L}_1$.
       \item $\mathcal{L}_1$ est un espace vectoriel sur $\mathbb{K}$.
       \item $\Vert . \Vert_1 : f \mapsto \int_X \vert f \vert \, \mathrm{d}\mu$ est une semi-norme sur $\mathcal{L}_1$.
@@ -135,7 +135,7 @@
 
   \begin{theorem}[Convergence dominée]
     Soit $(f_n)$ une suite d'éléments de $\mathcal{L}_1$ telle que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item pp. en $x$, $(f_n(x))$ converge dans $\mathbb{K}$ vers $f(x)$.
       \item $\exists g \in \mathcal{L}_1$ positive telle que
       \[ \forall n \in \mathbb{N}, \, \text{pp. en } x, \, \vert f_n(x) \vert \leq g(x) \]
@@ -172,7 +172,7 @@
   \end{proposition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\mu(X) < +\infty$, alors
       \[ 0 < p \leq q \implies \mathcal{L}_q \subseteq \mathcal{L}_p \]
       \item Si $\mu = m$ est la mesure de comptage sur $\mathbb{N}$, alors
@@ -208,7 +208,7 @@
     Pour tout $p \in [1, +\infty]$, $(L_p), \Vert . \Vert_p$ est un espace vectoriel normé.
   \end{theorem}
 
-  \begin{theorem}[Riesz-Fischer]
+  \begin{theorem}[Théorème de Riesz-Fischer]
     Pour tout $p \in [1, +\infty]$, $L_p$ est complet pour la norme $\Vert . \Vert_p$.
   \end{theorem}
 
@@ -224,7 +224,7 @@
 
   \begin{theorem}
     On se place sur $(\mathbb{R}, \mathcal{B}(\mathbb{R}), \lambda)$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item L'ensemble des fonctions en escalier à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
       \item L'ensemble des fonctions continues à support compact est dense dans $L_p$ pour tout $p \in [1, +\infty[$.
     \end{enumerate}
@@ -263,7 +263,7 @@
 
   \begin{theorem}[Continuité sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue en $t_0 \in E$.
       \item $\exists g \in L_1(X)$ positive telle que
@@ -274,7 +274,7 @@
 
   \begin{corollary}
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto f(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est continue sur $E$.
       \item $\forall K \subseteq E, \, \exists g_K \in L_1(X)$ positive telle que
@@ -314,7 +314,7 @@
   \begin{theorem}[Dérivation sous le signe intégral]
     \label{234-4}
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x)$ est dérivable sur $I$. On notera $\frac{\partial f}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -333,7 +333,7 @@
 
   \begin{theorem}[$k$-ième dérivée sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto f(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto f(t,x) \in \mathcal{C}^k(I)$. On notera $\left(\frac{\partial}{\partial t}\right)^j f$ la $j$-ième dérivée définie presque partout pour $j \in \llbracket 0, k \rrbracket$.
       \item $\forall j \in \llbracket 0, k \rrbracket$, $\forall K \subseteq I$ compact, $\exists g_{j,K} \in L_1(X)$ positive telle que
@@ -370,7 +370,7 @@
     On pose $\forall x \geq 0$,
     \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
     alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
       \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
       \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.
@@ -385,7 +385,7 @@
 
   \begin{theorem}[Holomorphie sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -405,18 +405,18 @@
 
   \reference[B-P]{237}
 
-  \begin{theorem}[Fubini-Tonelli]
+  \begin{theorem}[Théorème de Fubini-Tonelli]
     Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f : (X \times Y) \rightarrow \overline{\mathbb{R}^+}$. On suppose $\mu$ et $\nu$ $\sigma$-finies. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont mesurables.
       \item Dans $\overline{\mathbb{R}^+}$,
       \[ \int_{X \times Y} f \, \mathrm{d}(\mu \otimes \nu) = \int_X \left( \int_Y f(x,y) \, \mathrm{d}\nu(y) \right) = \int_Y \left( \int_X f(x,y) \, \mathrm{d}\mu(x) \right) \]
     \end{enumerate}
   \end{theorem}
 
-  \begin{theorem}[Fubini-Lebesgue]
+  \begin{theorem}[Théorème de Fubini-Lebesgue]
     Soient $(Y, \mathcal{B}, \nu)$ un autre espace mesuré et $f \in \mathcal{L}_1 (\mu \otimes \nu)$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Pour tout $y \in Y$, $x \mapsto f(x,y)$ et pour tout $x \in X$, $y \mapsto f(x,y)$ sont intégrables.
       \item $x \mapsto \int_Y f(x,y) \, \mathrm{d}\nu(y)$ et $y \mapsto \int_X f(x,y) \, \mathrm{d}\mu(x)$ sont intégrables, les fonctions étant définies pp.
       \item On a :

@@ -72,7 +72,7 @@
 
   \begin{proposition}
     Soient $f \in L_1^{2 \pi}$, $a \in \mathbb{R}$ et $k, n \in \mathbb{Z}$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f * e_n = c_n(f) e_n$.
       \item $\vert c_n(f) \vert \leq \Vert f \Vert_1$.
       \item $c_{-n}(f) = c_n(x \mapsto f(-x))$.
@@ -85,7 +85,7 @@
 
   \reference[BMP]{126}
 
-  \begin{lemma}[Riemann-Lebesgue]
+  \begin{lemma}[Lemme de Riemann-Lebesgue]
     Soit $f \in L_1^{2 \pi}$. Alors $(c_n(f))$ tend vers $0$ lorsque $n$ tend vers $\pm \infty$.
   \end{lemma}
 
@@ -109,7 +109,7 @@
   \begin{theorem}
     \label{246-2}
     Soit $H$ un espace de Hilbert et $(\epsilon_n)_{n \in I}$ une famille orthonormée dénombrable de $H$. Les propriétés suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item La famille orthonormée $(\epsilon_n)_{n \in I}$ est une base hilbertienne de $H$.
       \item $\forall x \in H, \, x = \sum_{n=0}^{+\infty} \langle x, \epsilon_n \rangle \epsilon_n$.
       \item \label{246-3} $\forall x \in H, \, \Vert x \Vert^2 = \sum_{n=0}^{+\infty} \vert \langle x, \epsilon_n \rangle \vert^2$.
@@ -182,7 +182,7 @@
 
   \begin{proposition}
     Soit $N \in \mathbb{N}$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $D_N$ est une fonction paire, $2\pi$-périodique, et vérifie $\frac{1}{2\pi} \int_{-\pi}{\pi} D_N(x) \, \mathrm{d}x = 1$.
       \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, D_N(x) = \frac{\sin \left(\left( N + \frac{1}{2} \right) x \right)}{\sin \left( \frac{x}{2} \right)} \]
       \item Pour tout $f \in L_1^{2 \pi}, \, S_N(f) = f * D_N$.
@@ -199,7 +199,7 @@
 
   \begin{proposition}
     Soient $N \in \mathbb{N}^*$ et $f \in L_1^{2 \pi}$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $K_N$ est une fonction positive et de norme $1$.
       \item \[ \forall x \in \mathbb{R} \setminus 2 \pi \mathbb{Z}, \, K_N(x) = \frac{1}{N} \left(\frac{\sin \left( \frac{Nx}{2} \right)}{\sin \left( \frac{x}{2} \right)}\right)^2 \]
       \item $K_N = \sum_{n=-N}^{N} \left(1 - \frac{\vert n \vert}{N}\right) e_n$.
@@ -210,9 +210,9 @@
   \reference{190}
   \dev{theoreme-de-fejer}
 
-  \begin{theorem}[Fejér]
+  \begin{theorem}[Théorème de Fejér]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2\pi$-périodique.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f$ est continue, alors $\Vert \sigma_N(f) \Vert_\infty \leq \Vert f \Vert_\infty$ et $(\sigma_N(f))$ converge uniformément vers $f$.
       \item Si $f \in L_p^{2\pi}$ pour $p \in [1,+\infty[$, alors $\Vert \sigma_N(f) \Vert_p \leq \Vert f \Vert_p$ et $(\sigma_N(f))$ converge vers $f$ pour $\Vert . \Vert_p$.
     \end{enumerate}
@@ -238,7 +238,7 @@
 
   \reference[GOU20]{271}
 
-  \begin{theorem}[Dirichlet]
+  \begin{theorem}[Théorème de Dirichlet]
     Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, continue par morceaux sur $\mathbb{R}$ et $t_0 \in \mathbb{R}$ tels que la fonction
     \[ h \mapsto \frac{f(t_0 + h) + f(t_0 - h) - f(t_0^+) - f(t_0^-)}{h} \]
     est bornée au voisinage de $0$. Alors,

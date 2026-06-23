@@ -26,7 +26,7 @@
   \end{example}
 
   \begin{theorem}[Caractérisations séquentielle et topologique de la continuité]
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f$ est continue en $a \in I$ si et seulement si toute suite de points de $I$ qui converge vers $a$ est transformée par $f$ en une suite convergente vers $f(a)$.
       \item $f$ est continue sur $I$ si et seulement si l'image réciproque par $f$ de tout ouvert (resp. fermé) de $\mathbb{R}$ est un ouvert (resp. fermé) de $I$.
     \end{enumerate}
@@ -124,7 +124,7 @@
 
   \begin{proposition}
     Si $f$ et $g$ sont deux fonctions définies sur $I$ à valeurs réelles et dérivables en $a \in I$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall \lambda, \mu \in \mathbb{R}, \, \lambda f + \mu g$ est dérivable en $a$ et $(\lambda f + \mu g)'(a) = \lambda f'(a) + \mu g'(a)$.
       \item $fg$ est dérivable en $a$ et $(fg)'(a) = f'(a) g(a) + f(a) g'(a)$.
       \item Si $g(a) \neq 0$, alors $\frac{f}{g}$ est dérivable en $a$ et $\left(\frac{f}{g}\right)'(a) = \frac{f'(a) g(a) - f(a) g'(a)}{g(a)^2}$.
@@ -194,7 +194,7 @@
     \end{array}
     \]
     (qui est bien définie car $g' > 0$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\exists! a \in [c, d]$ tel que $g(a) = 0$.
       \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
       \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
@@ -203,7 +203,7 @@
 
   \begin{corollary}
     En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $g$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(x_n)$ est strictement décroissante (ou constante).
       \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
     \end{enumerate}
@@ -252,9 +252,9 @@
     Si $f$ est une fonction monotone telle que $f(I)$ est un intervalle, elle est alors continue sur $I$.
   \end{proposition}
 
-  \begin{theorem}[Bijection]
+  \begin{theorem}[Théorème de la bijection monotone]
     Si $f$ est une application continue et strictement monotone sur $I$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $f(I)$ est un intervalle.
       \item $f^{-1}$ est continue.
       \item $f^{-1}$ est strictement monotone de même sens de variation que $f$.
@@ -267,7 +267,7 @@
 
   \reference[D-L]{405}
 
-  \begin{theorem}[Lebesgue]
+  \begin{theorem}[Théorème de Lebesgue]
     Une application monotone est dérivable presque partout.
   \end{theorem}
 
@@ -293,7 +293,7 @@
 
   Dans cette partie, $I$ désigne un segment $[a,b]$ de $\mathbb{R}$ non réduit à un point.
 
-  \begin{theorem}[Rolle]
+  \begin{theorem}[Théorème de Rolle]
     On suppose $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ et telle que $f(a) = f(b)$. Alors,
     \[ \exists c \in ]a,b[ \text{ tel que } f'(c) = 0 \]
   \end{theorem}
@@ -313,7 +313,7 @@
 
   \reference{80}
 
-  \begin{theorem}[Darboux]
+  \begin{theorem}[Théorème de Darboux]
     On suppose $f$ dérivable sur $I$. Alors $f'(I)$ est un intervalle.
   \end{theorem}
 
@@ -344,13 +344,13 @@
     Une fonction continue sur un compact est bornée et atteint ses bornes.
   \end{theorem}
 
-  \begin{theorem}[Heine]
+  \begin{theorem}[Théorème de Heine]
     Une fonction continue sur un compact y est uniformément continue.
   \end{theorem}
 
   \reference{242}
 
-  \begin{theorem}[Bernstein]
+  \begin{theorem}[Théorème de Bernstein]
     On suppose $I = [0,1]$ et $f$ continue sur $[0,1]$. On note
     \[ B_n(f) : x \mapsto \sum_{k=0}^{n} f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1-x)^{n-k} \]
     Alors,
@@ -360,7 +360,7 @@
   \reference{304}
   \dev{theoreme-de-weierstrass-par-la-convolution}
 
-  \begin{theorem}[Weierstrass]
+  \begin{theorem}[Théorème de Weierstrass]
     Toute fonction continue sur un compact est limite uniforme de fonctions polynomiales.
   \end{theorem}
 
@@ -380,7 +380,7 @@
 
   \begin{proposition}
     On suppose que $I$ est un segment $[a,b]$ de $\mathbb{R}$ non réduit à un point. Soit $(f_n)$ une suite de fonctions de $I$ dans $\mathbb{R}$. On suppose que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe $x_0 \in [a,b]$ tel que $(f_n(x_0))$ converge.
       \item La suite $(f'_n)$ converge uniformément sur $[a,b]$ vers une fonction $g$.
     \end{enumerate}
@@ -401,7 +401,7 @@
 
   \begin{theorem}[Continuité sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in E$, $x \mapsto g(t,x)$ est mesurable.
       \item pp. en $x \in X$, $t \mapsto g(t,x)$ est continue en $t_0 \in E$.
       \item $\exists h \in L_1(X)$ positive telle que
@@ -412,7 +412,7 @@
 
   \begin{theorem}[Dérivation sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall t \in I$, $x \mapsto g(t,x) \in L_1(X)$.
       \item pp. en $x \in X$, $t \mapsto g(t,x)$ est dérivable sur $I$. On notera $\frac{\partial g}{\partial t}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq I$ compact, $\exists h_K \in L_1(X)$ positive telle que
@@ -428,7 +428,7 @@
     On pose $\forall x \geq 0$,
     \[ F(x) = \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \, \mathrm{d}t \]
     alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $F$ est bien définie et est continue sur $\mathbb{R}^+$.
       \item $F$ est dérivable sur $\mathbb{R}^+_*$ et $\forall x \in \mathbb{R}^+_*$, $F'(x) = -\frac{1}{1+x^2}$.
       \item $F(0) = \int_0^{+\infty} \frac{\sin(t)}{t} \, \mathrm{d}t = \frac{\pi}{2}$.

@@ -15,7 +15,7 @@
 
   Dans un premier temps, supposons $E = \mathbb{R}$.
 
-  \begin{theorem}[Rolle]
+  \begin{theorem}[Théorème de Rolle]
     \label{218-1}
     On suppose $f$ continue sur $[a,b]$, dérivable sur $]a,b[$ et telle que $f(a) = f(b)$. Alors,
     \[ \exists c \in ]a,b[ \text{ tel que } f'(c) = 0 \]
@@ -128,7 +128,7 @@
   \end{remark}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Un développement limité, s'il existe, est unique.
       \item Si $f$ admet un développement limité en $0$ à l'ordre $n \geq 1$, $f$ est dérivable en $0$ et sa dérivée en $0$ vaut $a_1$.
       \item Si $f$ est paire (resp. impaire), les coefficients du développement limité d'indice impair (resp. pair) sont nuls.
@@ -227,7 +227,7 @@
 
   \reference[ROM18]{302}
 
-  \begin{theorem}[Bernstein]
+  \begin{theorem}[Théorème de Bernstein]
     Soient $a > 0$ et $f : ]-a,a[ \rightarrow \mathbb{R}$ de classe $\mathcal{C}^\infty$. On suppose les dérivées de $f$ positives sur $]-a,a[$. Alors $f$ est développable en série entière sur $]-a,a[$.
   \end{theorem}
 
@@ -245,7 +245,7 @@
     \end{array}
     \]
     (qui est bien définie car $f' > 0$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
       \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
       \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
@@ -254,7 +254,7 @@
 
   \begin{corollary}
     En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(x_n)$ est strictement décroissante (ou constante).
       \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
     \end{enumerate}
@@ -296,7 +296,7 @@
 
   \begin{application}[Calculs approchés d'intégrales]
     On note $I(f) = \int_a^b f(t) \, \mathrm{d}t$. L'objectif est d'approximer $I(f)$ par une expression $P(f)$ et de majorer l'erreur d'approximation $E(f) = \vert I(f) - P(f) \vert$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \uline{Méthode des rectangles.} On suppose $f$ continue. Avec $P(f) = (b-a)f(a)$, on a $E(f) \leq \frac{(b-a)^2}{2} \Vert f' \Vert_\infty$.
       \item \uline{Méthode du point milieu.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = (b-a)f \left( \frac{a+b}{2} \right)$, on a $E(f) \leq \frac{(b-a)^3}{24} \Vert f'' \Vert_\infty$.
       \item \uline{Méthode des trapèzes.} On suppose $f$ de classe $\mathcal{C}^2$. Avec $P(f) = \frac{b-a}{2} (f(a) + f(b))$, on a $E(f) \leq \frac{(b-a)^3}{12} \Vert f'' \Vert_\infty$.
@@ -320,7 +320,7 @@
   \reference{354}
   \dev{lemme-de-morse}
 
-  \begin{lemma}[Morse]
+  \begin{lemma}[Lemme de Morse]
     Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
     \begin{itemize}
       \item $\mathrm{d} f_0 = 0$.
@@ -349,7 +349,7 @@
 
   \begin{theorem}
     On suppose $\mathrm{d}f_a = 0$ ($a$ est un \textbf{point critique} de $f$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f$ admet un minimum (resp. maximum) relatif en $a$, $\operatorname{Hess}(f)_a$ est positive (resp. négative).
       \item Si $\operatorname{Hess}(f)_a$ définit une forme quadratique définie positive (resp. définie négative), $f$ admet un minimum (resp. maximum) relatif en $a$.
     \end{enumerate}
@@ -357,7 +357,7 @@
 
   \begin{example}
     On suppose $\mathrm{d}f_a = 0$. On pose $(r,s,t) = \left(  \frac{\partial^2}{\partial x_i \partial x_j} f \right)_{i+j=2}$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $rt-s^2 > 0$ et $r > 0$ (resp. $r < 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
       \item Si $rt-s^2 < 0$, $f$ n'a pas d'extremum en $a$.
       \item Si $rt-s^2 = 0$, on ne peut rien conclure.
@@ -376,7 +376,7 @@
 
   \reference[Z-Q]{544}
 
-  \begin{theorem}[Lévy]
+  \begin{theorem}[Théorème de Lévy]
     Soient $(X_n)$ une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
     \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
     où $\phi_Y$ désigne la fonction caractéristique d'une variable aléatoire réelle $Y$.

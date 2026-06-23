@@ -88,7 +88,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $(u_n)$ est arithmétique de raison $b$, alors $\forall n \in \mathbb{N}$, $u_n = u_0 + n b$.
       \item Si $(u_n)$ est géométrique de raison $a$, alors $\forall n \in \mathbb{N}$, $u_n = a^n u_0$.
       \item Si $(u_n)$ est arithmético-géométrique et si $1 - a \neq 0$, en posant $r = (1 - a)^{-1} b$, on a $\forall n \in \mathbb{N}$, $u_n = a^n (u_0 - r) + r$.
@@ -156,7 +156,7 @@
   \reference[GOU20]{200}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f$ est croissante, alors $(u_n)$ est monotone et son sens de monotonie est donnée par le signe de $u_1 - u_0$.
       \item Si $f$ est décroissante, alors $(u_{2n})$ et $(u_{2n+1})$ sont monotones et leur sens de monotonie est opposé.
     \end{enumerate}
@@ -267,7 +267,7 @@
     Soient $a, b \in \mathbb{R}$ et $f : [a, b] \rightarrow \mathbb{R}$ dérivable, strictement croissante et telle que $f(a) < 0$, $f(b) > 0$ et $0 < m \leq f'(x) \leq M$ sur $[a, b]$. On pose $\varphi : x \mapsto x - \frac{1}{M} f(x)$. On considère l'équation :
     \[ f(x) = 0 \iff \varphi(x) = x \tag{$E$} \]
     Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(E)$ admet une unique solution $x$ et pour tout point initial $x_0 \in [a, b]$, la suite des itérés $(x_n)$ définie par $\forall n \in \mathbb{N}, \, x_{n+1} = \varphi(x_n)$ converge vers $x$.
       \item La vitesse de convergence est estimée par la suite géométrique $\left( 1 - \frac{m}{M} \right)$ : il faut que les bornes $m$ et $M$ soient proches.
     \end{enumerate}
@@ -287,7 +287,7 @@
 
   \begin{proposition}
     On reprend les notations précédentes et on considère la suite des itérés $(x_n)$ (avec $x_0 \in I$ et $\forall n \in \mathbb{N}, \, x_{n+1} = \varphi(x_n)$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $a$ est attractif, $(x_n)$ converge à une vitesse géométrique :
       \[ |x_n - a| \leq k^n |x_0 - a| \]
       \item Si $a$ est superattractif et $\varphi$ est $\mathcal{C}^2$ telle que $|\varphi''| < M$ sur $I$, alors la vitesse de convergence est hypergéométrique :
@@ -321,7 +321,7 @@
     \end{array}
     \]
     (qui est bien définie car $f' > 0$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\exists! a \in [c, d]$ tel que $f(a) = 0$.
       \item $\exists \alpha > 0$ tel que $I = [a - \alpha, a + \alpha]$ est stable par $\varphi$.
       \item La suite $(x_n)$ des itérés (définie par récurrence par $x_{n+1} = \varphi(x_n)$ pour tout $n \geq 0$) converge quadratiquement vers $a$ pour tout $x_0 \in I$.
@@ -330,7 +330,7 @@
 
   \begin{corollary}
     En reprenant les hypothèses et notations du théorème précédent, et en supposant de plus $f$ strictement convexe sur $[c, d]$, le résultat du théorème est vrai sur $I = [a, d]$. De plus :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(x_n)$ est strictement décroissante (ou constante).
       \item $x_{n+1} - a \sim \frac{f''(a)}{2f'(a)} (x_n - a)^2$ pour $x_0 > a$.
     \end{enumerate}

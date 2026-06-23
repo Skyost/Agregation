@@ -33,12 +33,12 @@
     Soient $a_1, \dots, a_n \in \mathbb{Z}$. Lorsque $\operatorname{pgcd}(a_1, \dots, a_n) = 1$, on dit que $a_1, \dots, a_n$ sont \textbf{premiers entre eux} \textit{dans leur ensemble}. Lorsque $\operatorname{pgcd}(a_i, a_j) = 1$ dès que $i \neq j$, on dit que $a_1, \dots, a_n$ sont \textbf{premiers entre eux} \textit{deux à deux}.
   \end{definition}
 
-  \begin{theorem}[Bézout]
+  \begin{theorem}[Théorème de Bézout]
     Soient $a_1, \dots, a_n \in \mathbb{Z}$.
     \[ \operatorname{pgcd}(a_1, \dots, a_n) = 1 \iff \exists u_1, \dots, u_n \in \mathbb{Z} \text{ tels que } \sum_{i=1}^{n} u_i a_i = 1 \]
   \end{theorem}
 
-  \begin{theorem}[Gauss]
+  \begin{theorem}[Théorème de Gauss]
     Soient $a, b, c \in \mathbb{Z}$.
     \[ a \mid bc \text{ et } \operatorname{pgcd}(a,b) = 1 \implies a \mid c \]
   \end{theorem}
@@ -53,7 +53,7 @@
     Les nombres de Fermat $F_n = 2^{2^n}+1$ sont premiers pour $n \in \llbracket 0,4 \rrbracket$, mais pas pour $n \in \llbracket 5,32 \rrbracket$.
   \end{example}
 
-  \begin{theorem}[Euclide]
+  \begin{theorem}[Théorème d'Euclide]
     L'ensemble $\mathcal{P}$ des nombres premiers est infini.
   \end{theorem}
 
@@ -66,15 +66,15 @@
   \reference[GOU21]{11}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $n = \prod_{i=1}^k p_i^{\alpha_i}$ et $m = \prod_{i=1}^k p_i^{\beta_i}$, alors $\operatorname{pgcd}(n,m) = \prod_{i=1}^k p_i^{\inf(\alpha_i, \beta_i)}$.
       \item Soient $p \in \mathcal{P}$ et $k \in \llbracket 1, p-1 \rrbracket$. Alors $p \mid \binom{p}{k}$.
     \end{enumerate}
   \end{proposition}
 
-  \begin{theorem}[Fermat]
+  \begin{theorem}[Petit théorème de Fermat]
     Soient $p \in \mathcal{P}$ et $a \in \mathbb{Z}$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $a^p \equiv a \mod p$.
       \item $p \nmid a \implies a^{p-1} \equiv 1 \mod p$.
     \end{enumerate}
@@ -104,7 +104,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall m, n \in \mathbb{N}^*$ premiers entre eux, $\varphi(mn) = \varphi(m)\varphi(n)$.
       \item Pour tout entier relatif $a$ premier avec $n$, $a^{\varphi(n)} \equiv 1 \mod n$.
       \item Pour tout entier naturel $n$, $\sum_{d \mid n} \varphi(d) = n$.
@@ -131,7 +131,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mu_n^* = \{ e^{\frac{2ik\pi}{n}} \mid k \in \llbracket 0, n-1 \rrbracket, \, \operatorname{pgcd}(k, m) = 1 \}$.
       \item $\vert \mu_n^* \vert = \varphi(n)$, où $\varphi$ désigne l'indicatrice d'Euler.
     \end{enumerate}
@@ -143,7 +143,7 @@
   \end{definition}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $X^n - 1 = \prod_{d \mid n} \Phi_d$.
       \item $\Phi_n \in \mathbb{Z}[X]$.
       \item $\Phi_n$ est irréductible sur $\mathbb{Q}$.
@@ -181,7 +181,7 @@
 
   \begin{proposition}
     Les conditions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $n$ est un nombre premier.
       \item $\mathbb{Z}/n\mathbb{Z}$ est un anneau intègre.
       \item $\mathbb{Z}/n\mathbb{Z}$ est un corps.
@@ -207,7 +207,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \label{121-1} Soit $A$ un anneau intègre. Alors, $\operatorname{car}(A) = 0 \text{ ou } p$ avec $p$ premier.
       \item Soit $A$ un anneau fini. Alors, $\operatorname{car}(A) \neq 0$ et $\operatorname{car}(A) \mid |A|$.
       \item Un anneau et un quelconque de ses sous-anneaux ont la même caractéristique.
@@ -225,7 +225,7 @@
 
   \begin{proposition}
     Soit $\mathbb{K}$ un corps fini.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\operatorname{car}(\mathbb{K})$ est un nombre premier $p$.
       \item Le sous-corps premier de $\mathbb{K}$ est isomorphe à $\mathbb{F}_p$.
       \item $\vert \mathbb{K} \vert = p^n$ pour $n \geq 2$.
@@ -242,7 +242,7 @@
       \end{array}
     \]
     est un morphisme de corps.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\mathbb{K}$ est fini, c'est un automorphisme.
       \item Si $\mathbb{K} = \mathbb{F}_p$, c'est l'identité.
     \end{enumerate}
@@ -250,7 +250,7 @@
 
   \begin{theorem}
     Soient $p \in \mathcal{P}$ et $n \in \mathbb{N}^*$. On pose $q = p^n$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe un corps $\mathbb{K}$ à $q$ éléments : c'est le corps de décomposition de $X^q - X$ sur $\mathbb{F}_p$.
       \item $\mathbb{K}$ est unique à isomorphisme près : on le note $\mathbb{F}_q$.
     \end{enumerate}
@@ -273,7 +273,7 @@
 
   \reference[GOU21]{100}
 
-  \begin{theorem}[Wedderburn]
+  \begin{theorem}[Théorème de Wedderburn]
     Tout corps fini est commutatif.
   \end{theorem}
 
@@ -288,7 +288,7 @@
   \end{proposition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $p = 2$, $\mathbb{F}_q^2 = \mathbb{F}_q$, donc $\mathbb{F}_q^{*2} = \mathbb{F}_q^*$.
       \item Si $p > 2$, alors :
       \begin{itemize}
@@ -306,7 +306,7 @@
     Soit $a \in \mathbb{F}_p$. On note $\left( \frac{a}{p} \right)$ le symbole de Legendre de $a$ modulo $p$. On a ainsi $\left( \frac{a}{p} \right) = \pm 1$ avec $\left( \frac{a}{p} \right) = 1$ si et seulement si $a \in \mathbb{F}_p^2$.
   \end{notation}
 
-  \begin{application}[Frobenius-Zolotarev]
+  \begin{application}[Théorème de Frobenius-Zolotarev]
     Soient $p \geq 3$ un nombre premier et $V$ un espace vectoriel sur $\mathbb{F}_p$ de dimension finie.
     \[ \forall u \in \mathrm{GL}(V), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
     où $u$ est vu comme une permutation des éléments de $V$.
@@ -329,8 +329,8 @@
 
   \reference{10}
 
-  \begin{lemma}[Gauss]
-    \begin{enumerate}[label=(\roman*)]
+  \begin{lemma}[Lemme de Gauss]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est égal à $1$).
       \item $\forall P, Q \in \mathbb{Z}[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
     \end{enumerate}
@@ -340,7 +340,7 @@
 
   \begin{theorem}[Critère d'Eisenstein]
     Soit $P = \sum_{i=0}^n a_i X^i \in \mathbb{Z}[X]$ de degré $n \geq 1$. On suppose qu'il existe $p$ premier tel que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
       \item $p \nmid a_n$.
       \item $p^2 \nmid a_0$.
@@ -452,7 +452,7 @@
 
   \begin{theorem}[Chiffrement RSA]
     Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$, dont on note $m_1', \dots, m_r$ les coordonnées :
       \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n \]
       \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :

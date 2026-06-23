@@ -87,7 +87,7 @@
 
   \begin{corollary}
     On considère deux séries réelles $\sum u_n$ et $\sum v_n$ telles que $\forall n \in \mathbb{N}, \, 0 \leq u_n \leq v_n$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\sum v_n$ converge, $\sum u_n$ converge.
       \item Si $\sum u_n$ diverge, $\sum v_n$ diverge.
     \end{enumerate}
@@ -95,7 +95,7 @@
 
   \begin{proposition}
     On considère deux séries $\sum u_n$ et $\sum v_n$ à termes positifs.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $v_n = O(u_n)$ et si $\sum u_n$ converge, alors $\sum v_n$ converge.
       \item Si $u_n \sim v_n$, alors les séries $\sum u_n$ et $\sum v_n$ sont de même nature.
       \begin{itemize}
@@ -165,7 +165,7 @@
 
   \begin{proposition}
     Soient deux séries réelles $\sum u_n$ et $\sum v_n$ à termes strictement positifs telles que $\frac{u_{n+1}}{u_n} \geq \frac{v_{n+1}}{v_n}$ à partir d'un certain rang. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\sum u_n$ converge, $\sum v_n$ converge.
       \item Si $\sum v_n$ diverge, $\sum u_n$ diverge.
     \end{enumerate}
@@ -177,7 +177,7 @@
     Soit $\sum u_n$ une série à termes strictement positifs telle que
     \[ \lim_{n \rightarrow +\infty} \frac{u_{n+1}}{u_n} = \lambda \in [0, +\infty] \]
     Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\lambda < 1$, $\sum u_n$ converge.
       \item Si $\lambda > 1$, $\sum u_n$ diverge.
     \end{enumerate}
@@ -206,7 +206,7 @@
     Soit $\sum u_n$ une série à termes strictement positifs telle que
     \[ \lim_{n \rightarrow +\infty} \sqrt[n]{u_n} = \lambda \in [0, +\infty] \]
     Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $\lambda < 1$, $\sum u_n$ converge.
       \item Si $\lambda > 1$, $\sum u_n$ diverge.
     \end{enumerate}
@@ -290,7 +290,7 @@
     \[ \sum_{n \in \mathbb{Z}} c_n(f)e^{inx} \]
   \end{definition}
 
-  \begin{theorem}[Parseval]
+  \begin{theorem}[Égalité de Parseval]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et continue par morceaux sur $\mathbb{R}$. Alors,
     \[ \sum_{n=-\infty}^{+\infty} |c_n(f)|^2 = \frac{1}{2\pi} \int_0^{2\pi} |f(t)|^2 \, \mathrm{d}t \]
   \end{theorem}
@@ -300,7 +300,7 @@
     \[ \Vert f \Vert^2_2 = \frac{8}{9} + \sum_{n=1}^{+\infty} \frac{16}{\pi^4 n^4} = \frac{16}{15} \implies \sum_{n=1}^{+\infty} \frac{1}{n^4} = \frac{\pi^4}{90} \]
   \end{example}
 
-  \begin{theorem}[Jordan-Dirichlet]
+  \begin{theorem}[Théorème de Jordan-Dirichlet]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une application $2\pi$-périodique et $\mathcal{C}^1$ par morceaux sur $\mathbb{R}$. Alors la série de Fourier de $f$ est convergente en tout point $x \in \mathbb{R}$ et sa somme en ce point vaut
     \[ \frac{f(x^+) + f(x^-)}{2} \]
   \end{theorem}
@@ -317,9 +317,9 @@
     On appelle \textbf{série entière} toute série de fonctions de la forme $\sum a_n z^n$ où $z$ est une variable complexe et où $(a_n)$ est une suite complexe.
   \end{definition}
 
-  \begin{lemma}[Abel]
+  \begin{lemma}[Lemme d'Abel]
     Soient $\sum a_n z^n$ une série entière et $z_0 \in \mathbb{C}$ tels que $(a_n z_0^n)$ soit bornée. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \mathbb{C}$ tel que $|z| < |z_0|$, $\sum a_n z^n$ converge absolument.
       \item $\forall r \in ]0,|z_0|[, \, \sum a_n z^n$ converge normalement dans $\overline{D}(0, r) = \{ z \in \mathbb{C} \mid |z| \leq r \}$.
     \end{enumerate}

@@ -33,7 +33,7 @@
 
   \begin{proposition}
     Si $X_n \overset{(ps.)}{\longrightarrow} X$ et $Y_n \overset{(ps.)}{\longrightarrow} Y$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall a \in \mathbb{R}, \, aX_n \overset{(ps.)}{\longrightarrow} aX$.
       \item $X_n + Y_n \overset{(ps.)}{\longrightarrow} X + Y$.
       \item $X_nY_n \overset{(ps.)}{\longrightarrow} XY$.
@@ -113,7 +113,7 @@
 
   \begin{proposition}
     Si $X_n \overset{(p)}{\longrightarrow} X$ et $Y_n \overset{(p)}{\longrightarrow} Y$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $(X_n, Y_n) \overset{(p)}{\longrightarrow} (X, Y)$.
       \item $X_n + Y_n \overset{(p)}{\longrightarrow} X + Y$.
     \end{enumerate}
@@ -253,7 +253,7 @@
 
   \begin{proposition}
     Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} Y$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item La limite $X$ est unique.
       \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, Y \rangle$.
     \end{enumerate}
@@ -302,7 +302,7 @@
 
   \begin{theorem}
     Soit $X : \Omega \rightarrow \mathbb{R}^d$ une variable aléatoire.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $(X_n)$ converge en probabilité vers $X$, alors $(X_n)$ converge en loi vers $X$.
       \item Si $(X_n)$ converge en loi vers une constante $a$ (ou de manière équivalente, vers une masse de Dirac $\delta_a$), alors $(X_n)$ converge en probabilité vers $a$.
     \end{enumerate}
@@ -318,9 +318,9 @@
 
   \reference[G-K]{305}
 
-  \begin{theorem}[Slutsky]
+  \begin{theorem}[Théorème de Slutsky]
     Si $X_n \overset{(d)}{\longrightarrow} X$ et $Y_n \overset{(d)}{\longrightarrow} c$ où $c$ est un vecteur constant, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $X_n + Y_n \overset{(d)}{\longrightarrow} X + c$.
       \item $\langle X_n, Y_n \rangle \overset{(d)}{\longrightarrow} \langle X, c \rangle$.
     \end{enumerate}
@@ -332,7 +332,7 @@
 
   \reference[Z-Q]{544}
 
-  \begin{theorem}[Lévy]
+  \begin{theorem}[Théorème de Lévy]
     On suppose que $(X_n)$ est une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
     \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
   \end{theorem}
@@ -367,7 +367,7 @@
 
   \begin{application}[Théorème des événements rares de Poisson]
     Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}

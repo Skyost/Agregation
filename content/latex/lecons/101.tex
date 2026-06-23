@@ -24,7 +24,7 @@
     \end{array}
     \]
     satisfaisant les conditions suivantes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall g, h \in G$, $\forall x \in X$, $g \cdot (h \cdot x) = (gh) \cdot x$.
       \item $\forall x \in X$, $e_G \cdot x = x$.
     \end{enumerate}
@@ -221,7 +221,7 @@
       \item Deux éléments de $G$ qui appartiennent à la même classe de conjugaison sont dits \textbf{conjugués}.
     \end{itemize}
   \end{definition}
-  
+
   \reference[PER]{15}
 
   \begin{example}
@@ -333,7 +333,7 @@
 
   \begin{lemma}
     Soit $f \in \mathcal{L}(E)$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $k = \deg(\pi_f)$, alors $\mathbb{K}[f]$ est un sous-espace vectoriel de $\mathcal{L}(E)$ de dimension $k$, dont une base est $(f^i)_{i \in \llbracket 0, k-1 \rrbracket}$.
       \item Soit $x \in E$. Si $l = \deg(P_{f,x})$, alors $E_x$ est un sous-espace vectoriel de $E$ de dimension $l$, dont une base est $(f^i(x))_{i \in \llbracket 0, l-1 \rrbracket}$.
     \end{enumerate}
@@ -343,9 +343,9 @@
     Soit $f \in \mathcal{L}(E)$. Il existe $x \in E$ tel que $P_{f,x} = \pi_f$.
   \end{lemma}
 
-  \begin{theorem}[Frobenius]
+  \begin{theorem}[Théorème de Frobenius]
     Soit $f \in \mathcal{L}(E)$. Il existe des sous-espaces vectoriels $F_1, \dots, F_r$ de $E$ tous stables par $f$ tels que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $E = \bigoplus_{i = 1}^r F_i$.
       \item $\forall i \in \llbracket 1, r \rrbracket$, la restriction $f_i = f_{|F_i}$ est un endomorphisme cyclique de $F_i$.
       \item Si $P_i = \pi_{f_i}$ est le polynôme minimal de $f_i$, on a $P_{i+1} \mid P_i$ $\forall i \in \llbracket 1, r-1 \rrbracket$.
@@ -388,7 +388,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Les caractères sont des fonctions constantes sur les classes de conjugaison.
       \item Il y a autant de caractères irréductibles que de classes de conjugaisons.
     \end{enumerate}
@@ -398,7 +398,7 @@
     Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
   \end{definition}
 
-  \begin{theorem}[Maschke]
+  \begin{theorem}[Théorème de Maschke]
     Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
   \end{theorem}
 

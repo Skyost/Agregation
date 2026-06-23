@@ -36,7 +36,7 @@
 
   \begin{proposition}
     Si $X$ est une variable aléatoire discrète à valeurs dans un ensemble dénombrable $D$, alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall A \in \mathcal{B}(\mathbb{R}), \mathbb{P}_X(A) = \sum_{i \in D \cap A} \mathbb{P}(X=i)$.
       \item $\mathbb{P}_X = \sum_{i \in D} \mathbb{P}(X=i) \delta_i$ où les $\delta_i$ sont des masses de Dirac (voir \cref{264-1}).
     \end{enumerate}
@@ -171,7 +171,7 @@
 
   \reference{164}
 
-  \begin{theorem}[Transfert]
+  \begin{theorem}[Théorème de transfert]
     Si $X$ est une variable aléatoire dont la loi $\mathbb{P}_X$ admet une densité $f$ par rapport à $\mathbb{P}$ et si $g$ est une fonction mesurable, alors
     \[ g(X) \in \mathcal{L}_1 \iff \int_{\mathbb{R}} \vert g(x) \vert f(x) \, \mathrm{d}\mathbb{P}(x) < +\infty \]
     et dans ce cas,
@@ -316,13 +316,13 @@
   \reference{195}
   \dev{theoreme-de-weierstrass-par-les-probabilites}
 
-  \begin{theorem}[Bernstein]
+  \begin{theorem}[Théorème de Bernstein]
     Soit $f : [0,1] \rightarrow \mathbb{R}$ continue. On note
     \[ \forall n \in \mathbb{N}^*, \, B_n(f) : x \mapsto \sum_{k=0}^n \binom{n}{k} f \left( \frac{k}{n} \right) x^k (1-x)^{n-k} \]
     le $n$-ième polynôme de Bernstein associé à $f$. Alors la suite de fonctions $(B_n(f))$ converge uniformément vers $f$.
   \end{theorem}
 
-  \begin{theorem}[Weierstrass]
+  \begin{theorem}[Théorème de Weierstrass]
     Toute fonction continue $f : [a,b] \rightarrow \mathbb{R}$ (avec $a, b \in \mathbb{R}$ tels que $a \leq b$) est limite uniforme de fonctions polynomiales sur $[a, b]$.
   \end{theorem}
 
@@ -332,7 +332,7 @@
 
   \reference[Z-Q]{544}
 
-  \begin{theorem}[Lévy]
+  \begin{theorem}[Théorème de Lévy]
     Soient $(X_n)$ une suite de variables aléatoires réelles et $X$ une variable aléatoire réelle. Alors :
     \[ X_n \overset{(d)}{\longrightarrow} X \iff \phi_{X_n} \text{ converge simplement vers } \phi_X \]
     où $\phi_Y$ désigne la fonction caractéristique d'une variable aléatoire réelle $Y$.
@@ -350,7 +350,7 @@
 
   \begin{application}[Théorème des événements rares de Poisson]
     Soit $(N_n)_{n \geq 1}$ une suite d'entiers tendant vers l'infini. On considère des événements $A_{n,1}, \dots, A_{n,N_n}$ indépendants avec $\mathbb{P}(A_{n,k}) = p_{n,k}$. On suppose également que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\lim_{n \rightarrow +\infty} s_n = \lambda > 0$ où $\forall n \in \mathbb{N}, s_n = \sum_{k=1}^{N_n} p_{n,k}$.
       \item $\lim_{n \rightarrow +\infty} \sup_{k \in \llbracket 1, N_n \rrbracket} p_{n,k} = 0$.
     \end{enumerate}
@@ -378,7 +378,7 @@
 
   \reference[G-K]{308}
 
-  \begin{theorem}[Moivre-Laplace]
+  \begin{theorem}[Théorème de Moivre-Laplace]
     Soit $(X_n)$ une suite de variables aléatoires indépendantes de même loi $\mathcal{B}(p)$. Alors,
     \[ \frac{\sum_{k=1}^{n} X_k - np}{\sqrt{n}} \overset{(d)}{\longrightarrow} \mathcal{N}(0, p(1-p)) \]
   \end{theorem}

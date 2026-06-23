@@ -43,7 +43,7 @@
 
   \begin{proposition}
     Soit $F$ un sous-espace de $E$ stable par $u$ de dimension $r$. Soit $\mathcal{B} = (e_1, \dots, e_n)$ une base de $E$ telle que les $r$ premiers vecteurs forment une base $\mathcal{B}_F$ de $F$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item La matrice de $u$ dans la base $\mathcal{B}$ est de la forme
       \[ \operatorname{Mat}(u, \mathcal{B}) = \begin{pmatrix} A & C \\ 0 & B \end{pmatrix} \]
       \item $\mathcal{B}_{E/F} = \pi_F(\mathcal{B} \setminus \mathcal{B}_F)$ est une base de $E/F$ où $\pi_F : E \rightarrow E/F$ désigne la projection canonique sur le quotient.
@@ -60,7 +60,7 @@
     Il existe un polynôme qui engendre l'idéal $\{ P \in \mathbb{K}[X] \mid P(u) = 0 \}$. Il s'agit du \textbf{polynôme minimal} de $u$ noté $\pi_u$.
   \end{proposition}
 
-  \begin{theorem}[Cayley-Hamilton]
+  \begin{theorem}[Théorème de Cayley-Hamilton]
     \[ \pi_u \mid \chi_u \]
   \end{theorem}
 
@@ -120,7 +120,7 @@
     On suppose que le polynôme caractéristique de $u$ est scindé sur $\mathbb{K}$.
     \[ \chi_u = \prod_{i=1}^p (X - \lambda_i)^{\alpha_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
     Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\pi_u$ est de la forme :
       \[ \pi_u = \prod_{i=1}^p (X - \lambda_i)^{r_i} \text{ où les } \lambda_i \text{ sont distincts deux-à-deux} \]
       \item $\forall i \in \llbracket 1, p \rrbracket$, $N_i = \ker{(f - \lambda_i \operatorname{id}_E )^{r_i}}$.
@@ -181,7 +181,7 @@
 
   \begin{theorem}
     Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $u$ est diagonalisable.
       \item $\pi_u$ est scindé à racines simples.
       \item $\chi_u$ est scindé et, pour toute valeur propre $\lambda$, la dimension du sous-espace propre $E_\lambda$ est égale à la multiplicité de $\lambda$ dans $\chi_u$.
@@ -198,7 +198,7 @@
 
   \begin{theorem}
     Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $u$ est trigonalisable.
       \item $\pi_u$ est scindé.
       \item $\chi_u$ est scindé.
@@ -230,7 +230,7 @@
 
   \begin{application}
     Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $u$ est trigonalisable avec des zéros sur la diagonale.
       \item $u$ est nilpotent (ie. $\exists m \in \mathbb{N}$ tel que $u^m = 0$).
       \item $\chi_u = X^n$.
@@ -274,7 +274,7 @@
 
   \begin{proposition}
     Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il existe une base de $E$ telle que la matrice de $u$ est $J_n(0)$.
       \item $u$ est nilpotent et cyclique (voir \cref{151-2}).
       \item $u$ est nilpotent d'indice de nilpotence $n$.
@@ -365,7 +365,7 @@
 
   \begin{proposition}
     On suppose $u$ normal. Soit $\lambda \in \mathbb{C}$ une valeur propre de $u$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $E_\lambda^\perp = \{ x \in E^\lambda \mid \forall y \in E^\lambda, \, \langle x, y \rangle = 0 \}$ est stable par $u$.
       \item $u_{| E_\lambda^\perp}$ est normal.
     \end{enumerate}
@@ -403,7 +403,7 @@
     Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
   \end{definition}
 
-  \begin{theorem}[Maschke]
+  \begin{theorem}[Théorème de Maschke]
     Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
   \end{theorem}
 

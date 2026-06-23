@@ -33,7 +33,7 @@
 
   \begin{proposition}
     Soit $g \in G$ d'ordre $n$. Alors,
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $n$ est le plus petit entier strictement positif ayant la propriété $g^n = e_G$.
       \item $\langle g \rangle = \{ e_G, g, \dots, g^{n-1} \}$.
       \item Pour $k \in \mathbb{Z}$, $g^k = e_G$ si et seulement si $n \mid k$.
@@ -49,7 +49,7 @@
   \begin{theorem}
     \label{104-1}
     Soit $g \in G$. Alors,
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $g$ est d'ordre infini si et seulement si $\langle g \rangle$ est isomorphe à $(\mathbb{Z}, +)$. Dans ce cas $g^i \neq g^j$ dès que $i \neq j$ et $\langle g \rangle = \{ \dots, g^{-1}, e_G, g, \dots \}$.
       \item \label{104-2} $g$ est d'ordre fini si et seulement s'il existe $n \in \mathbb{N}^*$ tel que $e_G, g, \dots, g^{n-1}$ sont tous distincts et $g^n = e_G$. Dans ce cas, $g$ est d'ordre $n$.
     \end{enumerate}
@@ -57,7 +57,7 @@
 
   \reference{25}
 
-  \begin{theorem}[Lagrange]
+  \begin{theorem}[Théorème de Lagrange]
     On suppose $G$ fini. Soit $H < G$. Alors,
     \[ |H| \mid |G| \]
     En particulier, l'ordre d'un élément de $G$ divise toujours l'ordre de $G$.
@@ -79,7 +79,7 @@
 
   \begin{theorem}
     On suppose $G$ fini d'ordre $n$. Alors,
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $G$ est abélien et s'il existe au plus un sous-groupe d'ordre $d$ pour tout diviseur $d$ de $n$, alors $G$ est cyclique.
       \item Si $G$ est cyclique, tous ses sous-groupes le sont aussi.
       \item $G$ est cyclique si et seulement si pour tout diviseur $d$ de $n$, $G$ admet exactement un sous-groupe d'ordre $d$.
@@ -111,7 +111,7 @@
     \end{array}
     \]
     satisfaisant les conditions suivantes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall g, h \in G$, $\forall x \in X$, $g \cdot (h \cdot x) = (gh) \cdot x$.
       \item $\forall x \in X$, $e_G \cdot x = x$.
     \end{enumerate}
@@ -222,14 +222,14 @@
 
   \reference[ULM21]{81}
 
-  \begin{theorem}[Chinois]
+  \begin{theorem}[Théorème chinois]
     Soient $n$ et $m$ deux entiers premiers entre eux. Alors,
     \[ \mathbb{Z}/nm\mathbb{Z} \equiv \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/m\mathbb{Z} \]
   \end{theorem}
 
   \reference{112}
 
-  \begin{theorem}[Kronecker]
+  \begin{theorem}[Théorème de Kronecker]
     Soit $G$ un groupe abélien d'ordre $n \geq 2$. Il existe une suite d'entiers $n_1 \geq 2$, $n_2$ multiple de $n_1$, \dots, $n_k$ multiple de $n_{k-1}$ telle que $G$ est isomorphe au groupe produit
     \[ \prod_{i=1}^k \mathbb{Z}/n_i\mathbb{Z} \]
   \end{theorem}
@@ -258,7 +258,7 @@
     $S_n$ est fini, d'ordre $n!$.
   \end{remark}
 
-  \begin{theorem}[Cayley]
+  \begin{theorem}[Théorème de Cayley]
     Tout groupe fini d'ordre $n$ est isomorphe à un sous-groupe de $S_n$.
   \end{theorem}
 
@@ -355,7 +355,7 @@
 
   \begin{proposition}
     On se place dans le cas où $\mathbb{K} = \mathbb{F}_q$. Alors, les groupes précédents sont finis, et :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $|\mathrm{GL}(V)| = q^{\frac{n(n-1)}{2}}((q^n-1) \dots (q-1))$.
       \item $|\mathrm{PGL}(V)| = |\mathrm{SL}(V)| = \frac{|\mathrm{GL}(V)|}{q-1}$.
       \item $|\mathrm{PSL}(V)| = \frac{|\mathrm{SL}(V)|}{\operatorname{pgcd}(n,q-1)} = \frac{|\mathrm{GL}(V)|}{(q-1)\operatorname{pgcd}(n,q-1)}$.
@@ -388,7 +388,7 @@
   \end{example}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $D_n$ est un groupe d'ordre $2n$.
       \item $r^n = s^2 = \operatorname{id}$ et $sr = r^{-1}s$.
     \end{enumerate}
@@ -453,7 +453,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Les caractères sont des fonctions constantes sur les classes de conjugaison.
       \item Il y a autant de caractères irréductibles que de classes de conjugaisons.
     \end{enumerate}
@@ -463,7 +463,7 @@
     Soit $\rho : G \rightarrow \mathrm{GL}(V)$ une représentation linéaire de $G$. On suppose $V = W \oplus W_0$ avec $W$ et $W_0$ stables par $\rho(g)$ pour tout $g \in G$. On dit alors que $\rho$ est \textbf{somme directe} de $\rho_W$ et de $\rho_{W_0}$.
   \end{definition}
 
-  \begin{theorem}[Maschke]
+  \begin{theorem}[Théorème de Maschke]
     Toute représentation linéaire de $G$ est somme directe de représentations irréductibles.
   \end{theorem}
 

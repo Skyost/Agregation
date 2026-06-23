@@ -23,7 +23,7 @@
   \end{remark}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z, z' \in \mathbb{C}, \, e^{z+z'} = e^z e^{z'}$.
       \item $\exp$ est holomorphe sur $\mathbb{C}$, de dérivée elle-même.
       \item $\exp$ ne s'annule jamais.
@@ -75,7 +75,7 @@
   \reference[QUE]{6}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\exp$ est une bijection croissante de $\mathbb{R}$ sur $\mathbb{R}_*^+$.
       \item $\lim_{x \rightarrow -\infty} \exp(x) = 0$ et $\lim_{x \rightarrow +\infty} \exp(x) = +\infty$.
       \item $x < 0 \iff \exp(x) < 1$.
@@ -93,7 +93,7 @@
 
   \begin{proposition}
     Soit $t \in \mathbb{R}$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\sin(t) = \frac{e^{it} - e^{-it}}{2i} = \sum_{n=0}^{+\infty} (-1)^n\frac{t^{2n+1}}{(2n+1)!}$.
       \item $\cos(t) = \frac{e^{it} + e^{-it}}{2} = \sum_{n=0}^{+\infty} (-1)^n\frac{t^{2n}}{(2n)!}$.
       \item Ces fonctions sont réelles, $2\pi$-périodiques et admettent un développement en série entière de rayon de convergence infini. Ceci permet de les prolonger de manière unique sur tout le plan complexe.
@@ -137,9 +137,9 @@
 
   \reference{190}
 
-  \begin{theorem}[Fejér]
+  \begin{theorem}[Théorème de Fejér]
     Soit $f : \mathbb{R} \rightarrow \mathbb{C}$ une fonction $2\pi$-périodique.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f$ est continue, alors $\Vert \sigma_N(f) \Vert_\infty \leq \Vert f \Vert_\infty$ et $(\sigma_N(f))$ converge uniformément vers $f$.
       \item Si $f \in L_p^{2\pi}$ pour $p \in [1,+\infty[$, alors $\Vert \sigma_N(f) \Vert_p \leq \Vert f \Vert_p$ et $(\sigma_N(f))$ converge vers $f$ pour $\Vert . \Vert_p$.
     \end{enumerate}
@@ -151,7 +151,7 @@
 
   \reference[GOU20]{271}
 
-  \begin{theorem}[Dirichlet]
+  \begin{theorem}[Théorème de Dirichlet]
     Soient $f : \mathbb{R} \rightarrow \mathbb{C}$ $2\pi$-périodique, continue par morceaux sur $\mathbb{R}$ et $t_0 \in \mathbb{R}$ tels que la fonction
     \[ h \mapsto \frac{f(t_0 + h) + f(t_0 - h) - f(t_0^+) - f(t_0^-)}{h} \]
     est bornée au voisinage de $0$. Alors,
@@ -202,7 +202,7 @@
   \end{definition}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall x \in \mathbb{R}_*^+$, $\ln(x) = \int_1^x \frac{1}{x} \, \mathrm{d}x$.
       \item $\forall x, y \in \mathbb{R}_*^+$, $\ln(xy) = \ln(x) + \ln(y)$.
     \end{enumerate}
@@ -219,7 +219,7 @@
 
   \begin{theorem}
     Soient $\alpha \in \mathbb{R}$ et $\Omega_\alpha = \mathbb{C} \setminus \mathbb{R}^* e^{i\alpha}$. Alors, il existe une fonction $L_\alpha$ holomorphe sur $\Omega_\alpha$. Elle vérifie :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $e^{L_\alpha(z)} = z$ pour tout $z \in \Omega_\alpha$.
       \item $L_\alpha(z) = \ln(\vert z \vert) + i\theta_\alpha(z)$ avec $\theta_\alpha \in ]\alpha, \alpha + 2\pi[$.
       \item $L_\alpha$ est dérivable dans $\Omega_\alpha$ avec $L'(z) = \frac{1}{z}$ pour tout $z \in \Omega_\alpha$.
@@ -232,7 +232,7 @@
 
   \begin{theorem}
     On pose $D = D(0,1)$ et on définit $\ell : D \rightarrow \mathbb{C}$ par $\ell : z \mapsto \sum_{n=1}^{+\infty} (-1)^{n+1} \frac{z^n}{n}$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $1 + z = \exp(\ell(z))$ pour tout $z \in D$.
       \item $\ell(z) = L_{-\pi}(1+z)$ pour tout $z \in D$.
     \end{enumerate}
@@ -250,7 +250,7 @@
   \end{definition}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\Gamma$ est $\mathcal{C}^\infty$ sur $]0, +\infty[$ et pour tout $n \in \mathbb{N}^*$, on a
       \[ \forall x \in \mathbb{R}_*^+, \, \Gamma^{(n)}(x) = \int_{0}^{+\infty} (\ln(t))^n e^{-t} t^{x-1} \, \mathrm{d}t \]
       \item $\Gamma \left( \frac{1}{2} \right) = \sqrt{\pi}$.
@@ -263,7 +263,7 @@
   \begin{lemma}
     \label{244-2}
     La fonction $\Gamma$ définie pour tout $x > 0$ par $\Gamma(x) = \int_0^{+\infty} t^{x-1} e^{-t} \, \mathrm{d}t$ vérifie :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item \label{244-3} $\forall x \in \mathbb{R}^+_*$, $\Gamma(x+1) = x\Gamma(x)$.
       \item \label{244-4} $\Gamma(1) = 1$.
       \item \label{244-5} $\Gamma$ est log-convexe sur $\mathbb{R}^+_*$.
@@ -272,7 +272,7 @@
 
   \dev{caracterisation-reelle-de-gamma}
 
-  \begin{theorem}[Bohr-Mollerup]
+  \begin{theorem}[Théorème de Bohr-Mollerup]
     Soit $f : \mathbb{R}^+_* \rightarrow \mathbb{R}^+$ vérifiant le \cref{244-3}, \cref{244-4} et \cref{244-5} du \cref{244-2}. Alors $f = \Gamma$.
   \end{theorem}
 
@@ -303,7 +303,7 @@
 
   \begin{theorem}[Holomorphie sous le signe intégral]
     On suppose :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall z \in \Omega$, $x \mapsto f(z,x) \in L_1(X)$.
       \item pp. en $x \in X$, $z \mapsto f(z,x)$ est holomorphe dans $\Omega$. On notera $\frac{\partial f}{\partial z}$ cette dérivée définie presque partout.
       \item $\forall K \subseteq \Omega$ compact, $\exists g_K \in L_1(X)$ positive telle que
@@ -380,7 +380,7 @@
 
   \begin{theorem}
     Il existe une fonction $\widetilde{\zeta}$, holomorphe dans $\mathbb{C} \setminus \{ 1 \}$ telle que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Pour tout $s \in \mathbb{C} \setminus \{ 1 \}$, $\widetilde{\zeta}(s) = \frac{1}{s-1} + \eta(s)$ avec $\eta$ holomorphe dans $\mathbb{C}$.
       \item Pour tout $s \in \mathbb{C}$ tel que $\operatorname{Re}(s) > 1$, $\widetilde{\zeta}(s) = \zeta(s)$.
       \item En posant $I(s) = \pi^{-\frac{s}{2}} \Gamma \left( \frac{s}{2} \right) \zeta(s)$, on a $I(s) = I(1-s)$ par prolongement méromorphe.

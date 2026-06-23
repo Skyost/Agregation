@@ -66,7 +66,7 @@
 % Longueurs :
 
 \setlength{\parindent}{0pt}
-\setlength{\headheight}{15pt}
+\setlength{\headheight}{24pt}
 \setlength{\fboxsep}{0pt}
 \titlespacing*{\chapter}{0pt}{-20pt}{10pt}
 \setlength{\marginparwidth}{1.5cm}
@@ -78,6 +78,57 @@
 \date{\today}
 
 % Titres :
+\makeatletter
+
+\newlength{\@boxradius}
+\setlength{\@boxradius}{4pt}
+
+\newcommand{\@textbox}[1]{
+	\tikz[baseline=(box.base)]{
+		\node[
+		fill=black,
+		rounded corners=\@boxradius,
+		inner xsep=0.5em,
+		inner ysep=0.25em,
+		outer sep=0pt,
+		text=white
+		] (box) {\MakeUppercase{\sffamily\bfseries #1}};
+	}%
+}
+
+\NewDocumentCommand{\@headertextbox}{m}{%
+	\tikz[baseline=(box.base)]{%
+		\node[
+		inner xsep=0.5em,
+		inner ysep=0.25em,
+		outer sep=0pt,
+		font=\sffamily\bfseries\scriptsize
+		] (box) {\MakeUppercase{#1}};
+		\fill[black]
+		(box.south west) --
+		(box.south east) --
+		([yshift=-\@boxradius]box.north east)
+		.. controls (box.north east) .. ([xshift=-\@boxradius]box.north east) --
+		([xshift=\@boxradius]box.north west)
+		.. controls (box.north west) .. ([yshift=-\@boxradius]box.north west) --
+		cycle;
+		\node[
+		inner xsep=0.5em,
+		inner ysep=0.25em,
+		outer sep=0pt,
+		text=white,
+		font=\sffamily\bfseries\scriptsize
+		] at (box.center) {\MakeUppercase{#1}};
+	}%
+}
+
+\NewDocumentCommand{\@headerlesson}{m m}{%
+	\@headertextbox{#1}\hspace{0.5em}{\sffamily\truncate{0.65\textwidth}{#2}}%
+}
+
+\NewDocumentCommand{\@headertitle}{m}{%
+	{\sffamily\truncate{0.73\textwidth}{#1}}%
+}
 
 \setcounter{secnumdepth}{3}
 
@@ -87,10 +138,12 @@
 \renewcommand{\theparagraph}{\alph{paragraph}}
 
 \titleformat{\chapter}{\huge\bfseries}{\thechapter}{20pt}{\huge\bfseries}
-\titleformat*{\section}{\LARGE\bfseries}
-\titleformat{\subsection}{\Large\bfseries}{\thesubsection \, - \,}{0pt}{\Large\bfseries}
-\titleformat{\subsubsection}{\large\bfseries}{\thesubsubsection. \,}{0pt}{\large\bfseries}
-\titleformat{\paragraph}{\bfseries}{\theparagraph. \,}{0pt}{\bfseries}
+\titleformat{\section}{\LARGE\bfseries}{\@textbox{\thesection}}{0.6em}{}
+\titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection \, -- \,}{0pt}{\Large\sffamily\bfseries}
+\titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection. \,}{0pt}{\large\sffamily\bfseries}
+\titleformat{\paragraph}{\sffamily\bfseries}{\theparagraph. \,}{0pt}{\sffamily\bfseries}
+
+\makeatother
 
 \setcounter{secnumdepth}{4}
 
@@ -105,6 +158,7 @@
 \renewcommand{\ker}{\mathrm{Ker}}
 
 % Nouvelles commandes :
+\makeatletter
 
 \newcommand{\website}{https://agreg.skyost.eu}
 
@@ -127,14 +181,14 @@
   \hypersetup{pdftitle={#2 : #3}}%
   \setcounter{section}{\numexpr #2 - 1}%
   \section{#3}%
-  \fancyhead[R]{\truncate{0.73\textwidth}{#2 : #3}}%
+  \fancyhead[R]{\@headerlesson{#2}{#3}}%
 }
 
 \providecommand{\development}[3]{%
   \title{#3}%
   \hypersetup{pdftitle={#3}}%
   \section*{#3}%
-  \fancyhead[R]{\truncate{0.73\textwidth}{#3}}%
+  \fancyhead[R]{\@headertitle{#3}}%
 }
 
 \providecommand{\sheet}[3]{\development{#1}{#2}{#3}}
@@ -143,7 +197,7 @@
   \title{Agrégation externe #1}%
   \hypersetup{pdftitle={Agrégation externe #1}}%
   \section*{Agrégation externe #1}%
-  \fancyhead[R]{\truncate{0.73\textwidth}{Agrégation externe #1}}%
+  \fancyhead[R]{\@headertitle{Agrégation externe #1}}%
 }
 
 \providecommand{\summary}[1]{%
@@ -168,8 +222,8 @@
   \todo[noline]{%
     \protect\vspace{20pt}%
     \protect\par%
-    \protect\notblank{#1}{\cite{[\previousreference]}\\}{}%
-    \protect\hyperref[reference-\previousreference-\thereference]{p. #2}%
+    \protect\notblank{#1}{\protect\nocite{[\previousreference]}\protect\textbf{\textsf{[\previousreference]}}\\}{}%
+    \protect\textsf{\protect\hyperref[reference-\previousreference-\thereference]{p. #2}}%
   }%
 }
 
@@ -179,7 +233,7 @@
   \todo[noline]{
     \protect\vspace{20pt}%
     \protect\par%
-    \bfseries\color{devcolor}\href{\website/developpements/#1}{[DEV]}
+    \protect\href{\website/developpements/#1}{\protect\@textbox{\protect\scriptsize dev}}%
   }%
   \normalmarginpar%
 }
@@ -187,80 +241,216 @@
 % En-têtes :
 
 \pagestyle{fancy}
-\fancyhead[L]{\truncate{0.23\textwidth}{\thepage}}
+\fancyhead[L]{\@headertextbox{\thepage}}
 \fancyfoot[C]{\scriptsize \href{\website}{\texttt{agreg.skyost.eu}}}
+\renewcommand{\headrule}{%
+	\vskip-0.1em%
+	\hrule width\headwidth height\headrulewidth%
+	\vskip0.1em%
+}
+\makeatother
 
-% Couleurs :
-
-\definecolor{property}{HTML}{ffeb3b}
-\definecolor{proposition}{HTML}{ffc107}
-\definecolor{lemma}{HTML}{ff9800}
-\definecolor{theorem}{HTML}{f44336}
-\definecolor{corollary}{HTML}{e91e63}
-\definecolor{definition}{HTML}{673ab7}
-\definecolor{notation}{HTML}{9c27b0}
-\definecolor{example}{HTML}{00bcd4}
-\definecolor{cexample}{HTML}{795548}
-\definecolor{application}{HTML}{009688}
-\definecolor{remark}{HTML}{3f51b5}
-\definecolor{algorithm}{HTML}{607d8b}
-%\definecolor{proof}{HTML}{e1f5fe}
-
-% Théorèmes :
-
-\theoremstyle{definition}
-\newtheorem{theorem}{Théorème}
-
-\newtheorem{property}[theorem]{Propriété}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemme}
-\newtheorem{corollary}[theorem]{Corollaire}
-
-\newtheorem{definition}[theorem]{Définition}
-\newtheorem{notation}[theorem]{Notation}
-
-\newtheorem{example}[theorem]{Exemple}
-\newtheorem{cexample}[theorem]{Contre-exemple}
-\newtheorem{application}[theorem]{Application}
-
-\newtheorem{algorithm}[theorem]{Algorithme}
-
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remarque}
-
-\counterwithin*{theorem}{section}
-
-\newcommand{\applystyletotheorem}[1]{
-  \tcolorboxenvironment{#1}{
-    enhanced,
-    breakable,
-    colback=#1!8!white,
-    %right=0pt,
-    %top=8pt,
-    %bottom=8pt,
-    boxrule=0pt,
-    frame hidden,
-    sharp corners,
-    enhanced,borderline west={4pt}{0pt}{#1},
-    %interior hidden,
-    sharp corners,
-    after=\par,
-  }
+% Listes :
+\colorlet{labelcolor}{black}
+\setlist{
+	partopsep=0pt,
+	topsep=0pt,
+	left=0pt,
+	wide=0pt
+}
+\setlist[enumerate, 1]{
+	label={\color{labelcolor}\bfseries\arabic*.},
+	left=0pt,
+	wide=0pt
+}
+\setlist[enumerate, 2]{
+	label={\color{labelcolor}\bfseries\alph*.},
+	left=0pt,
+	wide=0pt
+}
+\setlist[itemize, 1]{
+	label={\color{labelcolor}\bullet},
+	left=0pt,
+	wide=0pt
+}
+\setlist[itemize, 2]{
+	label={\color{labelcolor}\bfseries—},
+	left=0pt,
+	wide=0pt
 }
 
-\applystyletotheorem{property}
-\applystyletotheorem{proposition}
-\applystyletotheorem{lemma}
-\applystyletotheorem{theorem}
-\applystyletotheorem{corollary}
-\applystyletotheorem{definition}
-\applystyletotheorem{notation}
-\applystyletotheorem{example}
-\applystyletotheorem{cexample}
-\applystyletotheorem{application}
-\applystyletotheorem{remark}
-%\applystyletotheorem{proof}
-\applystyletotheorem{algorithm}
+\BeforeBeginEnvironment{itemize}{\addvspace{\medskipamount}}
+\AfterEndEnvironment{itemize}{\addvspace{\medskipamount}}
+\BeforeBeginEnvironment{enumerate}{\addvspace{\medskipamount}}
+\AfterEndEnvironment{enumerate}{\addvspace{\medskipamount}}
+
+% Théorèmes :
+\makeatletter
+
+\newlength{\@boxesbeforeskip}
+\setlength{\@boxesbeforeskip}{0.5\baselineskip}
+
+\newlength{\@boxesafterskip}
+\setlength{\@boxesafterskip}{10pt}
+
+\newcounter{theorem}[chapter]
+\renewcommand{\thetheorem}{\arabic{theorem}}
+
+\tcbuselibrary{skins,breakable,hooks}
+\tcbset{
+	base box/.style={
+		enhanced,
+		arc=\@boxradius,
+		before skip=\@boxesbeforeskip,
+		after skip=\@boxesafterskip,
+	},
+	framed box/.style={
+		base box,
+		colframe=black,
+		boxrule=0.5pt,
+		right=2mm,
+		bottom=2mm,
+		left=2mm,
+	},
+	detached title box/.style={
+		boxed title style={empty,size=minimal,boxrule=0pt,titlerule=0pt},
+	},
+	transparent box/.style={
+		base box,
+		colback=white!0,
+	},
+	borderless content box/.style={
+		transparent box,
+		colframe=white!0,
+		boxrule=0pt,
+		left=2mm,
+		right=0mm,
+		bottom=1mm,
+	},
+	theorem box/.style={
+		framed box,
+		detached title box,
+		%breakable,
+		transparent box,
+		attach boxed title to top left={xshift=8pt, yshift=-6pt},
+		top=4mm,
+	},
+	exercise box/.style={
+		borderless content box,
+		boxsep=0mm,
+		top=0mm,
+		left=3mm,
+	},
+	example box/.style={
+		borderless content box,
+		detached title box,
+		colbacktitle=white!0,
+		borderline west={1pt}{0pt}{black,line cap=round},
+		attach boxed title to top left={xshift=-1.25pt,yshift=-5pt},
+		toptitle=0pt,
+		bottomtitle=0pt,
+		top=2mm,
+		coltitle=black,
+	},
+}
+
+\tikzset{
+	numbered box title/.style={
+		fill=black,
+		rounded corners=\@boxradius,
+		inner xsep=0.5em,
+		inner ysep=0.25em,
+		outer sep=0pt,
+		text=white,
+		font=\sffamily\bfseries,
+	}
+}
+
+\NewDocumentCommand{\@theoremboxtitle}{m m}{%
+	\@textbox{%
+		\scriptsize#1%
+		\IfValueT{#2}{\;#2}%
+	}
+}
+
+\NewDocumentCommand{\@exampleboxtitle}{m m}{%
+	\begin{tikzpicture}%
+		\draw[fill=black] (0,0) circle (1.5pt);
+		\node at (0.15,0) [right] {\sffamily\scriptsize\bfseries\upshape\MakeUppercase{#1} #2};
+	\end{tikzpicture}%
+}
+
+\NewDocumentCommand{\@drawnumberedboxtitle}{m}{%
+	\node[numbered box title,anchor=north west] (numbered box title)
+	at (frame.north west)
+	{#1};
+	\draw[black,line width=1pt,line cap=butt]
+	([xshift=0.5pt,yshift=1pt]numbered box title.south west)
+	-- ([xshift=0.5pt]frame.south west);
+}
+
+\NewDocumentCommand{\@numberedboxtitlespacer}{m}{%
+	\tikz[baseline=(numbered box title spacer.base)]{%
+		\node[numbered box title,opacity=0] (numbered box title spacer)
+		{#1};
+	}%
+}
+
+\NewDocumentCommand{\@promptboxtitle}{m}{%
+	\sffamily\scriptsize\bfseries\MakeUppercase{#1}%
+}
+
+\NewDocumentCommand{\@boxsubtitle}{m}{%
+	\IfValueT{#1}{{\bfseries\sffamily#1}.\newpar}%
+}
+
+\NewDocumentEnvironment{@newtheorembox}{m m}{
+	\NewDocumentEnvironment{#1}{o}{%
+		\crefalias{theorem}{#1}%
+		\refstepcounter{theorem}%
+		\begin{tcolorbox}[
+			theorem box,
+			title={\@theoremboxtitle{#2}{\thetheorem}},
+			before upper={\@boxsubtitle{##1}},
+			]%
+		}{%
+		\end{tcolorbox}%
+	}
+}
+
+\NewDocumentEnvironment{@newexamplebox}{m m}{
+	\NewDocumentEnvironment{#1}{o}{%
+		\crefalias{theorem}{#1}%
+		\refstepcounter{theorem}%
+		\begin{tcolorbox}[
+			example box,
+			title={\@exampleboxtitle{#2}{\thetheorem}},
+			before upper={\@boxsubtitle{##1}},
+			]%
+		}{%
+		\end{tcolorbox}%
+	}
+}
+
+\@newtheorembox{property}{Propriété}
+\@newtheorembox{proposition}{Proposition}
+\@newtheorembox{lemma}{Lemme}
+\@newtheorembox{theorem}{Théorème}
+\@newtheorembox{corollary}{Corollaire}
+\@newtheorembox{definition}{Définition}
+\@newtheorembox{application}{Application}
+\@newexamplebox{notation}{Notation}
+\@newexamplebox{example}{Exemple}
+\@newexamplebox{cexample}{Contre-exemple}
+\@newexamplebox{remark}{Remarque}
+\@newexamplebox{algorithm}{Algorithme}
+
+\addto\captionsfrench{%
+	\renewcommand{\proofname}{\textsf{Démonstration.}{}}%
+}
+\xpatchcmd{\proof}{\@addpunct{.}}{}{}{}
+
+\makeatother
 
 % Environnements :
 
@@ -321,7 +511,7 @@
 \newcommand{\codedirectory}{}
 \newcommand{\inputalgorithm}[1]{%
   \begin{algorithm}%
-    \strut%
+    %\strut%
     \lstinputlisting{\codedirectory#1}%
   \end{algorithm}%
 }

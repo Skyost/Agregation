@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { nextTick, onMounted, onUnmounted, ref } from 'vue'
+
 defineProps<{ body: string }>()
 const root = ref<HTMLElement | null>(null)
 const setupTimeout = ref<ReturnType<typeof setTimeout> | null>(null)
@@ -60,7 +62,8 @@ const setupDocument = () => {
   root.value!.style.paddingRight = paddingRight
   for (const reference of references) {
     const element: HTMLElement = reference.firstElementChild! as HTMLElement
-    element.style.right = paddingRight
+    const centeredRight = 15 + ((rightColumnWidth + element.offsetWidth) / 2)
+    element.style.right = `${centeredRight}px`
   }
 
   const router = useRouter()
@@ -162,41 +165,147 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 @import 'assets/colors';
 
-@mixin bubble($color, $hover, $left: true) {
-  @if $left {
-    border-left: 10px solid darken($color, 10%);
-  } @else {
-    border-right: 10px solid darken($color, 10%);
-  }
+$document-theorem-environments: 'property', 'proposition', 'lemma', 'theorem', 'corollary', 'definition', 'application';
+$document-example-environments: 'notation', 'example', 'cexample', 'remark', 'algorithm';
 
-  background-color: lighten($color, 2%);
-  transition: background-color 200ms;
-  padding: 10px;
-
-  &:hover {
-    background-color: $hover;
-  }
+@mixin label-box {
+  display: inline-block;
+  border-radius: var(--bs-border-radius);
+  background-color: var(--bs-dark);
+  color: white;
+  font-family: var(--bs-font-sans-serif), sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  padding: 0.45rem 0.6rem;
+  font-variant-numeric: lining-nums;
 }
 
-@mixin environment($color) {
-  @include bubble($color, $color);
-
+@mixin environment {
+  position: relative;
   width: 100%;
-  margin-bottom: 1rem;
-  overflow-x: auto;
+  margin: 1.5rem 0;
+
+  .environment-title {
+    display: block;
+    font-family: var(--bs-font-sans-serif), sans-serif;
+    font-weight: bold;
+    font-variant-numeric: lining-nums;
+    margin-bottom: 0.25rem;
+
+    &::after {
+      content: '.';
+    }
+  }
+
+  > .environment-label {
+    font-variant-numeric: lining-nums;
+  }
 
   > *:last-child {
     margin-bottom: 0;
   }
 
   a {
-    color: darken($color, 60%) !important;
+    color: var(--bs-dark) !important;
+    font-weight: bold;
+  }
+
+  p >.katex-display:last-child {
+    margin-bottom: 0;
+  }
+
+  ol, ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+
+    li {
+      padding-left: 1rem;
+      margin-bottom: 0.25rem;
+
+      &::marker {
+        font-weight: bold;
+      }
+
+      > *:only-child {
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@mixin theorem-environment {
+  @include environment;
+
+  border-radius: var(--bs-border-radius);
+  padding: 2rem 1.25rem 1rem;
+  position: relative;
+  background-color: darken($light, 5%);
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: darken($light, 2%);
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    width: 5px;
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+    background-color: var(--bs-dark);
+    content: '';
+  }
+
+  > .environment-label {
+    @include label-box;
+
+    position: absolute;
+    top: -1px;
+    left: -1px;
+  }
+}
+
+@mixin example-environment {
+  @include environment;
+
+  border-left: 2px solid var(--bs-dark);
+  padding: 0 1rem 0.85rem 1.15rem;
+
+  &::before {
+    position: absolute;
+    left: -4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--bs-dark);
+    content: '';
+  }
+
+  > .environment-label {
+    color: var(--bs-dark);
+    font-family: var(--bs-heading-font-family), sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+
+    &::after {
+      content: '. ';
+    }
   }
 }
 
 .math-document {
+  --bs-border-radius: 0;
+
   position: relative;
   counter-reset: figure;
+  line-height: 1.7;
 
   :deep(.doctitle),
   :deep(.doccategories) {
@@ -205,15 +314,33 @@ onUnmounted(() => {
 
   :deep(.docsummary) {
     font-style: italic;
-    color: #{rgb(black, 0.6)};
+    color: var(--bs-secondary);
+  }
+
+  :deep(.docname) {
+    h1 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+
+      strong {
+        @include label-box;
+
+        flex: 0 0 auto;
+        font-size: 1em;
+      }
+    }
   }
 
   :deep(h2:not(.unnumbered)) {
     counter-increment: headline-2;
     counter-reset: headline-3 headline-4;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
 
     &::before {
-      content: counter(headline-2, upper-roman) ' - ';
+      content: counter(headline-2, upper-roman) ' – ';
     }
   }
 
@@ -256,27 +383,69 @@ onUnmounted(() => {
     }
   }
 
-  @each $environment, $color in $math-environments {
+  @each $environment in $document-theorem-environments {
     :deep(.#{$environment}) {
-      @include environment($color);
+      @include theorem-environment;
     }
+  }
+
+  @each $environment in $document-example-environments {
+    :deep(.#{$environment}) {
+      @include example-environment;
+    }
+  }
+
+  :deep(details) {
+    margin: 1rem 0 1.35rem;
+
+    summary::marker {
+      content: '> ';
+    }
+
+    &[open] {
+      padding-bottom: 0.1rem;
+
+      .proof-label::marker {
+        content: '⌄ ';
+      }
+    }
+  }
+
+  :deep(.devlink > a)::before {
+    content: '> ';
   }
 
   :deep(.proof-label),
   :deep(.devlink > a) {
     float: left;
-    font-size: .8em;
-    padding: 0;
+    font-family: var(--bs-font-sans-serif), sans-serif;
+    color: var(--bs-secondary);
     text-decoration: none !important;
-    color: #{rgb(black, 0.75)};
+    font-size: 0.8em;
+  }
+
+  :deep(.proof) {
+    @include environment;
+
+    border-left: 2px solid rgb(23 23 23 / 20%);
+    padding: 0.45rem 0 0.1rem 1rem;
+    color: rgb(23 23 23 / 82%);
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+    &:hover {
+      border-color: rgb(23 23 23 / 30%);
+      color: var(--bs-body-color);
+    }
   }
 
   :deep(.bookref) {
-    // position: relative;
+    font-family: var(--bs-font-sans-serif), sans-serif;
+
+    &.book > *:first-child strong {
+      @include label-box;
+    }
 
     > *:first-child {
-      @include bubble(rgba(black, 0.05), rgba(black, 0.1), false);
-
       position: absolute;
 
       // right: 0;
@@ -296,10 +465,12 @@ onUnmounted(() => {
 
   :deep(ol) {
     counter-reset: ol;
+    padding-left: 0;
 
     > li {
       list-style: none;
       counter-increment: ol;
+      padding-left: 0;
     }
 
     > li::marker {

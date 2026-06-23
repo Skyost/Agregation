@@ -275,6 +275,9 @@ const processLatexFile = async (
     // Handle proofs in the HTML content.
     handleProofs(root)
 
+    // Move theorem-like labels out of their content paragraph.
+    normalizeTheoremLabels(root)
+
     // Handle references in the HTML content.
     handleReferences(root)
 
@@ -398,6 +401,98 @@ const replaceVspaceElements = (root: HTMLElement) => {
 }
 
 /**
+ * Move theorem-like labels out of the first paragraph.
+ *
+ * @param root The root HTML element.
+ */
+const normalizeTheoremLabels = (root: HTMLElement) => {
+  const environments = [
+    'property',
+    'proposition',
+    'lemma',
+    'theorem',
+    'corollary',
+    'definition',
+    'application',
+    'notation',
+    'example',
+    'cexample',
+    'remark',
+    'algorithm',
+  ]
+  const selector = environments.map(environment => `.${environment} > p:first-child`).join(', ')
+  const paragraphs = root.querySelectorAll(selector)
+  for (const paragraph of paragraphs) {
+    const match = paragraph.innerHTML.match(/^<strong>(.*?)<\/strong>(?:\.\s*|\s*)/)
+    if (!match) {
+      continue
+    }
+
+    paragraph.insertAdjacentHTML('beforebegin', `<strong class="environment-label">${match[1]}</strong>`)
+    paragraph.innerHTML = paragraph.innerHTML.slice(match[0].length)
+    paragraph.innerHTML = normalizeTheoremTitle(paragraph.innerHTML)
+    if (paragraph.text.trim().length === 0) {
+      paragraph.remove()
+    }
+  }
+}
+
+/**
+ * Add a class to the optional title emitted by Pandoc for theorem-like environments.
+ *
+ * @param html The paragraph HTML.
+ *
+ * @returns The paragraph HTML with a normalized title.
+ */
+const normalizeTheoremTitle = (html: string) => {
+  if (!html.startsWith('(')) {
+    return html
+  }
+
+  let depth = 0
+  let inTag = false
+  let quote: string | null = null
+  for (let index = 0; index < html.length; index++) {
+    const char = html[index]
+    if (inTag) {
+      if (quote) {
+        if (char === quote) {
+          quote = null
+        }
+      }
+      else if (char === '"' || char === '\'') {
+        quote = char
+      }
+      else if (char === '>') {
+        inTag = false
+      }
+      continue
+    }
+
+    if (char === '<') {
+      inTag = true
+      continue
+    }
+
+    if (char === '(') {
+      depth++
+    }
+    else if (char === ')') {
+      depth--
+      if (depth === 0) {
+        let remainingContent = html.slice(index + 1)
+        if (remainingContent.startsWith('. ')) {
+          remainingContent = remainingContent.slice(2)
+        }
+        return `<span class="environment-title">${html.slice(1, index)}</span>${remainingContent}`
+      }
+    }
+  }
+
+  return html
+}
+
+/**
  * Handle the 'proof' elements in the HTML by replacing 'Proof.' with 'Démonstration.'.
  *
  * @param root The root HTML element.
@@ -428,6 +523,7 @@ const handleReferences = (root: HTMLElement) => {
     if (short.length > 0) {
       previousReference = short
       html = `<strong>[${short}]</strong><br>${html}`
+      bookReference.classList.add('book')
     }
     // If there's a previous reference, link to the bibliography.
     if (previousReference) {

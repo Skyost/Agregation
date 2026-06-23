@@ -37,7 +37,7 @@
 
   \begin{proposition}
     Soit $V \subseteq F$ un ouvert. Soit $f : U \rightarrow F$ différentiable en un point $a$ de $U$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\forall \lambda \in \mathbb{R}$, $\lambda f$ est différentiable en $a$, et $\mathrm{d}(\lambda f)_a = \lambda \mathrm{d}f_a$.
       \item Si $g : U \rightarrow F$ est différentiable en $a$, alors $f+g$ l'est aussi, et $\mathrm{d}(f+g)_a = \mathrm{d}f_a + \mathrm{d}g_a$.
       \item Soit $g : V \rightarrow G$. On suppose $f(U) \subseteq V$ et $g$ différentiable en $f(a)$. Alors $g \circ f$ est différentiable en $a$ et, $\mathrm{d}(g \circ f)_a = \mathrm{d}g_{f(a)} \circ \mathrm{d}f_a$.
@@ -131,7 +131,7 @@
 
   \begin{corollary}
     En reprenant les notations du théorème précédent :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $U$ est convexe, si $f$ est différentiable sur $U$ et si $\VERT \mathrm{d}f_c \VERT \leq M$ pour tout $c \in U$, alors l'inégalité $(*)$ précédente est vraie pour tout $a,b \in U$.
       \item Si $U$ est un ouvert connexe et $\mathrm{d}f_c = 0$ pour tout $c \in U$, alors $f$ est constante.
     \end{enumerate}
@@ -160,7 +160,7 @@
 
   \reference{326}
 
-  \begin{theorem}[Schwarz]
+  \begin{theorem}[Théorème de Schwarz]
     On se place dans la cas $n = 2$. Soit $f : U \rightarrow \mathbb{R}$ qui admet des dérivées partielles sur $U$, continues en $a \in U$. Alors :
     \[ \frac{\partial^2 f}{\partial x \partial y}(a) = \frac{\partial^2 f}{\partial y \partial x}(a) \]
   \end{theorem}
@@ -279,7 +279,7 @@
   \reference[I-P]{396}
 
   \begin{lemma}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soit $A \in \mathcal{M}_n(\mathbb{C})$. Alors $\exp(A) \in \mathrm{GL}_n(\mathbb{C})$.
       \item $\exp$ est différentiable en $0$ et $\mathrm{d}\exp_0 = \operatorname{id}_{\mathcal{M}_n(\mathbb{C})}$.
       \item Soit $M \in \mathrm{GL}_n(\mathbb{C})$. Alors $M^{-1} \in \mathbb{C}[M]$.
@@ -389,7 +389,7 @@
 
   \begin{theorem}
     On suppose $\mathrm{d}f_a = 0$ ($a$ est un \textbf{point critique} de $f$). Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $f$ admet un minimum (resp. maximum) relatif en $a$, $\operatorname{Hess}(f)_a$ est positive (resp. négative).
       \item Si $\operatorname{Hess}(f)_a$ définit une forme quadratique définie positive (resp. définie négative), $f$ admet un minimum (resp. maximum) relatif en $a$.
     \end{enumerate}
@@ -397,7 +397,7 @@
 
   \begin{example}
     On suppose $\mathrm{d}f_a = 0$. On pose $(r,s,t) = \left(  \frac{\partial^2}{\partial x_i \partial x_j} f \right)_{i+j=2}$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $rt-s^2 > 0$ et $r > 0$ (resp. $r < 0$), $f$ admet une minimum (resp. maximum) relatif en $a$.
       \item Si $rt-s^2 < 0$, $f$ n'a pas d'extremum en $a$.
       \item Si $rt-s^2 = 0$, on ne peut rien conclure.
@@ -424,7 +424,7 @@
   \reference{354}
   \dev{lemme-de-morse}
 
-  \begin{lemma}[Morse]
+  \begin{lemma}[Lemme de Morse]
     Soit $f : U \rightarrow \mathbb{R}$ une fonction de classe $\mathcal{C}^3$ (où $U$ désigne un ouvert de $\mathbb{R}^n$ contenant l'origine). On suppose :
     \begin{itemize}
       \item $\mathrm{d} f_0 = 0$.

@@ -62,7 +62,7 @@
 
   \begin{proposition}
     Soient $f, g \in \mathcal{L}(E)$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\det (f \circ g) = \det(f) \times \det(g)$.
       \item $\det (\operatorname{id}_e) = 1$.
       \item $f \in \mathrm{GL}(E) \iff \det(f) \neq 0$. Dans ce cas, on a $\det(f^{-1}) = \det(f)^{-1}$.
@@ -109,7 +109,7 @@
 
   \begin{proposition}
     Soit $A \in \mathcal{M}_n(\mathbb{K})$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\det(A) = \det(\tr{A})$.
       \item $\det(A)$ dépend linéairement des colonnes (resp. des lignes) de $A$.
       \item $\forall \lambda \in \mathbb{K}, \, \det(\lambda A) = \lambda^n \det(A)$.
@@ -126,7 +126,7 @@
 
   \begin{proposition}
     Soit $A \in \mathcal{M}_n(\mathbb{K})$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si on effectue une permutation $\sigma \in S_n$ sur les colonnes ou les lignes de $A$, le déterminant est multiplié par $\epsilon(\sigma)$ (la signature de $\sigma$).
       \item Si $A$ est triangulaire, $\det(A)$ est le produit des éléments diagonaux de $A$.
       \item On ne change pas la valeur d'un déterminant en ajoutant à une colonne une combinaison linéaire des autres colonnes. Même chose sur les lignes.
@@ -174,7 +174,7 @@
 
   \begin{proposition}
     En reprenant les notations précédentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Soit $j \in \llbracket 1, n \rrbracket$. On a $\det(A) = \sum_{i=1}^n a_{i,j} A_{i,j}$ (développement par rapport à la $j$-ième colonne).
       \item Soit $i \in \llbracket 1, n \rrbracket$. On a $\det(A) = \sum_{j=1}^n a_{i,j} A_{i,j}$ (développement par rapport à la $i$-ième ligne).
     \end{enumerate}
@@ -309,7 +309,7 @@
     \end{itemize}
   \end{definition}
 
-  \begin{theorem}[Rouché-Fontené]
+  \begin{theorem}[Théorème de Rouché-Fontené]
     Le système $(S)$ admet des solutions si et seulement si $p = r$ ou les $p-r$ déterminants caractéristiques sont nuls. Le système est alors équivalent au système des équations principales. Les inconnues principales étant déterminées par un système de Cramer à l'aide des inconnues non principales.
   \end{theorem}
 
@@ -371,7 +371,7 @@
     Si $\mathbb{K} = \mathbb{F}_q$, $A$ est diagonalisable si et seulement si $A^q = A$.
   \end{corollary}
 
-  \begin{theorem}[Cayley-Hamilton]
+  \begin{theorem}[Théorème de Cayley-Hamilton]
     \[ \pi_u \mid \chi_u \]
   \end{theorem}
 
@@ -381,7 +381,7 @@
 
   \begin{theorem}
     Soit $u \in \mathcal{L}(E)$. Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $u \in \mathrm{GL}(E)$.
       \item $\ker(u) = \{ 0 \}$.
       \item $\im(u) = E$.
@@ -430,7 +430,7 @@
 
   \dev{theoreme-de-frobenius-zolotarev}
 
-  \begin{theorem}[Frobenius-Zolotarev]
+  \begin{theorem}[Théorème de Frobenius-Zolotarev]
     \[ \forall u \in \mathrm{GL}(E), \, \epsilon(u) = \left( \frac{\det(u)}{p} \right) \]
     où $u$ est vu comme une permutation des éléments de $E$.
   \end{theorem}

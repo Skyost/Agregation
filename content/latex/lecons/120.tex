@@ -26,7 +26,7 @@
   \begin{proposition}
     \label{120-1}
     Soient $a, b, c, d \in \mathbb{Z}$ tels que $a \equiv b \mod n$ et $c \equiv d \mod n$. Alors :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $a+c \equiv b+d \mod n$.
       \item $ac \equiv bd \mod n$
     \end{enumerate}
@@ -46,7 +46,7 @@
   \end{remark}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathbb{Z}/n\mathbb{Z} = \{ \overline{0}, \dots, \overline{n-1} \}$.
       \item La compatibilité de $\equiv$ avec les lois $+$ et $\times$ sur $\mathbb{Z}$ conjuguée à la remarque précédente transporte la structure d'anneau à $\mathbb{Z}/n\mathbb{Z}$ en posant, pour tout $\overline{a}, \overline{b} \in \mathbb{Z}/n\mathbb{Z}$ :
       \begin{itemize}
@@ -65,7 +65,7 @@
   \begin{theorem}
     \label{120-2}
     Soit $a \in \mathbb{Z}$. Les assertions suivantes sont équivalentes :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\overline{a} \in (\mathbb{Z}/n\mathbb{Z})^\times$.
       \item $\operatorname{pgcd}(a,n)=1$.
       \item $a$ est un générateur de $(\mathbb{Z}/n\mathbb{Z}, +)$.
@@ -82,7 +82,7 @@
   \reference{14}
 
   \begin{proposition}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $\mathbb{Z}$ est monogène, l'ensemble de ses générateurs est $\mathbb{Z}^\times = \{ \pm 1 \}$.
       \item $\mathbb{Z}/n\mathbb{Z}$, l'ensemble de ses générateurs est $(\mathbb{Z}/n\mathbb{Z})^\times$.
     \end{enumerate}
@@ -90,7 +90,7 @@
 
   \begin{corollary}
     Soit $G$ un groupe.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Si $G$ est monogène infini, alors $G \cong \mathbb{Z}$.
       \item Si $G$ est cyclique d'ordre $n$, alors $G \cong \mathbb{Z}/n\mathbb{Z}$.
     \end{enumerate}
@@ -112,7 +112,7 @@
   \reference{255}
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Les idéaux de $\mathbb{Z}/n\mathbb{Z}$ sont ses sous-groupes additifs.
       \item Les idéaux premiers de $\mathbb{Z}/n\mathbb{Z}$ sont les idéaux maximaux de $\mathbb{Z}/n\mathbb{Z}$ : ce sont les idéaux engendrés par $(\overline{p})$ où $p$ est un diviseur premier de $n$.
     \end{enumerate}
@@ -146,7 +146,7 @@
 
   \dev{theoreme-chinois}
 
-  \begin{theorem}[Chinois]
+  \begin{theorem}[Théorème chinois]
     \label{120-4}
     Soient $n$ et $m$ deux entiers premiers entre eux. Alors,
     \[ \mathbb{Z}/nm\mathbb{Z} \equiv \mathbb{Z}/n\mathbb{Z} \times \mathbb{Z}/m\mathbb{Z} \]
@@ -176,7 +176,7 @@
 
   \begin{proposition}
     Les assertions suivantes sont équivalentes.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $n$ est un nombre premier.
       \item $\mathbb{Z}/n\mathbb{Z}$ est intègre.
       \item $\mathbb{Z}/n\mathbb{Z}$ est un corps.
@@ -210,7 +210,7 @@
   Soit $p$ un nombre premier impair.
 
   \begin{theorem}
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Il y a $\frac{p-1}{2}$ carrés et autant de non carrés dans $(\mathbb{Z}/p\mathbb{Z})^\times$.
       \item Les carrés de $(\mathbb{Z}/p\mathbb{Z})^\times$ sont les racines de $X^{\frac{p-1}{2}} - 1$ et les non carrés celles de $X^{\frac{p-1}{2}} + 1$.
     \end{enumerate}
@@ -244,7 +244,7 @@
 
   Pour résoudre des systèmes de congruences, on va préciser le \cref{120-4}.
 
-  \begin{theorem}[Chinois]
+  \begin{theorem}[Théorème chinois]
     Soient $n_1, \dots, n_r \geq 2$ des entiers. On note $n = \prod_{i=1}^r n_i$ et $\pi_k = \pi_{{n_k}\mathbb{Z}}$ la surjection canonique de $\mathbb{Z}$ sur $\mathbb{Z}/n_k\mathbb{Z}$ pour tout $k \in \llbracket 1, r \rrbracket$.
     \newpar
     Les entiers $n_1, \dots, n_r$ sont premiers entre eux deux à deux si et seulement si les anneaux $\mathbb{Z}/n\mathbb{Z}$ et $\prod_{i=1}^{r}\mathbb{Z}/n_i\mathbb{Z}$ sont isomorphes. Dans ce cas, l'isomorphisme est explicité par l'application
@@ -315,8 +315,8 @@
 
   \reference[GOZ]{10}
 
-  \begin{lemma}[Gauss]
-    \begin{enumerate}[label=(\roman*)]
+  \begin{lemma}[Lemme de Gauss]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Le produit de deux polynômes primitifs est primitif (ie. dont le PGCD des coefficients est égal à $1$).
       \item $\forall P, Q \in \mathbb{Z}[X] \setminus \{ 0 \}$, $\gamma(PQ) = \gamma(P) \gamma(Q)$ (où $\gamma(P)$ est le contenu du polynôme $P$).
     \end{enumerate}
@@ -324,7 +324,7 @@
 
   \begin{theorem}[Critère d'Eisenstein]
     Soit $P = \sum_{i=0}^n a_i X^i \in \mathbb{Z}[X]$ de degré $n \geq 1$. On suppose qu'il existe $p$ premier tel que :
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item $p \mid a_i$, $\forall i \in \llbracket 0, n-1 \rrbracket$.
       \item $p \nmid a_n$.
       \item $p^2 \nmid a_0$.
@@ -366,7 +366,7 @@
 
   \begin{theorem}[Chiffrement RSA]
     Soit $m = (m_i)_{i \in \llbracket 1, r \rrbracket}$ un message où pour tout $i$, $m_i < n$.
-    \begin{enumerate}[label=(\roman*)]
+    \begin{enumerate}[label={\bfseries(\roman*)}]
       \item Possédant la clé publique, on peut \textit{chiffrer} ce message en un message $m'$, dont on note $m_1', \dots, m_r$ les coordonnées :
       \[ \forall i \in \llbracket 1,r \rrbracket, \, m_i' \equiv m_i^e \mod n, \qquad 0 \leq m_i' < n \]
       \item Possédant la clé privée, on peut \textit{déchiffrer} le message $m'$ pour reconstituer $m$ :

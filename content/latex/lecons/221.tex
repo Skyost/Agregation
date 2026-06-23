@@ -20,7 +20,7 @@
       \[ y^{(n)} = F(t, y, y', \dots, y^{(n-1)}) \tag{$*$} \]
       (ie. une équation portant sur les dérivées d'une fonction.)
       \item Toute application $\varphi : I \rightarrow E$ (où $I$ est un intervalle de $\mathbb{R}$) $n$ fois dérivable vérifiant :
-      \begin{enumerate}[label=(\roman*)]
+      \begin{enumerate}[label={\bfseries(\roman*)}]
         \item $\forall t \in I, \, (t, \varphi(t), \dots, \varphi^{(n-1)}(t)) \in \Omega$ ;
         \item $\forall t \in I, \, F(t, \varphi(t), \dots, \varphi^{(n-1)}(t)) = \varphi^{(n)}(t)$ ;
       \end{enumerate}
@@ -243,7 +243,7 @@
 
   \reference[GOU20]{397}
 
-  \begin{lemma}[Grönwall]
+  \begin{lemma}[Lemme de Grönwall]
     Soient $\varphi, \psi, y : [a,b] \rightarrow \mathbb{R}^+$ continues vérifiant $\forall t \in [a,b], \, y(t) \leq \varphi(t) \left | \int_a^t \psi(s) y(s) \, \mathrm{d}s \right |$. Alors,
     \[ \forall t \in I, \, y(t) \leq \varphi(t) + \int_a^t \varphi(s) \psi(s) \exp \left( \int_s^t \psi(u) \, \mathrm{d}u \right) \, \mathrm{d}s \]
   \end{lemma}
@@ -259,14 +259,14 @@
 
   \reference{387}
 
-  \begin{theorem}[Floquet]
+  \begin{theorem}[Théorème de Floquet]
     On considère l'équation $(H) : Y' = A(t) Y$ où $A : \mathbb{R} \rightarrow \mathbb{C}$ est une fonction continue et $T$-périodique. Alors, $(H)$ admet une solution $V$ non nulle telle que
     \[ \exists \lambda \in \mathbb{C}, \forall t \in \mathbb{R}, \, V(t+T) = \lambda V(t) \]
   \end{theorem}
 
   \reference{406}
 
-  \begin{theorem}[Massera]
+  \begin{theorem}[Théorème de Massera]
     Si l'équation $Y' = A(t) Y + B(t)$ (où $A$ et $B$ sont $T$-périodiques) admet une solution bornée sur $\mathbb{R}$, alors elle admet une solution $T$-périodique.
   \end{theorem}
 
