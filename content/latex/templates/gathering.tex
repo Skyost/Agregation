@@ -4,6 +4,49 @@
 % Table des matières :
 
 \setcounter{tocdepth}{1}
+\makeatletter
+\NewDocumentCommand{\@tocchapternumberline}{m}{\hb@xt@\@tempdima{\@textbox{{\normalsize#1}}\hfil}}
+\NewDocumentCommand{\@tocsectionnumberline}{m}{\hb@xt@\@tempdima{\@textbox{{\scriptsize#1}}\hfil}}
+\setlength{\cftchapnumwidth}{2.4em}
+\setlength{\cftsecnumwidth}{2.7em}
+\renewcommand{\cftchapfont}{\large\bfseries}
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum\c@tocdepth>\m@ne%
+    \addpenalty{-\@highpenalty}%
+    \vskip\cftbeforechapskip%
+    {\leftskip\cftchapindent\relax%
+     \rightskip\@tocrmarg%
+     \parfillskip-\rightskip%
+     \parindent\cftchapindent\relax\@afterindenttrue%
+     \interlinepenalty\@M%
+     \leavevmode%
+     \@tempdima\cftchapnumwidth\relax%
+     \let\numberline\@tocchapternumberline%
+     \advance\leftskip\@tempdima\null\nobreak\hskip-\leftskip%
+     {\cftchapfont #1}\nobreak%
+     \cftchapfillnum{#2}}%
+  \fi%
+}
+\renewcommand*{\l@section}[2]{%
+  \ifnum\c@tocdepth>\z@%
+    \addpenalty\@secpenalty%
+    \addvspace{\cftbeforesecskip}%
+    \begingroup%
+      {\leftskip\cftsecindent\relax%
+       \rightskip\@tocrmarg%
+       \parfillskip-\rightskip%
+       \parindent\cftsecindent\relax\@afterindenttrue%
+       \interlinepenalty\@M%
+       \leavevmode%
+       \@tempdima\cftsecnumwidth\relax%
+       \let\numberline\@tocsectionnumberline%
+       \advance\leftskip\@tempdima\null\nobreak\hskip-\leftskip%
+       {\cftsecfont #1}\nobreak%
+       \cftsecfillnum{#2}}%
+    \endgroup%
+  \fi%
+}
+\makeatother
 
 % Nouvelles commandes :
 
@@ -20,15 +63,24 @@
 }
 \makeatother
 
-\newcommand{\gathering}[1]{%
-  {\title{#1}\chapter{#1}}%
-  \thispagestyle{fancy}%
-}
-
 \newcommand{\resetsectioncount}{\setcounter{section}{0}}
 
 % Redéfinition des commandes :
 \makeatletter
+
+\newcommand{\gathering}[1]{%
+  \clearpage%
+  \refstepcounter{chapter}%
+  \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+  \chaptermark{#1}%
+  \thispagestyle{empty}%
+  \vspace*{\fill}%
+  \begin{center}%
+    {\huge\bfseries\@textbox{\thechapter}\hspace{0.6em}#1}%
+  \end{center}%
+  \vspace*{\fill}%
+  \clearpage%
+}
 
 \renewcommand{\lesson}[3]{%
   \renewcommand{\codedirectory}{lecons/}%
