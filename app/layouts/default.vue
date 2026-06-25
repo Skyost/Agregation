@@ -22,8 +22,6 @@ const banners = useBanners()
 </template>
 
 <style lang="scss">
-@import 'katex/dist/katex.min.css';
-
 #page-content {
   h1,
   h2,

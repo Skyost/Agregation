@@ -53,6 +53,9 @@ importers:
       eslint:
         specifier: ^10.5.0
         version: 10.5.0(jiti@2.7.0)
+      katex:
+        specifier: 0.17.0
+        version: 0.17.0
       marked:
         specifier: ^18.0.5
         version: 18.0.5
