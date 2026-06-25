@@ -105,9 +105,11 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    provider: 'server',
-    fallbackToApi: false,
+    provider: 'none',
     class: 'vue-icon',
+    clientBundle: {
+      scan: true,
+    },
   },
 
   linkChecker: {
