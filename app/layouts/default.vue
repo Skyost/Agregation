@@ -30,7 +30,7 @@ const banners = useBanners()
   h3,
   h4,
   h5 {
-    border-bottom: 1px solid rgba(black, 0.25);
+    border-bottom: 1px solid rgb(0 0 0 / 25%);
     padding-bottom: 0.2em;
     margin-bottom: 0.5em;
   }
