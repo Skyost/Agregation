@@ -143,6 +143,8 @@
 \titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection. \,}{0pt}{\large\sffamily\bfseries}
 \titleformat{\paragraph}{\sffamily\bfseries}{\theparagraph. \,}{0pt}{\sffamily\bfseries}
 
+\renewcommand{\bottomtitlespace}{.35\textheight}
+
 \makeatother
 
 \setcounter{secnumdepth}{4}
@@ -401,7 +403,7 @@
 }
 
 \NewDocumentCommand{\@boxsubtitle}{m}{%
-	\IfValueT{#1}{{\bfseries\sffamily#1}.\newpar}%
+	\IfValueT{#1}{{\bfseries\sffamily#1}.\par}%
 }
 
 \NewDocumentEnvironment{@newtheorembox}{m m}{
