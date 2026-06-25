@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { NuxtError } from '@nuxt/types'
-
-const props = defineProps<{ error: NuxtError }>()
+const props = defineProps<{ error: unknown }>()
 
 const title = computed(() => {
   let result = 'Erreur'
-  if ((Object.hasOwnProperty.call(props.error, 'statusCode'))) {
-    result += ` ${props.error.statusCode}`
+  const error = props.error
+  if (error && typeof error === 'object' && Object.prototype.hasOwnProperty.call(error, 'statusCode')) {
+    const statusCode = parseInt(`${(error as Record<string, unknown>).statusCode}`)
+    if (!Number.isNaN(statusCode)) {
+      result += ` ${statusCode}`
+    }
   }
   return result
 })

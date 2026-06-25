@@ -2,15 +2,30 @@
 const props = defineProps<{ error: any }>()
 
 const errorCode = computed(() => {
-  if (props.error) {
-    if (/^-?\d+$/.test(props.error.toString())) {
-      return parseInt(props.error.toString())
-    }
-    if (Object.prototype.hasOwnProperty.call(props.error, 'statusCode')) {
-      return parseInt(props.error.statusCode)
-    }
+  const error = props.error
+  if (typeof error === 'number') {
+    return error
+  }
+  if (typeof error === 'string' && /^-?\d+$/.test(error)) {
+    return parseInt(error)
+  }
+  if (error && typeof error === 'object' && Object.prototype.hasOwnProperty.call(error, 'statusCode')) {
+    return parseInt(error.statusCode)
   }
   return null
+})
+
+const errorDetails = computed(() => {
+  const error = props.error
+  if (!error || typeof error !== 'object') {
+    return error ?? ''
+  }
+  return JSON.stringify({
+    statusCode: error.statusCode,
+    statusMessage: error.statusMessage,
+    message: error.message,
+    data: error.data,
+  }, null, 2)
 })
 
 const title = computed(() => {
@@ -41,7 +56,7 @@ const goBack = () => window.history.back()
       </span>
     </p>
     <details v-if="errorCode !== 404">
-      <pre>{{ error }}</pre>
+      <pre>{{ errorDetails }}</pre>
     </details>
   </div>
 </template>
