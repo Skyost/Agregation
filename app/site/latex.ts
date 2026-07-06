@@ -236,7 +236,7 @@ export const latexGenerateOptions: LatexGenerateOptions = {
 \t\\todo[noline]{
 \t\t\\protect\\vspace{20pt}%
 \t\t\\protect\\par%
-\t\t\\scriptsize\\bfseries\\color{devcolor}\\hyperref[#1]{[DEV]}{}%
+\t\t\\protect\\hyperref[#1]{\\protect\\@textbox{\\protect\\scriptsize dev}}{}%
 }%
 \t\\normalmarginpar%
 }`,
