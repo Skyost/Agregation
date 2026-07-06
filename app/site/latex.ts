@@ -231,7 +231,8 @@ export const latexGenerateOptions: LatexGenerateOptions = {
           title: 'Développements',
         },
       ],
-      header: `\\renewcommand{\\dev}[1]{%
+      header: `\\makeatletter
+\\renewcommand{\\dev}[1]{%
 \t\\reversemarginpar%
 \t\\todo[noline]{
 \t\t\\protect\\vspace{20pt}%
@@ -239,7 +240,8 @@ export const latexGenerateOptions: LatexGenerateOptions = {
 \t\t\\protect\\hyperref[#1]{\\protect\\@textbox{\\protect\\scriptsize dev}}{}%
 }%
 \t\\normalmarginpar%
-}`,
+}
+\\makeatother`,
     },
   ],
   gatheringTemplate: 'templates/gathering.tex',
