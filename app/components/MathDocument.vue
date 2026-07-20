@@ -164,6 +164,7 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @import 'assets/colors';
+@import 'katex/dist/katex.min.css';
 
 $document-theorem-environments: 'property', 'proposition', 'lemma', 'theorem', 'corollary', 'definition', 'application';
 $document-example-environments: 'notation', 'example', 'cexample', 'remark', 'algorithm';
