@@ -1,0 +1,1 @@
+import{B as n}from"./BbEE2zsj.js";import{C as t,o as a,f as o,h as _}from"./KnZbO6sc.js";const c={},s={class:"p-5 text-center"};function r(f,p){const e=n;return a(),o("div",s,[_(e,{class:"m-auto",variant:"dark",label:"Chargement..."})])}const d=Object.assign(t(c,[["render",r],["__scopeId","data-v-def7f8ff"]]),{__name:"Spinner"});export{d as _};
